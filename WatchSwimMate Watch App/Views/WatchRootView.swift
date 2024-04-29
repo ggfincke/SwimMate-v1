@@ -1,0 +1,100 @@
+//
+//  WatchRootView.swift
+//  WatchSwimMate Watch App
+//
+//  Created by Garrett Fincke on 4/27/24.
+//
+
+
+import SwiftUI
+
+struct WatchRootView: View
+{
+    @EnvironmentObject var manager: WatchManager
+    @EnvironmentObject var iosManager: iOSWatchConnector
+
+    var body: some View 
+    {
+        NavigationStack
+        {
+            VStack
+            {
+                HStack
+                {
+                    // Quick Start Button
+                    NavigationLink(destination: WorkoutSetupView().environmentObject(manager))
+                    {
+                        VStack
+                        {
+                            Image(systemName: "bolt.fill")
+                                .resizable()
+                                .frame(width: 20, height: 30)
+                        }
+                        .frame(width: 60, height: 60)
+                        .background(Circle().fill(Color.green))
+                        .foregroundColor(.white)
+                        .padding()
+                    }
+                    
+                    // Set Goal Button
+                    NavigationLink(destination: GoalWorkoutSetupView().environmentObject(manager))
+                    {
+                        VStack
+                        {
+                            Image(systemName: "target")
+                                .resizable()
+                                .frame(width: 30, height: 30)
+                        }
+                        .frame(width: 60, height: 60)
+                        .background(Circle().fill(Color.blue))
+                        .foregroundColor(.white)
+                        .padding()
+                    }
+                }
+                
+                HStack
+                {
+                    // Import Set Button
+                    NavigationLink(destination: ImportSetView().environmentObject(iosManager).environmentObject(manager))
+                    {
+                        VStack
+                        {
+                            Image(systemName: "square.and.arrow.down.fill")
+                                .resizable()
+                                .frame(width: 30, height: 30)
+                        }
+                        .frame(width: 60, height: 60)
+                        .background(Circle().fill(Color.orange))
+                        .foregroundColor(.white)
+                        .padding()
+                    }
+                    // Settings Button
+                    Button(action: {
+                        print("Settings tapped")
+                    })
+                    {
+                        VStack
+                        {
+                            Image(systemName: "gear")
+                                .resizable()
+                                .frame(width: 30, height: 30)
+                        }
+                        .frame(width: 60, height: 60)
+                        .background(Circle().fill(Color.gray))
+                        .foregroundColor(.white)
+                        .padding()
+                    }
+                }
+            }
+        }
+        .onAppear {
+            manager.requestAuthorization()
+        }
+    }
+}
+
+#Preview
+{
+    WatchRootView()
+        .environmentObject(WatchManager())
+}

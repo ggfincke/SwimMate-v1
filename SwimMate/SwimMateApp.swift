@@ -1,0 +1,34 @@
+//
+//  SwimMateApp.swift
+//  SwimMate
+//
+//  Created by Garrett Fincke on 4/4/24.
+//
+
+import SwiftUI
+import HealthKit
+
+@main
+struct SwimMateApp: App
+{
+    @StateObject var manager = Manager()
+    @StateObject var watchOSManager = WatchConnector()
+
+    var body: some Scene
+    {
+        WindowGroup
+        {
+            if HKHealthStore.isHealthDataAvailable()
+            {
+                RootView()
+                    .environmentObject(manager)
+                    .environmentObject(watchOSManager)
+            }
+            else
+            {
+                fatalError("Not working (idk)")
+            }
+        }
+    }
+}
+    

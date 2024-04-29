@@ -1,0 +1,1276 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A004E51E2BE005DE008D3F11 /* WatchSwimMate Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = A0F0C7D42BDF7C5F00AF6D5B /* WatchSwimMate Watch App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		A023DE452BDF7B2A00242C58 /* SwimMateApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C0505F2BCC5D7A002450AD /* SwimMateApp.swift */; };
+		A023DE462BDF7B3700242C58 /* HealthKitPermissionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C050902BCC5DD6002450AD /* HealthKitPermissionView.swift */; };
+		A023DE472BDF7B3700242C58 /* WeekView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00EEF3E2BCC8FCD00FADBB0 /* WeekView.swift */; };
+		A023DE482BDF7B3700242C58 /* WorkoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00EEF4B2BCC982D00FADBB0 /* WorkoutView.swift */; };
+		A023DE4A2BDF7B3700242C58 /* WorkoutHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00EEF512BCCB07300FADBB0 /* WorkoutHistoryView.swift */; };
+		A023DE4B2BDF7B3700242C58 /* ChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A075692C2BDF3B63009A31FB /* ChartView.swift */; };
+		A023DE4C2BDF7B3700242C58 /* LineGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A075692E2BDF3CE3009A31FB /* LineGraphView.swift */; };
+		A023DE4D2BDF7B3700242C58 /* PaceGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A037E3CF2BDF41BA0027F45C /* PaceGraphView.swift */; };
+		A023DE4E2BDF7B3700242C58 /* HomePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00EEF442BCC940600FADBB0 /* HomePage.swift */; };
+		A023DE4F2BDF7B3700242C58 /* SetDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07569232BDF0545009A31FB /* SetDetailView.swift */; };
+		A023DE502BDF7B3700242C58 /* SetPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07569272BDF055B009A31FB /* SetPage.swift */; };
+		A023DE512BDF7B3700242C58 /* ProfilePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00EEF462BCC941500FADBB0 /* ProfilePage.swift */; };
+		A023DE522BDF7B3700242C58 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00EEF572BCCBAA100FADBB0 /* SettingsView.swift */; };
+		A023DE542BDF7B3700242C58 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00EEF392BCC8D6000FADBB0 /* RootView.swift */; };
+		A023DE552BDF7B3700242C58 /* Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C0508E2BCC5DBE002450AD /* Manager.swift */; };
+		A023DE562BDF7B3700242C58 /* Swim.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C0508C2BCC5DAE002450AD /* Swim.swift */; };
+		A023DE572BDF7B3700242C58 /* SwimSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07569212BDF051C009A31FB /* SwimSet.swift */; };
+		A023DE582BDF7B3700242C58 /* WatchConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F04D812BCCD0020020B027 /* WatchConnector.swift */; };
+		A0A391D52BDFBA8A008434FE /* store.json in Resources */ = {isa = PBXBuildFile; fileRef = A0A391D42BDFBA8A008434FE /* store.json */; };
+		A0C050642BCC5D7B002450AD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A0C050632BCC5D7B002450AD /* Assets.xcassets */; };
+		A0C050672BCC5D7B002450AD /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A0C050662BCC5D7B002450AD /* Preview Assets.xcassets */; };
+		A0F0C7F92BDF7F0300AF6D5B /* WatchSwimMateApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D5BAF52BDC9318004D9B9C /* WatchSwimMateApp.swift */; };
+		A0F0C7FA2BDF7F0300AF6D5B /* iOSWatchConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = A037E3D12BDF4C0C0027F45C /* iOSWatchConnector.swift */; };
+		A0F0C7FB2BDF7F0300AF6D5B /* WatchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D5BB2B2BDC97AB004D9B9C /* WatchManager.swift */; };
+		A0F0C7FC2BDF7F0300AF6D5B /* SwimmingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07370D82BDDA1570084C1DD /* SwimmingView.swift */; };
+		A0F0C7FD2BDF7F0300AF6D5B /* WorkoutControlsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07370DA2BDDA1BE0084C1DD /* WorkoutControlsView.swift */; };
+		A0F0C7FE2BDF7F0300AF6D5B /* SwimmingSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F84B532BDDD034000BC6E1 /* SwimmingSummaryView.swift */; };
+		A0F0C7FF2BDF7F0300AF6D5B /* SummaryMetricView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F84B662BDE9DB9000BC6E1 /* SummaryMetricView.swift */; };
+		A0F0C8002BDF7F0300AF6D5B /* MetricsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F84B622BDE9AA2000BC6E1 /* MetricsView.swift */; };
+		A0F0C8012BDF7F0300AF6D5B /* ElapsedTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F84B642BDE9AED000BC6E1 /* ElapsedTimeView.swift */; };
+		A0F0C8022BDF7F0300AF6D5B /* ImportSetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F84B602BDE902D000BC6E1 /* ImportSetView.swift */; };
+		A0F0C8032BDF7F0300AF6D5B /* SetDisplayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B2B5112BDF6C3C007863C2 /* SetDisplayView.swift */; };
+		A0F0C8042BDF7F0300AF6D5B /* GoalWorkoutSetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F84B562BDDE30E000BC6E1 /* GoalWorkoutSetupView.swift */; };
+		A0F0C8052BDF7F0300AF6D5B /* DistanceSetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F84B592BDDE621000BC6E1 /* DistanceSetupView.swift */; };
+		A0F0C8062BDF7F0300AF6D5B /* TimeSetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F84B5B2BDDE62B000BC6E1 /* TimeSetupView.swift */; };
+		A0F0C8072BDF7F0300AF6D5B /* CalorieSetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F84B5D2BDDE633000BC6E1 /* CalorieSetupView.swift */; };
+		A0F0C8082BDF7F0300AF6D5B /* WorkoutSetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07370CB2BDD3FC10084C1DD /* WorkoutSetupView.swift */; };
+		A0F0C8092BDF7F0300AF6D5B /* IndoorPoolSetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07370D12BDD86F90084C1DD /* IndoorPoolSetupView.swift */; };
+		A0F0C80A2BDF7F0300AF6D5B /* UnitPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07370D32BDD8F1B0084C1DD /* UnitPickerView.swift */; };
+		A0F0C80B2BDF7F0300AF6D5B /* WatchRootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EB32EC2BDD3AB400624091 /* WatchRootView.swift */; };
+		A0F0C80C2BDF7F0B00AF6D5B /* SwimSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07569212BDF051C009A31FB /* SwimSet.swift */; };
+		A0F0C8182BDF852500AF6D5B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A0D5BAF92BDC9319004D9B9C /* Assets.xcassets */; };
+		A0F0C8192BDF852500AF6D5B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A0D5BAFC2BDC9319004D9B9C /* Preview Assets.xcassets */; };
+		A0F0C81B2BDF993200AF6D5B /* PreferencesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F0C81A2BDF993200AF6D5B /* PreferencesView.swift */; };
+		A0F0C81D2BDF9AE000AF6D5B /* SetSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F0C81C2BDF9AE000AF6D5B /* SetSummaryView.swift */; };
+		A0FB9E302BDF7C1500F39829 /* WatchConnectivity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0FB9E2F2BDF7C1500F39829 /* WatchConnectivity.framework */; };
+		A0FB9E322BDF7C1F00F39829 /* WatchConnectivity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0FB9E312BDF7C1F00F39829 /* WatchConnectivity.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		A004E51F2BE005DE008D3F11 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A0C050542BCC5D7A002450AD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A0D5BAF22BDC9318004D9B9C;
+			remoteInfo = "WatchSwimMate Watch App";
+		};
+		A0C0506D2BCC5D7B002450AD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A0C050542BCC5D7A002450AD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A0C0505B2BCC5D7A002450AD;
+			remoteInfo = SwimMate;
+		};
+		A0C050772BCC5D7B002450AD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A0C050542BCC5D7A002450AD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A0C0505B2BCC5D7A002450AD;
+			remoteInfo = SwimMate;
+		};
+		A0D5BB032BDC9319004D9B9C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A0C050542BCC5D7A002450AD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A0D5BAF22BDC9318004D9B9C;
+			remoteInfo = "WatchSwimMate Watch App";
+		};
+		A0D5BB0D2BDC9319004D9B9C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A0C050542BCC5D7A002450AD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A0D5BAF22BDC9318004D9B9C;
+			remoteInfo = "WatchSwimMate Watch App";
+		};
+		A0F0C8162BDF84A200AF6D5B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A0C050542BCC5D7A002450AD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A0D5BAF22BDC9318004D9B9C;
+			remoteInfo = "WatchSwimMate Watch App";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		A095AA162BD6E5D50097884B /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				A004E51E2BE005DE008D3F11 /* WatchSwimMate Watch App.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		A004E51A2BE004F0008D3F11 /* SwimMateTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwimMateTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A004E51B2BE004F0008D3F11 /* SwimMateUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwimMateUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A004E51C2BE004F0008D3F11 /* WatchSwimMate Watch AppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "WatchSwimMate Watch AppTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A004E51D2BE004F0008D3F11 /* WatchSwimMate Watch AppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "WatchSwimMate Watch AppUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A00EEF392BCC8D6000FADBB0 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
+		A00EEF3E2BCC8FCD00FADBB0 /* WeekView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekView.swift; sourceTree = "<group>"; };
+		A00EEF442BCC940600FADBB0 /* HomePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePage.swift; sourceTree = "<group>"; };
+		A00EEF462BCC941500FADBB0 /* ProfilePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePage.swift; sourceTree = "<group>"; };
+		A00EEF4B2BCC982D00FADBB0 /* WorkoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutView.swift; sourceTree = "<group>"; };
+		A00EEF512BCCB07300FADBB0 /* WorkoutHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutHistoryView.swift; sourceTree = "<group>"; };
+		A00EEF572BCCBAA100FADBB0 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		A037E3CF2BDF41BA0027F45C /* PaceGraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaceGraphView.swift; sourceTree = "<group>"; };
+		A037E3D12BDF4C0C0027F45C /* iOSWatchConnector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSWatchConnector.swift; sourceTree = "<group>"; };
+		A07370CB2BDD3FC10084C1DD /* WorkoutSetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutSetupView.swift; sourceTree = "<group>"; };
+		A07370D12BDD86F90084C1DD /* IndoorPoolSetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndoorPoolSetupView.swift; sourceTree = "<group>"; };
+		A07370D32BDD8F1B0084C1DD /* UnitPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitPickerView.swift; sourceTree = "<group>"; };
+		A07370D82BDDA1570084C1DD /* SwimmingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwimmingView.swift; sourceTree = "<group>"; };
+		A07370DA2BDDA1BE0084C1DD /* WorkoutControlsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutControlsView.swift; sourceTree = "<group>"; };
+		A07370DD2BDDCC450084C1DD /* WatchSwimMate Watch App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "WatchSwimMate Watch App.entitlements"; sourceTree = "<group>"; };
+		A07569212BDF051C009A31FB /* SwimSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwimSet.swift; sourceTree = "<group>"; };
+		A07569232BDF0545009A31FB /* SetDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetDetailView.swift; sourceTree = "<group>"; };
+		A07569272BDF055B009A31FB /* SetPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetPage.swift; sourceTree = "<group>"; };
+		A075692C2BDF3B63009A31FB /* ChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartView.swift; sourceTree = "<group>"; };
+		A075692E2BDF3CE3009A31FB /* LineGraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineGraphView.swift; sourceTree = "<group>"; };
+		A0A391D42BDFBA8A008434FE /* store.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = store.json; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.json; };
+		A0B2B5112BDF6C3C007863C2 /* SetDisplayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetDisplayView.swift; sourceTree = "<group>"; };
+		A0C0505F2BCC5D7A002450AD /* SwimMateApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwimMateApp.swift; sourceTree = "<group>"; };
+		A0C050632BCC5D7B002450AD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A0C050662BCC5D7B002450AD /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		A0C0508C2BCC5DAE002450AD /* Swim.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Swim.swift; sourceTree = "<group>"; };
+		A0C0508E2BCC5DBE002450AD /* Manager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Manager.swift; sourceTree = "<group>"; };
+		A0C050902BCC5DD6002450AD /* HealthKitPermissionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitPermissionView.swift; sourceTree = "<group>"; };
+		A0C050922BCC5E41002450AD /* SwimMate.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SwimMate.entitlements; sourceTree = "<group>"; };
+		A0C050932BCC65A3002450AD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		A0D5BAF52BDC9318004D9B9C /* WatchSwimMateApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchSwimMateApp.swift; sourceTree = "<group>"; };
+		A0D5BAF92BDC9319004D9B9C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A0D5BAFC2BDC9319004D9B9C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		A0D5BB2B2BDC97AB004D9B9C /* WatchManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchManager.swift; sourceTree = "<group>"; };
+		A0EB32EC2BDD3AB400624091 /* WatchRootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchRootView.swift; sourceTree = "<group>"; };
+		A0F04D812BCCD0020020B027 /* WatchConnector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchConnector.swift; sourceTree = "<group>"; };
+		A0F0C7D12BDF7C5F00AF6D5B /* SwimMate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwimMate.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A0F0C7D42BDF7C5F00AF6D5B /* WatchSwimMate Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "WatchSwimMate Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A0F0C81A2BDF993200AF6D5B /* PreferencesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesView.swift; sourceTree = "<group>"; };
+		A0F0C81C2BDF9AE000AF6D5B /* SetSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetSummaryView.swift; sourceTree = "<group>"; };
+		A0F84B532BDDD034000BC6E1 /* SwimmingSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwimmingSummaryView.swift; sourceTree = "<group>"; };
+		A0F84B552BDDD59F000BC6E1 /* WatchSwimMate-Watch-App-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "WatchSwimMate-Watch-App-Info.plist"; sourceTree = SOURCE_ROOT; };
+		A0F84B562BDDE30E000BC6E1 /* GoalWorkoutSetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalWorkoutSetupView.swift; sourceTree = "<group>"; };
+		A0F84B592BDDE621000BC6E1 /* DistanceSetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistanceSetupView.swift; sourceTree = "<group>"; };
+		A0F84B5B2BDDE62B000BC6E1 /* TimeSetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeSetupView.swift; sourceTree = "<group>"; };
+		A0F84B5D2BDDE633000BC6E1 /* CalorieSetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalorieSetupView.swift; sourceTree = "<group>"; };
+		A0F84B602BDE902D000BC6E1 /* ImportSetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportSetView.swift; sourceTree = "<group>"; };
+		A0F84B622BDE9AA2000BC6E1 /* MetricsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetricsView.swift; sourceTree = "<group>"; };
+		A0F84B642BDE9AED000BC6E1 /* ElapsedTimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElapsedTimeView.swift; sourceTree = "<group>"; };
+		A0F84B662BDE9DB9000BC6E1 /* SummaryMetricView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryMetricView.swift; sourceTree = "<group>"; };
+		A0FB9E2F2BDF7C1500F39829 /* WatchConnectivity.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WatchConnectivity.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS10.4.sdk/System/Library/Frameworks/WatchConnectivity.framework; sourceTree = DEVELOPER_DIR; };
+		A0FB9E312BDF7C1F00F39829 /* WatchConnectivity.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WatchConnectivity.framework; path = System/Library/Frameworks/WatchConnectivity.framework; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A0C050592BCC5D7A002450AD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A0FB9E322BDF7C1F00F39829 /* WatchConnectivity.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A0C050692BCC5D7B002450AD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A0C050732BCC5D7B002450AD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A0D5BAF02BDC9318004D9B9C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A0FB9E302BDF7C1500F39829 /* WatchConnectivity.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A0D5BAFF2BDC9319004D9B9C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A0D5BB092BDC9319004D9B9C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A00EEF3B2BCC8FA200FADBB0 /* HomeView */ = {
+			isa = PBXGroup;
+			children = (
+				A00EEF442BCC940600FADBB0 /* HomePage.swift */,
+			);
+			path = HomeView;
+			sourceTree = "<group>";
+		};
+		A00EEF412BCC926800FADBB0 /* ProfileView */ = {
+			isa = PBXGroup;
+			children = (
+				A00EEF462BCC941500FADBB0 /* ProfilePage.swift */,
+				A00EEF572BCCBAA100FADBB0 /* SettingsView.swift */,
+				A0F0C81A2BDF993200AF6D5B /* PreferencesView.swift */,
+			);
+			path = ProfileView;
+			sourceTree = "<group>";
+		};
+		A00EEF4E2BCC9CA500FADBB0 /* GeneralViews */ = {
+			isa = PBXGroup;
+			children = (
+				A0F0C80D2BDF81DA00AF6D5B /* Charts */,
+				A0C050902BCC5DD6002450AD /* HealthKitPermissionView.swift */,
+				A00EEF3E2BCC8FCD00FADBB0 /* WeekView.swift */,
+				A00EEF4B2BCC982D00FADBB0 /* WorkoutView.swift */,
+				A00EEF512BCCB07300FADBB0 /* WorkoutHistoryView.swift */,
+			);
+			path = GeneralViews;
+			sourceTree = "<group>";
+		};
+		A043D3F82BD59AE9007EA90D /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				A0C0508B2BCC5DA1002450AD /* View */,
+				A0C0508A2BCC5D95002450AD /* ViewModel */,
+				A0C050892BCC5D91002450AD /* Model */,
+			);
+			path = iOS;
+			sourceTree = "<group>";
+		};
+		A07370D52BDD91610084C1DD /* WorkoutSetup */ = {
+			isa = PBXGroup;
+			children = (
+				A0F84B5F2BDE843E000BC6E1 /* ImportSetViews */,
+				A0F84B582BDDE610000BC6E1 /* GoalViews */,
+				A07370CB2BDD3FC10084C1DD /* WorkoutSetupView.swift */,
+				A07370D12BDD86F90084C1DD /* IndoorPoolSetupView.swift */,
+				A07370D32BDD8F1B0084C1DD /* UnitPickerView.swift */,
+			);
+			path = WorkoutSetup;
+			sourceTree = "<group>";
+		};
+		A07370DC2BDDA1CE0084C1DD /* WorkoutViews */ = {
+			isa = PBXGroup;
+			children = (
+				A07370D82BDDA1570084C1DD /* SwimmingView.swift */,
+				A07370DA2BDDA1BE0084C1DD /* WorkoutControlsView.swift */,
+				A0F84B532BDDD034000BC6E1 /* SwimmingSummaryView.swift */,
+				A0F84B662BDE9DB9000BC6E1 /* SummaryMetricView.swift */,
+				A0F84B622BDE9AA2000BC6E1 /* MetricsView.swift */,
+				A0F84B642BDE9AED000BC6E1 /* ElapsedTimeView.swift */,
+			);
+			path = WorkoutViews;
+			sourceTree = "<group>";
+		};
+		A0C050532BCC5D7A002450AD = {
+			isa = PBXGroup;
+			children = (
+				A0C0505E2BCC5D7A002450AD /* SwimMate */,
+				A0D5BAF42BDC9318004D9B9C /* WatchSwimMate Watch App */,
+				A0D5BAEA2BDC90E5004D9B9C /* Frameworks */,
+				A0F0C7D12BDF7C5F00AF6D5B /* SwimMate.app */,
+				A0F0C7D42BDF7C5F00AF6D5B /* WatchSwimMate Watch App.app */,
+				A004E51A2BE004F0008D3F11 /* SwimMateTests.xctest */,
+				A004E51B2BE004F0008D3F11 /* SwimMateUITests.xctest */,
+				A004E51C2BE004F0008D3F11 /* WatchSwimMate Watch AppTests.xctest */,
+				A004E51D2BE004F0008D3F11 /* WatchSwimMate Watch AppUITests.xctest */,
+			);
+			sourceTree = "<group>";
+		};
+		A0C0505E2BCC5D7A002450AD /* SwimMate */ = {
+			isa = PBXGroup;
+			children = (
+				A0C050932BCC65A3002450AD /* Info.plist */,
+				A0C050922BCC5E41002450AD /* SwimMate.entitlements */,
+				A0C0505F2BCC5D7A002450AD /* SwimMateApp.swift */,
+				A043D3F82BD59AE9007EA90D /* iOS */,
+				A0F04D812BCCD0020020B027 /* WatchConnector.swift */,
+				A0C050632BCC5D7B002450AD /* Assets.xcassets */,
+				A0C050652BCC5D7B002450AD /* Preview Content */,
+			);
+			path = SwimMate;
+			sourceTree = "<group>";
+		};
+		A0C050652BCC5D7B002450AD /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				A0C050662BCC5D7B002450AD /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		A0C050892BCC5D91002450AD /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A0C0508C2BCC5DAE002450AD /* Swim.swift */,
+				A07569212BDF051C009A31FB /* SwimSet.swift */,
+				A0A391D42BDFBA8A008434FE /* store.json */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		A0C0508A2BCC5D95002450AD /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				A0C0508E2BCC5DBE002450AD /* Manager.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		A0C0508B2BCC5DA1002450AD /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A00EEF4E2BCC9CA500FADBB0 /* GeneralViews */,
+				A00EEF3B2BCC8FA200FADBB0 /* HomeView */,
+				A0EA3A762BDEF0F7005BE8C9 /* SetView */,
+				A00EEF412BCC926800FADBB0 /* ProfileView */,
+				A00EEF392BCC8D6000FADBB0 /* RootView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		A0D5BAEA2BDC90E5004D9B9C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A0FB9E312BDF7C1F00F39829 /* WatchConnectivity.framework */,
+				A0FB9E2F2BDF7C1500F39829 /* WatchConnectivity.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A0D5BAF42BDC9318004D9B9C /* WatchSwimMate Watch App */ = {
+			isa = PBXGroup;
+			children = (
+				A0F84B552BDDD59F000BC6E1 /* WatchSwimMate-Watch-App-Info.plist */,
+				A07370DD2BDDCC450084C1DD /* WatchSwimMate Watch App.entitlements */,
+				A0D5BAF52BDC9318004D9B9C /* WatchSwimMateApp.swift */,
+				A037E3D12BDF4C0C0027F45C /* iOSWatchConnector.swift */,
+				A0D5BB272BDC955C004D9B9C /* watchViewModel */,
+				A0D5BB282BDC9572004D9B9C /* Views */,
+				A0D5BAF92BDC9319004D9B9C /* Assets.xcassets */,
+				A0D5BAFB2BDC9319004D9B9C /* Preview Content */,
+			);
+			path = "WatchSwimMate Watch App";
+			sourceTree = "<group>";
+		};
+		A0D5BAFB2BDC9319004D9B9C /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				A0D5BAFC2BDC9319004D9B9C /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		A0D5BB272BDC955C004D9B9C /* watchViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				A0D5BB2B2BDC97AB004D9B9C /* WatchManager.swift */,
+			);
+			path = watchViewModel;
+			sourceTree = "<group>";
+		};
+		A0D5BB282BDC9572004D9B9C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				A07370DC2BDDA1CE0084C1DD /* WorkoutViews */,
+				A07370D52BDD91610084C1DD /* WorkoutSetup */,
+				A0EB32EC2BDD3AB400624091 /* WatchRootView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		A0EA3A762BDEF0F7005BE8C9 /* SetView */ = {
+			isa = PBXGroup;
+			children = (
+				A07569232BDF0545009A31FB /* SetDetailView.swift */,
+				A07569272BDF055B009A31FB /* SetPage.swift */,
+				A0F0C81C2BDF9AE000AF6D5B /* SetSummaryView.swift */,
+			);
+			path = SetView;
+			sourceTree = "<group>";
+		};
+		A0F0C80D2BDF81DA00AF6D5B /* Charts */ = {
+			isa = PBXGroup;
+			children = (
+				A075692C2BDF3B63009A31FB /* ChartView.swift */,
+				A075692E2BDF3CE3009A31FB /* LineGraphView.swift */,
+				A037E3CF2BDF41BA0027F45C /* PaceGraphView.swift */,
+			);
+			path = Charts;
+			sourceTree = "<group>";
+		};
+		A0F84B582BDDE610000BC6E1 /* GoalViews */ = {
+			isa = PBXGroup;
+			children = (
+				A0F84B562BDDE30E000BC6E1 /* GoalWorkoutSetupView.swift */,
+				A0F84B592BDDE621000BC6E1 /* DistanceSetupView.swift */,
+				A0F84B5B2BDDE62B000BC6E1 /* TimeSetupView.swift */,
+				A0F84B5D2BDDE633000BC6E1 /* CalorieSetupView.swift */,
+			);
+			path = GoalViews;
+			sourceTree = "<group>";
+		};
+		A0F84B5F2BDE843E000BC6E1 /* ImportSetViews */ = {
+			isa = PBXGroup;
+			children = (
+				A0F84B602BDE902D000BC6E1 /* ImportSetView.swift */,
+				A0B2B5112BDF6C3C007863C2 /* SetDisplayView.swift */,
+			);
+			path = ImportSetViews;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A0C0505B2BCC5D7A002450AD /* SwimMate */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A0C050802BCC5D7B002450AD /* Build configuration list for PBXNativeTarget "SwimMate" */;
+			buildPhases = (
+				A0C050582BCC5D7A002450AD /* Sources */,
+				A0C050592BCC5D7A002450AD /* Frameworks */,
+				A0C0505A2BCC5D7A002450AD /* Resources */,
+				A095AA162BD6E5D50097884B /* Embed Watch Content */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A0F0C8172BDF84A200AF6D5B /* PBXTargetDependency */,
+				A004E5202BE005DE008D3F11 /* PBXTargetDependency */,
+			);
+			name = SwimMate;
+			productName = SwimMate;
+			productReference = A0F0C7D12BDF7C5F00AF6D5B /* SwimMate.app */;
+			productType = "com.apple.product-type.application";
+		};
+		A0C0506B2BCC5D7B002450AD /* SwimMateTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A0C050832BCC5D7B002450AD /* Build configuration list for PBXNativeTarget "SwimMateTests" */;
+			buildPhases = (
+				A0C050682BCC5D7B002450AD /* Sources */,
+				A0C050692BCC5D7B002450AD /* Frameworks */,
+				A0C0506A2BCC5D7B002450AD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A0C0506E2BCC5D7B002450AD /* PBXTargetDependency */,
+			);
+			name = SwimMateTests;
+			productName = SwimMateTests;
+			productReference = A004E51A2BE004F0008D3F11 /* SwimMateTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		A0C050752BCC5D7B002450AD /* SwimMateUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A0C050862BCC5D7B002450AD /* Build configuration list for PBXNativeTarget "SwimMateUITests" */;
+			buildPhases = (
+				A0C050722BCC5D7B002450AD /* Sources */,
+				A0C050732BCC5D7B002450AD /* Frameworks */,
+				A0C050742BCC5D7B002450AD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A0C050782BCC5D7B002450AD /* PBXTargetDependency */,
+			);
+			name = SwimMateUITests;
+			productName = SwimMateUITests;
+			productReference = A004E51B2BE004F0008D3F11 /* SwimMateUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+		A0D5BAF22BDC9318004D9B9C /* WatchSwimMate Watch App */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A0D5BB182BDC9319004D9B9C /* Build configuration list for PBXNativeTarget "WatchSwimMate Watch App" */;
+			buildPhases = (
+				A0D5BAEF2BDC9318004D9B9C /* Sources */,
+				A0D5BAF02BDC9318004D9B9C /* Frameworks */,
+				A0D5BAF12BDC9318004D9B9C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "WatchSwimMate Watch App";
+			productName = "WatchSwimMate Watch App";
+			productReference = A0F0C7D42BDF7C5F00AF6D5B /* WatchSwimMate Watch App.app */;
+			productType = "com.apple.product-type.application";
+		};
+		A0D5BB012BDC9319004D9B9C /* WatchSwimMate Watch AppTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A0D5BB1B2BDC9319004D9B9C /* Build configuration list for PBXNativeTarget "WatchSwimMate Watch AppTests" */;
+			buildPhases = (
+				A0D5BAFE2BDC9319004D9B9C /* Sources */,
+				A0D5BAFF2BDC9319004D9B9C /* Frameworks */,
+				A0D5BB002BDC9319004D9B9C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A0D5BB042BDC9319004D9B9C /* PBXTargetDependency */,
+			);
+			name = "WatchSwimMate Watch AppTests";
+			productName = "WatchSwimMate Watch AppTests";
+			productReference = A004E51C2BE004F0008D3F11 /* WatchSwimMate Watch AppTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		A0D5BB0B2BDC9319004D9B9C /* WatchSwimMate Watch AppUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A0D5BB1E2BDC9319004D9B9C /* Build configuration list for PBXNativeTarget "WatchSwimMate Watch AppUITests" */;
+			buildPhases = (
+				A0D5BB082BDC9319004D9B9C /* Sources */,
+				A0D5BB092BDC9319004D9B9C /* Frameworks */,
+				A0D5BB0A2BDC9319004D9B9C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A0D5BB0E2BDC9319004D9B9C /* PBXTargetDependency */,
+			);
+			name = "WatchSwimMate Watch AppUITests";
+			productName = "WatchSwimMate Watch AppUITests";
+			productReference = A004E51D2BE004F0008D3F11 /* WatchSwimMate Watch AppUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A0C050542BCC5D7A002450AD /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1530;
+				LastUpgradeCheck = 1530;
+				TargetAttributes = {
+					A0C0505B2BCC5D7A002450AD = {
+						CreatedOnToolsVersion = 15.3;
+					};
+					A0C0506B2BCC5D7B002450AD = {
+						CreatedOnToolsVersion = 15.3;
+						TestTargetID = A0C0505B2BCC5D7A002450AD;
+					};
+					A0C050752BCC5D7B002450AD = {
+						CreatedOnToolsVersion = 15.3;
+						TestTargetID = A0C0505B2BCC5D7A002450AD;
+					};
+					A0D5BAF22BDC9318004D9B9C = {
+						CreatedOnToolsVersion = 15.3;
+					};
+					A0D5BB012BDC9319004D9B9C = {
+						CreatedOnToolsVersion = 15.3;
+						TestTargetID = A0D5BAF22BDC9318004D9B9C;
+					};
+					A0D5BB0B2BDC9319004D9B9C = {
+						CreatedOnToolsVersion = 15.3;
+						TestTargetID = A0D5BAF22BDC9318004D9B9C;
+					};
+				};
+			};
+			buildConfigurationList = A0C050572BCC5D7A002450AD /* Build configuration list for PBXProject "SwimMate" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = A0C050532BCC5D7A002450AD;
+			productRefGroup = A0C050532BCC5D7A002450AD;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A0C0505B2BCC5D7A002450AD /* SwimMate */,
+				A0C0506B2BCC5D7B002450AD /* SwimMateTests */,
+				A0C050752BCC5D7B002450AD /* SwimMateUITests */,
+				A0D5BAF22BDC9318004D9B9C /* WatchSwimMate Watch App */,
+				A0D5BB012BDC9319004D9B9C /* WatchSwimMate Watch AppTests */,
+				A0D5BB0B2BDC9319004D9B9C /* WatchSwimMate Watch AppUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A0C0505A2BCC5D7A002450AD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A0A391D52BDFBA8A008434FE /* store.json in Resources */,
+				A0C050672BCC5D7B002450AD /* Preview Assets.xcassets in Resources */,
+				A0C050642BCC5D7B002450AD /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A0C0506A2BCC5D7B002450AD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A0C050742BCC5D7B002450AD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A0D5BAF12BDC9318004D9B9C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A0F0C8182BDF852500AF6D5B /* Assets.xcassets in Resources */,
+				A0F0C8192BDF852500AF6D5B /* Preview Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A0D5BB002BDC9319004D9B9C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A0D5BB0A2BDC9319004D9B9C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A0C050582BCC5D7A002450AD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A023DE462BDF7B3700242C58 /* HealthKitPermissionView.swift in Sources */,
+				A023DE472BDF7B3700242C58 /* WeekView.swift in Sources */,
+				A023DE482BDF7B3700242C58 /* WorkoutView.swift in Sources */,
+				A023DE4A2BDF7B3700242C58 /* WorkoutHistoryView.swift in Sources */,
+				A0F0C81D2BDF9AE000AF6D5B /* SetSummaryView.swift in Sources */,
+				A023DE4B2BDF7B3700242C58 /* ChartView.swift in Sources */,
+				A0F0C81B2BDF993200AF6D5B /* PreferencesView.swift in Sources */,
+				A023DE4C2BDF7B3700242C58 /* LineGraphView.swift in Sources */,
+				A023DE4D2BDF7B3700242C58 /* PaceGraphView.swift in Sources */,
+				A023DE4E2BDF7B3700242C58 /* HomePage.swift in Sources */,
+				A023DE4F2BDF7B3700242C58 /* SetDetailView.swift in Sources */,
+				A023DE502BDF7B3700242C58 /* SetPage.swift in Sources */,
+				A023DE512BDF7B3700242C58 /* ProfilePage.swift in Sources */,
+				A023DE522BDF7B3700242C58 /* SettingsView.swift in Sources */,
+				A023DE542BDF7B3700242C58 /* RootView.swift in Sources */,
+				A023DE552BDF7B3700242C58 /* Manager.swift in Sources */,
+				A023DE562BDF7B3700242C58 /* Swim.swift in Sources */,
+				A023DE572BDF7B3700242C58 /* SwimSet.swift in Sources */,
+				A023DE582BDF7B3700242C58 /* WatchConnector.swift in Sources */,
+				A023DE452BDF7B2A00242C58 /* SwimMateApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A0C050682BCC5D7B002450AD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A0C050722BCC5D7B002450AD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A0D5BAEF2BDC9318004D9B9C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A0F0C80C2BDF7F0B00AF6D5B /* SwimSet.swift in Sources */,
+				A0F0C7F92BDF7F0300AF6D5B /* WatchSwimMateApp.swift in Sources */,
+				A0F0C7FA2BDF7F0300AF6D5B /* iOSWatchConnector.swift in Sources */,
+				A0F0C7FB2BDF7F0300AF6D5B /* WatchManager.swift in Sources */,
+				A0F0C7FC2BDF7F0300AF6D5B /* SwimmingView.swift in Sources */,
+				A0F0C7FD2BDF7F0300AF6D5B /* WorkoutControlsView.swift in Sources */,
+				A0F0C7FE2BDF7F0300AF6D5B /* SwimmingSummaryView.swift in Sources */,
+				A0F0C7FF2BDF7F0300AF6D5B /* SummaryMetricView.swift in Sources */,
+				A0F0C8002BDF7F0300AF6D5B /* MetricsView.swift in Sources */,
+				A0F0C8012BDF7F0300AF6D5B /* ElapsedTimeView.swift in Sources */,
+				A0F0C8022BDF7F0300AF6D5B /* ImportSetView.swift in Sources */,
+				A0F0C8032BDF7F0300AF6D5B /* SetDisplayView.swift in Sources */,
+				A0F0C8042BDF7F0300AF6D5B /* GoalWorkoutSetupView.swift in Sources */,
+				A0F0C8052BDF7F0300AF6D5B /* DistanceSetupView.swift in Sources */,
+				A0F0C8062BDF7F0300AF6D5B /* TimeSetupView.swift in Sources */,
+				A0F0C8072BDF7F0300AF6D5B /* CalorieSetupView.swift in Sources */,
+				A0F0C8082BDF7F0300AF6D5B /* WorkoutSetupView.swift in Sources */,
+				A0F0C8092BDF7F0300AF6D5B /* IndoorPoolSetupView.swift in Sources */,
+				A0F0C80A2BDF7F0300AF6D5B /* UnitPickerView.swift in Sources */,
+				A0F0C80B2BDF7F0300AF6D5B /* WatchRootView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A0D5BAFE2BDC9319004D9B9C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A0D5BB082BDC9319004D9B9C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		A004E5202BE005DE008D3F11 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A0D5BAF22BDC9318004D9B9C /* WatchSwimMate Watch App */;
+			targetProxy = A004E51F2BE005DE008D3F11 /* PBXContainerItemProxy */;
+		};
+		A0C0506E2BCC5D7B002450AD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A0C0505B2BCC5D7A002450AD /* SwimMate */;
+			targetProxy = A0C0506D2BCC5D7B002450AD /* PBXContainerItemProxy */;
+		};
+		A0C050782BCC5D7B002450AD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A0C0505B2BCC5D7A002450AD /* SwimMate */;
+			targetProxy = A0C050772BCC5D7B002450AD /* PBXContainerItemProxy */;
+		};
+		A0D5BB042BDC9319004D9B9C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A0D5BAF22BDC9318004D9B9C /* WatchSwimMate Watch App */;
+			targetProxy = A0D5BB032BDC9319004D9B9C /* PBXContainerItemProxy */;
+		};
+		A0D5BB0E2BDC9319004D9B9C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A0D5BAF22BDC9318004D9B9C /* WatchSwimMate Watch App */;
+			targetProxy = A0D5BB0D2BDC9319004D9B9C /* PBXContainerItemProxy */;
+		};
+		A0F0C8172BDF84A200AF6D5B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A0D5BAF22BDC9318004D9B9C /* WatchSwimMate Watch App */;
+			targetProxy = A0F0C8162BDF84A200AF6D5B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		A0C0507E2BCC5D7B002450AD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		A0C0507F2BCC5D7B002450AD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A0C050812BCC5D7B002450AD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = SwimMate/SwimMate.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "SwimMate/Preview\\ Content";
+				DEVELOPMENT_TEAM = 3ZX5P538FH;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SwimMate/Info.plist;
+				INFOPLIST_KEY_NSHealthClinicalHealthRecordsShareUsageDescription = "Uses old workout data for displaying";
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "Your workout data is used to suggest new workout plans and exercises";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "Any workout data created with the app will be added to your health data";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = psu.edu.SwimMate;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		A0C050822BCC5D7B002450AD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = SwimMate/SwimMate.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "SwimMate/Preview\\ Content";
+				DEVELOPMENT_TEAM = 3ZX5P538FH;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SwimMate/Info.plist;
+				INFOPLIST_KEY_NSHealthClinicalHealthRecordsShareUsageDescription = "Uses old workout data for displaying";
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "Your workout data is used to suggest new workout plans and exercises";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "Any workout data created with the app will be added to your health data";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = psu.edu.SwimMate;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		A0C050842BCC5D7B002450AD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 3ZX5P538FH;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = psu.edu.SwimMateTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SwimMate.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/SwimMate";
+			};
+			name = Debug;
+		};
+		A0C050852BCC5D7B002450AD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 3ZX5P538FH;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = psu.edu.SwimMateTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SwimMate.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/SwimMate";
+			};
+			name = Release;
+		};
+		A0C050872BCC5D7B002450AD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 3ZX5P538FH;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = psu.edu.SwimMateUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = SwimMate;
+			};
+			name = Debug;
+		};
+		A0C050882BCC5D7B002450AD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 3ZX5P538FH;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = psu.edu.SwimMateUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = SwimMate;
+			};
+			name = Release;
+		};
+		A0D5BB192BDC9319004D9B9C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "WatchSwimMate Watch App/WatchSwimMate Watch App.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"WatchSwimMate Watch App/Preview Content\"";
+				DEVELOPMENT_TEAM = 3ZX5P538FH;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "WatchSwimMate-Watch-App-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = WatchSwimMate;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
+				INFOPLIST_KEY_NSHealthClinicalHealthRecordsShareUsageDescription = "Uses old workout data for displaying";
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "Your workout data is used to suggest new workout plans and exercises";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "Any workout data created with the app will be added to your health data";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = psu.edu.SwimMate;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = psu.edu.SwimMate.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 10.4;
+			};
+			name = Debug;
+		};
+		A0D5BB1A2BDC9319004D9B9C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "WatchSwimMate Watch App/WatchSwimMate Watch App.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"WatchSwimMate Watch App/Preview Content\"";
+				DEVELOPMENT_TEAM = 3ZX5P538FH;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "WatchSwimMate-Watch-App-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = WatchSwimMate;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
+				INFOPLIST_KEY_NSHealthClinicalHealthRecordsShareUsageDescription = "Uses old workout data for displaying";
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "Your workout data is used to suggest new workout plans and exercises";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "Any workout data created with the app will be added to your health data";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = psu.edu.SwimMate;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = psu.edu.SwimMate.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 10.4;
+			};
+			name = Release;
+		};
+		A0D5BB1C2BDC9319004D9B9C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 3ZX5P538FH;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "psu.edu.WatchSwimMate-Watch-AppTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WatchSwimMate Watch App.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/WatchSwimMate Watch App";
+				WATCHOS_DEPLOYMENT_TARGET = 10.4;
+			};
+			name = Debug;
+		};
+		A0D5BB1D2BDC9319004D9B9C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 3ZX5P538FH;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "psu.edu.WatchSwimMate-Watch-AppTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WatchSwimMate Watch App.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/WatchSwimMate Watch App";
+				WATCHOS_DEPLOYMENT_TARGET = 10.4;
+			};
+			name = Release;
+		};
+		A0D5BB1F2BDC9319004D9B9C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 3ZX5P538FH;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "psu.edu.WatchSwimMate-Watch-AppUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				TEST_TARGET_NAME = "WatchSwimMate Watch App";
+				WATCHOS_DEPLOYMENT_TARGET = 10.4;
+			};
+			name = Debug;
+		};
+		A0D5BB202BDC9319004D9B9C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 3ZX5P538FH;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "psu.edu.WatchSwimMate-Watch-AppUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				TEST_TARGET_NAME = "WatchSwimMate Watch App";
+				WATCHOS_DEPLOYMENT_TARGET = 10.4;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A0C050572BCC5D7A002450AD /* Build configuration list for PBXProject "SwimMate" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A0C0507E2BCC5D7B002450AD /* Debug */,
+				A0C0507F2BCC5D7B002450AD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A0C050802BCC5D7B002450AD /* Build configuration list for PBXNativeTarget "SwimMate" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A0C050812BCC5D7B002450AD /* Debug */,
+				A0C050822BCC5D7B002450AD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A0C050832BCC5D7B002450AD /* Build configuration list for PBXNativeTarget "SwimMateTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A0C050842BCC5D7B002450AD /* Debug */,
+				A0C050852BCC5D7B002450AD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A0C050862BCC5D7B002450AD /* Build configuration list for PBXNativeTarget "SwimMateUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A0C050872BCC5D7B002450AD /* Debug */,
+				A0C050882BCC5D7B002450AD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A0D5BB182BDC9319004D9B9C /* Build configuration list for PBXNativeTarget "WatchSwimMate Watch App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A0D5BB192BDC9319004D9B9C /* Debug */,
+				A0D5BB1A2BDC9319004D9B9C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A0D5BB1B2BDC9319004D9B9C /* Build configuration list for PBXNativeTarget "WatchSwimMate Watch AppTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A0D5BB1C2BDC9319004D9B9C /* Debug */,
+				A0D5BB1D2BDC9319004D9B9C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A0D5BB1E2BDC9319004D9B9C /* Build configuration list for PBXNativeTarget "WatchSwimMate Watch AppUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A0D5BB1F2BDC9319004D9B9C /* Debug */,
+				A0D5BB202BDC9319004D9B9C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A0C050542BCC5D7A002450AD /* Project object */;
+}
