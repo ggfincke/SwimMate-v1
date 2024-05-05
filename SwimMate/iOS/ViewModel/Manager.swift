@@ -11,6 +11,7 @@ import HealthKit
 
 class Manager: NSObject, ObservableObject
 {
+    //MARK: Variables / init
     // healthkit vars
     var permission: Bool
     let healthStore: HKHealthStore
@@ -60,13 +61,67 @@ class Manager: NSObject, ObservableObject
 
     }
 
+    // MARK: Loading from HealthStore
+    // determines whether to load from JSON or if needed to use healthstore imports
+    func loadFromJSONOrDefault()
+    {
+        // get url
+        guard let url = Bundle.main.url(forResource: "store", withExtension: "json") else
+        {
+            fatalError("store.json not found.")
+        }
+        // if filemanager exists
+        if FileManager.default.fileExists(atPath: url.path)
+        {
+            do
+            {
+                let data = try Data(contentsOf: url)
+                let decoder = JSONDecoder()
+                decoder.dateDecodingStrategy = .iso8601
+                self.store = try decoder.decode(Store.self, from: data)
+                
+                // assign loaded values
+                self.swims = store.swims
+                self.userName = store.userName
+                self.preferredStroke = store.preferredStroke
+                self.preferredUnit = store.preferredUnit
+                
+                // if no swims are saved, use HealthKit
+                if self.swims.isEmpty
+                {
+                    print("loading from healthkit)")
+                    loadAllSwimmingWorkouts()
+                }
+                // calc fields based on loaded data
+                else
+                {
+                    print("worked")
+                    calcFields()
+                }
+            }
+            // load from HealthKit if JSON load fails
+            catch
+            {
+                print("Failed to load settings: \(error)")
+                loadAllSwimmingWorkouts()
+            }
+        }
+        // no JSON, load from HealthKit
+        else
+        {
+            print("no json")
+            loadAllSwimmingWorkouts()
+        }
+    }
+    
     // load from healthStore
     func loadAllSwimmingWorkouts()
     {
         self.swims.removeAll()
+        
+        // creating query
         let workoutPredicate = HKQuery.predicateForWorkouts(with: .swimming)
         let sortDescriptor = NSSortDescriptor(key: HKSampleSortIdentifierEndDate, ascending: false)
-
         let query = HKSampleQuery(sampleType: HKObjectType.workoutType(), predicate: workoutPredicate, limit: HKObjectQueryNoLimit, sortDescriptors: [sortDescriptor])
         { [weak self] (query, samples, error) in
             guard let self = self, let workouts = samples as? [HKWorkout], error == nil else
@@ -75,7 +130,7 @@ class Manager: NSObject, ObservableObject
                 return
             }
 
-            // async changes on main thread
+            // perform updates on main thread - for all workouts
             DispatchQueue.main.async
             {
                 for workout in workouts 
@@ -142,27 +197,6 @@ class Manager: NSObject, ObservableObject
         averageCalories = count > 0 ? tCals / Double(count) : 0
     }
     
-    // combine data by month for swift charts
-    func aggregateDataByMonth(swims: [Swim]) -> [Swim] 
-    {
-        // group and sum swims by month
-        let grouped = Dictionary(grouping: swims)
-        { swim in
-            Calendar.current.startOfMonth(for: swim.date)
-        }
-        return grouped.map 
-        { (month, swims) in
-            Swim(
-                id: UUID(),
-                date: month,
-                duration: swims.reduce(0, { $0 + $1.duration }),
-                totalDistance: swims.compactMap({ $0.totalDistance }).reduce(0, +),
-                totalEnergyBurned: swims.compactMap({ $0.totalEnergyBurned }).reduce(0, +),
-                poolLength: nil
-            )
-        }.sorted(by: { $0.date < $1.date })
-    }
-    
     // updateStore for JSON
     func updateStore()
     {
@@ -173,48 +207,88 @@ class Manager: NSObject, ObservableObject
         saveToJSON()
     }
     
-    
-    
     // MARK: Persistence funcs
+    // FIXME: Don't work for some reason. Will need to stop using JSON at some point anyways
+    
+    
     // save
     func saveToJSON()
     {
-        let url = getDocumentsDirectory().appendingPathComponent("store.json")
-        do 
+        guard let url = Bundle.main.url(forResource: "store", withExtension: "json") else
         {
+            fatalError("store.json not found.")
+        }
+        do
+        {
+            // encode the store array to JSON
             let encoder = JSONEncoder()
             let data = try encoder.encode(store)
-            print(data)
+            print("Writing to: \(url)") // Show the file path
+            
+            // write JSON to file
             try data.write(to: url, options: [.atomicWrite, .completeFileProtection])
-            print("Successfully saved JSON to \(url)")
-        } 
+            print("Write successful")
+
+        }
         catch
         {
-            print("Failed to save settings: \(error)")
+            fatalError("Failed to load store: \(error)")
         }
+//        let url = getDocumentsDirectory().appendingPathComponent("store.json")
+//        do 
+//        {
+//            let encoder = JSONEncoder()
+//            let data = try encoder.encode(store)
+//            print(data)
+//            try data.write(to: url, options: [.atomicWrite, .completeFileProtection])
+//            print("Successfully saved JSON to \(url)")
+//        } 
+//        catch
+//        {
+//            print("Failed to save settings: \(error)")
+//        }
     }
 
     // load
     func loadFromJSON()
     {
-        let url = getDocumentsDirectory().appendingPathComponent("store.json")
-        do 
+        // loads the buildings with optional var types
+        guard let url = Bundle.main.url(forResource: "store", withExtension: "json") else
         {
-            let data = try Data(contentsOf: url)
-            let decoder = JSONDecoder()
-            decoder.dateDecodingStrategy = .iso8601
-            self.store = try decoder.decode(Store.self, from: data)
-            self.swims = store.swims
-            self.userName = store.userName
-            self.preferredStroke = store.preferredStroke
-            self.preferredUnit = store.preferredUnit
-            calcFields()
-            print("Successfully loaded JSON from \(url)")
-        } 
-        catch 
-        {
-            print("Failed to load settings due to error: \(error)")
+            fatalError("store.json not found.")
         }
+
+        do
+        {
+            print("Reading from: \(url)") // Show the file path
+            let data = try Data(contentsOf: url)
+            self.store = try JSONDecoder().decode(Store.self, from: data)
+            print("Load successful")
+
+        }
+        catch
+        {
+            fatalError("Failed to decode store.json: \(error)")
+        }
+
+//        let url = getDocumentsDirectory().appendingPathComponent("store.json")
+//        do 
+//        {
+//            let data = try Data(contentsOf: url)
+//            let decoder = JSONDecoder()
+//            decoder.dateDecodingStrategy = .iso8601
+//            self.store = try decoder.decode(Store.self, from: data)
+//            self.swims = store.swims
+//            self.userName = store.userName
+//            self.preferredStroke = store.preferredStroke
+//            self.preferredUnit = store.preferredUnit
+//            calcFields()
+//            print("Successfully loaded JSON from \(url)")
+//        } 
+//        catch 
+//        {
+//            print("Failed to load settings due to error: \(error)")
+//        }
     }
 
     // update local vals
@@ -225,58 +299,6 @@ class Manager: NSObject, ObservableObject
         self.preferredStroke = store.preferredStroke
         self.preferredUnit = store.preferredUnit
         calcFields()
-    }
-    
-    // determines whether to load from JSON or if needed to use healthstore imports
-    func loadFromJSONOrDefault()
-    {
-        // get url
-        guard let url = Bundle.main.url(forResource: "store", withExtension: "json") else
-        {
-            fatalError("store.json not found.")
-        }
-        // if filemanager exists
-        if FileManager.default.fileExists(atPath: url.path)
-        {
-            do 
-            {
-                let data = try Data(contentsOf: url)
-                let decoder = JSONDecoder()
-                decoder.dateDecodingStrategy = .iso8601
-                self.store = try decoder.decode(Store.self, from: data)
-                
-                // assign loaded values
-                self.swims = store.swims
-                self.userName = store.userName
-                self.preferredStroke = store.preferredStroke
-                self.preferredUnit = store.preferredUnit
-                
-                // if no swims are saved, use HealthKit
-                if self.swims.isEmpty
-                {
-                    print("loading from healthkit)")
-                    loadAllSwimmingWorkouts()
-                }
-                // calc fields based on loaded data
-                else
-                {
-                    print("worked")
-                    calcFields()
-                }
-            } 
-            // load from HealthKit if JSON load fails
-            catch
-            {
-                print("Failed to load settings: \(error)")
-                loadAllSwimmingWorkouts()
-            }
-        } 
-        // no JSON, load from HealthKit
-        else
-        {
-            print("no json")
-            loadAllSwimmingWorkouts()
-        }
     }
     
     // gets document directory for the URL
@@ -326,4 +348,28 @@ extension Manager
     }
 }
 
+// aggregate data by month
+extension Manager
+{
+    // combine data for swift charts
+    func aggregateDataByMonth(swims: [Swim]) -> [Swim]
+    {
+        // group and sum swims by month
+        let grouped = Dictionary(grouping: swims)
+        { swim in
+            Calendar.current.startOfMonth(for: swim.date)
+        }
+        return grouped.map
+        { (month, swims) in
+            Swim(
+                id: UUID(),
+                date: month,
+                duration: swims.reduce(0, { $0 + $1.duration }),
+                totalDistance: swims.compactMap({ $0.totalDistance }).reduce(0, +),
+                totalEnergyBurned: swims.compactMap({ $0.totalEnergyBurned }).reduce(0, +),
+                poolLength: nil
+            )
+        }.sorted(by: { $0.date < $1.date })
+    }
+}
 

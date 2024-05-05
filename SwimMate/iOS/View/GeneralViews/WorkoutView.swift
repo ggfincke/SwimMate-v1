@@ -1,7 +1,8 @@
 import SwiftUI
 import HealthKit
 
-struct WorkoutView: View 
+//TODO: Add graphs for laps
+struct WorkoutView: View
 {
     @EnvironmentObject var manager: Manager
     var swim: Swim

@@ -7,7 +7,8 @@
 
 import SwiftUI
 
-struct RootView: View 
+// rootView for the project
+struct RootView: View
 {
     @EnvironmentObject var manager : Manager
     @EnvironmentObject var watchOSManager : WatchConnector
@@ -16,6 +17,7 @@ struct RootView: View
 
     var body: some View
     {
+        // different tab views
         TabView(selection: $selectedTab)
         {
             HomePage()

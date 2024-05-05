@@ -37,18 +37,22 @@ class Swim: Identifiable, Codable
         self.poolLength = poolLength
         self.laps = laps
     }
-
+    
     // decoding from swim
     required init(from decoder: Decoder) throws
     {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         id = try container.decode(UUID.self, forKey: .id)
-        date = try container.decode(Date.self, forKey: .date)
+//        date = try container.decode(Date.self, forKey: .date)
         duration = try container.decode(TimeInterval.self, forKey: .duration)
         totalDistance = try container.decodeIfPresent(Double.self, forKey: .totalDistance)
         totalEnergyBurned = try container.decodeIfPresent(Double.self, forKey: .totalEnergyBurned)
         poolLength = try container.decodeIfPresent(Double.self, forKey: .poolLength)
         laps = try container.decodeIfPresent([Lap].self, forKey: .laps) ?? []
+        
+        // date
+        let timestamp = try container.decode(Double.self, forKey: .date)
+        date = Date(timeIntervalSince1970: timestamp)
     }
 
     // encoding from swim
@@ -56,12 +60,15 @@ class Swim: Identifiable, Codable
     {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(id, forKey: .id)
-        try container.encode(date, forKey: .date)
+//        try container.encode(date, forKey: .date)
         try container.encode(duration, forKey: .duration)
         try container.encodeIfPresent(totalDistance, forKey: .totalDistance)
         try container.encodeIfPresent(totalEnergyBurned, forKey: .totalEnergyBurned)
         try container.encodeIfPresent(poolLength, forKey: .poolLength)
         try container.encode(laps, forKey: .laps)
+        // date
+        try container.encode(date.timeIntervalSince1970, forKey: .date) // Encode date as timestamp
+
     }
 }
 
