@@ -6,37 +6,41 @@
 //
 
 // this file is for all information on a specific swim workout.
-// can be imported from iOS fitness or will be created from the watch app
+// can be imported from iOS fitness or will be created in watch app 
 import Foundation
 import HealthKit
 
-class Swim: Identifiable, Codable {
+class Swim: Identifiable, Codable 
+{
     let id: UUID
     let date: Date
     let duration: TimeInterval
     let totalDistance: Double?
     let totalEnergyBurned: Double?
     var poolLength: Double?
+    var laps: [Lap]
 
-    enum CodingKeys: String, CodingKey {
-        case id
-        case date
-        case duration
-        case totalDistance
-        case totalEnergyBurned
-        case poolLength
+    // coding keys
+    enum CodingKeys: String, CodingKey
+    {
+        case id, date, duration, totalDistance, totalEnergyBurned, poolLength, laps
     }
 
-    init(id: UUID, date: Date, duration: TimeInterval, totalDistance: Double?, totalEnergyBurned: Double?, poolLength: Double?) {
+    // init
+    init(id: UUID, date: Date, duration: TimeInterval, totalDistance: Double?, totalEnergyBurned: Double?, poolLength: Double?, laps: [Lap] = [])
+    {
         self.id = id
         self.date = date
         self.duration = duration
         self.totalDistance = totalDistance
         self.totalEnergyBurned = totalEnergyBurned
         self.poolLength = poolLength
+        self.laps = laps
     }
 
-    required init(from decoder: Decoder) throws {
+    // decoding from swim
+    required init(from decoder: Decoder) throws
+    {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         id = try container.decode(UUID.self, forKey: .id)
         date = try container.decode(Date.self, forKey: .date)
@@ -44,9 +48,12 @@ class Swim: Identifiable, Codable {
         totalDistance = try container.decodeIfPresent(Double.self, forKey: .totalDistance)
         totalEnergyBurned = try container.decodeIfPresent(Double.self, forKey: .totalEnergyBurned)
         poolLength = try container.decodeIfPresent(Double.self, forKey: .poolLength)
+        laps = try container.decodeIfPresent([Lap].self, forKey: .laps) ?? []
     }
 
-    func encode(to encoder: Encoder) throws {
+    // encoding from swim
+    func encode(to encoder: Encoder) throws
+    {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(id, forKey: .id)
         try container.encode(date, forKey: .date)
@@ -54,6 +61,21 @@ class Swim: Identifiable, Codable {
         try container.encodeIfPresent(totalDistance, forKey: .totalDistance)
         try container.encodeIfPresent(totalEnergyBurned, forKey: .totalEnergyBurned)
         try container.encodeIfPresent(poolLength, forKey: .poolLength)
+        try container.encode(laps, forKey: .laps)
     }
 }
 
+// elements of a lap
+struct Lap: Codable
+{
+    let duration: TimeInterval
+    let strokeStyle: Int?
+    let swolfScore: Double?
+
+    init(duration: TimeInterval, metadata: [String: Any]) 
+    {
+        self.duration = duration
+        self.strokeStyle = metadata["HKSwimmingStrokeStyle"] as? Int
+        self.swolfScore = metadata["HKSWOLFScore"] as? Double
+    }
+}

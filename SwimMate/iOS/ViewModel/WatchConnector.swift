@@ -5,13 +5,13 @@
 //  Created by Garrett Fincke on 4/14/24.
 //
 
+// used for sending sets to the watchOS component
 import Foundation
 import WatchConnectivity
 
 class WatchConnector: NSObject, WCSessionDelegate, ObservableObject
 {
     var session: WCSession
-
     init(session: WCSession = .default)
     {
         self.session = session
@@ -35,7 +35,8 @@ class WatchConnector: NSObject, WCSessionDelegate, ObservableObject
                 "details": swimSet.details
             ]
             session.sendMessage(swimSetData, replyHandler: nil)
-            { error in
+            { 
+                error in
                 print("Failed to send swim set: \(error.localizedDescription)")
             }
             print("Worked?")
@@ -65,8 +66,8 @@ class WatchConnector: NSObject, WCSessionDelegate, ObservableObject
 
     func sessionDidDeactivate(_ session: WCSession) 
     {
-        // handle session deactivation
-        session.activate() // reactivate the session after it’s been deactivated
+        // handle session deactivation (reactivate the session after it’s been deactivated)
+        session.activate()
     }
     
     func session(_ session: WCSession, didReceiveMessage message: [String : Any])

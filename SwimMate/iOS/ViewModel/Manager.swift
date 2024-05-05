@@ -5,11 +5,13 @@
 //  Created by Garrett Fincke on 4/4/24.
 //
 
+// the iOS manager/view model
 import Foundation
 import HealthKit
 
 class Manager: NSObject, ObservableObject
 {
+    // healthkit vars
     var permission: Bool
     let healthStore: HKHealthStore
     var currentWorkoutSession: HKWorkoutSession?
@@ -20,16 +22,15 @@ class Manager: NSObject, ObservableObject
     @Published var preferredUnit: SwimSet.MeasureUnit = .meters
     @Published var swims: [Swim] = []
     
+    // store
     @Published var store: Store = Store(userName: "Default User", preferredStroke: .freestyle, preferredUnit: .meters, swims: [])
 
-    
+    // user totals (calculated values)
     @Published var totalDistance: Double = 0.0
     @Published var averageDistance: Double = 0.0
     @Published var totalCalories: Double = 0.0
     @Published var averageCalories: Double = 0.0
 
-
-    
     // very long list of sample sets
     let sampleSets: [SwimSet] = [
         SwimSet(title: "Endurance Challenge", primaryStroke: .freestyle, totalDistance: 2000, measureUnit: .meters, difficulty: .intermediate, description: "A challenging endurance set to boost stamina.", details: ["800 warmup mix", "10x100 on 1:30, descend 1-5, 6-10", "10x50 kick on 1:00", "500 cool down easy"]),
@@ -48,7 +49,7 @@ class Manager: NSObject, ObservableObject
         SwimSet(title: "Breaststroke Endurance", primaryStroke: .breaststroke, totalDistance: 2000, measureUnit: .meters, difficulty: .advanced, description: "Long distance, endurance training for breaststroke.", details: ["500 warmup", "10x100 on 1:50", "500 cool down"])
     ]
 
-
+    // init
     override init()
     {
 
@@ -58,32 +59,8 @@ class Manager: NSObject, ObservableObject
         loadFromJSONOrDefault()
 
     }
-//    init(withTestData: Bool = false)
-//    {
-//        self.healthStore = HKHealthStore()
-//        self.permission = true
-//        // default vals
-//        self.preferredStroke = .freestyle
-//        self.preferredUnit = .meters
-//        self.store = Store(userName: "Default User", preferredStroke: .freestyle, preferredUnit: .meters, swims: [])
-//
-//        super.init()
-//        
-//        if withTestData {
-//            // Example test data
-//            self.swims = [
-//                Swim(id: UUID(), date: Date(), duration: 3600, totalDistance: 1500, totalEnergyBurned: 500, poolLength: 25.0),
-//                Swim(id: UUID(), date: Date().addingTimeInterval(-86400 * 2), duration: 3000, totalDistance: 1200, totalEnergyBurned: 450, poolLength: 25.0)
-//            ]
-//        } 
-//        else 
-//        {
-//            loadAllSwimmingWorkouts()
-////            loadFromJSON()
-//        }
-//    }
 
-    
+    // load from healthStore
     func loadAllSwimmingWorkouts()
     {
         self.swims.removeAll()
@@ -98,36 +75,45 @@ class Manager: NSObject, ObservableObject
                 return
             }
 
-            DispatchQueue.main.async 
+            // async changes on main thread
+            DispatchQueue.main.async
             {
-                for workout in workouts
+                for workout in workouts 
                 {
+                    // making the swim struct
                     let id = UUID()
                     let date = workout.startDate
                     let duration = workout.duration
-                    
                     let totalDistance: Double = workout.totalDistance?.doubleValue(for: .meter()) ?? 0
-                    
                     let totalEnergyBurned: Double = workout.totalEnergyBurned?.doubleValue(for: .kilocalorie()) ?? 0
-                    
                     var poolLength: Double?
+                    var laps = [Lap]()
 
-                    if let metadata = workout.metadata 
+                    // getting laps in the workout
+                    if let events = workout.workoutEvents
                     {
-                        if let metaLap = metadata[HKMetadataKeyLapLength]
+                        for event in events where event.type == .lap
                         {
-                            if let quantityLap = metaLap as? HKQuantity
+                            if let metadata = event.metadata 
                             {
-                                poolLength = quantityLap.doubleValue(for: HKUnit.meter())
+                                let lapDuration = event.dateInterval.duration
+                                let lap = Lap(duration: lapDuration, metadata: metadata)
+                                laps.append(lap)
                             }
                         }
                     }
-                    
-                    // create swim object
-                    let swim = Swim(id: id, date: date, duration: duration, totalDistance: totalDistance, totalEnergyBurned: totalEnergyBurned, poolLength: poolLength)
 
+                    // getting pool length
+                    if let metadata = workout.metadata, let metaLap = metadata[HKMetadataKeyLapLength] as? HKQuantity
+                    {
+                        poolLength = metaLap.doubleValue(for: HKUnit.meter())
+                    }
+
+                    // append swim
+                    let swim = Swim(id: id, date: date, duration: duration, totalDistance: totalDistance, totalEnergyBurned: totalEnergyBurned, poolLength: poolLength, laps: laps)
                     self.swims.append(swim)
                 }
+                // once done with loops, calc fields and update storage
                 self.calcFields()
                 self.updateStore()
             }
@@ -136,6 +122,7 @@ class Manager: NSObject, ObservableObject
         healthStore.execute(query)
     }
     
+    // calcs user totals
     func calcFields()
     {
         var tDis = 0.0
@@ -155,12 +142,16 @@ class Manager: NSObject, ObservableObject
         averageCalories = count > 0 ? tCals / Double(count) : 0
     }
     
-    func aggregateDataByMonth(swims: [Swim]) -> [Swim] {
-        // Group and sum swims by month
-        let grouped = Dictionary(grouping: swims) { swim in
+    // combine data by month for swift charts
+    func aggregateDataByMonth(swims: [Swim]) -> [Swim] 
+    {
+        // group and sum swims by month
+        let grouped = Dictionary(grouping: swims)
+        { swim in
             Calendar.current.startOfMonth(for: swim.date)
         }
-        return grouped.map { (month, swims) in
+        return grouped.map 
+        { (month, swims) in
             Swim(
                 id: UUID(),
                 date: month,
@@ -172,6 +163,7 @@ class Manager: NSObject, ObservableObject
         }.sorted(by: { $0.date < $1.date })
     }
     
+    // updateStore for JSON
     func updateStore()
     {
         store.swims = swims
@@ -180,25 +172,34 @@ class Manager: NSObject, ObservableObject
         store.userName = userName
         saveToJSON()
     }
+    
+    
+    
     // MARK: Persistence funcs
-    func saveToJSON() {
+    // save
+    func saveToJSON()
+    {
         let url = getDocumentsDirectory().appendingPathComponent("store.json")
-        do {
+        do 
+        {
             let encoder = JSONEncoder()
-            encoder.outputFormatting = .prettyPrinted // This helps in making the JSON file human-readable
             let data = try encoder.encode(store)
             print(data)
             try data.write(to: url, options: [.atomicWrite, .completeFileProtection])
             print("Successfully saved JSON to \(url)")
-        } catch {
+        } 
+        catch
+        {
             print("Failed to save settings: \(error)")
         }
     }
 
-
-    func loadFromJSON() {
+    // load
+    func loadFromJSON()
+    {
         let url = getDocumentsDirectory().appendingPathComponent("store.json")
-        do {
+        do 
+        {
             let data = try Data(contentsOf: url)
             let decoder = JSONDecoder()
             decoder.dateDecodingStrategy = .iso8601
@@ -209,13 +210,16 @@ class Manager: NSObject, ObservableObject
             self.preferredUnit = store.preferredUnit
             calcFields()
             print("Successfully loaded JSON from \(url)")
-        } catch {
+        } 
+        catch 
+        {
             print("Failed to load settings due to error: \(error)")
         }
     }
 
-
-    private func updateLocalStoreValues() {
+    // update local vals
+    private func updateLocalStoreValues() 
+    {
         self.swims = store.swims
         self.userName = store.userName
         self.preferredStroke = store.preferredStroke
@@ -223,47 +227,59 @@ class Manager: NSObject, ObservableObject
         calcFields()
     }
     
-    func loadFromJSONOrDefault() {
+    // determines whether to load from JSON or if needed to use healthstore imports
+    func loadFromJSONOrDefault()
+    {
+        // get url
         guard let url = Bundle.main.url(forResource: "store", withExtension: "json") else
         {
             fatalError("store.json not found.")
         }
-        if FileManager.default.fileExists(atPath: url.path) {
-            do {
+        // if filemanager exists
+        if FileManager.default.fileExists(atPath: url.path)
+        {
+            do 
+            {
                 let data = try Data(contentsOf: url)
                 let decoder = JSONDecoder()
                 decoder.dateDecodingStrategy = .iso8601
                 self.store = try decoder.decode(Store.self, from: data)
                 
-                // Assign loaded values
+                // assign loaded values
                 self.swims = store.swims
                 self.userName = store.userName
                 self.preferredStroke = store.preferredStroke
                 self.preferredUnit = store.preferredUnit
                 
-                if self.swims.isEmpty 
+                // if no swims are saved, use HealthKit
+                if self.swims.isEmpty
                 {
                     print("loading from healthkit)")
-                    loadAllSwimmingWorkouts() // If no swims are saved, fetch from HealthKit
-                } 
-                else 
+                    loadAllSwimmingWorkouts()
+                }
+                // calc fields based on loaded data
+                else
                 {
                     print("worked")
-                    calcFields() // Calculate fields based on loaded data
+                    calcFields()
                 }
             } 
+            // load from HealthKit if JSON load fails
             catch
             {
                 print("Failed to load settings: \(error)")
-                loadAllSwimmingWorkouts() // Load from HealthKit if JSON load fails
+                loadAllSwimmingWorkouts()
             }
-        } else
+        } 
+        // no JSON, load from HealthKit
+        else
         {
             print("no json")
-            loadAllSwimmingWorkouts() // No JSON file, load from HealthKit
+            loadAllSwimmingWorkouts()
         }
     }
     
+    // gets document directory for the URL
     private func getDocumentsDirectory() -> URL
     {
         FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
@@ -281,22 +297,30 @@ struct Store: Codable
 }
 
 
-
 // extended for use in graphs
-extension Calendar {
-    func startOfMonth(for date: Date) -> Date {
+extension Calendar 
+{
+    func startOfMonth(for date: Date) -> Date 
+    {
         let components = dateComponents([.year, .month], from: date)
         return self.date(from: components)!
     }
 }
 
 // distance formatter
-extension Manager {
-    func formatDistance(_ meters: Double) -> String {
-        if preferredUnit == .yards {
-            let yards = meters * 1.09361 // Convert meters to yards
+extension Manager 
+{
+    func formatDistance(_ meters: Double) -> String
+    {
+        if preferredUnit == .yards
+        {
+            // converts into yards
+            let yards = meters * 1.09361
             return String(format: "%.1f yd", yards)
-        } else {
+        } 
+        // else return string format of meters
+        else
+        {
             return String(format: "%.1f m", meters)
         }
     }

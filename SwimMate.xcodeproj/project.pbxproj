@@ -310,7 +310,6 @@
 				A0C050922BCC5E41002450AD /* SwimMate.entitlements */,
 				A0C0505F2BCC5D7A002450AD /* SwimMateApp.swift */,
 				A043D3F82BD59AE9007EA90D /* iOS */,
-				A0F04D812BCCD0020020B027 /* WatchConnector.swift */,
 				A0C050632BCC5D7B002450AD /* Assets.xcassets */,
 				A0C050652BCC5D7B002450AD /* Preview Content */,
 			);
@@ -339,6 +338,7 @@
 			isa = PBXGroup;
 			children = (
 				A0C0508E2BCC5DBE002450AD /* Manager.swift */,
+				A0F04D812BCCD0020020B027 /* WatchConnector.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
