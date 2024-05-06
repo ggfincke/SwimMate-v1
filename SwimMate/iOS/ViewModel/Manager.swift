@@ -63,53 +63,32 @@ class Manager: NSObject, ObservableObject
 
     // MARK: Loading from HealthStore
     // determines whether to load from JSON or if needed to use healthstore imports
-    func loadFromJSONOrDefault()
+    func loadFromJSONOrDefault() 
     {
-        // get url
-        guard let url = Bundle.main.url(forResource: "store", withExtension: "json") else
+        let fileManager = FileManager.default
+        let url = getDocumentsDirectory().appendingPathComponent("store.json")
+        
+        // Check if the JSON file exists
+        if fileManager.fileExists(atPath: url.path) 
         {
-            fatalError("store.json not found.")
-        }
-        // if filemanager exists
-        if FileManager.default.fileExists(atPath: url.path)
-        {
-            do
+            loadFromJSON()  // Attempt to load from JSON
+            
+            // Check if the swims are empty after attempting to load
+            if self.swims.isEmpty
             {
-                let data = try Data(contentsOf: url)
-                let decoder = JSONDecoder()
-                decoder.dateDecodingStrategy = .iso8601
-                self.store = try decoder.decode(Store.self, from: data)
-                
-                // assign loaded values
-                self.swims = store.swims
-                self.userName = store.userName
-                self.preferredStroke = store.preferredStroke
-                self.preferredUnit = store.preferredUnit
-                
-                // if no swims are saved, use HealthKit
-                if self.swims.isEmpty
-                {
-                    print("loading from healthkit)")
-                    loadAllSwimmingWorkouts()
-                }
-                // calc fields based on loaded data
-                else
-                {
-                    print("worked")
-                    calcFields()
-                }
-            }
-            // load from HealthKit if JSON load fails
-            catch
-            {
-                print("Failed to load settings: \(error)")
+                print("No swims data found in JSON, loading from HealthKit.")
                 loadAllSwimmingWorkouts()
+            } 
+            else
+            {
+                print("Loaded swims from JSON successfully.")
+                calcFields()
             }
-        }
-        // no JSON, load from HealthKit
+        } 
         else
         {
-            print("no json")
+            // If JSON file doesn't exist, proceed with loading from HealthKit
+            print("No JSON file found, loading from HealthKit.")
             loadAllSwimmingWorkouts()
         }
     }
@@ -208,87 +187,57 @@ class Manager: NSObject, ObservableObject
     }
     
     // MARK: Persistence funcs
-    // FIXME: Don't work for some reason. Will need to stop using JSON at some point anyways
-    
     
     // save
     func saveToJSON()
     {
-        guard let url = Bundle.main.url(forResource: "store", withExtension: "json") else
+        let url = getDocumentsDirectory().appendingPathComponent("store.json")
+        do 
         {
-            fatalError("store.json not found.")
-        }
-        do
-        {
-            // encode the store array to JSON
             let encoder = JSONEncoder()
             let data = try encoder.encode(store)
-            print("Writing to: \(url)") // Show the file path
-            
-            // write JSON to file
-            try data.write(to: url, options: [.atomicWrite, .completeFileProtection])
-            print("Write successful")
-
-        }
+            // move data writing to background thread
+            DispatchQueue.global(qos: .background).async
+            {
+                do
+                {
+                    try data.write(to: url, options: [.atomicWrite, .completeFileProtection])
+                    DispatchQueue.main.async 
+                    {
+                        print("Saved to \(url)")
+                    }
+                } 
+                catch
+                {
+                    DispatchQueue.main.async 
+                    {
+                        print("Failed to save: \(error)")
+                    }
+                }
+            }
+//            try data.write(to: url, options: [.atomicWrite, .completeFileProtection])
+        } 
         catch
         {
-            fatalError("Failed to load store: \(error)")
+            print("Failed to save: \(error)")
         }
-//        let url = getDocumentsDirectory().appendingPathComponent("store.json")
-//        do 
-//        {
-//            let encoder = JSONEncoder()
-//            let data = try encoder.encode(store)
-//            print(data)
-//            try data.write(to: url, options: [.atomicWrite, .completeFileProtection])
-//            print("Successfully saved JSON to \(url)")
-//        } 
-//        catch
-//        {
-//            print("Failed to save settings: \(error)")
-//        }
     }
-
+    
     // load
     func loadFromJSON()
     {
-        // loads the buildings with optional var types
-        guard let url = Bundle.main.url(forResource: "store", withExtension: "json") else
+        let url = getDocumentsDirectory().appendingPathComponent("store.json")
+        do 
         {
-            fatalError("store.json not found.")
-        }
-
-        do
-        {
-            print("Reading from: \(url)") // Show the file path
             let data = try Data(contentsOf: url)
-            self.store = try JSONDecoder().decode(Store.self, from: data)
-            print("Load successful")
-
+            let decoder = JSONDecoder()
+            store = try decoder.decode(Store.self, from: data)
+            updateLocalStoreValues()
         }
         catch
         {
-            fatalError("Failed to decode store.json: \(error)")
+            print("Failed to load JSON from \(url): \(error)")
         }
-
-//        let url = getDocumentsDirectory().appendingPathComponent("store.json")
-//        do 
-//        {
-//            let data = try Data(contentsOf: url)
-//            let decoder = JSONDecoder()
-//            decoder.dateDecodingStrategy = .iso8601
-//            self.store = try decoder.decode(Store.self, from: data)
-//            self.swims = store.swims
-//            self.userName = store.userName
-//            self.preferredStroke = store.preferredStroke
-//            self.preferredUnit = store.preferredUnit
-//            calcFields()
-//            print("Successfully loaded JSON from \(url)")
-//        } 
-//        catch 
-//        {
-//            print("Failed to load settings due to error: \(error)")
-//        }
     }
 
     // update local vals
@@ -302,10 +251,10 @@ class Manager: NSObject, ObservableObject
     }
     
     // gets document directory for the URL
-    private func getDocumentsDirectory() -> URL
-    {
-        FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+    func getDocumentsDirectory() -> URL {
+        FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
     }
+
     
 }
 
