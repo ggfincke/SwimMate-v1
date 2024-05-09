@@ -20,7 +20,7 @@ class WatchConnector: NSObject, WCSessionDelegate, ObservableObject
         session.activate()
     }
 
-    // send a set to appleWatch
+    // send a set to watchOS companion 
     func sendSwimSet(swimSet: SwimSet)
     {
         if WCSession.isSupported() && session.isReachable

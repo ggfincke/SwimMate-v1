@@ -18,7 +18,7 @@ struct SwimMateApp: App
     {
         WindowGroup
         {
-            // TODO: need to add another view for getting healthperms
+            // TODO: need to add another view(s) for getting healthperms
             if HKHealthStore.isHealthDataAvailable()
             {
                 RootView()

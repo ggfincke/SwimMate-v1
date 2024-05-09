@@ -43,7 +43,7 @@ class Swim: Identifiable, Codable
     {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         id = try container.decode(UUID.self, forKey: .id)
-//        date = try container.decode(Date.self, forKey: .date)
+        // date = try container.decode(Date.self, forKey: .date)
         duration = try container.decode(TimeInterval.self, forKey: .duration)
         totalDistance = try container.decodeIfPresent(Double.self, forKey: .totalDistance)
         totalEnergyBurned = try container.decodeIfPresent(Double.self, forKey: .totalEnergyBurned)
@@ -60,7 +60,7 @@ class Swim: Identifiable, Codable
     {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(id, forKey: .id)
-//        try container.encode(date, forKey: .date)
+        // try container.encode(date, forKey: .date)
         try container.encode(duration, forKey: .duration)
         try container.encodeIfPresent(totalDistance, forKey: .totalDistance)
         try container.encodeIfPresent(totalEnergyBurned, forKey: .totalEnergyBurned)
@@ -73,16 +73,41 @@ class Swim: Identifiable, Codable
 }
 
 // elements of a lap
-struct Lap: Codable
+struct Lap: Codable, Hashable
 {
     let duration: TimeInterval
-    let strokeStyle: Int?
+    let strokeStyle: StrokeStyle?
     let swolfScore: Double?
 
     init(duration: TimeInterval, metadata: [String: Any]) 
     {
         self.duration = duration
-        self.strokeStyle = metadata["HKSwimmingStrokeStyle"] as? Int
+        self.strokeStyle = StrokeStyle(rawValue: metadata["HKSwimmingStrokeStyle"] as? Int ?? 0)
         self.swolfScore = metadata["HKSWOLFScore"] as? Double
+    }
+}
+
+
+// enum StrokeStyle
+enum StrokeStyle: Int, Codable
+{
+    case unknown = 0
+    case mixed = 1
+    case freestyle = 2
+    case backstroke = 3
+    case breaststroke = 4
+    case butterfly = 5
+    case kickboard = 6
+
+    var description: String {
+        switch self {
+        case .unknown: return "Unknown"
+        case .mixed: return "Mixed"
+        case .freestyle: return "Freestyle"
+        case .backstroke: return "Backstroke"
+        case .breaststroke: return "Breaststroke"
+        case .butterfly: return "Butterfly"
+        case .kickboard: return "Kickboard"
+        }
     }
 }

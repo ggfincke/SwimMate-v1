@@ -1,7 +1,8 @@
 import SwiftUI
 import HealthKit
 
-//TODO: Add graphs for laps
+// TODO: Add graphs for laps
+// TODO: Figure out how to display lap info in a way that makes sense
 struct WorkoutView: View
 {
     @EnvironmentObject var manager: Manager
@@ -31,7 +32,32 @@ struct WorkoutView: View
                 .background(Color.secondary.opacity(0.1))
                 .cornerRadius(10)
                 .padding(.horizontal)
+                Spacer()
             }
+            
+            // laps (temporary, eventually replace with charts, or a navView to all the info) 
+            VStack(alignment: .center, spacing: 10)
+            {
+                Text("Laps Details")
+                    .font(.headline)
+                    .padding(.leading)
+                ForEach(swim.laps, id: \.self)
+                { lap in
+                    VStack(alignment: .leading)
+                    {
+                        Text("Duration: \(lap.duration, specifier: "%.2f") seconds")
+                        Text("Stroke Style: \(lap.strokeStyle?.description ?? "Unknown")")
+                        if let swolfScore = lap.swolfScore 
+                        {
+                            Text("SWOLF Score: \(swolfScore)")
+                        }
+                    }
+                    .padding()
+                    .background(Color.secondary.opacity(0.1))
+                    .cornerRadius(8)
+                }
+            }
+            .padding(.horizontal)
         }
         .padding()
     }
@@ -77,7 +103,8 @@ struct WorkoutView: View
         let unit = manager.preferredUnit
         if unit == .yards 
         {
-            let lengthInYards = length * 1.09361 // Conversion from meters to yards
+            // conversion from meters to yards
+            let lengthInYards = length * 1.09361
             return String(format: "%.1f yd", lengthInYards)
         } 
         else
@@ -98,15 +125,21 @@ struct WorkoutView_Previews: PreviewProvider
 {
     static var previews: some View
     {
-        let sampleSwim = Swim(
-            id: UUID(),
-            date: Date(),
-            duration: 3600,
-            totalDistance: 1500,
-            totalEnergyBurned: 500,
-            poolLength: 25.0
-        )
-        WorkoutView(swim: sampleSwim)
-            .environmentObject(Manager())
+        let sampleLaps = [
+             Lap(duration: 45, metadata: ["HKSwimmingStrokeStyle": 2, "HKSWOLFScore": 30.5]),
+             Lap(duration: 30, metadata: ["HKSwimmingStrokeStyle": 3, "HKSWOLFScore": 28.0]),
+             Lap(duration: 50, metadata: ["HKSwimmingStrokeStyle": 4, "HKSWOLFScore": 35.0])
+         ]
+         let sampleSwim = Swim(
+             id: UUID(),
+             date: Date(),
+             duration: 3600,
+             totalDistance: 1500,
+             totalEnergyBurned: 500,
+             poolLength: 25.0,
+             laps: sampleLaps
+         )
+         return WorkoutView(swim: sampleSwim)
+             .environmentObject(Manager())
     }
 }

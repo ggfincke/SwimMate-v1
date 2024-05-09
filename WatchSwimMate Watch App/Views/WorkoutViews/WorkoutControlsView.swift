@@ -7,19 +7,20 @@
 
 import SwiftUI
 
-struct WorkoutControlsView: View 
+// displays controls for the workout
+struct WorkoutControlsView: View
 {
     @EnvironmentObject var manager: WatchManager
     @State private var showSummary = false
     @State private var backToMain = false
 
-    
     var body: some View
     {
         VStack(spacing: 15)
         {
             HStack(spacing: 15)
             {
+                // pause/continue workout
                 Button(action: {manager.togglePause()})
                 {
                     VStack
@@ -34,6 +35,8 @@ struct WorkoutControlsView: View
                     .background(Circle().fill(Color.yellow))
                     .padding()
                 }
+                
+                // end workout
                 Button(action: {
                     manager.endWorkout()
                     showSummary = true
@@ -56,6 +59,7 @@ struct WorkoutControlsView: View
                 }
             }
 
+            // enable water lock
             HStack(spacing: 15)
             {
                 Button(action: {
@@ -75,6 +79,7 @@ struct WorkoutControlsView: View
 
                 }
 
+                // segment 
                 Button(action: {
                     // Placeholder for adding a segment
                 })

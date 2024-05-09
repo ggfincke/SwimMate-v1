@@ -11,7 +11,7 @@ import HealthKit
 
 class Manager: NSObject, ObservableObject
 {
-    //MARK: Variables / init
+    //MARK: vars / init
     // healthkit vars
     var permission: Bool
     let healthStore: HKHealthStore
@@ -32,6 +32,8 @@ class Manager: NSObject, ObservableObject
     @Published var totalCalories: Double = 0.0
     @Published var averageCalories: Double = 0.0
 
+    
+    //TODO: replace with database integration at some point
     // very long list of sample sets
     let sampleSets: [SwimSet] = [
         SwimSet(title: "Endurance Challenge", primaryStroke: .freestyle, totalDistance: 2000, measureUnit: .meters, difficulty: .intermediate, description: "A challenging endurance set to boost stamina.", details: ["800 warmup mix", "10x100 on 1:30, descend 1-5, 6-10", "10x50 kick on 1:00", "500 cool down easy"]),
@@ -68,12 +70,12 @@ class Manager: NSObject, ObservableObject
         let fileManager = FileManager.default
         let url = getDocumentsDirectory().appendingPathComponent("store.json")
         
-        // Check if the JSON file exists
-        if fileManager.fileExists(atPath: url.path) 
+        // check if the JSON file exists
+        if fileManager.fileExists(atPath: url.path)
         {
-            loadFromJSON()  // Attempt to load from JSON
+            loadFromJSON()  // attempt to load from JSON
             
-            // Check if the swims are empty after attempting to load
+            // check if the swims are empty after attempting to load
             if self.swims.isEmpty
             {
                 print("No swims data found in JSON, loading from HealthKit.")
@@ -87,7 +89,7 @@ class Manager: NSObject, ObservableObject
         } 
         else
         {
-            // If JSON file doesn't exist, proceed with loading from HealthKit
+            // if JSON file doesn't exist, proceed with loading from HealthKit
             print("No JSON file found, loading from HealthKit.")
             loadAllSwimmingWorkouts()
         }

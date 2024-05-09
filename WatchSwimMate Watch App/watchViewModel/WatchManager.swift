@@ -10,7 +10,7 @@ import SwiftUI
 import HealthKit
 import WatchKit
 
-//class WatchManager: NSObject, HKWorkoutSessionDelegate, ObservableObject
+//TODO: Add settings, finish goal-based features, add segments for workouts (for use with set)
 
 class WatchManager: NSObject, ObservableObject
 {

@@ -65,34 +65,6 @@
 			remoteGlobalIDString = A0D5BAF22BDC9318004D9B9C;
 			remoteInfo = "WatchSwimMate Watch App";
 		};
-		A0C0506D2BCC5D7B002450AD /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A0C050542BCC5D7A002450AD /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = A0C0505B2BCC5D7A002450AD;
-			remoteInfo = SwimMate;
-		};
-		A0C050772BCC5D7B002450AD /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A0C050542BCC5D7A002450AD /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = A0C0505B2BCC5D7A002450AD;
-			remoteInfo = SwimMate;
-		};
-		A0D5BB032BDC9319004D9B9C /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A0C050542BCC5D7A002450AD /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = A0D5BAF22BDC9318004D9B9C;
-			remoteInfo = "WatchSwimMate Watch App";
-		};
-		A0D5BB0D2BDC9319004D9B9C /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A0C050542BCC5D7A002450AD /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = A0D5BAF22BDC9318004D9B9C;
-			remoteInfo = "WatchSwimMate Watch App";
-		};
 		A0F0C8162BDF84A200AF6D5B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = A0C050542BCC5D7A002450AD /* Project object */;
@@ -117,10 +89,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		A004E51A2BE004F0008D3F11 /* SwimMateTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwimMateTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		A004E51B2BE004F0008D3F11 /* SwimMateUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwimMateUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		A004E51C2BE004F0008D3F11 /* WatchSwimMate Watch AppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "WatchSwimMate Watch AppTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		A004E51D2BE004F0008D3F11 /* WatchSwimMate Watch AppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "WatchSwimMate Watch AppUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A00EEF392BCC8D6000FADBB0 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		A00EEF3E2BCC8FCD00FADBB0 /* WeekView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekView.swift; sourceTree = "<group>"; };
 		A00EEF442BCC940600FADBB0 /* HomePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePage.swift; sourceTree = "<group>"; };
@@ -184,39 +152,11 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A0C050692BCC5D7B002450AD /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		A0C050732BCC5D7B002450AD /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		A0D5BAF02BDC9318004D9B9C /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				A0FB9E302BDF7C1500F39829 /* WatchConnectivity.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		A0D5BAFF2BDC9319004D9B9C /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		A0D5BB092BDC9319004D9B9C /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -296,10 +236,6 @@
 				A0D5BAEA2BDC90E5004D9B9C /* Frameworks */,
 				A0F0C7D12BDF7C5F00AF6D5B /* SwimMate.app */,
 				A0F0C7D42BDF7C5F00AF6D5B /* WatchSwimMate Watch App.app */,
-				A004E51A2BE004F0008D3F11 /* SwimMateTests.xctest */,
-				A004E51B2BE004F0008D3F11 /* SwimMateUITests.xctest */,
-				A004E51C2BE004F0008D3F11 /* WatchSwimMate Watch AppTests.xctest */,
-				A004E51D2BE004F0008D3F11 /* WatchSwimMate Watch AppUITests.xctest */,
 			);
 			sourceTree = "<group>";
 		};
@@ -468,42 +404,6 @@
 			productReference = A0F0C7D12BDF7C5F00AF6D5B /* SwimMate.app */;
 			productType = "com.apple.product-type.application";
 		};
-		A0C0506B2BCC5D7B002450AD /* SwimMateTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = A0C050832BCC5D7B002450AD /* Build configuration list for PBXNativeTarget "SwimMateTests" */;
-			buildPhases = (
-				A0C050682BCC5D7B002450AD /* Sources */,
-				A0C050692BCC5D7B002450AD /* Frameworks */,
-				A0C0506A2BCC5D7B002450AD /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				A0C0506E2BCC5D7B002450AD /* PBXTargetDependency */,
-			);
-			name = SwimMateTests;
-			productName = SwimMateTests;
-			productReference = A004E51A2BE004F0008D3F11 /* SwimMateTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		A0C050752BCC5D7B002450AD /* SwimMateUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = A0C050862BCC5D7B002450AD /* Build configuration list for PBXNativeTarget "SwimMateUITests" */;
-			buildPhases = (
-				A0C050722BCC5D7B002450AD /* Sources */,
-				A0C050732BCC5D7B002450AD /* Frameworks */,
-				A0C050742BCC5D7B002450AD /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				A0C050782BCC5D7B002450AD /* PBXTargetDependency */,
-			);
-			name = SwimMateUITests;
-			productName = SwimMateUITests;
-			productReference = A004E51B2BE004F0008D3F11 /* SwimMateUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 		A0D5BAF22BDC9318004D9B9C /* WatchSwimMate Watch App */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = A0D5BB182BDC9319004D9B9C /* Build configuration list for PBXNativeTarget "WatchSwimMate Watch App" */;
@@ -521,42 +421,6 @@
 			productReference = A0F0C7D42BDF7C5F00AF6D5B /* WatchSwimMate Watch App.app */;
 			productType = "com.apple.product-type.application";
 		};
-		A0D5BB012BDC9319004D9B9C /* WatchSwimMate Watch AppTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = A0D5BB1B2BDC9319004D9B9C /* Build configuration list for PBXNativeTarget "WatchSwimMate Watch AppTests" */;
-			buildPhases = (
-				A0D5BAFE2BDC9319004D9B9C /* Sources */,
-				A0D5BAFF2BDC9319004D9B9C /* Frameworks */,
-				A0D5BB002BDC9319004D9B9C /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				A0D5BB042BDC9319004D9B9C /* PBXTargetDependency */,
-			);
-			name = "WatchSwimMate Watch AppTests";
-			productName = "WatchSwimMate Watch AppTests";
-			productReference = A004E51C2BE004F0008D3F11 /* WatchSwimMate Watch AppTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		A0D5BB0B2BDC9319004D9B9C /* WatchSwimMate Watch AppUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = A0D5BB1E2BDC9319004D9B9C /* Build configuration list for PBXNativeTarget "WatchSwimMate Watch AppUITests" */;
-			buildPhases = (
-				A0D5BB082BDC9319004D9B9C /* Sources */,
-				A0D5BB092BDC9319004D9B9C /* Frameworks */,
-				A0D5BB0A2BDC9319004D9B9C /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				A0D5BB0E2BDC9319004D9B9C /* PBXTargetDependency */,
-			);
-			name = "WatchSwimMate Watch AppUITests";
-			productName = "WatchSwimMate Watch AppUITests";
-			productReference = A004E51D2BE004F0008D3F11 /* WatchSwimMate Watch AppUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -570,24 +434,8 @@
 					A0C0505B2BCC5D7A002450AD = {
 						CreatedOnToolsVersion = 15.3;
 					};
-					A0C0506B2BCC5D7B002450AD = {
-						CreatedOnToolsVersion = 15.3;
-						TestTargetID = A0C0505B2BCC5D7A002450AD;
-					};
-					A0C050752BCC5D7B002450AD = {
-						CreatedOnToolsVersion = 15.3;
-						TestTargetID = A0C0505B2BCC5D7A002450AD;
-					};
 					A0D5BAF22BDC9318004D9B9C = {
 						CreatedOnToolsVersion = 15.3;
-					};
-					A0D5BB012BDC9319004D9B9C = {
-						CreatedOnToolsVersion = 15.3;
-						TestTargetID = A0D5BAF22BDC9318004D9B9C;
-					};
-					A0D5BB0B2BDC9319004D9B9C = {
-						CreatedOnToolsVersion = 15.3;
-						TestTargetID = A0D5BAF22BDC9318004D9B9C;
 					};
 				};
 			};
@@ -605,11 +453,7 @@
 			projectRoot = "";
 			targets = (
 				A0C0505B2BCC5D7A002450AD /* SwimMate */,
-				A0C0506B2BCC5D7B002450AD /* SwimMateTests */,
-				A0C050752BCC5D7B002450AD /* SwimMateUITests */,
 				A0D5BAF22BDC9318004D9B9C /* WatchSwimMate Watch App */,
-				A0D5BB012BDC9319004D9B9C /* WatchSwimMate Watch AppTests */,
-				A0D5BB0B2BDC9319004D9B9C /* WatchSwimMate Watch AppUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -625,40 +469,12 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A0C0506A2BCC5D7B002450AD /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		A0C050742BCC5D7B002450AD /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		A0D5BAF12BDC9318004D9B9C /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				A0F0C8182BDF852500AF6D5B /* Assets.xcassets in Resources */,
 				A0F0C8192BDF852500AF6D5B /* Preview Assets.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		A0D5BB002BDC9319004D9B9C /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		A0D5BB0A2BDC9319004D9B9C /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -692,20 +508,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A0C050682BCC5D7B002450AD /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		A0C050722BCC5D7B002450AD /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		A0D5BAEF2BDC9318004D9B9C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -733,20 +535,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A0D5BAFE2BDC9319004D9B9C /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		A0D5BB082BDC9319004D9B9C /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -754,26 +542,6 @@
 			isa = PBXTargetDependency;
 			target = A0D5BAF22BDC9318004D9B9C /* WatchSwimMate Watch App */;
 			targetProxy = A004E51F2BE005DE008D3F11 /* PBXContainerItemProxy */;
-		};
-		A0C0506E2BCC5D7B002450AD /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = A0C0505B2BCC5D7A002450AD /* SwimMate */;
-			targetProxy = A0C0506D2BCC5D7B002450AD /* PBXContainerItemProxy */;
-		};
-		A0C050782BCC5D7B002450AD /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = A0C0505B2BCC5D7A002450AD /* SwimMate */;
-			targetProxy = A0C050772BCC5D7B002450AD /* PBXContainerItemProxy */;
-		};
-		A0D5BB042BDC9319004D9B9C /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = A0D5BAF22BDC9318004D9B9C /* WatchSwimMate Watch App */;
-			targetProxy = A0D5BB032BDC9319004D9B9C /* PBXContainerItemProxy */;
-		};
-		A0D5BB0E2BDC9319004D9B9C /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = A0D5BAF22BDC9318004D9B9C /* WatchSwimMate Watch App */;
-			targetProxy = A0D5BB0D2BDC9319004D9B9C /* PBXContainerItemProxy */;
 		};
 		A0F0C8172BDF84A200AF6D5B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -972,82 +740,6 @@
 			};
 			name = Release;
 		};
-		A0C050842BCC5D7B002450AD /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 3ZX5P538FH;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = psu.edu.SwimMateTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SwimMate.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/SwimMate";
-			};
-			name = Debug;
-		};
-		A0C050852BCC5D7B002450AD /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 3ZX5P538FH;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = psu.edu.SwimMateTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SwimMate.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/SwimMate";
-			};
-			name = Release;
-		};
-		A0C050872BCC5D7B002450AD /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 3ZX5P538FH;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = psu.edu.SwimMateUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = SwimMate;
-			};
-			name = Debug;
-		};
-		A0C050882BCC5D7B002450AD /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 3ZX5P538FH;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = psu.edu.SwimMateUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = SwimMate;
-			};
-			name = Release;
-		};
 		A0D5BB192BDC9319004D9B9C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1122,88 +814,6 @@
 			};
 			name = Release;
 		};
-		A0D5BB1C2BDC9319004D9B9C /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 3ZX5P538FH;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "psu.edu.WatchSwimMate-Watch-AppTests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = watchos;
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 4;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WatchSwimMate Watch App.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/WatchSwimMate Watch App";
-				WATCHOS_DEPLOYMENT_TARGET = 10.4;
-			};
-			name = Debug;
-		};
-		A0D5BB1D2BDC9319004D9B9C /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 3ZX5P538FH;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "psu.edu.WatchSwimMate-Watch-AppTests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = watchos;
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 4;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WatchSwimMate Watch App.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/WatchSwimMate Watch App";
-				WATCHOS_DEPLOYMENT_TARGET = 10.4;
-			};
-			name = Release;
-		};
-		A0D5BB1F2BDC9319004D9B9C /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 3ZX5P538FH;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "psu.edu.WatchSwimMate-Watch-AppUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = watchos;
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 4;
-				TEST_TARGET_NAME = "WatchSwimMate Watch App";
-				WATCHOS_DEPLOYMENT_TARGET = 10.4;
-			};
-			name = Debug;
-		};
-		A0D5BB202BDC9319004D9B9C /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 3ZX5P538FH;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "psu.edu.WatchSwimMate-Watch-AppUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = watchos;
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 4;
-				TEST_TARGET_NAME = "WatchSwimMate Watch App";
-				WATCHOS_DEPLOYMENT_TARGET = 10.4;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1225,47 +835,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A0C050832BCC5D7B002450AD /* Build configuration list for PBXNativeTarget "SwimMateTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				A0C050842BCC5D7B002450AD /* Debug */,
-				A0C050852BCC5D7B002450AD /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		A0C050862BCC5D7B002450AD /* Build configuration list for PBXNativeTarget "SwimMateUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				A0C050872BCC5D7B002450AD /* Debug */,
-				A0C050882BCC5D7B002450AD /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		A0D5BB182BDC9319004D9B9C /* Build configuration list for PBXNativeTarget "WatchSwimMate Watch App" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A0D5BB192BDC9319004D9B9C /* Debug */,
 				A0D5BB1A2BDC9319004D9B9C /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		A0D5BB1B2BDC9319004D9B9C /* Build configuration list for PBXNativeTarget "WatchSwimMate Watch AppTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				A0D5BB1C2BDC9319004D9B9C /* Debug */,
-				A0D5BB1D2BDC9319004D9B9C /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		A0D5BB1E2BDC9319004D9B9C /* Build configuration list for PBXNativeTarget "WatchSwimMate Watch AppUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				A0D5BB1F2BDC9319004D9B9C /* Debug */,
-				A0D5BB202BDC9319004D9B9C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

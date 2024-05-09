@@ -8,6 +8,7 @@
 
 import SwiftUI
 
+//TODO: Fix the NavStack (idk why it doesn't work, refer Apple app?)
 struct WatchRootView: View
 {
     @EnvironmentObject var manager: WatchManager
@@ -21,7 +22,7 @@ struct WatchRootView: View
             {
                 HStack
                 {
-                    // Quick Start Button
+                    // Quick Start button
                     NavigationLink(destination: WorkoutSetupView().environmentObject(manager))
                     {
                         VStack
@@ -36,7 +37,7 @@ struct WatchRootView: View
                         .padding()
                     }
                     
-                    // Set Goal Button
+                    // Set Goal button
                     NavigationLink(destination: GoalWorkoutSetupView().environmentObject(manager))
                     {
                         VStack
@@ -54,7 +55,7 @@ struct WatchRootView: View
                 
                 HStack
                 {
-                    // Import Set Button
+                    // Import Set button
                     NavigationLink(destination: ImportSetView().environmentObject(iosManager).environmentObject(manager))
                     {
                         VStack
@@ -68,7 +69,7 @@ struct WatchRootView: View
                         .foregroundColor(.white)
                         .padding()
                     }
-                    // Settings Button
+                    // Settings button
                     Button(action: {
                         print("Settings tapped")
                     })
