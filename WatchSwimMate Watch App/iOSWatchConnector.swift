@@ -10,7 +10,7 @@ import WatchConnectivity
 class iOSWatchConnector: NSObject, WCSessionDelegate, ObservableObject
 {
     var session: WCSession
-    @Published var receivedSets: [SwimSet] = []  // To store received sets
+    @Published var receivedSets: [SwimSet] = []  // store received sets
 
     init(session: WCSession = .default)
     {
@@ -33,7 +33,7 @@ class iOSWatchConnector: NSObject, WCSessionDelegate, ObservableObject
 
     func session(_ session: WCSession, didReceiveMessage message: [String : Any])
     {
-        // Handle incoming message data, assuming data keys match those sent by iOS
+        // handle incoming message data, assuming data keys match those sent by iOS
         if let title = message["title"] as? String,
            let strokeRaw = message["stroke"] as? String,
            let totalDistance = message["totalDistance"] as? Int,
@@ -52,4 +52,7 @@ class iOSWatchConnector: NSObject, WCSessionDelegate, ObservableObject
             }
         }
     }
+    
+    //TODO: will need to add a func for sending data back to watch
+    // should the swim struct store a corresponding set if completed in the watchOS app?
 }
