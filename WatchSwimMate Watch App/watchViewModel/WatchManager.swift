@@ -32,9 +32,8 @@ class WatchManager: NSObject, ObservableObject
     @Published var heartRate: Double = 0
     @Published var activeEnergy: Double = 0
     @Published var workout: HKWorkout?
-
     
-    
+    // goals
     @Published var goalDistance: Double = 0
     @Published var goalHours: TimeInterval = 0
     @Published var goalMinutes: TimeInterval = 0
@@ -46,7 +45,7 @@ class WatchManager: NSObject, ObservableObject
     {
         didSet
         {
-            guard let selected = selected else { return }
+//            guard let selected = selected else { return }
             startWorkout()
         }
         
@@ -157,32 +156,47 @@ class WatchManager: NSObject, ObservableObject
     }
 
 
-    
-    func updateForStatistics(_ statistics: HKStatistics?) 
+    //TODO: needs to be updated for swimming
+    // used to display stats for the watch while swimming
+    func updateForStatistics(_ statistics: HKStatistics?)
     {
-        guard let statistics = statistics else { return }
+            guard let statistics = statistics else 
+        { return }
 
-        DispatchQueue.main.async
+            DispatchQueue.main.async
         {
-            switch statistics.quantityType 
+                switch statistics.quantityType 
             {
-            case HKQuantityType.quantityType(forIdentifier: .heartRate):
-                let heartRateUnit = HKUnit.count().unitDivided(by: HKUnit.minute())
-                self.heartRate = statistics.mostRecentQuantity()?.doubleValue(for: heartRateUnit) ?? 0
-                self.averageHeartRate = statistics.averageQuantity()?.doubleValue(for: heartRateUnit) ?? 0
-            case HKQuantityType.quantityType(forIdentifier: .activeEnergyBurned):
-                let energyUnit = HKUnit.kilocalorie()
-                self.activeEnergy = statistics.sumQuantity()?.doubleValue(for: energyUnit) ?? 0
-            case HKQuantityType.quantityType(forIdentifier: .distanceWalkingRunning), HKQuantityType.quantityType(forIdentifier: .distanceCycling):
-                let meterUnit = HKUnit.meter()
-                self.distance = statistics.sumQuantity()?.doubleValue(for: meterUnit) ?? 0
-            default:
-                return
+                // heartrate
+                case HKQuantityType.quantityType(forIdentifier: .heartRate):
+                    let heartRateUnit = HKUnit.count().unitDivided(by: HKUnit.minute())
+                    self.heartRate = statistics.mostRecentQuantity()?.doubleValue(for: heartRateUnit) ?? 0
+                    self.averageHeartRate = statistics.averageQuantity()?.doubleValue(for: heartRateUnit) ?? 0
+                // calories
+                case HKQuantityType.quantityType(forIdentifier: .activeEnergyBurned):
+                    let energyUnit = HKUnit.kilocalorie()
+                    self.activeEnergy = statistics.sumQuantity()?.doubleValue(for: energyUnit) ?? 0
+                // total swim distance (calculate laps using pool lengths?)
+                case HKQuantityType.quantityType(forIdentifier: .distanceSwimming):
+                    let meterUnit = HKUnit.meter()
+                    self.distance = statistics.sumQuantity()?.doubleValue(for: meterUnit) ?? 0
+
+                default:
+                    return
+                }
             }
+        }
+    
+    // update lap count
+    func updateLapsCount(from workout: HKWorkout) {
+        if let events = workout.workoutEvents {
+            let lapEvents = events.filter { $0.type == .lap }
+            self.laps = lapEvents.count
         }
     }
     
-    func resetWorkout() 
+    // reset workout
+    func resetWorkout()
     {
         selected = nil
         workoutBuilder = nil
@@ -193,8 +207,6 @@ class WatchManager: NSObject, ObservableObject
         heartRate = 0
         distance = 0
     }
- 
-    
 }
 
 // MARK: - HKWorkoutSessionDelegate
@@ -217,15 +229,19 @@ extension WatchManager: HKWorkoutSessionDelegate
             { (success, error) in
                 self.workoutBuilder?.finishWorkout 
                 { (workout, error) in
-                    
+                    if let workout = workout
+                    {
+                        self.updateLapsCount(from: workout)
+                    }
                 }
             }
         }
     }
 
     // failed with error
-    func workoutSession(_ workoutSession: HKWorkoutSession, didFailWithError error: Error) {
-
+    func workoutSession(_ workoutSession: HKWorkoutSession, didFailWithError error: Error) 
+    {
+        print(error)
     }
 }
 

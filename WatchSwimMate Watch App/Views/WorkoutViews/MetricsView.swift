@@ -7,7 +7,8 @@
 
 import SwiftUI
 
-struct MetricsView: View 
+//TODO: adjust to look better
+struct MetricsView: View
 {
     @EnvironmentObject var manager: WatchManager
     var body: some View
@@ -21,7 +22,8 @@ struct MetricsView: View
                 Text(Measurement(value: manager.activeEnergy, unit: UnitEnergy.kilocalories)
                         .formatted(.measurement(width: .abbreviated, usage: .workout)))
                 Text(manager.heartRate.formatted(.number.precision(.fractionLength(0))) + " bpm")
-                Text(Measurement(value: manager.distance, unit: UnitLength.meters).formatted(.measurement(width: .abbreviated, usage: .road)))
+                Text("\(Int(manager.distance.rounded())) \(manager.poolUnit == "meters" ? "m" : "yd")")
+
             }
             .font(.system(.title, design: .rounded).monospacedDigit().lowercaseSmallCaps())
             .frame(maxWidth: .infinity, alignment: .leading)
