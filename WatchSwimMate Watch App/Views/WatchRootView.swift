@@ -14,85 +14,88 @@ struct WatchRootView: View
     @EnvironmentObject var manager: WatchManager
     @EnvironmentObject var iosManager: iOSWatchConnector
 
+
     var body: some View 
     {
-        NavigationStack
+        // pass path
+        VStack
         {
-            VStack
+            HStack
             {
-                HStack
+                // Quick Start button
+                
+                //TODO: Create an enum for states
+                Button(action: {
+                    manager.path.append(WorkoutSetupView())
+                }) 
                 {
-                    // Quick Start button
-                    NavigationLink(destination: WorkoutSetupView().environmentObject(manager))
-                    {
-                        VStack
-                        {
-                            Image(systemName: "bolt.fill")
-                                .resizable()
-                                .frame(width: 20, height: 30)
-                        }
-                        .frame(width: 60, height: 60)
-                        .background(Circle().fill(Color.green))
-                        .foregroundColor(.white)
-                        .padding()
+                    VStack {
+                        Image(systemName: "bolt.fill")
+                            .resizable()
+                            .frame(width: 20, height: 30)
                     }
-                    
-                    // Set Goal button
-                    NavigationLink(destination: GoalWorkoutSetupView().environmentObject(manager))
-                    {
-                        VStack
-                        {
-                            Image(systemName: "target")
-                                .resizable()
-                                .frame(width: 30, height: 30)
-                        }
-                        .frame(width: 60, height: 60)
-                        .background(Circle().fill(Color.blue))
-                        .foregroundColor(.white)
-                        .padding()
-                    }
+                    .frame(width: 60, height: 60)
+                    .background(Circle().fill(Color.green))
+                    .foregroundColor(.white)
+                    .padding()
                 }
                 
-                HStack
+                // Set Goal button
+                NavigationLink(destination: GoalWorkoutSetupView().environmentObject(manager))
                 {
-                    // Import Set button
-                    NavigationLink(destination: ImportSetView().environmentObject(iosManager).environmentObject(manager))
+                    VStack
                     {
-                        VStack
-                        {
-                            Image(systemName: "square.and.arrow.down.fill")
-                                .resizable()
-                                .frame(width: 30, height: 30)
-                        }
-                        .frame(width: 60, height: 60)
-                        .background(Circle().fill(Color.orange))
-                        .foregroundColor(.white)
-                        .padding()
+                        Image(systemName: "target")
+                            .resizable()
+                            .frame(width: 30, height: 30)
                     }
-                    // Settings button
-                    Button(action: {
-                        print("Settings tapped")
-                    })
+                    .frame(width: 60, height: 60)
+                    .background(Circle().fill(Color.blue))
+                    .foregroundColor(.white)
+                    .padding()
+                }
+            }
+            
+            HStack
+            {
+                // Import Set button
+                NavigationLink(destination: ImportSetView().environmentObject(iosManager).environmentObject(manager))
+                {
+                    VStack
                     {
-                        VStack
-                        {
-                            Image(systemName: "gear")
-                                .resizable()
-                                .frame(width: 30, height: 30)
-                        }
-                        .frame(width: 60, height: 60)
-                        .background(Circle().fill(Color.gray))
-                        .foregroundColor(.white)
-                        .padding()
+                        Image(systemName: "square.and.arrow.down.fill")
+                            .resizable()
+                            .frame(width: 30, height: 30)
                     }
+                    .frame(width: 60, height: 60)
+                    .background(Circle().fill(Color.orange))
+                    .foregroundColor(.white)
+                    .padding()
+                }
+                // Settings button
+                Button(action: {
+                    print("Settings tapped")
+                })
+                {
+                    VStack
+                    {
+                        Image(systemName: "gear")
+                            .resizable()
+                            .frame(width: 30, height: 30)
+                    }
+                    .frame(width: 60, height: 60)
+                    .background(Circle().fill(Color.gray))
+                    .foregroundColor(.white)
+                    .padding()
                 }
             }
         }
-        .onAppear 
+        .onAppear
         {
             manager.requestAuthorization()
         }
     }
+
 }
 
 #Preview

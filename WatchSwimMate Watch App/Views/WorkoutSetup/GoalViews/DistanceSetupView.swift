@@ -22,7 +22,8 @@ struct DistanceSetupView: View
                 
                 Text("\(Int(manager.goalDistance))" + " Laps")
                     .padding()
-                // digital crown integration to adjust distance
+                
+                // w/ digital crown integration to adjust distance
                 HStack
                 {
                     Button(action: {

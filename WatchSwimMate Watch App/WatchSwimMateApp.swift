@@ -17,11 +17,12 @@ struct WatchSwimMate_Watch_App: App
     {
         WindowGroup
         {
-            WatchRootView()
-//            NavigationView
-//            {
-//                WatchRootView()
-//            }
+            NavigationStack(path: $watchManager.navigationPath) 
+            {
+                WatchRootView()
+            }
+//            WatchRootView()
+
             .sheet(isPresented: $watchManager.showingSummaryView)
             {
                 SwimmingSummaryView()

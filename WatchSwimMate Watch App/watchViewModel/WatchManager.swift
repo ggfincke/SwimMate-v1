@@ -19,10 +19,12 @@ class WatchManager: NSObject, ObservableObject
     @Published var poolUnit: String = "meters"
     @Published var running = false
 
-
     var healthStore = HKHealthStore()
     var workoutSession: HKWorkoutSession?
     var workoutBuilder: HKLiveWorkoutBuilder?
+    
+    // path for views
+    @Published var path = NavigationPath()
     
     // MARK: - Workout Metrics
     @Published var elapsedTime: TimeInterval = 0
@@ -45,7 +47,8 @@ class WatchManager: NSObject, ObservableObject
     {
         didSet
         {
-//            guard let selected = selected else { return }
+            // was not using selected so commented for now 
+            // guard let selected = selected else { return }
             startWorkout()
         }
         

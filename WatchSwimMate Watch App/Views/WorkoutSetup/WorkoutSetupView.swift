@@ -1,5 +1,5 @@
 //
-//  QSWorkoutSetupView.swift
+//  WorkoutSetupView.swift
 //  WatchSwimMate Watch App
 //
 //  Created by Garrett Fincke on 4/27/24.
@@ -7,18 +7,19 @@
 
 import SwiftUI
 
-struct WorkoutSetupView: View
+struct WorkoutSetupView: View, Hashable
 {
     @EnvironmentObject var manager: WatchManager
     @State private var navigateToPoolSetup = false
     @State private var showSwimmingView = false
-
     
     var body: some View
     {
         VStack
         {
-            Button("Pool") {
+            // pool swim
+            Button("Pool")
+            {
                 manager.isPool = true
                 navigateToPoolSetup = true
             }
@@ -28,6 +29,8 @@ struct WorkoutSetupView: View
             {
                IndoorPoolSetupView()
             }
+            
+            // open water swim
             Button("Open Water")
             {
                 manager.isPool = false
@@ -37,7 +40,8 @@ struct WorkoutSetupView: View
             }
             .padding()
             .foregroundColor(.white)
-            .navigationDestination(isPresented: $showSwimmingView) {
+            .navigationDestination(isPresented: $showSwimmingView)
+            {
                 SwimmingView(swimmySet: nil)
             }
         }

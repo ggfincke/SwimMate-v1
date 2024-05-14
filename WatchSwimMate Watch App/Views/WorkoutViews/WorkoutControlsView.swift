@@ -38,8 +38,13 @@ struct WorkoutControlsView: View
                 
                 // end workout (not working because of the stack thing)
                 Button(action: {
-                    manager.endWorkout()
-                    showSummary = true
+                    print(manager.navigationPath)
+                    manager.navigationPath = NavigationPath()
+                    print(manager.navigationPath)
+                    backToMain = true
+//                    manager.endWorkout()
+//                    showSummary = true
+//                    // clear navigationPath (?)
                 })
                 {
                     VStack
@@ -54,9 +59,9 @@ struct WorkoutControlsView: View
                     .padding()
 
                 }
-                .navigationDestination(isPresented: $backToMain) {
-                    WatchRootView()
-                }
+//                .navigationDestination(isPresented: $backToMain) {
+//                    WatchRootView()
+//                }
             }
 
             // enable water lock
@@ -81,7 +86,7 @@ struct WorkoutControlsView: View
 
                 // segment 
                 Button(action: {
-                    // Placeholder for adding a segment
+                    // placeholder
                 })
                 {
                     VStack
@@ -98,9 +103,15 @@ struct WorkoutControlsView: View
             }
         }
         .padding()
-        .sheet(isPresented: $showSummary) {
-            SwimmingSummaryView()
+        // just testing views rn
+//        .sheet(isPresented: $showSummary) {
+//            SwimmingSummaryView()
+//                .environmentObject(manager)
+//        }
+        .navigationDestination(isPresented: $backToMain) {
+            WatchRootView()
                 .environmentObject(manager)
+                .environmentObject(iOSWatchConnector())
         }
     }
 }
