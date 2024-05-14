@@ -88,7 +88,8 @@ struct WatchRootView: View
                 }
             }
         }
-        .onAppear {
+        .onAppear 
+        {
             manager.requestAuthorization()
         }
     }
@@ -98,4 +99,5 @@ struct WatchRootView: View
 {
     WatchRootView()
         .environmentObject(WatchManager())
+        .environmentObject(iOSWatchConnector())
 }

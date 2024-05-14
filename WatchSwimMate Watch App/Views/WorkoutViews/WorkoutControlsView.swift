@@ -36,7 +36,7 @@ struct WorkoutControlsView: View
                     .padding()
                 }
                 
-                // end workout
+                // end workout (not working because of the stack thing)
                 Button(action: {
                     manager.endWorkout()
                     showSummary = true

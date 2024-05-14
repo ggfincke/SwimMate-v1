@@ -17,17 +17,20 @@ struct ElapsedTimeView: View
     {
         Text(NSNumber(value: elapsedTime), formatter: timeFormatter)
             .fontWeight(.semibold)
-            .onChange(of: showSubseconds) {
-                timeFormatter.showSubseconds = $0
+            .onChange(of: elapsedTime) 
+            {
+                timeFormatter.showSubseconds = elapsedTime < 3600
             }
     }
 }
 
-class ElapsedTimeFormatter: Formatter 
+
+// adjusted to show hour field after swimming for an hour & hide subseconds (same behavior as standard workout app)
+class ElapsedTimeFormatter: Formatter
 {
     let componentsFormatter: DateComponentsFormatter = {
         let formatter = DateComponentsFormatter()
-        formatter.allowedUnits = [.minute, .second]
+        formatter.allowedUnits = [.hour, .minute, .second]
         formatter.zeroFormattingBehavior = .pad
         return formatter
     }()
@@ -35,16 +38,29 @@ class ElapsedTimeFormatter: Formatter
 
     override func string(for value: Any?) -> String? 
     {
-        guard let time = value as? TimeInterval else 
+        guard let time = value as? TimeInterval else
         {
             return nil
         }
 
-        guard let formattedString = componentsFormatter.string(from: time) else {
+        // update allowedUnits based on elapsed time
+        if time >= 3600
+        {
+            componentsFormatter.allowedUnits = [.hour, .minute, .second]
+            showSubseconds = false
+        } 
+        else
+        {
+            componentsFormatter.allowedUnits = [.minute, .second]
+            showSubseconds = true
+        }
+
+        guard let formattedString = componentsFormatter.string(from: time) else 
+        {
             return nil
         }
 
-        if showSubseconds
+        if showSubseconds 
         {
             let hundredths = Int((time.truncatingRemainder(dividingBy: 1)) * 100)
             let decimalSeparator = Locale.current.decimalSeparator ?? "."
@@ -54,3 +70,5 @@ class ElapsedTimeFormatter: Formatter
         return formattedString
     }
 }
+
+
