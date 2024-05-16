@@ -8,6 +8,7 @@
 import SwiftUI
 import WatchKit
 
+// view shown when swimming
 struct SwimmingView: View
 {
     @EnvironmentObject var manager: WatchManager
@@ -28,7 +29,6 @@ struct SwimmingView: View
 
     var body: some View
     {
-        
         TabView(selection: $selection)
         {
             WorkoutControlsView().tag(Tab.controls)
@@ -38,6 +38,9 @@ struct SwimmingView: View
                 SetDisplayView(swimSet: set).tag(Tab.set)
             }
         }
+        // hide back buttons at the top
+        .navigationBarBackButtonHidden(true)
+
     }
 }
 

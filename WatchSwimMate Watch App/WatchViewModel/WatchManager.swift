@@ -54,6 +54,12 @@ class WatchManager: NSObject, ObservableObject
         
     }
     
+    // reset back to root (for navigation)
+    func resetNav()
+    {
+        path = NavigationPath()
+    }
+    
     // showing summary view after workout
     @Published var showingSummaryView = false
     {
@@ -82,8 +88,9 @@ class WatchManager: NSObject, ObservableObject
             }
         }
     }
-    
-    func startWorkout() 
+
+    //MARK: Workout related functions
+    func startWorkout()
     {
         let configuration = HKWorkoutConfiguration()
         configuration.activityType = .swimming
@@ -156,11 +163,6 @@ class WatchManager: NSObject, ObservableObject
     {
         workoutSession?.end()
         showingSummaryView = true
-    }
-
-    func resetNav()
-    {
-        path = NavigationPath()
     }
 
     //TODO: needs to be updated for swimming

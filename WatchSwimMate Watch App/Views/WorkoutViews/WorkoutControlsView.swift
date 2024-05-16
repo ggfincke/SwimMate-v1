@@ -12,7 +12,6 @@ struct WorkoutControlsView: View
 {
     @EnvironmentObject var manager: WatchManager
     @State private var showSummary = false
-    @State private var backToMain = false
 
     var body: some View
     {
@@ -36,14 +35,11 @@ struct WorkoutControlsView: View
                     .padding()
                 }
                 
-                // end workout (not working because of the stack thing)
+                // end workout
                 Button(action: {
                     manager.resetNav()
-                    print(manager.path)
-                    backToMain = true
-//                    manager.endWorkout()
-//                    showSummary = true
-//                    // clear navigationPath (?)
+                    manager.endWorkout()
+                    showSummary = true
                 })
                 {
                     VStack
@@ -58,9 +54,7 @@ struct WorkoutControlsView: View
                     .padding()
 
                 }
-//                .navigationDestination(isPresented: $backToMain) {
-//                    WatchRootView()
-//                }
+
             }
 
             // enable water lock
@@ -102,15 +96,10 @@ struct WorkoutControlsView: View
             }
         }
         .padding()
-        // just testing views rn
-//        .sheet(isPresented: $showSummary) {
-//            SwimmingSummaryView()
-//                .environmentObject(manager)
-//        }
-        .navigationDestination(isPresented: $backToMain) {
-            WatchRootView()
+        .sheet(isPresented: $showSummary)
+        {
+            SwimmingSummaryView()
                 .environmentObject(manager)
-                .environmentObject(iOSWatchConnector())
         }
     }
 }

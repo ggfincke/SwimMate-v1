@@ -8,23 +8,19 @@
 
 import SwiftUI
 
-//TODO: Fix the NavStack (idk why it doesn't work, refer Apple app?)
+// TODO: Fix the rest of the navigation
 struct WatchRootView: View
 {
     @EnvironmentObject var manager: WatchManager
     @EnvironmentObject var iosManager: iOSWatchConnector
 
-
     var body: some View 
     {
-        // pass path
         VStack
         {
             HStack
             {
                 // Quick Start button
-                
-                //TODO: Create an enum for states
                 Button(action: {
                     manager.path.append(NavState.workoutSetup)
                 }) 
@@ -40,6 +36,7 @@ struct WatchRootView: View
                     .padding()
                 }
                 
+                //MARK: Fix all below
                 // Set Goal button
                 NavigationLink(destination: GoalWorkoutSetupView().environmentObject(manager))
                 {

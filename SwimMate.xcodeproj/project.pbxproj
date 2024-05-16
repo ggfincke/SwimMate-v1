@@ -310,7 +310,7 @@
 				A0D5BAF52BDC9318004D9B9C /* WatchSwimMateApp.swift */,
 				A037E3D12BDF4C0C0027F45C /* iOSWatchConnector.swift */,
 				A0D5BB282BDC9572004D9B9C /* Views */,
-				A0D5BB272BDC955C004D9B9C /* watchViewModel */,
+				A0D5BB272BDC955C004D9B9C /* WatchViewModel */,
 				A0F807202BF485380032D43B /* WatchModel */,
 				A0D5BAF92BDC9319004D9B9C /* Assets.xcassets */,
 				A0D5BAFB2BDC9319004D9B9C /* Preview Content */,
@@ -326,20 +326,20 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		A0D5BB272BDC955C004D9B9C /* watchViewModel */ = {
+		A0D5BB272BDC955C004D9B9C /* WatchViewModel */ = {
 			isa = PBXGroup;
 			children = (
 				A0D5BB2B2BDC97AB004D9B9C /* WatchManager.swift */,
 			);
-			path = watchViewModel;
+			path = WatchViewModel;
 			sourceTree = "<group>";
 		};
 		A0D5BB282BDC9572004D9B9C /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				A07370DC2BDDA1CE0084C1DD /* WorkoutViews */,
-				A07370D52BDD91610084C1DD /* WorkoutSetup */,
 				A0EB32EC2BDD3AB400624091 /* WatchRootView.swift */,
+				A07370D52BDD91610084C1DD /* WorkoutSetup */,
+				A07370DC2BDDA1CE0084C1DD /* WorkoutViews */,
 			);
 			path = Views;
 			sourceTree = "<group>";

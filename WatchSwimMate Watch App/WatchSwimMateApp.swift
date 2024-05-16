@@ -17,20 +17,21 @@ struct WatchSwimMate_Watch_App: App
     {
         WindowGroup
         {
-            NavigationStack(path: $watchManager.path) 
+            // needs to use path from manager
+            NavigationStack(path: $watchManager.path)
             {
                 WatchRootView()
                     .navigationDestination(for: NavState.self) { state in
                         switch state 
                         {
-                        case .workoutSetup:
-                            WorkoutSetupView()
-                        case .indoorPoolSetup:
-                            IndoorPoolSetupView()
-                        case .swimmingView(let set):
-                            SwimmingView(set: set)
-                        case .importSetView:
-                            ImportSetView()
+                            case .workoutSetup:
+                                WorkoutSetupView()
+                            case .indoorPoolSetup:
+                                IndoorPoolSetupView()
+                            case .swimmingView(let set):
+                                SwimmingView(set: set)
+                            case .importSetView:
+                                ImportSetView()
                         }
                     }
             }
@@ -40,7 +41,7 @@ struct WatchSwimMate_Watch_App: App
                 SwimmingSummaryView()
             }
             .environmentObject(watchManager)
-            .environmentObject(iOSWatchConnector())  
+            .environmentObject(iOSWatchConnector())
 
 
         }
