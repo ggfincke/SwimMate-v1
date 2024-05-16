@@ -9,28 +9,32 @@
 /* Begin PBXBuildFile section */
 		A004E51E2BE005DE008D3F11 /* WatchSwimMate Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = A0F0C7D42BDF7C5F00AF6D5B /* WatchSwimMate Watch App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		A023DE452BDF7B2A00242C58 /* SwimMateApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C0505F2BCC5D7A002450AD /* SwimMateApp.swift */; };
-		A023DE462BDF7B3700242C58 /* HealthKitPermissionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C050902BCC5DD6002450AD /* HealthKitPermissionView.swift */; };
-		A023DE472BDF7B3700242C58 /* WeekView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00EEF3E2BCC8FCD00FADBB0 /* WeekView.swift */; };
-		A023DE482BDF7B3700242C58 /* WorkoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00EEF4B2BCC982D00FADBB0 /* WorkoutView.swift */; };
-		A023DE4A2BDF7B3700242C58 /* WorkoutHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00EEF512BCCB07300FADBB0 /* WorkoutHistoryView.swift */; };
-		A023DE4B2BDF7B3700242C58 /* ChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A075692C2BDF3B63009A31FB /* ChartView.swift */; };
-		A023DE4C2BDF7B3700242C58 /* LineGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A075692E2BDF3CE3009A31FB /* LineGraphView.swift */; };
-		A023DE4D2BDF7B3700242C58 /* PaceGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A037E3CF2BDF41BA0027F45C /* PaceGraphView.swift */; };
-		A023DE4E2BDF7B3700242C58 /* HomePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00EEF442BCC940600FADBB0 /* HomePage.swift */; };
-		A023DE4F2BDF7B3700242C58 /* SetDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07569232BDF0545009A31FB /* SetDetailView.swift */; };
-		A023DE502BDF7B3700242C58 /* SetPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07569272BDF055B009A31FB /* SetPage.swift */; };
-		A023DE512BDF7B3700242C58 /* ProfilePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00EEF462BCC941500FADBB0 /* ProfilePage.swift */; };
-		A023DE522BDF7B3700242C58 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00EEF572BCCBAA100FADBB0 /* SettingsView.swift */; };
-		A023DE542BDF7B3700242C58 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00EEF392BCC8D6000FADBB0 /* RootView.swift */; };
-		A023DE552BDF7B3700242C58 /* Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C0508E2BCC5DBE002450AD /* Manager.swift */; };
-		A023DE562BDF7B3700242C58 /* Swim.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C0508C2BCC5DAE002450AD /* Swim.swift */; };
-		A023DE572BDF7B3700242C58 /* SwimSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07569212BDF051C009A31FB /* SwimSet.swift */; };
-		A023DE582BDF7B3700242C58 /* WatchConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F04D812BCCD0020020B027 /* WatchConnector.swift */; };
-		A0A391D52BDFBA8A008434FE /* store.json in Resources */ = {isa = PBXBuildFile; fileRef = A0A391D42BDFBA8A008434FE /* store.json */; };
+		A076679E2BF5E6BF00FFB4C3 /* ChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07667892BF5E6BF00FFB4C3 /* ChartView.swift */; };
+		A076679F2BF5E6BF00FFB4C3 /* LineGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A076678A2BF5E6BF00FFB4C3 /* LineGraphView.swift */; };
+		A07667A02BF5E6BF00FFB4C3 /* PaceGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A076678B2BF5E6BF00FFB4C3 /* PaceGraphView.swift */; };
+		A07667A12BF5E6BF00FFB4C3 /* HealthKitPermissionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A076678D2BF5E6BF00FFB4C3 /* HealthKitPermissionView.swift */; };
+		A07667A22BF5E6BF00FFB4C3 /* WeekView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A076678E2BF5E6BF00FFB4C3 /* WeekView.swift */; };
+		A07667A32BF5E6BF00FFB4C3 /* WorkoutHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A076678F2BF5E6BF00FFB4C3 /* WorkoutHistoryView.swift */; };
+		A07667A42BF5E6BF00FFB4C3 /* WorkoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07667902BF5E6BF00FFB4C3 /* WorkoutView.swift */; };
+		A07667A52BF5E6BF00FFB4C3 /* HomePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07667922BF5E6BF00FFB4C3 /* HomePage.swift */; };
+		A07667A62BF5E6BF00FFB4C3 /* PreferencesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07667942BF5E6BF00FFB4C3 /* PreferencesView.swift */; };
+		A07667A72BF5E6BF00FFB4C3 /* ProfilePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07667952BF5E6BF00FFB4C3 /* ProfilePage.swift */; };
+		A07667A82BF5E6BF00FFB4C3 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07667962BF5E6BF00FFB4C3 /* SettingsView.swift */; };
+		A07667A92BF5E6BF00FFB4C3 /* SetDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07667982BF5E6BF00FFB4C3 /* SetDetailView.swift */; };
+		A07667AA2BF5E6BF00FFB4C3 /* SetPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07667992BF5E6BF00FFB4C3 /* SetPage.swift */; };
+		A07667AB2BF5E6BF00FFB4C3 /* SetSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A076679A2BF5E6BF00FFB4C3 /* SetSummaryView.swift */; };
+		A07667AC2BF5E6BF00FFB4C3 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A076679C2BF5E6BF00FFB4C3 /* RootView.swift */; };
+		A07667B02BF5E6C600FFB4C3 /* Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07667AD2BF5E6C600FFB4C3 /* Manager.swift */; };
+		A07667B12BF5E6C600FFB4C3 /* WatchConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07667AE2BF5E6C600FFB4C3 /* WatchConnector.swift */; };
+		A07667B62BF5E6CF00FFB4C3 /* store.json in Resources */ = {isa = PBXBuildFile; fileRef = A07667B22BF5E6CF00FFB4C3 /* store.json */; };
+		A07667B72BF5E6CF00FFB4C3 /* Swim.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07667B32BF5E6CF00FFB4C3 /* Swim.swift */; };
+		A07667B82BF5E6CF00FFB4C3 /* SwimSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07667B42BF5E6CF00FFB4C3 /* SwimSet.swift */; };
+		A07667B92BF5E7D800FFB4C3 /* Swim.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07667B32BF5E6CF00FFB4C3 /* Swim.swift */; };
+		A07667BA2BF5E7D800FFB4C3 /* SwimSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07667B42BF5E6CF00FFB4C3 /* SwimSet.swift */; };
 		A0C050642BCC5D7B002450AD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A0C050632BCC5D7B002450AD /* Assets.xcassets */; };
 		A0C050672BCC5D7B002450AD /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A0C050662BCC5D7B002450AD /* Preview Assets.xcassets */; };
 		A0F0C7F92BDF7F0300AF6D5B /* WatchSwimMateApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D5BAF52BDC9318004D9B9C /* WatchSwimMateApp.swift */; };
-		A0F0C7FA2BDF7F0300AF6D5B /* iOSWatchConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = A037E3D12BDF4C0C0027F45C /* iOSWatchConnector.swift */; };
+		A0F0C7FA2BDF7F0300AF6D5B /* toiOSWatchConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = A037E3D12BDF4C0C0027F45C /* toiOSWatchConnector.swift */; };
 		A0F0C7FB2BDF7F0300AF6D5B /* WatchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D5BB2B2BDC97AB004D9B9C /* WatchManager.swift */; };
 		A0F0C7FC2BDF7F0300AF6D5B /* SwimmingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07370D82BDDA1570084C1DD /* SwimmingView.swift */; };
 		A0F0C7FD2BDF7F0300AF6D5B /* WorkoutControlsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07370DA2BDDA1BE0084C1DD /* WorkoutControlsView.swift */; };
@@ -48,11 +52,8 @@
 		A0F0C8092BDF7F0300AF6D5B /* IndoorPoolSetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07370D12BDD86F90084C1DD /* IndoorPoolSetupView.swift */; };
 		A0F0C80A2BDF7F0300AF6D5B /* UnitPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07370D32BDD8F1B0084C1DD /* UnitPickerView.swift */; };
 		A0F0C80B2BDF7F0300AF6D5B /* WatchRootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EB32EC2BDD3AB400624091 /* WatchRootView.swift */; };
-		A0F0C80C2BDF7F0B00AF6D5B /* SwimSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07569212BDF051C009A31FB /* SwimSet.swift */; };
 		A0F0C8182BDF852500AF6D5B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A0D5BAF92BDC9319004D9B9C /* Assets.xcassets */; };
 		A0F0C8192BDF852500AF6D5B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A0D5BAFC2BDC9319004D9B9C /* Preview Assets.xcassets */; };
-		A0F0C81B2BDF993200AF6D5B /* PreferencesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F0C81A2BDF993200AF6D5B /* PreferencesView.swift */; };
-		A0F0C81D2BDF9AE000AF6D5B /* SetSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F0C81C2BDF9AE000AF6D5B /* SetSummaryView.swift */; };
 		A0F807222BF4856C0032D43B /* NavState.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F807212BF4856C0032D43B /* NavState.swift */; };
 		A0FB9E302BDF7C1500F39829 /* WatchConnectivity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0FB9E2F2BDF7C1500F39829 /* WatchConnectivity.framework */; };
 		A0FB9E322BDF7C1F00F39829 /* WatchConnectivity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0FB9E312BDF7C1F00F39829 /* WatchConnectivity.framework */; };
@@ -90,34 +91,37 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		A00EEF392BCC8D6000FADBB0 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
-		A00EEF3E2BCC8FCD00FADBB0 /* WeekView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekView.swift; sourceTree = "<group>"; };
-		A00EEF442BCC940600FADBB0 /* HomePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePage.swift; sourceTree = "<group>"; };
-		A00EEF462BCC941500FADBB0 /* ProfilePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePage.swift; sourceTree = "<group>"; };
-		A00EEF4B2BCC982D00FADBB0 /* WorkoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutView.swift; sourceTree = "<group>"; };
-		A00EEF512BCCB07300FADBB0 /* WorkoutHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutHistoryView.swift; sourceTree = "<group>"; };
-		A00EEF572BCCBAA100FADBB0 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
-		A037E3CF2BDF41BA0027F45C /* PaceGraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaceGraphView.swift; sourceTree = "<group>"; };
-		A037E3D12BDF4C0C0027F45C /* iOSWatchConnector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSWatchConnector.swift; sourceTree = "<group>"; };
+		A037E3D12BDF4C0C0027F45C /* toiOSWatchConnector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = toiOSWatchConnector.swift; sourceTree = "<group>"; };
 		A07370CB2BDD3FC10084C1DD /* WorkoutSetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutSetupView.swift; sourceTree = "<group>"; };
 		A07370D12BDD86F90084C1DD /* IndoorPoolSetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndoorPoolSetupView.swift; sourceTree = "<group>"; };
 		A07370D32BDD8F1B0084C1DD /* UnitPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitPickerView.swift; sourceTree = "<group>"; };
 		A07370D82BDDA1570084C1DD /* SwimmingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwimmingView.swift; sourceTree = "<group>"; };
 		A07370DA2BDDA1BE0084C1DD /* WorkoutControlsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutControlsView.swift; sourceTree = "<group>"; };
 		A07370DD2BDDCC450084C1DD /* WatchSwimMate Watch App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "WatchSwimMate Watch App.entitlements"; sourceTree = "<group>"; };
-		A07569212BDF051C009A31FB /* SwimSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwimSet.swift; sourceTree = "<group>"; };
-		A07569232BDF0545009A31FB /* SetDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetDetailView.swift; sourceTree = "<group>"; };
-		A07569272BDF055B009A31FB /* SetPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetPage.swift; sourceTree = "<group>"; };
-		A075692C2BDF3B63009A31FB /* ChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartView.swift; sourceTree = "<group>"; };
-		A075692E2BDF3CE3009A31FB /* LineGraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineGraphView.swift; sourceTree = "<group>"; };
-		A0A391D42BDFBA8A008434FE /* store.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = store.json; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.json; };
+		A07667892BF5E6BF00FFB4C3 /* ChartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartView.swift; sourceTree = "<group>"; };
+		A076678A2BF5E6BF00FFB4C3 /* LineGraphView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineGraphView.swift; sourceTree = "<group>"; };
+		A076678B2BF5E6BF00FFB4C3 /* PaceGraphView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaceGraphView.swift; sourceTree = "<group>"; };
+		A076678D2BF5E6BF00FFB4C3 /* HealthKitPermissionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HealthKitPermissionView.swift; sourceTree = "<group>"; };
+		A076678E2BF5E6BF00FFB4C3 /* WeekView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeekView.swift; sourceTree = "<group>"; };
+		A076678F2BF5E6BF00FFB4C3 /* WorkoutHistoryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkoutHistoryView.swift; sourceTree = "<group>"; };
+		A07667902BF5E6BF00FFB4C3 /* WorkoutView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkoutView.swift; sourceTree = "<group>"; };
+		A07667922BF5E6BF00FFB4C3 /* HomePage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomePage.swift; sourceTree = "<group>"; };
+		A07667942BF5E6BF00FFB4C3 /* PreferencesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferencesView.swift; sourceTree = "<group>"; };
+		A07667952BF5E6BF00FFB4C3 /* ProfilePage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfilePage.swift; sourceTree = "<group>"; };
+		A07667962BF5E6BF00FFB4C3 /* SettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		A07667982BF5E6BF00FFB4C3 /* SetDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetDetailView.swift; sourceTree = "<group>"; };
+		A07667992BF5E6BF00FFB4C3 /* SetPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetPage.swift; sourceTree = "<group>"; };
+		A076679A2BF5E6BF00FFB4C3 /* SetSummaryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetSummaryView.swift; sourceTree = "<group>"; };
+		A076679C2BF5E6BF00FFB4C3 /* RootView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
+		A07667AD2BF5E6C600FFB4C3 /* Manager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Manager.swift; sourceTree = "<group>"; };
+		A07667AE2BF5E6C600FFB4C3 /* WatchConnector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchConnector.swift; sourceTree = "<group>"; };
+		A07667B22BF5E6CF00FFB4C3 /* store.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = store.json; sourceTree = "<group>"; };
+		A07667B32BF5E6CF00FFB4C3 /* Swim.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Swim.swift; sourceTree = "<group>"; };
+		A07667B42BF5E6CF00FFB4C3 /* SwimSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwimSet.swift; sourceTree = "<group>"; };
 		A0B2B5112BDF6C3C007863C2 /* SetDisplayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetDisplayView.swift; sourceTree = "<group>"; };
 		A0C0505F2BCC5D7A002450AD /* SwimMateApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwimMateApp.swift; sourceTree = "<group>"; };
 		A0C050632BCC5D7B002450AD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A0C050662BCC5D7B002450AD /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		A0C0508C2BCC5DAE002450AD /* Swim.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Swim.swift; sourceTree = "<group>"; };
-		A0C0508E2BCC5DBE002450AD /* Manager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Manager.swift; sourceTree = "<group>"; };
-		A0C050902BCC5DD6002450AD /* HealthKitPermissionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitPermissionView.swift; sourceTree = "<group>"; };
 		A0C050922BCC5E41002450AD /* SwimMate.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SwimMate.entitlements; sourceTree = "<group>"; };
 		A0C050932BCC65A3002450AD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		A0D5BAF52BDC9318004D9B9C /* WatchSwimMateApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchSwimMateApp.swift; sourceTree = "<group>"; };
@@ -125,11 +129,8 @@
 		A0D5BAFC2BDC9319004D9B9C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		A0D5BB2B2BDC97AB004D9B9C /* WatchManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchManager.swift; sourceTree = "<group>"; };
 		A0EB32EC2BDD3AB400624091 /* WatchRootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchRootView.swift; sourceTree = "<group>"; };
-		A0F04D812BCCD0020020B027 /* WatchConnector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchConnector.swift; sourceTree = "<group>"; };
 		A0F0C7D12BDF7C5F00AF6D5B /* SwimMate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwimMate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0F0C7D42BDF7C5F00AF6D5B /* WatchSwimMate Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "WatchSwimMate Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		A0F0C81A2BDF993200AF6D5B /* PreferencesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesView.swift; sourceTree = "<group>"; };
-		A0F0C81C2BDF9AE000AF6D5B /* SetSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetSummaryView.swift; sourceTree = "<group>"; };
 		A0F807212BF4856C0032D43B /* NavState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavState.swift; sourceTree = "<group>"; };
 		A0F84B532BDDD034000BC6E1 /* SwimmingSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwimmingSummaryView.swift; sourceTree = "<group>"; };
 		A0F84B552BDDD59F000BC6E1 /* WatchSwimMate-Watch-App-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "WatchSwimMate-Watch-App-Info.plist"; sourceTree = SOURCE_ROOT; };
@@ -165,46 +166,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		A00EEF3B2BCC8FA200FADBB0 /* HomeView */ = {
-			isa = PBXGroup;
-			children = (
-				A00EEF442BCC940600FADBB0 /* HomePage.swift */,
-			);
-			path = HomeView;
-			sourceTree = "<group>";
-		};
-		A00EEF412BCC926800FADBB0 /* ProfileView */ = {
-			isa = PBXGroup;
-			children = (
-				A00EEF462BCC941500FADBB0 /* ProfilePage.swift */,
-				A00EEF572BCCBAA100FADBB0 /* SettingsView.swift */,
-				A0F0C81A2BDF993200AF6D5B /* PreferencesView.swift */,
-			);
-			path = ProfileView;
-			sourceTree = "<group>";
-		};
-		A00EEF4E2BCC9CA500FADBB0 /* GeneralViews */ = {
-			isa = PBXGroup;
-			children = (
-				A0F0C80D2BDF81DA00AF6D5B /* Charts */,
-				A0C050902BCC5DD6002450AD /* HealthKitPermissionView.swift */,
-				A00EEF3E2BCC8FCD00FADBB0 /* WeekView.swift */,
-				A00EEF4B2BCC982D00FADBB0 /* WorkoutView.swift */,
-				A00EEF512BCCB07300FADBB0 /* WorkoutHistoryView.swift */,
-			);
-			path = GeneralViews;
-			sourceTree = "<group>";
-		};
-		A043D3F82BD59AE9007EA90D /* iOS */ = {
-			isa = PBXGroup;
-			children = (
-				A0C0508B2BCC5DA1002450AD /* View */,
-				A0C0508A2BCC5D95002450AD /* ViewModel */,
-				A0C050892BCC5D91002450AD /* Model */,
-			);
-			path = iOS;
-			sourceTree = "<group>";
-		};
 		A07370D52BDD91610084C1DD /* WorkoutSetup */ = {
 			isa = PBXGroup;
 			children = (
@@ -230,6 +191,89 @@
 			path = WorkoutViews;
 			sourceTree = "<group>";
 		};
+		A076678C2BF5E6BF00FFB4C3 /* Charts */ = {
+			isa = PBXGroup;
+			children = (
+				A07667892BF5E6BF00FFB4C3 /* ChartView.swift */,
+				A076678A2BF5E6BF00FFB4C3 /* LineGraphView.swift */,
+				A076678B2BF5E6BF00FFB4C3 /* PaceGraphView.swift */,
+			);
+			path = Charts;
+			sourceTree = "<group>";
+		};
+		A07667912BF5E6BF00FFB4C3 /* GeneralViews */ = {
+			isa = PBXGroup;
+			children = (
+				A076678C2BF5E6BF00FFB4C3 /* Charts */,
+				A076678D2BF5E6BF00FFB4C3 /* HealthKitPermissionView.swift */,
+				A076678E2BF5E6BF00FFB4C3 /* WeekView.swift */,
+				A076678F2BF5E6BF00FFB4C3 /* WorkoutHistoryView.swift */,
+				A07667902BF5E6BF00FFB4C3 /* WorkoutView.swift */,
+			);
+			path = GeneralViews;
+			sourceTree = "<group>";
+		};
+		A07667932BF5E6BF00FFB4C3 /* HomeView */ = {
+			isa = PBXGroup;
+			children = (
+				A07667922BF5E6BF00FFB4C3 /* HomePage.swift */,
+			);
+			path = HomeView;
+			sourceTree = "<group>";
+		};
+		A07667972BF5E6BF00FFB4C3 /* ProfileView */ = {
+			isa = PBXGroup;
+			children = (
+				A07667942BF5E6BF00FFB4C3 /* PreferencesView.swift */,
+				A07667952BF5E6BF00FFB4C3 /* ProfilePage.swift */,
+				A07667962BF5E6BF00FFB4C3 /* SettingsView.swift */,
+			);
+			path = ProfileView;
+			sourceTree = "<group>";
+		};
+		A076679B2BF5E6BF00FFB4C3 /* SetView */ = {
+			isa = PBXGroup;
+			children = (
+				A07667982BF5E6BF00FFB4C3 /* SetDetailView.swift */,
+				A07667992BF5E6BF00FFB4C3 /* SetPage.swift */,
+				A076679A2BF5E6BF00FFB4C3 /* SetSummaryView.swift */,
+			);
+			path = SetView;
+			sourceTree = "<group>";
+		};
+		A076679D2BF5E6BF00FFB4C3 /* iOSViews */ = {
+			isa = PBXGroup;
+			children = (
+				A07667912BF5E6BF00FFB4C3 /* GeneralViews */,
+				A07667932BF5E6BF00FFB4C3 /* HomeView */,
+				A07667972BF5E6BF00FFB4C3 /* ProfileView */,
+				A076679B2BF5E6BF00FFB4C3 /* SetView */,
+				A076679C2BF5E6BF00FFB4C3 /* RootView.swift */,
+			);
+			path = iOSViews;
+			sourceTree = "<group>";
+		};
+		A07667AF2BF5E6C600FFB4C3 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				A07667AD2BF5E6C600FFB4C3 /* Manager.swift */,
+				A07667AE2BF5E6C600FFB4C3 /* WatchConnector.swift */,
+			);
+			name = ViewModel;
+			path = SwimMate/ViewModel;
+			sourceTree = SOURCE_ROOT;
+		};
+		A07667B52BF5E6CF00FFB4C3 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A07667B22BF5E6CF00FFB4C3 /* store.json */,
+				A07667B32BF5E6CF00FFB4C3 /* Swim.swift */,
+				A07667B42BF5E6CF00FFB4C3 /* SwimSet.swift */,
+			);
+			name = Model;
+			path = SwimMate/Model;
+			sourceTree = SOURCE_ROOT;
+		};
 		A0C050532BCC5D7A002450AD = {
 			isa = PBXGroup;
 			children = (
@@ -247,7 +291,9 @@
 				A0C050932BCC65A3002450AD /* Info.plist */,
 				A0C050922BCC5E41002450AD /* SwimMate.entitlements */,
 				A0C0505F2BCC5D7A002450AD /* SwimMateApp.swift */,
-				A043D3F82BD59AE9007EA90D /* iOS */,
+				A076679D2BF5E6BF00FFB4C3 /* iOSViews */,
+				A07667AF2BF5E6C600FFB4C3 /* ViewModel */,
+				A07667B52BF5E6CF00FFB4C3 /* Model */,
 				A0C050632BCC5D7B002450AD /* Assets.xcassets */,
 				A0C050652BCC5D7B002450AD /* Preview Content */,
 			);
@@ -260,37 +306,6 @@
 				A0C050662BCC5D7B002450AD /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
-			sourceTree = "<group>";
-		};
-		A0C050892BCC5D91002450AD /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				A0C0508C2BCC5DAE002450AD /* Swim.swift */,
-				A07569212BDF051C009A31FB /* SwimSet.swift */,
-				A0A391D42BDFBA8A008434FE /* store.json */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		A0C0508A2BCC5D95002450AD /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				A0C0508E2BCC5DBE002450AD /* Manager.swift */,
-				A0F04D812BCCD0020020B027 /* WatchConnector.swift */,
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		A0C0508B2BCC5DA1002450AD /* View */ = {
-			isa = PBXGroup;
-			children = (
-				A00EEF4E2BCC9CA500FADBB0 /* GeneralViews */,
-				A00EEF3B2BCC8FA200FADBB0 /* HomeView */,
-				A0EA3A762BDEF0F7005BE8C9 /* SetView */,
-				A00EEF412BCC926800FADBB0 /* ProfileView */,
-				A00EEF392BCC8D6000FADBB0 /* RootView.swift */,
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		A0D5BAEA2BDC90E5004D9B9C /* Frameworks */ = {
@@ -308,8 +323,7 @@
 				A0F84B552BDDD59F000BC6E1 /* WatchSwimMate-Watch-App-Info.plist */,
 				A07370DD2BDDCC450084C1DD /* WatchSwimMate Watch App.entitlements */,
 				A0D5BAF52BDC9318004D9B9C /* WatchSwimMateApp.swift */,
-				A037E3D12BDF4C0C0027F45C /* iOSWatchConnector.swift */,
-				A0D5BB282BDC9572004D9B9C /* Views */,
+				A0D5BB282BDC9572004D9B9C /* WatchViews */,
 				A0D5BB272BDC955C004D9B9C /* WatchViewModel */,
 				A0F807202BF485380032D43B /* WatchModel */,
 				A0D5BAF92BDC9319004D9B9C /* Assets.xcassets */,
@@ -330,38 +344,19 @@
 			isa = PBXGroup;
 			children = (
 				A0D5BB2B2BDC97AB004D9B9C /* WatchManager.swift */,
+				A037E3D12BDF4C0C0027F45C /* toiOSWatchConnector.swift */,
 			);
 			path = WatchViewModel;
 			sourceTree = "<group>";
 		};
-		A0D5BB282BDC9572004D9B9C /* Views */ = {
+		A0D5BB282BDC9572004D9B9C /* WatchViews */ = {
 			isa = PBXGroup;
 			children = (
 				A0EB32EC2BDD3AB400624091 /* WatchRootView.swift */,
 				A07370D52BDD91610084C1DD /* WorkoutSetup */,
 				A07370DC2BDDA1CE0084C1DD /* WorkoutViews */,
 			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		A0EA3A762BDEF0F7005BE8C9 /* SetView */ = {
-			isa = PBXGroup;
-			children = (
-				A07569232BDF0545009A31FB /* SetDetailView.swift */,
-				A07569272BDF055B009A31FB /* SetPage.swift */,
-				A0F0C81C2BDF9AE000AF6D5B /* SetSummaryView.swift */,
-			);
-			path = SetView;
-			sourceTree = "<group>";
-		};
-		A0F0C80D2BDF81DA00AF6D5B /* Charts */ = {
-			isa = PBXGroup;
-			children = (
-				A075692C2BDF3B63009A31FB /* ChartView.swift */,
-				A075692E2BDF3CE3009A31FB /* LineGraphView.swift */,
-				A037E3CF2BDF41BA0027F45C /* PaceGraphView.swift */,
-			);
-			path = Charts;
+			path = WatchViews;
 			sourceTree = "<group>";
 		};
 		A0F807202BF485380032D43B /* WatchModel */ = {
@@ -474,7 +469,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A0A391D52BDFBA8A008434FE /* store.json in Resources */,
+				A07667B62BF5E6CF00FFB4C3 /* store.json in Resources */,
 				A0C050672BCC5D7B002450AD /* Preview Assets.xcassets in Resources */,
 				A0C050642BCC5D7B002450AD /* Assets.xcassets in Resources */,
 			);
@@ -496,26 +491,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A023DE462BDF7B3700242C58 /* HealthKitPermissionView.swift in Sources */,
-				A023DE472BDF7B3700242C58 /* WeekView.swift in Sources */,
-				A023DE482BDF7B3700242C58 /* WorkoutView.swift in Sources */,
-				A023DE4A2BDF7B3700242C58 /* WorkoutHistoryView.swift in Sources */,
-				A0F0C81D2BDF9AE000AF6D5B /* SetSummaryView.swift in Sources */,
-				A023DE4B2BDF7B3700242C58 /* ChartView.swift in Sources */,
-				A0F0C81B2BDF993200AF6D5B /* PreferencesView.swift in Sources */,
-				A023DE4C2BDF7B3700242C58 /* LineGraphView.swift in Sources */,
-				A023DE4D2BDF7B3700242C58 /* PaceGraphView.swift in Sources */,
-				A023DE4E2BDF7B3700242C58 /* HomePage.swift in Sources */,
-				A023DE4F2BDF7B3700242C58 /* SetDetailView.swift in Sources */,
-				A023DE502BDF7B3700242C58 /* SetPage.swift in Sources */,
-				A023DE512BDF7B3700242C58 /* ProfilePage.swift in Sources */,
-				A023DE522BDF7B3700242C58 /* SettingsView.swift in Sources */,
-				A023DE542BDF7B3700242C58 /* RootView.swift in Sources */,
-				A023DE552BDF7B3700242C58 /* Manager.swift in Sources */,
-				A023DE562BDF7B3700242C58 /* Swim.swift in Sources */,
-				A023DE572BDF7B3700242C58 /* SwimSet.swift in Sources */,
-				A023DE582BDF7B3700242C58 /* WatchConnector.swift in Sources */,
+				A07667A22BF5E6BF00FFB4C3 /* WeekView.swift in Sources */,
+				A07667B12BF5E6C600FFB4C3 /* WatchConnector.swift in Sources */,
+				A07667A52BF5E6BF00FFB4C3 /* HomePage.swift in Sources */,
+				A07667A02BF5E6BF00FFB4C3 /* PaceGraphView.swift in Sources */,
+				A07667A42BF5E6BF00FFB4C3 /* WorkoutView.swift in Sources */,
 				A023DE452BDF7B2A00242C58 /* SwimMateApp.swift in Sources */,
+				A07667A62BF5E6BF00FFB4C3 /* PreferencesView.swift in Sources */,
+				A076679E2BF5E6BF00FFB4C3 /* ChartView.swift in Sources */,
+				A07667B82BF5E6CF00FFB4C3 /* SwimSet.swift in Sources */,
+				A07667AB2BF5E6BF00FFB4C3 /* SetSummaryView.swift in Sources */,
+				A07667AC2BF5E6BF00FFB4C3 /* RootView.swift in Sources */,
+				A07667B72BF5E6CF00FFB4C3 /* Swim.swift in Sources */,
+				A07667A72BF5E6BF00FFB4C3 /* ProfilePage.swift in Sources */,
+				A07667A12BF5E6BF00FFB4C3 /* HealthKitPermissionView.swift in Sources */,
+				A07667AA2BF5E6BF00FFB4C3 /* SetPage.swift in Sources */,
+				A07667A82BF5E6BF00FFB4C3 /* SettingsView.swift in Sources */,
+				A07667A92BF5E6BF00FFB4C3 /* SetDetailView.swift in Sources */,
+				A07667A32BF5E6BF00FFB4C3 /* WorkoutHistoryView.swift in Sources */,
+				A076679F2BF5E6BF00FFB4C3 /* LineGraphView.swift in Sources */,
+				A07667B02BF5E6C600FFB4C3 /* Manager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -523,9 +518,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A0F0C80C2BDF7F0B00AF6D5B /* SwimSet.swift in Sources */,
+				A07667B92BF5E7D800FFB4C3 /* Swim.swift in Sources */,
+				A07667BA2BF5E7D800FFB4C3 /* SwimSet.swift in Sources */,
 				A0F0C7F92BDF7F0300AF6D5B /* WatchSwimMateApp.swift in Sources */,
-				A0F0C7FA2BDF7F0300AF6D5B /* iOSWatchConnector.swift in Sources */,
+				A0F0C7FA2BDF7F0300AF6D5B /* toiOSWatchConnector.swift in Sources */,
 				A0F0C7FB2BDF7F0300AF6D5B /* WatchManager.swift in Sources */,
 				A0F0C7FC2BDF7F0300AF6D5B /* SwimmingView.swift in Sources */,
 				A0F807222BF4856C0032D43B /* NavState.swift in Sources */,
