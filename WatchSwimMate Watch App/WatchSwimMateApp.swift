@@ -17,11 +17,23 @@ struct WatchSwimMate_Watch_App: App
     {
         WindowGroup
         {
-            NavigationStack(path: $watchManager.navigationPath) 
+            NavigationStack(path: $watchManager.path) 
             {
                 WatchRootView()
+                    .navigationDestination(for: NavState.self) { state in
+                        switch state 
+                        {
+                        case .workoutSetup:
+                            WorkoutSetupView()
+                        case .indoorPoolSetup:
+                            IndoorPoolSetupView()
+                        case .swimmingView(let set):
+                            SwimmingView(set: set)
+                        case .importSetView:
+                            ImportSetView()
+                        }
+                    }
             }
-//            WatchRootView()
 
             .sheet(isPresented: $watchManager.showingSummaryView)
             {

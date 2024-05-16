@@ -46,25 +46,22 @@ struct IndoorPoolSetupView: View
             {
                 showUnitPicker = true
             }
-            .sheet(isPresented: $showUnitPicker) {
-                UnitPickerView(selectedUnit: $manager.poolUnit)
+            .sheet(isPresented: $showUnitPicker) 
+            {
+                UnitPickerView()
             }
 
             Button("Start Workout") 
             {
                 manager.startWorkout()
-                showSwimmingView = true
                 // nav or action to start the workout
-            }
-            .navigationDestination(isPresented: $showSwimmingView) 
-            {
                 if (swimmySet != nil)
                 {
-                    SwimmingView(swimmySet: swimmySet)
+                    manager.path.append(NavState.swimmingView(set: swimmySet))
                 }
                 else
                 {
-                    SwimmingView(swimmySet: nil)
+                    manager.path.append(NavState.swimmingView(set: nil))
                 }
             }
         }

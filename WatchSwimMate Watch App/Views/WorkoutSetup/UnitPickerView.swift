@@ -9,40 +9,23 @@ import SwiftUI
 
 struct UnitPickerView: View 
 {
-    @Binding var selectedUnit: String
-    @Environment(\.dismiss) var dismiss
+    @EnvironmentObject var manager: WatchManager
 
-    var body: some View 
+    var body: some View
     {
         VStack 
         {
             Button("Meters")
             {
-                selectedUnit = "meters"
-                dismiss()
+                manager.poolUnit = "meters"
             }
 
 
             Button("Yards") 
             {
-                selectedUnit = "yards"
-                dismiss()
+                manager.poolUnit  = "yards"
             }
 
         }
-    }
-}
-//
-struct UnitPickerView_Previews: PreviewProvider {
-    struct PreviewWrapper: View {
-        @State private var selectedUnit = "meters"
-
-        var body: some View {
-            UnitPickerView(selectedUnit: $selectedUnit)
-        }
-    }
-
-    static var previews: some View {
-        PreviewWrapper()
     }
 }

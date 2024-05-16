@@ -53,6 +53,7 @@
 		A0F0C8192BDF852500AF6D5B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A0D5BAFC2BDC9319004D9B9C /* Preview Assets.xcassets */; };
 		A0F0C81B2BDF993200AF6D5B /* PreferencesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F0C81A2BDF993200AF6D5B /* PreferencesView.swift */; };
 		A0F0C81D2BDF9AE000AF6D5B /* SetSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F0C81C2BDF9AE000AF6D5B /* SetSummaryView.swift */; };
+		A0F807222BF4856C0032D43B /* NavState.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F807212BF4856C0032D43B /* NavState.swift */; };
 		A0FB9E302BDF7C1500F39829 /* WatchConnectivity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0FB9E2F2BDF7C1500F39829 /* WatchConnectivity.framework */; };
 		A0FB9E322BDF7C1F00F39829 /* WatchConnectivity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0FB9E312BDF7C1F00F39829 /* WatchConnectivity.framework */; };
 /* End PBXBuildFile section */
@@ -129,6 +130,7 @@
 		A0F0C7D42BDF7C5F00AF6D5B /* WatchSwimMate Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "WatchSwimMate Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0F0C81A2BDF993200AF6D5B /* PreferencesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesView.swift; sourceTree = "<group>"; };
 		A0F0C81C2BDF9AE000AF6D5B /* SetSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetSummaryView.swift; sourceTree = "<group>"; };
+		A0F807212BF4856C0032D43B /* NavState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavState.swift; sourceTree = "<group>"; };
 		A0F84B532BDDD034000BC6E1 /* SwimmingSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwimmingSummaryView.swift; sourceTree = "<group>"; };
 		A0F84B552BDDD59F000BC6E1 /* WatchSwimMate-Watch-App-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "WatchSwimMate-Watch-App-Info.plist"; sourceTree = SOURCE_ROOT; };
 		A0F84B562BDDE30E000BC6E1 /* GoalWorkoutSetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalWorkoutSetupView.swift; sourceTree = "<group>"; };
@@ -307,8 +309,9 @@
 				A07370DD2BDDCC450084C1DD /* WatchSwimMate Watch App.entitlements */,
 				A0D5BAF52BDC9318004D9B9C /* WatchSwimMateApp.swift */,
 				A037E3D12BDF4C0C0027F45C /* iOSWatchConnector.swift */,
-				A0D5BB272BDC955C004D9B9C /* watchViewModel */,
 				A0D5BB282BDC9572004D9B9C /* Views */,
+				A0D5BB272BDC955C004D9B9C /* watchViewModel */,
+				A0F807202BF485380032D43B /* WatchModel */,
 				A0D5BAF92BDC9319004D9B9C /* Assets.xcassets */,
 				A0D5BAFB2BDC9319004D9B9C /* Preview Content */,
 			);
@@ -359,6 +362,14 @@
 				A037E3CF2BDF41BA0027F45C /* PaceGraphView.swift */,
 			);
 			path = Charts;
+			sourceTree = "<group>";
+		};
+		A0F807202BF485380032D43B /* WatchModel */ = {
+			isa = PBXGroup;
+			children = (
+				A0F807212BF4856C0032D43B /* NavState.swift */,
+			);
+			path = WatchModel;
 			sourceTree = "<group>";
 		};
 		A0F84B582BDDE610000BC6E1 /* GoalViews */ = {
@@ -517,6 +528,7 @@
 				A0F0C7FA2BDF7F0300AF6D5B /* iOSWatchConnector.swift in Sources */,
 				A0F0C7FB2BDF7F0300AF6D5B /* WatchManager.swift in Sources */,
 				A0F0C7FC2BDF7F0300AF6D5B /* SwimmingView.swift in Sources */,
+				A0F807222BF4856C0032D43B /* NavState.swift in Sources */,
 				A0F0C7FD2BDF7F0300AF6D5B /* WorkoutControlsView.swift in Sources */,
 				A0F0C7FE2BDF7F0300AF6D5B /* SwimmingSummaryView.swift in Sources */,
 				A0F0C7FF2BDF7F0300AF6D5B /* SummaryMetricView.swift in Sources */,

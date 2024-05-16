@@ -158,6 +158,10 @@ class WatchManager: NSObject, ObservableObject
         showingSummaryView = true
     }
 
+    func resetNav()
+    {
+        path = NavigationPath()
+    }
 
     //TODO: needs to be updated for swimming
     // used to display stats for the watch while swimming

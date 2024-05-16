@@ -15,14 +15,14 @@ struct SwimmingView: View
     {
         case controls, metrics, set
     }
-    var swimmySet: SwimSet?
+    var set: SwimSet?
     @State private var selection: Tab
 
     // init to see if set exists
-    init(swimmySet: SwimSet?)
+    init(set: SwimSet?)
     {
-        self.swimmySet = swimmySet
-        _selection = State(initialValue: swimmySet != nil ? .set : .metrics)
+        self.set = set
+        _selection = State(initialValue: set != nil ? .set : .metrics)
     }
 
 
@@ -33,9 +33,9 @@ struct SwimmingView: View
         {
             WorkoutControlsView().tag(Tab.controls)
             MetricsView().tag(Tab.metrics)
-            if let swimmySet = swimmySet
+            if let set = set
             {
-                SetDisplayView(swimSet: swimmySet).tag(Tab.set)
+                SetDisplayView(swimSet: set).tag(Tab.set)
             }
         }
     }
@@ -54,7 +54,7 @@ struct SwimmingView_Previews: PreviewProvider
             description: "A challenging set designed to improve endurance and pace.",
             details: ["800 warmup mix", "10x100 on 1:30, descend 1-5, 6-10", "10x50 kick on 1:00", "500 cool down easy"]
         )
-        SwimmingView(swimmySet: sampleSet)
+        SwimmingView(set: sampleSet)
             .environmentObject(WatchManager())
     }
 }

@@ -38,9 +38,8 @@ struct WorkoutControlsView: View
                 
                 // end workout (not working because of the stack thing)
                 Button(action: {
-                    print(manager.navigationPath)
-                    manager.navigationPath = NavigationPath()
-                    print(manager.navigationPath)
+                    manager.resetNav()
+                    print(manager.path)
                     backToMain = true
 //                    manager.endWorkout()
 //                    showSummary = true

@@ -26,7 +26,7 @@ struct WatchRootView: View
                 
                 //TODO: Create an enum for states
                 Button(action: {
-                    manager.path.append(WorkoutSetupView())
+                    manager.path.append(NavState.workoutSetup)
                 }) 
                 {
                     VStack {

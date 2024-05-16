@@ -7,11 +7,10 @@
 
 import SwiftUI
 
-struct WorkoutSetupView: View, Hashable
+struct WorkoutSetupView: View
 {
     @EnvironmentObject var manager: WatchManager
     @State private var navigateToPoolSetup = false
-    @State private var showSwimmingView = false
     
     var body: some View
     {
@@ -21,29 +20,22 @@ struct WorkoutSetupView: View, Hashable
             Button("Pool")
             {
                 manager.isPool = true
-                navigateToPoolSetup = true
+                manager.path.append(NavState.indoorPoolSetup)
             }
             .padding()
             .foregroundColor(.white)
-            .navigationDestination(isPresented: $navigateToPoolSetup)
-            {
-               IndoorPoolSetupView()
-            }
+
             
             // open water swim
             Button("Open Water")
             {
                 manager.isPool = false
-                showSwimmingView = true
-                // navigate to SwimmingView
+                manager.path.append(NavState.swimmingView(set: nil))
                 manager.startWorkout()
             }
             .padding()
             .foregroundColor(.white)
-            .navigationDestination(isPresented: $showSwimmingView)
-            {
-                SwimmingView(swimmySet: nil)
-            }
+
         }
     }
 }
