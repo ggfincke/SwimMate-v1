@@ -125,10 +125,14 @@ class WatchManager: NSObject, ObservableObject
 
         workoutBuilder?.dataSource = HKLiveWorkoutDataSource(healthStore: healthStore,workoutConfiguration: configuration)
 
+        // enable WaterLock before starting the swim
+        WKInterfaceDevice.current().enableWaterLock()
+
         // start workout session and begin data collection
         let startDate = Date()
         workoutSession?.startActivity(with: startDate)
-        workoutBuilder?.beginCollection(withStart: startDate) { (success, error) in
+        workoutBuilder?.beginCollection(withStart: startDate)
+        { (success, error) in
             
         // workout has started
         }

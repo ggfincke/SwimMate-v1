@@ -4,6 +4,8 @@
 //
 //  Created by Garrett Fincke on 4/27/24.
 //
+
+
 import Foundation
 import HealthKit
 import SwiftUI
@@ -12,7 +14,7 @@ import WatchKit
 struct SwimmingSummaryView: View
 {
     @EnvironmentObject var manager: WatchManager
-    @Environment(\.dismiss) var dismiss
+    @Environment(\.dismiss) private var dismiss
     @State private var durationFormatter: DateComponentsFormatter = {
         let formatter = DateComponentsFormatter()
         formatter.allowedUnits = [.hour, .minute, .second]

@@ -7,83 +7,80 @@
 
 import SwiftUI
 
-struct GoalWorkoutSetupView: View 
+// changed to sheets instead of using the navStack
+struct GoalWorkoutSetupView: View
 {
     @EnvironmentObject var manager: WatchManager
-    @State private var navigateToRegSetup = false
-    @State private var navigateToDistanceSetup = false
-    @State private var navigateToTimeSetup = false
-    @State private var navigateToCalorieSetup = false
+    @State private var showRegSetupSheet = false
+    @State private var showDistanceSetupSheet = false
+    @State private var showTimeSetupSheet = false
+    @State private var showCalorieSetupSheet = false
 
-    var body: some View 
+    var body: some View
     {
-        NavigationStack
+        ScrollView
         {
-            ScrollView
+            VStack(spacing: 15)
             {
-                VStack(spacing: 15)
-                {
-                    Button("Open") {
-                        navigateToRegSetup = true
-                    }
-                    .padding()
-                    .foregroundColor(.white)
-                    .background(Color.green)
-                    .cornerRadius(8)
-                    .padding(.top)
-                    .padding(.horizontal)
-                    .navigationDestination(isPresented: $navigateToRegSetup)
-                    {
-                        WorkoutSetupView()
-                    }
-
-                    Button("Distance") {
-                        navigateToDistanceSetup = true
-                    }
-                    .padding()
-                    .foregroundColor(.white)
-                    .background(Color.blue)
-                    .cornerRadius(8)
-                    .padding(.horizontal)
-                    .navigationDestination(isPresented: $navigateToDistanceSetup)
-                    {
-                        DistanceSetupView().environmentObject(manager)
-                    }
-
-                    Button("Time") {
-                        navigateToTimeSetup = true
-                    }
-                    .padding()
-                    .foregroundColor(.white)
-                    .background(Color.red)
-                    .cornerRadius(8)
-                    .padding(.horizontal)
-                    .navigationDestination(isPresented: $navigateToTimeSetup)
-                    {
-                        TimeSetupView().environmentObject(manager)
-                    }
-
-//                    Button("Calorie") {
-//                        navigateToCalorieSetup = true
-//                    }
-//                    .padding()
-//                    .foregroundColor(.white)
-//                    .background(Color.orange)
-//                    .cornerRadius(8)
-//                    .padding(.horizontal)
-//                    .navigationDestination(isPresented: $navigateToCalorieSetup)
-//                    {
-//                        CalorieSetupView().environmentObject(manager)
-//                    }
+                Button("Open") {
+                    showRegSetupSheet = true
+                    manager.path.append(NavState.workoutSetup)
                 }
                 .padding()
+                .foregroundColor(.white)
+                .background(Color.green)
+                .cornerRadius(8)
+                .padding(.top)
+                .padding(.horizontal)
+
+
+                Button("Distance") {
+                    showDistanceSetupSheet = true
+                }
+                .padding()
+                .foregroundColor(.white)
+                .background(Color.blue)
+                .cornerRadius(8)
+                .padding(.horizontal)
+                .sheet(isPresented: $showDistanceSetupSheet)
+                {
+                    DistanceSetupView().environmentObject(manager)
+                }
+
+                Button("Time") {
+                    showTimeSetupSheet = true
+                }
+                .padding()
+                .foregroundColor(.white)
+                .background(Color.red)
+                .cornerRadius(8)
+                .padding(.horizontal)
+                .sheet(isPresented: $showTimeSetupSheet)
+                {
+                    TimeSetupView().environmentObject(manager)
+                }
+
+//                Button("Calorie") {
+//                    showCalorieSetupSheet = true
+//                }
+//                .padding()
+//                .foregroundColor(.white)
+//                .background(Color.orange)
+//                .cornerRadius(8)
+//                .padding(.horizontal)
+//                .sheet(isPresented: $showCalorieSetupSheet)
+//                {
+//                    CalorieSetupView().environmentObject(manager)
+//                }
             }
+            .padding()
         }
     }
 }
 
-#Preview 
+#Preview
 {
     GoalWorkoutSetupView()
         .environmentObject(WatchManager())
 }
+

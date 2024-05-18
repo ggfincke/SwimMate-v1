@@ -10,8 +10,8 @@ import SwiftUI
 struct DistanceSetupView: View 
 {
     @EnvironmentObject var manager: WatchManager
+    @Environment(\.dismiss) private var dismiss
     @State private var showWorkoutView = false
-
 
     var body: some View 
     {
@@ -49,13 +49,12 @@ struct DistanceSetupView: View
                 
                 Button("Continue")
                 {
-                    showWorkoutView = true
+                    manager.path.append(NavState.workoutSetup)
+                    dismiss()
                 }
                 .padding()
                 .foregroundColor(.white)
-                .navigationDestination(isPresented: $showWorkoutView) {
-                    WorkoutSetupView()
-                }
+                .cornerRadius(8)
             }
             .padding()
         }

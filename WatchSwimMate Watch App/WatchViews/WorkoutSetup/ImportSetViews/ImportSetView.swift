@@ -18,10 +18,12 @@ struct ImportSetView: View
     {
         List(watchConnector.receivedSets, id: \.self)
         { swimSet in
-            NavigationLink(destination: IndoorPoolSetupView(swimmySet: swimSet).environmentObject(watchConnector)
-                .environmentObject(manager))
+            Button(action: {
+                manager.path.append(NavState.swimmingView(set: swimSet))
+                manager.startWorkout()
+            })
             {
-                VStack(alignment: .leading)
+                VStack(alignment: .leading) 
                 {
                     Text(swimSet.title).font(.headline)
                     Text("\(swimSet.totalDistance) \(swimSet.measureUnit.rawValue) - \(swimSet.primaryStroke.rawValue)")

@@ -36,9 +36,10 @@ struct WatchRootView: View
                     .padding()
                 }
                 
-                //MARK: Fix all below
                 // Set Goal button
-                NavigationLink(destination: GoalWorkoutSetupView().environmentObject(manager))
+                Button(action: {
+                    manager.path.append(NavState.goalWorkoutSetup)
+                })
                 {
                     VStack
                     {
@@ -55,8 +56,11 @@ struct WatchRootView: View
             
             HStack
             {
+                //MARK: Fix all below
                 // Import Set button
-                NavigationLink(destination: ImportSetView().environmentObject(iosManager).environmentObject(manager))
+                Button(action: {
+                    manager.path.append(NavState.importSetView)
+                })
                 {
                     VStack
                     {
@@ -69,6 +73,7 @@ struct WatchRootView: View
                     .foregroundColor(.white)
                     .padding()
                 }
+                
                 // Settings button
                 Button(action: {
                     print("Settings tapped")
