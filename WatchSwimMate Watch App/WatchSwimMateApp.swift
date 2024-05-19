@@ -17,7 +17,6 @@ struct WatchSwimMate_Watch_App: App
     {
         WindowGroup
         {
-            // needs to use path from manager
             NavigationStack(path: $watchManager.path)
             {
                 WatchRootView()
@@ -37,15 +36,12 @@ struct WatchSwimMate_Watch_App: App
                         }
                     }
             }
-
             .sheet(isPresented: $watchManager.showingSummaryView)
             {
                 SwimmingSummaryView()
             }
             .environmentObject(watchManager)
             .environmentObject(iOSWatchConnector())
-
-
         }
     }
 }
