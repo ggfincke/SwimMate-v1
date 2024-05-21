@@ -37,6 +37,9 @@ class WatchManager: NSObject, ObservableObject
     
     // goals
     @Published var goalDistance: Double = 0
+    @Published var goalTime: TimeInterval = 0
+
+    // will remove at some point 
     @Published var goalHours: TimeInterval = 0
     @Published var goalMinutes: TimeInterval = 0
 

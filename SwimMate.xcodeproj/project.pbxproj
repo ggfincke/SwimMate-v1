@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		A004E51E2BE005DE008D3F11 /* WatchSwimMate Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = A0F0C7D42BDF7C5F00AF6D5B /* WatchSwimMate Watch App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		A023DE452BDF7B2A00242C58 /* SwimMateApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C0505F2BCC5D7A002450AD /* SwimMateApp.swift */; };
+		A0420A4E2BFC59480043C52F /* GoalProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0420A4D2BFC59480043C52F /* GoalProgressView.swift */; };
 		A076679E2BF5E6BF00FFB4C3 /* ChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07667892BF5E6BF00FFB4C3 /* ChartView.swift */; };
 		A076679F2BF5E6BF00FFB4C3 /* LineGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A076678A2BF5E6BF00FFB4C3 /* LineGraphView.swift */; };
 		A07667A02BF5E6BF00FFB4C3 /* PaceGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A076678B2BF5E6BF00FFB4C3 /* PaceGraphView.swift */; };
@@ -92,6 +93,7 @@
 
 /* Begin PBXFileReference section */
 		A037E3D12BDF4C0C0027F45C /* toiOSWatchConnector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = toiOSWatchConnector.swift; sourceTree = "<group>"; };
+		A0420A4D2BFC59480043C52F /* GoalProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalProgressView.swift; sourceTree = "<group>"; };
 		A07370CB2BDD3FC10084C1DD /* WorkoutSetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutSetupView.swift; sourceTree = "<group>"; };
 		A07370D12BDD86F90084C1DD /* IndoorPoolSetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndoorPoolSetupView.swift; sourceTree = "<group>"; };
 		A07370D32BDD8F1B0084C1DD /* UnitPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitPickerView.swift; sourceTree = "<group>"; };
@@ -166,6 +168,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A0420A4F2BFC595F0043C52F /* Subviews */ = {
+			isa = PBXGroup;
+			children = (
+				A0F84B662BDE9DB9000BC6E1 /* SummaryMetricView.swift */,
+				A0F84B642BDE9AED000BC6E1 /* ElapsedTimeView.swift */,
+			);
+			path = Subviews;
+			sourceTree = "<group>";
+		};
 		A07370D52BDD91610084C1DD /* WorkoutSetup */ = {
 			isa = PBXGroup;
 			children = (
@@ -182,11 +193,11 @@
 			isa = PBXGroup;
 			children = (
 				A07370D82BDDA1570084C1DD /* SwimmingView.swift */,
-				A07370DA2BDDA1BE0084C1DD /* WorkoutControlsView.swift */,
 				A0F84B532BDDD034000BC6E1 /* SwimmingSummaryView.swift */,
-				A0F84B662BDE9DB9000BC6E1 /* SummaryMetricView.swift */,
+				A0420A4D2BFC59480043C52F /* GoalProgressView.swift */,
+				A07370DA2BDDA1BE0084C1DD /* WorkoutControlsView.swift */,
 				A0F84B622BDE9AA2000BC6E1 /* MetricsView.swift */,
-				A0F84B642BDE9AED000BC6E1 /* ElapsedTimeView.swift */,
+				A0420A4F2BFC595F0043C52F /* Subviews */,
 			);
 			path = WorkoutViews;
 			sourceTree = "<group>";
@@ -538,6 +549,7 @@
 				A0F0C8072BDF7F0300AF6D5B /* CalorieSetupView.swift in Sources */,
 				A0F0C8082BDF7F0300AF6D5B /* WorkoutSetupView.swift in Sources */,
 				A0F0C8092BDF7F0300AF6D5B /* IndoorPoolSetupView.swift in Sources */,
+				A0420A4E2BFC59480043C52F /* GoalProgressView.swift in Sources */,
 				A0F0C80A2BDF7F0300AF6D5B /* UnitPickerView.swift in Sources */,
 				A0F0C80B2BDF7F0300AF6D5B /* WatchRootView.swift in Sources */,
 			);

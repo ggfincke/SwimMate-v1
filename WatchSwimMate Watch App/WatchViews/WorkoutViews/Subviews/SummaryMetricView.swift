@@ -23,6 +23,7 @@ struct SummaryMetricView: View
     }
 }
 
-#Preview {
+#Preview 
+{
     SummaryMetricView(title: "Swimming", value: "100")
 }
