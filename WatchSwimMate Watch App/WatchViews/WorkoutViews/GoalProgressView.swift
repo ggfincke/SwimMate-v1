@@ -7,16 +7,21 @@
 
 import SwiftUI
 
-struct GoalProgressView: View {
+struct GoalProgressView: View 
+{
     @EnvironmentObject var manager: WatchManager
 
-    var body: some View {
-        VStack(spacing: 20) {
+    var body: some View
+    {
+        VStack(spacing: 20) 
+        {
             Text("Goal Progress")
                 .font(.headline)
 
-            if manager.goalDistance > 0 {
-                VStack {
+            if manager.goalDistance > 0 
+            {
+                VStack 
+                {
                     Text("Distance Goal")
                     ProgressView(value: manager.distance, total: manager.goalDistance)
                         .progressViewStyle(LinearProgressViewStyle(tint: .blue))
@@ -25,8 +30,10 @@ struct GoalProgressView: View {
                 }
             }
 
-            if manager.goalTime > 0 {
-                VStack {
+            if manager.goalTime > 0 
+            {
+                VStack
+                {
                     Text("Time Goal")
                     ProgressView(value: manager.elapsedTime, total: manager.goalTime)
                         .progressViewStyle(LinearProgressViewStyle(tint: .green))
@@ -35,8 +42,10 @@ struct GoalProgressView: View {
                 }
             }
 
-            if manager.goalCalories > 0 {
-                VStack {
+            if manager.goalCalories > 0 
+            {
+                VStack
+                {
                     Text("Calorie Goal")
                     ProgressView(value: manager.activeEnergy, total: manager.goalCalories)
                         .progressViewStyle(LinearProgressViewStyle(tint: .red))
@@ -55,7 +64,8 @@ struct GoalProgressView: View {
     }
 }
 
-#Preview {
+#Preview
+{
     GoalProgressView()
         .environmentObject(WatchManager())
 }
