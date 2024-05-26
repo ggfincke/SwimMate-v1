@@ -19,10 +19,15 @@ struct MetricsView: View
             {
                 ElapsedTimeView(elapsedTime: manager.workoutBuilder?.elapsedTime ?? 0, showSubseconds: context.cadence == .live)
                     .foregroundStyle(.yellow)
+                
+                Text("\(Int(manager.distance.rounded())) \(manager.poolUnit == "meters" ? "m" : "yd")")
+
+                Text("\(laps) Laps")
+
+                Text(manager.heartRate.formatted(.number.precision(.fractionLength(0))) + " bpm")
+
                 Text(Measurement(value: manager.activeEnergy, unit: UnitEnergy.kilocalories)
                         .formatted(.measurement(width: .abbreviated, usage: .workout)))
-                Text(manager.heartRate.formatted(.number.precision(.fractionLength(0))) + " bpm")
-                Text("\(Int(manager.distance.rounded())) \(manager.poolUnit == "meters" ? "m" : "yd")")
 
             }
             .font(.system(.title, design: .rounded).monospacedDigit().lowercaseSmallCaps())
@@ -30,6 +35,16 @@ struct MetricsView: View
             .ignoresSafeArea(edges: .bottom)
             .scenePadding()
         }
+    }
+    
+    
+    var laps: Int
+    {
+        guard manager.poolUnit == "meters" || manager.poolUnit == "yards" else
+        {
+            return 0
+        }
+        return Int(manager.distance / (manager.poolUnit == "meters" ? 25.0 : 25.0 * 1.09361))
     }
 }
 

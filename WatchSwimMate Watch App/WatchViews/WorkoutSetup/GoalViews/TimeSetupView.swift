@@ -57,33 +57,6 @@ struct TimeSetupView: View
                 }
                 .padding()
                 
-//MARK: Old code 
-//                HStack {
-//                    Picker(selection: $manager.goalHours, label: Text("Hours"))
-//                    {
-//                        ForEach(hours, id: \.self) { hour in
-//                            Text(String(format: "%02d", hour)).tag(hour)
-//                        }
-//                    }
-//                    .labelsHidden()
-//                    .frame(width: 50, height: 50)
-//                    .clipped()
-//                    
-//                    Text(":")
-//                        .foregroundColor(.green)
-//                    
-//                    Picker(selection: $manager.goalMinutes, label: Text("Minutes"))
-//                    {
-//                        ForEach(minutes, id: \.self) { minute in
-//                            Text(String(format: "%02d", minute)).tag(minute)
-//                        }
-//                    }
-//                    .labelsHidden()
-//                    .frame(width: 50, height: 50)
-//                    .clipped()
-//                }
-//                .padding()
-                
                 Button("Continue")
                 {
                     manager.path.append(NavState.workoutSetup)

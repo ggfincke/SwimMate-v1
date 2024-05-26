@@ -21,7 +21,6 @@ struct SwimmingSummaryView: View
         return formatter
     }()
     
-//    @Binding var path: [Int]  // <--- here
     var body: some View
     {
         if manager.workout == nil

@@ -153,7 +153,7 @@ class WatchManager: NSObject, ObservableObject
         workoutSession?.resume()
     }
 
-    // pause/resume
+    // toggle pause/resume
     func togglePause()
     {
         if running == true
@@ -166,7 +166,8 @@ class WatchManager: NSObject, ObservableObject
         }
     }
 
-    func endWorkout() 
+    // end workout
+    func endWorkout()
     {
         workoutSession?.end()
         showingSummaryView = true

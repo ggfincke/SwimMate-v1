@@ -59,19 +59,19 @@ struct GoalWorkoutSetupView: View
                 {
                     TimeSetupView().environmentObject(manager)
                 }
-
-//                Button("Calorie") {
-//                    showCalorieSetupSheet = true
-//                }
-//                .padding()
-//                .foregroundColor(.white)
-//                .background(Color.orange)
-//                .cornerRadius(8)
-//                .padding(.horizontal)
-//                .sheet(isPresented: $showCalorieSetupSheet)
-//                {
-//                    CalorieSetupView().environmentObject(manager)
-//                }
+                
+                Button("Calorie") {
+                    showCalorieSetupSheet = true
+                }
+                .padding()
+                .foregroundColor(.white)
+                .background(Color.yellow)
+                .cornerRadius(8)
+                .padding(.horizontal)
+                .sheet(isPresented: $showCalorieSetupSheet)
+                {
+                    CalorieSetupView().environmentObject(manager)
+                }
             }
             .padding()
         }
