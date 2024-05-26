@@ -27,7 +27,7 @@ struct SwimmingSummaryView: View
         {
             ProgressView("Saving Workout")
                 .navigationBarHidden(true)
-        } 
+        }
         else
         {
             ScrollView 

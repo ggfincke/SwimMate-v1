@@ -205,7 +205,8 @@ class WatchManager: NSObject, ObservableObject
         }
     
     // update lap count
-    func updateLapsCount(from workout: HKWorkout) {
+    func updateLapsCount(from workout: HKWorkout) 
+    {
         if let events = workout.workoutEvents {
             let lapEvents = events.filter { $0.type == .lap }
             self.laps = lapEvents.count
@@ -232,28 +233,28 @@ extension WatchManager: HKWorkoutSessionDelegate
     func workoutSession(_ workoutSession: HKWorkoutSession,
                         didChangeTo toState: HKWorkoutSessionState,
                         from fromState: HKWorkoutSessionState,
-                        date: Date) 
+                        date: Date)
     {
         DispatchQueue.main.async 
         {
             self.running = toState == .running
         }
 
-        // wait for the session to transition states before ending the builder.
         if toState == .ended 
         {
-            workoutBuilder?.endCollection(withEnd: date) 
-            { (success, error) in
-                self.workoutBuilder?.finishWorkout 
-                { (workout, error) in
-                    if let workout = workout
+            self.workoutBuilder?.endCollection(withEnd: date) { (success, error) in
+                self.workoutBuilder?.finishWorkout { (workout, error) in
+                    DispatchQueue.main.async 
                     {
-                        self.updateLapsCount(from: workout)
+                        self.workout = workout
+                        self.updateLapsCount(from: workout!)  // Ensure laps are updated
+                        print("Workout finished: \(String(describing: workout))")
                     }
                 }
             }
         }
     }
+
 
     // failed with error
     func workoutSession(_ workoutSession: HKWorkoutSession, didFailWithError error: Error) 
