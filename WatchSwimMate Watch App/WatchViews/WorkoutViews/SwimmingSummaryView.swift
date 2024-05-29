@@ -26,7 +26,7 @@ struct SwimmingSummaryView: View
         if manager.workout == nil
         {
             ProgressView("Saving Workout")
-                .navigationBarHidden(true)
+//                .navigationBarHidden(true)
         }
         else
         {
