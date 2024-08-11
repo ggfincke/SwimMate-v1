@@ -99,6 +99,7 @@ class WatchManager: NSObject, ObservableObject
         configuration.activityType = .swimming
         configuration.swimmingLocationType = isPool ? .pool : .openWater
 
+
         if isPool
         {
             if poolUnit == "meters"
@@ -175,41 +176,35 @@ class WatchManager: NSObject, ObservableObject
 
     //TODO: needs to be updated for swimming
     // used to display stats for the watch while swimming
-    func updateForStatistics(_ statistics: HKStatistics?)
-    {
-            guard let statistics = statistics else 
-        { return }
-
-            DispatchQueue.main.async
-        {
-                switch statistics.quantityType 
-            {
-                // heartrate
-                case HKQuantityType.quantityType(forIdentifier: .heartRate):
-                    let heartRateUnit = HKUnit.count().unitDivided(by: HKUnit.minute())
-                    self.heartRate = statistics.mostRecentQuantity()?.doubleValue(for: heartRateUnit) ?? 0
-                    self.averageHeartRate = statistics.averageQuantity()?.doubleValue(for: heartRateUnit) ?? 0
-                // calories
-                case HKQuantityType.quantityType(forIdentifier: .activeEnergyBurned):
-                    let energyUnit = HKUnit.kilocalorie()
-                    self.activeEnergy = statistics.sumQuantity()?.doubleValue(for: energyUnit) ?? 0
-                // total swim distance (calculate laps using pool lengths?)
-                case HKQuantityType.quantityType(forIdentifier: .distanceSwimming):
-                    let meterUnit = HKUnit.meter()
-                    self.distance = statistics.sumQuantity()?.doubleValue(for: meterUnit) ?? 0
-
-                default:
-                    return
-                }
+    func updateForStatistics(_ statistics: HKStatistics?) {
+        guard let statistics = statistics else {
+            return
+        }
+        
+        DispatchQueue.main.async {
+            switch statistics.quantityType {
+            case HKQuantityType.quantityType(forIdentifier: .heartRate):
+                let heartRateUnit = HKUnit.count().unitDivided(by: HKUnit.minute())
+                self.heartRate = statistics.mostRecentQuantity()?.doubleValue(for: heartRateUnit) ?? 0
+                self.averageHeartRate = statistics.averageQuantity()?.doubleValue(for: heartRateUnit) ?? 0
+            case HKQuantityType.quantityType(forIdentifier: .activeEnergyBurned):
+                let energyUnit = HKUnit.kilocalorie()
+                self.activeEnergy = statistics.sumQuantity()?.doubleValue(for: energyUnit) ?? 0
+            case HKQuantityType.quantityType(forIdentifier: .distanceSwimming):
+                let distanceUnit = HKUnit.meter()
+                self.distance = statistics.sumQuantity()?.doubleValue(for: distanceUnit) ?? 0
+            default:
+                return
             }
         }
+    }
     
     // update lap count
-    func updateLapsCount(from workout: HKWorkout) 
-    {
-        if let events = workout.workoutEvents {
-            let lapEvents = events.filter { $0.type == .lap }
-            self.laps = lapEvents.count
+    func updateLapsCount(from workout: HKWorkout) {
+        if let distance = workout.totalDistance, let poolLength = workoutBuilder?.workoutConfiguration.lapLength {
+            self.laps = Int(round(distance.doubleValue(for: .meter()) / poolLength.doubleValue(for: .meter())))
+        } else {
+            self.laps = 0
         }
     }
     
