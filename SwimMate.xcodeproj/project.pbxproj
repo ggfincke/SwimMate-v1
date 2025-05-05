@@ -32,6 +32,7 @@
 		A07667B82BF5E6CF00FFB4C3 /* SwimSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07667B42BF5E6CF00FFB4C3 /* SwimSet.swift */; };
 		A07667B92BF5E7D800FFB4C3 /* Swim.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07667B32BF5E6CF00FFB4C3 /* Swim.swift */; };
 		A07667BA2BF5E7D800FFB4C3 /* SwimSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07667B42BF5E6CF00FFB4C3 /* SwimSet.swift */; };
+		A08761772DC90A0000BD4402 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = A08761762DC909FC00BD4402 /* README.md */; };
 		A0C050642BCC5D7B002450AD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A0C050632BCC5D7B002450AD /* Assets.xcassets */; };
 		A0C050672BCC5D7B002450AD /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A0C050662BCC5D7B002450AD /* Preview Assets.xcassets */; };
 		A0F0C7F92BDF7F0300AF6D5B /* WatchSwimMateApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D5BAF52BDC9318004D9B9C /* WatchSwimMateApp.swift */; };
@@ -120,6 +121,7 @@
 		A07667B22BF5E6CF00FFB4C3 /* store.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = store.json; sourceTree = "<group>"; };
 		A07667B32BF5E6CF00FFB4C3 /* Swim.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Swim.swift; sourceTree = "<group>"; };
 		A07667B42BF5E6CF00FFB4C3 /* SwimSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwimSet.swift; sourceTree = "<group>"; };
+		A08761762DC909FC00BD4402 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		A0B2B5112BDF6C3C007863C2 /* SetDisplayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetDisplayView.swift; sourceTree = "<group>"; };
 		A0C0505F2BCC5D7A002450AD /* SwimMateApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwimMateApp.swift; sourceTree = "<group>"; };
 		A0C050632BCC5D7B002450AD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -288,6 +290,7 @@
 		A0C050532BCC5D7A002450AD = {
 			isa = PBXGroup;
 			children = (
+				A08761762DC909FC00BD4402 /* README.md */,
 				A0C0505E2BCC5D7A002450AD /* SwimMate */,
 				A0D5BAF42BDC9318004D9B9C /* WatchSwimMate Watch App */,
 				A0D5BAEA2BDC90E5004D9B9C /* Frameworks */,
@@ -482,6 +485,7 @@
 			files = (
 				A07667B62BF5E6CF00FFB4C3 /* store.json in Resources */,
 				A0C050672BCC5D7B002450AD /* Preview Assets.xcassets in Resources */,
+				A08761772DC90A0000BD4402 /* README.md in Resources */,
 				A0C050642BCC5D7B002450AD /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
