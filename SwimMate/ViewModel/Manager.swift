@@ -5,7 +5,6 @@
 //  Created by Garrett Fincke on 4/4/24.
 //
 
-// TODO: PREP FOR REACT NATIVE MOVE
 // the iOS manager/view model
 import Foundation
 import HealthKit

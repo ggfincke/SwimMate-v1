@@ -1,45 +1,36 @@
-//
-//  RootView.swift
-//  SwimMate
-//
-//  Created by Garrett Fincke on 4/14/24.
-//
+// SwimMate/iOSViews/RootView.swift
 
 import SwiftUI
 
-// rootView for the project
-struct RootView: View
-{
-    @EnvironmentObject var manager : Manager
-    @EnvironmentObject var watchOSManager : WatchConnector
-
+struct RootView: View {
+    @EnvironmentObject var manager: Manager
+    @EnvironmentObject var watchOSManager: WatchConnector
+    
     @State private var selectedTab = 0
 
-    var body: some View
-    {
-        // different tab views
-        TabView(selection: $selectedTab)
-        {
+    var body: some View {
+        TabView(selection: $selectedTab) {
             HomePage()
-                .tabItem 
-            {
-                Label("Home", systemImage: "house")
-            }
+                .environmentObject(manager)
+                .tabItem {
+                    Label("Home", systemImage: "house")
+                }
+                .tag(0)
             
             SetPage()
                 .environmentObject(manager)
                 .environmentObject(watchOSManager)
-                .tabItem
-            {
-                Label("Sets", systemImage: "list.dash")
-            }
+                .tabItem {
+                    Label("Sets", systemImage: "list.bullet")
+                }
+                .tag(1)
             
-            ProfilePage()
-                .tabItem 
-            {
-                Label("Profile", systemImage: "person.crop.circle")
-            }
-            
+            LogbookView()
+                .environmentObject(manager)
+                .tabItem {
+                    Label("Logbook", systemImage: "book.closed")
+                }
+                .tag(2)
         }
     }
 }
@@ -47,4 +38,5 @@ struct RootView: View
 #Preview {
     RootView()
         .environmentObject(Manager())
+        .environmentObject(WatchConnector())
 }

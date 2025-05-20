@@ -1,36 +1,52 @@
-//
-//  HomePage.swift
-//  SwimMate
-//
-//  Created by Garrett Fincke on 4/14/24.
-//
+// SwimMate/iOSViews/HomeView/HomePage
 
 import SwiftUI
+import Charts
 
-// homepage
-struct HomePage: View
-{
-    @EnvironmentObject var manager : Manager
-
-    var body: some View
-    {
-        VStack
-        {
-            Text("SwimMate")
-                .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
-                .bold()
-            WeekView()
-                .padding(.bottom, -20)
-            ChartView()
-                .environmentObject(manager)
+// HomePage
+struct HomePage: View {
+    @EnvironmentObject var manager: Manager
+    @State private var showingSettings = false
+    
+    var body: some View {
+        NavigationStack {
+            ScrollView {
+                VStack(spacing: 20) {
+                    // weekly summary card
+                    WeeklySummaryCard()
+                        .environmentObject(manager)
+                    
+                    // recent activity card
+                    RecentActivityCard()
+                        .environmentObject(manager)
+                    
+                    // distance chart
+                    DistanceChartCard()
+                        .environmentObject(manager)
+                }
                 .padding()
-            WorkoutHistoryView()
-            
+            }
+            .navigationTitle("SwimMate")
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button(action: {
+                        showingSettings = true
+                    }) {
+                        Image(systemName: "person.crop.circle")
+                            .font(.title2)
+                    }
+                }
+            }
+            .sheet(isPresented: $showingSettings) {
+                NavigationStack {
+                    SettingsView()
+                }
+            }
         }
     }
 }
 
-//#Preview {
-//    HomePage()
-//        .environmentObject(Manager(withTestData: true))
-//}
+#Preview {
+    HomePage()
+        .environmentObject(Manager())
+}

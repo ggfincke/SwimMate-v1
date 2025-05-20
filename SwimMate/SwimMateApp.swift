@@ -1,9 +1,4 @@
-//
-//  SwimMateApp.swift
-//  SwimMate
-//
-//  Created by Garrett Fincke on 4/4/24.
-//
+// SwimMate/SwimMateApp.swift
 
 // TODO: PREP FOR REACT NATIVE MOVE
 

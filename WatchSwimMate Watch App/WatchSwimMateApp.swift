@@ -5,8 +5,6 @@
 //  Created by Garrett Fincke on 4/26/24.
 //
 
-// TODO: PREP FOR REACT NATIVE MOVE
-
 import SwiftUI
 import HealthKit
 
