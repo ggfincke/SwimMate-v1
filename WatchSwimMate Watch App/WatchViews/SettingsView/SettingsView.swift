@@ -1,4 +1,8 @@
 // Settings View implementation
+
+import SwiftUI
+
+// settings
 struct SettingsView: View
 {
     @EnvironmentObject var manager: WatchManager

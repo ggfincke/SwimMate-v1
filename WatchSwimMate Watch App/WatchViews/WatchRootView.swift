@@ -1,107 +1,63 @@
-//
-//  WatchRootView.swift
-//  WatchSwimMate Watch App
-//
-//  Created by Garrett Fincke on 4/27/24.
-//
-
+// watchrootview
 
 import SwiftUI
 
-// TODO: Fix the rest of the navigation
-struct WatchRootView: View
-{
+struct WatchRootView: View {
     @EnvironmentObject var manager: WatchManager
     @EnvironmentObject var iosManager: iOSWatchConnector
+    @State private var showSettings = false
 
-    var body: some View 
-    {
-        VStack
-        {
-            HStack
-            {
-                // Quick Start button
-                Button(action: {
+    var body: some View {
+        ScrollView(.vertical) {
+            VStack(spacing: 12) {
+                Text("SwimMate")
+                    .font(.system(size: 14, weight: .semibold, design: .rounded))
+                    .foregroundStyle(.secondary)
+                
+                ActionButton(
+                    label: "Quick Start",
+                    icon: "bolt.fill",
+                    tint: Color.green
+                ) {
                     manager.path.append(NavState.workoutSetup)
-                }) 
-                {
-                    VStack {
-                        Image(systemName: "bolt.fill")
-                            .resizable()
-                            .frame(width: 20, height: 30)
-                    }
-                    .frame(width: 60, height: 60)
-                    .background(Circle().fill(Color.green))
-                    .foregroundColor(.white)
-                    .padding()
                 }
                 
-                // Set Goal button
-                Button(action: {
+                ActionButton(
+                    label: "Set Goal",
+                    icon: "target",
+                    tint: Color.blue
+                ) {
                     manager.path.append(NavState.goalWorkoutSetup)
-                })
-                {
-                    VStack
-                    {
-                        Image(systemName: "target")
-                            .resizable()
-                            .frame(width: 30, height: 30)
-                    }
-                    .frame(width: 60, height: 60)
-                    .background(Circle().fill(Color.blue))
-                    .foregroundColor(.white)
-                    .padding()
-                }
-            }
-            
-            HStack
-            {
-                //MARK: Fix all below
-                // Import Set button
-                Button(action: {
-                    manager.path.append(NavState.importSetView)
-                })
-                {
-                    VStack
-                    {
-                        Image(systemName: "square.and.arrow.down.fill")
-                            .resizable()
-                            .frame(width: 30, height: 30)
-                    }
-                    .frame(width: 60, height: 60)
-                    .background(Circle().fill(Color.orange))
-                    .foregroundColor(.white)
-                    .padding()
                 }
                 
-                // Settings button
-                Button(action: {
-                    print("Settings tapped")
-                })
-                {
-                    VStack
-                    {
-                        Image(systemName: "gear")
-                            .resizable()
-                            .frame(width: 30, height: 30)
-                    }
-                    .frame(width: 60, height: 60)
-                    .background(Circle().fill(Color.gray))
-                    .foregroundColor(.white)
-                    .padding()
+                ActionButton(
+                    label: "Import Set",
+                    icon: "square.and.arrow.down.fill",
+                    tint: Color.orange
+                ) {
+                    manager.path.append(NavState.importSetView)
+                }
+                
+                ActionButton(
+                    label: "Settings",
+                    icon: "gear",
+                    tint: Color.gray
+                ) {
+                    showSettings = true
                 }
             }
+            .padding(.horizontal, 8)
+            .padding(.bottom, 12)
+            .frame(maxHeight: .infinity, alignment: .top)
         }
-        .onAppear
-        {
-            manager.requestAuthorization()
+        .ignoresSafeArea(.container, edges: .top) 
+        .sheet(isPresented: $showSettings) {
+            SettingsView()
         }
     }
-
 }
 
-#Preview
-{
+#Preview {
     WatchRootView()
         .environmentObject(WatchManager())
         .environmentObject(iOSWatchConnector())
