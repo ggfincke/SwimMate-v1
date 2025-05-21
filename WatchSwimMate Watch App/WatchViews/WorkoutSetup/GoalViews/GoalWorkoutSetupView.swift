@@ -1,86 +1,81 @@
-//
-//  GoalWorkoutSetupView.swift
-//  WatchSwimMate Watch App
-//
-//  Created by Garrett Fincke on 4/27/24.
-//
+// GoalWorkoutSetupView
 
 import SwiftUI
 
-// changed to sheets instead of using the navStack
-struct GoalWorkoutSetupView: View
-{
+struct GoalWorkoutSetupView: View {
     @EnvironmentObject var manager: WatchManager
-    @State private var showRegSetupSheet = false
     @State private var showDistanceSetupSheet = false
     @State private var showTimeSetupSheet = false
     @State private var showCalorieSetupSheet = false
 
-    var body: some View
-    {
-        ScrollView
-        {
-            VStack(spacing: 15)
-            {
-                Button("Open") {
-                    showRegSetupSheet = true
-                    manager.path.append(NavState.workoutSetup)
-                }
-                .padding()
-                .foregroundColor(.white)
-                .background(Color.green)
-                .cornerRadius(8)
-                .padding(.top)
-                .padding(.horizontal)
-
-
-                Button("Distance") {
+    var body: some View {
+        ScrollView {
+            VStack(spacing: 20) {
+                Text("Set Your Goal")
+                    .font(.headline)
+                
+                // distance goal
+                ActionButton(
+                    label: "Distance",
+                    icon: "figure.pool.swim",
+                    tint: .blue
+                )
+                {
                     showDistanceSetupSheet = true
                 }
-                .padding()
-                .foregroundColor(.white)
-                .background(Color.blue)
-                .cornerRadius(8)
-                .padding(.horizontal)
-                .sheet(isPresented: $showDistanceSetupSheet)
-                {
-                    DistanceSetupView().environmentObject(manager)
-                }
 
-                Button("Time") {
+                // time goal
+                ActionButton(
+                    label: "Time",
+                    icon: "clock.arrow.circlepath",
+                    tint: .red
+                )
+                {
                     showTimeSetupSheet = true
                 }
-                .padding()
-                .foregroundColor(.white)
-                .background(Color.red)
-                .cornerRadius(8)
-                .padding(.horizontal)
-                .sheet(isPresented: $showTimeSetupSheet)
+
+                // calorie goal
+                ActionButton(
+                    label: "Calories",
+                    icon: "flame.fill",
+                    tint: .orange
+                )
                 {
-                    TimeSetupView().environmentObject(manager)
-                }
-                
-                Button("Calorie") {
                     showCalorieSetupSheet = true
                 }
-                .padding()
-                .foregroundColor(.white)
-                .background(Color.yellow)
-                .cornerRadius(8)
-                .padding(.horizontal)
-                .sheet(isPresented: $showCalorieSetupSheet)
-                {
-                    CalorieSetupView().environmentObject(manager)
+
+                // open workout (no goal)
+                ActionButton(
+                    label: "Open",
+                    icon: "play.circle.fill",
+                    tint: .green
+                ) {
+                    manager.path.append(NavState.workoutSetup)
                 }
             }
-            .padding()
+            .padding(.horizontal, 16)
+            .padding(.bottom, 16)
         }
+        .navigationTitle("Goal Setup")
+        // sheets for goal setup (temporary; needs to go further in Navstack) 
+        .sheet(isPresented: $showDistanceSetupSheet) {
+            DistanceSetupView().environmentObject(manager)
+        }
+        .sheet(isPresented: $showTimeSetupSheet) {
+            TimeSetupView().environmentObject(manager)
+        }
+        .sheet(isPresented: $showCalorieSetupSheet) {
+            CalorieSetupView().environmentObject(manager)
+        }
+    }
+    
+    // check if any goals are active
+    private var hasActiveGoals: Bool {
+        return manager.goalDistance > 0 || manager.goalTime > 0 || manager.goalCalories > 0
     }
 }
 
-#Preview
-{
+#Preview {
     GoalWorkoutSetupView()
         .environmentObject(WatchManager())
 }
-

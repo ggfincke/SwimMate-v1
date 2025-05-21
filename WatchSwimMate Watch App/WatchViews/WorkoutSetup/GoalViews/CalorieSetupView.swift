@@ -1,71 +1,31 @@
-//
-//  CalorieSetupView.swift
-//  WatchSwimMate Watch App
-//
-//  Created by Garrett Fincke on 4/27/24.
-//
-
 import SwiftUI
 
-struct CalorieSetupView: View
-{
+struct CalorieSetupView: View {
     @EnvironmentObject var manager: WatchManager
     @Environment(\.dismiss) private var dismiss
-    @State private var showWorkoutView = false
-
-    var body: some View 
-    {
-        NavigationStack 
-        {
-            VStack(spacing: 10)
-            {
-                Text("Set Calorie Goal")
-                    .font(.headline)
-                    .padding()
-                
-                Text("\(Int(manager.goalCalories)) kcal")
-                    .padding()
-                
-                HStack
-                {
-                    Button(action: {
-                        if manager.goalCalories > 0 {
-                            manager.goalCalories -= 1
-                        }
-                    }) 
-                    {
-                        Image(systemName: "minus.circle.fill")
-                            .foregroundColor(.red)
-                    }
-                    
-                    Button(action: {
-                        manager.goalCalories += 1
-                    }) 
-                    {
-                        Image(systemName: "plus.circle.fill")
-                            .foregroundColor(.green)
-                    }
-                }
-                .digitalCrownRotation($manager.goalCalories, from: 0, through: 1000, by: 1, sensitivity: .low, isContinuous: false)
-                
-                Button("Continue") { 
-                    manager.path.append(NavState.workoutSetup)
-                    dismiss()
-                }
-                .padding()
-                .background(Color.green)
-                .foregroundColor(.white)
-                .cornerRadius(8)
+    
+    // quick select for calories
+    private let caloriePresets = [100, 200, 300, 500, 750]
+    
+    var body: some View {
+        GoalSetupView(
+            title: "Calorie Goal",
+            unit: "kcal",
+            accentColor: .orange,
+            presetValues: caloriePresets,
+            minValue: 0,
+            maxValue: 2000,
+            stepValue: 5,
+            sensitivity: .medium,
+            value: $manager.goalCalories,
+            onDismiss: {
+                dismiss()
             }
-            .padding()
-        }
+        )
     }
 }
 
-
-
-#Preview 
-{
+#Preview {
     CalorieSetupView()
         .environmentObject(WatchManager())
 }

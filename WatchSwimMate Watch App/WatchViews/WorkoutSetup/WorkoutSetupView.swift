@@ -1,50 +1,44 @@
-//
-//  WorkoutSetupView.swift
-//  WatchSwimMate Watch App
-//
-//  Created by Garrett Fincke on 4/27/24.
-//
+// WorkoutSetupView
 
 import SwiftUI
 
-struct WorkoutSetupView: View
-{
+struct WorkoutSetupView: View {
     @EnvironmentObject var manager: WatchManager
-    @State private var navigateToPoolSetup = false
     
-    var body: some View
-    {
-        VStack
-        {
+    var body: some View {
+        VStack(spacing: 20) {
+            Text("Choose Swim Type")
+                .font(.headline)
+                .padding(.top, 8)
+            
             // pool swim
-            Button("Pool")
-            {
+            ActionButton(
+                label: "Pool",
+                icon: "figure.pool.swim",
+                tint: .blue
+            ) {
                 manager.isPool = true
                 manager.path.append(NavState.indoorPoolSetup)
             }
-            .padding()
-            .foregroundColor(.white)
-
             
             // open water swim
-            Button("Open Water")
-            {
+            ActionButton(
+                label: "Open Water",
+                icon: "water.waves",
+                tint: .teal
+            ) {
                 manager.isPool = false
-                manager.path.append(NavState.swimmingView(set: nil))
+                // start workout immediately for open water
                 manager.startWorkout()
+                manager.path.append(NavState.swimmingView(set: nil))
             }
-            .padding()
-            .foregroundColor(.white)
-
         }
+        .padding(.horizontal, 16)
+        .navigationTitle("Workout")
     }
 }
 
-
-#Preview
-{
-    
+#Preview {
     WorkoutSetupView()
         .environmentObject(WatchManager())
-
 }

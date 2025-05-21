@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		A004E51E2BE005DE008D3F11 /* WatchSwimMate Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = A0F0C7D42BDF7C5F00AF6D5B /* WatchSwimMate Watch App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		A00E2E5D2DDDABDB005C30DE /* GoalSetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00E2E5C2DDDABDB005C30DE /* GoalSetupView.swift */; };
 		A011482A2DDD055B00B701D7 /* LogbookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A01148292DDD055B00B701D7 /* LogbookView.swift */; };
 		A011483A2DDD164A00B701D7 /* WeeklySummaryCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = A01148392DDD164A00B701D7 /* WeeklySummaryCard.swift */; };
 		A011483C2DDD165E00B701D7 /* RecentActivityCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = A011483B2DDD165E00B701D7 /* RecentActivityCard.swift */; };
@@ -98,6 +99,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		A00E2E5C2DDDABDB005C30DE /* GoalSetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalSetupView.swift; sourceTree = "<group>"; };
 		A01148292DDD055B00B701D7 /* LogbookView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogbookView.swift; sourceTree = "<group>"; };
 		A01148392DDD164A00B701D7 /* WeeklySummaryCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklySummaryCard.swift; sourceTree = "<group>"; };
 		A011483B2DDD165E00B701D7 /* RecentActivityCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentActivityCard.swift; sourceTree = "<group>"; };
@@ -317,6 +319,7 @@
 		A0BFBA052DDD7C3C002B96A8 /* GeneralViews */ = {
 			isa = PBXGroup;
 			children = (
+				A00E2E5C2DDDABDB005C30DE /* GoalSetupView.swift */,
 				A0BFBA042DDD7C3C002B96A8 /* ActionButton.swift */,
 			);
 			path = GeneralViews;
@@ -596,6 +599,7 @@
 				A0BFBA272DDD7C3C002B96A8 /* WorkoutSetupView.swift in Sources */,
 				A0BFBA282DDD7C3C002B96A8 /* DistanceSetupView.swift in Sources */,
 				A0BFBA292DDD7C3C002B96A8 /* UnitPickerView.swift in Sources */,
+				A00E2E5D2DDDABDB005C30DE /* GoalSetupView.swift in Sources */,
 				A0BFBA2A2DDD7C3C002B96A8 /* SummaryMetricView.swift in Sources */,
 				A0BFBA2B2DDD7C3C002B96A8 /* IndoorPoolSetupView.swift in Sources */,
 				A0BFBA2C2DDD7C3C002B96A8 /* SettingsView.swift in Sources */,
