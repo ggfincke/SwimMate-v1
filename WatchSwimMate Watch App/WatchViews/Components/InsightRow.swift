@@ -33,3 +33,32 @@ struct InsightRow: View
         .padding(.vertical, 6)
     }
 }
+
+// preview
+#Preview
+{
+    VStack(spacing: 8)
+    {
+        InsightRow(
+            icon: "heart.fill",
+            title: "Avg Heart Rate",
+            value: "142 bpm",
+            color: .red
+        )
+        
+        InsightRow(
+            icon: "flame.fill",
+            title: "Calories Burned",
+            value: "324 cal",
+            color: .orange
+        )
+        
+        InsightRow(
+            icon: "timer",
+            title: "Duration",
+            value: "45:30",
+            color: .blue
+        )
+    }
+    .padding()
+}

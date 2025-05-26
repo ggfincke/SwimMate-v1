@@ -1,4 +1,4 @@
-// StepView
+// StepView.swift
 
 import SwiftUI
 
@@ -40,7 +40,8 @@ struct StepView: View {
     private func getEncouragementText() -> String {
         let progress = Double(stepNumber) / Double(totalSteps)
         
-        switch progress {
+        switch progress
+        {
         case 0..<0.3:
             return "Let's get started! 🏊‍♂️"
         case 0.3..<0.6:
@@ -50,5 +51,33 @@ struct StepView: View {
         default:
             return "Final push! 🔥"
         }
+    }
+}
+
+// preview
+#Preview {
+    ScrollView
+    {
+        VStack(spacing: 20)
+        {
+            StepView(
+                step: "Warm up with 4 x 50m freestyle at easy pace",
+                stepNumber: 1,
+                totalSteps: 8
+            )
+            
+            StepView(
+                step: "Main set: 8 x 100m freestyle at moderate pace",
+                stepNumber: 5,
+                totalSteps: 8
+            )
+            
+            StepView(
+                step: "Cool down with 200m easy backstroke",
+                stepNumber: 8,
+                totalSteps: 8
+            )
+        }
+        .padding()
     }
 }

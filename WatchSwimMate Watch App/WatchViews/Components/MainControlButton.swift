@@ -57,3 +57,45 @@ struct MainControlButton: View
         .buttonStyle(PlainButtonStyle())
     }
 }
+
+// preview
+#Preview {
+    VStack(spacing: 20) {
+        HStack(spacing: 16) {
+            MainControlButton(
+                icon: "play.fill",
+                label: "Start",
+                color: .green
+            ) {
+                print("Start tapped")
+            }
+            
+            MainControlButton(
+                icon: "pause.fill",
+                label: "Pause",
+                color: .orange
+            ) {
+                print("Pause tapped")
+            }
+        }
+        
+        HStack(spacing: 16) {
+            MainControlButton(
+                icon: "stop.fill",
+                label: "Stop",
+                color: .red
+            ) {
+                print("Stop tapped")
+            }
+            
+            MainControlButton(
+                icon: "heart.fill",
+                label: "Health",
+                color: .pink
+            ) {
+                print("Health tapped")
+            }
+        }
+    }
+    .padding()
+}

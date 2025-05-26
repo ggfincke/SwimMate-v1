@@ -66,4 +66,16 @@ class ElapsedTimeFormatter: Formatter
     }
 }
 
+// preview
+#Preview
+{
+    VStack(spacing: 16)
+    {
+        ElapsedTimeView(elapsedTime: 125.67, showSubseconds: true)
+        ElapsedTimeView(elapsedTime: 3725.0, showSubseconds: false)
+        ElapsedTimeView(elapsedTime: 45.23, showSubseconds: true)
+    }
+    .padding()
+}
+
 

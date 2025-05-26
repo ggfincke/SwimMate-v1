@@ -1,8 +1,8 @@
-// NavigationControls
+// NavigationControls.swift
 
 import SwiftUI
 
-// Navigation Controls
+// nav controls (uses nav buttons)
 struct NavigationControls: View
 {
     // helper funcs
@@ -89,4 +89,29 @@ struct NavigationControls: View
             }
         }
     }
+}
+
+// preview
+#Preview {
+    VStack(spacing: 20)
+    {
+        // start of workout
+        NavigationControls(
+            currentIndex: .constant(0),
+            totalSteps: 5
+        )
+        
+        // middle of workout
+        NavigationControls(
+            currentIndex: .constant(2),
+            totalSteps: 5
+        )
+        
+        // last step
+        NavigationControls(
+            currentIndex: .constant(4),
+            totalSteps: 5
+        )
+    }
+    .padding()
 }

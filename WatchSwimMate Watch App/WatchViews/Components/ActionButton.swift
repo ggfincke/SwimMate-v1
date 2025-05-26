@@ -1,9 +1,10 @@
-// ActionButton
+// ActionButton.swift
 
 import SwiftUI
 
 // standard button style
-struct ActionButton: View {
+struct ActionButton: View
+{
     var label: String
     var icon: String
     var tint: Color
@@ -12,9 +13,11 @@ struct ActionButton: View {
     
     @State private var isPressed = false
 
-    var body: some View {
+    var body: some View
+    {
         Button(action: {
-            withAnimation(.spring(response: 0.3, dampingFraction: 0.6)) {
+            withAnimation(.spring(response: 0.3, dampingFraction: 0.6))
+            {
                 isPressed = true
             }
             
@@ -22,17 +25,20 @@ struct ActionButton: View {
             WKInterfaceDevice.current().play(.click)
             
             // execute action w/ slight delay for animation
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.15) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.15)
+            {
                 action()
                 
                 // reset button state
-                withAnimation {
+                withAnimation
+                {
                     isPressed = false
                 }
             }
         })
         {
-            HStack(spacing: compact ? 6 : 10) {
+            HStack(spacing: compact ? 6 : 10)
+            {
                 Image(systemName: icon)
                     .font(.system(size: compact ? 14 : 16, weight: .semibold))
                 
@@ -44,12 +50,14 @@ struct ActionButton: View {
             .frame(maxWidth: .infinity)
             .padding(.vertical, compact ? 8 : 12)
             .background(
-                ZStack {
+                ZStack
+                {
                     RoundedRectangle(cornerRadius: 14)
                         .fill(tint)
                     
                     // highlight effect when pressed
-                    if isPressed {
+                    if isPressed
+                    {
                         RoundedRectangle(cornerRadius: 14)
                             .fill(Color.white.opacity(0.3))
                     }
@@ -67,14 +75,17 @@ struct ActionButton: View {
 
 
 // preview
-#Preview {
-    VStack(spacing: 10) {
+#Preview
+{
+    VStack(spacing: 10)
+    {
         // normal action button
         ActionButton(
             label: "Start Workout",
             icon: "bolt.fill",
             tint: .green
-        ) {
+        )
+        {
             print("Button tapped")
         }
         
@@ -84,7 +95,8 @@ struct ActionButton: View {
             icon: "heart.fill",
             tint: .pink,
             compact: true
-        ) {
+        )
+        {
             print("Compact button tapped")
         }
     }

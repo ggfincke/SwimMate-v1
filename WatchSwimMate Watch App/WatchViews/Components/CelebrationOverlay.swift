@@ -45,3 +45,9 @@ struct CelebrationOverlay: View
         }
     }
 }
+
+// preview
+#Preview
+{
+    CelebrationOverlay()
+}

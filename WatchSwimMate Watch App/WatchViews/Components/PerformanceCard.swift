@@ -1,4 +1,4 @@
-// PerformanceCard
+// PerformanceCard.swift
 
 import SwiftUI
 
@@ -31,7 +31,7 @@ struct PerformanceCard: View {
     
     var body: some View {
         VStack(spacing: 6) {
-            // Header with trend
+            // header w/ trend
             HStack {
                 Text(title)
                     .font(.system(size: 9, weight: .medium, design: .rounded))
@@ -44,7 +44,7 @@ struct PerformanceCard: View {
                     .foregroundColor(trend.color)
             }
             
-            // Value and subtitle
+            // value & subtitle
             HStack(alignment: .lastTextBaseline, spacing: 2) {
                 Text(value)
                     .font(.system(size: 14, weight: .bold, design: .rounded))

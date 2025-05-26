@@ -44,3 +44,37 @@ struct CompactNavButton: View
         .disabled(!isEnabled)
     }
 }
+
+// preview
+#Preview {
+    HStack(spacing: 16)
+    {
+        CompactNavButton(
+            icon: "chevron.left",
+            isEnabled: true,
+            color: .blue
+        )
+        {
+            print("Back tapped")
+        }
+        
+        CompactNavButton(
+            icon: "play.fill",
+            isEnabled: true,
+            color: .green
+        )
+        {
+            print("Play tapped")
+        }
+        
+        CompactNavButton(
+            icon: "chevron.right",
+            isEnabled: false,
+            color: .gray
+        )
+        {
+            print("Forward tapped")
+        }
+    }
+    .padding()
+}

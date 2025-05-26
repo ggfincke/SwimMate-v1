@@ -44,3 +44,29 @@ struct IntensityIndicator: View
         }
     }
 }
+
+// preview
+#Preview
+{
+    VStack(spacing: 16)
+    {
+        HStack
+        {
+            Text("Low:")
+            IntensityIndicator(heartRate: 85)
+        }
+        
+        HStack
+        {
+            Text("Medium:")
+            IntensityIndicator(heartRate: 140)
+        }
+        
+        HStack
+        {
+            Text("High:")
+            IntensityIndicator(heartRate: 175)
+        }
+    }
+    .padding()
+}

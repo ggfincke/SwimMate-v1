@@ -1,27 +1,33 @@
-// MetricCard
+// MetricCard.swift
 
 import SwiftUI
 
-struct MetricCard: View {
+// metric cards for workout usage
+struct MetricCard: View
+{
     let title: String
     let value: String
     let unit: String
     let color: Color
     let icon: String
     
-    var body: some View {
-        VStack(spacing: 4) {
+    var body: some View
+    {
+        VStack(spacing: 4)
+        {
             Image(systemName: icon)
                 .font(.system(size: 10, weight: .semibold))
                 .foregroundColor(color)
             
-            HStack(alignment: .lastTextBaseline, spacing: unit.isEmpty ? 0 : 2) {
+            HStack(alignment: .lastTextBaseline, spacing: unit.isEmpty ? 0 : 2)
+            {
                 Text(value)
                     .font(.system(size: 16, weight: .bold, design: .rounded))
                     .foregroundColor(.primary)
                     .monospacedDigit()
                 
-                if !unit.isEmpty {
+                if !unit.isEmpty
+                {
                     Text(unit)
                         .font(.system(size: 9, weight: .medium))
                         .foregroundColor(.secondary)
@@ -40,9 +46,11 @@ struct MetricCard: View {
     }
 }
 
-// misaligned in preview, fine in the grid view though
-#Preview {
-    HStack(spacing: 12) {
+// preview
+#Preview
+{
+    HStack(spacing: 12)
+    {
         MetricCard(
             title: "Heart Rate",
             value: "132",
@@ -54,7 +62,7 @@ struct MetricCard: View {
         MetricCard(
             title: "Steps",
             value: "4,280",
-            unit: "",
+            unit: "steps",
             color: .green,
             icon: "figure.walk"
         )

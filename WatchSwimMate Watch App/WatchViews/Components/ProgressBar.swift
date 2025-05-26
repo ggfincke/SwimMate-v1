@@ -38,3 +38,32 @@ struct ProgressBar: View
         .frame(height: 3)
     }
 }
+
+// preview
+#Preview
+{
+    VStack(spacing: 16)
+    {
+        VStack(alignment: .leading, spacing: 4)
+        {
+            Text("25% Complete")
+                .font(.caption)
+            ProgressBar(current: 25, total: 100)
+        }
+        
+        VStack(alignment: .leading, spacing: 4)
+        {
+            Text("60% Complete")
+                .font(.caption)
+            ProgressBar(current: 6, total: 10)
+        }
+        
+        VStack(alignment: .leading, spacing: 4)
+        {
+            Text("90% Complete")
+                .font(.caption)
+            ProgressBar(current: 9, total: 10)
+        }
+    }
+    .padding()
+}
