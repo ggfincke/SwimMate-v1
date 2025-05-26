@@ -2,10 +2,9 @@
 
 import SwiftUI
 
-// Footer of summary view
+// footer of summary view
 struct SummaryFooter: View
 {
-    @Environment(\.dismiss) private var dismiss
     @EnvironmentObject var manager: WatchManager
     
     var body: some View
@@ -20,8 +19,10 @@ struct SummaryFooter: View
             )
             {
                 WKInterfaceDevice.current().play(.click)
+                
+                // reset workout data & dismiss summary
                 manager.resetWorkout()
-                dismiss()
+                manager.showingSummaryView = false
             }
             
             // secondary info

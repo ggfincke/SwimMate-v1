@@ -38,7 +38,7 @@ struct KeyMetricsSection: View
                 // duration
                 MetricCard(
                     title: "Total Time",
-                    value: durationFormatter.string(from: manager.workout?.duration ?? 2400) ?? "40:00",
+                    value: durationFormatter.string(from: workoutDuration) ?? "40:00",
                     unit: "",
                     color: .yellow,
                     icon: "clock.fill"
@@ -56,7 +56,7 @@ struct KeyMetricsSection: View
                 // energy
                 MetricCard(
                     title: "Calories",
-                    value: "\(Int(manager.workout?.totalEnergyBurned?.doubleValue(for: .kilocalorie()) ?? manager.activeEnergy))",
+                    value: "\(Int(totalCalories))",
                     unit: "kcal",
                     color: .pink,
                     icon: "flame.fill"
@@ -65,7 +65,7 @@ struct KeyMetricsSection: View
                 // heart rate
                 MetricCard(
                     title: "Avg HR",
-                    value: "\(Int(manager.averageHeartRate))",
+                    value: "\(Int(averageHeartRate))",
                     unit: "bpm",
                     color: .red,
                     icon: "heart.fill"
@@ -74,9 +74,26 @@ struct KeyMetricsSection: View
         }
     }
     
+    // properties that fallback
+    private var workoutDuration: TimeInterval {
+        return manager.workout?.duration ?? manager.elapsedTime
+    }
+    
+    private var totalDistance: Double {
+        return manager.workout?.totalDistance?.doubleValue(for: .meter()) ?? manager.distance
+    }
+    
+    private var totalCalories: Double {
+        return manager.workout?.totalEnergyBurned?.doubleValue(for: .kilocalorie()) ?? manager.activeEnergy
+    }
+    
+    private var averageHeartRate: Double {
+        return manager.averageHeartRate > 0 ? manager.averageHeartRate : manager.heartRate
+    }
+    
     private func formatDistance() -> String
     {
-        let distance = manager.workout?.totalDistance?.doubleValue(for: .meter()) ?? manager.distance
+        let distance = totalDistance
         
         if manager.poolUnit == "yards"
         {

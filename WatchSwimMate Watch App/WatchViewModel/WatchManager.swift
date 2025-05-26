@@ -211,6 +211,9 @@ class WatchManager: NSObject, ObservableObject
         goalDistance = 0
         goalTime = 0
         goalCalories = 0
+        
+        // ensure summary view is hidden
+        showingSummaryView = false
     }
 
     //TODO: needs to be updated for swimming

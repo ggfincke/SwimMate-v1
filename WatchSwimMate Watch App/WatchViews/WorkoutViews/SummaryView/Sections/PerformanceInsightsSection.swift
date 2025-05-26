@@ -1,6 +1,5 @@
 // PerformanceInsightsSection.swift
 
-
 import SwiftUI
 
 // Performance Insights
@@ -25,7 +24,7 @@ struct PerformanceInsightsSection: View
                 InsightRow(
                     icon: "target",
                     title: "Laps Completed",
-                    value: "\(manager.laps)",
+                    value: "\(currentLaps)",
                     color: .blue
                 )
                 
@@ -52,10 +51,24 @@ struct PerformanceInsightsSection: View
         )
     }
     
+    // Use fallback values for laps
+    private var currentLaps: Int {
+        return manager.laps
+    }
+    
+    // Use fallback values for calculations
+    private var workoutDuration: TimeInterval {
+        return manager.workout?.duration ?? manager.elapsedTime
+    }
+    
+    private var totalDistance: Double {
+        return manager.workout?.totalDistance?.doubleValue(for: .meter()) ?? manager.distance
+    }
+    
     private func calculateAveragePace() -> String
     {
-        let duration = manager.workout?.duration ?? 0
-        let distance = manager.workout?.totalDistance?.doubleValue(for: .meter()) ?? 0
+        let duration = workoutDuration
+        let distance = totalDistance
         
         guard distance > 0 else { return "--:--" }
         
@@ -68,8 +81,8 @@ struct PerformanceInsightsSection: View
     
     private func getPerformanceRating() -> String
     {
-        let distance = manager.workout?.totalDistance?.doubleValue(for: .meter()) ?? 0
-        let duration = manager.workout?.duration ?? 0
+        let distance = totalDistance
+        let duration = workoutDuration
         
         if distance > 2000 || duration > 3600
         {

@@ -7,7 +7,6 @@ import WatchKit
 struct WorkoutControlsView: View
 {
     @EnvironmentObject var manager: WatchManager
-    @State private var showSummary = false
     @State private var showEndConfirmation = false
     
     var body: some View
@@ -92,11 +91,6 @@ struct WorkoutControlsView: View
         {
             Text("This will save your workout and return to the main screen.")
         }
-        .sheet(isPresented: $showSummary)
-        {
-            SwimmingSummaryView()
-                .environmentObject(manager)
-        }
     }
     
     // MARK: - Actions
@@ -106,7 +100,6 @@ struct WorkoutControlsView: View
         {
             manager.resetNav()
             manager.endWorkout()
-            showSummary = true
         }
     }
     
@@ -116,7 +109,6 @@ struct WorkoutControlsView: View
         return action()
     }
 }
-
 
 // Preview
 #Preview

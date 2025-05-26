@@ -8,9 +8,15 @@ import WatchKit
 struct SwimmingSummaryView: View
 {
     @EnvironmentObject var manager: WatchManager
-    @Environment(\.dismiss) private var dismiss
     @State private var isVisible = false
     @State private var showCelebration = false
+    
+    // store initial values (need bc we reset manager during view display)
+    @State private var initialDistance: Double = 0
+    @State private var initialActiveEnergy: Double = 0
+    @State private var initialAverageHeartRate: Double = 0
+    @State private var initialWorkout: HKWorkout?
+    @State private var initialLaps: Int = 0
     
     private var durationFormatter: DateComponentsFormatter = {
         let formatter = DateComponentsFormatter()
@@ -25,12 +31,8 @@ struct SwimmingSummaryView: View
         { geometry in
             ZStack
             {
-                if manager.workout == nil && manager.distance == 0
-                {
-                    // loadingview
-                    LoadingView()
-                }
-                else
+                // if any workout data
+                if hasWorkoutData
                 {
                     // summary content
                     ScrollView
@@ -70,6 +72,11 @@ struct SwimmingSummaryView: View
                     }
                     .ignoresSafeArea(.container, edges: .top)
                 }
+                else
+                {
+                    // loadingview
+                    LoadingView()
+                }
                 
                 // celebration overlay
                 if showCelebration
@@ -87,8 +94,21 @@ struct SwimmingSummaryView: View
         .navigationBarTitleDisplayMode(.inline)
     }
     
+    // if workout data from either current manager state or stored initial values
+    private var hasWorkoutData: Bool {
+        return initialDistance > 0 || manager.distance > 0 || initialWorkout != nil || manager.workout != nil
+    }
+    
+    // setup summary view
     private func setupSummaryView()
     {
+        // store initial values 
+        initialDistance = manager.distance
+        initialActiveEnergy = manager.activeEnergy
+        initialAverageHeartRate = manager.averageHeartRate
+        initialWorkout = manager.workout
+        initialLaps = manager.laps
+        
         // trigger haptic feedback
         WKInterfaceDevice.current().play(.success)
         
@@ -102,7 +122,7 @@ struct SwimmingSummaryView: View
                     showCelebration = true
                 }
                 
-                // Auto-hide celebration
+                // auto-hide celebration
                 DispatchQueue.main.asyncAfter(deadline: .now() + 2.5)
                 {
                     withAnimation(.easeOut(duration: 0.5))
@@ -121,18 +141,13 @@ struct SwimmingSummaryView: View
     
     private func shouldShowCelebration() -> Bool
     {
-        // show celebration for workouts > 30 minutes/1000m
-        let duration = manager.workout?.duration ?? 0
-        let distance = manager.workout?.totalDistance?.doubleValue(for: .meter()) ?? 0
+        // use stored initial values or current manager values
+        let duration = manager.workout?.duration ?? initialWorkout?.duration ?? 0
+        let distance = manager.workout?.totalDistance?.doubleValue(for: .meter()) ?? initialDistance
         
         return duration > 1800 || distance > 1000
     }
 }
-
-
-
-
-
 
 // preview
 #Preview {
