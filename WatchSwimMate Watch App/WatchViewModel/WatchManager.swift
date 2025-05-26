@@ -5,26 +5,38 @@ import SwiftUI
 import HealthKit
 import WatchKit
 
-//TODO: Add settings, finish goal-based features, add segments for workouts (for use with set)
-
+// Main WatchManager
 class WatchManager: NSObject, ObservableObject
 {
+    // pool settings
     @Published var isPool: Bool = true
     @Published var poolLength: Double = 25.0
     @Published var poolUnit: String = "meters"
     @Published var running = false
 
+    // healthkit
     var healthStore = HKHealthStore()
     var workoutSession: HKWorkoutSession?
     var workoutBuilder: HKLiveWorkoutBuilder?
     
+    // timer for elapsed time updates
+    private var elapsedTimer: Timer?
+    private var workoutStartDate: Date?
+    
     // path for views
     @Published var path = NavigationPath()
     
-    // MARK: - Workout Metrics
+    // workout metrics
     @Published var elapsedTime: TimeInterval = 0
     @Published var laps: Int = 0
-    @Published var distance: Double = 0
+    @Published var distance: Double = 0 
+    {
+        // when distance changes, update laps
+        didSet
+        {
+            updateLapsFromCurrentDistance()
+        }
+    }
     @Published var averageHeartRate: Double = 0
     @Published var heartRate: Double = 0
     @Published var activeEnergy: Double = 0
@@ -33,16 +45,15 @@ class WatchManager: NSObject, ObservableObject
     // goals
     @Published var goalDistance: Double = 0
     @Published var goalTime: TimeInterval = 0
-
-    // will remove at some point 
     @Published var goalHours: TimeInterval = 0
     @Published var goalMinutes: TimeInterval = 0
-
     @Published var goalCalories: Double = 0
     
+    // healthkit authorization
     @Published var healthKitAuthorized: Bool = false
     @Published var authorizationRequested: Bool = false
     
+    // can start workout
     var canStartWorkout: Bool
     {
         return true
@@ -76,6 +87,27 @@ class WatchManager: NSObject, ObservableObject
         }
     }
     
+    // MARK: - Timer Management
+    private func startElapsedTimer() {
+        stopElapsedTimer() 
+        workoutStartDate = Date()
+        elapsedTimer = Timer.scheduledTimer(withTimeInterval: 0.01, repeats: true) { [weak self] _ in
+            self?.updateElapsedTime()
+        }
+    }
+    
+    private func stopElapsedTimer() {
+        elapsedTimer?.invalidate()
+        elapsedTimer = nil
+    }
+    
+    private func updateElapsedTime() {
+        guard let startDate = workoutStartDate else { return }
+        DispatchQueue.main.async {
+            self.elapsedTime = Date().timeIntervalSince(startDate)
+        }
+    }
+    
     // request HK auth
     func requestAuthorization()
     {
@@ -94,6 +126,10 @@ class WatchManager: NSObject, ObservableObject
 
         healthStore.requestAuthorization(toShare: toShare, read: toRead)
         { ok, err in
+            DispatchQueue.main.async {
+                self.authorizationRequested = true
+                self.healthKitAuthorized = ok
+            }
             print(ok ? "✅ HealthKit authorised" :
                   "❌ HealthKit authorisation failed: \(err?.localizedDescription ?? "unknown")")
         }
@@ -102,7 +138,7 @@ class WatchManager: NSObject, ObservableObject
     //MARK: Workout related functions
     func startWorkout()
     {
-        // seesion is already running, return
+        // session is already running, return
         guard workoutSession == nil else { return }
 
         // building config
@@ -142,8 +178,15 @@ class WatchManager: NSObject, ObservableObject
         let now = Date()
         workoutSession?.startActivity(with: now)
         workoutBuilder?.beginCollection(withStart: now)
-        { _, err in
-            if let err = err { print("❌ beginCollection: \(err)") }
+        { [weak self] _, err in
+            if let err = err { 
+                print("❌ beginCollection: \(err)") 
+            } else {
+                // Start our elapsed time timer
+                DispatchQueue.main.async {
+                    self?.startElapsedTimer()
+                }
+            }
         }
     }
     
@@ -151,12 +194,14 @@ class WatchManager: NSObject, ObservableObject
     func pause()
     {
         workoutSession?.pause()
+        stopElapsedTimer()
     }
 
     // resume
     func resume()
     {
         workoutSession?.resume()
+        startElapsedTimer()
     }
 
     // toggle pause/resume
@@ -175,6 +220,9 @@ class WatchManager: NSObject, ObservableObject
     // end workout
     func endWorkout()
     {
+        // Stop the elapsed timer
+        stopElapsedTimer()
+        
         // check to ensure active session
         guard let workoutSession = workoutSession,
               workoutSession.state == .running || workoutSession.state == .paused else {
@@ -190,6 +238,10 @@ class WatchManager: NSObject, ObservableObject
     func resetWorkout()
     {
         selected = nil
+        
+        // Stop timer
+        stopElapsedTimer()
+        workoutStartDate = nil
         
         // avoid retain cycles
         workoutBuilder?.delegate = nil
@@ -216,7 +268,6 @@ class WatchManager: NSObject, ObservableObject
         showingSummaryView = false
     }
 
-    //TODO: needs to be updated for swimming
     // used to display stats for the watch while swimming
     func updateForStatistics(_ statistics: HKStatistics?)
     {
@@ -246,11 +297,47 @@ class WatchManager: NSObject, ObservableObject
     func updateLapsCount(from workout: HKWorkout) {
         if let distance = workout.totalDistance, let poolLength = workoutBuilder?.workoutConfiguration.lapLength
         {
-            self.laps = Int(round(distance.doubleValue(for: .meter()) / poolLength.doubleValue(for: .meter())))
+            DispatchQueue.main.async {
+                self.laps = Int(round(distance.doubleValue(for: .meter()) / poolLength.doubleValue(for: .meter())))
+            }
         }
         else
         {
-            self.laps = 0
+            updateLapsFromCurrentDistance()
+        }
+    }
+    
+    // calculate laps from current distance (needed? workout should be able to do this)
+    func updateLapsFromCurrentDistance()
+    {
+        let poolLengthInMeters: Double
+        
+        if poolUnit == "meters"
+        {
+            poolLengthInMeters = poolLength
+        }
+        else
+        {
+            // convert yards to meters
+            poolLengthInMeters = poolLength * 0.9144
+        }
+        
+        if poolLengthInMeters > 0
+        {
+            let calculatedLaps = Int(round(distance / poolLengthInMeters))
+            if calculatedLaps != laps {
+                DispatchQueue.main.async {
+                    self.laps = calculatedLaps
+                }
+            }
+        }
+        else
+        {
+            if laps != 0 {
+                DispatchQueue.main.async {
+                    self.laps = 0
+                }
+            }
         }
     }
 }
@@ -266,7 +353,7 @@ extension WatchManager: HKWorkoutSessionDelegate, HKLiveWorkoutBuilderDelegate
         print("Workout builder collected event")
     }
 
-    // called when new health data is collected during worker
+    // called when new health data is collected during workout
     func workoutBuilder(_ workoutBuilder: HKLiveWorkoutBuilder, didCollectDataOf collectedTypes: Set<HKSampleType>)
     {
         // iterate through each collected data type & update published properties
@@ -282,12 +369,6 @@ extension WatchManager: HKWorkoutSessionDelegate, HKLiveWorkoutBuilderDelegate
 
             // update published values on main thread
             updateForStatistics(statistics)
-            
-            // update lap count when distance changes
-            if type == HKQuantityType.quantityType(forIdentifier: .distanceSwimming)
-            {
-                updateLapsFromCurrentDistance()
-            }
         }
     }
     
@@ -301,47 +382,51 @@ extension WatchManager: HKWorkoutSessionDelegate, HKLiveWorkoutBuilderDelegate
         {
             self.running = toState == .running
         }
-
-        if toState == .ended
-        {
-            self.workoutBuilder?.endCollection(withEnd: date) { (success, error) in
-                if let error = error {
-                    print("Error ending collection: \(error.localizedDescription)")
-                    DispatchQueue.main.async {
-                        // default workout state (even if collection failed)
-                        self.workout = nil
-                        self.showingSummaryView = true
-                    }
-                    return
+        
+        // Handle timer based on state
+        switch toState {
+        case .running:
+            if fromState == .paused {
+                startElapsedTimer()
+            }
+        case .paused:
+            stopElapsedTimer()
+        case .ended:
+            stopElapsedTimer()
+            handleWorkoutEnd(date: date)
+        default:
+            break
+        }
+    }
+    
+    private func handleWorkoutEnd(date: Date) {
+        self.workoutBuilder?.endCollection(withEnd: date) { (success, error) in
+            if let error = error {
+                print("Error ending collection: \(error.localizedDescription)")
+                DispatchQueue.main.async {
+                    self.workout = nil
+                    self.showingSummaryView = true
                 }
-                
-                self.workoutBuilder?.finishWorkout
-                { (workout, error) in
-                    DispatchQueue.main.async
-                    {
-                        if let error = error
-                        {
-                            print("Error finishing workout: \(error.localizedDescription)")
-                        }
-                        
-                        // handle workout optional
-                        self.workout = workout
-                        
-                        if let workout = workout
-                        {
-                            self.updateLapsCount(from: workout)
-                            print("Workout finished: \(workout)")
-                        }
-                        else
-                        {
-                            print("Workout finished but workout object is nil")
-                            // laps based on current distance (if workout is nil)
-                            self.updateLapsFromCurrentDistance()
-                        }
-                        
-                        // always show summary
-                        self.showingSummaryView = true
+                return
+            }
+            
+            self.workoutBuilder?.finishWorkout { (workout, error) in
+                DispatchQueue.main.async {
+                    if let error = error {
+                        print("Error finishing workout: \(error.localizedDescription)")
                     }
+                    
+                    self.workout = workout
+                    
+                    if let workout = workout {
+                        self.updateLapsCount(from: workout)
+                        print("Workout finished: \(workout)")
+                    } else {
+                        print("Workout finished but workout object is nil")
+                        self.updateLapsFromCurrentDistance()
+                    }
+                    
+                    self.showingSummaryView = true
                 }
             }
         }
@@ -351,40 +436,10 @@ extension WatchManager: HKWorkoutSessionDelegate, HKLiveWorkoutBuilderDelegate
     func workoutSession(_ workoutSession: HKWorkoutSession, didFailWithError error: Error)
     {
         print("Workout session failed with error: \(error.localizedDescription)")
+        stopElapsedTimer()
         DispatchQueue.main.async
         {
-            // still show summary even if session failed
             self.showingSummaryView = true
-        }
-    }
-}
-
-// MARK: - Helper Methods
-extension WatchManager
-{
-    
-    // Fallback method to calculate laps from current distance when workout object is nil
-    private func updateLapsFromCurrentDistance()
-    {
-        let poolLengthInMeters: Double
-        
-        if poolUnit == "meters"
-        {
-            poolLengthInMeters = poolLength
-        }
-        else
-        {
-            // Convert yards to meters
-            poolLengthInMeters = poolLength * 0.9144
-        }
-        
-        if poolLengthInMeters > 0
-        {
-            self.laps = Int(round(distance / poolLengthInMeters))
-        }
-        else
-        {
-            self.laps = 0
         }
     }
 }

@@ -17,7 +17,7 @@ struct SecondaryMetricsGrid: View
             {
                 MetricCard(
                     title: "Laps",
-                    value: "\(calculatedLaps)",
+                    value: "\(manager.laps)",
                     unit: "laps",
                     color: .green,
                     icon: "arrow.clockwise"
@@ -54,16 +54,10 @@ struct SecondaryMetricsGrid: View
         }
     }
     
-    // computed properties 
-    private var calculatedLaps: Int
-    {
-        let poolLengthInMeters = manager.poolUnit == "meters" ? manager.poolLength : manager.poolLength * 0.9144
-        return poolLengthInMeters > 0 ? Int(manager.distance / poolLengthInMeters) : 0
-    }
-    
+    // pace calculation using manager's elapsedTime
     private var currentPace: String
     {
-        let elapsedTime = manager.workoutBuilder?.elapsedTime ?? 0
+        let elapsedTime = manager.elapsedTime
         guard manager.distance > 0 && elapsedTime > 0 else { return "--:--" }
         
         let distanceIn100Units = manager.distance / (manager.poolUnit == "meters" ? 100 : 109.361)

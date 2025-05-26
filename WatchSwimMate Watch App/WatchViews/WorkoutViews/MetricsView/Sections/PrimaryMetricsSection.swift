@@ -6,7 +6,6 @@ import SwiftUI
 struct PrimaryMetricsSection: View
 {
     @EnvironmentObject var manager: WatchManager
-    let showSubseconds: Bool
     
     var body: some View
     {
@@ -14,8 +13,8 @@ struct PrimaryMetricsSection: View
         {
             // current time
             ElapsedTimeView(
-                elapsedTime: manager.workoutBuilder?.elapsedTime ?? 0,
-                showSubseconds: showSubseconds
+                elapsedTime: manager.elapsedTime,
+                showSubseconds: manager.elapsedTime < 3600
             )
             .font(.system(size: 40, weight: .bold, design: .rounded))
             .foregroundStyle(.yellow)
