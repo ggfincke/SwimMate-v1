@@ -1,9 +1,4 @@
-//
-//  WatchManager.swift
-//  WatchSwimMate Watch App
-//
-//  Created by Garrett Fincke on 4/26/24.
-//
+// WatchManager.swift
 
 import Foundation
 import SwiftUI
@@ -45,16 +40,22 @@ class WatchManager: NSObject, ObservableObject
 
     @Published var goalCalories: Double = 0
     
+    @Published var healthKitAuthorized: Bool = false
+    @Published var authorizationRequested: Bool = false
+    
+    var canStartWorkout: Bool
+    {
+        return true
+    }
+    
     // only pick workout when selected is not nil
     var selected: HKWorkoutActivityType?
     {
         didSet
         {
-            // was not using selected so commented for now 
-            // guard let selected = selected else { return }
+            guard selected != nil else { return }
             startWorkout()
         }
-        
     }
     
     // reset back to root (for navigation)
@@ -75,70 +76,74 @@ class WatchManager: NSObject, ObservableObject
         }
     }
     
+    // request HK auth
     func requestAuthorization()
     {
-        let typesToShare: Set = [HKObjectType.workoutType()]
-        let typesToRead: Set = [HKQuantityType.workoutType(), HKQuantityType.quantityType(forIdentifier: .heartRate)!]
-        
-        healthStore.requestAuthorization(toShare: typesToShare, read: typesToRead) { success, error in
-            if success
-            {
-                print("Authorization successful")
-            }
-            else
-            {
-                print("Authorization failed: \(error?.localizedDescription ?? "Unknown error")")
-            }
+        let toShare: Set = [
+            HKObjectType.workoutType(),
+            HKQuantityType.quantityType(forIdentifier: .distanceSwimming)!,
+            HKQuantityType.quantityType(forIdentifier: .activeEnergyBurned)!
+        ]
+
+        let toRead: Set = [
+            HKObjectType.workoutType(),
+            HKQuantityType.quantityType(forIdentifier: .heartRate)!,
+            HKQuantityType.quantityType(forIdentifier: .distanceSwimming)!,
+            HKQuantityType.quantityType(forIdentifier: .activeEnergyBurned)!
+        ]
+
+        healthStore.requestAuthorization(toShare: toShare, read: toRead)
+        { ok, err in
+            print(ok ? "✅ HealthKit authorised" :
+                  "❌ HealthKit authorisation failed: \(err?.localizedDescription ?? "unknown")")
         }
     }
 
     //MARK: Workout related functions
     func startWorkout()
     {
-        let configuration = HKWorkoutConfiguration()
-        configuration.activityType = .swimming
-        configuration.swimmingLocationType = isPool ? .pool : .openWater
+        // seesion is already running, return
+        guard workoutSession == nil else { return }
 
+        // building config
+        let cfg = HKWorkoutConfiguration()
+        cfg.activityType = .swimming
+        cfg.swimmingLocationType = isPool ? .pool : .openWater
 
-        if isPool
-        {
-            if poolUnit == "meters"
-            {
-                configuration.lapLength = HKQuantity(unit: HKUnit.meter(), doubleValue: poolLength)
-            }
-            
-            else if poolUnit == "yards"
-            {
-                configuration.lapLength = HKQuantity(unit: HKUnit.yard(), doubleValue: poolLength)
-            }
+        if isPool {
+            let length = HKQuantity(
+                unit: poolUnit == "meters" ? .meter() : .yard(),
+                doubleValue: poolLength
+            )
+            cfg.lapLength = length
         }
-        
-        do 
+
+        // create session & builder
+        do
         {
-            workoutSession = try HKWorkoutSession(healthStore: healthStore, configuration: configuration)
+            workoutSession = try HKWorkoutSession(healthStore: healthStore,
+                                                  configuration: cfg)
             workoutBuilder = workoutSession?.associatedWorkoutBuilder()
         }
         catch
         {
-            // handle exceptions
+            print("❌ Failed to create session: \(error)")
             return
         }
 
+        // wire delegates & data source BEFORE starting
         workoutSession?.delegate = self
         workoutBuilder?.delegate = self
+        workoutBuilder?.dataSource =
+            HKLiveWorkoutDataSource(healthStore: healthStore, workoutConfiguration: cfg)
 
-        workoutBuilder?.dataSource = HKLiveWorkoutDataSource(healthStore: healthStore,workoutConfiguration: configuration)
-
-        // enable WaterLock before starting the swim
+        // water-lock & go
         WKInterfaceDevice.current().enableWaterLock()
-
-        // start workout session and begin data collection
-        let startDate = Date()
-        workoutSession?.startActivity(with: startDate)
-        workoutBuilder?.beginCollection(withStart: startDate)
-        { (success, error) in
-            
-        // workout has started
+        let now = Date()
+        workoutSession?.startActivity(with: now)
+        workoutBuilder?.beginCollection(withStart: now)
+        { _, err in
+            if let err = err { print("❌ beginCollection: \(err)") }
         }
     }
     
@@ -168,9 +173,9 @@ class WatchManager: NSObject, ObservableObject
     }
 
     // end workout
-    // Enhanced error handling for workout operations
-    func endWorkout() {
-        // Add check to ensure we have an active session
+    func endWorkout()
+    {
+        // check to ensure active session
         guard let workoutSession = workoutSession,
               workoutSession.state == .running || workoutSession.state == .paused else {
             print("No active workout session to end")
@@ -181,18 +186,18 @@ class WatchManager: NSObject, ObservableObject
         workoutSession.end()
     }
     
-    // Enhanced reset with better cleanup
-    func resetWorkout() {
+    // reset w/ better cleanup
+    func resetWorkout()
+    {
         selected = nil
         
-        // Only clean up builder and session if they exist
-        if workoutBuilder != nil {
-            workoutBuilder = nil
-        }
+        // avoid retain cycles
+        workoutBuilder?.delegate = nil
+        workoutSession?.delegate = nil
         
-        if workoutSession != nil {
-            workoutSession = nil
-        }
+        // clean up builder & session
+        workoutBuilder = nil
+        workoutSession = nil
         
         workout = nil
         activeEnergy = 0
@@ -202,7 +207,7 @@ class WatchManager: NSObject, ObservableObject
         elapsedTime = 0
         laps = 0
         
-        // Reset goals
+        // reset goals
         goalDistance = 0
         goalTime = 0
         goalCalories = 0
@@ -210,13 +215,14 @@ class WatchManager: NSObject, ObservableObject
 
     //TODO: needs to be updated for swimming
     // used to display stats for the watch while swimming
-    func updateForStatistics(_ statistics: HKStatistics?) {
-        guard let statistics = statistics else {
-            return
-        }
+    func updateForStatistics(_ statistics: HKStatistics?)
+    {
+        guard let statistics = statistics else { return }
         
-        DispatchQueue.main.async {
-            switch statistics.quantityType {
+        DispatchQueue.main.async
+        {
+            switch statistics.quantityType
+            {
             case HKQuantityType.quantityType(forIdentifier: .heartRate):
                 let heartRateUnit = HKUnit.count().unitDivided(by: HKUnit.minute())
                 self.heartRate = statistics.mostRecentQuantity()?.doubleValue(for: heartRateUnit) ?? 0
@@ -225,8 +231,8 @@ class WatchManager: NSObject, ObservableObject
                 let energyUnit = HKUnit.kilocalorie()
                 self.activeEnergy = statistics.sumQuantity()?.doubleValue(for: energyUnit) ?? 0
             case HKQuantityType.quantityType(forIdentifier: .distanceSwimming):
-                let distanceUnit = HKUnit.meter()
-                self.distance = statistics.sumQuantity()?.doubleValue(for: distanceUnit) ?? 0
+                let metres = HKUnit.meter()
+                self.distance = statistics.sumQuantity()?.doubleValue(for: metres) ?? 0
             default:
                 return
             }
@@ -235,9 +241,12 @@ class WatchManager: NSObject, ObservableObject
     
     // update lap count
     func updateLapsCount(from workout: HKWorkout) {
-        if let distance = workout.totalDistance, let poolLength = workoutBuilder?.workoutConfiguration.lapLength {
+        if let distance = workout.totalDistance, let poolLength = workoutBuilder?.workoutConfiguration.lapLength
+        {
             self.laps = Int(round(distance.doubleValue(for: .meter()) / poolLength.doubleValue(for: .meter())))
-        } else {
+        }
+        else
+        {
             self.laps = 0
         }
     }
@@ -249,15 +258,19 @@ extension WatchManager: HKWorkoutSessionDelegate, HKLiveWorkoutBuilderDelegate
     // MARK: - HKLiveWorkoutBuilderDelegate Methods
     
     // called when workoutbuilder collects events; laps, pause/resume, etc.
-    func workoutBuilderDidCollectEvent(_ workoutBuilder: HKLiveWorkoutBuilder) {
+    func workoutBuilderDidCollectEvent(_ workoutBuilder: HKLiveWorkoutBuilder)
+    {
         print("Workout builder collected event")
     }
 
     // called when new health data is collected during worker
-    func workoutBuilder(_ workoutBuilder: HKLiveWorkoutBuilder, didCollectDataOf collectedTypes: Set<HKSampleType>) {
-        // iterate through each collected data type and update our published properties
-        for type in collectedTypes {
-            guard let quantityType = type as? HKQuantityType else {
+    func workoutBuilder(_ workoutBuilder: HKLiveWorkoutBuilder, didCollectDataOf collectedTypes: Set<HKSampleType>)
+    {
+        // iterate through each collected data type & update published properties
+        for type in collectedTypes
+        {
+            guard let quantityType = type as? HKQuantityType else
+            {
                 continue
             }
 
@@ -266,6 +279,12 @@ extension WatchManager: HKWorkoutSessionDelegate, HKLiveWorkoutBuilderDelegate
 
             // update published values on main thread
             updateForStatistics(statistics)
+            
+            // update lap count when distance changes
+            if type == HKQuantityType.quantityType(forIdentifier: .distanceSwimming)
+            {
+                updateLapsFromCurrentDistance()
+            }
         }
     }
     
@@ -286,33 +305,38 @@ extension WatchManager: HKWorkoutSessionDelegate, HKLiveWorkoutBuilderDelegate
                 if let error = error {
                     print("Error ending collection: \(error.localizedDescription)")
                     DispatchQueue.main.async {
-                        // Set a default workout state even if collection failed
+                        // default workout state (even if collection failed)
                         self.workout = nil
                         self.showingSummaryView = true
                     }
                     return
                 }
                 
-                self.workoutBuilder?.finishWorkout { (workout, error) in
+                self.workoutBuilder?.finishWorkout
+                { (workout, error) in
                     DispatchQueue.main.async
                     {
-                        if let error = error {
+                        if let error = error
+                        {
                             print("Error finishing workout: \(error.localizedDescription)")
                         }
                         
-                        // Safely handle the workout optional
+                        // handle workout optional
                         self.workout = workout
                         
-                        if let workout = workout {
+                        if let workout = workout
+                        {
                             self.updateLapsCount(from: workout)
                             print("Workout finished: \(workout)")
-                        } else {
+                        }
+                        else
+                        {
                             print("Workout finished but workout object is nil")
-                            // Set laps based on current distance if workout is nil
+                            // laps based on current distance (if workout is nil)
                             self.updateLapsFromCurrentDistance()
                         }
                         
-                        // Always show summary, even if workout is nil
+                        // always show summary
                         self.showingSummaryView = true
                     }
                 }
@@ -320,37 +344,44 @@ extension WatchManager: HKWorkoutSessionDelegate, HKLiveWorkoutBuilderDelegate
         }
     }
 
-    // failed with error
+    // failed w/ error
     func workoutSession(_ workoutSession: HKWorkoutSession, didFailWithError error: Error)
     {
         print("Workout session failed with error: \(error.localizedDescription)")
-        DispatchQueue.main.async {
-            // Still show summary even if session failed
+        DispatchQueue.main.async
+        {
+            // still show summary even if session failed
             self.showingSummaryView = true
         }
     }
 }
 
 // MARK: - Helper Methods
-extension WatchManager {
+extension WatchManager
+{
     
     // Fallback method to calculate laps from current distance when workout object is nil
-    private func updateLapsFromCurrentDistance() {
+    private func updateLapsFromCurrentDistance()
+    {
         let poolLengthInMeters: Double
         
-        if poolUnit == "meters" {
+        if poolUnit == "meters"
+        {
             poolLengthInMeters = poolLength
-        } else {
+        }
+        else
+        {
             // Convert yards to meters
             poolLengthInMeters = poolLength * 0.9144
         }
         
-        if poolLengthInMeters > 0 {
+        if poolLengthInMeters > 0
+        {
             self.laps = Int(round(distance / poolLengthInMeters))
-        } else {
+        }
+        else
+        {
             self.laps = 0
         }
     }
-    
-
 }

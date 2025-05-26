@@ -43,7 +43,7 @@ struct SwimmingView: View {
     
     var body: some View {
         ZStack {
-            // Main horizontal tab content
+            // main horizontal tab content
             TabView(selection: $selection) {
                 // Controls Tab
                 WorkoutControlsView()
@@ -77,7 +77,7 @@ struct SwimmingView: View {
         }
         .navigationBarBackButtonHidden(true)
         .onAppear {
-            // Ensure water lock is enabled when starting workout
+            // ensure water lock is enabled when starting workout
             if manager.running {
                 WKInterfaceDevice.current().enableWaterLock()
             }

@@ -1,6 +1,7 @@
 // WatchRootView.swift
 
 import SwiftUI
+import HealthKit
 
 // root view for watch app
 struct WatchRootView: View
@@ -9,6 +10,7 @@ struct WatchRootView: View
     @EnvironmentObject var iosManager: iOSWatchConnector
     @State private var showSettings = false
     @State private var activeButton: String? = nil
+    @State private var showHealthKitAlert = false
 
     var body: some View
     {
@@ -30,6 +32,11 @@ struct WatchRootView: View
                 .padding(.top, 8)
                 .padding(.bottom, 4)
                 
+                // HealthKit status banner (if not authorized)
+                if manager.authorizationRequested && !manager.healthKitAuthorized {
+                    healthKitWarningBanner
+                }
+                
                 // line to divide buttons
                 Divider()
                     .padding(.horizontal)
@@ -41,20 +48,25 @@ struct WatchRootView: View
                     mainButton(
                         label: "Quick Start",
                         icon: "bolt.fill",
-                        tint: .green,
-                        buttonId: "quick"
+                        tint: manager.canStartWorkout ? .green : .gray,
+                        buttonId: "quick",
+                        isEnabled: manager.canStartWorkout
                     )
                     {
-                        withAnimation
-                        {
-                            activeButton = "quick"
-                        }
-                        
-                        // button animation effect
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2)
-                        {
-                            manager.path.append(NavState.workoutSetup)
-                            activeButton = nil
+                        if manager.canStartWorkout {
+                            withAnimation
+                            {
+                                activeButton = "quick"
+                            }
+                            
+                            // button animation effect
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2)
+                            {
+                                manager.path.append(NavState.workoutSetup)
+                                activeButton = nil
+                            }
+                        } else {
+                            showHealthKitAlert = true
                         }
                     }
                     
@@ -62,19 +74,24 @@ struct WatchRootView: View
                     mainButton(
                         label: "Set Goal",
                         icon: "target",
-                        tint: .blue,
-                        buttonId: "goal"
+                        tint: manager.canStartWorkout ? .blue : .gray,
+                        buttonId: "goal",
+                        isEnabled: manager.canStartWorkout
                     )
                     {
-                        withAnimation
-                        {
-                            activeButton = "goal"
-                        }
-                        
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2)
-                        {
-                            manager.path.append(NavState.goalWorkoutSetup)
-                            activeButton = nil
+                        if manager.canStartWorkout {
+                            withAnimation
+                            {
+                                activeButton = "goal"
+                            }
+                            
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2)
+                            {
+                                manager.path.append(NavState.goalWorkoutSetup)
+                                activeButton = nil
+                            }
+                        } else {
+                            showHealthKitAlert = true
                         }
                     }
                     
@@ -83,7 +100,8 @@ struct WatchRootView: View
                         label: "Import Set",
                         icon: "square.and.arrow.down.fill",
                         tint: .orange,
-                        buttonId: "import"
+                        buttonId: "import",
+                        isEnabled: true
                     )
                     {
                         withAnimation
@@ -134,16 +152,57 @@ struct WatchRootView: View
             }
             .padding(.bottom, 12)
         }
-        .padding(.top, 16)
-        .ignoresSafeArea(edges: .top)
         .sheet(isPresented: $showSettings)
         {
             SettingsView()
         }
+        .alert("HealthKit Access Required", isPresented: $showHealthKitAlert) {
+            Button("Open Settings") {
+                showSettings = true
+            }
+            Button("Cancel", role: .cancel) { }
+        } message: {
+            Text("SwimMate needs HealthKit access to track your swimming workouts. Please enable access in Settings.")
+        }
+    }
+    
+    // HealthKit warning banner
+    private var healthKitWarningBanner: some View {
+        HStack(spacing: 8) {
+            Image(systemName: "exclamationmark.triangle.fill")
+                .foregroundColor(.orange)
+                .font(.system(size: 14))
+            
+            VStack(alignment: .leading, spacing: 2) {
+                Text("HealthKit Access Required")
+                    .font(.system(size: 12, weight: .semibold))
+                    .foregroundColor(.primary)
+                
+                Text("Enable in Settings to track workouts")
+                    .font(.system(size: 10))
+                    .foregroundColor(.secondary)
+            }
+            
+            Spacer()
+            
+            Button("Fix") {
+                showSettings = true
+            }
+            .font(.system(size: 11, weight: .medium))
+            .foregroundColor(.blue)
+        }
+        .padding(.horizontal, 12)
+        .padding(.vertical, 8)
+        .background(
+            RoundedRectangle(cornerRadius: 8)
+                .fill(Color.orange.opacity(0.1))
+                .stroke(Color.orange.opacity(0.3), lineWidth: 1)
+        )
+        .padding(.horizontal, 12)
     }
     
     // custom button builder
-    private func mainButton(label: String, icon: String, tint: Color, buttonId: String, action: @escaping () -> Void) -> some View {
+    private func mainButton(label: String, icon: String, tint: Color, buttonId: String, isEnabled: Bool = true, action: @escaping () -> Void) -> some View {
         Button(action: action)
         {
             HStack(spacing: 10)
@@ -157,7 +216,7 @@ struct WatchRootView: View
                     .font(.system(size: 12))
                     .opacity(0.7)
             }
-            .foregroundColor(.white)
+            .foregroundColor(isEnabled ? .white : .secondary)
             .padding(.horizontal, 12)
             .padding(.vertical, 12)
             .background(
@@ -165,8 +224,10 @@ struct WatchRootView: View
             )
             .cornerRadius(12)
             .scaleEffect(activeButton == buttonId ? 0.95 : 1)
+            .opacity(isEnabled ? 1.0 : 0.6)
         }
         .buttonStyle(PlainButtonStyle())
+        .disabled(!isEnabled)
     }
     
     // stat item component

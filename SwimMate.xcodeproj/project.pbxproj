@@ -81,6 +81,7 @@
 		A0BFBA3B2DDD7C3C002B96A8 /* SetDisplayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BFBA0E2DDD7C3C002B96A8 /* SetDisplayView.swift */; };
 		A0C050642BCC5D7B002450AD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A0C050632BCC5D7B002450AD /* Assets.xcassets */; };
 		A0C050672BCC5D7B002450AD /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A0C050662BCC5D7B002450AD /* Preview Assets.xcassets */; };
+		A0D669862DE4A91D00F00F9A /* HealthKitPermissionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D669852DE4A91D00F00F9A /* HealthKitPermissionView.swift */; };
 		A0FB9E322BDF7C1F00F39829 /* WatchConnectivity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0FB9E312BDF7C1F00F39829 /* WatchConnectivity.framework */; };
 /* End PBXBuildFile section */
 
@@ -190,6 +191,7 @@
 		A0C050662BCC5D7B002450AD /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		A0C050922BCC5E41002450AD /* SwimMate.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SwimMate.entitlements; sourceTree = "<group>"; };
 		A0C050932BCC65A3002450AD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A0D669852DE4A91D00F00F9A /* HealthKitPermissionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitPermissionView.swift; sourceTree = "<group>"; };
 		A0F0C7D12BDF7C5F00AF6D5B /* SwimMate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwimMate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0F0C7D42BDF7C5F00AF6D5B /* WatchSwimMate Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "WatchSwimMate Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0FB9E312BDF7C1F00F39829 /* WatchConnectivity.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WatchConnectivity.framework; path = System/Library/Frameworks/WatchConnectivity.framework; sourceTree = SDKROOT; };
@@ -437,6 +439,7 @@
 		A0BFBA072DDD7C3C002B96A8 /* SettingsView */ = {
 			isa = PBXGroup;
 			children = (
+				A0D669852DE4A91D00F00F9A /* HealthKitPermissionView.swift */,
 				A0BFBA062DDD7C3C002B96A8 /* SettingsView.swift */,
 			);
 			path = SettingsView;
@@ -705,6 +708,7 @@
 				A0B679F02DE3E80E00C65B53 /* SummaryHeaderView.swift in Sources */,
 				A0BFBA2D2DDD7C3C002B96A8 /* CalorieSetupView.swift in Sources */,
 				A0B679D82DE3CBBC00C65B53 /* CompactNavButton.swift in Sources */,
+				A0D669862DE4A91D00F00F9A /* HealthKitPermissionView.swift in Sources */,
 				A0BFBA2E2DDD7C3C002B96A8 /* WorkoutControlsView.swift in Sources */,
 				A0BFBA2F2DDD7C3C002B96A8 /* ActionButton.swift in Sources */,
 				A0BFBA302DDD7C3C002B96A8 /* TimeSetupView.swift in Sources */,
