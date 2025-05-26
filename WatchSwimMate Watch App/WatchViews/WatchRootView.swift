@@ -1,19 +1,24 @@
-// WatchRootView
+// WatchRootView.swift
 
 import SwiftUI
 
-struct WatchRootView: View {
+// root view for watch app
+struct WatchRootView: View
+{
     @EnvironmentObject var manager: WatchManager
     @EnvironmentObject var iosManager: iOSWatchConnector
     @State private var showSettings = false
     @State private var activeButton: String? = nil
 
-    var body: some View {
-        ScrollView {
+    var body: some View
+    {
+        ScrollView
+        {
             VStack(spacing: 16)
             {
                 // app title w/ logo
-                HStack(spacing: 6) {
+                HStack(spacing: 6)
+                {
                     Image(systemName: "figure.pool.swim")
                         .font(.system(size: 20, weight: .semibold))
                         .foregroundStyle(.blue)
@@ -30,20 +35,24 @@ struct WatchRootView: View {
                     .padding(.horizontal)
                 
                 // main nav buttons
-                VStack(spacing: 14) {
+                VStack(spacing: 14)
+                {
                     // quick start
                     mainButton(
                         label: "Quick Start",
                         icon: "bolt.fill",
                         tint: .green,
                         buttonId: "quick"
-                    ) {
-                        withAnimation {
+                    )
+                    {
+                        withAnimation
+                        {
                             activeButton = "quick"
                         }
                         
                         // button animation effect
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2)
+                        {
                             manager.path.append(NavState.workoutSetup)
                             activeButton = nil
                         }
@@ -55,12 +64,15 @@ struct WatchRootView: View {
                         icon: "target",
                         tint: .blue,
                         buttonId: "goal"
-                    ) {
-                        withAnimation {
+                    )
+                    {
+                        withAnimation
+                        {
                             activeButton = "goal"
                         }
                         
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2)
+                        {
                             manager.path.append(NavState.goalWorkoutSetup)
                             activeButton = nil
                         }
@@ -72,12 +84,15 @@ struct WatchRootView: View {
                         icon: "square.and.arrow.down.fill",
                         tint: .orange,
                         buttonId: "import"
-                    ) {
-                        withAnimation {
+                    )
+                    {
+                        withAnimation
+                        {
                             activeButton = "import"
                         }
                         
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2)
+                        {
                             manager.path.append(NavState.importSetView)
                             activeButton = nil
                         }
@@ -85,16 +100,20 @@ struct WatchRootView: View {
                     
                     // settings button (doesn't navigate away)
                     Button(action: {
-                        withAnimation {
+                        withAnimation
+                        {
                             activeButton = "settings"
                         }
                         
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2)
+                        {
                             showSettings = true
                             activeButton = nil
                         }
-                    }) {
-                        HStack(spacing: 8) {
+                    })
+                    {
+                        HStack(spacing: 8)
+                        {
                             Image(systemName: "gear")
                                 .font(.system(size: 16))
                             Text("Settings")
@@ -115,16 +134,20 @@ struct WatchRootView: View {
             }
             .padding(.bottom, 12)
         }
-        // show settings on click 
-        .sheet(isPresented: $showSettings) {
+        .padding(.top, 16)
+        .ignoresSafeArea(edges: .top)
+        .sheet(isPresented: $showSettings)
+        {
             SettingsView()
         }
     }
     
     // custom button builder
     private func mainButton(label: String, icon: String, tint: Color, buttonId: String, action: @escaping () -> Void) -> some View {
-        Button(action: action) {
-            HStack(spacing: 10) {
+        Button(action: action)
+        {
+            HStack(spacing: 10)
+            {
                 Image(systemName: icon)
                     .font(.system(size: 16))
                 Text(label)
@@ -147,8 +170,10 @@ struct WatchRootView: View {
     }
     
     // stat item component
-    private func statItem(value: String, label: String) -> some View {
-        VStack(spacing: 2) {
+    private func statItem(value: String, label: String) -> some View
+    {
+        VStack(spacing: 2)
+        {
             Text(value)
                 .font(.system(size: 16, weight: .bold, design: .rounded))
             Text(label)
@@ -159,18 +184,23 @@ struct WatchRootView: View {
     }
     
     // format distance for display
-    private func formatDistance(_ meters: Double) -> String {
-        if manager.poolUnit == "yards" {
+    private func formatDistance(_ meters: Double) -> String
+    {
+        if manager.poolUnit == "yards"
+        {
             let yards = meters * 1.09361
             return "\(Int(yards)) yd"
-        } else {
+        }
+        else
+        {
             return "\(Int(meters)) m"
         }
     }
 }
 
 // preview
-#Preview {
+#Preview
+{
     WatchRootView()
         .environmentObject(WatchManager())
         .environmentObject(iOSWatchConnector())

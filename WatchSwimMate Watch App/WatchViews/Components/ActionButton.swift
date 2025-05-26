@@ -2,8 +2,7 @@
 
 import SwiftUI
 
-
-// standard button style we'll use throughout the WatchOS component
+// standard button style
 struct ActionButton: View {
     var label: String
     var icon: String
@@ -69,7 +68,7 @@ struct ActionButton: View {
 
 // preview
 #Preview {
-    VStack(spacing: 20) {
+    VStack(spacing: 10) {
         // normal action button
         ActionButton(
             label: "Start Workout",

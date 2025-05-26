@@ -1,10 +1,10 @@
-// GoalSetupView
-
+// GoalSetupView.swift
 
 import SwiftUI
 
 // modular view for setting up a numeric Goal (distance / calorie)
-struct GoalSetupView: View {
+struct GoalSetupView: View
+{
     // properties for config
     var title: String
     var unit: String
@@ -21,9 +21,12 @@ struct GoalSetupView: View {
     // dismiss action
     var onDismiss: () -> Void
     
-    var body: some View {
-        ScrollView {
-            VStack(spacing: 8) {
+    var body: some View
+    {
+        ScrollView
+        {
+            VStack(spacing: 8)
+            {
                 // title
                 Text(title)
                     .font(.headline)
@@ -46,7 +49,8 @@ struct GoalSetupView: View {
                     .padding(.top, 4)
 
                 // visual indicator for digital crown
-                HStack {
+                HStack
+                {
                     Text("-")
                         .font(.headline)
                         .foregroundColor(.red)
@@ -78,10 +82,13 @@ struct GoalSetupView: View {
                 Spacer()
                 
                 // set button
-                Button {
+                Button
+                {
                     WKInterfaceDevice.current().play(.success)
                     onDismiss()
-                } label: {
+                }
+                label:
+                {
                     Text("Set Goal")
                         .fontWeight(.semibold)
                         .foregroundColor(.white)
@@ -100,7 +107,8 @@ struct GoalSetupView: View {
 }
 
 // preview
-#Preview {
+#Preview
+{
     GoalSetupView(
         title: "Distance Goal",
         unit: "meters",

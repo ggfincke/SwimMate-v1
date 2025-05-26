@@ -1,4 +1,4 @@
-// WorkoutSetupView
+// WorkoutSetupView.swift
 
 import SwiftUI
 

@@ -1,87 +1,139 @@
-//
-//  SwimmingView.swift
-//  WatchSwimMate Watch App
-//
-//  Created by Garrett Fincke on 4/27/24.
-//
+// SwimmingView.swift
 
 import SwiftUI
 import WatchKit
 
-// view shown when swimming
-struct SwimmingView: View
-{
+// Main SwimmingView - tab view for WorkoutControls, Metrics, and SetDisplay
+struct SwimmingView: View {
     @EnvironmentObject var manager: WatchManager
-    enum Tab
-    {
-        case controls, metrics, set, goal
-    }
-    var set: SwimSet?
     @State private var selection: Tab = .metrics
-
-    // init to see if set exists
-    init(set: SwimSet?) 
-    {
+    @State private var isInitialized = false
+    
+    let set: SwimSet?
+    
+    enum Tab: String, CaseIterable {
+        case controls = "Controls"
+        case metrics = "Metrics"
+        case set = "Set"
+        case goals = "Goals"
+        
+        var icon: String {
+            switch self {
+            case .controls: return "hand.tap.fill"
+            case .metrics: return "chart.line.uptrend.xyaxis"
+            case .set: return "list.bullet.clipboard"
+            case .goals: return "target"
+            }
+        }
+        
+        var color: Color {
+            switch self {
+            case .controls: return .orange
+            case .metrics: return .blue
+            case .set: return .green
+            case .goals: return .purple
+            }
+        }
+    }
+    
+    // set init
+    init(set: SwimSet?) {
         self.set = set
     }
+    
+    var body: some View {
+        ZStack {
+            // Main horizontal tab content
+            TabView(selection: $selection) {
+                // Controls Tab
+                WorkoutControlsView()
+                    .tag(Tab.controls)
+                
+                // Metrics Tab
+                MetricsView()
+                    .tag(Tab.metrics)
+                
+                // Set Tab (if available)
+                if let set = set {
+                    SetDisplayView(swimSet: set)
+                        .tag(Tab.set)
+                }
+                
+                // Goals Tab (if goals are set)
+                if hasActiveGoals {
+                    GoalProgressView()
+                        .tag(Tab.goals)
+                }
+            }
+            .tabViewStyle(.page(indexDisplayMode: .automatic))
+            .onAppear {
+                if !isInitialized {
+                    setupInitialTab()
+                    isInitialized = true
+                }
+            }
+            
 
-
-    var body: some View
-    {
-        // initial selection is dependent on goal and set
-        let initialSelection: Tab = {
-            if let _ = set
-            {
-                return .set
-            } 
-            else if manager.goalDistance > 0 || manager.goalTime > 0 || manager.goalCalories > 0
-            {
-                return .goal
-            } 
-            else
-            {
-                return .metrics
-            }
-        }()
-        
-        // tabview for selection
-        TabView(selection: $selection)
-        {
-            WorkoutControlsView().tag(Tab.controls)
-            MetricsView().tag(Tab.metrics)
-            if let set = set
-            {
-                SetDisplayView(swimSet: set).tag(Tab.set)
-            }
-            if manager.goalDistance > 0 || manager.goalTime > 0 || manager.goalCalories > 0 
-            {
-                GoalProgressView().tag(Tab.goal)
-            }
         }
-        .onAppear 
-        {
-            selection = initialSelection
-        }
-        // hide back buttons at the top
         .navigationBarBackButtonHidden(true)
-
+        .onAppear {
+            // Ensure water lock is enabled when starting workout
+            if manager.running {
+                WKInterfaceDevice.current().enableWaterLock()
+            }
+        }
+    }
+    
+    // MARK: - Helper Properties
+    
+    private var availableTabs: [Tab] {
+        var tabs: [Tab] = [.controls, .metrics]
+        
+        if set != nil {
+            tabs.append(.set)
+        }
+        
+        if hasActiveGoals {
+            tabs.append(.goals)
+        }
+        
+        return tabs
+    }
+    
+    private var hasActiveGoals: Bool {
+        manager.goalDistance > 0 || manager.goalTime > 0 || manager.goalCalories > 0
+    }
+    
+    private func setupInitialTab() {
+        // Smart initial tab selection based on context
+        if let _ = set {
+            selection = .set
+        } else if hasActiveGoals {
+            selection = .goals
+        } else {
+            selection = .metrics
+        }
     }
 }
 
-// for preview
-let sampleSet = SwimSet(
-    title: "Sample",
-    primaryStroke: .freestyle,
-    totalDistance: 2000,
-    measureUnit: .meters,
-    difficulty: .intermediate,
-    description: "A challenging set designed to improve endurance and pace.",
-    details: ["800 warmup mix", "10x100 on 1:30, descend 1-5, 6-10", "10x50 kick on 1:00", "500 cool down easy"]
-)
+// preview
 
-#Preview
-{
+#Preview {
+    let sampleSet = SwimSet(
+        title: "Endurance Set",
+        primaryStroke: .freestyle,
+        totalDistance: 1500,
+        measureUnit: .meters,
+        difficulty: .intermediate,
+        description: "Build endurance with this progressive set",
+        details: [
+            "400m warm-up easy",
+            "8x100m on 1:30",
+            "4x200m on 3:00",
+            "200m cool down"
+        ]
+    )
+    
     SwimmingView(set: sampleSet)
         .environmentObject(WatchManager())
 }
-

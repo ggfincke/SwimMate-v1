@@ -37,14 +37,31 @@
 		A07667B92BF5E7D800FFB4C3 /* Swim.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07667B32BF5E6CF00FFB4C3 /* Swim.swift */; };
 		A07667BA2BF5E7D800FFB4C3 /* SwimSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07667B42BF5E6CF00FFB4C3 /* SwimSet.swift */; };
 		A08761772DC90A0000BD4402 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = A08761762DC909FC00BD4402 /* README.md */; };
+		A0B679CE2DE2D3C900C65B53 /* MetricCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B679CD2DE2D3C600C65B53 /* MetricCard.swift */; };
+		A0B679D02DE2D43D00C65B53 /* PerformanceCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B679CF2DE2D43D00C65B53 /* PerformanceCard.swift */; };
+		A0B679D22DE2D4E300C65B53 /* IntensityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B679D12DE2D4E300C65B53 /* IntensityIndicator.swift */; };
+		A0B679D62DE3CB9B00C65B53 /* NavigationControls.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B679D52DE3CB9B00C65B53 /* NavigationControls.swift */; };
+		A0B679D82DE3CBBC00C65B53 /* CompactNavButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B679D72DE3CBBC00C65B53 /* CompactNavButton.swift */; };
+		A0B679DA2DE3CBE500C65B53 /* StepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B679D92DE3CBE500C65B53 /* StepView.swift */; };
+		A0B679DC2DE3CC0300C65B53 /* SetHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B679DB2DE3CC0300C65B53 /* SetHeader.swift */; };
+		A0B679DE2DE3CC2400C65B53 /* SetCompletionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B679DD2DE3CC2400C65B53 /* SetCompletionView.swift */; };
+		A0B679E02DE3CC4F00C65B53 /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B679DF2DE3CC4F00C65B53 /* ProgressBar.swift */; };
+		A0B679E42DE3E65B00C65B53 /* CelebrationOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B679E32DE3E65B00C65B53 /* CelebrationOverlay.swift */; };
+		A0B679E62DE3E6B300C65B53 /* SummaryFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B679E52DE3E6B300C65B53 /* SummaryFooter.swift */; };
+		A0B679E82DE3E6FB00C65B53 /* InsightRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B679E72DE3E6FB00C65B53 /* InsightRow.swift */; };
+		A0B679EA2DE3E72900C65B53 /* PerformanceInsightsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B679E92DE3E72900C65B53 /* PerformanceInsightsSection.swift */; };
+		A0B679EC2DE3E77600C65B53 /* KeyMetricsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B679EB2DE3E77600C65B53 /* KeyMetricsSection.swift */; };
+		A0B679EE2DE3E7DA00C65B53 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B679ED2DE3E7DA00C65B53 /* LoadingView.swift */; };
+		A0B679F02DE3E80E00C65B53 /* SummaryHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B679EF2DE3E80E00C65B53 /* SummaryHeaderView.swift */; };
+		A0B679F52DE3E92B00C65B53 /* PrimaryMetricsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B679F42DE3E92B00C65B53 /* PrimaryMetricsSection.swift */; };
+		A0B679F72DE3E94A00C65B53 /* SecondaryMetricsGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B679F62DE3E94A00C65B53 /* SecondaryMetricsGrid.swift */; };
+		A0B679FA2DE3EA8700C65B53 /* MainControlButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B679F92DE3EA8700C65B53 /* MainControlButton.swift */; };
 		A0BFBA232DDD7C3C002B96A8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A0BFBA1F2DDD7C3C002B96A8 /* Assets.xcassets */; };
 		A0BFBA242DDD7C3C002B96A8 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A0BFB9FD2DDD7C3C002B96A8 /* Preview Assets.xcassets */; };
 		A0BFBA252DDD7C3C002B96A8 /* WatchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BFBA022DDD7C3C002B96A8 /* WatchManager.swift */; };
 		A0BFBA262DDD7C3C002B96A8 /* toiOSWatchConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BFBA012DDD7C3C002B96A8 /* toiOSWatchConnector.swift */; };
 		A0BFBA272DDD7C3C002B96A8 /* WorkoutSetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BFBA122DDD7C3C002B96A8 /* WorkoutSetupView.swift */; };
 		A0BFBA282DDD7C3C002B96A8 /* DistanceSetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BFBA092DDD7C3C002B96A8 /* DistanceSetupView.swift */; };
-		A0BFBA292DDD7C3C002B96A8 /* UnitPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BFBA112DDD7C3C002B96A8 /* UnitPickerView.swift */; };
-		A0BFBA2A2DDD7C3C002B96A8 /* SummaryMetricView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BFBA152DDD7C3C002B96A8 /* SummaryMetricView.swift */; };
 		A0BFBA2B2DDD7C3C002B96A8 /* IndoorPoolSetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BFBA102DDD7C3C002B96A8 /* IndoorPoolSetupView.swift */; };
 		A0BFBA2C2DDD7C3C002B96A8 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BFBA062DDD7C3C002B96A8 /* SettingsView.swift */; };
 		A0BFBA2D2DDD7C3C002B96A8 /* CalorieSetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BFBA082DDD7C3C002B96A8 /* CalorieSetupView.swift */; };
@@ -125,6 +142,25 @@
 		A07667B32BF5E6CF00FFB4C3 /* Swim.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Swim.swift; sourceTree = "<group>"; };
 		A07667B42BF5E6CF00FFB4C3 /* SwimSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwimSet.swift; sourceTree = "<group>"; };
 		A08761762DC909FC00BD4402 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		A0B679CD2DE2D3C600C65B53 /* MetricCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetricCard.swift; sourceTree = "<group>"; };
+		A0B679CF2DE2D43D00C65B53 /* PerformanceCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerformanceCard.swift; sourceTree = "<group>"; };
+		A0B679D12DE2D4E300C65B53 /* IntensityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntensityIndicator.swift; sourceTree = "<group>"; };
+		A0B679D52DE3CB9B00C65B53 /* NavigationControls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationControls.swift; sourceTree = "<group>"; };
+		A0B679D72DE3CBBC00C65B53 /* CompactNavButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompactNavButton.swift; sourceTree = "<group>"; };
+		A0B679D92DE3CBE500C65B53 /* StepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepView.swift; sourceTree = "<group>"; };
+		A0B679DB2DE3CC0300C65B53 /* SetHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetHeader.swift; sourceTree = "<group>"; };
+		A0B679DD2DE3CC2400C65B53 /* SetCompletionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetCompletionView.swift; sourceTree = "<group>"; };
+		A0B679DF2DE3CC4F00C65B53 /* ProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
+		A0B679E32DE3E65B00C65B53 /* CelebrationOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CelebrationOverlay.swift; sourceTree = "<group>"; };
+		A0B679E52DE3E6B300C65B53 /* SummaryFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryFooter.swift; sourceTree = "<group>"; };
+		A0B679E72DE3E6FB00C65B53 /* InsightRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsightRow.swift; sourceTree = "<group>"; };
+		A0B679E92DE3E72900C65B53 /* PerformanceInsightsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerformanceInsightsSection.swift; sourceTree = "<group>"; };
+		A0B679EB2DE3E77600C65B53 /* KeyMetricsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyMetricsSection.swift; sourceTree = "<group>"; };
+		A0B679ED2DE3E7DA00C65B53 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		A0B679EF2DE3E80E00C65B53 /* SummaryHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryHeaderView.swift; sourceTree = "<group>"; };
+		A0B679F42DE3E92B00C65B53 /* PrimaryMetricsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryMetricsSection.swift; sourceTree = "<group>"; };
+		A0B679F62DE3E94A00C65B53 /* SecondaryMetricsGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondaryMetricsGrid.swift; sourceTree = "<group>"; };
+		A0B679F92DE3EA8700C65B53 /* MainControlButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainControlButton.swift; sourceTree = "<group>"; };
 		A0BFB9FD2DDD7C3C002B96A8 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		A0BFB9FF2DDD7C3C002B96A8 /* NavState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavState.swift; sourceTree = "<group>"; };
 		A0BFBA012DDD7C3C002B96A8 /* toiOSWatchConnector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = toiOSWatchConnector.swift; sourceTree = "<group>"; };
@@ -138,10 +174,8 @@
 		A0BFBA0D2DDD7C3C002B96A8 /* ImportSetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportSetView.swift; sourceTree = "<group>"; };
 		A0BFBA0E2DDD7C3C002B96A8 /* SetDisplayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetDisplayView.swift; sourceTree = "<group>"; };
 		A0BFBA102DDD7C3C002B96A8 /* IndoorPoolSetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndoorPoolSetupView.swift; sourceTree = "<group>"; };
-		A0BFBA112DDD7C3C002B96A8 /* UnitPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitPickerView.swift; sourceTree = "<group>"; };
 		A0BFBA122DDD7C3C002B96A8 /* WorkoutSetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutSetupView.swift; sourceTree = "<group>"; };
 		A0BFBA142DDD7C3C002B96A8 /* ElapsedTimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElapsedTimeView.swift; sourceTree = "<group>"; };
-		A0BFBA152DDD7C3C002B96A8 /* SummaryMetricView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryMetricView.swift; sourceTree = "<group>"; };
 		A0BFBA172DDD7C3C002B96A8 /* GoalProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalProgressView.swift; sourceTree = "<group>"; };
 		A0BFBA182DDD7C3C002B96A8 /* MetricsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetricsView.swift; sourceTree = "<group>"; };
 		A0BFBA192DDD7C3C002B96A8 /* SwimmingSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwimmingSummaryView.swift; sourceTree = "<group>"; };
@@ -291,6 +325,90 @@
 			path = SwimMate/Model;
 			sourceTree = SOURCE_ROOT;
 		};
+		A0B679CB2DE2D3AB00C65B53 /* MetricsView */ = {
+			isa = PBXGroup;
+			children = (
+				A0B679F32DE3E90B00C65B53 /* Sections */,
+				A0BFBA182DDD7C3C002B96A8 /* MetricsView.swift */,
+			);
+			path = MetricsView;
+			sourceTree = "<group>";
+		};
+		A0B679D32DE3CB6400C65B53 /* SetDisplayView */ = {
+			isa = PBXGroup;
+			children = (
+				A0B679F82DE3EA0C00C65B53 /* Sections */,
+				A0BFBA0E2DDD7C3C002B96A8 /* SetDisplayView.swift */,
+			);
+			path = SetDisplayView;
+			sourceTree = "<group>";
+		};
+		A0B679E12DE3E5C000C65B53 /* SummaryView */ = {
+			isa = PBXGroup;
+			children = (
+				A0B679F12DE3E8C000C65B53 /* Sections */,
+				A0BFBA192DDD7C3C002B96A8 /* SwimmingSummaryView.swift */,
+			);
+			path = SummaryView;
+			sourceTree = "<group>";
+		};
+		A0B679F12DE3E8C000C65B53 /* Sections */ = {
+			isa = PBXGroup;
+			children = (
+				A0B679EF2DE3E80E00C65B53 /* SummaryHeaderView.swift */,
+				A0B679ED2DE3E7DA00C65B53 /* LoadingView.swift */,
+				A0B679EB2DE3E77600C65B53 /* KeyMetricsSection.swift */,
+				A0B679E92DE3E72900C65B53 /* PerformanceInsightsSection.swift */,
+				A0B679E52DE3E6B300C65B53 /* SummaryFooter.swift */,
+			);
+			path = Sections;
+			sourceTree = "<group>";
+		};
+		A0B679F22DE3E8E800C65B53 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				A0B679F92DE3EA8700C65B53 /* MainControlButton.swift */,
+				A0B679DF2DE3CC4F00C65B53 /* ProgressBar.swift */,
+				A0B679D92DE3CBE500C65B53 /* StepView.swift */,
+				A0B679D72DE3CBBC00C65B53 /* CompactNavButton.swift */,
+				A0B679D52DE3CB9B00C65B53 /* NavigationControls.swift */,
+				A0B679CF2DE2D43D00C65B53 /* PerformanceCard.swift */,
+				A0B679CD2DE2D3C600C65B53 /* MetricCard.swift */,
+				A0B679E72DE3E6FB00C65B53 /* InsightRow.swift */,
+				A0B679E32DE3E65B00C65B53 /* CelebrationOverlay.swift */,
+				A0BFBA142DDD7C3C002B96A8 /* ElapsedTimeView.swift */,
+				A0B679D12DE2D4E300C65B53 /* IntensityIndicator.swift */,
+				A0BFBA042DDD7C3C002B96A8 /* ActionButton.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		A0B679F32DE3E90B00C65B53 /* Sections */ = {
+			isa = PBXGroup;
+			children = (
+				A0B679F62DE3E94A00C65B53 /* SecondaryMetricsGrid.swift */,
+				A0B679F42DE3E92B00C65B53 /* PrimaryMetricsSection.swift */,
+			);
+			path = Sections;
+			sourceTree = "<group>";
+		};
+		A0B679F82DE3EA0C00C65B53 /* Sections */ = {
+			isa = PBXGroup;
+			children = (
+				A0B679DB2DE3CC0300C65B53 /* SetHeader.swift */,
+				A0B679DD2DE3CC2400C65B53 /* SetCompletionView.swift */,
+			);
+			path = Sections;
+			sourceTree = "<group>";
+		};
+		A0B679FB2DE3F1AB00C65B53 /* GoalDisplayView */ = {
+			isa = PBXGroup;
+			children = (
+				A0BFBA172DDD7C3C002B96A8 /* GoalProgressView.swift */,
+			);
+			path = GoalDisplayView;
+			sourceTree = "<group>";
+		};
 		A0BFB9FE2DDD7C3C002B96A8 /* Preview Content */ = {
 			isa = PBXGroup;
 			children = (
@@ -316,15 +434,6 @@
 			path = WatchViewModel;
 			sourceTree = "<group>";
 		};
-		A0BFBA052DDD7C3C002B96A8 /* GeneralViews */ = {
-			isa = PBXGroup;
-			children = (
-				A00E2E5C2DDDABDB005C30DE /* GoalSetupView.swift */,
-				A0BFBA042DDD7C3C002B96A8 /* ActionButton.swift */,
-			);
-			path = GeneralViews;
-			sourceTree = "<group>";
-		};
 		A0BFBA072DDD7C3C002B96A8 /* SettingsView */ = {
 			isa = PBXGroup;
 			children = (
@@ -336,6 +445,7 @@
 		A0BFBA0C2DDD7C3C002B96A8 /* GoalViews */ = {
 			isa = PBXGroup;
 			children = (
+				A00E2E5C2DDDABDB005C30DE /* GoalSetupView.swift */,
 				A0BFBA082DDD7C3C002B96A8 /* CalorieSetupView.swift */,
 				A0BFBA092DDD7C3C002B96A8 /* DistanceSetupView.swift */,
 				A0BFBA0A2DDD7C3C002B96A8 /* GoalWorkoutSetupView.swift */,
@@ -344,43 +454,24 @@
 			path = GoalViews;
 			sourceTree = "<group>";
 		};
-		A0BFBA0F2DDD7C3C002B96A8 /* ImportSetViews */ = {
-			isa = PBXGroup;
-			children = (
-				A0BFBA0D2DDD7C3C002B96A8 /* ImportSetView.swift */,
-				A0BFBA0E2DDD7C3C002B96A8 /* SetDisplayView.swift */,
-			);
-			path = ImportSetViews;
-			sourceTree = "<group>";
-		};
 		A0BFBA132DDD7C3C002B96A8 /* WorkoutSetup */ = {
 			isa = PBXGroup;
 			children = (
 				A0BFBA0C2DDD7C3C002B96A8 /* GoalViews */,
-				A0BFBA0F2DDD7C3C002B96A8 /* ImportSetViews */,
+				A0BFBA0D2DDD7C3C002B96A8 /* ImportSetView.swift */,
 				A0BFBA102DDD7C3C002B96A8 /* IndoorPoolSetupView.swift */,
-				A0BFBA112DDD7C3C002B96A8 /* UnitPickerView.swift */,
 				A0BFBA122DDD7C3C002B96A8 /* WorkoutSetupView.swift */,
 			);
 			path = WorkoutSetup;
 			sourceTree = "<group>";
 		};
-		A0BFBA162DDD7C3C002B96A8 /* Subviews */ = {
-			isa = PBXGroup;
-			children = (
-				A0BFBA142DDD7C3C002B96A8 /* ElapsedTimeView.swift */,
-				A0BFBA152DDD7C3C002B96A8 /* SummaryMetricView.swift */,
-			);
-			path = Subviews;
-			sourceTree = "<group>";
-		};
 		A0BFBA1C2DDD7C3C002B96A8 /* WorkoutViews */ = {
 			isa = PBXGroup;
 			children = (
-				A0BFBA162DDD7C3C002B96A8 /* Subviews */,
-				A0BFBA172DDD7C3C002B96A8 /* GoalProgressView.swift */,
-				A0BFBA182DDD7C3C002B96A8 /* MetricsView.swift */,
-				A0BFBA192DDD7C3C002B96A8 /* SwimmingSummaryView.swift */,
+				A0B679FB2DE3F1AB00C65B53 /* GoalDisplayView */,
+				A0B679D32DE3CB6400C65B53 /* SetDisplayView */,
+				A0B679CB2DE2D3AB00C65B53 /* MetricsView */,
+				A0B679E12DE3E5C000C65B53 /* SummaryView */,
 				A0BFBA1A2DDD7C3C002B96A8 /* SwimmingView.swift */,
 				A0BFBA1B2DDD7C3C002B96A8 /* WorkoutControlsView.swift */,
 			);
@@ -390,7 +481,7 @@
 		A0BFBA1E2DDD7C3C002B96A8 /* WatchViews */ = {
 			isa = PBXGroup;
 			children = (
-				A0BFBA052DDD7C3C002B96A8 /* GeneralViews */,
+				A0B679F22DE3E8E800C65B53 /* Components */,
 				A0BFBA072DDD7C3C002B96A8 /* SettingsView */,
 				A0BFBA132DDD7C3C002B96A8 /* WorkoutSetup */,
 				A0BFBA1C2DDD7C3C002B96A8 /* WorkoutViews */,
@@ -592,26 +683,43 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A0B679DA2DE3CBE500C65B53 /* StepView.swift in Sources */,
+				A0B679E42DE3E65B00C65B53 /* CelebrationOverlay.swift in Sources */,
+				A0B679D02DE2D43D00C65B53 /* PerformanceCard.swift in Sources */,
+				A0B679D22DE2D4E300C65B53 /* IntensityIndicator.swift in Sources */,
 				A07667B92BF5E7D800FFB4C3 /* Swim.swift in Sources */,
 				A07667BA2BF5E7D800FFB4C3 /* SwimSet.swift in Sources */,
+				A0B679F72DE3E94A00C65B53 /* SecondaryMetricsGrid.swift in Sources */,
+				A0B679DE2DE3CC2400C65B53 /* SetCompletionView.swift in Sources */,
 				A0BFBA252DDD7C3C002B96A8 /* WatchManager.swift in Sources */,
 				A0BFBA262DDD7C3C002B96A8 /* toiOSWatchConnector.swift in Sources */,
 				A0BFBA272DDD7C3C002B96A8 /* WorkoutSetupView.swift in Sources */,
+				A0B679D62DE3CB9B00C65B53 /* NavigationControls.swift in Sources */,
 				A0BFBA282DDD7C3C002B96A8 /* DistanceSetupView.swift in Sources */,
-				A0BFBA292DDD7C3C002B96A8 /* UnitPickerView.swift in Sources */,
+				A0B679E62DE3E6B300C65B53 /* SummaryFooter.swift in Sources */,
+				A0B679CE2DE2D3C900C65B53 /* MetricCard.swift in Sources */,
+				A0B679E02DE3CC4F00C65B53 /* ProgressBar.swift in Sources */,
 				A00E2E5D2DDDABDB005C30DE /* GoalSetupView.swift in Sources */,
-				A0BFBA2A2DDD7C3C002B96A8 /* SummaryMetricView.swift in Sources */,
 				A0BFBA2B2DDD7C3C002B96A8 /* IndoorPoolSetupView.swift in Sources */,
 				A0BFBA2C2DDD7C3C002B96A8 /* SettingsView.swift in Sources */,
+				A0B679F02DE3E80E00C65B53 /* SummaryHeaderView.swift in Sources */,
 				A0BFBA2D2DDD7C3C002B96A8 /* CalorieSetupView.swift in Sources */,
+				A0B679D82DE3CBBC00C65B53 /* CompactNavButton.swift in Sources */,
 				A0BFBA2E2DDD7C3C002B96A8 /* WorkoutControlsView.swift in Sources */,
 				A0BFBA2F2DDD7C3C002B96A8 /* ActionButton.swift in Sources */,
 				A0BFBA302DDD7C3C002B96A8 /* TimeSetupView.swift in Sources */,
 				A0BFBA312DDD7C3C002B96A8 /* GoalProgressView.swift in Sources */,
+				A0B679EE2DE3E7DA00C65B53 /* LoadingView.swift in Sources */,
 				A0BFBA322DDD7C3C002B96A8 /* SwimmingView.swift in Sources */,
 				A0BFBA332DDD7C3C002B96A8 /* ElapsedTimeView.swift in Sources */,
+				A0B679DC2DE3CC0300C65B53 /* SetHeader.swift in Sources */,
+				A0B679EA2DE3E72900C65B53 /* PerformanceInsightsSection.swift in Sources */,
+				A0B679F52DE3E92B00C65B53 /* PrimaryMetricsSection.swift in Sources */,
+				A0B679E82DE3E6FB00C65B53 /* InsightRow.swift in Sources */,
+				A0B679EC2DE3E77600C65B53 /* KeyMetricsSection.swift in Sources */,
 				A0BFBA342DDD7C3C002B96A8 /* ImportSetView.swift in Sources */,
 				A0BFBA352DDD7C3C002B96A8 /* GoalWorkoutSetupView.swift in Sources */,
+				A0B679FA2DE3EA8700C65B53 /* MainControlButton.swift in Sources */,
 				A0BFBA362DDD7C3C002B96A8 /* MetricsView.swift in Sources */,
 				A0BFBA372DDD7C3C002B96A8 /* SwimmingSummaryView.swift in Sources */,
 				A0BFBA382DDD7C3C002B96A8 /* WatchRootView.swift in Sources */,

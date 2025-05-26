@@ -1,13 +1,9 @@
-//
-//  ElapsedTimeView.swift
-//  WatchSwimMate Watch App
-//
-//  Created by Garrett Fincke on 4/28/24.
-//
+// ElapsedTimeView.swift
 
 import SwiftUI
 
-struct ElapsedTimeView: View 
+// shows elapsed time in a workout
+struct ElapsedTimeView: View
 {
     var elapsedTime: TimeInterval = 0
     var showSubseconds: Bool = true
@@ -23,7 +19,6 @@ struct ElapsedTimeView: View
             }
     }
 }
-
 
 // adjusted to show hour field after swimming for an hour & hide subseconds (same behavior as standard workout app)
 class ElapsedTimeFormatter: Formatter

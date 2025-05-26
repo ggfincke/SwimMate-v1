@@ -1,110 +1,125 @@
-//
-//  WorkoutControlsView.swift
-//  WatchSwimMate Watch App
-//
-//  Created by Garrett Fincke on 4/27/24.
-//
+// WorkoutControlsView.swift
 
 import SwiftUI
+import WatchKit
 
-// displays controls for the workout
+// controls for workout
 struct WorkoutControlsView: View
 {
     @EnvironmentObject var manager: WatchManager
     @State private var showSummary = false
-
+    @State private var showEndConfirmation = false
+    
     var body: some View
     {
-        VStack(spacing: 15)
+        VStack(spacing: 0)
         {
-            HStack(spacing: 15)
+            // 2x2 main grid
+            LazyVGrid(columns: [
+                GridItem(.flexible(), spacing: 16),
+                GridItem(.flexible(), spacing: 16)
+            ], spacing: 16)
             {
-                // pause/continue workout
-                Button(action: {manager.togglePause()})
+                
+                // pause/resume & end
+                MainControlButton(
+                    icon: manager.running ? "pause.fill" : "play.fill",
+                    label: manager.running ? "Pause" : "Resume",
+                    color: .yellow
+                )
                 {
-                    VStack
+                    withHapticFeedback
                     {
-                        Image(systemName: manager.running ? "pause" : "play")
-                            .resizable()
-                            .frame(width: 25, height: 25)
+                        manager.togglePause()
                     }
-                    .buttonStyle(PlainButtonStyle())
-                    .frame(width: 60, height: 60)
-                    .foregroundColor(.black)
-                    .background(Circle().fill(Color.yellow))
-                    .padding()
                 }
                 
-                // end workout
-                Button(action: {
-                    manager.resetNav()
-                    manager.endWorkout()
-                    showSummary = true
-                })
+                MainControlButton(
+                    icon: "stop.fill",
+                    label: "End",
+                    color: .red
+                )
                 {
-                    VStack
+                    withHapticFeedback
                     {
-                        Image(systemName: "stop.circle.fill")
-                            .resizable()
-                            .frame(width: 25, height: 25)
+                        showEndConfirmation = true
                     }
-                    .frame(width: 60, height: 60)
-                    .background(Circle().fill(Color.red))
-                    .foregroundColor(.white)
-                    .padding()
-
                 }
-
-            }
-
-            // enable water lock
-            HStack(spacing: 15)
-            {
-                Button(action: {
-                    WKInterfaceDevice.current().enableWaterLock()
-                })
+                
+                // water Lock & Lap
+                MainControlButton(
+                    icon: "drop.fill",
+                    label: "Lock",
+                    color: .blue
+                )
                 {
-                VStack
+                    withHapticFeedback
                     {
-                        Image(systemName: "drop")
-                            .resizable()
-                            .frame(width: 20, height: 25)
+                        WKInterfaceDevice.current().enableWaterLock()
                     }
-                    .frame(width: 60, height: 60)
-                    .background(Circle().fill(Color.blue))
-                    .foregroundColor(.white)
-                    .padding()
-
                 }
-
-                // segment 
-                Button(action: {
-                    // placeholder
-                })
+                
+                MainControlButton(
+                    icon: "flag.fill",
+                    label: "Lap",
+                    color: .green
+                )
                 {
-                    VStack
+                    withHapticFeedback
                     {
-                        Image(systemName: "flag.circle.fill")
-                            .resizable()
-                            .frame(width: 25, height: 25)
+                        // TODO: Implement lap marking
+                        manager.laps += 1
                     }
-                    .frame(width: 60, height: 60)
-                    .background(Circle().fill(Color.green))
-                    .foregroundColor(.white)
-                    .padding()
                 }
             }
+            .padding(.horizontal, 20)
+            
+            Spacer()
         }
-        .padding()
+        .confirmationDialog(
+            "End Workout?",
+            isPresented: $showEndConfirmation,
+            titleVisibility: .visible
+        )
+        {
+            Button("End Workout", role: .destructive)
+            {
+                endWorkout()
+            }
+            Button("Cancel", role: .cancel) { }
+        }
+        message:
+        {
+            Text("This will save your workout and return to the main screen.")
+        }
         .sheet(isPresented: $showSummary)
         {
             SwimmingSummaryView()
                 .environmentObject(manager)
         }
     }
+    
+    // MARK: - Actions
+    private func endWorkout()
+    {
+        withHapticFeedback(.success)
+        {
+            manager.resetNav()
+            manager.endWorkout()
+            showSummary = true
+        }
+    }
+    
+    private func withHapticFeedback<T>(_ type: WKHapticType = .click, action: () -> T) -> T
+    {
+        WKInterfaceDevice.current().play(type)
+        return action()
+    }
 }
 
-#Preview 
+
+// Preview
+#Preview
 {
     WorkoutControlsView()
         .environmentObject(WatchManager())

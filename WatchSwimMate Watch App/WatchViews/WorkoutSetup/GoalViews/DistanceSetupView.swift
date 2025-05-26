@@ -1,13 +1,17 @@
+// DistanceSetupView.swift
+
 import SwiftUI
 
-struct DistanceSetupView: View {
+struct DistanceSetupView: View
+{
     @EnvironmentObject var manager: WatchManager
     @Environment(\.dismiss) private var dismiss
     
     // quick selects for distance
     private let distancePresets = [100, 250, 500, 1000, 2000]
     
-    var body: some View {
+    var body: some View
+    {
         GoalSetupView(
             title: "Distance Goal",
             unit: manager.poolUnit,

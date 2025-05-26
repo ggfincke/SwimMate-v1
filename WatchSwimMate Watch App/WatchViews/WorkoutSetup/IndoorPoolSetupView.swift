@@ -1,4 +1,4 @@
-// IndoorPoolSetupView
+// IndoorPoolSetupView.swift
 
 import SwiftUI
 

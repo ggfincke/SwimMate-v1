@@ -1,13 +1,17 @@
+// CalorieSetupView.swift
+
 import SwiftUI
 
-struct CalorieSetupView: View {
+struct CalorieSetupView: View
+{
     @EnvironmentObject var manager: WatchManager
     @Environment(\.dismiss) private var dismiss
     
     // quick select for calories
     private let caloriePresets = [100, 200, 300, 500, 750]
     
-    var body: some View {
+    var body: some View
+    {
         GoalSetupView(
             title: "Calorie Goal",
             unit: "kcal",
@@ -25,7 +29,8 @@ struct CalorieSetupView: View {
     }
 }
 
-#Preview {
+#Preview
+{
     CalorieSetupView()
         .environmentObject(WatchManager())
 }
