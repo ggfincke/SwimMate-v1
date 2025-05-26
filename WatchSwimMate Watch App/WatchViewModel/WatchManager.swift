@@ -168,10 +168,44 @@ class WatchManager: NSObject, ObservableObject
     }
 
     // end workout
-    func endWorkout()
-    {
-        workoutSession?.end()
-        showingSummaryView = true
+    // Enhanced error handling for workout operations
+    func endWorkout() {
+        // Add check to ensure we have an active session
+        guard let workoutSession = workoutSession,
+              workoutSession.state == .running || workoutSession.state == .paused else {
+            print("No active workout session to end")
+            showingSummaryView = true
+            return
+        }
+        
+        workoutSession.end()
+    }
+    
+    // Enhanced reset with better cleanup
+    func resetWorkout() {
+        selected = nil
+        
+        // Only clean up builder and session if they exist
+        if workoutBuilder != nil {
+            workoutBuilder = nil
+        }
+        
+        if workoutSession != nil {
+            workoutSession = nil
+        }
+        
+        workout = nil
+        activeEnergy = 0
+        averageHeartRate = 0
+        heartRate = 0
+        distance = 0
+        elapsedTime = 0
+        laps = 0
+        
+        // Reset goals
+        goalDistance = 0
+        goalTime = 0
+        goalCalories = 0
     }
 
     //TODO: needs to be updated for swimming
@@ -207,75 +241,116 @@ class WatchManager: NSObject, ObservableObject
             self.laps = 0
         }
     }
-    
-    // reset workout
-    func resetWorkout()
-    {
-        selected = nil
-        workoutBuilder = nil
-        workout = nil
-        workoutSession = nil
-        activeEnergy = 0
-        averageHeartRate = 0
-        heartRate = 0
-        distance = 0
-    }
 }
 
 // MARK: - HKWorkoutSessionDelegate
-extension WatchManager: HKWorkoutSessionDelegate 
+extension WatchManager: HKWorkoutSessionDelegate, HKLiveWorkoutBuilderDelegate
 {
+    // MARK: - HKLiveWorkoutBuilderDelegate Methods
+    
+    // called when workoutbuilder collects events; laps, pause/resume, etc.
+    func workoutBuilderDidCollectEvent(_ workoutBuilder: HKLiveWorkoutBuilder) {
+        print("Workout builder collected event")
+    }
+
+    // called when new health data is collected during worker
+    func workoutBuilder(_ workoutBuilder: HKLiveWorkoutBuilder, didCollectDataOf collectedTypes: Set<HKSampleType>) {
+        // iterate through each collected data type and update our published properties
+        for type in collectedTypes {
+            guard let quantityType = type as? HKQuantityType else {
+                continue
+            }
+
+            // stats for this data type
+            let statistics = workoutBuilder.statistics(for: quantityType)
+
+            // update published values on main thread
+            updateForStatistics(statistics)
+        }
+    }
+    
+    // MARK: - HKWorkoutSessionDelegate Methods
     func workoutSession(_ workoutSession: HKWorkoutSession,
                         didChangeTo toState: HKWorkoutSessionState,
                         from fromState: HKWorkoutSessionState,
                         date: Date)
     {
-        DispatchQueue.main.async 
+        DispatchQueue.main.async
         {
             self.running = toState == .running
         }
 
-        if toState == .ended 
+        if toState == .ended
         {
             self.workoutBuilder?.endCollection(withEnd: date) { (success, error) in
+                if let error = error {
+                    print("Error ending collection: \(error.localizedDescription)")
+                    DispatchQueue.main.async {
+                        // Set a default workout state even if collection failed
+                        self.workout = nil
+                        self.showingSummaryView = true
+                    }
+                    return
+                }
+                
                 self.workoutBuilder?.finishWorkout { (workout, error) in
-                    DispatchQueue.main.async 
+                    DispatchQueue.main.async
                     {
+                        if let error = error {
+                            print("Error finishing workout: \(error.localizedDescription)")
+                        }
+                        
+                        // Safely handle the workout optional
                         self.workout = workout
-                        self.updateLapsCount(from: workout!)  // Ensure laps are updated
-                        print("Workout finished: \(String(describing: workout))")
+                        
+                        if let workout = workout {
+                            self.updateLapsCount(from: workout)
+                            print("Workout finished: \(workout)")
+                        } else {
+                            print("Workout finished but workout object is nil")
+                            // Set laps based on current distance if workout is nil
+                            self.updateLapsFromCurrentDistance()
+                        }
+                        
+                        // Always show summary, even if workout is nil
+                        self.showingSummaryView = true
                     }
                 }
             }
         }
     }
 
-
     // failed with error
-    func workoutSession(_ workoutSession: HKWorkoutSession, didFailWithError error: Error) 
+    func workoutSession(_ workoutSession: HKWorkoutSession, didFailWithError error: Error)
     {
-        print(error)
-    }
-}
-
-// MARK: - HKLiveWorkoutBuilderDelegate
-extension WatchManager: HKLiveWorkoutBuilderDelegate 
-{
-    func workoutBuilderDidCollectEvent(_ workoutBuilder: HKLiveWorkoutBuilder) 
-    {
-    }
-
-    func workoutBuilder(_ workoutBuilder: HKLiveWorkoutBuilder, didCollectDataOf collectedTypes: Set<HKSampleType>) 
-    {
-        for type in collectedTypes
-        {
-            guard let quantityType = type as? HKQuantityType else { return }
-
-            let statistics = workoutBuilder.statistics(for: quantityType)
-
-            // update the published values
-            updateForStatistics(statistics)
+        print("Workout session failed with error: \(error.localizedDescription)")
+        DispatchQueue.main.async {
+            // Still show summary even if session failed
+            self.showingSummaryView = true
         }
     }
 }
 
+// MARK: - Helper Methods
+extension WatchManager {
+    
+    // Fallback method to calculate laps from current distance when workout object is nil
+    private func updateLapsFromCurrentDistance() {
+        let poolLengthInMeters: Double
+        
+        if poolUnit == "meters" {
+            poolLengthInMeters = poolLength
+        } else {
+            // Convert yards to meters
+            poolLengthInMeters = poolLength * 0.9144
+        }
+        
+        if poolLengthInMeters > 0 {
+            self.laps = Int(round(distance / poolLengthInMeters))
+        } else {
+            self.laps = 0
+        }
+    }
+    
+
+}
