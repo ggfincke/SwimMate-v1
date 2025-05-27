@@ -2,7 +2,9 @@
 
 import SwiftUI
 
-struct IndoorPoolSetupView: View {
+// sets up a pool workout
+struct IndoorPoolSetupView: View 
+{
     @EnvironmentObject var manager: WatchManager
     
     // swim set optional (if importing)
@@ -14,11 +16,15 @@ struct IndoorPoolSetupView: View {
     // state var for animating rotating button
     @State private var rotationAngle: Double = 0
 
-    var body: some View {
-        VStack(spacing: 16) {
-            // pool length display with digital crown support
-            VStack(spacing: 8) {
-                HStack(alignment: .lastTextBaseline, spacing: 8) {
+    var body: some View
+    {
+        VStack(spacing: 16)
+        {
+            // pool length display w/ digital crown support
+            VStack(spacing: 8) 
+            {
+                HStack(alignment: .lastTextBaseline, spacing: 8) 
+                {
                     Text("\(Int(manager.poolLength))")
                         .font(.system(size: 36, weight: .bold, design: .rounded))
                         .foregroundColor(.blue)
@@ -28,6 +34,7 @@ struct IndoorPoolSetupView: View {
                         .foregroundColor(.blue)
                         .opacity(0.8)
                 }
+                .focusable(true)
                 .digitalCrownRotation(
                     $manager.poolLength,
                     from: 10,
@@ -36,6 +43,9 @@ struct IndoorPoolSetupView: View {
                     sensitivity: .medium,
                     isContinuous: false
                 )
+                .onChange(of: manager.poolLength) { oldValue, newValue in
+                    print("🔄 Digital Crown: Pool length changed from \(oldValue) to \(newValue)")
+                }
                 
                 Text("Use Digital Crown to adjust")
                     .font(.system(size: 11))
@@ -44,12 +54,14 @@ struct IndoorPoolSetupView: View {
             }
             .padding(.top, 8)
             
-            // standard pool lengths and unit selection
+            // standard pool lengths & unit selection
             HStack(spacing: 10) {
                 ForEach(standardLengths, id: \.self) { length in
                     Button {
+                        print("🏊‍♂️ Standard length button pressed: \(Int(length))")
                         WKInterfaceDevice.current().play(.click)
                         manager.poolLength = length
+                        print("📏 Pool length set to: \(manager.poolLength)")
                     } label: {
                         Text("\(Int(length))")
                             .font(.system(size: 16, weight: .semibold))
@@ -67,10 +79,13 @@ struct IndoorPoolSetupView: View {
                 
                 // unit selection button
                 Button {
+                    let oldUnit = manager.poolUnit
+                    print("🔄 Unit toggle button pressed - Current unit: \(oldUnit)")
                     withAnimation(.easeInOut(duration: 0.3)) {
                         rotationAngle += 180
                         manager.poolUnit = manager.poolUnit == "meters" ? "yards" : "meters"
                     }
+                    print("📐 Unit changed from \(oldUnit) to \(manager.poolUnit)")
                     WKInterfaceDevice.current().play(.click)
                 } label: {
                     Image(systemName: "arrow.2.circlepath")
@@ -102,6 +117,7 @@ struct IndoorPoolSetupView: View {
         }
         .padding(.horizontal, 16)
         .padding(.vertical, 12)
+
     }
 }
 
