@@ -32,8 +32,9 @@ struct WatchRootView: View
                 .padding(.top, 8)
                 .padding(.bottom, 4)
                 
-                // HealthKit status banner (if not authorized)
-                if manager.authorizationRequested && !manager.healthKitAuthorized {
+                // HK status banner (if not authorized)
+                if manager.authorizationRequested && !manager.healthKitAuthorized
+                {
                     healthKitWarningBanner
                 }
                 
@@ -53,7 +54,8 @@ struct WatchRootView: View
                         isEnabled: manager.canStartWorkout
                     )
                     {
-                        if manager.canStartWorkout {
+                        if manager.canStartWorkout
+                        {
                             withAnimation
                             {
                                 activeButton = "quick"
@@ -65,7 +67,9 @@ struct WatchRootView: View
                                 manager.path.append(NavState.workoutSetup)
                                 activeButton = nil
                             }
-                        } else {
+                        }
+                        else
+                        {
                             showHealthKitAlert = true
                         }
                     }
@@ -79,7 +83,8 @@ struct WatchRootView: View
                         isEnabled: manager.canStartWorkout
                     )
                     {
-                        if manager.canStartWorkout {
+                        if manager.canStartWorkout
+                        {
                             withAnimation
                             {
                                 activeButton = "goal"
@@ -90,7 +95,9 @@ struct WatchRootView: View
                                 manager.path.append(NavState.goalWorkoutSetup)
                                 activeButton = nil
                             }
-                        } else {
+                        }
+                        else
+                        {
                             showHealthKitAlert = true
                         }
                     }
@@ -166,7 +173,7 @@ struct WatchRootView: View
         }
     }
     
-    // HealthKit warning banner
+    // HK warning banner
     private var healthKitWarningBanner: some View {
         HStack(spacing: 8) {
             Image(systemName: "exclamationmark.triangle.fill")

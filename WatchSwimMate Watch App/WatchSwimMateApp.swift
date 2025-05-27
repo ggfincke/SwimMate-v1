@@ -1,9 +1,4 @@
-//
-//  WatchSwimMateApp.swift
-//  WatchSwimMate Watch App
-//
-//  Created by Garrett Fincke on 4/26/24.
-//
+// WatchSwimMateApp.swift
 
 import SwiftUI
 import HealthKit
@@ -42,38 +37,73 @@ struct WatchSwimMate_Watch_App: App
             {
                 SwimmingSummaryView()
             }
-            .sheet(isPresented: $showingPermissionView) {
+            .sheet(isPresented: $showingPermissionView) 
+            {
                 HealthKitPermissionView()
             }
             .environmentObject(watchManager)
             .environmentObject(iosConnector)
-            .onAppear {
-                // Check if we should show permission view on launch
+            .onAppear 
+            {
+                // check permission view should be shown on launch
                 checkForPermissionViewNeeded()
             }
-            .onChange(of: watchManager.authorizationRequested) { _, newValue in
-                // If authorization was just requested and denied, we might want to show guidance
-                if newValue && !watchManager.healthKitAuthorized {
-                    // Permission was requested but denied - the settings view will handle this
+            .onChange(of: watchManager.authorizationRequested) 
+            { _, newValue in
+                // if auth was just requested and some level of access, hide permission view
+                if newValue && (watchManager.healthKitAuthorized || hasPartialAccess()) {
+                    showingPermissionView = false
+                }
+            }
+            .onChange(of: watchManager.healthKitAuthorized) 
+            { _, newValue in
+                // if auth status changes to authorized, hide permission view
+                print("📱 HealthKit authorized changed to: \(newValue)")
+                if newValue && showingPermissionView {
+                    showingPermissionView = false
+                    print("📱 Dismissing permission view - authorization granted")
                 }
             }
         }
     }
     
-    // Check if we need to show the permission view
-    private func checkForPermissionViewNeeded() {
-        // Only show permission view if:
-        // 1. HealthKit is available on device
-        // 2. We haven't requested authorization yet
-        // 3. We don't already have authorization
+    // check if need to show permission view
+    private func checkForPermissionViewNeeded() 
+    {
+        // only show permission view if:
+        // 1. HK is available on device
+        // 2. we don't have essential permissions
         
-        guard HKHealthStore.isHealthDataAvailable() else { return }
+        guard HKHealthStore.isHealthDataAvailable() else 
+        {
+            print("HealthKit not available on this device")
+            return
+        }
         
-        // Give the manager a moment to initialize and check existing permissions
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-            if !watchManager.authorizationRequested && !watchManager.healthKitAuthorized {
+        // give manager a moment to initialize & check existing permissions
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) 
+        {
+            if !watchManager.healthKitAuthorized
+            {
+                print("Showing HealthKit permission view - missing essential permissions")
                 showingPermissionView = true
+            } else {
+                print("Permission view not needed:")
+                print("- Authorization requested: \(watchManager.authorizationRequested)")
+                print("- HealthKit authorized: \(watchManager.healthKitAuthorized)")
             }
         }
+    }
+    
+    // check if have partial access (some permissions granted)
+    private func hasPartialAccess() -> Bool 
+    {
+        guard HKHealthStore.isHealthDataAvailable() else { return false }
+        
+        let workoutAuthorized = watchManager.healthStore.authorizationStatus(for: HKObjectType.workoutType()) == .sharingAuthorized
+        let distanceAuthorized = watchManager.healthStore.authorizationStatus(for: HKQuantityType.quantityType(forIdentifier: .distanceSwimming)!) == .sharingAuthorized
+        let energyAuthorized = watchManager.healthStore.authorizationStatus(for: HKQuantityType.quantityType(forIdentifier: .activeEnergyBurned)!) == .sharingAuthorized
+        
+        return workoutAuthorized || distanceAuthorized || energyAuthorized
     }
 }

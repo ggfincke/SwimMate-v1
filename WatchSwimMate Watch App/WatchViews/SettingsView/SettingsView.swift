@@ -1,4 +1,4 @@
-// Settings View implementation
+// SettingsView.swift
 
 import SwiftUI
 import HealthKit
@@ -8,20 +8,23 @@ struct SettingsView: View
 {
     @EnvironmentObject var manager: WatchManager
     @Environment(\.dismiss) private var dismiss
+    @State private var showResetConfirmation = false
+    @State private var showPermissionSheet = false
     
     var body: some View
     {
         List
         {
-            // HealthKit Section
+            // HK Section
             Section(header: Text("Health & Privacy"))
             {
                 healthKitStatusRow
                 
-                if manager.authorizationRequested {
+                if manager.authorizationRequested
+                {
                     Button("Re-request HealthKit Access")
                     {
-                        manager.requestAuthorization()
+                        showPermissionSheet = true
                     }
                     .foregroundColor(.blue)
                 }
@@ -29,10 +32,17 @@ struct SettingsView: View
                 {
                     Button("Request HealthKit Access")
                     {
-                        manager.requestAuthorization()
+                        showPermissionSheet = true
                     }
                     .foregroundColor(.blue)
                 }
+                
+                // reset auth state (for testing/debugging)
+                Button("Reset Authorization State")
+                {
+                    showResetConfirmation = true
+                }
+                .foregroundColor(.red)
             }
             
             Section(header: Text("Pool Settings"))
@@ -60,9 +70,24 @@ struct SettingsView: View
             }
         }
         .navigationTitle("Settings")
+        .sheet(isPresented: $showPermissionSheet) {
+            HealthKitPermissionView()
+        }
+        .confirmationDialog(
+            "Reset Authorization?",
+            isPresented: $showResetConfirmation,
+            titleVisibility: .visible
+        ) {
+            Button("Reset", role: .destructive) {
+                manager.resetAuthorizationState()
+            }
+            Button("Cancel", role: .cancel) { }
+        } message: {
+            Text("This will reset the HealthKit authorization state. You'll need to grant permission again.")
+        }
     }
     
-    // HealthKit status row
+    // HK status row
     private var healthKitStatusRow: some View
     {
         HStack
@@ -86,10 +111,14 @@ struct SettingsView: View
         .padding(.vertical, 2)
     }
     
-    // HealthKit status helpers
+    // HK status helpers
     private var healthKitStatusIcon: String
     {
-        if !manager.authorizationRequested
+        if !HKHealthStore.isHealthDataAvailable()
+        {
+            return "xmark.circle.fill"
+        }
+        else if !manager.authorizationRequested
         {
             return "questionmark.circle"
         }
@@ -105,7 +134,11 @@ struct SettingsView: View
     
     private var healthKitStatusColor: Color
     {
-        if !manager.authorizationRequested
+        if !HKHealthStore.isHealthDataAvailable()
+        {
+            return .gray
+        }
+        else if !manager.authorizationRequested
         {
             return .orange
         }

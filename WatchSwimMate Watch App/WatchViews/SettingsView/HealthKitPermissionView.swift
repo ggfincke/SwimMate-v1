@@ -4,16 +4,20 @@ import SwiftUI
 import HealthKit
 
 // health kit permissions for watch app
-struct HealthKitPermissionView: View {
+struct HealthKitPermissionView: View 
+{
     @EnvironmentObject var manager: WatchManager
     @Environment(\.dismiss) private var dismiss
     @State private var isRequesting = false
     
-    var body: some View {
+    var body: some View 
+    {
         ScrollView {
-            VStack(spacing: 20) {
+            VStack(spacing: 20) 
+            {
                 // header
-                VStack(spacing: 12) {
+                VStack(spacing: 12) 
+                {
                     Image(systemName: "heart.text.square.fill")
                         .font(.system(size: 40))
                         .foregroundColor(.red)
@@ -31,12 +35,14 @@ struct HealthKitPermissionView: View {
                 .padding(.top, 16)
                 
                 // permissions we need
-                VStack(spacing: 12) {
+                VStack(spacing: 12) 
+                {
                     Text("We'll request access to:")
                         .font(.system(size: 12, weight: .medium))
                         .foregroundColor(.secondary)
                     
-                    VStack(spacing: 8) {
+                    VStack(spacing: 8) 
+                    {
                         permissionRow(
                             icon: "figure.pool.swim",
                             title: "Swimming Workouts",
@@ -102,6 +108,14 @@ struct HealthKitPermissionView: View {
         }
         .navigationTitle("Health Access")
         .navigationBarTitleDisplayMode(.inline)
+        .onChange(of: manager.healthKitAuthorized) 
+        { _, newValue in
+            // auto-dismiss if we get auth
+            if newValue 
+            {
+                dismiss()
+            }
+        }
     }
     
     // permission row
