@@ -37,6 +37,11 @@
 		A07667B92BF5E7D800FFB4C3 /* Swim.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07667B32BF5E6CF00FFB4C3 /* Swim.swift */; };
 		A07667BA2BF5E7D800FFB4C3 /* SwimSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07667B42BF5E6CF00FFB4C3 /* SwimSet.swift */; };
 		A08761772DC90A0000BD4402 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = A08761762DC909FC00BD4402 /* README.md */; };
+		A0888F5E2DE55CE300BB8196 /* HealthKitWarningSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0888F592DE55CE300BB8196 /* HealthKitWarningSection.swift */; };
+		A0888F5F2DE55CE300BB8196 /* HeaderSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0888F582DE55CE300BB8196 /* HeaderSection.swift */; };
+		A0888F602DE55CE300BB8196 /* NavigationButtonsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0888F5A2DE55CE300BB8196 /* NavigationButtonsSection.swift */; };
+		A0888F612DE55CE300BB8196 /* WatchRootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0888F5C2DE55CE300BB8196 /* WatchRootView.swift */; };
+		A0888F632DE55D4000BB8196 /* MainButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0888F622DE55D4000BB8196 /* MainButton.swift */; };
 		A0B679CE2DE2D3C900C65B53 /* MetricCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B679CD2DE2D3C600C65B53 /* MetricCard.swift */; };
 		A0B679D02DE2D43D00C65B53 /* PerformanceCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B679CF2DE2D43D00C65B53 /* PerformanceCard.swift */; };
 		A0B679D22DE2D4E300C65B53 /* IntensityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B679D12DE2D4E300C65B53 /* IntensityIndicator.swift */; };
@@ -75,7 +80,6 @@
 		A0BFBA352DDD7C3C002B96A8 /* GoalWorkoutSetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BFBA0A2DDD7C3C002B96A8 /* GoalWorkoutSetupView.swift */; };
 		A0BFBA362DDD7C3C002B96A8 /* MetricsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BFBA182DDD7C3C002B96A8 /* MetricsView.swift */; };
 		A0BFBA372DDD7C3C002B96A8 /* SwimmingSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BFBA192DDD7C3C002B96A8 /* SwimmingSummaryView.swift */; };
-		A0BFBA382DDD7C3C002B96A8 /* WatchRootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BFBA1D2DDD7C3C002B96A8 /* WatchRootView.swift */; };
 		A0BFBA392DDD7C3C002B96A8 /* WatchSwimMateApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BFBA212DDD7C3C002B96A8 /* WatchSwimMateApp.swift */; };
 		A0BFBA3A2DDD7C3C002B96A8 /* NavState.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BFB9FF2DDD7C3C002B96A8 /* NavState.swift */; };
 		A0BFBA3B2DDD7C3C002B96A8 /* SetDisplayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BFBA0E2DDD7C3C002B96A8 /* SetDisplayView.swift */; };
@@ -143,6 +147,11 @@
 		A07667B32BF5E6CF00FFB4C3 /* Swim.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Swim.swift; sourceTree = "<group>"; };
 		A07667B42BF5E6CF00FFB4C3 /* SwimSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwimSet.swift; sourceTree = "<group>"; };
 		A08761762DC909FC00BD4402 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		A0888F582DE55CE300BB8196 /* HeaderSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderSection.swift; sourceTree = "<group>"; };
+		A0888F592DE55CE300BB8196 /* HealthKitWarningSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitWarningSection.swift; sourceTree = "<group>"; };
+		A0888F5A2DE55CE300BB8196 /* NavigationButtonsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationButtonsSection.swift; sourceTree = "<group>"; };
+		A0888F5C2DE55CE300BB8196 /* WatchRootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchRootView.swift; sourceTree = "<group>"; };
+		A0888F622DE55D4000BB8196 /* MainButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainButton.swift; sourceTree = "<group>"; };
 		A0B679CD2DE2D3C600C65B53 /* MetricCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetricCard.swift; sourceTree = "<group>"; };
 		A0B679CF2DE2D43D00C65B53 /* PerformanceCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerformanceCard.swift; sourceTree = "<group>"; };
 		A0B679D12DE2D4E300C65B53 /* IntensityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntensityIndicator.swift; sourceTree = "<group>"; };
@@ -182,7 +191,6 @@
 		A0BFBA192DDD7C3C002B96A8 /* SwimmingSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwimmingSummaryView.swift; sourceTree = "<group>"; };
 		A0BFBA1A2DDD7C3C002B96A8 /* SwimmingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwimmingView.swift; sourceTree = "<group>"; };
 		A0BFBA1B2DDD7C3C002B96A8 /* WorkoutControlsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutControlsView.swift; sourceTree = "<group>"; };
-		A0BFBA1D2DDD7C3C002B96A8 /* WatchRootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchRootView.swift; sourceTree = "<group>"; };
 		A0BFBA1F2DDD7C3C002B96A8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A0BFBA202DDD7C3C002B96A8 /* WatchSwimMate Watch App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "WatchSwimMate Watch App.entitlements"; sourceTree = "<group>"; };
 		A0BFBA212DDD7C3C002B96A8 /* WatchSwimMateApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchSwimMateApp.swift; sourceTree = "<group>"; };
@@ -327,6 +335,25 @@
 			path = SwimMate/Model;
 			sourceTree = SOURCE_ROOT;
 		};
+		A0888F5B2DE55CE300BB8196 /* Sections */ = {
+			isa = PBXGroup;
+			children = (
+				A0888F582DE55CE300BB8196 /* HeaderSection.swift */,
+				A0888F592DE55CE300BB8196 /* HealthKitWarningSection.swift */,
+				A0888F5A2DE55CE300BB8196 /* NavigationButtonsSection.swift */,
+			);
+			path = Sections;
+			sourceTree = "<group>";
+		};
+		A0888F5D2DE55CE300BB8196 /* WatchRootView */ = {
+			isa = PBXGroup;
+			children = (
+				A0888F5B2DE55CE300BB8196 /* Sections */,
+				A0888F5C2DE55CE300BB8196 /* WatchRootView.swift */,
+			);
+			path = WatchRootView;
+			sourceTree = "<group>";
+		};
 		A0B679CB2DE2D3AB00C65B53 /* MetricsView */ = {
 			isa = PBXGroup;
 			children = (
@@ -370,6 +397,7 @@
 			isa = PBXGroup;
 			children = (
 				A0B679F92DE3EA8700C65B53 /* MainControlButton.swift */,
+				A0888F622DE55D4000BB8196 /* MainButton.swift */,
 				A0B679DF2DE3CC4F00C65B53 /* ProgressBar.swift */,
 				A0B679D92DE3CBE500C65B53 /* StepView.swift */,
 				A0B679D72DE3CBBC00C65B53 /* CompactNavButton.swift */,
@@ -484,11 +512,11 @@
 		A0BFBA1E2DDD7C3C002B96A8 /* WatchViews */ = {
 			isa = PBXGroup;
 			children = (
+				A0888F5D2DE55CE300BB8196 /* WatchRootView */,
 				A0B679F22DE3E8E800C65B53 /* Components */,
 				A0BFBA072DDD7C3C002B96A8 /* SettingsView */,
 				A0BFBA132DDD7C3C002B96A8 /* WorkoutSetup */,
 				A0BFBA1C2DDD7C3C002B96A8 /* WorkoutViews */,
-				A0BFBA1D2DDD7C3C002B96A8 /* WatchRootView.swift */,
 			);
 			path = WatchViews;
 			sourceTree = "<group>";
@@ -692,6 +720,10 @@
 				A0B679D22DE2D4E300C65B53 /* IntensityIndicator.swift in Sources */,
 				A07667B92BF5E7D800FFB4C3 /* Swim.swift in Sources */,
 				A07667BA2BF5E7D800FFB4C3 /* SwimSet.swift in Sources */,
+				A0888F5E2DE55CE300BB8196 /* HealthKitWarningSection.swift in Sources */,
+				A0888F5F2DE55CE300BB8196 /* HeaderSection.swift in Sources */,
+				A0888F602DE55CE300BB8196 /* NavigationButtonsSection.swift in Sources */,
+				A0888F612DE55CE300BB8196 /* WatchRootView.swift in Sources */,
 				A0B679F72DE3E94A00C65B53 /* SecondaryMetricsGrid.swift in Sources */,
 				A0B679DE2DE3CC2400C65B53 /* SetCompletionView.swift in Sources */,
 				A0BFBA252DDD7C3C002B96A8 /* WatchManager.swift in Sources */,
@@ -726,7 +758,7 @@
 				A0B679FA2DE3EA8700C65B53 /* MainControlButton.swift in Sources */,
 				A0BFBA362DDD7C3C002B96A8 /* MetricsView.swift in Sources */,
 				A0BFBA372DDD7C3C002B96A8 /* SwimmingSummaryView.swift in Sources */,
-				A0BFBA382DDD7C3C002B96A8 /* WatchRootView.swift in Sources */,
+				A0888F632DE55D4000BB8196 /* MainButton.swift in Sources */,
 				A0BFBA392DDD7C3C002B96A8 /* WatchSwimMateApp.swift in Sources */,
 				A0BFBA3A2DDD7C3C002B96A8 /* NavState.swift in Sources */,
 				A0BFBA3B2DDD7C3C002B96A8 /* SetDisplayView.swift in Sources */,
