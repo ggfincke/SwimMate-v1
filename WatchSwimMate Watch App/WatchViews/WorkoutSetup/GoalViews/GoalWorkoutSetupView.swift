@@ -77,7 +77,6 @@ struct GoalWorkoutSetupView: View
         .sheet(isPresented: $showCalorieSetupSheet) {
             CalorieSetupView().environmentObject(manager)
         }
-        .ignoresSafeArea()
     }
     
     // check if any goals are active

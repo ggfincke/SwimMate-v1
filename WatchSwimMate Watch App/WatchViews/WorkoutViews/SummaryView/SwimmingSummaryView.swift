@@ -70,7 +70,6 @@ struct SwimmingSummaryView: View
                             Color.clear.frame(height: 0)
                         }
                     }
-                    .ignoresSafeArea(.container, edges: .top)
                 }
                 else
                 {

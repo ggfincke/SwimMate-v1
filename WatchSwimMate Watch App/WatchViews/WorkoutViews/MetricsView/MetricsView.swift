@@ -22,7 +22,6 @@ struct MetricsView: View
         .padding(.horizontal, horizontalPadding)
         .padding(.top, 10)
         .padding(.bottom, 4)
-        .ignoresSafeArea(.container, edges: .top)
         .onAppear {
             withAnimation {
                 isVisible = true
