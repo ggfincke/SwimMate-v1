@@ -1,9 +1,9 @@
-// WorkoutControlsView.swift - Responsive version
+// SwimControlsView.swift
 
 import SwiftUI
 import WatchKit
 
-struct WorkoutControlsView: View
+struct SwimControlsView: View
 {
     @EnvironmentObject var manager: WatchManager
     @State private var showEndConfirmation = false
@@ -43,7 +43,7 @@ struct WorkoutControlsView: View
                     }
                 }
                 
-                // end workout
+                // end swim
                 MainControlButton(
                     icon: "stop.fill",
                     label: "End",
@@ -90,25 +90,25 @@ struct WorkoutControlsView: View
             Spacer()
         }
         .confirmationDialog(
-            "End Workout?",
+            "End Swim?",
             isPresented: $showEndConfirmation,
             titleVisibility: .visible
         )
         {
-            Button("End Workout", role: .destructive)
+            Button("End Swim", role: .destructive)
             {
-                endWorkout()
+                endSwim()
             }
             Button("Cancel", role: .cancel) { }
         }
         message:
         {
-            Text("This will save your workout and return to the main screen.")
+            Text("This will save your swim and return to the main screen.")
         }
     }
     
     // MARK: - Actions
-    private func endWorkout()
+    private func endSwim()
     {
         withHapticFeedback(.success)
         {
@@ -127,6 +127,6 @@ struct WorkoutControlsView: View
 // Preview
 #Preview
 {
-    WorkoutControlsView()
+    SwimControlsView()
         .environmentObject(WatchManager())
 }

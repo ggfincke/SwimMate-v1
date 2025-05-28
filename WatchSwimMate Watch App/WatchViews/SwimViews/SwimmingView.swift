@@ -46,7 +46,7 @@ struct SwimmingView: View {
             // main horizontal tab content
             TabView(selection: $selection) {
                 // Controls Tab
-                WorkoutControlsView()
+                SwimControlsView()
                     .tag(Tab.controls)
                 
                 // Metrics Tab

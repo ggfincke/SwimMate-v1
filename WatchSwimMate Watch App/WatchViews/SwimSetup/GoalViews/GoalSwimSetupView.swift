@@ -12,70 +12,73 @@ struct GoalSwimSetupView: View
 
     var body: some View
     {
-        VStack(spacing: 10)
+        ScrollView
         {
-            Text("Set Your Goal")
-                .font(.headline)
-            
-            // distance goal
-            ActionButton(
-                label: "Distance",
-                icon: "figure.pool.swim",
-                tint: .blue,
-                compact: isCompactDevice
-
-            )
+            VStack(spacing: 10)
             {
-                showDistanceSetupSheet = true
+                Text("Set Your Goal")
+                    .font(.headline)
+                
+                // distance goal
+                ActionButton(
+                    label: "Distance",
+                    icon: "figure.pool.swim",
+                    tint: .blue,
+                    compact: isCompactDevice
+                    
+                )
+                {
+                    showDistanceSetupSheet = true
+                }
+                
+                // time goal
+                ActionButton(
+                    label: "Time",
+                    icon: "clock.arrow.circlepath",
+                    tint: .red,
+                    compact: isCompactDevice
+                    
+                )
+                {
+                    showTimeSetupSheet = true
+                }
+                
+                // calorie goal
+                ActionButton(
+                    label: "Calories",
+                    icon: "flame.fill",
+                    tint: .orange,
+                    compact: isCompactDevice
+                    
+                )
+                {
+                    showCalorieSetupSheet = true
+                }
+                
+                // open workout (no goal)
+                ActionButton(
+                    label: "Open",
+                    icon: "play.circle.fill",
+                    tint: .green,
+                    compact: isCompactDevice
+                )
+                {
+                    manager.path.append(NavState.swimSetup)
+                }
             }
-
-            // time goal
-            ActionButton(
-                label: "Time",
-                icon: "clock.arrow.circlepath",
-                tint: .red,
-                compact: isCompactDevice
-
-            )
-            {
-                showTimeSetupSheet = true
+            .padding(.horizontal, 16)
+            .padding(.bottom, 16)
+            .navigationTitle("Goal Setup")
+            // sheets for goal setup (temporary; needs to go further in Navstack)
+            .sheet(isPresented: $showDistanceSetupSheet) {
+                DistanceSetupView().environmentObject(manager)
             }
-
-            // calorie goal
-            ActionButton(
-                label: "Calories",
-                icon: "flame.fill",
-                tint: .orange,
-                compact: isCompactDevice
-
-            )
-            {
-                showCalorieSetupSheet = true
+            .sheet(isPresented: $showTimeSetupSheet) {
+                TimeSetupView().environmentObject(manager)
             }
-
-            // open workout (no goal)
-            ActionButton(
-                label: "Open",
-                icon: "play.circle.fill",
-                tint: .green,
-                compact: isCompactDevice
-            )
-            {
-                manager.path.append(NavState.swimSetup)
+            .sheet(isPresented: $showCalorieSetupSheet) {
+                CalorieSetupView().environmentObject(manager)
             }
-        }
-        .padding(.horizontal, 16)
-        .padding(.bottom, 16)
-        .navigationTitle("Goal Setup")
-        // sheets for goal setup (temporary; needs to go further in Navstack) 
-        .sheet(isPresented: $showDistanceSetupSheet) {
-            DistanceSetupView().environmentObject(manager)
-        }
-        .sheet(isPresented: $showTimeSetupSheet) {
-            TimeSetupView().environmentObject(manager)
-        }
-        .sheet(isPresented: $showCalorieSetupSheet) {
-            CalorieSetupView().environmentObject(manager)
         }
     }
     
