@@ -45,10 +45,17 @@ struct ActionButton: View
                 Text(label)
                     .font(.system(size: compact ? 14 : 16, weight: .medium, design: .rounded))
                     .lineLimit(1)
+                
+                Spacer()
+                
+                Image(systemName: "chevron.right")
+                    .font(.system(size: compact ? 10 : 12))
+                    .opacity(0.7)
             }
             .foregroundColor(.white)
             .frame(maxWidth: .infinity)
             .padding(.vertical, compact ? 8 : 12)
+            .padding(.horizontal, compact ? 8 : 12)
             .background(
                 ZStack
                 {
@@ -81,23 +88,23 @@ struct ActionButton: View
     {
         // normal action button
         ActionButton(
-            label: "Start Workout",
-            icon: "bolt.fill",
-            tint: .green
+            label: "Pool",
+            icon: "figure.pool.swim",
+            tint: .blue
         )
         {
-            print("Button tapped")
+            print("Pool tapped")
         }
         
         // compact style
         ActionButton(
-            label: "Compact Button",
-            icon: "heart.fill",
-            tint: .pink,
+            label: "Open Water",
+            icon: "water.waves",
+            tint: .teal,
             compact: true
         )
         {
-            print("Compact button tapped")
+            print("Open Water tapped")
         }
     }
     .padding()

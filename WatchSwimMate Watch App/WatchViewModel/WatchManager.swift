@@ -578,6 +578,12 @@ extension WatchManager: HKWorkoutSessionDelegate, HKLiveWorkoutBuilderDelegate
     
     private func handleWorkoutEnd(date: Date) 
     {
+        // show summary immediately
+        DispatchQueue.main.async 
+        {
+            self.showingSummaryView = true
+        }
+        
         self.workoutBuilder?.endCollection(withEnd: date) { (success, error) in
             if let error = error 
             {
@@ -585,7 +591,7 @@ extension WatchManager: HKWorkoutSessionDelegate, HKLiveWorkoutBuilderDelegate
                 DispatchQueue.main.async 
                 {
                     self.workout = nil
-                    self.showingSummaryView = true
+                    // summary is already showing
                 }
                 return
             }
@@ -611,7 +617,7 @@ extension WatchManager: HKWorkoutSessionDelegate, HKLiveWorkoutBuilderDelegate
                         self.updateLapsFromCurrentDistance()
                     }
                     
-                    self.showingSummaryView = true
+                    // summary will update automatically via @Published
                 }
             }
         }
