@@ -1,8 +1,8 @@
-// WorkoutSetupView.swift
+// SwimSetupView.swift
 
 import SwiftUI
 
-struct WorkoutSetupView: View
+struct SwimSetupView: View
 {
     @EnvironmentObject var manager: WatchManager
     
@@ -68,6 +68,6 @@ struct WorkoutSetupView: View
 
 #Preview
 {
-    WorkoutSetupView()
+    SwimSetupView()
         .environmentObject(WatchManager())
 }

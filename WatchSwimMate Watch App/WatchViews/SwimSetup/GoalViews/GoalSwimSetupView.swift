@@ -1,8 +1,8 @@
-// GoalWorkoutSetupView.swift
+// GoalSwimSetupView.swift
 
 import SwiftUI
 
-struct GoalWorkoutSetupView: View
+struct GoalSwimSetupView: View
 {
     @EnvironmentObject var manager: WatchManager
     @State private var showDistanceSetupSheet = false
@@ -61,7 +61,7 @@ struct GoalWorkoutSetupView: View
                 compact: isCompactDevice
             )
             {
-                manager.path.append(NavState.workoutSetup)
+                manager.path.append(NavState.swimSetup)
             }
         }
         .padding(.horizontal, 16)
@@ -86,6 +86,6 @@ struct GoalWorkoutSetupView: View
 }
 
 #Preview {
-    GoalWorkoutSetupView()
+    GoalSwimSetupView()
         .environmentObject(WatchManager())
-}
+} 

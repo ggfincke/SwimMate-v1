@@ -52,7 +52,7 @@ struct NavigationButtonsSection: View {
                 
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.2)
                 {
-                    manager.path.append(NavState.workoutSetup)
+                    manager.path.append(NavState.swimSetup)
                     activeButton = nil
                 }
             }
@@ -83,7 +83,7 @@ struct NavigationButtonsSection: View {
                 
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.2)
                 {
-                    manager.path.append(NavState.goalWorkoutSetup)
+                    manager.path.append(NavState.goalSwimSetup)
                     activeButton = nil
                 }
             }

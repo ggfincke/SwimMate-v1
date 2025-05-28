@@ -11,8 +11,8 @@ import SwiftUI
 
 enum NavState: Hashable
 {
-    case workoutSetup
-    case goalWorkoutSetup
+    case swimSetup
+    case goalSwimSetup
     case indoorPoolSetup
     case swimmingView(set: SwimSet?)
     case importSetView

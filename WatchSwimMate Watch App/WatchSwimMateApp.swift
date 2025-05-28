@@ -20,10 +20,10 @@ struct WatchSwimMate_Watch_App: App
                     .navigationDestination(for: NavState.self) { state in
                         switch state
                         {
-                            case .workoutSetup:
-                                WorkoutSetupView()
-                            case .goalWorkoutSetup:
-                                GoalWorkoutSetupView()
+                            case .swimSetup:
+                                SwimSetupView()
+                            case .goalSwimSetup:
+                                GoalSwimSetupView()
                             case .indoorPoolSetup:
                                 IndoorPoolSetupView()
                             case .swimmingView(let set):
