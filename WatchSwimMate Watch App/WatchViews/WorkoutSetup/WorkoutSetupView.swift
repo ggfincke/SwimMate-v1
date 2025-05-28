@@ -2,20 +2,46 @@
 
 import SwiftUI
 
-struct WorkoutSetupView: View {
+struct WorkoutSetupView: View
+{
     @EnvironmentObject var manager: WatchManager
     
-    var body: some View {
-        VStack(spacing: 20) {
-            Text("Choose Swim Type")
-                .font(.headline)
-                .padding(.top, 8)
+    // responsive sizing based on device
+    private var headingFontSize: CGFloat
+    {
+        manager.isCompactDevice ? 16 : 18
+    }
+    
+    private var verticalSpacing: CGFloat
+    {
+        manager.isCompactDevice ? 12 : 20
+    }
+    
+    private var horizontalPadding: CGFloat
+    {
+        manager.isCompactDevice ? 12 : 16
+    }
+    
+    private var topPadding: CGFloat
+    {
+        manager.isCompactDevice ? 4 : 8
+    }
+    
+    var body: some View
+    {
+        VStack(spacing: verticalSpacing)
+        {
+            // heading
+            Text("Select Type")
+                .font(.system(size: headingFontSize, weight: .semibold))
+                .padding(.top, topPadding)
             
             // pool swim
             ActionButton(
                 label: "Pool",
                 icon: "figure.pool.swim",
-                tint: .blue
+                tint: .blue,
+                compact: manager.isCompactDevice
             ) {
                 manager.isPool = true
                 manager.path.append(NavState.indoorPoolSetup)
@@ -25,7 +51,8 @@ struct WorkoutSetupView: View {
             ActionButton(
                 label: "Open Water",
                 icon: "water.waves",
-                tint: .teal
+                tint: .teal,
+                compact: manager.isCompactDevice
             ) {
                 manager.isPool = false
                 // start workout immediately for open water
@@ -33,12 +60,14 @@ struct WorkoutSetupView: View {
                 manager.path.append(NavState.swimmingView(set: nil))
             }
         }
-        .padding(.horizontal, 16)
-        .navigationTitle("Workout")
+        .padding(.horizontal, horizontalPadding)
+        .navigationTitle("Swim Workout")
+        .navigationBarTitleDisplayMode(.inline)
     }
 }
 
-#Preview {
+#Preview
+{
     WorkoutSetupView()
         .environmentObject(WatchManager())
 }
