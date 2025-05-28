@@ -22,6 +22,9 @@ struct InsightRow: View
             Text(title)
                 .font(.system(size: 12, weight: .medium))
                 .foregroundColor(.primary)
+                .lineLimit(1)
+                .minimumScaleFactor(0.8)
+                .truncationMode(.tail)
             
             Spacer()
             
@@ -29,8 +32,8 @@ struct InsightRow: View
                 .font(.system(size: 12, weight: .semibold, design: .rounded))
                 .foregroundColor(color)
         }
-        .padding(.horizontal, 12)
-        .padding(.vertical, 6)
+        .padding(.horizontal, 6)
+        .padding(.vertical, 2)
     }
 }
 
@@ -59,6 +62,12 @@ struct InsightRow: View
             value: "45:30",
             color: .blue
         )
+        
+        InsightRow(
+            icon: "chart.line.uptrend.xyaxis",
+            title: "Performance",
+            value: "Nice Start",
+            color: .green
+        )
     }
-    .padding()
 }

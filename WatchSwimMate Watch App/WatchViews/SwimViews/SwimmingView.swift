@@ -3,22 +3,26 @@
 import SwiftUI
 import WatchKit
 
-// Main SwimmingView - tab view for WorkoutControls, Metrics, and SetDisplay
-struct SwimmingView: View {
+// Main SwimmingView - tab view for WorkoutControls, Metrics, & SetDisplay
+struct SwimmingView: View
+{
     @EnvironmentObject var manager: WatchManager
     @State private var selection: Tab = .metrics
     @State private var isInitialized = false
     
     let set: SwimSet?
     
-    enum Tab: String, CaseIterable {
+    enum Tab: String, CaseIterable
+    {
         case controls = "Controls"
         case metrics = "Metrics"
         case set = "Set"
         case goals = "Goals"
         
-        var icon: String {
-            switch self {
+        var icon: String
+        {
+            switch self
+            {
             case .controls: return "hand.tap.fill"
             case .metrics: return "chart.line.uptrend.xyaxis"
             case .set: return "list.bullet.clipboard"
@@ -26,8 +30,10 @@ struct SwimmingView: View {
             }
         }
         
-        var color: Color {
-            switch self {
+        var color: Color
+        {
+            switch self
+            {
             case .controls: return .orange
             case .metrics: return .blue
             case .set: return .green
@@ -37,14 +43,18 @@ struct SwimmingView: View {
     }
     
     // set init
-    init(set: SwimSet?) {
+    init(set: SwimSet?)
+    {
         self.set = set
     }
     
-    var body: some View {
-        ZStack {
+    var body: some View
+    {
+        ZStack
+        {
             // main horizontal tab content
-            TabView(selection: $selection) {
+            TabView(selection: $selection)
+            {
                 // Controls Tab
                 SwimControlsView()
                     .tag(Tab.controls)
@@ -54,20 +64,24 @@ struct SwimmingView: View {
                     .tag(Tab.metrics)
                 
                 // Set Tab (if available)
-                if let set = set {
+                if let set = set
+                {
                     SetDisplayView(swimSet: set)
                         .tag(Tab.set)
                 }
                 
                 // Goals Tab (if goals are set)
-                if hasActiveGoals {
+                if hasActiveGoals
+                {
                     GoalProgressView()
                         .tag(Tab.goals)
                 }
             }
             .tabViewStyle(.page(indexDisplayMode: .automatic))
-            .onAppear {
-                if !isInitialized {
+            .onAppear
+            {
+                if !isInitialized
+                {
                     setupInitialTab()
                     isInitialized = true
                 }
@@ -76,9 +90,11 @@ struct SwimmingView: View {
 
         }
         .navigationBarBackButtonHidden(true)
-        .onAppear {
+        .onAppear
+        {
             // ensure water lock is enabled when starting workout
-            if manager.running {
+            if manager.running
+            {
                 WKInterfaceDevice.current().enableWaterLock()
             }
         }
@@ -86,31 +102,40 @@ struct SwimmingView: View {
     
     // MARK: - Helper Properties
     
-    private var availableTabs: [Tab] {
+    private var availableTabs: [Tab]
+    {
         var tabs: [Tab] = [.controls, .metrics]
         
-        if set != nil {
+        if set != nil
+        {
             tabs.append(.set)
         }
         
-        if hasActiveGoals {
+        if hasActiveGoals
+        {
             tabs.append(.goals)
         }
         
         return tabs
     }
     
-    private var hasActiveGoals: Bool {
+    private var hasActiveGoals: Bool
+    {
         manager.goalDistance > 0 || manager.goalTime > 0 || manager.goalCalories > 0
     }
     
-    private func setupInitialTab() {
-        // Smart initial tab selection based on context
-        if let _ = set {
+    private func setupInitialTab()
+    {
+        // smart init tab selection based on context
+        if let _ = set
+        {
             selection = .set
-        } else if hasActiveGoals {
+        } else if hasActiveGoals
+        {
             selection = .goals
-        } else {
+        }
+        else
+        {
             selection = .metrics
         }
     }
@@ -118,7 +143,8 @@ struct SwimmingView: View {
 
 // preview
 
-#Preview {
+#Preview
+{
     let sampleSet = SwimSet(
         title: "Endurance Set",
         primaryStroke: .freestyle,
