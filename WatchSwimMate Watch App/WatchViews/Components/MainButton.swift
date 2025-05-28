@@ -8,6 +8,7 @@ struct MainButton: View {
     let tint: Color
     let buttonId: String
     let isEnabled: Bool
+    let compact: Bool
     @Binding var activeButton: String?
     let action: () -> Void
     
@@ -17,6 +18,7 @@ struct MainButton: View {
         tint: Color,
         buttonId: String,
         isEnabled: Bool = true,
+        compact: Bool = false,
         activeButton: Binding<String?>,
         action: @escaping () -> Void
     ) {
@@ -25,6 +27,7 @@ struct MainButton: View {
         self.tint = tint
         self.buttonId = buttonId
         self.isEnabled = isEnabled
+        self.compact = compact
         self._activeButton = activeButton
         self.action = action
     }
@@ -32,24 +35,24 @@ struct MainButton: View {
     var body: some View {
         Button(action: action)
         {
-            HStack(spacing: 10)
+            HStack(spacing: compact ? 6 : 10)
             {
                 Image(systemName: icon)
-                    .font(.system(size: 16))
+                    .font(.system(size: compact ? 14 : 16))
                 Text(label)
-                    .font(.system(size: 16, weight: .medium))
+                    .font(.system(size: compact ? 14 : 16, weight: .medium))
                 Spacer()
                 Image(systemName: "chevron.right")
-                    .font(.system(size: 12))
+                    .font(.system(size: compact ? 10 : 12))
                     .opacity(0.7)
             }
             .foregroundColor(isEnabled ? .white : .secondary)
-            .padding(.horizontal, 12)
-            .padding(.vertical, 12)
+            .padding(.horizontal, compact ? 8 : 12)
+            .padding(.vertical, compact ? 8 : 12)
             .background(
                 activeButton == buttonId ? tint.opacity(0.8) : tint
             )
-            .cornerRadius(12)
+            .cornerRadius(compact ? 10 : 12)
             .scaleEffect(activeButton == buttonId ? 0.95 : 1)
             .opacity(isEnabled ? 1.0 : 0.6)
         }
@@ -58,16 +61,37 @@ struct MainButton: View {
     }
 }
 
-#Preview {
-    MainButton(
-        label: "Quick Start",
-        icon: "bolt.fill",
-        tint: .green,
-        buttonId: "quick",
-        isEnabled: true,
-        activeButton: .constant(nil)
-    ) {
-        // Preview action
+// preview
+#Preview
+{
+    VStack(spacing: 10)
+    {
+        // normal main button
+        MainButton(
+            label: "Quick Start",
+            icon: "bolt.fill",
+            tint: .green,
+            buttonId: "quick",
+            isEnabled: true,
+            activeButton: .constant(nil)
+        )
+        {
+            
+        }
+        
+        // compact main button
+        MainButton(
+            label: "Compact Mode",
+            icon: "heart.fill",
+            tint: .pink,
+            buttonId: "compact",
+            isEnabled: true,
+            compact: true,
+            activeButton: .constant(nil)
+        )
+        {
+            
+        }
     }
     .padding()
-} 
+}

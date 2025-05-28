@@ -8,15 +8,26 @@ struct NavigationButtonsSection: View {
     @Binding var showSettings: Bool
     @Binding var showHealthKitAlert: Bool
     
+    // responsive spacing based on device size
+    private var buttonSpacing: CGFloat
+    {
+        manager.isCompactDevice ? 10 : 14
+    }
+    
+    private var horizontalPadding: CGFloat
+    {
+        manager.isCompactDevice ? 8 : 12
+    }
+    
     var body: some View {
-        VStack(spacing: 14)
+        VStack(spacing: buttonSpacing)
         {
             quickStartButton
             setGoalButton
             importSetButton
             settingsButton
         }
-        .padding(.horizontal, 12)
+        .padding(.horizontal, horizontalPadding)
     }
     
     // MARK: - Navigation Buttons
@@ -28,6 +39,7 @@ struct NavigationButtonsSection: View {
             tint: manager.canStartWorkout ? .green : .gray,
             buttonId: "quick",
             isEnabled: manager.canStartWorkout,
+            compact: manager.isCompactDevice,
             activeButton: $activeButton
         )
         {
@@ -58,6 +70,7 @@ struct NavigationButtonsSection: View {
             tint: manager.canStartWorkout ? .blue : .gray,
             buttonId: "goal",
             isEnabled: manager.canStartWorkout,
+            compact: manager.isCompactDevice,
             activeButton: $activeButton
         )
         {
@@ -88,6 +101,7 @@ struct NavigationButtonsSection: View {
             tint: .orange,
             buttonId: "import",
             isEnabled: true,
+            compact: manager.isCompactDevice,
             activeButton: $activeButton
         )
         {
@@ -111,6 +125,7 @@ struct NavigationButtonsSection: View {
             tint: .gray,
             buttonId: "settings",
             isEnabled: true,
+            compact: manager.isCompactDevice,
             activeButton: $activeButton
         )
         {
@@ -128,11 +143,29 @@ struct NavigationButtonsSection: View {
     }
 }
 
-#Preview {
+// preview
+#Preview("Standard Size")
+{
     NavigationButtonsSection(
         activeButton: .constant(nil),
         showSettings: .constant(false),
         showHealthKitAlert: .constant(false)
     )
-    .environmentObject(WatchManager())
+    .environmentObject({
+        let manager = WatchManager()
+        return manager
+    }())
+}
+
+#Preview("Compact Size")
+{
+    NavigationButtonsSection(
+        activeButton: .constant(nil),
+        showSettings: .constant(false),
+        showHealthKitAlert: .constant(false)
+    )
+    .environmentObject({
+        let manager = WatchManager()
+        return manager
+    }())
 } 
