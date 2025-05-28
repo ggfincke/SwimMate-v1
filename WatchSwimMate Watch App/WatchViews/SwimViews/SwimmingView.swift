@@ -48,7 +48,7 @@ struct SwimmingView: View {
                 // Controls Tab
                 SwimControlsView()
                     .tag(Tab.controls)
-                
+
                 // Metrics Tab
                 MetricsView()
                     .tag(Tab.metrics)

@@ -23,6 +23,9 @@ struct SwimControlsView: View
     {
         VStack(spacing: 0)
         {
+            // for proper vertical alignment
+            Spacer()
+                .frame(height: manager.isCompactDevice ? 16 : 32)
             // 2x2 responsive grid
             LazyVGrid(columns: [
                 GridItem(.flexible(), spacing: buttonSpacing),
