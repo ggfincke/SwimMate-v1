@@ -14,26 +14,32 @@ struct KeyMetricsSection: View
         return formatter
     }()
     
+    // responsive grid spacing
+    private var gridSpacing: CGFloat
+    {
+        manager.isCompactDevice ? 10 : 12
+    }
+    
     var body: some View
     {
-        VStack(spacing: 12)
+        VStack(spacing: gridSpacing)
         {
-            // Section header
+            // section header
             HStack
             {
                 Text("WORKOUT SUMMARY")
-                    .font(.system(size: 10, weight: .semibold, design: .rounded))
+                    .font(.system(size: manager.isCompactDevice ? 9 : 10, weight: .semibold, design: .rounded))
                     .foregroundColor(.secondary)
                     .tracking(0.5)
                 
                 Spacer()
             }
             
-            // Metrics grid
+            // metrics grid
             LazyVGrid(columns: [
                 GridItem(.flexible()),
                 GridItem(.flexible())
-            ], spacing: 12)
+            ], spacing: gridSpacing)
             {
                 // duration
                 MetricCard(
@@ -41,7 +47,8 @@ struct KeyMetricsSection: View
                     value: durationFormatter.string(from: workoutDuration) ?? "40:00",
                     unit: "",
                     color: .yellow,
-                    icon: "clock.fill"
+                    icon: "clock.fill",
+                    isCompact: manager.isCompactDevice
                 )
                 
                 // distance
@@ -50,7 +57,8 @@ struct KeyMetricsSection: View
                     value: formatDistance(),
                     unit: manager.poolUnit == "meters" ? "m" : "yd",
                     color: .green,
-                    icon: "figure.pool.swim"
+                    icon: "figure.pool.swim",
+                    isCompact: manager.isCompactDevice
                 )
                 
                 // energy
@@ -59,7 +67,8 @@ struct KeyMetricsSection: View
                     value: "\(Int(totalCalories))",
                     unit: "kcal",
                     color: .pink,
-                    icon: "flame.fill"
+                    icon: "flame.fill",
+                    isCompact: manager.isCompactDevice
                 )
                 
                 // heart rate
@@ -68,26 +77,31 @@ struct KeyMetricsSection: View
                     value: "\(Int(averageHeartRate))",
                     unit: "bpm",
                     color: .red,
-                    icon: "heart.fill"
+                    icon: "heart.fill",
+                    isCompact: manager.isCompactDevice
                 )
             }
         }
     }
     
     // properties that fallback
-    private var workoutDuration: TimeInterval {
+    private var workoutDuration: TimeInterval
+    {
         return manager.workout?.duration ?? manager.elapsedTime
     }
     
-    private var totalDistance: Double {
+    private var totalDistance: Double
+    {
         return manager.workout?.totalDistance?.doubleValue(for: .meter()) ?? manager.distance
     }
     
-    private var totalCalories: Double {
+    private var totalCalories: Double
+    {
         return manager.workout?.totalEnergyBurned?.doubleValue(for: .kilocalorie()) ?? manager.activeEnergy
     }
     
-    private var averageHeartRate: Double {
+    private var averageHeartRate: Double
+    {
         return manager.averageHeartRate > 0 ? manager.averageHeartRate : manager.heartRate
     }
     
@@ -105,4 +119,33 @@ struct KeyMetricsSection: View
             return "\(Int(distance))"
         }
     }
+}
+
+// preview
+#Preview("Standard Size")
+{
+    KeyMetricsSection()
+        .environmentObject({
+            let manager = WatchManager()
+            manager.distance = 750
+            manager.elapsedTime = 1234.56
+            manager.heartRate = 142
+            manager.activeEnergy = 285
+            manager.averageHeartRate = 138
+            return manager
+        }())
+}
+
+#Preview("Compact Size")
+{
+    KeyMetricsSection()
+        .environmentObject({
+            let manager = WatchManager()
+            manager.distance = 750
+            manager.elapsedTime = 1234.56
+            manager.heartRate = 142
+            manager.activeEnergy = 285
+            manager.averageHeartRate = 138
+            return manager
+        }())
 }

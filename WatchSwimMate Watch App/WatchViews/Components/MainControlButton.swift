@@ -51,7 +51,8 @@ struct MainControlButton: View
             
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.1)
             {
-                withAnimation {
+                withAnimation
+                {
                     isAnimating = false
                 }
             }
@@ -120,27 +121,6 @@ struct MainControlButton: View
                 ) 
                 {
                     print("Pause tapped")
-                }
-            }
-            
-            HStack(spacing: 16) {
-                MainControlButton(
-                    icon: "stop.fill",
-                    label: "Stop",
-                    color: .red,
-                    isCompact: false
-                ) {
-                    print("Stop tapped")
-                }
-                
-                MainControlButton(
-                    icon: "heart.fill",
-                    label: "Health",
-                    color: .pink,
-                    isCompact: false
-                ) 
-                {
-                    print("Health tapped")
                 }
             }
             

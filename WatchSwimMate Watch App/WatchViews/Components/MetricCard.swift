@@ -10,62 +10,176 @@ struct MetricCard: View
     let unit: String
     let color: Color
     let icon: String
+    let isCompact: Bool
+    
+    // responsive sizing properties
+    private var iconSize: CGFloat
+    {
+        isCompact ? 8 : 10
+    }
+    
+    private var valueFontSize: CGFloat
+    {
+        isCompact ? 12 : 16
+    }
+    
+    private var unitFontSize: CGFloat
+    {
+        isCompact ? 8 : 9
+    }
+    
+    private var minHeight: CGFloat
+    {
+        isCompact ? 24 : 32
+    }
+    
+    private var verticalPadding: CGFloat
+    {
+        isCompact ? 6 : 8
+    }
+    
+    private var cornerRadius: CGFloat
+    {
+        isCompact ? 12 : 16
+    }
+    
+    private var strokeWidth: CGFloat
+    {
+        isCompact ? 0.3 : 0.5
+    }
     
     var body: some View
     {
-        VStack(spacing: 4)
+        VStack(spacing: isCompact ? 3 : 4)
         {
             Image(systemName: icon)
-                .font(.system(size: 10, weight: .semibold))
+                .font(.system(size: iconSize, weight: .semibold))
                 .foregroundColor(color)
             
             HStack(alignment: .lastTextBaseline, spacing: unit.isEmpty ? 0 : 2)
             {
                 Text(value)
-                    .font(.system(size: 16, weight: .bold, design: .rounded))
+                    .font(.system(size: valueFontSize, weight: .bold, design: .rounded))
                     .foregroundColor(.primary)
                     .monospacedDigit()
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.8)
                 
                 if !unit.isEmpty
                 {
                     Text(unit)
-                        .font(.system(size: 9, weight: .medium))
+                        .font(.system(size: unitFontSize, weight: .medium))
                         .foregroundColor(.secondary)
+                        .lineLimit(1)
+                        .minimumScaleFactor(0.7)
                 }
             }
         }
-        // need to set min height
-        .frame(maxWidth: .infinity, minHeight: 40)
-//        .aspectRatio(1.7, contentMode: .fit)
-        .padding(.vertical, 8)
+        .frame(maxWidth: .infinity, minHeight: minHeight)
+        .padding(.vertical, verticalPadding)
         .background(
-            RoundedRectangle(cornerRadius: 12)
+            RoundedRectangle(cornerRadius: cornerRadius)
                 .fill(color.opacity(0.1))
-                .stroke(color.opacity(0.3), lineWidth: 0.5)
+                .stroke(color.opacity(0.3), lineWidth: strokeWidth)
         )
     }
 }
 
 // preview
-#Preview
+#Preview("Standard Size")
 {
-    HStack(spacing: 12)
+    VStack(spacing: 12)
     {
-        MetricCard(
-            title: "Heart Rate",
-            value: "132",
-            unit: "bpm",
-            color: .red,
-            icon: "heart.fill"
-        )
+        HStack(spacing: 8)
+        {
+            MetricCard(
+                title: "Heart Rate",
+                value: "132",
+                unit: "bpm",
+                color: .red,
+                icon: "heart.fill",
+                isCompact: false
+            )
+            
+            MetricCard(
+                title: "Calories",
+                value: "285",
+                unit: "kcal",
+                color: .orange,
+                icon: "flame.fill",
+                isCompact: false
+            )
+        }
         
-        MetricCard(
-            title: "Steps",
-            value: "4,280",
-            unit: "steps",
-            color: .green,
-            icon: "figure.walk"
-        )
+        HStack(spacing: 8)
+        {
+            MetricCard(
+                title: "Laps",
+                value: "15",
+                unit: "laps",
+                color: .green,
+                icon: "arrow.clockwise",
+                isCompact: false
+            )
+            
+            MetricCard(
+                title: "Pace",
+                value: "2:15",
+                unit: "/100m",
+                color: .purple,
+                icon: "speedometer",
+                isCompact: false
+            )
+        }
+    }
+    .padding()
+}
+
+#Preview("Compact Size")
+{
+    VStack(spacing: 6)
+    {
+        HStack(spacing: 6)
+        {
+            MetricCard(
+                title: "Heart Rate",
+                value: "132",
+                unit: "bpm",
+                color: .red,
+                icon: "heart.fill",
+                isCompact: true
+            )
+            
+            MetricCard(
+                title: "Calories",
+                value: "285",
+                unit: "kcal",
+                color: .orange,
+                icon: "flame.fill",
+                isCompact: true
+            )
+        }
+        
+        HStack(spacing: 6)
+        {
+            MetricCard(
+                title: "Laps",
+                value: "15",
+                unit: "laps",
+                color: .green,
+                icon: "arrow.clockwise",
+                isCompact: true
+            )
+            
+            MetricCard(
+                title: "Pace",
+                value: "2:15",
+                unit: "/100m",
+                color: .purple,
+                icon: "speedometer",
+                isCompact: true
+            )
+        }
     }
     .padding()
 }
