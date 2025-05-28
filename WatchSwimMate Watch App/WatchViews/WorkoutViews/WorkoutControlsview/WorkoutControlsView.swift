@@ -8,22 +8,15 @@ struct WorkoutControlsView: View
     @EnvironmentObject var manager: WatchManager
     @State private var showEndConfirmation = false
     
-    // device size detection
-    private let screenBounds = WKInterfaceDevice.current().screenBounds
-    private var isCompactDevice: Bool
-    {
-        screenBounds.height <= 200
-    }
-    
     // responsive sizing
     private var buttonSpacing: CGFloat
     {
-        isCompactDevice ? 10 : 16
+        manager.isCompactDevice ? 10 : 16
     }
     
     private var horizontalPadding: CGFloat
     {
-        isCompactDevice ? 12 : 20
+        manager.isCompactDevice ? 12 : 20
     }
     
     var body: some View
@@ -41,7 +34,7 @@ struct WorkoutControlsView: View
                     icon: manager.running ? "pause.fill" : "play.fill",
                     label: manager.running ? "Pause" : "Resume",
                     color: .yellow,
-                    isCompact: isCompactDevice
+                    isCompact: manager.isCompactDevice
                 )
                 {
                     withHapticFeedback
@@ -55,7 +48,7 @@ struct WorkoutControlsView: View
                     icon: "stop.fill",
                     label: "End",
                     color: .red,
-                    isCompact: isCompactDevice
+                    isCompact: manager.isCompactDevice
                 )
                 {
                     withHapticFeedback
@@ -69,7 +62,7 @@ struct WorkoutControlsView: View
                     icon: "drop.fill",
                     label: "Lock",
                     color: .blue,
-                    isCompact: isCompactDevice
+                    isCompact: manager.isCompactDevice
                 )
                 {
                     withHapticFeedback
@@ -83,7 +76,7 @@ struct WorkoutControlsView: View
                     icon: "flag.fill",
                     label: "Lap",
                     color: .green,
-                    isCompact: isCompactDevice
+                    isCompact: manager.isCompactDevice
                 )
                 {
                     withHapticFeedback

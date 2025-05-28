@@ -8,6 +8,12 @@ import WatchKit
 // Main WatchManager
 class WatchManager: NSObject, ObservableObject
 {
+    // device properties
+    private let screenBounds = WKInterfaceDevice.current().screenBounds
+    var isCompactDevice: Bool {
+        screenBounds.height <= 200
+    }
+    
     // pool settings
     @Published var isPool: Bool = true
     @Published var poolLength: Double = 25.0

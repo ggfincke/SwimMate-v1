@@ -13,24 +13,29 @@ struct MainControlButton: View
     
     @State private var isAnimating = false
     
-    // Responsive sizing properties
-    private var circleSize: CGFloat {
+    // responsive sizing properties
+    private var circleSize: CGFloat 
+    {
         isCompact ? 55 : 70
     }
     
-    private var iconSize: CGFloat {
+    private var iconSize: CGFloat 
+    {
         isCompact ? 22 : 28
     }
     
-    private var labelSize: CGFloat {
+    private var labelSize: CGFloat
+     {
         isCompact ? 10 : 12
     }
     
-    private var verticalSpacing: CGFloat {
+    private var verticalSpacing: CGFloat 
+    {
         isCompact ? 4 : 6
     }
     
-    private var shadowRadius: CGFloat {
+    private var shadowRadius: CGFloat 
+    {
         isCompact ? 3 : 4
     }
     
@@ -80,7 +85,7 @@ struct MainControlButton: View
                     .font(.system(size: labelSize, weight: .medium, design: .rounded))
                     .foregroundColor(.primary)
                     .lineLimit(1)
-                    .minimumScaleFactor(0.8) // Allow text to scale down if needed
+                    .minimumScaleFactor(0.8)
             }
         }
         .buttonStyle(PlainButtonStyle())
@@ -88,72 +93,85 @@ struct MainControlButton: View
 }
 
 // preview
-#Preview {
-    VStack(spacing: 20) {
-        HStack(spacing: 16) {
-            MainControlButton(
-                icon: "play.fill",
-                label: "Start",
-                color: .green,
-                isCompact: false
-            ) {
-                print("Start tapped")
+#Preview 
+{
+    ScrollView
+    {
+        VStack(spacing: 20) 
+        {
+            // normal versions
+            HStack(spacing: 16) 
+            {
+                MainControlButton(
+                    icon: "play.fill",
+                    label: "Start",
+                    color: .green,
+                    isCompact: false
+                ) 
+                {
+                    print("Start tapped")
+                }
+                
+                MainControlButton(
+                    icon: "pause.fill",
+                    label: "Pause",
+                    color: .orange,
+                    isCompact: false
+                ) 
+                {
+                    print("Pause tapped")
+                }
             }
             
-            MainControlButton(
-                icon: "pause.fill",
-                label: "Pause",
-                color: .orange,
-                isCompact: false
-            ) {
-                print("Pause tapped")
-            }
-        }
-        
-        HStack(spacing: 16) {
-            MainControlButton(
-                icon: "stop.fill",
-                label: "Stop",
-                color: .red,
-                isCompact: false
-            ) {
-                print("Stop tapped")
-            }
-            
-            MainControlButton(
-                icon: "heart.fill",
-                label: "Health",
-                color: .pink,
-                isCompact: false
-            ) {
-                print("Health tapped")
-            }
-        }
-        
-        // Compact versions
-        Text("Compact Version:")
-            .font(.caption)
-            .foregroundColor(.secondary)
-        
-        HStack(spacing: 16) {
-            MainControlButton(
-                icon: "play.fill",
-                label: "Start",
-                color: .green,
-                isCompact: true
-            ) {
-                print("Compact Start tapped")
+            HStack(spacing: 16) {
+                MainControlButton(
+                    icon: "stop.fill",
+                    label: "Stop",
+                    color: .red,
+                    isCompact: false
+                ) {
+                    print("Stop tapped")
+                }
+                
+                MainControlButton(
+                    icon: "heart.fill",
+                    label: "Health",
+                    color: .pink,
+                    isCompact: false
+                ) 
+                {
+                    print("Health tapped")
+                }
             }
             
-            MainControlButton(
-                icon: "pause.fill",
-                label: "Pause",
-                color: .orange,
-                isCompact: true
-            ) {
-                print("Compact Pause tapped")
+            // compact versions
+            Text("Compact Version:")
+                .font(.caption)
+                .foregroundColor(.secondary)
+            
+            HStack(spacing: 16) 
+            {
+                MainControlButton(
+                    icon: "play.fill",
+                    label: "Start",
+                    color: .green,
+                    isCompact: true
+                ) 
+                {
+                    print("Compact Start tapped")
+                }
+                
+                MainControlButton(
+                    icon: "pause.fill",
+                    label: "Pause",
+                    color: .orange,
+                    isCompact: true
+                ) 
+                {
+                    print("Compact Pause tapped")
+                }
             }
         }
+        .padding()
     }
-    .padding()
 }
