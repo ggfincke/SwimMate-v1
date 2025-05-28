@@ -1,30 +1,47 @@
-// WorkoutControlsView.swift
+// WorkoutControlsView.swift - Responsive version
 
 import SwiftUI
 import WatchKit
 
-// controls for workout
 struct WorkoutControlsView: View
 {
     @EnvironmentObject var manager: WatchManager
     @State private var showEndConfirmation = false
     
+    // device size detection
+    private let screenBounds = WKInterfaceDevice.current().screenBounds
+    private var isCompactDevice: Bool
+    {
+        screenBounds.height <= 200
+    }
+    
+    // responsive sizing
+    private var buttonSpacing: CGFloat
+    {
+        isCompactDevice ? 10 : 16
+    }
+    
+    private var horizontalPadding: CGFloat
+    {
+        isCompactDevice ? 12 : 20
+    }
+    
     var body: some View
     {
         VStack(spacing: 0)
         {
-            // 2x2 main grid
+            // 2x2 responsive grid
             LazyVGrid(columns: [
-                GridItem(.flexible(), spacing: 16),
-                GridItem(.flexible(), spacing: 16)
-            ], spacing: 16)
+                GridItem(.flexible(), spacing: buttonSpacing),
+                GridItem(.flexible(), spacing: buttonSpacing)
+            ], spacing: buttonSpacing)
             {
-                
-                // pause/resume & end
+                // pause/resume
                 MainControlButton(
                     icon: manager.running ? "pause.fill" : "play.fill",
                     label: manager.running ? "Pause" : "Resume",
-                    color: .yellow
+                    color: .yellow,
+                    isCompact: isCompactDevice
                 )
                 {
                     withHapticFeedback
@@ -33,10 +50,12 @@ struct WorkoutControlsView: View
                     }
                 }
                 
+                // end workout
                 MainControlButton(
                     icon: "stop.fill",
                     label: "End",
-                    color: .red
+                    color: .red,
+                    isCompact: isCompactDevice
                 )
                 {
                     withHapticFeedback
@@ -45,11 +64,12 @@ struct WorkoutControlsView: View
                     }
                 }
                 
-                // water Lock & Lap
+                // water lock
                 MainControlButton(
                     icon: "drop.fill",
                     label: "Lock",
-                    color: .blue
+                    color: .blue,
+                    isCompact: isCompactDevice
                 )
                 {
                     withHapticFeedback
@@ -58,20 +78,21 @@ struct WorkoutControlsView: View
                     }
                 }
                 
+                // lap marker
                 MainControlButton(
                     icon: "flag.fill",
                     label: "Lap",
-                    color: .green
+                    color: .green,
+                    isCompact: isCompactDevice
                 )
                 {
                     withHapticFeedback
                     {
-                        // TODO: Implement lap marking
                         manager.laps += 1
                     }
                 }
             }
-            .padding(.horizontal, 20)
+            .padding(.horizontal, horizontalPadding)
             
             Spacer()
         }

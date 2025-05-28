@@ -354,6 +354,14 @@
 			path = WatchRootView;
 			sourceTree = "<group>";
 		};
+		A0888F642DE684BB00BB8196 /* WorkoutControlsview */ = {
+			isa = PBXGroup;
+			children = (
+				A0BFBA1B2DDD7C3C002B96A8 /* WorkoutControlsView.swift */,
+			);
+			path = WorkoutControlsview;
+			sourceTree = "<group>";
+		};
 		A0B679CB2DE2D3AB00C65B53 /* MetricsView */ = {
 			isa = PBXGroup;
 			children = (
@@ -499,12 +507,12 @@
 		A0BFBA1C2DDD7C3C002B96A8 /* WorkoutViews */ = {
 			isa = PBXGroup;
 			children = (
+				A0888F642DE684BB00BB8196 /* WorkoutControlsview */,
 				A0B679FB2DE3F1AB00C65B53 /* GoalDisplayView */,
 				A0B679D32DE3CB6400C65B53 /* SetDisplayView */,
 				A0B679CB2DE2D3AB00C65B53 /* MetricsView */,
 				A0B679E12DE3E5C000C65B53 /* SummaryView */,
 				A0BFBA1A2DDD7C3C002B96A8 /* SwimmingView.swift */,
-				A0BFBA1B2DDD7C3C002B96A8 /* WorkoutControlsView.swift */,
 			);
 			path = WorkoutViews;
 			sourceTree = "<group>";

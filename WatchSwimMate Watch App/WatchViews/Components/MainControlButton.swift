@@ -8,9 +8,31 @@ struct MainControlButton: View
     let icon: String
     let label: String
     let color: Color
+    let isCompact: Bool
     let action: () -> Void
     
     @State private var isAnimating = false
+    
+    // Responsive sizing properties
+    private var circleSize: CGFloat {
+        isCompact ? 55 : 70
+    }
+    
+    private var iconSize: CGFloat {
+        isCompact ? 22 : 28
+    }
+    
+    private var labelSize: CGFloat {
+        isCompact ? 10 : 12
+    }
+    
+    private var verticalSpacing: CGFloat {
+        isCompact ? 4 : 6
+    }
+    
+    private var shadowRadius: CGFloat {
+        isCompact ? 3 : 4
+    }
     
     var body: some View
     {
@@ -30,28 +52,35 @@ struct MainControlButton: View
             }
         })
         {
-            VStack(spacing: 6)
+            VStack(spacing: verticalSpacing)
             {
                 ZStack
                 {
                     Circle()
                         .fill(color)
-                        .frame(width: 70, height: 70)
+                        .frame(width: circleSize, height: circleSize)
                         .overlay(
                             Circle()
-                                .stroke(Color.white.opacity(0.3), lineWidth: 1)
+                                .stroke(Color.white.opacity(0.3), lineWidth: isCompact ? 0.5 : 1)
                         )
-                        .shadow(color: color.opacity(0.3), radius: isAnimating ? 8 : 4, x: 0, y: 2)
+                        .shadow(
+                            color: color.opacity(0.3),
+                            radius: isAnimating ? shadowRadius + 2 : shadowRadius,
+                            x: 0,
+                            y: isCompact ? 1 : 2
+                        )
                     
                     Image(systemName: icon)
-                        .font(.system(size: 28, weight: .semibold))
+                        .font(.system(size: iconSize, weight: .semibold))
                         .foregroundColor(.white)
                 }
                 .scaleEffect(isAnimating ? 0.95 : 1.0)
                 
                 Text(label)
-                    .font(.system(size: 12, weight: .medium, design: .rounded))
+                    .font(.system(size: labelSize, weight: .medium, design: .rounded))
                     .foregroundColor(.primary)
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.8) // Allow text to scale down if needed
             }
         }
         .buttonStyle(PlainButtonStyle())
@@ -65,7 +94,8 @@ struct MainControlButton: View
             MainControlButton(
                 icon: "play.fill",
                 label: "Start",
-                color: .green
+                color: .green,
+                isCompact: false
             ) {
                 print("Start tapped")
             }
@@ -73,7 +103,8 @@ struct MainControlButton: View
             MainControlButton(
                 icon: "pause.fill",
                 label: "Pause",
-                color: .orange
+                color: .orange,
+                isCompact: false
             ) {
                 print("Pause tapped")
             }
@@ -83,7 +114,8 @@ struct MainControlButton: View
             MainControlButton(
                 icon: "stop.fill",
                 label: "Stop",
-                color: .red
+                color: .red,
+                isCompact: false
             ) {
                 print("Stop tapped")
             }
@@ -91,9 +123,35 @@ struct MainControlButton: View
             MainControlButton(
                 icon: "heart.fill",
                 label: "Health",
-                color: .pink
+                color: .pink,
+                isCompact: false
             ) {
                 print("Health tapped")
+            }
+        }
+        
+        // Compact versions
+        Text("Compact Version:")
+            .font(.caption)
+            .foregroundColor(.secondary)
+        
+        HStack(spacing: 16) {
+            MainControlButton(
+                icon: "play.fill",
+                label: "Start",
+                color: .green,
+                isCompact: true
+            ) {
+                print("Compact Start tapped")
+            }
+            
+            MainControlButton(
+                icon: "pause.fill",
+                label: "Pause",
+                color: .orange,
+                isCompact: true
+            ) {
+                print("Compact Pause tapped")
             }
         }
     }
