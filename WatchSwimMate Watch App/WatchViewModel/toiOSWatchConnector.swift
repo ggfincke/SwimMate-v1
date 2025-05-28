@@ -1,16 +1,12 @@
-//
-//  iOSWatchConnector.swift
-//  WatchSwimMate Watch App
-//
-//  Created by Garrett Fincke on 4/28/24.
-//
+// toiOSWatchConnector
 
 import Foundation
 import WatchConnectivity
 class iOSWatchConnector: NSObject, WCSessionDelegate, ObservableObject
 {
     var session: WCSession
-    @Published var receivedSets: [SwimSet] = []  // store received sets
+    // received sets from iOS
+    @Published var receivedSets: [SwimSet] = [] 
 
     init(session: WCSession = .default)
     {
