@@ -2,11 +2,14 @@
 
 import Foundation
 import WatchConnectivity
-class iOSWatchConnector: NSObject, WCSessionDelegate, ObservableObject
+import Observation
+
+@Observable
+class iOSWatchConnector: NSObject, WCSessionDelegate
 {
     var session: WCSession
     // received sets from iOS
-    @Published var receivedSets: [SwimSet] = [] 
+    var receivedSets: [SwimSet] = [] 
 
     init(session: WCSession = .default)
     {
@@ -43,9 +46,8 @@ class iOSWatchConnector: NSObject, WCSessionDelegate, ObservableObject
             let difficulty = SwimSet.Difficulty(rawValue: difficultyRaw) ?? .intermediate
             
             let newSet = SwimSet(title: title, primaryStroke: primaryStroke, totalDistance: totalDistance, measureUnit: measureUnit, difficulty: difficulty, description: description, details: details)
-            DispatchQueue.main.async {
-                self.receivedSets.append(newSet)
-            }
+            
+            receivedSets.append(newSet)
         }
     }
     

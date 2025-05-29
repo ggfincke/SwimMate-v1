@@ -6,8 +6,8 @@ import HealthKit
 // root view for watch app
 struct WatchRootView: View
 {
-    @EnvironmentObject var manager: WatchManager
-    @EnvironmentObject var iosManager: iOSWatchConnector
+    @Environment(WatchManager.self) private var manager
+    @Environment(iOSWatchConnector.self) private var iosManager
     @State private var showSettings = false
     @State private var activeButton: String? = nil
     @State private var showHealthKitAlert = false
@@ -38,7 +38,7 @@ struct WatchRootView: View
         }
         .sheet(isPresented: $showSettings)
         {
-            SettingsView()
+            SettingsView(manager: WatchManager())
         }
         .alert("HealthKit Access Required", isPresented: $showHealthKitAlert) {
             Button("Open Settings") {
@@ -56,6 +56,6 @@ struct WatchRootView: View
 #Preview
 {
     WatchRootView()
-        .environmentObject(WatchManager())
-        .environmentObject(iOSWatchConnector())
+        .environment(WatchManager())
+        .environment(iOSWatchConnector())
 }

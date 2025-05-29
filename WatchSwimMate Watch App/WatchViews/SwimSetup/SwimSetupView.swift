@@ -4,7 +4,7 @@ import SwiftUI
 
 struct SwimSetupView: View
 {
-    @EnvironmentObject var manager: WatchManager
+    @Environment(WatchManager.self) private var manager
     
     // responsive sizing based on device
     private var headingFontSize: CGFloat
@@ -69,5 +69,5 @@ struct SwimSetupView: View
 #Preview
 {
     SwimSetupView()
-        .environmentObject(WatchManager())
+        .environment(WatchManager())
 }

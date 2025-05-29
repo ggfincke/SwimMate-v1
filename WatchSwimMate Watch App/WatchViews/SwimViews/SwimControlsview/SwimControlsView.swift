@@ -5,7 +5,7 @@ import WatchKit
 
 struct SwimControlsView: View
 {
-    @EnvironmentObject var manager: WatchManager
+    @Environment(WatchManager.self) private var manager
     @State private var showEndConfirmation = false
     
     // responsive sizing
@@ -131,5 +131,5 @@ struct SwimControlsView: View
 #Preview
 {
     SwimControlsView()
-        .environmentObject(WatchManager())
+        .environment(WatchManager())
 }

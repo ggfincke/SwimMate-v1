@@ -6,8 +6,8 @@ import HealthKit
 @main
 struct WatchSwimMate_Watch_App: App
 {
-    @StateObject private var watchManager = WatchManager()
-    @StateObject private var iosConnector = iOSWatchConnector()
+    @State private var watchManager = WatchManager()
+    @State private var iosConnector = iOSWatchConnector()
     @State private var showingPermissionView = false
 
     @SceneBuilder var body: some Scene
@@ -25,7 +25,7 @@ struct WatchSwimMate_Watch_App: App
                             case .goalSwimSetup:
                                 GoalSwimSetupView()
                             case .indoorPoolSetup:
-                                IndoorPoolSetupView()
+                                IndoorPoolSetupView(manager: WatchManager())
                             case .swimmingView(let set):
                                 SwimmingView(set: set)
                             case .importSetView:
@@ -41,8 +41,8 @@ struct WatchSwimMate_Watch_App: App
             {
                 HealthKitPermissionView()
             }
-            .environmentObject(watchManager)
-            .environmentObject(iosConnector)
+            .environment(watchManager)
+            .environment(iosConnector)
             .onAppear 
             {
                 // check permission view should be shown on launch

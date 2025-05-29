@@ -4,9 +4,11 @@ import Foundation
 import SwiftUI
 import HealthKit
 import WatchKit
+import Observation
 
 // Main WatchManager
-class WatchManager: NSObject, ObservableObject
+@Observable
+class WatchManager: NSObject
 {
     // device properties
     private let screenBounds = WKInterfaceDevice.current().screenBounds
@@ -16,10 +18,10 @@ class WatchManager: NSObject, ObservableObject
     }
     
     // pool settings
-    @Published var isPool: Bool = true
-    @Published var poolLength: Double = 25.0
-    @Published var poolUnit: String = "meters"
-    @Published var running = false
+    var isPool: Bool = true
+    var poolLength: Double = 25.0
+    var poolUnit: String = "meters"
+    var running = false
 
     // healthkit
     var healthStore = HKHealthStore()
@@ -31,12 +33,12 @@ class WatchManager: NSObject, ObservableObject
     var workoutStartDate: Date?
     
     // path for views
-    @Published var path = NavigationPath()
+    var path = NavigationPath()
     
     // workout metrics
-    @Published var elapsedTime: TimeInterval = 0
-    @Published var laps: Int = 0
-    @Published var distance: Double = 0
+    var elapsedTime: TimeInterval = 0
+    var laps: Int = 0
+    var distance: Double = 0
     {
         // when distance changes, update laps
         didSet
@@ -44,21 +46,21 @@ class WatchManager: NSObject, ObservableObject
             updateLapsFromCurrentDistance()
         }
     }
-    @Published var averageHeartRate: Double = 0
-    @Published var heartRate: Double = 0
-    @Published var activeEnergy: Double = 0
-    @Published var workout: HKWorkout?
+    var averageHeartRate: Double = 0
+    var heartRate: Double = 0
+    var activeEnergy: Double = 0
+    var workout: HKWorkout?
     
     // goals
-    @Published var goalDistance: Double = 0
-    @Published var goalTime: TimeInterval = 0
-    @Published var goalHours: TimeInterval = 0
-    @Published var goalMinutes: TimeInterval = 0
-    @Published var goalCalories: Double = 0
+    var goalDistance: Double = 0
+    var goalTime: TimeInterval = 0
+    var goalHours: TimeInterval = 0
+    var goalMinutes: TimeInterval = 0
+    var goalCalories: Double = 0
     
-    // healthkit authorization - now with persistence
-    @Published var healthKitAuthorized: Bool = false
-    @Published var authorizationRequested: Bool = false
+    // healthkit authorization
+    var healthKitAuthorized: Bool = false
+    var authorizationRequested: Bool = false
     
     // UserDefaults keys for persistence
     let authRequestedKey = "HealthKitAuthorizationRequested"
@@ -101,7 +103,7 @@ class WatchManager: NSObject, ObservableObject
     }
     
     // showing summary view after workout
-    @Published var showingSummaryView = false
+    var showingSummaryView = false
     {
         didSet
         {

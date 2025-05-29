@@ -4,7 +4,7 @@ import SwiftUI
 
 struct TimeSetupView: View
 {
-    @EnvironmentObject var manager: WatchManager
+    @Environment(WatchManager.self) private var manager
     @Environment(\.dismiss) private var dismiss
     
     // state for time pickers
@@ -31,7 +31,6 @@ struct TimeSetupView: View
                     .foregroundColor(.red)
                     .monospacedDigit()
                 
-                // TODO: FIX - Picker section (works wrong with ScrollView)
                 GeometryReader
                 { geometry in
                     HStack(spacing: 0)
@@ -182,5 +181,5 @@ struct TimeSetupView: View
 #Preview
 {
     TimeSetupView()
-        .environmentObject(WatchManager())
+        .environment(WatchManager())
 }

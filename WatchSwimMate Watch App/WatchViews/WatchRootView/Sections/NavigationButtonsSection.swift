@@ -3,7 +3,7 @@
 import SwiftUI
 
 struct NavigationButtonsSection: View {
-    @EnvironmentObject var manager: WatchManager
+    @Environment(WatchManager.self) private var manager
     @Binding var activeButton: String?
     @Binding var showSettings: Bool
     @Binding var showHealthKitAlert: Bool
@@ -151,7 +151,7 @@ struct NavigationButtonsSection: View {
         showSettings: .constant(false),
         showHealthKitAlert: .constant(false)
     )
-    .environmentObject({
+    .environment({
         let manager = WatchManager()
         return manager
     }())
@@ -164,7 +164,7 @@ struct NavigationButtonsSection: View {
         showSettings: .constant(false),
         showHealthKitAlert: .constant(false)
     )
-    .environmentObject({
+    .environment({
         let manager = WatchManager()
         return manager
     }())

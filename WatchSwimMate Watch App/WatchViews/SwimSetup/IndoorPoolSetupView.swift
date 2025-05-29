@@ -5,8 +5,8 @@ import SwiftUI
 // sets up a pool workout
 struct IndoorPoolSetupView: View 
 {
-    @EnvironmentObject var manager: WatchManager
-    
+    @Bindable var manager: WatchManager
+
     // swim set optional (if importing)
     var swimmySet: SwimSet?
     
@@ -55,14 +55,19 @@ struct IndoorPoolSetupView: View
             .padding(.top, 8)
             
             // standard pool lengths & unit selection
-            HStack(spacing: 10) {
-                ForEach(standardLengths, id: \.self) { length in
-                    Button {
+            HStack(spacing: 10) 
+            {
+                ForEach(standardLengths, id: \.self) 
+                { length in
+                    Button 
+                    {
                         print("🏊‍♂️ Standard length button pressed: \(Int(length))")
                         WKInterfaceDevice.current().play(.click)
                         manager.poolLength = length
                         print("📏 Pool length set to: \(manager.poolLength)")
-                    } label: {
+                    } 
+                    label: 
+                    {
                         Text("\(Int(length))")
                             .font(.system(size: 16, weight: .semibold))
                             .foregroundColor(manager.poolLength == length ? .white : .primary)
@@ -78,16 +83,20 @@ struct IndoorPoolSetupView: View
                 }
                 
                 // unit selection button
-                Button {
+                Button 
+                {
                     let oldUnit = manager.poolUnit
                     print("🔄 Unit toggle button pressed - Current unit: \(oldUnit)")
-                    withAnimation(.easeInOut(duration: 0.3)) {
+                    withAnimation(.easeInOut(duration: 0.3)) 
+                    {
                         rotationAngle += 180
                         manager.poolUnit = manager.poolUnit == "meters" ? "yards" : "meters"
                     }
                     print("📐 Unit changed from \(oldUnit) to \(manager.poolUnit)")
                     WKInterfaceDevice.current().play(.click)
-                } label: {
+                } 
+                label: 
+                {
                     Image(systemName: "arrow.2.circlepath")
                         .font(.system(size: 16, weight: .semibold))
                         .foregroundColor(.blue)
@@ -105,12 +114,16 @@ struct IndoorPoolSetupView: View
                 icon: "play.fill",
                 tint: .green,
                 compact: true
-            ) {
+            ) 
+            {
                 manager.startWorkout()
                 
-                if let swimmySet = swimmySet {
+                if let swimmySet = swimmySet 
+                {
                     manager.path.append(NavState.swimmingView(set: swimmySet))
-                } else {
+                } 
+                else 
+                {
                     manager.path.append(NavState.swimmingView(set: nil))
                 }
             }
@@ -121,7 +134,7 @@ struct IndoorPoolSetupView: View
     }
 }
 
-#Preview {
-    IndoorPoolSetupView()
-        .environmentObject(WatchManager())
+#Preview
+{
+    IndoorPoolSetupView(manager: WatchManager())
 }

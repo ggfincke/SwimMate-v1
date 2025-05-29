@@ -4,7 +4,7 @@ import SwiftUI
 
 struct GoalSwimSetupView: View
 {
-    @EnvironmentObject var manager: WatchManager
+    @Environment(WatchManager.self) private var manager
     @State private var showDistanceSetupSheet = false
     @State private var showTimeSetupSheet = false
     @State private var showCalorieSetupSheet = false
@@ -111,15 +111,15 @@ struct GoalSwimSetupView: View
             // sheets for goal setup (distance, time, calories)
             .sheet(isPresented: $showDistanceSetupSheet) 
             {
-                DistanceSetupView().environmentObject(manager)
+                DistanceSetupView().environment(manager)
             }
             .sheet(isPresented: $showTimeSetupSheet) 
             {
-                TimeSetupView().environmentObject(manager)
+                TimeSetupView().environment(manager)
             }
             .sheet(isPresented: $showCalorieSetupSheet) 
             {
-                CalorieSetupView().environmentObject(manager)
+                CalorieSetupView(manager: WatchManager())
             }
         }
     }
@@ -166,5 +166,5 @@ struct GoalSwimSetupView: View
 #Preview 
 {
     GoalSwimSetupView()
-        .environmentObject(WatchManager())
+        .environment(WatchManager())
 } 

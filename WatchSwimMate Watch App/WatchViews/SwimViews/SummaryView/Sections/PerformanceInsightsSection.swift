@@ -5,7 +5,7 @@ import SwiftUI
 // Performance Insights
 struct PerformanceInsightsSection: View
 {
-    @EnvironmentObject var manager: WatchManager
+    @Environment(WatchManager.self) private var manager
     
     var body: some View
     {

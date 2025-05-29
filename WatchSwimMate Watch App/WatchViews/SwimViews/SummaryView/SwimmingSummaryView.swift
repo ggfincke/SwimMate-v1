@@ -7,7 +7,7 @@ import WatchKit
 // post-workout summary view
 struct SwimmingSummaryView: View
 {
-    @EnvironmentObject var manager: WatchManager
+    @Environment(WatchManager.self) private var manager
     @State private var isVisible = false
     @State private var showCelebration = false
     
@@ -151,7 +151,7 @@ struct SwimmingSummaryView: View
 // preview
 #Preview {
     SwimmingSummaryView()
-        .environmentObject({
+        .environment({
             let manager = WatchManager()
             // simulate completed workout
             manager.distance = 1500

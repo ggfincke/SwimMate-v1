@@ -3,10 +3,10 @@
 import SwiftUI
 import WatchKit
 
-// Main SwimmingView - tab view for WorkoutControls, Metrics, & SetDisplay
+// Main SwimmingView
 struct SwimmingView: View
 {
-    @EnvironmentObject var manager: WatchManager
+    @Environment(WatchManager.self) private var manager
     @State private var selection: Tab = .metrics
     @State private var isInitialized = false
     
@@ -160,5 +160,5 @@ struct SwimmingView: View
     )
     
     SwimmingView(set: sampleSet)
-        .environmentObject(WatchManager())
+        .environment(WatchManager())
 }

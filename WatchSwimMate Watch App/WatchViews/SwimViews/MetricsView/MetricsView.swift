@@ -5,7 +5,7 @@ import SwiftUI
 // MetricsView
 struct MetricsView: View
 {
-    @EnvironmentObject var manager: WatchManager
+    @Environment(WatchManager.self) private var manager
     @State private var isVisible = false
     
     // spacing based on device size
@@ -53,7 +53,7 @@ struct MetricsView: View
 #Preview("Standard Size")
 {
     MetricsView()
-        .environmentObject({
+        .environment({
             let manager = WatchManager()
             manager.distance = 750
             manager.elapsedTime = 1234.56
@@ -67,7 +67,7 @@ struct MetricsView: View
 #Preview("Compact Size")
 {
     MetricsView()
-        .environmentObject({
+        .environment({
             let manager = WatchManager()
             manager.distance = 750
             manager.elapsedTime = 1234.56

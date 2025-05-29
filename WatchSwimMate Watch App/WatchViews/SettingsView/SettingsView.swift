@@ -6,7 +6,7 @@ import HealthKit
 // settings
 struct SettingsView: View
 {
-    @EnvironmentObject var manager: WatchManager
+    @Bindable var manager: WatchManager
     @Environment(\.dismiss) private var dismiss
     @State private var showResetConfirmation = false
     @State private var showPermissionSheet = false

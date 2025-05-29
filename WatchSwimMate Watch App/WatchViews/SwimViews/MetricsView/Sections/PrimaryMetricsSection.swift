@@ -5,7 +5,7 @@ import SwiftUI
 // primary metrics
 struct PrimaryMetricsSection: View
 {
-    @EnvironmentObject var manager: WatchManager
+    @Environment(WatchManager.self) private var manager
     
     // responsive font sizes
     private var timeFontSize: CGFloat
@@ -63,7 +63,7 @@ struct PrimaryMetricsSection: View
 #Preview("Standard Size")
 {
     PrimaryMetricsSection()
-        .environmentObject({
+        .environment({
             let manager = WatchManager()
             manager.distance = 750
             manager.elapsedTime = 1234.56
@@ -74,7 +74,7 @@ struct PrimaryMetricsSection: View
 #Preview("Compact Size")
 {
     PrimaryMetricsSection()
-        .environmentObject({
+        .environment({
             let manager = WatchManager()
             manager.distance = 750
             manager.elapsedTime = 1234.56

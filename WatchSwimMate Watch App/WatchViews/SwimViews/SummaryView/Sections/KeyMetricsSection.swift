@@ -5,7 +5,7 @@ import SwiftUI
 // Key Metrics Section
 struct KeyMetricsSection: View
 {
-    @EnvironmentObject var manager: WatchManager
+    @Environment(WatchManager.self) private var manager
     
     private var durationFormatter: DateComponentsFormatter = {
         let formatter = DateComponentsFormatter()
@@ -125,7 +125,7 @@ struct KeyMetricsSection: View
 #Preview("Standard Size")
 {
     KeyMetricsSection()
-        .environmentObject({
+        .environment({
             let manager = WatchManager()
             manager.distance = 750
             manager.elapsedTime = 1234.56
@@ -139,7 +139,7 @@ struct KeyMetricsSection: View
 #Preview("Compact Size")
 {
     KeyMetricsSection()
-        .environmentObject({
+        .environment({
             let manager = WatchManager()
             manager.distance = 750
             manager.elapsedTime = 1234.56

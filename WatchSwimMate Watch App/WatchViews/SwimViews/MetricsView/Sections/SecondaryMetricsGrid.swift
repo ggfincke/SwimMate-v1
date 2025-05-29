@@ -5,7 +5,7 @@ import SwiftUI
 // secondary metrics
 struct SecondaryMetricsGrid: View
 {
-    @EnvironmentObject var manager: WatchManager
+    @Environment(WatchManager.self) private var manager
     
     // responsive grid spacing
     private var gridSpacing: CGFloat 
@@ -84,7 +84,7 @@ struct SecondaryMetricsGrid: View
 #Preview("Standard Size")
 {
     SecondaryMetricsGrid()
-        .environmentObject({
+        .environment({
             let manager = WatchManager()
             manager.distance = 750
             manager.elapsedTime = 1234.56
@@ -98,7 +98,7 @@ struct SecondaryMetricsGrid: View
 #Preview("Compact Size")
 {
     SecondaryMetricsGrid()
-        .environmentObject({
+        .environment({
             let manager = WatchManager()
             manager.distance = 750
             manager.elapsedTime = 1234.56

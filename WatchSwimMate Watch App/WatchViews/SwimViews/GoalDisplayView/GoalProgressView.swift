@@ -5,7 +5,7 @@ import SwiftUI
 // goal progress
 struct GoalProgressView: View
 {
-    @EnvironmentObject var manager: WatchManager
+    @Environment(WatchManager.self) private var manager
 
     var body: some View
     {
@@ -138,5 +138,5 @@ struct GoalProgressCard: View
 #Preview 
 {
     GoalProgressView()
-        .environmentObject(WatchManager())
+        .environment(WatchManager())
 }

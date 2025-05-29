@@ -6,7 +6,7 @@ import HealthKit
 // health kit permissions for watch app
 struct HealthKitPermissionView: View 
 {
-    @EnvironmentObject var manager: WatchManager
+    @Environment(WatchManager.self) private var manager
     @Environment(\.dismiss) private var dismiss
     @State private var isRequesting = false
     
@@ -163,5 +163,5 @@ struct HealthKitPermissionView: View
 #Preview
 {
     HealthKitPermissionView()
-        .environmentObject(WatchManager())
+        .environment(WatchManager())
 }

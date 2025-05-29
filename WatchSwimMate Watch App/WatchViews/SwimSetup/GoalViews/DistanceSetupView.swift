@@ -4,7 +4,7 @@ import SwiftUI
 
 struct DistanceSetupView: View
 {
-    @EnvironmentObject var manager: WatchManager
+    @Environment(WatchManager.self) private var manager
     @Environment(\.dismiss) private var dismiss
     
     // quick selects for distance
@@ -12,6 +12,11 @@ struct DistanceSetupView: View
     
     var body: some View
     {
+        // defining binding
+        let distanceBinding = Binding(
+            get: { manager.goalTime },
+            set: { manager.goalTime = $0 }
+        )
         GoalSetupView(
             title: "Distance Goal",
             unit: manager.poolUnit,
@@ -21,7 +26,7 @@ struct DistanceSetupView: View
             maxValue: 5000,
             stepValue: 25,
             sensitivity: .medium,
-            value: $manager.goalDistance,
+            value: distanceBinding,
             onDismiss: 
             {
                 // nav to swim setup after setting goal
@@ -36,5 +41,5 @@ struct DistanceSetupView: View
 
 #Preview {
     DistanceSetupView()
-        .environmentObject(WatchManager())
+        .environment(WatchManager())
 }

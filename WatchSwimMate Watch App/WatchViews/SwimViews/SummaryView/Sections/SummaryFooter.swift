@@ -5,7 +5,7 @@ import SwiftUI
 // footer of summary view
 struct SummaryFooter: View
 {
-    @EnvironmentObject var manager: WatchManager
+    @Environment(WatchManager.self) private var manager
     
     var body: some View
     {

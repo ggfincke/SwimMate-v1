@@ -3,17 +3,23 @@
 import SwiftUI
 import HealthKit
 
-struct ImportSetView: View {
-    @EnvironmentObject var watchConnector: iOSWatchConnector
-    @EnvironmentObject var manager: WatchManager
+struct ImportSetView: View 
+{
+    @Environment(iOSWatchConnector.self) private var watchConnector
+    @Environment(WatchManager.self) private var manager
     @State private var selectedSetId: UUID? = nil
     @State private var isRefreshing = false
     
-    var body: some View {
-        Group {
-            if watchConnector.receivedSets.isEmpty {
+    var body: some View 
+    {
+        Group 
+        {
+            if watchConnector.receivedSets.isEmpty 
+            {
                 emptyStateView
-            } else {
+            } 
+            else 
+            {
                 setsListView
             }
         }
@@ -21,8 +27,10 @@ struct ImportSetView: View {
     }
     
     // empty state view
-    private var emptyStateView: some View {
-        VStack(spacing: 16) {
+    private var emptyStateView: some View 
+    {
+        VStack(spacing: 16) 
+        {
             Image(systemName: "iphone.and.arrow.forward")
                 .font(.system(size: 40))
                 .foregroundColor(.blue.opacity(0.7))
@@ -37,8 +45,10 @@ struct ImportSetView: View {
                 .multilineTextAlignment(.center)
                 .padding(.horizontal)
             
-            Button(action: refreshSets) {
-                HStack {
+            Button(action: refreshSets) 
+            {
+                HStack 
+                {
                     Image(systemName: "arrow.clockwise")
                     Text("Refresh")
                 }
@@ -54,9 +64,12 @@ struct ImportSetView: View {
     }
     
     // set list view
-    private var setsListView: some View {
-        List {
-            ForEach(watchConnector.receivedSets, id: \.id) { swimSet in
+    private var setsListView: some View 
+    {
+        List 
+        {
+            ForEach(watchConnector.receivedSets, id: \.id) 
+            { swimSet in
                 setRow(swimSet: swimSet)
                     .listRowBackground(
                         selectedSetId == swimSet.id ?
@@ -66,27 +79,34 @@ struct ImportSetView: View {
             }
         }
         .listStyle(.carousel)
-        .refreshable {
+        .refreshable 
+        {
             refreshSets()
         }
     }
     
     // individual set row
-    private func setRow(swimSet: SwimSet) -> some View {
-        Button(action: {
-            withAnimation {
+    private func setRow(swimSet: SwimSet) -> some View 
+    {
+        Button(action: 
+        {
+            withAnimation 
+            {
                 selectedSetId = swimSet.id
                 WKInterfaceDevice.current().play(.click)
             }
             
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) 
+            {
                 manager.path.append(NavState.swimmingView(set: swimSet))
                 manager.startWorkout()
             }
         }) {
-            VStack(alignment: .leading, spacing: 6) {
+            VStack(alignment: .leading, spacing: 6) 
+            {
                 // title w/ stroke type
-                HStack {
+                HStack 
+                {
                     Text(swimSet.title)
                         .font(.system(size: 16, weight: .bold))
                         .lineLimit(1)
@@ -183,7 +203,7 @@ struct ImportSetView: View {
 
 #Preview {
     ImportSetView()
-        .environmentObject(iOSWatchConnector())
-        .environmentObject(WatchManager())
+        .environment(iOSWatchConnector())
+        .environment(WatchManager())
 }
 
