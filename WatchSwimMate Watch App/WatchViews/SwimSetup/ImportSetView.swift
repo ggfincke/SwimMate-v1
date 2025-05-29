@@ -101,8 +101,9 @@ struct ImportSetView: View
                 manager.path.append(NavState.swimmingView(set: swimSet))
                 manager.startWorkout()
             }
-        }) {
-            VStack(alignment: .leading, spacing: 6) 
+        })
+        {
+            VStack(alignment: .leading, spacing: 6)
             {
                 // title w/ stroke type
                 HStack 
@@ -124,7 +125,8 @@ struct ImportSetView: View
                 }
                 
                 // distance & stroke
-                HStack {
+                HStack
+                {
                     Image(systemName: "figure.pool")
                         .font(.system(size: 12))
                         .foregroundColor(.blue)
@@ -140,7 +142,8 @@ struct ImportSetView: View
                 }
                 
                 // desc preview
-                if !swimSet.description.isEmpty {
+                if !swimSet.description.isEmpty
+                {
                     Text(swimSet.description)
                         .font(.system(size: 12))
                         .foregroundColor(.secondary)
@@ -153,8 +156,10 @@ struct ImportSetView: View
                     WKInterfaceDevice.current().play(.success)
                     manager.path.append(NavState.swimmingView(set: swimSet))
                     manager.startWorkout()
-                }) {
-                    HStack {
+                })
+                {
+                    HStack
+                    {
                         Text("Start")
                         Image(systemName: "arrow.right")
                     }
@@ -175,28 +180,34 @@ struct ImportSetView: View
     }
     
     // refresh
-    private func refreshSets() {
-        withAnimation {
+    private func refreshSets()
+    {
+        withAnimation
+        {
             isRefreshing = true
         }
         
         // simulate refresh
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-            withAnimation {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0)
+        {
+            withAnimation
+            {
                 isRefreshing = false
             }
         }
     }
     
     // color based on difficulty
-    private func difficultyColor(for difficulty: SwimSet.Difficulty) -> Color {
-        switch difficulty {
-        case .beginner:
-            return .green
-        case .intermediate:
-            return .blue
-        case .advanced:
-            return .red
+    private func difficultyColor(for difficulty: SwimSet.Difficulty) -> Color
+    {
+        switch difficulty
+        {
+            case .beginner:
+                return .green
+            case .intermediate:
+                return .blue
+            case .advanced:
+                return .red
         }
     }
 }

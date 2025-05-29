@@ -142,7 +142,7 @@ struct SwimmingView: View
 }
 
 // preview
-#Preview
+#Preview("Basic Workout - No Goals")
 {
     let sampleSet = SwimSet(
         title: "Endurance Set",
@@ -161,4 +161,88 @@ struct SwimmingView: View
     
     SwimmingView(set: sampleSet)
         .environment(WatchManager())
+}
+
+#Preview("Workout with Distance Goal")
+{
+    let manager = WatchManager()
+    manager.goalDistance = 1000
+    manager.distance = 650  // 65% progress
+    manager.goalUnit = "meters"
+    
+    return SwimmingView(set: nil)
+        .environment(manager)
+}
+
+#Preview("Workout with Multiple Goals")
+{
+    let manager = WatchManager()
+    manager.goalDistance = 1500
+    manager.distance = 900  // 60% progress
+    manager.goalTime = 1800  // 30 minutes
+    manager.elapsedTime = 1200  // 20 minutes (67% progress)
+    manager.goalCalories = 400
+    manager.activeEnergy = 280  // 70% progress
+    manager.goalUnit = "meters"
+    
+    return SwimmingView(set: nil)
+        .environment(manager)
+}
+
+#Preview("Goals Nearly Complete")
+{
+    let manager = WatchManager()
+    manager.goalDistance = 1000
+    manager.distance = 950  // 95% progress
+    manager.goalTime = 1800  // 30 minutes
+    manager.elapsedTime = 1650  // 27.5 minutes (92% progress)
+    manager.goalCalories = 350
+    manager.activeEnergy = 330  // 94% progress
+    manager.goalUnit = "meters"
+    
+    return SwimmingView(set: nil)
+        .environment(manager)
+}
+
+#Preview("Goals Exceeded")
+{
+    let manager = WatchManager()
+    manager.goalDistance = 800
+    manager.distance = 950  // 119% progress
+    manager.goalTime = 1500  // 25 minutes
+    manager.elapsedTime = 1680  // 28 minutes (112% progress)
+    manager.goalCalories = 300
+    manager.activeEnergy = 340  // 113% progress
+    manager.goalUnit = "meters"
+    
+    return SwimmingView(set: nil)
+        .environment(manager)
+}
+
+#Preview("Set + Goals Combination")
+{
+    let sampleSet = SwimSet(
+        title: "Sprint Set",
+        primaryStroke: .freestyle,
+        totalDistance: 800,
+        measureUnit: .meters,
+        difficulty: .advanced,
+        description: "High intensity sprint training",
+        details: [
+            "200m warm-up",
+            "8x50m on 1:00 all-out",
+            "4x100m on 2:00 fast",
+            "200m cool down"
+        ]
+    )
+    
+    let manager = WatchManager()
+    manager.goalDistance = 800
+    manager.distance = 400  // 50% progress
+    manager.goalTime = 1200  // 20 minutes
+    manager.elapsedTime = 600  // 10 minutes (50% progress)
+    manager.goalUnit = "meters"
+    
+    return SwimmingView(set: sampleSet)
+        .environment(manager)
 }

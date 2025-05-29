@@ -15,6 +15,12 @@ extension WatchManager
         return goalDistance > 0 || goalTime > 0 || goalCalories > 0
     }
     
+    // number of active goals
+    var goalCount: Int
+    {
+        return (goalDistance > 0 ? 1 : 0) + (goalTime > 0 ? 1 : 0) + (goalCalories > 0 ? 1 : 0)
+    }
+    
     // check if a specific goal type is set
     func hasGoal(_ type: GoalType) -> Bool 
     {
