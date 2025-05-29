@@ -5,7 +5,7 @@ import SwiftUI
 // sets up a pool workout
 struct IndoorPoolSetupView: View 
 {
-    @Bindable var manager: WatchManager
+    @Environment(WatchManager.self) private var manager
 
     // swim set optional (if importing)
     var swimmySet: SwimSet?
@@ -36,7 +36,10 @@ struct IndoorPoolSetupView: View
                 }
                 .focusable(true)
                 .digitalCrownRotation(
-                    $manager.poolLength,
+                    Binding(
+                        get: { manager.poolLength },
+                        set: { manager.poolLength = $0 }
+                    ),
                     from: 10,
                     through: 100,
                     by: 1,
@@ -136,5 +139,6 @@ struct IndoorPoolSetupView: View
 
 #Preview
 {
-    IndoorPoolSetupView(manager: WatchManager())
+    IndoorPoolSetupView()
+        .environment(WatchManager())
 }

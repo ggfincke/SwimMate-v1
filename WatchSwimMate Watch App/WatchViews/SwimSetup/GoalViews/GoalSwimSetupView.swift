@@ -111,15 +111,15 @@ struct GoalSwimSetupView: View
             // sheets for goal setup (distance, time, calories)
             .sheet(isPresented: $showDistanceSetupSheet) 
             {
-                DistanceSetupView().environment(manager)
+                DistanceSetupView()
             }
             .sheet(isPresented: $showTimeSetupSheet) 
             {
-                TimeSetupView().environment(manager)
+                TimeSetupView()
             }
             .sheet(isPresented: $showCalorieSetupSheet) 
             {
-                CalorieSetupView(manager: WatchManager())
+                CalorieSetupView()
             }
         }
     }

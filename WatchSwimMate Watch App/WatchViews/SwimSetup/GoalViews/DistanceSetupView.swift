@@ -14,10 +14,11 @@ struct DistanceSetupView: View
     {
         // defining binding
         let distanceBinding = Binding(
-            get: { manager.goalTime },
-            set: { manager.goalTime = $0 }
+            get: { manager.goalDistance },
+            set: { manager.goalDistance = $0 }
         )
-        GoalSetupView(
+        
+        return GoalSetupView(
             title: "Distance Goal",
             unit: manager.poolUnit,
             accentColor: .blue,

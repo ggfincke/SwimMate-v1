@@ -4,7 +4,7 @@ import SwiftUI
 
 struct CalorieSetupView: View
 {
-    @Bindable var manager: WatchManager
+    @Environment(WatchManager.self) private var manager
     @Environment(\.dismiss) private var dismiss
     
     // quick select for calories
@@ -22,7 +22,10 @@ struct CalorieSetupView: View
             maxValue: 2000,
             stepValue: 5,
             sensitivity: .medium,
-            value: $manager.goalCalories,
+            value: Binding(
+                get: { manager.goalCalories },
+                set: { manager.goalCalories = $0 }
+            ),
             onDismiss:
                 {
                 dismiss()
@@ -37,5 +40,6 @@ struct CalorieSetupView: View
 
 #Preview
 {
-    CalorieSetupView(manager: WatchManager())
+    CalorieSetupView()
+        .environment(WatchManager())
 }

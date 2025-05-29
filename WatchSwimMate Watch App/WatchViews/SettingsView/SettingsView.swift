@@ -6,7 +6,7 @@ import HealthKit
 // settings
 struct SettingsView: View
 {
-    @Bindable var manager: WatchManager
+    @Environment(WatchManager.self) private var manager
     @Environment(\.dismiss) private var dismiss
     @State private var showResetConfirmation = false
     @State private var showPermissionSheet = false
@@ -47,13 +47,21 @@ struct SettingsView: View
             
             Section(header: Text("Pool Settings"))
             {
-                Picker("Default Unit", selection: $manager.poolUnit)
+                // use binding to update manager value
+                Picker("Default Unit", selection: Binding(
+                    get: { manager.poolUnit },
+                    set: { manager.poolUnit = $0 }
+                ))
                 {
                     Text("Meters").tag("meters")
                     Text("Yards").tag("yards")
                 }
                 
-                Picker("Default Length", selection: $manager.poolLength)
+                // use binding to update manager value
+                Picker("Default Length", selection: Binding(
+                    get: { manager.poolLength },
+                    set: { manager.poolLength = $0 }
+                ))
                 {
                     Text("25").tag(25.0)
                     Text("50").tag(50.0)

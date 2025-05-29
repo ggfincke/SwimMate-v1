@@ -38,7 +38,7 @@ struct WatchRootView: View
         }
         .sheet(isPresented: $showSettings)
         {
-            SettingsView(manager: WatchManager())
+            SettingsView()
         }
         .alert("HealthKit Access Required", isPresented: $showHealthKitAlert) {
             Button("Open Settings") {
