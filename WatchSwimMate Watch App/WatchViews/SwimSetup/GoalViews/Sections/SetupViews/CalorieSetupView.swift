@@ -19,7 +19,7 @@ struct CalorieSetupView: View
             accentColor: .orange,
             presetValues: caloriePresets,
             minValue: 0,
-            maxValue: 2000,
+            maxValue: WatchManager.maxCalorieGoal,
             value: Binding(
                 get: { manager.goalCalories },
                 set: { manager.goalCalories = $0 }

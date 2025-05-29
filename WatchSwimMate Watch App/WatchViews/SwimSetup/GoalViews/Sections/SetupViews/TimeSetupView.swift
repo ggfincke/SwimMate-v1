@@ -38,7 +38,7 @@ struct TimeSetupView: View
                         // hours
                         Picker("Hours", selection: $hours)
                         {
-                            ForEach(0...6, id: \.self)
+                            ForEach(0...WatchManager.maxTimeGoalHours, id: \.self)
                             { hour in
                                 Text("\(hour) hr").tag(hour)
                             }
@@ -56,7 +56,8 @@ struct TimeSetupView: View
                         {
                             ForEach(0..<60, id: \.self)
                             { minute in
-                                if minute % 5 == 0 {
+                                if minute % 5 == 0 
+                                {
                                     Text("\(minute) min").tag(minute)
                                 }
                             }
@@ -64,7 +65,8 @@ struct TimeSetupView: View
                         .pickerStyle(.wheel)
                         .frame(width: geometry.size.width/2)
                         .clipped()
-                        .onChange(of: minutes) { _, _ in
+                        .onChange(of: minutes) 
+                        { _, _ in
                             updateGoalTime()
                         }
                     }
@@ -121,7 +123,8 @@ struct TimeSetupView: View
         .onAppear
         {
             // init w/ current values
-            if manager.goalTime > 0 {
+            if manager.goalTime > 0
+            {
                 hours = Int(manager.goalTime) / 3600
                 minutes = (Int(manager.goalTime) % 3600) / 60
             }

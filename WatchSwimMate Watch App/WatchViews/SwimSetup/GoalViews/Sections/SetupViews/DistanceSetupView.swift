@@ -18,7 +18,7 @@ struct DistanceSetupView: View
             accentColor: .blue,
             presetValues: distancePresets,
             minValue: 0,
-            maxValue: 5000,
+            maxValue: WatchManager.maxDistanceGoal,
             value: Binding(
                 get: { manager.goalDistance },
                 set: { manager.goalDistance = $0 }

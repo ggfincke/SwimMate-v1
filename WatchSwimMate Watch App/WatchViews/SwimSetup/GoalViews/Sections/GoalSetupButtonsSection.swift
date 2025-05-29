@@ -17,7 +17,7 @@ struct GoalSetupButtonsSection: View
         {
             // distance goal
             ActionButton(
-                label: manager.hasGoal(.distance) ? "Update Distance" : "Distance",
+                label: "Distance",
                 icon: manager.getIcon(for: .distance),
                 tint: manager.getColor(for: .distance),
                 compact: isCompactDevice
@@ -28,7 +28,7 @@ struct GoalSetupButtonsSection: View
             
             // time goal
             ActionButton(
-                label: manager.hasGoal(.time) ? "Update Time" : "Time",
+                label: "Time",
                 icon: "clock.arrow.circlepath",
                 tint: .purple,
                 compact: isCompactDevice
@@ -39,7 +39,7 @@ struct GoalSetupButtonsSection: View
             
             // calorie goal
             ActionButton(
-                label: manager.hasGoal(.calories) ? "Update Calories" : "Calories",
+                label: "Calories",
                 icon: manager.getIcon(for: .calories),
                 tint: manager.getColor(for: .calories),
                 compact: isCompactDevice
