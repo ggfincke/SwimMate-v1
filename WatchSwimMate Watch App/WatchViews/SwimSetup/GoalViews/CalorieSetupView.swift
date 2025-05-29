@@ -22,8 +22,13 @@ struct CalorieSetupView: View
             stepValue: 5,
             sensitivity: .medium,
             value: $manager.goalCalories,
-            onDismiss: {
+            onDismiss: 
+            {
                 dismiss()
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) 
+                {
+                    manager.path.append(NavState.swimSetup)
+                }
             }
         )
     }

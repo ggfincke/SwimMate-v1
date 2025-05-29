@@ -12,7 +12,8 @@ struct SwimmingView: View
     
     let set: SwimSet?
     
-    enum Tab: String, CaseIterable
+    // available tabs
+    private enum Tab: String, CaseIterable
     {
         case controls = "Controls"
         case metrics = "Metrics"
@@ -71,7 +72,7 @@ struct SwimmingView: View
                 }
                 
                 // Goals Tab (if goals are set)
-                if hasActiveGoals
+                if manager.hasActiveGoals
                 {
                     GoalProgressView()
                         .tag(Tab.goals)
@@ -86,8 +87,7 @@ struct SwimmingView: View
                     isInitialized = true
                 }
             }
-            
-
+        
         }
         .navigationBarBackButtonHidden(true)
         .onAppear
@@ -102,6 +102,7 @@ struct SwimmingView: View
     
     // MARK: - Helper Properties
     
+    // available tabs
     private var availableTabs: [Tab]
     {
         var tabs: [Tab] = [.controls, .metrics]
@@ -111,7 +112,7 @@ struct SwimmingView: View
             tabs.append(.set)
         }
         
-        if hasActiveGoals
+        if manager.hasActiveGoals
         {
             tabs.append(.goals)
         }
@@ -119,21 +120,20 @@ struct SwimmingView: View
         return tabs
     }
     
-    private var hasActiveGoals: Bool
-    {
-        manager.goalDistance > 0 || manager.goalTime > 0 || manager.goalCalories > 0
-    }
-    
+    // setup initial tab
     private func setupInitialTab()
     {
-        // smart init tab selection based on context
-        if let _ = set
-        {
-            selection = .set
-        } else if hasActiveGoals
+        // prioritize goals when they exist (user just set them)
+        if manager.hasActiveGoals
         {
             selection = .goals
         }
+        // if set is available, show set tab (set and goals are mutually exclusive)
+        else if let _ = set
+        {
+            selection = .set
+        }
+        // default to metrics tab
         else
         {
             selection = .metrics
@@ -142,7 +142,6 @@ struct SwimmingView: View
 }
 
 // preview
-
 #Preview
 {
     let sampleSet = SwimSet(

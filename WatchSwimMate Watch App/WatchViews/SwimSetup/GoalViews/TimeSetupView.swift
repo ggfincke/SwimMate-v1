@@ -2,7 +2,8 @@
 
 import SwiftUI
 
-struct TimeSetupView: View {
+struct TimeSetupView: View
+{
     @EnvironmentObject var manager: WatchManager
     @Environment(\.dismiss) private var dismiss
     
@@ -13,9 +14,12 @@ struct TimeSetupView: View {
     // quick set time values (minutes)
     private let timePresets = [15, 30, 45, 60, 90]
     
-    var body: some View {
-        ScrollView {
-            VStack(spacing: 16) {
+    var body: some View
+    {
+        ScrollView
+        {
+            VStack(spacing: 16)
+            {
                 // title
                 Text("Time Goal")
                     .font(.headline)
@@ -28,24 +32,31 @@ struct TimeSetupView: View {
                     .monospacedDigit()
                 
                 // TODO: FIX - Picker section (works wrong with ScrollView)
-                GeometryReader { geometry in
-                    HStack(spacing: 0) {
+                GeometryReader
+                { geometry in
+                    HStack(spacing: 0)
+                    {
                         // hours
-                        Picker("Hours", selection: $hours) {
-                            ForEach(0...6, id: \.self) { hour in
+                        Picker("Hours", selection: $hours)
+                        {
+                            ForEach(0...6, id: \.self)
+                            { hour in
                                 Text("\(hour) hr").tag(hour)
                             }
                         }
                         .pickerStyle(.wheel)
                         .frame(width: geometry.size.width/2)
                         .clipped()
-                        .onChange(of: hours) { _, _ in
+                        .onChange(of: hours)
+                        { _, _ in
                             updateGoalTime()
                         }
                         
                         // minutes
-                        Picker("Minutes", selection: $minutes) {
-                            ForEach(0..<60, id: \.self) { minute in
+                        Picker("Minutes", selection: $minutes)
+                        {
+                            ForEach(0..<60, id: \.self)
+                            { minute in
                                 if minute % 5 == 0 {
                                     Text("\(minute) min").tag(minute)
                                 }
@@ -63,20 +74,25 @@ struct TimeSetupView: View {
                 .padding(.horizontal, -8)
                 
                 // presets
-                VStack(spacing: 8) {
+                VStack(spacing: 8)
+                {
                     Text("Quick Set")
                         .font(.footnote)
                         .foregroundColor(.secondary)
                     
                     // preset buttons
-                    HStack(spacing: 8) {
-                        ForEach(timePresets.prefix(3), id: \.self) { minutes in
+                    HStack(spacing: 8)
+                    {
+                        ForEach(timePresets.prefix(3), id: \.self)
+                        { minutes in
                             presetButton(minutes: minutes)
                         }
                     }
                     
-                    HStack(spacing: 8) {
-                        ForEach(timePresets.suffix(2), id: \.self) { minutes in
+                    HStack(spacing: 8)
+                    {
+                        ForEach(timePresets.suffix(2), id: \.self)
+                        { minutes in
                             presetButton(minutes: minutes)
                         }
                     }
@@ -86,10 +102,17 @@ struct TimeSetupView: View {
                 Spacer()
                 
                 // set button
-                Button {
+                Button
+                {
                     WKInterfaceDevice.current().play(.success)
                     dismiss()
-                } label: {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) 
+                    {
+                        manager.path.append(NavState.swimSetup)
+                    }
+                }
+                label:
+                {
                     Text("Set Goal")
                         .fontWeight(.semibold)
                         .foregroundColor(.white)
@@ -104,7 +127,8 @@ struct TimeSetupView: View {
             .padding(.horizontal, 16)
             .padding(.bottom, 16)
         }
-        .onAppear {
+        .onAppear
+        {
             // init w/ current values
             if manager.goalTime > 0 {
                 hours = Int(manager.goalTime) / 3600
@@ -114,29 +138,35 @@ struct TimeSetupView: View {
     }
     
     // format time string
-    var timeString: String {
+    var timeString: String
+    {
         let formattedHours = String(format: "%02d", hours)
         let formattedMinutes = String(format: "%02d", minutes)
         return "\(formattedHours):\(formattedMinutes)"
     }
     
     // update goal time based on hours & minutes
-    private func updateGoalTime() {
+    private func updateGoalTime()
+    {
         manager.goalTime = TimeInterval(hours * 3600 + minutes * 60)
     }
     
     // preset button for quick time selection
-    private func presetButton(minutes: Int) -> some View {
+    private func presetButton(minutes: Int) -> some View
+    {
         let hrs = minutes / 60
         let mins = minutes % 60
         let isSelected = hours == hrs && self.minutes == mins
         
-        return Button {
+        return Button
+        {
             WKInterfaceDevice.current().play(.click)
             hours = hrs
             self.minutes = mins
             updateGoalTime()
-        } label: {
+        }
+        label:
+        {
             Text("\(minutes)m")
                 .font(.system(size: 14, weight: .medium))
                 .foregroundColor(isSelected ? .white : .primary)
@@ -149,7 +179,8 @@ struct TimeSetupView: View {
     }
 }
 
-#Preview {
+#Preview
+{
     TimeSetupView()
         .environmentObject(WatchManager())
 }

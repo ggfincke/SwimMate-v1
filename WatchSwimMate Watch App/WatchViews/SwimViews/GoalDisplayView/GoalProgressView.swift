@@ -27,60 +27,45 @@ struct GoalProgressView: View
     // MARK: - Goals List
     private var goalsList: some View
     {
-        VStack(spacing: 16) {
-            distanceGoalView
-            timeGoalView
-            caloriesGoalView
+        VStack(spacing: 16) 
+        {
+            if manager.hasGoal(.distance) 
+            {
+                goalProgressCard(for: .distance)
+            }
+            
+            if manager.hasGoal(.time) 
+            {
+                goalProgressCard(for: .time)
+            }
+            
+            if manager.hasGoal(.calories) 
+            {
+                goalProgressCard(for: .calories)
+            }
         }
     }
     
-    // MARK: - Distance Goal
-    @ViewBuilder
-    private var distanceGoalView: some View
+    // MARK: - Goal Progress Card Builder
+    private func goalProgressCard(for type: GoalType) -> some View 
     {
-        if manager.goalDistance > 0
+        let title: String
+        switch type 
         {
-            GoalProgressCard(
-                title: "Distance Goal",
-                progress: manager.distance,
-                total: manager.goalDistance,
-                unit: manager.poolUnit == "meters" ? "m" : "yd",
-                color: .blue
-            )
+            case .distance: title = "Distance Goal"
+            case .time: title = "Time Goal"
+            case .calories: title = "Calorie Goal"
         }
-    }
-    
-    // MARK: - Time Goal
-    @ViewBuilder
-    private var timeGoalView: some View
-    {
-        if manager.goalTime > 0
-        {
-            GoalProgressCard(
-                title: "Time Goal",
-                progress: manager.elapsedTime,
-                total: manager.goalTime,
-                unit: "time",
-                color: .green,
-                isTimeFormat: true
-            )
-        }
-    }
-    
-    // MARK: - Calories Goal
-    @ViewBuilder
-    private var caloriesGoalView: some View
-    {
-        if manager.goalCalories > 0
-        {
-            GoalProgressCard(
-                title: "Calorie Goal",
-                progress: manager.activeEnergy,
-                total: manager.goalCalories,
-                unit: "kcal",
-                color: .red
-            )
-        }
+        
+        return GoalProgressCard(
+            title: title,
+            progress: manager.getCurrentValue(for: type),
+            total: manager.getTargetValue(for: type),
+            unit: manager.getUnit(for: type),
+            color: manager.getColor(for: type),
+            isTimeFormat: type == .time,
+            formatTime: manager.formatTime
+        )
     }
 }
 
@@ -93,6 +78,7 @@ struct GoalProgressCard: View
     let unit: String
     let color: Color
     var isTimeFormat: Bool = false
+    let formatTime: (TimeInterval) -> String
     
     private var progressPercentage: Double
     {
@@ -100,8 +86,10 @@ struct GoalProgressCard: View
         return min(progress / total, 1.0)
     }
     
-    var body: some View {
-        VStack(spacing: 8) {
+    var body: some View 
+    {
+        VStack(spacing: 8) 
+        {
             titleView
             progressBarView
             progressTextView
@@ -135,24 +123,20 @@ struct GoalProgressCard: View
     // MARK: helper methods
     private func formatProgressText() -> String
     {
-        if isTimeFormat {
+        if isTimeFormat 
+        {
             return "\(formatTime(progress)) / \(formatTime(total))"
-        } else {
+        } 
+        else 
+        {
             return "\(Int(progress)) / \(Int(total)) \(unit)"
         }
-    }
-    
-    // formatting time
-    private func formatTime(_ time: TimeInterval) -> String
-    {
-        let hours = Int(time) / 3600
-        let minutes = (Int(time) % 3600) / 60
-        return String(format: "%02d:%02d", hours, minutes)
     }
 }
 
 // preview
-#Preview {
+#Preview 
+{
     GoalProgressView()
         .environmentObject(WatchManager())
 }

@@ -87,6 +87,7 @@
 		A0E9AF112DE6CBDF00222EC9 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E9AEFA2DE6CBDF00222EC9 /* LoadingView.swift */; };
 		A0E9AF122DE6CBDF00222EC9 /* SwimmingSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E9AEFF2DE6CBDF00222EC9 /* SwimmingSummaryView.swift */; };
 		A0E9AF132DE6CBDF00222EC9 /* PerformanceInsightsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E9AEFB2DE6CBDF00222EC9 /* PerformanceInsightsSection.swift */; };
+		A0F6A70C2DE7E697005B7291 /* GoalType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F6A70B2DE7E697005B7291 /* GoalType.swift */; };
 		A0FB9E322BDF7C1F00F39829 /* WatchConnectivity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0FB9E312BDF7C1F00F39829 /* WatchConnectivity.framework */; };
 /* End PBXBuildFile section */
 
@@ -204,6 +205,7 @@
 		A0E9AF032DE6CBDF00222EC9 /* SwimmingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwimmingView.swift; sourceTree = "<group>"; };
 		A0F0C7D12BDF7C5F00AF6D5B /* SwimMate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwimMate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0F0C7D42BDF7C5F00AF6D5B /* WatchSwimMate Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "WatchSwimMate Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A0F6A70B2DE7E697005B7291 /* GoalType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalType.swift; sourceTree = "<group>"; };
 		A0FB9E312BDF7C1F00F39829 /* WatchConnectivity.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WatchConnectivity.framework; path = System/Library/Frameworks/WatchConnectivity.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -392,6 +394,7 @@
 		A0BFBA002DDD7C3C002B96A8 /* WatchModel */ = {
 			isa = PBXGroup;
 			children = (
+				A0F6A70B2DE7E697005B7291 /* GoalType.swift */,
 				A0BFB9FF2DDD7C3C002B96A8 /* NavState.swift */,
 			);
 			path = WatchModel;
@@ -796,6 +799,7 @@
 				A0E9AF0C2DE6CBDF00222EC9 /* SummaryHeaderView.swift in Sources */,
 				A0E9AF0D2DE6CBDF00222EC9 /* SetDisplayView.swift in Sources */,
 				A0E9AF0E2DE6CBDF00222EC9 /* SwimControlsView.swift in Sources */,
+				A0F6A70C2DE7E697005B7291 /* GoalType.swift in Sources */,
 				A0E9AF0F2DE6CBDF00222EC9 /* KeyMetricsSection.swift in Sources */,
 				A0E9AF102DE6CBDF00222EC9 /* PrimaryMetricsSection.swift in Sources */,
 				A0E9AF112DE6CBDF00222EC9 /* LoadingView.swift in Sources */,

@@ -22,8 +22,13 @@ struct DistanceSetupView: View
             stepValue: 25,
             sensitivity: .medium,
             value: $manager.goalDistance,
-            onDismiss: {
+            onDismiss: 
+            {
+                // nav to swim setup after setting goal
                 dismiss()
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                    manager.path.append(NavState.swimSetup)
+                }
             }
         )
     }
