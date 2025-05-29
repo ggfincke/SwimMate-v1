@@ -5,6 +5,8 @@ import SwiftUI
 // modular view for setting up a numeric Goal (distance / calorie)
 struct GoalSetupView: View
 {
+    @Environment(WatchManager.self) private var manager
+    
     // properties for config
     var title: String
     var unit: String
@@ -12,8 +14,6 @@ struct GoalSetupView: View
     var presetValues: [Int]
     var minValue: Double
     var maxValue: Double
-    var stepValue: Double
-    var sensitivity: DigitalCrownRotationalSensitivity
     
     // binding to update the value
     @Binding var value: Double
@@ -21,89 +21,114 @@ struct GoalSetupView: View
     // dismiss action
     var onDismiss: () -> Void
     
+    // State for showing number pad
+    @State private var showingNumberPad = false
+    
     var body: some View
     {
         ScrollView
         {
-            VStack(spacing: 8)
+            VStack(spacing: 16)
             {
                 // title
                 Text(title)
                     .font(.headline)
                     .padding(.top, 10)
                 
-                // current value display
-                Text("\(Int(value))")
-                    .font(.system(size: 30, weight: .bold, design: .rounded))
-                    .foregroundColor(accentColor)
-                
-                // unit
-                Text(unit)
-                    .font(.subheadline)
-                    .foregroundColor(.secondary)
-                
-                // digital crown control
-                Text("Use Digital Crown to Adjust")
-                    .font(.footnote)
-                    .foregroundColor(.secondary)
-                    .padding(.top, 4)
-
-                // visual indicator for digital crown
-                HStack
-                {
-                    Text("-")
-                        .font(.headline)
-                        .foregroundColor(.red)
-                    
-                    Capsule()
-                        .fill(Color.secondary.opacity(0.3))
-                        .frame(height: 3)
-                        .frame(maxWidth: .infinity)
-                    
-                    Text("+")
-                        .font(.headline)
-                        .foregroundColor(.green)
+                // current value display (tappable to open number pad)
+                Button(action: {
+                    showingNumberPad = true
+                }) {
+                    VStack(spacing: 4)
+                    {
+                        HStack(alignment: .lastTextBaseline, spacing: 4)
+                        {
+                            Text("\(Int(value))")
+                                .font(.system(size: 30, weight: .bold, design: .rounded))
+                                .foregroundColor(accentColor)
+                                .monospacedDigit()
+                            
+                            if !unit.isEmpty
+                            {
+                                Text(unit)
+                                    .font(.subheadline)
+                                    .foregroundColor(.secondary)
+                            }
+                        }
+                        
+                        // instruction text
+                        Text("Tap to enter value")
+                            .font(.footnote)
+                            .foregroundColor(.secondary)
+                            .padding(.top, 2)
+                    }
                 }
-                .padding(.horizontal)
-                .opacity(0.7)
+                .buttonStyle(PlainButtonStyle())
+                .padding(.vertical, 8)
+                .frame(maxWidth: .infinity)
+                .background(
+                    RoundedRectangle(cornerRadius: 12)
+                        .fill(accentColor.opacity(0.1))
+                        .stroke(accentColor.opacity(0.3), lineWidth: 1)
+                )
                 
-                // digital crown integration
-                Color.clear
-                    .frame(height: 1)
-                    .digitalCrownRotation(
-                        $value,
-                        from: minValue,
-                        through: maxValue,
-                        by: stepValue,
-                        sensitivity: sensitivity,
-                        isContinuous: false,
-                    )
-            
+                // preset buttons
+                if !presetValues.isEmpty
+                {
+                    VStack(spacing: 12)
+                    {
+                        Text("Quick Select")
+                            .font(.footnote)
+                            .foregroundColor(.secondary)
+                        
+                        // preset buttons in rows
+                        LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 8), count: 3), spacing: 8)
+                        {
+                            ForEach(presetValues, id: \.self)
+                            { presetValue in
+                                PresetButton(
+                                    value: $value,
+                                    presetValue: presetValue,
+                                    accentColor: accentColor
+                                )
+                            }
+                        }
+                    }
+                    .padding(.top, 8)
+                }
+                
                 Spacer()
                 
-                // set button
-                Button
-                {
+                // set button using ActionButton
+                ActionButton(
+                    label: "Set Goal",
+                    icon: "target",
+                    tint: accentColor,
+                    compact: manager.isCompactDevice
+                ) {
                     WKInterfaceDevice.current().play(.success)
                     onDismiss()
                 }
-                label:
-                {
-                    Text("Set Goal")
-                        .fontWeight(.semibold)
-                        .foregroundColor(.white)
-                        .frame(maxWidth: .infinity)
-                        .padding(.vertical, 14)
-                        .background(accentColor)
-                        .cornerRadius(14)
-                }
-                .buttonStyle(PlainButtonStyle())
                 .disabled(value <= 0)
+                .opacity(value <= 0 ? 0.6 : 1.0)
                 .padding(.bottom, 10)
             }
-            .padding(.horizontal, 16)
+            .padding(.horizontal, 8)
+        }
+        .sheet(isPresented: $showingNumberPad)
+        {
+            NumberPadView(
+                value: $value,
+                title: title,
+                unit: unit,
+                maxValue: maxValue,
+                accentColor: accentColor,
+                isCompact: manager.isCompactDevice
+            )
         }
     }
+    
+
 }
 
 // preview
@@ -113,12 +138,11 @@ struct GoalSetupView: View
         title: "Distance Goal",
         unit: "meters",
         accentColor: .blue,
-        presetValues: [100, 200, 500, 1000, 1500],
+        presetValues: [100, 200, 500, 1000, 1500, 2000],
         minValue: 0,
-        maxValue: 5000,
-        stepValue: 25,
-        sensitivity: .medium,
+        maxValue: 1000000,
         value: .constant(500.0),
         onDismiss: {}
     )
+    .environment(WatchManager())
 }
