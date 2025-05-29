@@ -82,11 +82,11 @@ struct GoalSwimSetupView: View
                     showCalorieSetupSheet = true
                 }
                 
-                // start workout button (more prominent if goals are set)
+                // start workout button
                 ActionButton(
-                    label: manager.hasActiveGoals ? "Start with Goals" : "Start without Goal",
-                    icon: manager.hasActiveGoals ? "target" : "play.circle.fill",
-                    tint: manager.hasActiveGoals ? .green : .gray,
+                    label: "Start Workout",
+                    icon: "play.fill",
+                    tint: .green,
                     compact: isCompactDevice
                 )
                 {

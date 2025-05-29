@@ -10,7 +10,7 @@ import Observation
 @Observable
 class WatchManager: NSObject
 {
-    // device properties
+    // device properties (determines if device is compact)
     private let screenBounds = WKInterfaceDevice.current().screenBounds
     var isCompactDevice: Bool 
     {
@@ -22,6 +22,10 @@ class WatchManager: NSObject
     var poolLength: Double = 25.0
     var poolUnit: String = "meters"
     var running = false
+    
+    // goal unit (separate from pool unit, set when goal is established)
+    var goalUnit: String = "meters"
+    var goalUnitLocked: Bool = false
 
     // healthkit
     var healthStore = HKHealthStore()
@@ -118,6 +122,9 @@ class WatchManager: NSObject
     override init() 
     {
         super.init()
+        
+        // sync goal unit with pool unit initially
+        goalUnit = poolUnit
         
         // load persisted auth state & check current status
         loadAndCheckAuthorizationStatus()

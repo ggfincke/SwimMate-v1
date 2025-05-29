@@ -21,6 +21,8 @@
 		A032BE7D2DDD1D0A00265661 /* WorkoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A032BE792DDD1D0A00265661 /* WorkoutView.swift */; };
 		A032BE7E2DDD1D0A00265661 /* PaceGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A032BE742DDD1D0A00265661 /* PaceGraphView.swift */; };
 		A032BE802DDD1D0A00265661 /* LineGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A032BE732DDD1D0A00265661 /* LineGraphView.swift */; };
+		A048B7AA2DE8F24A00084546 /* NumberPadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A048B7A92DE8F24A00084546 /* NumberPadView.swift */; };
+		A048B7AC2DE8F26800084546 /* PresetButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A048B7AB2DE8F26800084546 /* PresetButton.swift */; };
 		A07667A52BF5E6BF00FFB4C3 /* HomePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07667922BF5E6BF00FFB4C3 /* HomePage.swift */; };
 		A07667A62BF5E6BF00FFB4C3 /* PreferencesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07667942BF5E6BF00FFB4C3 /* PreferencesView.swift */; };
 		A07667A72BF5E6BF00FFB4C3 /* ProfilePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07667952BF5E6BF00FFB4C3 /* ProfilePage.swift */; };
@@ -141,6 +143,8 @@
 		A032BE742DDD1D0A00265661 /* PaceGraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaceGraphView.swift; sourceTree = "<group>"; };
 		A032BE762DDD1D0A00265661 /* HealthKitPermissionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitPermissionView.swift; sourceTree = "<group>"; };
 		A032BE792DDD1D0A00265661 /* WorkoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutView.swift; sourceTree = "<group>"; };
+		A048B7A92DE8F24A00084546 /* NumberPadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberPadView.swift; sourceTree = "<group>"; };
+		A048B7AB2DE8F26800084546 /* PresetButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresetButton.swift; sourceTree = "<group>"; };
 		A07667922BF5E6BF00FFB4C3 /* HomePage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomePage.swift; sourceTree = "<group>"; };
 		A07667942BF5E6BF00FFB4C3 /* PreferencesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferencesView.swift; sourceTree = "<group>"; };
 		A07667952BF5E6BF00FFB4C3 /* ProfilePage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfilePage.swift; sourceTree = "<group>"; };
@@ -384,6 +388,7 @@
 		A0B679F22DE3E8E800C65B53 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				A0F6A7362DE8D02A005B7291 /* Input */,
 				A0E9AECF2DE6C85800222EC9 /* Buttons */,
 				A0E9AED22DE6C85800222EC9 /* Cards */,
 				A0E9AED62DE6C85800222EC9 /* Display */,
@@ -520,6 +525,7 @@
 		A0E9AECF2DE6C85800222EC9 /* Buttons */ = {
 			isa = PBXGroup;
 			children = (
+				A048B7AB2DE8F26800084546 /* PresetButton.swift */,
 				A0E9AECB2DE6C85800222EC9 /* ActionButton.swift */,
 				A0E9AECC2DE6C85800222EC9 /* CompactNavButton.swift */,
 				A0E9AECD2DE6C85800222EC9 /* MainButton.swift */,
@@ -656,6 +662,14 @@
 				A0E9AF032DE6CBDF00222EC9 /* SwimmingView.swift */,
 			);
 			path = SwimViews;
+			sourceTree = "<group>";
+		};
+		A0F6A7362DE8D02A005B7291 /* Input */ = {
+			isa = PBXGroup;
+			children = (
+				A048B7A92DE8F24A00084546 /* NumberPadView.swift */,
+			);
+			path = Input;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -799,6 +813,7 @@
 				A07667BA2BF5E7D800FFB4C3 /* SwimSet.swift in Sources */,
 				A0888F5E2DE55CE300BB8196 /* HealthKitWarningSection.swift in Sources */,
 				A0888F5F2DE55CE300BB8196 /* HeaderSection.swift in Sources */,
+				A048B7AA2DE8F24A00084546 /* NumberPadView.swift in Sources */,
 				A0888F602DE55CE300BB8196 /* NavigationButtonsSection.swift in Sources */,
 				A0888F612DE55CE300BB8196 /* WatchRootView.swift in Sources */,
 				A0BFBA282DDD7C3C002B96A8 /* DistanceSetupView.swift in Sources */,
@@ -824,6 +839,7 @@
 				A0E9AF0D2DE6CBDF00222EC9 /* SetDisplayView.swift in Sources */,
 				A0E9AF0E2DE6CBDF00222EC9 /* SwimControlsView.swift in Sources */,
 				A0F6A70C2DE7E697005B7291 /* GoalType.swift in Sources */,
+				A048B7AC2DE8F26800084546 /* PresetButton.swift in Sources */,
 				A0E9AF0F2DE6CBDF00222EC9 /* KeyMetricsSection.swift in Sources */,
 				A0E9AF102DE6CBDF00222EC9 /* PrimaryMetricsSection.swift in Sources */,
 				A0E9AF112DE6CBDF00222EC9 /* LoadingView.swift in Sources */,

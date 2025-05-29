@@ -20,19 +20,13 @@ struct CalorieSetupView: View
             presetValues: caloriePresets,
             minValue: 0,
             maxValue: 2000,
-            stepValue: 5,
-            sensitivity: .medium,
             value: Binding(
                 get: { manager.goalCalories },
                 set: { manager.goalCalories = $0 }
             ),
-            onDismiss:
-                {
+            onDismiss: 
+            {
                 dismiss()
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1)
-                {
-                    manager.path.append(NavState.swimSetup)
-                }
             }
         )
     }

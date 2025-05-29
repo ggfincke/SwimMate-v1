@@ -25,6 +25,11 @@ Information display components for showing data and status.
 - **`InsightRow.swift`** - Simple row layout for displaying insights with icon, title, and value
 - **`IntensityIndicator.swift`** - Visual intensity indicator based on heart rate zones (1-5 bars)
 
+### 📝 Input/
+Input components for user data entry and interaction.
+
+- **`NumberPadView.swift`** - Custom number pad for watch input with responsive sizing (compact/normal modes)
+
 ### 🧭 Navigation/
 Components for navigation and step-by-step guidance.
 
@@ -102,7 +107,6 @@ struct MyWorkoutView: View {
 
 Consider these areas for future component development:
 - **Charts/** - Data visualization components
-- **Forms/** - Input and form components
 - **Animations/** - Reusable animation components
 - **Accessibility/** - Enhanced accessibility components
 

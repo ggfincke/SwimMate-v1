@@ -148,10 +148,11 @@ extension WatchManager
         elapsedTime = 0
         laps = 0
         
-        // reset goals
+        // reset goals and unlock goal unit
         goalDistance = 0
         goalTime = 0
         goalCalories = 0
+        goalUnitLocked = false
         
         // ensure summary view is hidden
         showingSummaryView = false

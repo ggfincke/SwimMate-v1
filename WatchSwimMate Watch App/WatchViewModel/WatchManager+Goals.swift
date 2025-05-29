@@ -33,6 +33,9 @@ extension WatchManager
         goalDistance = 0
         goalTime = 0
         goalCalories = 0
+        
+        // reset goal unit lock when clearing all goals
+        goalUnitLocked = false
     }
     
     // format time interval for display
@@ -97,7 +100,7 @@ extension WatchManager
     {
         switch type 
         {
-            case .distance: return poolUnit == "meters" ? "m" : "yd"
+            case .distance: return goalUnit == "meters" ? "m" : "yd"
             case .time: return ""
             case .calories: return "kcal"
         }

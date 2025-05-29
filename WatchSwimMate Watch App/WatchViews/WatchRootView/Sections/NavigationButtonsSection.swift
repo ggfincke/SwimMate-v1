@@ -52,6 +52,9 @@ struct NavigationButtonsSection: View {
                 
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.2)
                 {
+                    // reset goals for quick start - no goals for quick workouts
+                    manager.clearAllGoals()
+                    
                     manager.path.append(NavState.swimSetup)
                     activeButton = nil
                 }

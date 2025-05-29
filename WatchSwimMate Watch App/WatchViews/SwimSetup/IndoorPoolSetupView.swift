@@ -88,27 +88,40 @@ struct IndoorPoolSetupView: View
                 // unit selection button
                 Button 
                 {
+                    // only allow unit changes if goal unit is not locked
+                    guard !manager.goalUnitLocked else { 
+                        WKInterfaceDevice.current().play(.failure)
+                        return 
+                    }
+                    
                     let oldUnit = manager.poolUnit
                     print("🔄 Unit toggle button pressed - Current unit: \(oldUnit)")
                     withAnimation(.easeInOut(duration: 0.3)) 
                     {
                         rotationAngle += 180
                         manager.poolUnit = manager.poolUnit == "meters" ? "yards" : "meters"
+                        
+                        // sync goal unit with pool unit if not locked
+                        if !manager.goalUnitLocked {
+                            manager.goalUnit = manager.poolUnit
+                        }
                     }
                     print("📐 Unit changed from \(oldUnit) to \(manager.poolUnit)")
                     WKInterfaceDevice.current().play(.click)
                 } 
                 label: 
                 {
-                    Image(systemName: "arrow.2.circlepath")
+                    Image(systemName: manager.goalUnitLocked ? "lock.fill" : "arrow.2.circlepath")
                         .font(.system(size: 16, weight: .semibold))
-                        .foregroundColor(.blue)
-                        .rotationEffect(.degrees(rotationAngle))
+                        .foregroundColor(manager.goalUnitLocked ? .red : .blue)
+                        .rotationEffect(.degrees(manager.goalUnitLocked ? 0 : rotationAngle))
                         .frame(width: 40, height: 35)
                         .background(Color.secondary.opacity(0.15))
                         .cornerRadius(8)
                 }
                 .buttonStyle(PlainButtonStyle())
+                .disabled(manager.goalUnitLocked)
+                .opacity(manager.goalUnitLocked ? 0.6 : 1.0)
             }
             
             // start workout button

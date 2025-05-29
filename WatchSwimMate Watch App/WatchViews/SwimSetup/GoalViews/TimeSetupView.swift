@@ -100,28 +100,20 @@ struct TimeSetupView: View
                 
                 Spacer()
                 
-                // set button
-                Button
+                // set button using ActionButton
+                ActionButton(
+                    label: "Set Goal",
+                    icon: "clock.fill",
+                    tint: .red,
+                    compact: manager.isCompactDevice
+                ) 
                 {
                     WKInterfaceDevice.current().play(.success)
                     dismiss()
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) 
-                    {
-                        manager.path.append(NavState.swimSetup)
-                    }
                 }
-                label:
-                {
-                    Text("Set Goal")
-                        .fontWeight(.semibold)
-                        .foregroundColor(.white)
-                        .frame(maxWidth: .infinity)
-                        .padding(.vertical, 14)
-                        .background(Color.red)
-                        .cornerRadius(14)
-                }
-                .buttonStyle(PlainButtonStyle())
                 .disabled(hours == 0 && minutes == 0)
+                .opacity(hours == 0 && minutes == 0 ? 0.6 : 1.0)
+                .padding(.bottom, 10)
             }
             .padding(.horizontal, 16)
             .padding(.bottom, 16)
