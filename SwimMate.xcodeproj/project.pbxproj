@@ -20,60 +20,60 @@
 		A032BE7D2DDD1D0A00265661 /* WorkoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A032BE792DDD1D0A00265661 /* WorkoutView.swift */; };
 		A032BE7E2DDD1D0A00265661 /* PaceGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A032BE742DDD1D0A00265661 /* PaceGraphView.swift */; };
 		A032BE802DDD1D0A00265661 /* LineGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A032BE732DDD1D0A00265661 /* LineGraphView.swift */; };
-		A048B81C2DE90B5C00084546 /* MainButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A048B7CE2DE90B5C00084546 /* MainButton.swift */; };
-		A048B81D2DE90B5C00084546 /* SummaryFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A048B80C2DE90B5C00084546 /* SummaryFooter.swift */; };
-		A048B81E2DE90B5C00084546 /* PerformanceCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = A048B7D42DE90B5C00084546 /* PerformanceCard.swift */; };
-		A048B81F2DE90B5C00084546 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A048B80A2DE90B5C00084546 /* LoadingView.swift */; };
-		A048B8202DE90B5C00084546 /* MetricsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A048B8022DE90B5C00084546 /* MetricsView.swift */; };
-		A048B8212DE90B5C00084546 /* GoalSetupButtonsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = A048B7F12DE90B5C00084546 /* GoalSetupButtonsSection.swift */; };
-		A048B8222DE90B5C00084546 /* GoalSwimSetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A048B7F42DE90B5C00084546 /* GoalSwimSetupView.swift */; };
-		A048B8232DE90B5C00084546 /* IntensityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A048B7D82DE90B5C00084546 /* IntensityIndicator.swift */; };
-		A048B8242DE90B5C00084546 /* SetCompletionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A048B8042DE90B5C00084546 /* SetCompletionView.swift */; };
-		A048B8252DE90B5C00084546 /* ImportSetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A048B7F62DE90B5C00084546 /* ImportSetView.swift */; };
-		A048B8262DE90B5C00084546 /* GoalProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A048B7E12DE90B5C00084546 /* GoalProgressBar.swift */; };
-		A048B8272DE90B5C00084546 /* NavigationControls.swift in Sources */ = {isa = PBXBuildFile; fileRef = A048B7DC2DE90B5C00084546 /* NavigationControls.swift */; };
-		A048B8282DE90B5C00084546 /* IndoorPoolSetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A048B7F72DE90B5C00084546 /* IndoorPoolSetupView.swift */; };
-		A048B8292DE90B5C00084546 /* SwimSetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A048B7F82DE90B5C00084546 /* SwimSetupView.swift */; };
-		A048B82A2DE90B5C00084546 /* GoalProgressHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A048B7FA2DE90B5C00084546 /* GoalProgressHeader.swift */; };
-		A048B82B2DE90B5C00084546 /* CelebrationOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = A048B7DF2DE90B5C00084546 /* CelebrationOverlay.swift */; };
-		A048B82C2DE90B5C00084546 /* ActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A048B7CC2DE90B5C00084546 /* ActionButton.swift */; };
-		A048B82D2DE90B5C00084546 /* CurrentGoalsDisplaySection.swift in Sources */ = {isa = PBXBuildFile; fileRef = A048B7EF2DE90B5C00084546 /* CurrentGoalsDisplaySection.swift */; };
-		A048B82E2DE90B5C00084546 /* GoalSpacingConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A048B7F32DE90B5C00084546 /* GoalSpacingConstants.swift */; };
-		A048B82F2DE90B5C00084546 /* TimeSetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A048B7EC2DE90B5C00084546 /* TimeSetupView.swift */; };
-		A048B8302DE90B5C00084546 /* DistanceSetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A048B7EA2DE90B5C00084546 /* DistanceSetupView.swift */; };
-		A048B8312DE90B5C00084546 /* StepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A048B7DD2DE90B5C00084546 /* StepView.swift */; };
-		A048B8322DE90B5C00084546 /* GoalSetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A048B7EB2DE90B5C00084546 /* GoalSetupView.swift */; };
-		A048B8332DE90B5C00084546 /* SetDisplayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A048B8072DE90B5C00084546 /* SetDisplayView.swift */; };
-		A048B8342DE90B5C00084546 /* PerformanceInsightsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = A048B80B2DE90B5C00084546 /* PerformanceInsightsSection.swift */; };
-		A048B8352DE90B5C00084546 /* MainControlButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A048B7CF2DE90B5C00084546 /* MainControlButton.swift */; };
-		A048B8362DE90B5C00084546 /* MetricCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = A048B7D32DE90B5C00084546 /* MetricCard.swift */; };
-		A048B8372DE90B5C00084546 /* HealthKitPermissionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A048B7E62DE90B5C00084546 /* HealthKitPermissionView.swift */; };
-		A048B8382DE90B5C00084546 /* SwimmingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A048B8132DE90B5C00084546 /* SwimmingView.swift */; };
-		A048B8392DE90B5C00084546 /* CompactNavButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A048B7CD2DE90B5C00084546 /* CompactNavButton.swift */; };
-		A048B83A2DE90B5C00084546 /* KeyMetricsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = A048B8092DE90B5C00084546 /* KeyMetricsSection.swift */; };
-		A048B83B2DE90B5C00084546 /* InsightRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = A048B7D72DE90B5C00084546 /* InsightRow.swift */; };
-		A048B83C2DE90B5C00084546 /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A048B7E22DE90B5C00084546 /* ProgressBar.swift */; };
-		A048B83D2DE90B5C00084546 /* HealthKitWarningSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = A048B8162DE90B5C00084546 /* HealthKitWarningSection.swift */; };
-		A048B83E2DE90B5C00084546 /* SwimControlsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A048B8112DE90B5C00084546 /* SwimControlsView.swift */; };
-		A048B83F2DE90B5C00084546 /* SwimmingSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A048B80F2DE90B5C00084546 /* SwimmingSummaryView.swift */; };
-		A048B8402DE90B5C00084546 /* GoalProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A048B7FD2DE90B5C00084546 /* GoalProgressView.swift */; };
-		A048B8412DE90B5C00084546 /* SummaryHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A048B80D2DE90B5C00084546 /* SummaryHeaderView.swift */; };
-		A048B8422DE90B5C00084546 /* ElapsedTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A048B7D62DE90B5C00084546 /* ElapsedTimeView.swift */; };
-		A048B8432DE90B5C00084546 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A048B7E72DE90B5C00084546 /* SettingsView.swift */; };
-		A048B8442DE90B5C00084546 /* SetHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A048B8052DE90B5C00084546 /* SetHeader.swift */; };
-		A048B8452DE90B5C00084546 /* GoalProgressList.swift in Sources */ = {isa = PBXBuildFile; fileRef = A048B7FB2DE90B5C00084546 /* GoalProgressList.swift */; };
-		A048B8462DE90B5C00084546 /* CalorieSetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A048B7E92DE90B5C00084546 /* CalorieSetupView.swift */; };
-		A048B8472DE90B5C00084546 /* NumberPadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A048B7DA2DE90B5C00084546 /* NumberPadView.swift */; };
-		A048B8482DE90B5C00084546 /* HeaderSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = A048B8152DE90B5C00084546 /* HeaderSection.swift */; };
-		A048B8492DE90B5C00084546 /* GoalProgressCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = A048B7D22DE90B5C00084546 /* GoalProgressCard.swift */; };
-		A048B84A2DE90B5C00084546 /* ActionButtonsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = A048B7EE2DE90B5C00084546 /* ActionButtonsSection.swift */; };
-		A048B84B2DE90B5C00084546 /* NavigationButtonsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = A048B8172DE90B5C00084546 /* NavigationButtonsSection.swift */; };
-		A048B84C2DE90B5C00084546 /* PrimaryMetricsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = A048B7FF2DE90B5C00084546 /* PrimaryMetricsSection.swift */; };
-		A048B84D2DE90B5C00084546 /* SecondaryMetricsGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = A048B8002DE90B5C00084546 /* SecondaryMetricsGrid.swift */; };
-		A048B84E2DE90B5C00084546 /* GoalBadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A048B7F02DE90B5C00084546 /* GoalBadgeView.swift */; };
-		A048B84F2DE90B5C00084546 /* WatchRootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A048B8192DE90B5C00084546 /* WatchRootView.swift */; };
-		A048B8502DE90B5C00084546 /* PresetButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A048B7D02DE90B5C00084546 /* PresetButton.swift */; };
-		A048B8512DE90B5C00084546 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = A048B7E42DE90B5C00084546 /* README.md */; };
+		A048B8A22DE9253F00084546 /* MetricsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A048B8882DE9253F00084546 /* MetricsView.swift */; };
+		A048B8A32DE9253F00084546 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A048B8902DE9253F00084546 /* LoadingView.swift */; };
+		A048B8A42DE9253F00084546 /* GoalBadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A048B8762DE9253F00084546 /* GoalBadgeView.swift */; };
+		A048B8A52DE9253F00084546 /* StepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A048B8632DE9253F00084546 /* StepView.swift */; };
+		A048B8A62DE9253F00084546 /* PerformanceInsightsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = A048B8912DE9253F00084546 /* PerformanceInsightsSection.swift */; };
+		A048B8A72DE9253F00084546 /* PerformanceCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = A048B85A2DE9253F00084546 /* PerformanceCard.swift */; };
+		A048B8A82DE9253F00084546 /* GoalSwimView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A048B87A2DE9253F00084546 /* GoalSwimView.swift */; };
+		A048B8A92DE9253F00084546 /* SummaryHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A048B8932DE9253F00084546 /* SummaryHeaderView.swift */; };
+		A048B8AA2DE9253F00084546 /* CalorieSetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A048B86F2DE9253F00084546 /* CalorieSetupView.swift */; };
+		A048B8AB2DE9253F00084546 /* ElapsedTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A048B85C2DE9253F00084546 /* ElapsedTimeView.swift */; };
+		A048B8AC2DE9253F00084546 /* CompactNavButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A048B8532DE9253F00084546 /* CompactNavButton.swift */; };
+		A048B8AD2DE9253F00084546 /* InsightRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = A048B85D2DE9253F00084546 /* InsightRow.swift */; };
+		A048B8AE2DE9253F00084546 /* SwimmingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A048B8992DE9253F00084546 /* SwimmingView.swift */; };
+		A048B8AF2DE9253F00084546 /* MetricCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = A048B8592DE9253F00084546 /* MetricCard.swift */; };
+		A048B8B02DE9253F00084546 /* ActionButtonsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = A048B8742DE9253F00084546 /* ActionButtonsSection.swift */; };
+		A048B8B12DE9253F00084546 /* GoalProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A048B8832DE9253F00084546 /* GoalProgressView.swift */; };
+		A048B8B22DE9253F00084546 /* WatchRootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A048B89F2DE9253F00084546 /* WatchRootView.swift */; };
+		A048B8B32DE9253F00084546 /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A048B8682DE9253F00084546 /* ProgressBar.swift */; };
+		A048B8B42DE9253F00084546 /* CurrentGoalsDisplaySection.swift in Sources */ = {isa = PBXBuildFile; fileRef = A048B8752DE9253F00084546 /* CurrentGoalsDisplaySection.swift */; };
+		A048B8B52DE9253F00084546 /* PresetButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A048B8562DE9253F00084546 /* PresetButton.swift */; };
+		A048B8B62DE9253F00084546 /* KeyMetricsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = A048B88F2DE9253F00084546 /* KeyMetricsSection.swift */; };
+		A048B8B72DE9253F00084546 /* GoalSpacingConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A048B8792DE9253F00084546 /* GoalSpacingConstants.swift */; };
+		A048B8B82DE9253F00084546 /* GoalProgressList.swift in Sources */ = {isa = PBXBuildFile; fileRef = A048B8812DE9253F00084546 /* GoalProgressList.swift */; };
+		A048B8B92DE9253F00084546 /* GoalSetupButtonsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = A048B8772DE9253F00084546 /* GoalSetupButtonsSection.swift */; };
+		A048B8BA2DE9253F00084546 /* ActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A048B8522DE9253F00084546 /* ActionButton.swift */; };
+		A048B8BB2DE9253F00084546 /* TimeSetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A048B8722DE9253F00084546 /* TimeSetupView.swift */; };
+		A048B8BC2DE9253F00084546 /* GoalProgressHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A048B8802DE9253F00084546 /* GoalProgressHeader.swift */; };
+		A048B8BD2DE9253F00084546 /* SetDisplayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A048B88D2DE9253F00084546 /* SetDisplayView.swift */; };
+		A048B8BE2DE9253F00084546 /* IndoorPoolSetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A048B87D2DE9253F00084546 /* IndoorPoolSetupView.swift */; };
+		A048B8BF2DE9253F00084546 /* CelebrationOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = A048B8652DE9253F00084546 /* CelebrationOverlay.swift */; };
+		A048B8C02DE9253F00084546 /* MainControlButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A048B8552DE9253F00084546 /* MainControlButton.swift */; };
+		A048B8C12DE9253F00084546 /* SummaryFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A048B8922DE9253F00084546 /* SummaryFooter.swift */; };
+		A048B8C22DE9253F00084546 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A048B86D2DE9253F00084546 /* SettingsView.swift */; };
+		A048B8C32DE9253F00084546 /* ImportSetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A048B87C2DE9253F00084546 /* ImportSetView.swift */; };
+		A048B8C42DE9253F00084546 /* SecondaryMetricsGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = A048B8862DE9253F00084546 /* SecondaryMetricsGrid.swift */; };
+		A048B8C52DE9253F00084546 /* GoalProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A048B8672DE9253F00084546 /* GoalProgressBar.swift */; };
+		A048B8C62DE9253F00084546 /* NavigationControls.swift in Sources */ = {isa = PBXBuildFile; fileRef = A048B8622DE9253F00084546 /* NavigationControls.swift */; };
+		A048B8C72DE9253F00084546 /* SetCompletionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A048B88A2DE9253F00084546 /* SetCompletionView.swift */; };
+		A048B8C82DE9253F00084546 /* SwimSetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A048B87E2DE9253F00084546 /* SwimSetupView.swift */; };
+		A048B8C92DE9253F00084546 /* HealthKitPermissionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A048B86C2DE9253F00084546 /* HealthKitPermissionView.swift */; };
+		A048B8CA2DE9253F00084546 /* NavigationButtonsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = A048B89D2DE9253F00084546 /* NavigationButtonsSection.swift */; };
+		A048B8CB2DE9253F00084546 /* IntensityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A048B85E2DE9253F00084546 /* IntensityIndicator.swift */; };
+		A048B8CC2DE9253F00084546 /* NumberPadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A048B8602DE9253F00084546 /* NumberPadView.swift */; };
+		A048B8CD2DE9253F00084546 /* SwimControlsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A048B8972DE9253F00084546 /* SwimControlsView.swift */; };
+		A048B8CE2DE9253F00084546 /* SwimmingSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A048B8952DE9253F00084546 /* SwimmingSummaryView.swift */; };
+		A048B8CF2DE9253F00084546 /* HeaderSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = A048B89B2DE9253F00084546 /* HeaderSection.swift */; };
+		A048B8D02DE9253F00084546 /* HealthKitWarningSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = A048B89C2DE9253F00084546 /* HealthKitWarningSection.swift */; };
+		A048B8D12DE9253F00084546 /* MainButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A048B8542DE9253F00084546 /* MainButton.swift */; };
+		A048B8D22DE9253F00084546 /* PrimaryMetricsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = A048B8852DE9253F00084546 /* PrimaryMetricsSection.swift */; };
+		A048B8D32DE9253F00084546 /* GoalSetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A048B8712DE9253F00084546 /* GoalSetupView.swift */; };
+		A048B8D42DE9253F00084546 /* GoalProgressCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = A048B8582DE9253F00084546 /* GoalProgressCard.swift */; };
+		A048B8D52DE9253F00084546 /* DistanceSetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A048B8702DE9253F00084546 /* DistanceSetupView.swift */; };
+		A048B8D62DE9253F00084546 /* SetHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A048B88B2DE9253F00084546 /* SetHeader.swift */; };
+		A048B8D72DE9253F00084546 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = A048B86A2DE9253F00084546 /* README.md */; };
 		A07667A52BF5E6BF00FFB4C3 /* HomePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07667922BF5E6BF00FFB4C3 /* HomePage.swift */; };
 		A07667A62BF5E6BF00FFB4C3 /* PreferencesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07667942BF5E6BF00FFB4C3 /* PreferencesView.swift */; };
 		A07667A72BF5E6BF00FFB4C3 /* ProfilePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07667952BF5E6BF00FFB4C3 /* ProfilePage.swift */; };
@@ -151,60 +151,60 @@
 		A032BE742DDD1D0A00265661 /* PaceGraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaceGraphView.swift; sourceTree = "<group>"; };
 		A032BE762DDD1D0A00265661 /* HealthKitPermissionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitPermissionView.swift; sourceTree = "<group>"; };
 		A032BE792DDD1D0A00265661 /* WorkoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutView.swift; sourceTree = "<group>"; };
-		A048B7CC2DE90B5C00084546 /* ActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionButton.swift; sourceTree = "<group>"; };
-		A048B7CD2DE90B5C00084546 /* CompactNavButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompactNavButton.swift; sourceTree = "<group>"; };
-		A048B7CE2DE90B5C00084546 /* MainButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainButton.swift; sourceTree = "<group>"; };
-		A048B7CF2DE90B5C00084546 /* MainControlButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainControlButton.swift; sourceTree = "<group>"; };
-		A048B7D02DE90B5C00084546 /* PresetButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresetButton.swift; sourceTree = "<group>"; };
-		A048B7D22DE90B5C00084546 /* GoalProgressCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalProgressCard.swift; sourceTree = "<group>"; };
-		A048B7D32DE90B5C00084546 /* MetricCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetricCard.swift; sourceTree = "<group>"; };
-		A048B7D42DE90B5C00084546 /* PerformanceCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerformanceCard.swift; sourceTree = "<group>"; };
-		A048B7D62DE90B5C00084546 /* ElapsedTimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElapsedTimeView.swift; sourceTree = "<group>"; };
-		A048B7D72DE90B5C00084546 /* InsightRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsightRow.swift; sourceTree = "<group>"; };
-		A048B7D82DE90B5C00084546 /* IntensityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntensityIndicator.swift; sourceTree = "<group>"; };
-		A048B7DA2DE90B5C00084546 /* NumberPadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberPadView.swift; sourceTree = "<group>"; };
-		A048B7DC2DE90B5C00084546 /* NavigationControls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationControls.swift; sourceTree = "<group>"; };
-		A048B7DD2DE90B5C00084546 /* StepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepView.swift; sourceTree = "<group>"; };
-		A048B7DF2DE90B5C00084546 /* CelebrationOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CelebrationOverlay.swift; sourceTree = "<group>"; };
-		A048B7E12DE90B5C00084546 /* GoalProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalProgressBar.swift; sourceTree = "<group>"; };
-		A048B7E22DE90B5C00084546 /* ProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
-		A048B7E42DE90B5C00084546 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		A048B7E62DE90B5C00084546 /* HealthKitPermissionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitPermissionView.swift; sourceTree = "<group>"; };
-		A048B7E72DE90B5C00084546 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
-		A048B7E92DE90B5C00084546 /* CalorieSetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalorieSetupView.swift; sourceTree = "<group>"; };
-		A048B7EA2DE90B5C00084546 /* DistanceSetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistanceSetupView.swift; sourceTree = "<group>"; };
-		A048B7EB2DE90B5C00084546 /* GoalSetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalSetupView.swift; sourceTree = "<group>"; };
-		A048B7EC2DE90B5C00084546 /* TimeSetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeSetupView.swift; sourceTree = "<group>"; };
-		A048B7EE2DE90B5C00084546 /* ActionButtonsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionButtonsSection.swift; sourceTree = "<group>"; };
-		A048B7EF2DE90B5C00084546 /* CurrentGoalsDisplaySection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentGoalsDisplaySection.swift; sourceTree = "<group>"; };
-		A048B7F02DE90B5C00084546 /* GoalBadgeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalBadgeView.swift; sourceTree = "<group>"; };
-		A048B7F12DE90B5C00084546 /* GoalSetupButtonsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalSetupButtonsSection.swift; sourceTree = "<group>"; };
-		A048B7F32DE90B5C00084546 /* GoalSpacingConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalSpacingConstants.swift; sourceTree = "<group>"; };
-		A048B7F42DE90B5C00084546 /* GoalSwimSetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalSwimSetupView.swift; sourceTree = "<group>"; };
-		A048B7F62DE90B5C00084546 /* ImportSetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportSetView.swift; sourceTree = "<group>"; };
-		A048B7F72DE90B5C00084546 /* IndoorPoolSetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndoorPoolSetupView.swift; sourceTree = "<group>"; };
-		A048B7F82DE90B5C00084546 /* SwimSetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwimSetupView.swift; sourceTree = "<group>"; };
-		A048B7FA2DE90B5C00084546 /* GoalProgressHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalProgressHeader.swift; sourceTree = "<group>"; };
-		A048B7FB2DE90B5C00084546 /* GoalProgressList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalProgressList.swift; sourceTree = "<group>"; };
-		A048B7FD2DE90B5C00084546 /* GoalProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalProgressView.swift; sourceTree = "<group>"; };
-		A048B7FF2DE90B5C00084546 /* PrimaryMetricsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryMetricsSection.swift; sourceTree = "<group>"; };
-		A048B8002DE90B5C00084546 /* SecondaryMetricsGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondaryMetricsGrid.swift; sourceTree = "<group>"; };
-		A048B8022DE90B5C00084546 /* MetricsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetricsView.swift; sourceTree = "<group>"; };
-		A048B8042DE90B5C00084546 /* SetCompletionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetCompletionView.swift; sourceTree = "<group>"; };
-		A048B8052DE90B5C00084546 /* SetHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetHeader.swift; sourceTree = "<group>"; };
-		A048B8072DE90B5C00084546 /* SetDisplayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetDisplayView.swift; sourceTree = "<group>"; };
-		A048B8092DE90B5C00084546 /* KeyMetricsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyMetricsSection.swift; sourceTree = "<group>"; };
-		A048B80A2DE90B5C00084546 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
-		A048B80B2DE90B5C00084546 /* PerformanceInsightsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerformanceInsightsSection.swift; sourceTree = "<group>"; };
-		A048B80C2DE90B5C00084546 /* SummaryFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryFooter.swift; sourceTree = "<group>"; };
-		A048B80D2DE90B5C00084546 /* SummaryHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryHeaderView.swift; sourceTree = "<group>"; };
-		A048B80F2DE90B5C00084546 /* SwimmingSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwimmingSummaryView.swift; sourceTree = "<group>"; };
-		A048B8112DE90B5C00084546 /* SwimControlsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwimControlsView.swift; sourceTree = "<group>"; };
-		A048B8132DE90B5C00084546 /* SwimmingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwimmingView.swift; sourceTree = "<group>"; };
-		A048B8152DE90B5C00084546 /* HeaderSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderSection.swift; sourceTree = "<group>"; };
-		A048B8162DE90B5C00084546 /* HealthKitWarningSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitWarningSection.swift; sourceTree = "<group>"; };
-		A048B8172DE90B5C00084546 /* NavigationButtonsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationButtonsSection.swift; sourceTree = "<group>"; };
-		A048B8192DE90B5C00084546 /* WatchRootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchRootView.swift; sourceTree = "<group>"; };
+		A048B8522DE9253F00084546 /* ActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionButton.swift; sourceTree = "<group>"; };
+		A048B8532DE9253F00084546 /* CompactNavButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompactNavButton.swift; sourceTree = "<group>"; };
+		A048B8542DE9253F00084546 /* MainButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainButton.swift; sourceTree = "<group>"; };
+		A048B8552DE9253F00084546 /* MainControlButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainControlButton.swift; sourceTree = "<group>"; };
+		A048B8562DE9253F00084546 /* PresetButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresetButton.swift; sourceTree = "<group>"; };
+		A048B8582DE9253F00084546 /* GoalProgressCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalProgressCard.swift; sourceTree = "<group>"; };
+		A048B8592DE9253F00084546 /* MetricCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetricCard.swift; sourceTree = "<group>"; };
+		A048B85A2DE9253F00084546 /* PerformanceCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerformanceCard.swift; sourceTree = "<group>"; };
+		A048B85C2DE9253F00084546 /* ElapsedTimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElapsedTimeView.swift; sourceTree = "<group>"; };
+		A048B85D2DE9253F00084546 /* InsightRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsightRow.swift; sourceTree = "<group>"; };
+		A048B85E2DE9253F00084546 /* IntensityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntensityIndicator.swift; sourceTree = "<group>"; };
+		A048B8602DE9253F00084546 /* NumberPadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberPadView.swift; sourceTree = "<group>"; };
+		A048B8622DE9253F00084546 /* NavigationControls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationControls.swift; sourceTree = "<group>"; };
+		A048B8632DE9253F00084546 /* StepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepView.swift; sourceTree = "<group>"; };
+		A048B8652DE9253F00084546 /* CelebrationOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CelebrationOverlay.swift; sourceTree = "<group>"; };
+		A048B8672DE9253F00084546 /* GoalProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalProgressBar.swift; sourceTree = "<group>"; };
+		A048B8682DE9253F00084546 /* ProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
+		A048B86A2DE9253F00084546 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		A048B86C2DE9253F00084546 /* HealthKitPermissionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitPermissionView.swift; sourceTree = "<group>"; };
+		A048B86D2DE9253F00084546 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		A048B86F2DE9253F00084546 /* CalorieSetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalorieSetupView.swift; sourceTree = "<group>"; };
+		A048B8702DE9253F00084546 /* DistanceSetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistanceSetupView.swift; sourceTree = "<group>"; };
+		A048B8712DE9253F00084546 /* GoalSetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalSetupView.swift; sourceTree = "<group>"; };
+		A048B8722DE9253F00084546 /* TimeSetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeSetupView.swift; sourceTree = "<group>"; };
+		A048B8742DE9253F00084546 /* ActionButtonsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionButtonsSection.swift; sourceTree = "<group>"; };
+		A048B8752DE9253F00084546 /* CurrentGoalsDisplaySection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentGoalsDisplaySection.swift; sourceTree = "<group>"; };
+		A048B8762DE9253F00084546 /* GoalBadgeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalBadgeView.swift; sourceTree = "<group>"; };
+		A048B8772DE9253F00084546 /* GoalSetupButtonsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalSetupButtonsSection.swift; sourceTree = "<group>"; };
+		A048B8792DE9253F00084546 /* GoalSpacingConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalSpacingConstants.swift; sourceTree = "<group>"; };
+		A048B87A2DE9253F00084546 /* GoalSwimView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalSwimView.swift; sourceTree = "<group>"; };
+		A048B87C2DE9253F00084546 /* ImportSetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportSetView.swift; sourceTree = "<group>"; };
+		A048B87D2DE9253F00084546 /* IndoorPoolSetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndoorPoolSetupView.swift; sourceTree = "<group>"; };
+		A048B87E2DE9253F00084546 /* SwimSetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwimSetupView.swift; sourceTree = "<group>"; };
+		A048B8802DE9253F00084546 /* GoalProgressHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalProgressHeader.swift; sourceTree = "<group>"; };
+		A048B8812DE9253F00084546 /* GoalProgressList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalProgressList.swift; sourceTree = "<group>"; };
+		A048B8832DE9253F00084546 /* GoalProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalProgressView.swift; sourceTree = "<group>"; };
+		A048B8852DE9253F00084546 /* PrimaryMetricsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryMetricsSection.swift; sourceTree = "<group>"; };
+		A048B8862DE9253F00084546 /* SecondaryMetricsGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondaryMetricsGrid.swift; sourceTree = "<group>"; };
+		A048B8882DE9253F00084546 /* MetricsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetricsView.swift; sourceTree = "<group>"; };
+		A048B88A2DE9253F00084546 /* SetCompletionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetCompletionView.swift; sourceTree = "<group>"; };
+		A048B88B2DE9253F00084546 /* SetHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetHeader.swift; sourceTree = "<group>"; };
+		A048B88D2DE9253F00084546 /* SetDisplayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetDisplayView.swift; sourceTree = "<group>"; };
+		A048B88F2DE9253F00084546 /* KeyMetricsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyMetricsSection.swift; sourceTree = "<group>"; };
+		A048B8902DE9253F00084546 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		A048B8912DE9253F00084546 /* PerformanceInsightsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerformanceInsightsSection.swift; sourceTree = "<group>"; };
+		A048B8922DE9253F00084546 /* SummaryFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryFooter.swift; sourceTree = "<group>"; };
+		A048B8932DE9253F00084546 /* SummaryHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryHeaderView.swift; sourceTree = "<group>"; };
+		A048B8952DE9253F00084546 /* SwimmingSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwimmingSummaryView.swift; sourceTree = "<group>"; };
+		A048B8972DE9253F00084546 /* SwimControlsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwimControlsView.swift; sourceTree = "<group>"; };
+		A048B8992DE9253F00084546 /* SwimmingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwimmingView.swift; sourceTree = "<group>"; };
+		A048B89B2DE9253F00084546 /* HeaderSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderSection.swift; sourceTree = "<group>"; };
+		A048B89C2DE9253F00084546 /* HealthKitWarningSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitWarningSection.swift; sourceTree = "<group>"; };
+		A048B89D2DE9253F00084546 /* NavigationButtonsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationButtonsSection.swift; sourceTree = "<group>"; };
+		A048B89F2DE9253F00084546 /* WatchRootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchRootView.swift; sourceTree = "<group>"; };
 		A07667922BF5E6BF00FFB4C3 /* HomePage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomePage.swift; sourceTree = "<group>"; };
 		A07667942BF5E6BF00FFB4C3 /* PreferencesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferencesView.swift; sourceTree = "<group>"; };
 		A07667952BF5E6BF00FFB4C3 /* ProfilePage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfilePage.swift; sourceTree = "<group>"; };
@@ -310,263 +310,263 @@
 			path = GeneralViews;
 			sourceTree = "<group>";
 		};
-		A048B7D12DE90B5C00084546 /* Buttons */ = {
+		A048B8572DE9253F00084546 /* Buttons */ = {
 			isa = PBXGroup;
 			children = (
-				A048B7CC2DE90B5C00084546 /* ActionButton.swift */,
-				A048B7CD2DE90B5C00084546 /* CompactNavButton.swift */,
-				A048B7CE2DE90B5C00084546 /* MainButton.swift */,
-				A048B7CF2DE90B5C00084546 /* MainControlButton.swift */,
-				A048B7D02DE90B5C00084546 /* PresetButton.swift */,
+				A048B8522DE9253F00084546 /* ActionButton.swift */,
+				A048B8532DE9253F00084546 /* CompactNavButton.swift */,
+				A048B8542DE9253F00084546 /* MainButton.swift */,
+				A048B8552DE9253F00084546 /* MainControlButton.swift */,
+				A048B8562DE9253F00084546 /* PresetButton.swift */,
 			);
 			path = Buttons;
 			sourceTree = "<group>";
 		};
-		A048B7D52DE90B5C00084546 /* Cards */ = {
+		A048B85B2DE9253F00084546 /* Cards */ = {
 			isa = PBXGroup;
 			children = (
-				A048B7D22DE90B5C00084546 /* GoalProgressCard.swift */,
-				A048B7D32DE90B5C00084546 /* MetricCard.swift */,
-				A048B7D42DE90B5C00084546 /* PerformanceCard.swift */,
+				A048B8582DE9253F00084546 /* GoalProgressCard.swift */,
+				A048B8592DE9253F00084546 /* MetricCard.swift */,
+				A048B85A2DE9253F00084546 /* PerformanceCard.swift */,
 			);
 			path = Cards;
 			sourceTree = "<group>";
 		};
-		A048B7D92DE90B5C00084546 /* Display */ = {
+		A048B85F2DE9253F00084546 /* Display */ = {
 			isa = PBXGroup;
 			children = (
-				A048B7D62DE90B5C00084546 /* ElapsedTimeView.swift */,
-				A048B7D72DE90B5C00084546 /* InsightRow.swift */,
-				A048B7D82DE90B5C00084546 /* IntensityIndicator.swift */,
+				A048B85C2DE9253F00084546 /* ElapsedTimeView.swift */,
+				A048B85D2DE9253F00084546 /* InsightRow.swift */,
+				A048B85E2DE9253F00084546 /* IntensityIndicator.swift */,
 			);
 			path = Display;
 			sourceTree = "<group>";
 		};
-		A048B7DB2DE90B5C00084546 /* Input */ = {
+		A048B8612DE9253F00084546 /* Input */ = {
 			isa = PBXGroup;
 			children = (
-				A048B7DA2DE90B5C00084546 /* NumberPadView.swift */,
+				A048B8602DE9253F00084546 /* NumberPadView.swift */,
 			);
 			path = Input;
 			sourceTree = "<group>";
 		};
-		A048B7DE2DE90B5C00084546 /* Navigation */ = {
+		A048B8642DE9253F00084546 /* Navigation */ = {
 			isa = PBXGroup;
 			children = (
-				A048B7DC2DE90B5C00084546 /* NavigationControls.swift */,
-				A048B7DD2DE90B5C00084546 /* StepView.swift */,
+				A048B8622DE9253F00084546 /* NavigationControls.swift */,
+				A048B8632DE9253F00084546 /* StepView.swift */,
 			);
 			path = Navigation;
 			sourceTree = "<group>";
 		};
-		A048B7E02DE90B5C00084546 /* Overlays */ = {
+		A048B8662DE9253F00084546 /* Overlays */ = {
 			isa = PBXGroup;
 			children = (
-				A048B7DF2DE90B5C00084546 /* CelebrationOverlay.swift */,
+				A048B8652DE9253F00084546 /* CelebrationOverlay.swift */,
 			);
 			path = Overlays;
 			sourceTree = "<group>";
 		};
-		A048B7E32DE90B5C00084546 /* Progress */ = {
+		A048B8692DE9253F00084546 /* Progress */ = {
 			isa = PBXGroup;
 			children = (
-				A048B7E12DE90B5C00084546 /* GoalProgressBar.swift */,
-				A048B7E22DE90B5C00084546 /* ProgressBar.swift */,
+				A048B8672DE9253F00084546 /* GoalProgressBar.swift */,
+				A048B8682DE9253F00084546 /* ProgressBar.swift */,
 			);
 			path = Progress;
 			sourceTree = "<group>";
 		};
-		A048B7E52DE90B5C00084546 /* Components */ = {
+		A048B86B2DE9253F00084546 /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				A048B7D12DE90B5C00084546 /* Buttons */,
-				A048B7D52DE90B5C00084546 /* Cards */,
-				A048B7D92DE90B5C00084546 /* Display */,
-				A048B7DB2DE90B5C00084546 /* Input */,
-				A048B7DE2DE90B5C00084546 /* Navigation */,
-				A048B7E02DE90B5C00084546 /* Overlays */,
-				A048B7E32DE90B5C00084546 /* Progress */,
-				A048B7E42DE90B5C00084546 /* README.md */,
+				A048B8572DE9253F00084546 /* Buttons */,
+				A048B85B2DE9253F00084546 /* Cards */,
+				A048B85F2DE9253F00084546 /* Display */,
+				A048B8612DE9253F00084546 /* Input */,
+				A048B8642DE9253F00084546 /* Navigation */,
+				A048B8662DE9253F00084546 /* Overlays */,
+				A048B8692DE9253F00084546 /* Progress */,
+				A048B86A2DE9253F00084546 /* README.md */,
 			);
 			path = Components;
 			sourceTree = "<group>";
 		};
-		A048B7E82DE90B5C00084546 /* SettingsView */ = {
+		A048B86E2DE9253F00084546 /* SettingsView */ = {
 			isa = PBXGroup;
 			children = (
-				A048B7E62DE90B5C00084546 /* HealthKitPermissionView.swift */,
-				A048B7E72DE90B5C00084546 /* SettingsView.swift */,
+				A048B86C2DE9253F00084546 /* HealthKitPermissionView.swift */,
+				A048B86D2DE9253F00084546 /* SettingsView.swift */,
 			);
 			path = SettingsView;
 			sourceTree = "<group>";
 		};
-		A048B7ED2DE90B5C00084546 /* SetupViews */ = {
+		A048B8732DE9253F00084546 /* SetupViews */ = {
 			isa = PBXGroup;
 			children = (
-				A048B7E92DE90B5C00084546 /* CalorieSetupView.swift */,
-				A048B7EA2DE90B5C00084546 /* DistanceSetupView.swift */,
-				A048B7EB2DE90B5C00084546 /* GoalSetupView.swift */,
-				A048B7EC2DE90B5C00084546 /* TimeSetupView.swift */,
+				A048B86F2DE9253F00084546 /* CalorieSetupView.swift */,
+				A048B8702DE9253F00084546 /* DistanceSetupView.swift */,
+				A048B8712DE9253F00084546 /* GoalSetupView.swift */,
+				A048B8722DE9253F00084546 /* TimeSetupView.swift */,
 			);
 			path = SetupViews;
 			sourceTree = "<group>";
 		};
-		A048B7F22DE90B5C00084546 /* Sections */ = {
+		A048B8782DE9253F00084546 /* Sections */ = {
 			isa = PBXGroup;
 			children = (
-				A048B7ED2DE90B5C00084546 /* SetupViews */,
-				A048B7EE2DE90B5C00084546 /* ActionButtonsSection.swift */,
-				A048B7EF2DE90B5C00084546 /* CurrentGoalsDisplaySection.swift */,
-				A048B7F02DE90B5C00084546 /* GoalBadgeView.swift */,
-				A048B7F12DE90B5C00084546 /* GoalSetupButtonsSection.swift */,
+				A048B8732DE9253F00084546 /* SetupViews */,
+				A048B8742DE9253F00084546 /* ActionButtonsSection.swift */,
+				A048B8752DE9253F00084546 /* CurrentGoalsDisplaySection.swift */,
+				A048B8762DE9253F00084546 /* GoalBadgeView.swift */,
+				A048B8772DE9253F00084546 /* GoalSetupButtonsSection.swift */,
 			);
 			path = Sections;
 			sourceTree = "<group>";
 		};
-		A048B7F52DE90B5C00084546 /* GoalViews */ = {
+		A048B87B2DE9253F00084546 /* GoalViews */ = {
 			isa = PBXGroup;
 			children = (
-				A048B7F22DE90B5C00084546 /* Sections */,
-				A048B7F32DE90B5C00084546 /* GoalSpacingConstants.swift */,
-				A048B7F42DE90B5C00084546 /* GoalSwimSetupView.swift */,
+				A048B8782DE9253F00084546 /* Sections */,
+				A048B8792DE9253F00084546 /* GoalSpacingConstants.swift */,
+				A048B87A2DE9253F00084546 /* GoalSwimView.swift */,
 			);
 			path = GoalViews;
 			sourceTree = "<group>";
 		};
-		A048B7F92DE90B5C00084546 /* SwimSetup */ = {
+		A048B87F2DE9253F00084546 /* SwimSetup */ = {
 			isa = PBXGroup;
 			children = (
-				A048B7F52DE90B5C00084546 /* GoalViews */,
-				A048B7F62DE90B5C00084546 /* ImportSetView.swift */,
-				A048B7F72DE90B5C00084546 /* IndoorPoolSetupView.swift */,
-				A048B7F82DE90B5C00084546 /* SwimSetupView.swift */,
+				A048B87B2DE9253F00084546 /* GoalViews */,
+				A048B87C2DE9253F00084546 /* ImportSetView.swift */,
+				A048B87D2DE9253F00084546 /* IndoorPoolSetupView.swift */,
+				A048B87E2DE9253F00084546 /* SwimSetupView.swift */,
 			);
 			path = SwimSetup;
 			sourceTree = "<group>";
 		};
-		A048B7FC2DE90B5C00084546 /* Sections */ = {
+		A048B8822DE9253F00084546 /* Sections */ = {
 			isa = PBXGroup;
 			children = (
-				A048B7FA2DE90B5C00084546 /* GoalProgressHeader.swift */,
-				A048B7FB2DE90B5C00084546 /* GoalProgressList.swift */,
+				A048B8802DE9253F00084546 /* GoalProgressHeader.swift */,
+				A048B8812DE9253F00084546 /* GoalProgressList.swift */,
 			);
 			path = Sections;
 			sourceTree = "<group>";
 		};
-		A048B7FE2DE90B5C00084546 /* GoalDisplayView */ = {
+		A048B8842DE9253F00084546 /* GoalDisplayView */ = {
 			isa = PBXGroup;
 			children = (
-				A048B7FC2DE90B5C00084546 /* Sections */,
-				A048B7FD2DE90B5C00084546 /* GoalProgressView.swift */,
+				A048B8822DE9253F00084546 /* Sections */,
+				A048B8832DE9253F00084546 /* GoalProgressView.swift */,
 			);
 			path = GoalDisplayView;
 			sourceTree = "<group>";
 		};
-		A048B8012DE90B5C00084546 /* Sections */ = {
+		A048B8872DE9253F00084546 /* Sections */ = {
 			isa = PBXGroup;
 			children = (
-				A048B7FF2DE90B5C00084546 /* PrimaryMetricsSection.swift */,
-				A048B8002DE90B5C00084546 /* SecondaryMetricsGrid.swift */,
+				A048B8852DE9253F00084546 /* PrimaryMetricsSection.swift */,
+				A048B8862DE9253F00084546 /* SecondaryMetricsGrid.swift */,
 			);
 			path = Sections;
 			sourceTree = "<group>";
 		};
-		A048B8032DE90B5C00084546 /* MetricsView */ = {
+		A048B8892DE9253F00084546 /* MetricsView */ = {
 			isa = PBXGroup;
 			children = (
-				A048B8012DE90B5C00084546 /* Sections */,
-				A048B8022DE90B5C00084546 /* MetricsView.swift */,
+				A048B8872DE9253F00084546 /* Sections */,
+				A048B8882DE9253F00084546 /* MetricsView.swift */,
 			);
 			path = MetricsView;
 			sourceTree = "<group>";
 		};
-		A048B8062DE90B5C00084546 /* Sections */ = {
+		A048B88C2DE9253F00084546 /* Sections */ = {
 			isa = PBXGroup;
 			children = (
-				A048B8042DE90B5C00084546 /* SetCompletionView.swift */,
-				A048B8052DE90B5C00084546 /* SetHeader.swift */,
+				A048B88A2DE9253F00084546 /* SetCompletionView.swift */,
+				A048B88B2DE9253F00084546 /* SetHeader.swift */,
 			);
 			path = Sections;
 			sourceTree = "<group>";
 		};
-		A048B8082DE90B5C00084546 /* SetDisplayView */ = {
+		A048B88E2DE9253F00084546 /* SetDisplayView */ = {
 			isa = PBXGroup;
 			children = (
-				A048B8062DE90B5C00084546 /* Sections */,
-				A048B8072DE90B5C00084546 /* SetDisplayView.swift */,
+				A048B88C2DE9253F00084546 /* Sections */,
+				A048B88D2DE9253F00084546 /* SetDisplayView.swift */,
 			);
 			path = SetDisplayView;
 			sourceTree = "<group>";
 		};
-		A048B80E2DE90B5C00084546 /* Sections */ = {
+		A048B8942DE9253F00084546 /* Sections */ = {
 			isa = PBXGroup;
 			children = (
-				A048B8092DE90B5C00084546 /* KeyMetricsSection.swift */,
-				A048B80A2DE90B5C00084546 /* LoadingView.swift */,
-				A048B80B2DE90B5C00084546 /* PerformanceInsightsSection.swift */,
-				A048B80C2DE90B5C00084546 /* SummaryFooter.swift */,
-				A048B80D2DE90B5C00084546 /* SummaryHeaderView.swift */,
+				A048B88F2DE9253F00084546 /* KeyMetricsSection.swift */,
+				A048B8902DE9253F00084546 /* LoadingView.swift */,
+				A048B8912DE9253F00084546 /* PerformanceInsightsSection.swift */,
+				A048B8922DE9253F00084546 /* SummaryFooter.swift */,
+				A048B8932DE9253F00084546 /* SummaryHeaderView.swift */,
 			);
 			path = Sections;
 			sourceTree = "<group>";
 		};
-		A048B8102DE90B5C00084546 /* SummaryView */ = {
+		A048B8962DE9253F00084546 /* SummaryView */ = {
 			isa = PBXGroup;
 			children = (
-				A048B80E2DE90B5C00084546 /* Sections */,
-				A048B80F2DE90B5C00084546 /* SwimmingSummaryView.swift */,
+				A048B8942DE9253F00084546 /* Sections */,
+				A048B8952DE9253F00084546 /* SwimmingSummaryView.swift */,
 			);
 			path = SummaryView;
 			sourceTree = "<group>";
 		};
-		A048B8122DE90B5C00084546 /* SwimControlsview */ = {
+		A048B8982DE9253F00084546 /* SwimControlsview */ = {
 			isa = PBXGroup;
 			children = (
-				A048B8112DE90B5C00084546 /* SwimControlsView.swift */,
+				A048B8972DE9253F00084546 /* SwimControlsView.swift */,
 			);
 			path = SwimControlsview;
 			sourceTree = "<group>";
 		};
-		A048B8142DE90B5C00084546 /* SwimViews */ = {
+		A048B89A2DE9253F00084546 /* SwimViews */ = {
 			isa = PBXGroup;
 			children = (
-				A048B7FE2DE90B5C00084546 /* GoalDisplayView */,
-				A048B8032DE90B5C00084546 /* MetricsView */,
-				A048B8082DE90B5C00084546 /* SetDisplayView */,
-				A048B8102DE90B5C00084546 /* SummaryView */,
-				A048B8122DE90B5C00084546 /* SwimControlsview */,
-				A048B8132DE90B5C00084546 /* SwimmingView.swift */,
+				A048B8842DE9253F00084546 /* GoalDisplayView */,
+				A048B8892DE9253F00084546 /* MetricsView */,
+				A048B88E2DE9253F00084546 /* SetDisplayView */,
+				A048B8962DE9253F00084546 /* SummaryView */,
+				A048B8982DE9253F00084546 /* SwimControlsview */,
+				A048B8992DE9253F00084546 /* SwimmingView.swift */,
 			);
 			path = SwimViews;
 			sourceTree = "<group>";
 		};
-		A048B8182DE90B5C00084546 /* Sections */ = {
+		A048B89E2DE9253F00084546 /* Sections */ = {
 			isa = PBXGroup;
 			children = (
-				A048B8152DE90B5C00084546 /* HeaderSection.swift */,
-				A048B8162DE90B5C00084546 /* HealthKitWarningSection.swift */,
-				A048B8172DE90B5C00084546 /* NavigationButtonsSection.swift */,
+				A048B89B2DE9253F00084546 /* HeaderSection.swift */,
+				A048B89C2DE9253F00084546 /* HealthKitWarningSection.swift */,
+				A048B89D2DE9253F00084546 /* NavigationButtonsSection.swift */,
 			);
 			path = Sections;
 			sourceTree = "<group>";
 		};
-		A048B81A2DE90B5C00084546 /* WatchRootView */ = {
+		A048B8A02DE9253F00084546 /* WatchRootView */ = {
 			isa = PBXGroup;
 			children = (
-				A048B8182DE90B5C00084546 /* Sections */,
-				A048B8192DE90B5C00084546 /* WatchRootView.swift */,
+				A048B89E2DE9253F00084546 /* Sections */,
+				A048B89F2DE9253F00084546 /* WatchRootView.swift */,
 			);
 			path = WatchRootView;
 			sourceTree = "<group>";
 		};
-		A048B81B2DE90B5C00084546 /* WatchViews */ = {
+		A048B8A12DE9253F00084546 /* WatchViews */ = {
 			isa = PBXGroup;
 			children = (
-				A048B7E52DE90B5C00084546 /* Components */,
-				A048B7E82DE90B5C00084546 /* SettingsView */,
-				A048B7F92DE90B5C00084546 /* SwimSetup */,
-				A048B8142DE90B5C00084546 /* SwimViews */,
-				A048B81A2DE90B5C00084546 /* WatchRootView */,
+				A048B86B2DE9253F00084546 /* Components */,
+				A048B86E2DE9253F00084546 /* SettingsView */,
+				A048B87F2DE9253F00084546 /* SwimSetup */,
+				A048B89A2DE9253F00084546 /* SwimViews */,
+				A048B8A02DE9253F00084546 /* WatchRootView */,
 			);
 			path = WatchViews;
 			sourceTree = "<group>";
@@ -672,7 +672,7 @@
 				A0BFB9FE2DDD7C3C002B96A8 /* Preview Content */,
 				A0BFBA002DDD7C3C002B96A8 /* WatchModel */,
 				A0BFBA032DDD7C3C002B96A8 /* WatchViewModel */,
-				A048B81B2DE90B5C00084546 /* WatchViews */,
+				A048B8A12DE9253F00084546 /* WatchViews */,
 				A0BFBA1F2DDD7C3C002B96A8 /* Assets.xcassets */,
 				A0BFBA202DDD7C3C002B96A8 /* WatchSwimMate Watch App.entitlements */,
 				A0BFBA212DDD7C3C002B96A8 /* WatchSwimMateApp.swift */,
@@ -816,7 +816,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A048B8512DE90B5C00084546 /* README.md in Resources */,
+				A048B8D72DE9253F00084546 /* README.md in Resources */,
 				A0BFBA232DDD7C3C002B96A8 /* Assets.xcassets in Resources */,
 				A0BFBA242DDD7C3C002B96A8 /* Preview Assets.xcassets in Resources */,
 			);
@@ -869,61 +869,61 @@
 				A0F6A7292DE7EF8A005B7291 /* WatchManager+HealthKit.swift in Sources */,
 				A0F6A72A2DE7EF8A005B7291 /* WatchManager+Delegates.swift in Sources */,
 				A0F6A72B2DE7EF8A005B7291 /* WatchManager+Goals.swift in Sources */,
+				A048B8A22DE9253F00084546 /* MetricsView.swift in Sources */,
+				A048B8A32DE9253F00084546 /* LoadingView.swift in Sources */,
+				A048B8A42DE9253F00084546 /* GoalBadgeView.swift in Sources */,
+				A048B8A52DE9253F00084546 /* StepView.swift in Sources */,
+				A048B8A62DE9253F00084546 /* PerformanceInsightsSection.swift in Sources */,
+				A048B8A72DE9253F00084546 /* PerformanceCard.swift in Sources */,
+				A048B8A82DE9253F00084546 /* GoalSwimView.swift in Sources */,
+				A048B8A92DE9253F00084546 /* SummaryHeaderView.swift in Sources */,
+				A048B8AA2DE9253F00084546 /* CalorieSetupView.swift in Sources */,
+				A048B8AB2DE9253F00084546 /* ElapsedTimeView.swift in Sources */,
+				A048B8AC2DE9253F00084546 /* CompactNavButton.swift in Sources */,
+				A048B8AD2DE9253F00084546 /* InsightRow.swift in Sources */,
+				A048B8AE2DE9253F00084546 /* SwimmingView.swift in Sources */,
+				A048B8AF2DE9253F00084546 /* MetricCard.swift in Sources */,
+				A048B8B02DE9253F00084546 /* ActionButtonsSection.swift in Sources */,
+				A048B8B12DE9253F00084546 /* GoalProgressView.swift in Sources */,
+				A048B8B22DE9253F00084546 /* WatchRootView.swift in Sources */,
+				A048B8B32DE9253F00084546 /* ProgressBar.swift in Sources */,
+				A048B8B42DE9253F00084546 /* CurrentGoalsDisplaySection.swift in Sources */,
+				A048B8B52DE9253F00084546 /* PresetButton.swift in Sources */,
+				A048B8B62DE9253F00084546 /* KeyMetricsSection.swift in Sources */,
+				A048B8B72DE9253F00084546 /* GoalSpacingConstants.swift in Sources */,
+				A048B8B82DE9253F00084546 /* GoalProgressList.swift in Sources */,
+				A048B8B92DE9253F00084546 /* GoalSetupButtonsSection.swift in Sources */,
+				A048B8BA2DE9253F00084546 /* ActionButton.swift in Sources */,
+				A048B8BB2DE9253F00084546 /* TimeSetupView.swift in Sources */,
+				A048B8BC2DE9253F00084546 /* GoalProgressHeader.swift in Sources */,
+				A048B8BD2DE9253F00084546 /* SetDisplayView.swift in Sources */,
+				A048B8BE2DE9253F00084546 /* IndoorPoolSetupView.swift in Sources */,
+				A048B8BF2DE9253F00084546 /* CelebrationOverlay.swift in Sources */,
+				A048B8C02DE9253F00084546 /* MainControlButton.swift in Sources */,
+				A048B8C12DE9253F00084546 /* SummaryFooter.swift in Sources */,
+				A048B8C22DE9253F00084546 /* SettingsView.swift in Sources */,
+				A048B8C32DE9253F00084546 /* ImportSetView.swift in Sources */,
+				A048B8C42DE9253F00084546 /* SecondaryMetricsGrid.swift in Sources */,
+				A048B8C52DE9253F00084546 /* GoalProgressBar.swift in Sources */,
+				A048B8C62DE9253F00084546 /* NavigationControls.swift in Sources */,
+				A048B8C72DE9253F00084546 /* SetCompletionView.swift in Sources */,
+				A048B8C82DE9253F00084546 /* SwimSetupView.swift in Sources */,
+				A048B8C92DE9253F00084546 /* HealthKitPermissionView.swift in Sources */,
+				A048B8CA2DE9253F00084546 /* NavigationButtonsSection.swift in Sources */,
+				A048B8CB2DE9253F00084546 /* IntensityIndicator.swift in Sources */,
+				A048B8CC2DE9253F00084546 /* NumberPadView.swift in Sources */,
+				A048B8CD2DE9253F00084546 /* SwimControlsView.swift in Sources */,
+				A048B8CE2DE9253F00084546 /* SwimmingSummaryView.swift in Sources */,
+				A048B8CF2DE9253F00084546 /* HeaderSection.swift in Sources */,
+				A048B8D02DE9253F00084546 /* HealthKitWarningSection.swift in Sources */,
+				A048B8D12DE9253F00084546 /* MainButton.swift in Sources */,
+				A048B8D22DE9253F00084546 /* PrimaryMetricsSection.swift in Sources */,
+				A048B8D32DE9253F00084546 /* GoalSetupView.swift in Sources */,
+				A048B8D42DE9253F00084546 /* GoalProgressCard.swift in Sources */,
+				A048B8D52DE9253F00084546 /* DistanceSetupView.swift in Sources */,
+				A048B8D62DE9253F00084546 /* SetHeader.swift in Sources */,
 				A0F6A72C2DE7EF8A005B7291 /* toiOSWatchConnector.swift in Sources */,
 				A0F6A70C2DE7E697005B7291 /* GoalType.swift in Sources */,
-				A048B81C2DE90B5C00084546 /* MainButton.swift in Sources */,
-				A048B81D2DE90B5C00084546 /* SummaryFooter.swift in Sources */,
-				A048B81E2DE90B5C00084546 /* PerformanceCard.swift in Sources */,
-				A048B81F2DE90B5C00084546 /* LoadingView.swift in Sources */,
-				A048B8202DE90B5C00084546 /* MetricsView.swift in Sources */,
-				A048B8212DE90B5C00084546 /* GoalSetupButtonsSection.swift in Sources */,
-				A048B8222DE90B5C00084546 /* GoalSwimSetupView.swift in Sources */,
-				A048B8232DE90B5C00084546 /* IntensityIndicator.swift in Sources */,
-				A048B8242DE90B5C00084546 /* SetCompletionView.swift in Sources */,
-				A048B8252DE90B5C00084546 /* ImportSetView.swift in Sources */,
-				A048B8262DE90B5C00084546 /* GoalProgressBar.swift in Sources */,
-				A048B8272DE90B5C00084546 /* NavigationControls.swift in Sources */,
-				A048B8282DE90B5C00084546 /* IndoorPoolSetupView.swift in Sources */,
-				A048B8292DE90B5C00084546 /* SwimSetupView.swift in Sources */,
-				A048B82A2DE90B5C00084546 /* GoalProgressHeader.swift in Sources */,
-				A048B82B2DE90B5C00084546 /* CelebrationOverlay.swift in Sources */,
-				A048B82C2DE90B5C00084546 /* ActionButton.swift in Sources */,
-				A048B82D2DE90B5C00084546 /* CurrentGoalsDisplaySection.swift in Sources */,
-				A048B82E2DE90B5C00084546 /* GoalSpacingConstants.swift in Sources */,
-				A048B82F2DE90B5C00084546 /* TimeSetupView.swift in Sources */,
-				A048B8302DE90B5C00084546 /* DistanceSetupView.swift in Sources */,
-				A048B8312DE90B5C00084546 /* StepView.swift in Sources */,
-				A048B8322DE90B5C00084546 /* GoalSetupView.swift in Sources */,
-				A048B8332DE90B5C00084546 /* SetDisplayView.swift in Sources */,
-				A048B8342DE90B5C00084546 /* PerformanceInsightsSection.swift in Sources */,
-				A048B8352DE90B5C00084546 /* MainControlButton.swift in Sources */,
-				A048B8362DE90B5C00084546 /* MetricCard.swift in Sources */,
-				A048B8372DE90B5C00084546 /* HealthKitPermissionView.swift in Sources */,
-				A048B8382DE90B5C00084546 /* SwimmingView.swift in Sources */,
-				A048B8392DE90B5C00084546 /* CompactNavButton.swift in Sources */,
-				A048B83A2DE90B5C00084546 /* KeyMetricsSection.swift in Sources */,
-				A048B83B2DE90B5C00084546 /* InsightRow.swift in Sources */,
-				A048B83C2DE90B5C00084546 /* ProgressBar.swift in Sources */,
-				A048B83D2DE90B5C00084546 /* HealthKitWarningSection.swift in Sources */,
-				A048B83E2DE90B5C00084546 /* SwimControlsView.swift in Sources */,
-				A048B83F2DE90B5C00084546 /* SwimmingSummaryView.swift in Sources */,
-				A048B8402DE90B5C00084546 /* GoalProgressView.swift in Sources */,
-				A048B8412DE90B5C00084546 /* SummaryHeaderView.swift in Sources */,
-				A048B8422DE90B5C00084546 /* ElapsedTimeView.swift in Sources */,
-				A048B8432DE90B5C00084546 /* SettingsView.swift in Sources */,
-				A048B8442DE90B5C00084546 /* SetHeader.swift in Sources */,
-				A048B8452DE90B5C00084546 /* GoalProgressList.swift in Sources */,
-				A048B8462DE90B5C00084546 /* CalorieSetupView.swift in Sources */,
-				A048B8472DE90B5C00084546 /* NumberPadView.swift in Sources */,
-				A048B8482DE90B5C00084546 /* HeaderSection.swift in Sources */,
-				A048B8492DE90B5C00084546 /* GoalProgressCard.swift in Sources */,
-				A048B84A2DE90B5C00084546 /* ActionButtonsSection.swift in Sources */,
-				A048B84B2DE90B5C00084546 /* NavigationButtonsSection.swift in Sources */,
-				A048B84C2DE90B5C00084546 /* PrimaryMetricsSection.swift in Sources */,
-				A048B84D2DE90B5C00084546 /* SecondaryMetricsGrid.swift in Sources */,
-				A048B84E2DE90B5C00084546 /* GoalBadgeView.swift in Sources */,
-				A048B84F2DE90B5C00084546 /* WatchRootView.swift in Sources */,
-				A048B8502DE90B5C00084546 /* PresetButton.swift in Sources */,
 				A0BFBA392DDD7C3C002B96A8 /* WatchSwimMateApp.swift in Sources */,
 				A0BFBA3A2DDD7C3C002B96A8 /* NavState.swift in Sources */,
 			);

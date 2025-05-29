@@ -10,56 +10,80 @@ struct CurrentGoalsDisplaySection: View
     {
         if manager.hasActiveGoals
         {
-            VStack(spacing: 8)
+            VStack(spacing: manager.isCompactDevice ? 4 : 8)
             {
                 Text("Current Goals")
-                    .font(.subheadline)
+                    .font(.system(size: manager.isCompactDevice ? 10 : 12, weight: .medium))
                     .foregroundColor(.secondary)
                 
                 let activeGoals = getActiveGoals()
                 
-                VStack(spacing: 8)
+                if manager.isCompactDevice
                 {
-                    // 1st row - first two active badges
-                    if activeGoals.count >= 1
+                    // vertical stack for compact devices
+                    VStack(spacing: 3)
                     {
-                        HStack(spacing: 12)
-                        {
-                            GoalBadgeView(type: activeGoals[0])
-                            
-                            if activeGoals.count >= 2
-                            {
-                                GoalBadgeView(type: activeGoals[1])
-                            }
+                        ForEach(activeGoals, id: \.self) { goalType in
+                            CompactGoalBadgeView(type: goalType)
                         }
                     }
-                    
-                    // 2nd row - third badge centered (if exists)
-                    if activeGoals.count >= 3
+                }
+                else
+                {
+                    // original layout
+                    VStack(spacing: 8)
                     {
-                        HStack
+                        if activeGoals.count >= 1
                         {
-                            Spacer()
-                            GoalBadgeView(type: activeGoals[2])
-                            Spacer()
+                            HStack(spacing: 12)
+                            {
+                                GoalBadgeView(type: activeGoals[0])
+                                
+                                if activeGoals.count >= 2
+                                {
+                                    GoalBadgeView(type: activeGoals[1])
+                                }
+                            }
+                        }
+                        
+                        if activeGoals.count >= 3
+                        {
+                            HStack
+                            {
+                                Spacer()
+                                GoalBadgeView(type: activeGoals[2])
+                                Spacer()
+                            }
                         }
                     }
                 }
             }
-            .padding(.bottom, 8)
+            .padding(.bottom, manager.isCompactDevice ? 6 : 8)
         }
     }
     
     private func getActiveGoals() -> [GoalType]
     {
         var goals: [GoalType] = []
-        
         if manager.hasGoal(.distance) { goals.append(.distance) }
         if manager.hasGoal(.time) { goals.append(.time) }
         if manager.hasGoal(.calories) { goals.append(.calories) }
-        
         return goals
     }
+}
+
+
+
+#Preview("Compact Device - Multiple Goals")
+{
+    let manager = WatchManager()
+    manager.goalDistance = 1000
+    manager.goalTime = 1800
+    manager.goalCalories = 300
+    manager.goalUnit = "meters"
+    
+    return CurrentGoalsDisplaySection()
+        .environment(manager)
 }
 
 #Preview("Single Goal")

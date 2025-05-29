@@ -6,18 +6,16 @@ struct ActionButtonsSection: View
 {
     @Environment(WatchManager.self) private var manager
     
-    let isCompactDevice = WKInterfaceDevice.current().screenBounds.height <= 200
-    
     var body: some View
     {
         VStack(spacing: 10)
         {
             // start workout button
             ActionButton(
-                label: "Start Workout",
+                label: "Start",
                 icon: "play.fill",
                 tint: .green,
-                compact: isCompactDevice,
+                compact: manager.isCompactDevice,
                 showArrow: true
             )
             {
@@ -28,10 +26,10 @@ struct ActionButtonsSection: View
             if manager.hasActiveGoals
             {
                 ActionButton(
-                    label: "Clear All Goals",
+                    label: "Clear All",
                     icon: "trash",
                     tint: .red,
-                    compact: isCompactDevice
+                    compact: manager.isCompactDevice
                 )
                 {
                     manager.clearAllGoals()

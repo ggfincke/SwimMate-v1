@@ -10,9 +10,9 @@ import WatchKit
 extension WatchManager 
 {
     // MARK: - Goal Constants
-    static let maxDistanceGoal: Double = 1000000
-    static let maxCalorieGoal: Double = 25000
-    static let maxTimeGoalHours: Int = 24
+    static let maxDistanceGoal: Double = 9999
+    static let maxCalorieGoal: Double = 9999
+    static let maxTimeGoalHours: Int = 99
     
     // check if any goals are currently active
     var hasActiveGoals: Bool 
