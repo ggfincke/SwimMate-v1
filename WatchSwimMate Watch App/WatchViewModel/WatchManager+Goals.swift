@@ -123,7 +123,7 @@ extension WatchManager
         switch type 
         {
             case .distance: return .blue
-            case .time: return .red
+            case .time: return .purple
             case .calories: return .orange
         }
     }

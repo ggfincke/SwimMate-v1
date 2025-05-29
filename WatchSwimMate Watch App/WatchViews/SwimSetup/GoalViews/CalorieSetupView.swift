@@ -8,7 +8,7 @@ struct CalorieSetupView: View
     @Environment(\.dismiss) private var dismiss
     
     // quick select for calories
-    private let caloriePresets = [100, 200, 300, 500, 750]
+    private let caloriePresets = [100, 200, 300, 500, 750, 1000]
     
     // defining binding
     var body: some View

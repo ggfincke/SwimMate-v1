@@ -18,22 +18,61 @@ struct GoalSetupView: View
     // binding to update the value
     @Binding var value: Double
     
+    // optional unit switching
+    var availableUnits: [String]?
+    @Binding var selectedUnit: String
+    var onUnitChange: ((String) -> Void)?
+    
     // dismiss action
     var onDismiss: () -> Void
     
     // State for showing number pad
     @State private var showingNumberPad = false
     
+    // computed property for unit display
+    private var displayUnit: String {
+        if let availableUnits = availableUnits, availableUnits.count > 1 {
+            return selectedUnit == "meters" ? "m" : selectedUnit == "yards" ? "yd" : selectedUnit
+        }
+        return unit
+    }
+    
+    // main initializer with default values for optional parameters
+    init(
+        title: String,
+        unit: String,
+        accentColor: Color,
+        presetValues: [Int],
+        minValue: Double,
+        maxValue: Double,
+        value: Binding<Double>,
+        availableUnits: [String]? = nil,
+        selectedUnit: Binding<String> = .constant(""),
+        onUnitChange: ((String) -> Void)? = nil,
+        onDismiss: @escaping () -> Void
+    ) {
+        self.title = title
+        self.unit = unit
+        self.accentColor = accentColor
+        self.presetValues = presetValues
+        self.minValue = minValue
+        self.maxValue = maxValue
+        self._value = value
+        self.availableUnits = availableUnits
+        self._selectedUnit = selectedUnit
+        self.onUnitChange = onUnitChange
+        self.onDismiss = onDismiss
+    }
+    
     var body: some View
     {
         ScrollView
         {
-            VStack(spacing: 16)
+            VStack(spacing: 8)
             {
                 // title
                 Text(title)
                     .font(.headline)
-                    .padding(.top, 10)
                 
                 // current value display (tappable to open number pad)
                 Button(action: {
@@ -48,9 +87,9 @@ struct GoalSetupView: View
                                 .foregroundColor(accentColor)
                                 .monospacedDigit()
                             
-                            if !unit.isEmpty
+                            if !displayUnit.isEmpty
                             {
-                                Text(unit)
+                                Text(displayUnit)
                                     .font(.subheadline)
                                     .foregroundColor(.secondary)
                             }
@@ -75,7 +114,7 @@ struct GoalSetupView: View
                 // preset buttons
                 if !presetValues.isEmpty
                 {
-                    VStack(spacing: 12)
+                    VStack(spacing: 8)
                     {
                         Text("Quick Select")
                             .font(.footnote)
@@ -99,6 +138,22 @@ struct GoalSetupView: View
                 
                 Spacer()
                 
+                // unit selector button (if available units provided)
+                if let availableUnits = availableUnits, availableUnits.count > 1 {
+                    ActionButton(
+                        label: "\(selectedUnit == "meters" ? "Meters" : selectedUnit == "yards" ? "Yards" : selectedUnit.capitalized)",
+                        icon: "arrow.2.circlepath",
+                        tint: .teal,
+                        compact: manager.isCompactDevice
+                    ) {
+                        WKInterfaceDevice.current().play(.click)
+                        let currentIndex = availableUnits.firstIndex(of: selectedUnit) ?? 0
+                        let nextIndex = (currentIndex + 1) % availableUnits.count
+                        selectedUnit = availableUnits[nextIndex]
+                        onUnitChange?(selectedUnit)
+                    }
+                }
+                
                 // set button using ActionButton
                 ActionButton(
                     label: "Set Goal",
@@ -120,15 +175,13 @@ struct GoalSetupView: View
             NumberPadView(
                 value: $value,
                 title: title,
-                unit: unit,
+                unit: displayUnit,
                 maxValue: maxValue,
                 accentColor: accentColor,
                 isCompact: manager.isCompactDevice
             )
         }
     }
-    
-
 }
 
 // preview

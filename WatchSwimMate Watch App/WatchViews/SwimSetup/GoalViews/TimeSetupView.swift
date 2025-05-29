@@ -28,7 +28,7 @@ struct TimeSetupView: View
                 // current time display
                 Text(timeString)
                     .font(.system(size: 38, weight: .bold, design: .rounded))
-                    .foregroundColor(.red)
+                    .foregroundColor(.purple)
                     .monospacedDigit()
                 
                 GeometryReader
@@ -104,7 +104,7 @@ struct TimeSetupView: View
                 ActionButton(
                     label: "Set Goal",
                     icon: "clock.fill",
-                    tint: .red,
+                    tint: .purple,
                     compact: manager.isCompactDevice
                 ) 
                 {
@@ -163,7 +163,7 @@ struct TimeSetupView: View
                 .foregroundColor(isSelected ? .white : .primary)
                 .frame(maxWidth: .infinity)
                 .padding(.vertical, 8)
-                .background(isSelected ? Color.red : Color.secondary.opacity(0.2))
+                .background(isSelected ? Color.purple : Color.secondary.opacity(0.2))
                 .cornerRadius(10)
         }
         .buttonStyle(PlainButtonStyle())

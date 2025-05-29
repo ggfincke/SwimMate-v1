@@ -64,7 +64,7 @@ struct GoalSwimSetupView: View
                 ActionButton(
                     label: manager.hasGoal(.time) ? "Update Time" : "Time",
                     icon: "clock.arrow.circlepath",
-                    tint: manager.getColor(for: .time),
+                    tint: .purple,
                     compact: isCompactDevice
                 )
                 {
@@ -87,7 +87,8 @@ struct GoalSwimSetupView: View
                     label: "Start Workout",
                     icon: "play.fill",
                     tint: .green,
-                    compact: isCompactDevice
+                    compact: isCompactDevice,
+                    showArrow: true
                 )
                 {
                     manager.path.append(NavState.swimSetup)
@@ -96,13 +97,15 @@ struct GoalSwimSetupView: View
                 // clear goals button (if any goals are set)
                 if manager.hasActiveGoals 
                 {
-                    Button("Clear All Goals") 
+                    ActionButton(
+                        label: "Clear All Goals",
+                        icon: "trash",
+                        tint: .red,
+                        compact: isCompactDevice
+                    )
                     {
                         manager.clearAllGoals()
                     }
-                    .font(.system(size: 14))
-                    .foregroundColor(.red)
-                    .padding(.top, 8)
                 }
             }
             .padding(.horizontal, 16)

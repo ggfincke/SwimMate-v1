@@ -9,6 +9,7 @@ struct ActionButton: View
     var icon: String
     var tint: Color
     var compact: Bool = false
+    var showArrow: Bool = false
     var action: () -> Void
     
     @State private var isPressed = false
@@ -47,10 +48,14 @@ struct ActionButton: View
                     .lineLimit(1)
                 
                 Spacer()
-                
-                Image(systemName: "chevron.right")
-                    .font(.system(size: compact ? 10 : 12))
-                    .opacity(0.7)
+
+                if showArrow 
+                {
+
+                    Image(systemName: "chevron.right")
+                        .font(.system(size: compact ? 10 : 12))
+                        .opacity(0.7)
+                }
             }
             .foregroundColor(.white)
             .frame(maxWidth: .infinity)
@@ -86,7 +91,7 @@ struct ActionButton: View
 {
     VStack(spacing: 10)
     {
-        // normal action button
+        // action button (no arrow for non-navigation)
         ActionButton(
             label: "Pool",
             icon: "figure.pool.swim",
@@ -96,12 +101,13 @@ struct ActionButton: View
             print("Pool tapped")
         }
         
-        // compact style
+        // navigation button (with arrow)
         ActionButton(
             label: "Open Water",
             icon: "water.waves",
             tint: .teal,
-            compact: true
+            compact: true,
+            showArrow: true
         )
         {
             print("Open Water tapped")

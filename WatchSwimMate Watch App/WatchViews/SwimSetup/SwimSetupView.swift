@@ -41,8 +41,10 @@ struct SwimSetupView: View
                 label: "Pool",
                 icon: "figure.pool.swim",
                 tint: .blue,
-                compact: manager.isCompactDevice
-            ) {
+                compact: manager.isCompactDevice,
+                showArrow: true
+            ) 
+            {
                 manager.isPool = true
                 manager.path.append(NavState.indoorPoolSetup)
             }
@@ -52,8 +54,10 @@ struct SwimSetupView: View
                 label: "Open Water",
                 icon: "water.waves",
                 tint: .teal,
-                compact: manager.isCompactDevice
-            ) {
+                compact: manager.isCompactDevice,
+                showArrow: true
+            ) 
+            {
                 manager.isPool = false
                 // start workout immediately for open water
                 manager.startWorkout()

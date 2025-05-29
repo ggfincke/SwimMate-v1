@@ -89,7 +89,8 @@ struct IndoorPoolSetupView: View
                 Button 
                 {
                     // only allow unit changes if goal unit is not locked
-                    guard !manager.goalUnitLocked else { 
+                    guard !manager.goalUnitLocked else
+                    { 
                         WKInterfaceDevice.current().play(.failure)
                         return 
                     }
@@ -102,7 +103,8 @@ struct IndoorPoolSetupView: View
                         manager.poolUnit = manager.poolUnit == "meters" ? "yards" : "meters"
                         
                         // sync goal unit with pool unit if not locked
-                        if !manager.goalUnitLocked {
+                        if !manager.goalUnitLocked
+                        {
                             manager.goalUnit = manager.poolUnit
                         }
                     }
