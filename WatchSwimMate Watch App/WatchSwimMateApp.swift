@@ -23,7 +23,7 @@ struct WatchSwimMate_Watch_App: App
                             case .swimSetup:
                                 SwimSetupView()
                             case .goalSwimSetup:
-                                GoalSwimSetupView()
+                                GoalSwimView()
                             case .indoorPoolSetup:
                                 IndoorPoolSetupView()
                             case .swimmingView(let set):
