@@ -44,8 +44,6 @@
 		A0888F682DE6C19300BB8196 /* SwimSetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0888F672DE6C18D00BB8196 /* SwimSetupView.swift */; };
 		A0BFBA232DDD7C3C002B96A8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A0BFBA1F2DDD7C3C002B96A8 /* Assets.xcassets */; };
 		A0BFBA242DDD7C3C002B96A8 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A0BFB9FD2DDD7C3C002B96A8 /* Preview Assets.xcassets */; };
-		A0BFBA252DDD7C3C002B96A8 /* WatchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BFBA022DDD7C3C002B96A8 /* WatchManager.swift */; };
-		A0BFBA262DDD7C3C002B96A8 /* toiOSWatchConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BFBA012DDD7C3C002B96A8 /* toiOSWatchConnector.swift */; };
 		A0BFBA282DDD7C3C002B96A8 /* DistanceSetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BFBA092DDD7C3C002B96A8 /* DistanceSetupView.swift */; };
 		A0BFBA2B2DDD7C3C002B96A8 /* IndoorPoolSetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BFBA102DDD7C3C002B96A8 /* IndoorPoolSetupView.swift */; };
 		A0BFBA2C2DDD7C3C002B96A8 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BFBA062DDD7C3C002B96A8 /* SettingsView.swift */; };
@@ -88,6 +86,14 @@
 		A0E9AF122DE6CBDF00222EC9 /* SwimmingSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E9AEFF2DE6CBDF00222EC9 /* SwimmingSummaryView.swift */; };
 		A0E9AF132DE6CBDF00222EC9 /* PerformanceInsightsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E9AEFB2DE6CBDF00222EC9 /* PerformanceInsightsSection.swift */; };
 		A0F6A70C2DE7E697005B7291 /* GoalType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F6A70B2DE7E697005B7291 /* GoalType.swift */; };
+		A0F6A7252DE7EF8A005B7291 /* WatchManager+Statistics.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F6A7222DE7EF8A005B7291 /* WatchManager+Statistics.swift */; };
+		A0F6A7262DE7EF8A005B7291 /* WatchManager+Timer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F6A7232DE7EF8A005B7291 /* WatchManager+Timer.swift */; };
+		A0F6A7272DE7EF8A005B7291 /* WatchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F6A71E2DE7EF8A005B7291 /* WatchManager.swift */; };
+		A0F6A7282DE7EF8A005B7291 /* WatchManager+Workout.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F6A7242DE7EF8A005B7291 /* WatchManager+Workout.swift */; };
+		A0F6A7292DE7EF8A005B7291 /* WatchManager+HealthKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F6A7212DE7EF8A005B7291 /* WatchManager+HealthKit.swift */; };
+		A0F6A72A2DE7EF8A005B7291 /* WatchManager+Delegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F6A71F2DE7EF8A005B7291 /* WatchManager+Delegates.swift */; };
+		A0F6A72B2DE7EF8A005B7291 /* WatchManager+Goals.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F6A7202DE7EF8A005B7291 /* WatchManager+Goals.swift */; };
+		A0F6A72C2DE7EF8A005B7291 /* toiOSWatchConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F6A71D2DE7EF8A005B7291 /* toiOSWatchConnector.swift */; };
 		A0FB9E322BDF7C1F00F39829 /* WatchConnectivity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0FB9E312BDF7C1F00F39829 /* WatchConnectivity.framework */; };
 /* End PBXBuildFile section */
 
@@ -156,8 +162,6 @@
 		A0888F672DE6C18D00BB8196 /* SwimSetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwimSetupView.swift; sourceTree = "<group>"; };
 		A0BFB9FD2DDD7C3C002B96A8 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		A0BFB9FF2DDD7C3C002B96A8 /* NavState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavState.swift; sourceTree = "<group>"; };
-		A0BFBA012DDD7C3C002B96A8 /* toiOSWatchConnector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = toiOSWatchConnector.swift; sourceTree = "<group>"; };
-		A0BFBA022DDD7C3C002B96A8 /* WatchManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchManager.swift; sourceTree = "<group>"; };
 		A0BFBA062DDD7C3C002B96A8 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		A0BFBA082DDD7C3C002B96A8 /* CalorieSetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalorieSetupView.swift; sourceTree = "<group>"; };
 		A0BFBA092DDD7C3C002B96A8 /* DistanceSetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistanceSetupView.swift; sourceTree = "<group>"; };
@@ -206,6 +210,14 @@
 		A0F0C7D12BDF7C5F00AF6D5B /* SwimMate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwimMate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0F0C7D42BDF7C5F00AF6D5B /* WatchSwimMate Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "WatchSwimMate Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0F6A70B2DE7E697005B7291 /* GoalType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalType.swift; sourceTree = "<group>"; };
+		A0F6A71D2DE7EF8A005B7291 /* toiOSWatchConnector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = toiOSWatchConnector.swift; sourceTree = "<group>"; };
+		A0F6A71E2DE7EF8A005B7291 /* WatchManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchManager.swift; sourceTree = "<group>"; };
+		A0F6A71F2DE7EF8A005B7291 /* WatchManager+Delegates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WatchManager+Delegates.swift"; sourceTree = "<group>"; };
+		A0F6A7202DE7EF8A005B7291 /* WatchManager+Goals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WatchManager+Goals.swift"; sourceTree = "<group>"; };
+		A0F6A7212DE7EF8A005B7291 /* WatchManager+HealthKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WatchManager+HealthKit.swift"; sourceTree = "<group>"; };
+		A0F6A7222DE7EF8A005B7291 /* WatchManager+Statistics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WatchManager+Statistics.swift"; sourceTree = "<group>"; };
+		A0F6A7232DE7EF8A005B7291 /* WatchManager+Timer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WatchManager+Timer.swift"; sourceTree = "<group>"; };
+		A0F6A7242DE7EF8A005B7291 /* WatchManager+Workout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WatchManager+Workout.swift"; sourceTree = "<group>"; };
 		A0FB9E312BDF7C1F00F39829 /* WatchConnectivity.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WatchConnectivity.framework; path = System/Library/Frameworks/WatchConnectivity.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -403,8 +415,14 @@
 		A0BFBA032DDD7C3C002B96A8 /* WatchViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				A0BFBA012DDD7C3C002B96A8 /* toiOSWatchConnector.swift */,
-				A0BFBA022DDD7C3C002B96A8 /* WatchManager.swift */,
+				A0F6A71D2DE7EF8A005B7291 /* toiOSWatchConnector.swift */,
+				A0F6A71E2DE7EF8A005B7291 /* WatchManager.swift */,
+				A0F6A71F2DE7EF8A005B7291 /* WatchManager+Delegates.swift */,
+				A0F6A7202DE7EF8A005B7291 /* WatchManager+Goals.swift */,
+				A0F6A7212DE7EF8A005B7291 /* WatchManager+HealthKit.swift */,
+				A0F6A7222DE7EF8A005B7291 /* WatchManager+Statistics.swift */,
+				A0F6A7232DE7EF8A005B7291 /* WatchManager+Timer.swift */,
+				A0F6A7242DE7EF8A005B7291 /* WatchManager+Workout.swift */,
 			);
 			path = WatchViewModel;
 			sourceTree = "<group>";
@@ -783,13 +801,19 @@
 				A0888F5F2DE55CE300BB8196 /* HeaderSection.swift in Sources */,
 				A0888F602DE55CE300BB8196 /* NavigationButtonsSection.swift in Sources */,
 				A0888F612DE55CE300BB8196 /* WatchRootView.swift in Sources */,
-				A0BFBA252DDD7C3C002B96A8 /* WatchManager.swift in Sources */,
-				A0BFBA262DDD7C3C002B96A8 /* toiOSWatchConnector.swift in Sources */,
 				A0BFBA282DDD7C3C002B96A8 /* DistanceSetupView.swift in Sources */,
 				A00E2E5D2DDDABDB005C30DE /* GoalSetupView.swift in Sources */,
 				A0BFBA2B2DDD7C3C002B96A8 /* IndoorPoolSetupView.swift in Sources */,
 				A0BFBA2C2DDD7C3C002B96A8 /* SettingsView.swift in Sources */,
 				A0E9AF052DE6CBDF00222EC9 /* SetCompletionView.swift in Sources */,
+				A0F6A7252DE7EF8A005B7291 /* WatchManager+Statistics.swift in Sources */,
+				A0F6A7262DE7EF8A005B7291 /* WatchManager+Timer.swift in Sources */,
+				A0F6A7272DE7EF8A005B7291 /* WatchManager.swift in Sources */,
+				A0F6A7282DE7EF8A005B7291 /* WatchManager+Workout.swift in Sources */,
+				A0F6A7292DE7EF8A005B7291 /* WatchManager+HealthKit.swift in Sources */,
+				A0F6A72A2DE7EF8A005B7291 /* WatchManager+Delegates.swift in Sources */,
+				A0F6A72B2DE7EF8A005B7291 /* WatchManager+Goals.swift in Sources */,
+				A0F6A72C2DE7EF8A005B7291 /* toiOSWatchConnector.swift in Sources */,
 				A0E9AF062DE6CBDF00222EC9 /* GoalProgressView.swift in Sources */,
 				A0E9AF072DE6CBDF00222EC9 /* SecondaryMetricsGrid.swift in Sources */,
 				A0E9AF082DE6CBDF00222EC9 /* SwimmingView.swift in Sources */,
