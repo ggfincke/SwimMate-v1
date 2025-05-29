@@ -18,12 +18,12 @@ struct TimeSetupView: View
     {
         ScrollView
         {
-            VStack(spacing: 16)
+            VStack(spacing: GoalSpacingConstants.mainContainer)
             {
                 // title
                 Text("Time Goal")
                     .font(.headline)
-                    .padding(.top, 8)
+                    .padding(.top, GoalSpacingConstants.topSection)
                 
                 // current time display
                 Text(timeString)
@@ -70,17 +70,17 @@ struct TimeSetupView: View
                     }
                 }
                 .frame(height: 100)
-                .padding(.horizontal, -8)
+                .padding(.horizontal, -GoalSpacingConstants.horizontalMain)
                 
                 // presets
-                VStack(spacing: 8)
+                VStack(spacing: GoalSpacingConstants.standardContent)
                 {
                     Text("Quick Set")
                         .font(.footnote)
                         .foregroundColor(.secondary)
                     
                     // preset buttons
-                    HStack(spacing: 8)
+                    HStack(spacing: GoalSpacingConstants.presetButtons)
                     {
                         ForEach(timePresets.prefix(3), id: \.self)
                         { minutes in
@@ -88,7 +88,7 @@ struct TimeSetupView: View
                         }
                     }
                     
-                    HStack(spacing: 8)
+                    HStack(spacing: GoalSpacingConstants.presetButtons)
                     {
                         ForEach(timePresets.suffix(2), id: \.self)
                         { minutes in
@@ -96,7 +96,7 @@ struct TimeSetupView: View
                         }
                     }
                 }
-                .padding(.top, 8)
+                .padding(.top, GoalSpacingConstants.topSection)
                 
                 Spacer()
                 
@@ -113,10 +113,10 @@ struct TimeSetupView: View
                 }
                 .disabled(hours == 0 && minutes == 0)
                 .opacity(hours == 0 && minutes == 0 ? 0.6 : 1.0)
-                .padding(.bottom, 10)
+                .padding(.bottom, GoalSpacingConstants.bottomAction)
             }
-            .padding(.horizontal, 16)
-            .padding(.bottom, 16)
+            .padding(.horizontal, GoalSpacingConstants.horizontalMain)
+            .padding(.bottom, GoalSpacingConstants.bottomLarge)
         }
         .onAppear
         {

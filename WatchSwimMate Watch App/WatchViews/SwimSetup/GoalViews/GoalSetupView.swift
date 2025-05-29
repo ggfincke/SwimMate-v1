@@ -68,7 +68,7 @@ struct GoalSetupView: View
     {
         ScrollView
         {
-            VStack(spacing: 8)
+            VStack(spacing: GoalSpacingConstants.mainContainer)
             {
                 // title
                 Text(title)
@@ -78,9 +78,9 @@ struct GoalSetupView: View
                 Button(action: {
                     showingNumberPad = true
                 }) {
-                    VStack(spacing: 4)
+                    VStack(spacing: GoalSpacingConstants.smallContent)
                     {
-                        HStack(alignment: .lastTextBaseline, spacing: 4)
+                        HStack(alignment: .lastTextBaseline, spacing: GoalSpacingConstants.smallContent)
                         {
                             Text("\(Int(value))")
                                 .font(.system(size: 30, weight: .bold, design: .rounded))
@@ -99,11 +99,11 @@ struct GoalSetupView: View
                         Text("Tap to enter value")
                             .font(.footnote)
                             .foregroundColor(.secondary)
-                            .padding(.top, 2)
+                            .padding(.top, GoalSpacingConstants.topSmall)
                     }
                 }
                 .buttonStyle(PlainButtonStyle())
-                .padding(.vertical, 8)
+                .padding(.vertical, GoalSpacingConstants.standardContent)
                 .frame(maxWidth: .infinity)
                 .background(
                     RoundedRectangle(cornerRadius: 12)
@@ -114,14 +114,14 @@ struct GoalSetupView: View
                 // preset buttons
                 if !presetValues.isEmpty
                 {
-                    VStack(spacing: 8)
+                    VStack(spacing: GoalSpacingConstants.standardContent)
                     {
                         Text("Quick Select")
                             .font(.footnote)
                             .foregroundColor(.secondary)
                         
                         // preset buttons in rows
-                        LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 8), count: 3), spacing: 8)
+                        LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: GoalSpacingConstants.gridItem), count: 3), spacing: GoalSpacingConstants.gridItem)
                         {
                             ForEach(presetValues, id: \.self)
                             { presetValue in
@@ -133,7 +133,7 @@ struct GoalSetupView: View
                             }
                         }
                     }
-                    .padding(.top, 8)
+                    .padding(.top, GoalSpacingConstants.topSection)
                 }
                 
                 Spacer()
@@ -166,9 +166,9 @@ struct GoalSetupView: View
                 }
                 .disabled(value <= 0)
                 .opacity(value <= 0 ? 0.6 : 1.0)
-                .padding(.bottom, 10)
+                .padding(.bottom, GoalSpacingConstants.bottomAction)
             }
-            .padding(.horizontal, 8)
+            .padding(.horizontal, GoalSpacingConstants.horizontalMain)
         }
         .sheet(isPresented: $showingNumberPad)
         {
