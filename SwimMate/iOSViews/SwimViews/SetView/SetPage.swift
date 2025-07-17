@@ -7,8 +7,8 @@ struct SetPage: View
     @EnvironmentObject var manager : Manager
     @EnvironmentObject var watchOSManager : WatchConnector
 
-    @State private var selectedStroke = SwimSet.Stroke.freestyle
-    @State private var selectedUnit = SwimSet.MeasureUnit.meters
+    @State private var selectedStroke = StrokeStyle.freestyle
+    @State private var selectedUnit = MeasureUnit.meters
     @State private var selectedDifficulty = SwimSet.Difficulty.intermediate
 
     var recommendedSets: [SwimSet] {
@@ -36,8 +36,8 @@ struct SetPage: View
                             VStack(alignment: .leading)
                             {
                                 Text(set.title).font(.headline)
-                                Text("\(set.totalDistance) \(set.measureUnit.rawValue) - \(set.primaryStroke.rawValue)")
-                                Text(set.description).font(.subheadline)
+                                Text("\(set.totalDistance) \(set.measureUnit.rawValue) - \(set.primaryStroke?.description ?? "Mixed")")
+                                Text(set.description ?? "").font(.subheadline)
                             }
                         }
                     }
@@ -57,8 +57,8 @@ struct SetPage: View
                             .padding(.top)
                         Picker("Stroke", selection: $selectedStroke)
                         {
-                            ForEach(SwimSet.Stroke.allCases, id: \.self) { stroke in
-                                Text(stroke.rawValue).tag(stroke)
+                            ForEach([StrokeStyle.freestyle, .backstroke, .breaststroke, .butterfly, .mixed], id: \.self) { stroke in
+                                Text(stroke.description).tag(stroke)
                             }
                         }
                         .padding(.bottom)
@@ -88,7 +88,7 @@ struct SetPage: View
                             .padding(.top)
                         Picker("Unit", selection: $selectedUnit)
                         {
-                            ForEach(SwimSet.MeasureUnit.allCases, id: \.self) { unit in
+                            ForEach(MeasureUnit.allCases, id: \.self) { unit in
                                 Text(unit.rawValue).tag(unit)
                             }
                         }

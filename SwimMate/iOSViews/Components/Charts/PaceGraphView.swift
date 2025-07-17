@@ -87,7 +87,7 @@ struct PaceGraphView: View
 
 // extending swim class
 extension Swim {
-    func pacePer100(preferredUnit: SwimSet.MeasureUnit) -> Double? {
+    func pacePer100(preferredUnit: MeasureUnit) -> Double? {
         guard let totalDistance = totalDistance, totalDistance > 0, duration > 0 else { return nil }
         let pace = totalDistance / duration // pace per 100 meters
         return preferredUnit == .yards ? pace * 1.09361 : pace // convert if necessary

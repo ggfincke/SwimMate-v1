@@ -21,7 +21,7 @@ struct SetHeader: View
                 .frame(maxWidth: .infinity, alignment: .leading)
             
             // details
-            Text("\(swimSet.totalDistance) \(swimSet.measureUnit.rawValue.lowercased()) • \(swimSet.primaryStroke.rawValue)")
+            Text("\(swimSet.totalDistance) \(swimSet.measureUnit.rawValue.lowercased()) • \(swimSet.primaryStroke?.description ?? "Mixed")")
                 .font(.system(size: 10, weight: .medium))
                 .foregroundColor(.secondary)
                 .frame(maxWidth: .infinity, alignment: .leading)

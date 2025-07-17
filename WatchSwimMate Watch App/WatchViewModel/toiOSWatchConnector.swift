@@ -41,11 +41,37 @@ class iOSWatchConnector: NSObject, WCSessionDelegate
            let description = message["description"] as? String,
            let details = message["details"] as? [String] {
             
-            let primaryStroke = SwimSet.Stroke(rawValue: strokeRaw) ?? .freestyle
-            let measureUnit = SwimSet.MeasureUnit(rawValue: measureUnitRaw) ?? .meters
+            // Map stroke string to StrokeStyle enum
+            let primaryStroke: StrokeStyle = {
+                switch strokeRaw.lowercased() {
+                case "freestyle": return .freestyle
+                case "backstroke": return .backstroke
+                case "breaststroke": return .breaststroke
+                case "butterfly": return .butterfly
+                case "kickboard": return .kickboard
+                case "mixed": return .mixed
+                default: return .freestyle
+                }
+            }()
+            
+            let measureUnit = MeasureUnit(rawValue: measureUnitRaw) ?? .meters
             let difficulty = SwimSet.Difficulty(rawValue: difficultyRaw) ?? .intermediate
             
-            let newSet = SwimSet(title: title, primaryStroke: primaryStroke, totalDistance: totalDistance, measureUnit: measureUnit, difficulty: difficulty, description: description, details: details)
+            // Create a single SetComponent representing the entire set
+            let setComponent = SetComponent(
+                type: .swim,
+                distance: totalDistance,
+                strokeStyle: primaryStroke,
+                instructions: details.joined(separator: " • ")
+            )
+            
+            let newSet = SwimSet(
+                title: title,
+                components: [setComponent],
+                measureUnit: measureUnit,
+                difficulty: difficulty,
+                description: description
+            )
             
             receivedSets.append(newSet)
         }

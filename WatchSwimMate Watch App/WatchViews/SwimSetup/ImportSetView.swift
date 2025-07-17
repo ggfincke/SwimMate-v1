@@ -136,15 +136,15 @@ struct ImportSetView: View
                     
                     Spacer()
                     
-                    Text(swimSet.primaryStroke.rawValue)
+                    Text(swimSet.primaryStroke?.description ?? "Mixed")
                         .font(.system(size: 14, weight: .medium))
                         .foregroundColor(.secondary)
                 }
                 
                 // desc preview
-                if !swimSet.description.isEmpty
+                if let description = swimSet.description, !description.isEmpty
                 {
-                    Text(swimSet.description)
+                    Text(description)
                         .font(.system(size: 12))
                         .foregroundColor(.secondary)
                         .lineLimit(2)

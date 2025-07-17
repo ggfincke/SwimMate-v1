@@ -146,17 +146,15 @@ struct SwimmingView: View
 {
     let sampleSet = SwimSet(
         title: "Endurance Set",
-        primaryStroke: .freestyle,
-        totalDistance: 1500,
+        components: [
+            SetComponent(type: .warmup, distance: 400, strokeStyle: .mixed, instructions: "400m warm-up easy"),
+            SetComponent(type: .swim, distance: 800, strokeStyle: .freestyle, instructions: "8x100m on 1:30"),
+            SetComponent(type: .swim, distance: 800, strokeStyle: .freestyle, instructions: "4x200m on 3:00"),
+            SetComponent(type: .cooldown, distance: 200, strokeStyle: .mixed, instructions: "200m cool down")
+        ],
         measureUnit: .meters,
         difficulty: .intermediate,
-        description: "Build endurance with this progressive set",
-        details: [
-            "400m warm-up easy",
-            "8x100m on 1:30",
-            "4x200m on 3:00",
-            "200m cool down"
-        ]
+        description: "Build endurance with this progressive set"
     )
     
     SwimmingView(set: sampleSet)
@@ -223,17 +221,15 @@ struct SwimmingView: View
 {
     let sampleSet = SwimSet(
         title: "Sprint Set",
-        primaryStroke: .freestyle,
-        totalDistance: 800,
+        components: [
+            SetComponent(type: .warmup, distance: 200, strokeStyle: .mixed, instructions: "200m warm-up"),
+            SetComponent(type: .swim, distance: 400, strokeStyle: .freestyle, instructions: "8x50m on 1:00 all-out"),
+            SetComponent(type: .swim, distance: 400, strokeStyle: .freestyle, instructions: "4x100m on 2:00 fast"),
+            SetComponent(type: .cooldown, distance: 200, strokeStyle: .mixed, instructions: "200m cool down")
+        ],
         measureUnit: .meters,
         difficulty: .advanced,
-        description: "High intensity sprint training",
-        details: [
-            "200m warm-up",
-            "8x50m on 1:00 all-out",
-            "4x100m on 2:00 fast",
-            "200m cool down"
-        ]
+        description: "High intensity sprint training"
     )
     
     let manager = WatchManager()

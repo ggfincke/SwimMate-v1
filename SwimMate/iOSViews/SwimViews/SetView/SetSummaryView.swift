@@ -10,8 +10,8 @@ struct SetSummaryView: View
         VStack(alignment: .leading)
         {
             Text(swimmySet.title).font(.headline)
-            Text("\(swimmySet.totalDistance) \(swimmySet.measureUnit.rawValue) - \(swimmySet.primaryStroke.rawValue)")
-            Text(swimmySet.description).font(.subheadline)
+            Text("\(swimmySet.totalDistance) \(swimmySet.measureUnit.rawValue) - \(swimmySet.primaryStroke?.description ?? "Mixed")")
+            Text(swimmySet.description ?? "").font(.subheadline)
         }
     }
 }

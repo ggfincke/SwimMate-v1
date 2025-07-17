@@ -20,15 +20,15 @@ struct PreferencesView: View
             {
                 Picker("Stroke Preference", selection: $manager.preferredStroke)
                 {
-                    ForEach(SwimSet.Stroke.allCases, id: \.self)
+                    ForEach([StrokeStyle.freestyle, .backstroke, .breaststroke, .butterfly, .mixed], id: \.self)
                     { stroke in
-                        Text(stroke.rawValue).tag(stroke)
+                        Text(stroke.description).tag(stroke)
                     }
                 }
 
                 Picker("Unit Preference", selection: $manager.preferredUnit) 
                 {
-                    ForEach(SwimSet.MeasureUnit.allCases, id: \.self)
+                    ForEach(MeasureUnit.allCases, id: \.self)
                     { unit in
                         Text(unit.rawValue).tag(unit)
                     }

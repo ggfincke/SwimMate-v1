@@ -20,14 +20,17 @@ class WatchConnector: NSObject, WCSessionDelegate, ObservableObject
     {
         if WCSession.isSupported() && session.isReachable
         {
+            // Extract details from components for backward compatibility with watch app
+            let details = swimSet.components.compactMap { $0.instructions }
+            
             let swimSetData: [String: Any] = [
                 "title": swimSet.title,
-                "stroke": swimSet.primaryStroke.rawValue,
+                "stroke": swimSet.primaryStroke?.description ?? "Mixed",
                 "totalDistance": swimSet.totalDistance,
                 "measureUnit": swimSet.measureUnit.rawValue,
                 "difficulty": swimSet.difficulty.rawValue,
-                "description": swimSet.description,
-                "details": swimSet.details
+                "description": swimSet.description ?? "",
+                "details": details
             ]
             session.sendMessage(swimSetData, replyHandler: nil)
             { 

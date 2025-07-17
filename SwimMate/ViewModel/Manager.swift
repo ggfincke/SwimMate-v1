@@ -14,8 +14,8 @@ class Manager: NSObject, ObservableObject
     
     // user preferences
     @Published var userName: String = "User"
-    @Published var preferredStroke: SwimSet.Stroke = .freestyle
-    @Published var preferredUnit: SwimSet.MeasureUnit = .meters
+    @Published var preferredStroke: StrokeStyle = .freestyle
+    @Published var preferredUnit: MeasureUnit = .meters
     @Published var swims: [Swim] = []
     
     // store
@@ -31,20 +31,85 @@ class Manager: NSObject, ObservableObject
     //TODO: replace with database integration at some point
     // very long list of sample sets
     let sampleSets: [SwimSet] = [
-        SwimSet(title: "Endurance Challenge", primaryStroke: .freestyle, totalDistance: 2000, measureUnit: .meters, difficulty: .intermediate, description: "A challenging endurance set to boost stamina.", details: ["800 warmup mix", "10x100 on 1:30, descend 1-5, 6-10", "10x50 kick on 1:00", "500 cool down easy"]),
-        SwimSet(title: "Technique Tuner", primaryStroke: .breaststroke, totalDistance: 1500, measureUnit: .yards, difficulty: .advanced, description: "Focus on technique and power.", details: ["200 swim, 200 pull, 200 kick", "10x50 on 50s, odds drill, evens swim", "4x100 pull with paddles on 1:40", "200 easy"]),
-        SwimSet(title: "Backstroke Blast", primaryStroke: .backstroke, totalDistance: 1200, measureUnit: .meters, difficulty: .beginner, description: "Speed work for improving backstroke performance.", details: ["4x100 backstroke on 2:00", "8x50 back fast on 1:00", "4x25 sprint on 30s", "300 easy"]),
-        SwimSet(title: "Butterfly Sprint Series", primaryStroke: .butterfly, totalDistance: 800, measureUnit: .yards, difficulty: .intermediate, description: "High-intensity butterfly sprints.", details: ["400 warmup mixed", "8x50 butterfly on 50s", "4x25 fly sprints on 30s", "200 cool down"]),
-        SwimSet(title: "IM Pro Series", primaryStroke: .IM, totalDistance: 1500, measureUnit: .meters, difficulty: .advanced, description: "Comprehensive IM workout for all strokes.", details: ["400 IM as 100 of each", "4x100 IM on 1:50", "200 IM kick", "8x50 IM order sprint each", "200 easy"]),
-        SwimSet(title: "Marathon Freestyle", primaryStroke: .freestyle, totalDistance: 3000, measureUnit: .yards, difficulty: .advanced, description: "Long-distance freestyle set for endurance.", details: ["1000 straight swim", "5x200 on 2:45", "10x100 on 1:15", "500 cooldown"]),
-        SwimSet(title: "Beginner Breaststroke Basics", primaryStroke: .breaststroke, totalDistance: 1000, measureUnit: .meters, difficulty: .beginner, description: "Easy-going set for breaststroke beginners.", details: ["200 easy warmup", "8x50 drill on 1:10", "4x100 swim on 2:00", "200 easy cooldown"]),
-        SwimSet(title: "Speedy Freestyle Flicks", primaryStroke: .freestyle, totalDistance: 500, measureUnit: .yards, difficulty: .intermediate, description: "Short distance, high-intensity freestyle sprints.", details: ["50 warmup", "10x25 sprint on 20 seconds", "50 cooldown"]),
-        SwimSet(title: "Medley Mastery", primaryStroke: .IM, totalDistance: 2000, measureUnit: .meters, difficulty: .advanced, description: "Advanced set for mastering the individual medley.", details: ["400 IM", "8x100 IM on 1:40", "8x50 IM kick on 1:00", "400 freestyle cool down"]),
-        SwimSet(title: "Freestyle Fundamentals", primaryStroke: .freestyle, totalDistance: 500, measureUnit: .meters, difficulty: .beginner, description: "Basic freestyle techniques and endurance.", details: ["200 easy warmup", "8x25 freestyle technique focus", "100 cool down"]),
-        SwimSet(title: "Backstroke Basics", primaryStroke: .backstroke, totalDistance: 500, measureUnit: .yards, difficulty: .beginner, description: "Fundamentals of backstroke, focusing on form.", details: ["200 easy warmup", "6x25 backstroke drills", "100 cool down"]),
-        SwimSet(title: "Intermediate Butterfly", primaryStroke: .butterfly, totalDistance: 1000, measureUnit: .yards, difficulty: .intermediate, description: "Building strength and technique in butterfly.", details: ["200 mixed warmup", "5x100 butterfly on 2:00", "200 easy cool down"]),
-        SwimSet(title: "Stroke Variety Pack", primaryStroke: .IM, totalDistance: 500, measureUnit: .yards, difficulty: .beginner, description: "Introduction to all strokes, focusing on transitions.", details: ["100 IM warmup", "4x50 each stroke focus", "100 easy cooldown"]),
-        SwimSet(title: "Breaststroke Endurance", primaryStroke: .breaststroke, totalDistance: 2000, measureUnit: .meters, difficulty: .advanced, description: "Long distance, endurance training for breaststroke.", details: ["500 warmup", "10x100 on 1:50", "500 cool down"])
+        SwimSet(title: "Endurance Challenge", components: [
+            SetComponent(type: .warmup, distance: 800, strokeStyle: .mixed, instructions: "800 warmup mix"),
+            SetComponent(type: .swim, distance: 1000, strokeStyle: .freestyle, instructions: "10x100 on 1:30, descend 1-5, 6-10"),
+            SetComponent(type: .kick, distance: 500, strokeStyle: .kickboard, instructions: "10x50 kick on 1:00"),
+            SetComponent(type: .cooldown, distance: 500, strokeStyle: .mixed, instructions: "500 cool down easy")
+        ], measureUnit: .meters, difficulty: .intermediate, description: "A challenging endurance set to boost stamina."),
+        SwimSet(title: "Technique Tuner", components: [
+            SetComponent(type: .swim, distance: 200, strokeStyle: .breaststroke, instructions: "200 swim, 200 pull, 200 kick"),
+            SetComponent(type: .drill, distance: 500, strokeStyle: .breaststroke, instructions: "10x50 on 50s, odds drill, evens swim"),
+            SetComponent(type: .pull, distance: 400, strokeStyle: .breaststroke, instructions: "4x100 pull with paddles on 1:40"),
+            SetComponent(type: .cooldown, distance: 200, strokeStyle: .mixed, instructions: "200 easy")
+        ], measureUnit: .yards, difficulty: .advanced, description: "Focus on technique and power."),
+        SwimSet(title: "Backstroke Blast", components: [
+            SetComponent(type: .swim, distance: 400, strokeStyle: .backstroke, instructions: "4x100 backstroke on 2:00"),
+            SetComponent(type: .swim, distance: 400, strokeStyle: .backstroke, instructions: "8x50 back fast on 1:00"),
+            SetComponent(type: .swim, distance: 100, strokeStyle: .backstroke, instructions: "4x25 sprint on 30s"),
+            SetComponent(type: .cooldown, distance: 300, strokeStyle: .mixed, instructions: "300 easy")
+        ], measureUnit: .meters, difficulty: .beginner, description: "Speed work for improving backstroke performance."),
+        SwimSet(title: "Butterfly Sprint Series", components: [
+            SetComponent(type: .warmup, distance: 400, strokeStyle: .mixed, instructions: "400 warmup mixed"),
+            SetComponent(type: .swim, distance: 400, strokeStyle: .butterfly, instructions: "8x50 butterfly on 50s"),
+            SetComponent(type: .swim, distance: 100, strokeStyle: .butterfly, instructions: "4x25 fly sprints on 30s"),
+            SetComponent(type: .cooldown, distance: 200, strokeStyle: .mixed, instructions: "200 cool down")
+        ], measureUnit: .yards, difficulty: .intermediate, description: "High-intensity butterfly sprints."),
+        SwimSet(title: "IM Pro Series", components: [
+            SetComponent(type: .swim, distance: 400, strokeStyle: .mixed, instructions: "400 IM as 100 of each"),
+            SetComponent(type: .swim, distance: 400, strokeStyle: .mixed, instructions: "4x100 IM on 1:50"),
+            SetComponent(type: .kick, distance: 200, strokeStyle: .kickboard, instructions: "200 IM kick"),
+            SetComponent(type: .swim, distance: 400, strokeStyle: .mixed, instructions: "8x50 IM order sprint each"),
+            SetComponent(type: .cooldown, distance: 200, strokeStyle: .mixed, instructions: "200 easy")
+        ], measureUnit: .meters, difficulty: .advanced, description: "Comprehensive IM workout for all strokes."),
+        SwimSet(title: "Marathon Freestyle", components: [
+            SetComponent(type: .swim, distance: 1000, strokeStyle: .freestyle, instructions: "1000 straight swim"),
+            SetComponent(type: .swim, distance: 1000, strokeStyle: .freestyle, instructions: "5x200 on 2:45"),
+            SetComponent(type: .swim, distance: 1000, strokeStyle: .freestyle, instructions: "10x100 on 1:15"),
+            SetComponent(type: .cooldown, distance: 500, strokeStyle: .mixed, instructions: "500 cooldown")
+        ], measureUnit: .yards, difficulty: .advanced, description: "Long-distance freestyle set for endurance."),
+        SwimSet(title: "Beginner Breaststroke Basics", components: [
+            SetComponent(type: .warmup, distance: 200, strokeStyle: .mixed, instructions: "200 easy warmup"),
+            SetComponent(type: .drill, distance: 400, strokeStyle: .breaststroke, instructions: "8x50 drill on 1:10"),
+            SetComponent(type: .swim, distance: 400, strokeStyle: .breaststroke, instructions: "4x100 swim on 2:00"),
+            SetComponent(type: .cooldown, distance: 200, strokeStyle: .mixed, instructions: "200 easy cooldown")
+        ], measureUnit: .meters, difficulty: .beginner, description: "Easy-going set for breaststroke beginners."),
+        SwimSet(title: "Speedy Freestyle Flicks", components: [
+            SetComponent(type: .warmup, distance: 50, strokeStyle: .freestyle, instructions: "50 warmup"),
+            SetComponent(type: .swim, distance: 250, strokeStyle: .freestyle, instructions: "10x25 sprint on 20 seconds"),
+            SetComponent(type: .cooldown, distance: 50, strokeStyle: .mixed, instructions: "50 cooldown")
+        ], measureUnit: .yards, difficulty: .intermediate, description: "Short distance, high-intensity freestyle sprints."),
+        SwimSet(title: "Medley Mastery", components: [
+            SetComponent(type: .swim, distance: 400, strokeStyle: .mixed, instructions: "400 IM"),
+            SetComponent(type: .swim, distance: 800, strokeStyle: .mixed, instructions: "8x100 IM on 1:40"),
+            SetComponent(type: .kick, distance: 400, strokeStyle: .kickboard, instructions: "8x50 IM kick on 1:00"),
+            SetComponent(type: .cooldown, distance: 400, strokeStyle: .freestyle, instructions: "400 freestyle cool down")
+        ], measureUnit: .meters, difficulty: .advanced, description: "Advanced set for mastering the individual medley."),
+        SwimSet(title: "Freestyle Fundamentals", components: [
+            SetComponent(type: .warmup, distance: 200, strokeStyle: .mixed, instructions: "200 easy warmup"),
+            SetComponent(type: .drill, distance: 200, strokeStyle: .freestyle, instructions: "8x25 freestyle technique focus"),
+            SetComponent(type: .cooldown, distance: 100, strokeStyle: .mixed, instructions: "100 cool down")
+        ], measureUnit: .meters, difficulty: .beginner, description: "Basic freestyle techniques and endurance."),
+        SwimSet(title: "Backstroke Basics", components: [
+            SetComponent(type: .warmup, distance: 200, strokeStyle: .mixed, instructions: "200 easy warmup"),
+            SetComponent(type: .drill, distance: 150, strokeStyle: .backstroke, instructions: "6x25 backstroke drills"),
+            SetComponent(type: .cooldown, distance: 100, strokeStyle: .mixed, instructions: "100 cool down")
+        ], measureUnit: .yards, difficulty: .beginner, description: "Fundamentals of backstroke, focusing on form."),
+        SwimSet(title: "Intermediate Butterfly", components: [
+            SetComponent(type: .warmup, distance: 200, strokeStyle: .mixed, instructions: "200 mixed warmup"),
+            SetComponent(type: .swim, distance: 500, strokeStyle: .butterfly, instructions: "5x100 butterfly on 2:00"),
+            SetComponent(type: .cooldown, distance: 200, strokeStyle: .mixed, instructions: "200 easy cool down")
+        ], measureUnit: .yards, difficulty: .intermediate, description: "Building strength and technique in butterfly."),
+        SwimSet(title: "Stroke Variety Pack", components: [
+            SetComponent(type: .warmup, distance: 100, strokeStyle: .mixed, instructions: "100 IM warmup"),
+            SetComponent(type: .swim, distance: 200, strokeStyle: .mixed, instructions: "4x50 each stroke focus"),
+            SetComponent(type: .cooldown, distance: 100, strokeStyle: .mixed, instructions: "100 easy cooldown")
+        ], measureUnit: .yards, difficulty: .beginner, description: "Introduction to all strokes, focusing on transitions."),
+        SwimSet(title: "Breaststroke Endurance", components: [
+            SetComponent(type: .warmup, distance: 500, strokeStyle: .mixed, instructions: "500 warmup"),
+            SetComponent(type: .swim, distance: 1000, strokeStyle: .breaststroke, instructions: "10x100 on 1:50"),
+            SetComponent(type: .cooldown, distance: 500, strokeStyle: .mixed, instructions: "500 cool down")
+        ], measureUnit: .meters, difficulty: .advanced, description: "Long distance, endurance training for breaststroke.")
     ]
 
     // init
@@ -213,7 +278,6 @@ class Manager: NSObject, ObservableObject
                     }
                 }
             }
-//            try data.write(to: url, options: [.atomicWrite, .completeFileProtection])
         } 
         catch
         {
@@ -260,8 +324,8 @@ class Manager: NSObject, ObservableObject
 struct Store: Codable
 {
     var userName: String
-    var preferredStroke: SwimSet.Stroke
-    var preferredUnit: SwimSet.MeasureUnit
+    var preferredStroke: StrokeStyle
+    var preferredUnit: MeasureUnit
     var swims: [Swim]
 }
 
@@ -281,7 +345,7 @@ extension Manager
 {
     func formatDistance(_ meters: Double) -> String
     {
-        if preferredUnit == .yards
+        if preferredUnit == MeasureUnit.yards
         {
             // converts into yards
             let yards = meters * 1.09361
@@ -301,20 +365,25 @@ extension Manager
     // combine data for swift charts
     func aggregateDataByMonth(swims: [Swim]) -> [Swim]
     {
-        // group and sum swims by month
         let grouped = Dictionary(grouping: swims)
         { swim in
             Calendar.current.startOfMonth(for: swim.date)
         }
         return grouped.map
         { (month, swims) in
-            Swim(
+            let duration = swims.reduce(0, { $0 + $1.duration })
+            let totalDistance = swims.compactMap({ $0.totalDistance }).reduce(0, +)
+            let totalEnergyBurned = swims.compactMap({ $0.totalEnergyBurned }).reduce(0, +)
+            // Use month as startDate, and month.addingTimeInterval(duration) as endDate.
+            return Swim(
                 id: UUID(),
-                date: month,
-                duration: swims.reduce(0, { $0 + $1.duration }),
-                totalDistance: swims.compactMap({ $0.totalDistance }).reduce(0, +),
-                totalEnergyBurned: swims.compactMap({ $0.totalEnergyBurned }).reduce(0, +),
-                poolLength: nil
+                startDate: month,
+                endDate: month.addingTimeInterval(duration),
+                totalDistance: totalDistance,
+                totalEnergyBurned: totalEnergyBurned,
+                poolLength: nil,
+                locationType: .unknown,
+                laps: []
             )
         }.sorted(by: { $0.date < $1.date })
     }

@@ -30,7 +30,7 @@ struct GoalProgressList: View
     // MARK: - Goal Progress Card Builder
     private func goalProgressCard(for type: GoalType) -> some View 
     {
-        return GoalProgressCard(
+        GoalProgressCard(
             type: type,
             progress: manager.getCurrentValue(for: type),
             total: manager.getTargetValue(for: type),
