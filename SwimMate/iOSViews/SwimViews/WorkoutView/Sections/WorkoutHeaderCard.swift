@@ -1,9 +1,4 @@
-//
-//  WorkoutHeaderCard.swift
-//  SwimMate
-//
-//  Created by Garrett Fincke on 7/16/25.
-//
+// SwimMate/iOSViews/SwimViews/WorkoutView/Sections/WorkoutHeaderCard.swift
 
 import SwiftUI
 

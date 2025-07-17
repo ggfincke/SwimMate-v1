@@ -1,4 +1,4 @@
-// SwimMate/iOSViews/HomeView/components/DistanceChartCard.swift
+// SwimMate/iOSViews/Components/Cards/DistanceChartCard.swift
 
 import SwiftUI
 import Charts

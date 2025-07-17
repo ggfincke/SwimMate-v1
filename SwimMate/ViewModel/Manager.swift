@@ -1,9 +1,4 @@
-//
-//  Manager.swift
-//  SwimMate
-//
-//  Created by Garrett Fincke on 4/4/24.
-//
+// SwimMate/ViewModel/Manager.swift
 
 // the iOS manager/view model
 import Foundation

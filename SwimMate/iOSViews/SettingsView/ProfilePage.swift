@@ -1,4 +1,4 @@
-// SwimMate/iOSViews/ProfileView/ProfilePage.swift
+// SwimMate/iOSViews/SettingsView/ProfilePage.swift
 
 import SwiftUI
 import SwiftUI

@@ -1,9 +1,4 @@
-//
-//  SwolfChart.swift
-//  SwimMate
-//
-//  Created by Garrett Fincke on 7/16/25.
-//
+// SwimMate/iOSViews/Components/Charts/SwolfChart.swift
 
 import SwiftUI
 import Charts

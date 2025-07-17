@@ -1,4 +1,4 @@
-// SwimMate/iOSViews/GeneralViews/WorkoutView.swift
+// SwimMate/iOSViews/SwimViews/WorkoutView/WorkoutView.swift
 
 import SwiftUI
 import Charts

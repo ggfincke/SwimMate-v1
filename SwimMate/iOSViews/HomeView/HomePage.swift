@@ -1,4 +1,4 @@
-// SwimMate/iOSViews/HomeView/HomePage
+// SwimMate/iOSViews/HomeView/HomePage.swift
 
 import SwiftUI
 import Charts

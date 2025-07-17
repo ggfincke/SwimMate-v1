@@ -1,4 +1,4 @@
-// SwimMate/iOSViews/HomeView/components/RecentActivityCard.swift
+// SwimMate/iOSViews/Components/Cards/RecentActivityCard.swift
 
 import SwiftUI
 

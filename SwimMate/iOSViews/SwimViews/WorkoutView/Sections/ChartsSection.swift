@@ -1,9 +1,4 @@
-//
-//  ChartsSection.swift
-//  SwimMate
-//
-//  Created by Garrett Fincke on 7/16/25.
-//
+// SwimMate/iOSViews/SwimViews/WorkoutView/Sections/ChartsSection.swift
 
 import SwiftUI
 import Charts

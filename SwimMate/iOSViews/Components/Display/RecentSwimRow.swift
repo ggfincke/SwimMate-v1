@@ -1,4 +1,4 @@
-// SwimMate/iOSViews/HomeView/components/RecentSwimRow.swift
+// SwimMate/iOSViews/Components/Display/RecentSwimRow.swift
 
 import SwiftUI
 

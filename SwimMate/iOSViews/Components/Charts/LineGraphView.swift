@@ -1,4 +1,4 @@
-// SwimMate/iOSViews/GeneralViews/Charts/LineGraphView.swift
+// SwimMate/iOSViews/Components/Charts/LineGraphView.swift
 
 import SwiftUI
 import Charts

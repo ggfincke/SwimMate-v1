@@ -1,4 +1,4 @@
-// SwimMate/iOSViews/HomeView/components/SummaryMetricItem.swift
+// SwimMate/iOSViews/Components/Display/SummaryMetricItem.swift
 
 import SwiftUI
 

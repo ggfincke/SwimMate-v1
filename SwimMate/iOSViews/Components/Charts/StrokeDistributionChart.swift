@@ -1,9 +1,4 @@
-//
-//  StrokeDistributionChart.swift
-//  SwimMate
-//
-//  Created by Garrett Fincke on 7/16/25.
-//
+// SwimMate/iOSViews/Components/Charts/StrokeDistributionChart.swift
 
 import SwiftUI
 import Charts

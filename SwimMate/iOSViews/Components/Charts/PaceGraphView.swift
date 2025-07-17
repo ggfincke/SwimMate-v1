@@ -1,4 +1,4 @@
-// SwimMate/iOSViews/GeneralViews/Charts/PaceGraphView.swift
+// SwimMate/iOSViews/Components/Charts/PaceGraphView.swift
 
 import SwiftUI
 import Charts

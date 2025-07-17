@@ -1,10 +1,5 @@
 
-//
-//  SwimSet.swift
-//  SwimMate
-//
-//  Created by Garrett Fincke on 4/14/24.
-//
+// SwimMate/Model/SwimSet.swift
 
 // struct for an individual set to send to WatchOS
 import Foundation

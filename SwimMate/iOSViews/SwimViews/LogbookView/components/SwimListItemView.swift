@@ -1,4 +1,4 @@
-// SwimMate/iOSViews/LogbookView/components/SwimListItemView.swift
+// SwimMate/iOSViews/SwimViews/LogbookView/components/SwimListItemView.swift
 
 import SwiftUI
 

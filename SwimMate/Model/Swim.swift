@@ -1,9 +1,4 @@
-//
-//  Swim.swift
-//  SwimMate
-//
-//  Created by Garrett Fincke on 4/11/24.
-//
+// SwimMate/Model/Swim.swift
 
 // this file is for all information on a specific swim workout.
 // can be imported from iOS fitness or will be created in watch app 

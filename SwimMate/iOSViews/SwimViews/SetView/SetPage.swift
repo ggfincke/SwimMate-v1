@@ -1,4 +1,4 @@
-// SwimMate/iOSViews/SetView/SetPage.swift
+// SwimMate/iOSViews/SwimViews/SetView/SetPage.swift
 
 import SwiftUI
 

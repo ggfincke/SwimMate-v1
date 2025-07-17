@@ -1,4 +1,4 @@
-// SwimMate/iOSViews/HomeView/components/WeeklySummaryCard.swift
+// SwimMate/iOSViews/Components/Cards/WeeklySummaryCard.swift
 
 import SwiftUI
 
