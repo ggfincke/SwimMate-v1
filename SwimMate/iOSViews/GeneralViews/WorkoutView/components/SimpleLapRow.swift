@@ -45,3 +45,31 @@ struct SimpleLapRow: View
         .background(lapNumber % 2 == 0 ? Color.clear : Color.secondary.opacity(0.05))
     }
 }
+
+#Preview
+{
+    VStack(spacing: 0) {
+        // Preview with different stroke styles and scores
+        SimpleLapRow(
+            lapNumber: 1,
+            lap: Lap(duration: 45.2, metadata: ["HKSwimmingStrokeStyle": 2, "HKSWOLFScore": 28.5])
+        )
+        
+        SimpleLapRow(
+            lapNumber: 2,
+            lap: Lap(duration: 42.1, metadata: ["HKSwimmingStrokeStyle": 3, "HKSWOLFScore": 26.8])
+        )
+        
+        SimpleLapRow(
+            lapNumber: 3,
+            lap: Lap(duration: 44.7, metadata: ["HKSwimmingStrokeStyle": 4, "HKSWOLFScore": 29.2])
+        )
+        
+        SimpleLapRow(
+            lapNumber: 4,
+            lap: Lap(duration: 43.8, metadata: ["HKSwimmingStrokeStyle": 5])
+        )
+    }
+    .background(Color.black)
+    .preferredColorScheme(.dark)
+}

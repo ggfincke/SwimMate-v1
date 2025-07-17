@@ -80,3 +80,34 @@ struct LapDetailsSection: View
         }
     }
 }
+
+#Preview
+{
+    let sampleLaps = [
+        Lap(duration: 45.2, metadata: ["HKSwimmingStrokeStyle": 2, "HKSWOLFScore": 28.5]),
+        Lap(duration: 42.1, metadata: ["HKSwimmingStrokeStyle": 2, "HKSWOLFScore": 26.8]),
+        Lap(duration: 44.7, metadata: ["HKSwimmingStrokeStyle": 2, "HKSWOLFScore": 29.2]),
+        Lap(duration: 43.8, metadata: ["HKSwimmingStrokeStyle": 3, "HKSWOLFScore": 31.1]),
+        Lap(duration: 46.3, metadata: ["HKSwimmingStrokeStyle": 4, "HKSWOLFScore": 30.5]),
+        Lap(duration: 41.9, metadata: ["HKSwimmingStrokeStyle": 2, "HKSWOLFScore": 27.3]),
+        Lap(duration: 48.1, metadata: ["HKSwimmingStrokeStyle": 5, "HKSWOLFScore": 32.8]),
+        Lap(duration: 44.2, metadata: ["HKSwimmingStrokeStyle": 2, "HKSWOLFScore": 28.9])
+    ]
+
+    let sampleSwim = Swim(
+        id: UUID(),
+        date: Date(),
+        duration: 1920,
+        totalDistance: 1425,
+        totalEnergyBurned: 289,
+        poolLength: 25.0,
+        laps: sampleLaps
+    )
+
+    return VStack {
+        LapDetailsSection(swim: sampleSwim)
+            .padding()
+    }
+    .background(Color.black)
+    .preferredColorScheme(.dark)
+}

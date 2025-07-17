@@ -34,3 +34,29 @@ struct StatColumn: View
         .frame(maxWidth: .infinity)
     }
 }
+
+#Preview
+{
+    HStack(spacing: 30) {
+        StatColumn(
+            emoji: "⏱️",
+            value: "32:00",
+            label: "Duration"
+        )
+        
+        StatColumn(
+            emoji: "🌊",
+            value: "1425 m",
+            label: "Distance"
+        )
+        
+        StatColumn(
+            emoji: "🔥",
+            value: "289",
+            label: "Calories"
+        )
+    }
+    .padding()
+    .background(Color.black)
+    .preferredColorScheme(.dark)
+}

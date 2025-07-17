@@ -41,3 +41,42 @@ struct SimpleMetricCard: View
         .cornerRadius(12)
     }
 }
+
+#Preview
+{
+    LazyVGrid(columns: [
+        GridItem(.flexible()),
+        GridItem(.flexible())
+    ], spacing: 12) {
+        SimpleMetricCard(
+            emoji: "⏱️",
+            value: "2:15",
+            label: "Average Pace",
+            subtitle: "per 100m"
+        )
+        
+        SimpleMetricCard(
+            emoji: "📏",
+            value: "25 m",
+            label: "Pool Length",
+            subtitle: "configured"
+        )
+        
+        SimpleMetricCard(
+            emoji: "🔄",
+            value: "32",
+            label: "Total Laps",
+            subtitle: "completed"
+        )
+        
+        SimpleMetricCard(
+            emoji: "🎯",
+            value: "28.5",
+            label: "Avg SWOLF",
+            subtitle: "efficiency"
+        )
+    }
+    .padding()
+    .background(Color.black)
+    .preferredColorScheme(.dark)
+}

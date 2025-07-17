@@ -69,3 +69,29 @@ struct WorkoutHeaderCard: View
         return String(format: "%.0f m", distance)
     }
 }
+
+#Preview
+{
+    let sampleLaps = [
+        Lap(duration: 45.2, metadata: ["HKSwimmingStrokeStyle": 2, "HKSWOLFScore": 28.5]),
+        Lap(duration: 42.1, metadata: ["HKSwimmingStrokeStyle": 2, "HKSWOLFScore": 26.8]),
+        Lap(duration: 44.7, metadata: ["HKSwimmingStrokeStyle": 2, "HKSWOLFScore": 29.2])
+    ]
+
+    let sampleSwim = Swim(
+        id: UUID(),
+        date: Date(),
+        duration: 1920,
+        totalDistance: 1425,
+        totalEnergyBurned: 289,
+        poolLength: 25.0,
+        laps: sampleLaps
+    )
+
+    return VStack {
+        WorkoutHeaderCard(swim: sampleSwim)
+            .padding()
+    }
+    .background(Color.black)
+    .preferredColorScheme(.dark)
+}
