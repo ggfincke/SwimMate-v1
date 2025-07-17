@@ -65,11 +65,6 @@
 		A048B8D72DE9253F00084546 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = A048B86A2DE9253F00084546 /* README.md */; };
 		A07667B02BF5E6C600FFB4C3 /* Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07667AD2BF5E6C600FFB4C3 /* Manager.swift */; };
 		A07667B12BF5E6C600FFB4C3 /* WatchConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07667AE2BF5E6C600FFB4C3 /* WatchConnector.swift */; };
-		A07667B62BF5E6CF00FFB4C3 /* store.json in Resources */ = {isa = PBXBuildFile; fileRef = A07667B22BF5E6CF00FFB4C3 /* store.json */; };
-		A07667B72BF5E6CF00FFB4C3 /* Swim.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07667B32BF5E6CF00FFB4C3 /* Swim.swift */; };
-		A07667B82BF5E6CF00FFB4C3 /* SwimSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07667B42BF5E6CF00FFB4C3 /* SwimSet.swift */; };
-		A07667B92BF5E7D800FFB4C3 /* Swim.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07667B32BF5E6CF00FFB4C3 /* Swim.swift */; };
-		A07667BA2BF5E7D800FFB4C3 /* SwimSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07667B42BF5E6CF00FFB4C3 /* SwimSet.swift */; };
 		A08761772DC90A0000BD4402 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = A08761762DC909FC00BD4402 /* README.md */; };
 		A09984B92E2896F900D23117 /* LapTimesChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09984902E2896F900D23117 /* LapTimesChart.swift */; };
 		A09984BA2E2896F900D23117 /* WorkoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09984B52E2896F900D23117 /* WorkoutView.swift */; };
@@ -100,6 +95,16 @@
 		A09984D32E2896F900D23117 /* SetDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09984AB2E2896F900D23117 /* SetDetailView.swift */; };
 		A09984D42E2896F900D23117 /* SimpleMetricCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = A099848D2E2896F900D23117 /* SimpleMetricCard.swift */; };
 		A09984D52E2896F900D23117 /* SwimListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09984A72E2896F900D23117 /* SwimListItemView.swift */; };
+		A09984F12E28A86300D23117 /* LapGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09984EB2E28A86300D23117 /* LapGroup.swift */; };
+		A09984F22E28A86300D23117 /* Swim.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09984ED2E28A86300D23117 /* Swim.swift */; };
+		A09984F32E28A86300D23117 /* SwimSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09984EF2E28A86300D23117 /* SwimSet.swift */; };
+		A09984F42E28A86300D23117 /* SwimmingLocationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09984EE2E28A86300D23117 /* SwimmingLocationType.swift */; };
+		A09984F52E28A86300D23117 /* store.json in Resources */ = {isa = PBXBuildFile; fileRef = A09984EC2E28A86300D23117 /* store.json */; };
+		A09984F62E28A86300D23117 /* LapGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09984EB2E28A86300D23117 /* LapGroup.swift */; };
+		A09984F72E28A86300D23117 /* Swim.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09984ED2E28A86300D23117 /* Swim.swift */; };
+		A09984F82E28A86300D23117 /* SwimSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09984EF2E28A86300D23117 /* SwimSet.swift */; };
+		A09984F92E28A86300D23117 /* SwimmingLocationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09984EE2E28A86300D23117 /* SwimmingLocationType.swift */; };
+		A09984FA2E28A86300D23117 /* store.json in Resources */ = {isa = PBXBuildFile; fileRef = A09984EC2E28A86300D23117 /* store.json */; };
 		A0BFBA232DDD7C3C002B96A8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A0BFBA1F2DDD7C3C002B96A8 /* Assets.xcassets */; };
 		A0BFBA242DDD7C3C002B96A8 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A0BFB9FD2DDD7C3C002B96A8 /* Preview Assets.xcassets */; };
 		A0BFBA392DDD7C3C002B96A8 /* WatchSwimMateApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BFBA212DDD7C3C002B96A8 /* WatchSwimMateApp.swift */; };
@@ -206,9 +211,6 @@
 		A048B89F2DE9253F00084546 /* WatchRootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchRootView.swift; sourceTree = "<group>"; };
 		A07667AD2BF5E6C600FFB4C3 /* Manager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Manager.swift; sourceTree = "<group>"; };
 		A07667AE2BF5E6C600FFB4C3 /* WatchConnector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchConnector.swift; sourceTree = "<group>"; };
-		A07667B22BF5E6CF00FFB4C3 /* store.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = store.json; sourceTree = "<group>"; };
-		A07667B32BF5E6CF00FFB4C3 /* Swim.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Swim.swift; sourceTree = "<group>"; };
-		A07667B42BF5E6CF00FFB4C3 /* SwimSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwimSet.swift; sourceTree = "<group>"; };
 		A08761762DC909FC00BD4402 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		A099848B2E2896F900D23117 /* DistanceChartCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistanceChartCard.swift; sourceTree = "<group>"; };
 		A099848C2E2896F900D23117 /* RecentActivityCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentActivityCard.swift; sourceTree = "<group>"; };
@@ -239,6 +241,11 @@
 		A09984B22E2896F900D23117 /* LapDetailsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LapDetailsSection.swift; sourceTree = "<group>"; };
 		A09984B32E2896F900D23117 /* WorkoutHeaderCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutHeaderCard.swift; sourceTree = "<group>"; };
 		A09984B52E2896F900D23117 /* WorkoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutView.swift; sourceTree = "<group>"; };
+		A09984EB2E28A86300D23117 /* LapGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LapGroup.swift; sourceTree = "<group>"; };
+		A09984EC2E28A86300D23117 /* store.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = store.json; sourceTree = "<group>"; };
+		A09984ED2E28A86300D23117 /* Swim.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Swim.swift; sourceTree = "<group>"; };
+		A09984EE2E28A86300D23117 /* SwimmingLocationType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwimmingLocationType.swift; sourceTree = "<group>"; };
+		A09984EF2E28A86300D23117 /* SwimSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwimSet.swift; sourceTree = "<group>"; };
 		A0BFB9FD2DDD7C3C002B96A8 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		A0BFB9FF2DDD7C3C002B96A8 /* NavState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavState.swift; sourceTree = "<group>"; };
 		A0BFBA1F2DDD7C3C002B96A8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -553,17 +560,6 @@
 			path = SwimMate/ViewModel;
 			sourceTree = SOURCE_ROOT;
 		};
-		A07667B52BF5E6CF00FFB4C3 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				A07667B22BF5E6CF00FFB4C3 /* store.json */,
-				A07667B32BF5E6CF00FFB4C3 /* Swim.swift */,
-				A07667B42BF5E6CF00FFB4C3 /* SwimSet.swift */,
-			);
-			name = Model;
-			path = SwimMate/Model;
-			sourceTree = SOURCE_ROOT;
-		};
 		A099848F2E2896F900D23117 /* Cards */ = {
 			isa = PBXGroup;
 			children = (
@@ -728,6 +724,18 @@
 			path = iOSViews;
 			sourceTree = "<group>";
 		};
+		A09984F02E28A86300D23117 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A09984EB2E28A86300D23117 /* LapGroup.swift */,
+				A09984EC2E28A86300D23117 /* store.json */,
+				A09984ED2E28A86300D23117 /* Swim.swift */,
+				A09984EE2E28A86300D23117 /* SwimmingLocationType.swift */,
+				A09984EF2E28A86300D23117 /* SwimSet.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		A0BFB9FE2DDD7C3C002B96A8 /* Preview Content */ = {
 			isa = PBXGroup;
 			children = (
@@ -794,7 +802,7 @@
 				A0C0505F2BCC5D7A002450AD /* SwimMateApp.swift */,
 				A09984B82E2896F900D23117 /* iOSViews */,
 				A07667AF2BF5E6C600FFB4C3 /* ViewModel */,
-				A07667B52BF5E6CF00FFB4C3 /* Model */,
+				A09984F02E28A86300D23117 /* Model */,
 				A0C050632BCC5D7B002450AD /* Assets.xcassets */,
 				A0C050652BCC5D7B002450AD /* Preview Content */,
 			);
@@ -899,10 +907,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A07667B62BF5E6CF00FFB4C3 /* store.json in Resources */,
 				A0C050672BCC5D7B002450AD /* Preview Assets.xcassets in Resources */,
 				A08761772DC90A0000BD4402 /* README.md in Resources */,
 				A0C050642BCC5D7B002450AD /* Assets.xcassets in Resources */,
+				A09984F52E28A86300D23117 /* store.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -913,6 +921,7 @@
 				A048B8D72DE9253F00084546 /* README.md in Resources */,
 				A0BFBA232DDD7C3C002B96A8 /* Assets.xcassets in Resources */,
 				A0BFBA242DDD7C3C002B96A8 /* Preview Assets.xcassets in Resources */,
+				A09984FA2E28A86300D23117 /* store.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -925,11 +934,14 @@
 			files = (
 				A07667B12BF5E6C600FFB4C3 /* WatchConnector.swift in Sources */,
 				A023DE452BDF7B2A00242C58 /* SwimMateApp.swift in Sources */,
-				A07667B82BF5E6CF00FFB4C3 /* SwimSet.swift in Sources */,
 				A09984B92E2896F900D23117 /* LapTimesChart.swift in Sources */,
 				A09984BA2E2896F900D23117 /* WorkoutView.swift in Sources */,
 				A09984BB2E2896F900D23117 /* RecentSwimRow.swift in Sources */,
 				A09984BC2E2896F900D23117 /* SettingsView.swift in Sources */,
+				A09984F12E28A86300D23117 /* LapGroup.swift in Sources */,
+				A09984F22E28A86300D23117 /* Swim.swift in Sources */,
+				A09984F32E28A86300D23117 /* SwimSet.swift in Sources */,
+				A09984F42E28A86300D23117 /* SwimmingLocationType.swift in Sources */,
 				A09984BD2E2896F900D23117 /* StatColumn.swift in Sources */,
 				A09984BE2E2896F900D23117 /* SimpleLapRow.swift in Sources */,
 				A09984BF2E2896F900D23117 /* HealthKitPermissionView.swift in Sources */,
@@ -955,7 +967,6 @@
 				A09984D32E2896F900D23117 /* SetDetailView.swift in Sources */,
 				A09984D42E2896F900D23117 /* SimpleMetricCard.swift in Sources */,
 				A09984D52E2896F900D23117 /* SwimListItemView.swift in Sources */,
-				A07667B72BF5E6CF00FFB4C3 /* Swim.swift in Sources */,
 				A07667B02BF5E6C600FFB4C3 /* Manager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -964,8 +975,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A07667B92BF5E7D800FFB4C3 /* Swim.swift in Sources */,
-				A07667BA2BF5E7D800FFB4C3 /* SwimSet.swift in Sources */,
 				A0F6A7252DE7EF8A005B7291 /* WatchManager+Statistics.swift in Sources */,
 				A0F6A7262DE7EF8A005B7291 /* WatchManager+Timer.swift in Sources */,
 				A0F6A7272DE7EF8A005B7291 /* WatchManager.swift in Sources */,
@@ -1024,6 +1033,10 @@
 				A048B8D22DE9253F00084546 /* PrimaryMetricsSection.swift in Sources */,
 				A048B8D32DE9253F00084546 /* GoalSetupView.swift in Sources */,
 				A048B8D42DE9253F00084546 /* GoalProgressCard.swift in Sources */,
+				A09984F62E28A86300D23117 /* LapGroup.swift in Sources */,
+				A09984F72E28A86300D23117 /* Swim.swift in Sources */,
+				A09984F82E28A86300D23117 /* SwimSet.swift in Sources */,
+				A09984F92E28A86300D23117 /* SwimmingLocationType.swift in Sources */,
 				A048B8D52DE9253F00084546 /* DistanceSetupView.swift in Sources */,
 				A048B8D62DE9253F00084546 /* SetHeader.swift in Sources */,
 				A0F6A72C2DE7EF8A005B7291 /* toiOSWatchConnector.swift in Sources */,
