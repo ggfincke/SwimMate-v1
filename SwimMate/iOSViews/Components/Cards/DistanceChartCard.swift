@@ -6,8 +6,8 @@ import Charts
 private func makeAggregatedSwim(date: Date, duration: Double, totalDistance: Double?, totalEnergyBurned: Double?) -> Swim {
     return Swim(
         id: UUID(),
-        date: date,
-        duration: duration,
+        startDate: date,
+        endDate: date.addingTimeInterval(duration),
         totalDistance: totalDistance,
         totalEnergyBurned: totalEnergyBurned,
         poolLength: nil,

@@ -127,8 +127,9 @@ class Manager: NSObject, ObservableObject
                         {
                             if let metadata = event.metadata 
                             {
-                                let lapDuration = event.dateInterval.duration
-                                let lap = Lap(duration: lapDuration, metadata: metadata)
+                                let startDate = event.dateInterval.start
+                                let endDate = event.dateInterval.end
+                                let lap = Lap(startDate: startDate, endDate: endDate, metadata: metadata)
                                 laps.append(lap)
                             }
                         }
@@ -141,7 +142,7 @@ class Manager: NSObject, ObservableObject
                     }
 
                     // append swim
-                    let swim = Swim(id: id, date: date, duration: duration, totalDistance: totalDistance, totalEnergyBurned: totalEnergyBurned, poolLength: poolLength, laps: laps)
+                    let swim = Swim(id: id, startDate: date, endDate: date.addingTimeInterval(duration), totalDistance: totalDistance, totalEnergyBurned: totalEnergyBurned, poolLength: poolLength, laps: laps)
                     self.swims.append(swim)
                 }
                 // once done with loops, calc fields and update storage

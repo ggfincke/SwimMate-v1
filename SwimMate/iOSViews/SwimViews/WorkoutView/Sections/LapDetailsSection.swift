@@ -8,8 +8,8 @@ struct LapDetailsSection: View
 {
     let swim: Swim
     
-    private var lapGroups: [LapGroup] {
-        groupConsecutiveLaps(swim.laps)
+    private var workoutSets: [WorkoutSet] {
+        groupLapsByRestPeriods(swim.laps, poolLength: swim.poolLength ?? 25.0)
     }
     
     var body: some View
@@ -65,10 +65,11 @@ struct LapDetailsSection: View
                 {
                     LazyVStack(spacing: 1)
                     {
-                        ForEach(Array(lapGroups.enumerated()), id: \.offset) { index, group in
-                            LapGroupRow(
+                        ForEach(Array(workoutSets.enumerated()), id: \.offset) { index, set in
+                            WorkoutSetRow(
                                 setNumber: index + 1,
-                                lapGroup: group
+                                workoutSet: set,
+                                poolLength: swim.poolLength ?? 25.0
                             )
                         }
                     }
@@ -80,50 +81,102 @@ struct LapDetailsSection: View
         }
     }
     
-    // MARK: - Helper function to group consecutive laps
-    private func groupConsecutiveLaps(_ laps: [Lap]) -> [LapGroup] {
+    // MARK: - Helper function to group laps by rest periods
+    private func groupLapsByRestPeriods(_ laps: [Lap], poolLength: Double) -> [WorkoutSet] {
         guard !laps.isEmpty else { return [] }
         
-        var groups: [LapGroup] = []
-        var currentGroup: [Lap] = [laps[0]]
-        var currentStroke = laps[0].strokeStyle
-        var startLapNumber = 1
+        // Step 1: Create consecutive swims based on rest periods
+        var consecutiveSwims: [ConsecutiveSwim] = []
+        var currentSwimLaps: [Lap] = [laps[0]]
+        var currentStartLap = 1
         
         for i in 1..<laps.count {
-            let lap = laps[i]
+            let previousLap = laps[i-1]
+            let currentLap = laps[i]
+            let restPeriod = previousLap.restPeriodTo(currentLap)
             
-            // If same stroke as current group, add to group
-            if lap.strokeStyle == currentStroke {
-                currentGroup.append(lap)
+            // If rest period is short and same stroke, add to current swim
+            if restPeriod <= ConsecutiveSwim.consecutiveThreshold && 
+               currentLap.strokeStyle == previousLap.strokeStyle {
+                currentSwimLaps.append(currentLap)
             } else {
-                // Different stroke, finalize current group and start new one
-                groups.append(LapGroup(
-                    strokeStyle: currentStroke,
-                    laps: currentGroup,
-                    startLapNumber: startLapNumber
+                // Finish current swim and start new one
+                consecutiveSwims.append(ConsecutiveSwim(
+                    laps: currentSwimLaps,
+                    startLapNumber: currentStartLap
                 ))
                 
-                currentGroup = [lap]
-                currentStroke = lap.strokeStyle
-                startLapNumber = i + 1
+                currentSwimLaps = [currentLap]
+                currentStartLap = i + 1
             }
         }
         
-        // Don't forget the last group
-        groups.append(LapGroup(
-            strokeStyle: currentStroke,
-            laps: currentGroup,
-            startLapNumber: startLapNumber
+        // Don't forget the last swim
+        consecutiveSwims.append(ConsecutiveSwim(
+            laps: currentSwimLaps,
+            startLapNumber: currentStartLap
         ))
         
-        return groups
+        // Step 2: Group similar consecutive swims into sets
+        var workoutSets: [WorkoutSet] = []
+        var currentSetSwims: [ConsecutiveSwim] = []
+        var setNumber = 1
+        
+        for i in 0..<consecutiveSwims.count {
+            let currentSwim = consecutiveSwims[i]
+            
+            if currentSetSwims.isEmpty {
+                // Start new set
+                currentSetSwims = [currentSwim]
+            } else {
+                let previousSwim = currentSetSwims.last!
+                
+                // Calculate rest between the end of previous swim and start of current swim
+                let restBetweenSwims: TimeInterval
+                if let lastLapOfPrevious = previousSwim.laps.last,
+                   let firstLapOfCurrent = currentSwim.laps.first {
+                    restBetweenSwims = firstLapOfCurrent.startDate.timeIntervalSince(lastLapOfPrevious.endDate)
+                } else {
+                    restBetweenSwims = 0
+                }
+                
+                // Check if swims are similar and rest is reasonable
+                let sameStroke = currentSwim.effectiveStrokeStyle == previousSwim.effectiveStrokeStyle
+                let similarLapCount = abs(currentSwim.laps.count - previousSwim.laps.count) <= 1
+                let reasonableRest = restBetweenSwims <= ConsecutiveSwim.setThreshold
+                
+                if sameStroke && similarLapCount && reasonableRest {
+                    currentSetSwims.append(currentSwim)
+                } else {
+                    // Finish current set and start new one
+                    workoutSets.append(WorkoutSet(
+                        consecutiveSwims: currentSetSwims,
+                        setNumber: setNumber
+                    ))
+                    
+                    currentSetSwims = [currentSwim]
+                    setNumber += 1
+                }
+            }
+        }
+        
+        // Don't forget the last set
+        if !currentSetSwims.isEmpty {
+            workoutSets.append(WorkoutSet(
+                consecutiveSwims: currentSetSwims,
+                setNumber: setNumber
+            ))
+        }
+        
+        return workoutSets
     }
 }
 
-// MARK: - Lap Group Row View
-struct LapGroupRow: View {
+// MARK: - Workout Set Row View
+struct WorkoutSetRow: View {
     let setNumber: Int
-    let lapGroup: LapGroup
+    let workoutSet: WorkoutSet
+    let poolLength: Double
     @State private var isExpanded = false
     
     var body: some View {
@@ -136,11 +189,13 @@ struct LapGroupRow: View {
                     .frame(width: 60, alignment: .leading)
                 
                 HStack {
-                    Text(lapGroup.displayTitle)
+                    Text(workoutSet.displayTitle(poolLength: poolLength))
                         .font(.subheadline)
                         .foregroundColor(.white)
                     
-                    if lapGroup.laps.count > 1 {
+                    // Show expand button if there are multiple consecutive swims or laps
+                    if workoutSet.consecutiveSwims.count > 1 || 
+                       workoutSet.consecutiveSwims.first?.laps.count ?? 0 > 1 {
                         Button(action: { isExpanded.toggle() }) {
                             Image(systemName: isExpanded ? "chevron.down" : "chevron.right")
                                 .font(.caption)
@@ -150,14 +205,14 @@ struct LapGroupRow: View {
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
                 
-                Text(String(format: "%.1fs", lapGroup.averageTime))
+                Text(String(format: "%.1fs", workoutSet.averageTime))
                     .font(.system(.subheadline, design: .monospaced))
                     .foregroundColor(.white)
                     .frame(width: 70, alignment: .trailing)
                 
-                Text(lapGroup.averageSwolf != nil ? String(format: "%.1f", lapGroup.averageSwolf!) : "—")
+                Text(workoutSet.averageSwolf != nil ? String(format: "%.1f", workoutSet.averageSwolf!) : "—")
                     .font(.system(.subheadline, design: .monospaced))
-                    .foregroundColor(lapGroup.averageSwolf != nil ? .white : .secondary)
+                    .foregroundColor(workoutSet.averageSwolf != nil ? .white : .secondary)
                     .frame(width: 80, alignment: .trailing)
             }
             .padding(.horizontal)
@@ -165,39 +220,73 @@ struct LapGroupRow: View {
             .background(setNumber % 2 == 0 ? Color.clear : Color.secondary.opacity(0.05))
             .contentShape(Rectangle())
             .onTapGesture {
-                if lapGroup.laps.count > 1 {
+                if workoutSet.consecutiveSwims.count > 1 || 
+                   workoutSet.consecutiveSwims.first?.laps.count ?? 0 > 1 {
                     isExpanded.toggle()
                 }
             }
             
-            // Expanded individual laps
-            if isExpanded && lapGroup.laps.count > 1 {
+            // Expanded consecutive swims and individual laps
+            if isExpanded {
                 VStack(spacing: 1) {
-                    ForEach(Array(lapGroup.laps.enumerated()), id: \.offset) { index, lap in
-                        HStack {
-                            Text("  \(lapGroup.startLapNumber + index)")
-                                .font(.system(.caption, design: .monospaced))
-                                .foregroundColor(.secondary)
-                                .frame(width: 60, alignment: .leading)
-                            
-                            Text("Individual Lap")
-                                .font(.caption)
-                                .foregroundColor(.secondary)
-                                .frame(maxWidth: .infinity, alignment: .leading)
-                            
-                            Text(String(format: "%.1fs", lap.duration))
-                                .font(.system(.caption, design: .monospaced))
-                                .foregroundColor(.secondary)
-                                .frame(width: 70, alignment: .trailing)
-                            
-                            Text(lap.swolfScore != nil ? String(format: "%.1f", lap.swolfScore!) : "—")
-                                .font(.system(.caption, design: .monospaced))
-                                .foregroundColor(.secondary)
-                                .frame(width: 80, alignment: .trailing)
+                    ForEach(Array(workoutSet.consecutiveSwims.enumerated()), id: \.offset) { swimIndex, consecutiveSwim in
+                        // Show individual consecutive swim if multiple swims in set
+                        if workoutSet.consecutiveSwims.count > 1 {
+                            HStack {
+                                Text("  \(swimIndex + 1)")
+                                    .font(.system(.caption, design: .monospaced))
+                                    .foregroundColor(.secondary)
+                                    .frame(width: 60, alignment: .leading)
+                                
+                                Text(consecutiveSwim.displayTitle(poolLength: poolLength))
+                                    .font(.caption)
+                                    .foregroundColor(.secondary)
+                                    .frame(maxWidth: .infinity, alignment: .leading)
+                                
+                                Text(String(format: "%.1fs", consecutiveSwim.averageTime))
+                                    .font(.system(.caption, design: .monospaced))
+                                    .foregroundColor(.secondary)
+                                    .frame(width: 70, alignment: .trailing)
+                                
+                                Text(consecutiveSwim.averageSwolf != nil ? String(format: "%.1f", consecutiveSwim.averageSwolf!) : "—")
+                                    .font(.system(.caption, design: .monospaced))
+                                    .foregroundColor(.secondary)
+                                    .frame(width: 80, alignment: .trailing)
+                            }
+                            .padding(.horizontal)
+                            .padding(.vertical, 4)
+                            .background(Color.secondary.opacity(0.02))
                         }
-                        .padding(.horizontal)
-                        .padding(.vertical, 4)
-                        .background(Color.secondary.opacity(0.02))
+                        
+                        // Show individual laps if consecutive swim has multiple laps
+                        if consecutiveSwim.laps.count > 1 {
+                            ForEach(Array(consecutiveSwim.laps.enumerated()), id: \.offset) { lapIndex, lap in
+                                HStack {
+                                    Text("    \(consecutiveSwim.startLapNumber + lapIndex)")
+                                        .font(.system(.caption, design: .monospaced))
+                                        .foregroundColor(.secondary)
+                                        .frame(width: 60, alignment: .leading)
+                                    
+                                    Text("Lap \(lapIndex + 1)")
+                                        .font(.caption)
+                                        .foregroundColor(.secondary)
+                                        .frame(maxWidth: .infinity, alignment: .leading)
+                                    
+                                    Text(String(format: "%.1fs", lap.duration))
+                                        .font(.system(.caption, design: .monospaced))
+                                        .foregroundColor(.secondary)
+                                        .frame(width: 70, alignment: .trailing)
+                                    
+                                    Text(lap.swolfScore != nil ? String(format: "%.1f", lap.swolfScore!) : "—")
+                                        .font(.system(.caption, design: .monospaced))
+                                        .foregroundColor(.secondary)
+                                        .frame(width: 80, alignment: .trailing)
+                                }
+                                .padding(.horizontal)
+                                .padding(.vertical, 4)
+                                .background(Color.secondary.opacity(0.02))
+                            }
+                        }
                     }
                 }
             }
@@ -207,21 +296,25 @@ struct LapGroupRow: View {
 
 #Preview
 {
+    let baseDate = Date()
     let sampleLaps = [
-        Lap(duration: 45.2, metadata: ["HKSwimmingStrokeStyle": 2, "HKSWOLFScore": 28.5]),
-        Lap(duration: 42.1, metadata: ["HKSwimmingStrokeStyle": 2, "HKSWOLFScore": 26.8]),
-        Lap(duration: 44.7, metadata: ["HKSwimmingStrokeStyle": 2, "HKSWOLFScore": 29.2]),
-        Lap(duration: 43.8, metadata: ["HKSwimmingStrokeStyle": 3, "HKSWOLFScore": 31.1]),
-        Lap(duration: 46.3, metadata: ["HKSwimmingStrokeStyle": 4, "HKSWOLFScore": 30.5]),
-        Lap(duration: 41.9, metadata: ["HKSwimmingStrokeStyle": 2, "HKSWOLFScore": 27.3]),
-        Lap(duration: 48.1, metadata: ["HKSwimmingStrokeStyle": 5, "HKSWOLFScore": 32.8]),
-        Lap(duration: 44.2, metadata: ["HKSwimmingStrokeStyle": 2, "HKSWOLFScore": 28.9])
+        // 4x25m Freestyle (consecutive with short rest)
+        Lap(startDate: baseDate, endDate: baseDate.addingTimeInterval(25.2), metadata: ["HKSwimmingStrokeStyle": 2, "HKSWOLFScore": 28.5]),
+        Lap(startDate: baseDate.addingTimeInterval(30), endDate: baseDate.addingTimeInterval(55.1), metadata: ["HKSwimmingStrokeStyle": 2, "HKSWOLFScore": 26.8]),
+        Lap(startDate: baseDate.addingTimeInterval(60), endDate: baseDate.addingTimeInterval(84.7), metadata: ["HKSwimmingStrokeStyle": 2, "HKSWOLFScore": 29.2]),
+        Lap(startDate: baseDate.addingTimeInterval(90), endDate: baseDate.addingTimeInterval(113.8), metadata: ["HKSwimmingStrokeStyle": 2, "HKSWOLFScore": 31.1]),
+        
+        // Individual Medley (100m: Butterfly->Back->Breast->Free) after 1 min rest  
+        Lap(startDate: baseDate.addingTimeInterval(180), endDate: baseDate.addingTimeInterval(215.3), metadata: ["HKSwimmingStrokeStyle": 5, "HKSWOLFScore": 35.5]), // Butterfly
+        Lap(startDate: baseDate.addingTimeInterval(220), endDate: baseDate.addingTimeInterval(250.9), metadata: ["HKSwimmingStrokeStyle": 3, "HKSWOLFScore": 32.3]), // Backstroke  
+        Lap(startDate: baseDate.addingTimeInterval(255), endDate: baseDate.addingTimeInterval(290.1), metadata: ["HKSwimmingStrokeStyle": 4, "HKSWOLFScore": 34.8]), // Breaststroke
+        Lap(startDate: baseDate.addingTimeInterval(295), endDate: baseDate.addingTimeInterval(320.2), metadata: ["HKSwimmingStrokeStyle": 2, "HKSWOLFScore": 28.9])  // Freestyle
     ]
 
     let sampleSwim = Swim(
         id: UUID(),
-        date: Date(),
-        duration: 1920,
+        startDate: Date(),
+        endDate: Date().addingTimeInterval(1920),
         totalDistance: 1425,
         totalEnergyBurned: 289,
         poolLength: 25.0,

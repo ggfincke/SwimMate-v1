@@ -21,19 +21,16 @@ struct SwimSet: Identifiable, Hashable
         case breaststroke = "Breaststroke"
         case backstroke = "Backstroke"
         case butterfly = "Butterfly"
-        // Individual Medley
-        case IM = "IM"
+        case IM = "IM" // Individual Medley
     }
     
-    // different measuring units
     enum MeasureUnit: String, CaseIterable, Codable
     {
         case yards = "Yards"
         case meters = "Meters"
     }
     
-    // different difficulties
-    enum Difficulty: String, CaseIterable
+    enum Difficulty: String, CaseIterable, Codable
     {
         case beginner = "Beginner"
         case intermediate = "Intermediate"

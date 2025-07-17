@@ -42,19 +42,20 @@ struct LapTimesChart: View
 
 #Preview
 {
+    let baseDate = Date()
     let sampleLaps = [
-        Lap(duration: 45.2, metadata: ["HKSwimmingStrokeStyle": 2, "HKSWOLFScore": 28.5]),
-        Lap(duration: 42.1, metadata: ["HKSwimmingStrokeStyle": 2, "HKSWOLFScore": 26.8]),
-        Lap(duration: 44.7, metadata: ["HKSwimmingStrokeStyle": 2, "HKSWOLFScore": 29.2]),
-        Lap(duration: 43.8, metadata: ["HKSwimmingStrokeStyle": 3, "HKSWOLFScore": 31.1]),
-        Lap(duration: 46.3, metadata: ["HKSwimmingStrokeStyle": 2, "HKSWOLFScore": 30.5]),
-        Lap(duration: 41.9, metadata: ["HKSwimmingStrokeStyle": 2, "HKSWOLFScore": 27.3])
+        Lap(startDate: baseDate, endDate: baseDate.addingTimeInterval(45.2), metadata: ["HKSwimmingStrokeStyle": 2, "HKSWOLFScore": 28.5]),
+        Lap(startDate: baseDate.addingTimeInterval(60), endDate: baseDate.addingTimeInterval(102.1), metadata: ["HKSwimmingStrokeStyle": 2, "HKSWOLFScore": 26.8]),
+        Lap(startDate: baseDate.addingTimeInterval(120), endDate: baseDate.addingTimeInterval(164.7), metadata: ["HKSwimmingStrokeStyle": 2, "HKSWOLFScore": 29.2]),
+        Lap(startDate: baseDate.addingTimeInterval(180), endDate: baseDate.addingTimeInterval(223.8), metadata: ["HKSwimmingStrokeStyle": 3, "HKSWOLFScore": 31.1]),
+        Lap(startDate: baseDate.addingTimeInterval(300), endDate: baseDate.addingTimeInterval(346.3), metadata: ["HKSwimmingStrokeStyle": 2, "HKSWOLFScore": 30.5]),
+        Lap(startDate: baseDate.addingTimeInterval(360), endDate: baseDate.addingTimeInterval(401.9), metadata: ["HKSwimmingStrokeStyle": 2, "HKSWOLFScore": 27.3])
     ]
 
     let sampleSwim = Swim(
         id: UUID(),
-        date: Date(),
-        duration: 1920,
+        startDate: baseDate,
+        endDate: baseDate.addingTimeInterval(1920),
         totalDistance: 1425,
         totalEnergyBurned: 289,
         poolLength: 25.0,
