@@ -90,6 +90,16 @@
 		A07667B92BF5E7D800FFB4C3 /* Swim.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07667B32BF5E6CF00FFB4C3 /* Swim.swift */; };
 		A07667BA2BF5E7D800FFB4C3 /* SwimSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07667B42BF5E6CF00FFB4C3 /* SwimSet.swift */; };
 		A08761772DC90A0000BD4402 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = A08761762DC909FC00BD4402 /* README.md */; };
+		A09984702E2886D200D23117 /* WorkoutHeaderCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = A099846F2E2886D200D23117 /* WorkoutHeaderCard.swift */; };
+		A09984722E2886E500D23117 /* KeyMetricsGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09984712E2886E500D23117 /* KeyMetricsGrid.swift */; };
+		A09984742E2886EE00D23117 /* ChartsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09984732E2886EE00D23117 /* ChartsSection.swift */; };
+		A09984762E28870800D23117 /* LapDetailsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09984752E28870800D23117 /* LapDetailsSection.swift */; };
+		A09984782E2887AA00D23117 /* SwolfChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09984772E2887AA00D23117 /* SwolfChart.swift */; };
+		A099847A2E2887B900D23117 /* StrokeDistributionChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09984792E2887B900D23117 /* StrokeDistributionChart.swift */; };
+		A099847C2E288F1F00D23117 /* LapTimesChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = A099847B2E288F1F00D23117 /* LapTimesChart.swift */; };
+		A099847E2E288F3900D23117 /* StatColumn.swift in Sources */ = {isa = PBXBuildFile; fileRef = A099847D2E288F3900D23117 /* StatColumn.swift */; };
+		A09984802E288F4700D23117 /* SimpleMetricCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = A099847F2E288F4700D23117 /* SimpleMetricCard.swift */; };
+		A09984822E288F5300D23117 /* SimpleLapRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09984812E288F5300D23117 /* SimpleLapRow.swift */; };
 		A0BFBA232DDD7C3C002B96A8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A0BFBA1F2DDD7C3C002B96A8 /* Assets.xcassets */; };
 		A0BFBA242DDD7C3C002B96A8 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A0BFB9FD2DDD7C3C002B96A8 /* Preview Assets.xcassets */; };
 		A0BFBA392DDD7C3C002B96A8 /* WatchSwimMateApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BFBA212DDD7C3C002B96A8 /* WatchSwimMateApp.swift */; };
@@ -219,6 +229,16 @@
 		A07667B32BF5E6CF00FFB4C3 /* Swim.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Swim.swift; sourceTree = "<group>"; };
 		A07667B42BF5E6CF00FFB4C3 /* SwimSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwimSet.swift; sourceTree = "<group>"; };
 		A08761762DC909FC00BD4402 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		A099846F2E2886D200D23117 /* WorkoutHeaderCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutHeaderCard.swift; sourceTree = "<group>"; };
+		A09984712E2886E500D23117 /* KeyMetricsGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyMetricsGrid.swift; sourceTree = "<group>"; };
+		A09984732E2886EE00D23117 /* ChartsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartsSection.swift; sourceTree = "<group>"; };
+		A09984752E28870800D23117 /* LapDetailsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LapDetailsSection.swift; sourceTree = "<group>"; };
+		A09984772E2887AA00D23117 /* SwolfChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwolfChart.swift; sourceTree = "<group>"; };
+		A09984792E2887B900D23117 /* StrokeDistributionChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrokeDistributionChart.swift; sourceTree = "<group>"; };
+		A099847B2E288F1F00D23117 /* LapTimesChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LapTimesChart.swift; sourceTree = "<group>"; };
+		A099847D2E288F3900D23117 /* StatColumn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatColumn.swift; sourceTree = "<group>"; };
+		A099847F2E288F4700D23117 /* SimpleMetricCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleMetricCard.swift; sourceTree = "<group>"; };
+		A09984812E288F5300D23117 /* SimpleLapRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleLapRow.swift; sourceTree = "<group>"; };
 		A0BFB9FD2DDD7C3C002B96A8 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		A0BFB9FF2DDD7C3C002B96A8 /* NavState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavState.swift; sourceTree = "<group>"; };
 		A0BFBA1F2DDD7C3C002B96A8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -303,9 +323,9 @@
 		A032BE7A2DDD1D0A00265661 /* GeneralViews */ = {
 			isa = PBXGroup;
 			children = (
+				A099846B2E287EAE00D23117 /* WorkoutView */,
 				A032BE752DDD1D0A00265661 /* Charts */,
 				A032BE762DDD1D0A00265661 /* HealthKitPermissionView.swift */,
-				A032BE792DDD1D0A00265661 /* WorkoutView.swift */,
 			);
 			path = GeneralViews;
 			sourceTree = "<group>";
@@ -634,6 +654,40 @@
 			path = SwimMate/Model;
 			sourceTree = SOURCE_ROOT;
 		};
+		A099846B2E287EAE00D23117 /* WorkoutView */ = {
+			isa = PBXGroup;
+			children = (
+				A099846E2E2886B300D23117 /* Sections */,
+				A099846C2E287EB600D23117 /* components */,
+				A032BE792DDD1D0A00265661 /* WorkoutView.swift */,
+			);
+			path = WorkoutView;
+			sourceTree = "<group>";
+		};
+		A099846C2E287EB600D23117 /* components */ = {
+			isa = PBXGroup;
+			children = (
+				A09984812E288F5300D23117 /* SimpleLapRow.swift */,
+				A099847F2E288F4700D23117 /* SimpleMetricCard.swift */,
+				A099847D2E288F3900D23117 /* StatColumn.swift */,
+				A099847B2E288F1F00D23117 /* LapTimesChart.swift */,
+				A09984792E2887B900D23117 /* StrokeDistributionChart.swift */,
+				A09984772E2887AA00D23117 /* SwolfChart.swift */,
+			);
+			path = components;
+			sourceTree = "<group>";
+		};
+		A099846E2E2886B300D23117 /* Sections */ = {
+			isa = PBXGroup;
+			children = (
+				A09984752E28870800D23117 /* LapDetailsSection.swift */,
+				A09984732E2886EE00D23117 /* ChartsSection.swift */,
+				A09984712E2886E500D23117 /* KeyMetricsGrid.swift */,
+				A099846F2E2886D200D23117 /* WorkoutHeaderCard.swift */,
+			);
+			path = Sections;
+			sourceTree = "<group>";
+		};
 		A0BFB9FE2DDD7C3C002B96A8 /* Preview Content */ = {
 			isa = PBXGroup;
 			children = (
@@ -835,23 +889,33 @@
 				A011483E2DDD16CA00B701D7 /* SummaryMetricItem.swift in Sources */,
 				A07667A52BF5E6BF00FFB4C3 /* HomePage.swift in Sources */,
 				A023DE452BDF7B2A00242C58 /* SwimMateApp.swift in Sources */,
+				A09984702E2886D200D23117 /* WorkoutHeaderCard.swift in Sources */,
 				A07667A62BF5E6BF00FFB4C3 /* PreferencesView.swift in Sources */,
+				A099847A2E2887B900D23117 /* StrokeDistributionChart.swift in Sources */,
 				A07667B82BF5E6CF00FFB4C3 /* SwimSet.swift in Sources */,
+				A09984802E288F4700D23117 /* SimpleMetricCard.swift in Sources */,
 				A07667AB2BF5E6BF00FFB4C3 /* SetSummaryView.swift in Sources */,
 				A011482A2DDD055B00B701D7 /* LogbookView.swift in Sources */,
+				A09984742E2886EE00D23117 /* ChartsSection.swift in Sources */,
 				A032BE7B2DDD1D0A00265661 /* HealthKitPermissionView.swift in Sources */,
 				A032BE7D2DDD1D0A00265661 /* WorkoutView.swift in Sources */,
 				A032BE7E2DDD1D0A00265661 /* PaceGraphView.swift in Sources */,
 				A032BE802DDD1D0A00265661 /* LineGraphView.swift in Sources */,
 				A07667AC2BF5E6BF00FFB4C3 /* RootView.swift in Sources */,
 				A07667B72BF5E6CF00FFB4C3 /* Swim.swift in Sources */,
+				A09984722E2886E500D23117 /* KeyMetricsGrid.swift in Sources */,
 				A07667A72BF5E6BF00FFB4C3 /* ProfilePage.swift in Sources */,
+				A099847E2E288F3900D23117 /* StatColumn.swift in Sources */,
 				A07667AA2BF5E6BF00FFB4C3 /* SetPage.swift in Sources */,
+				A09984822E288F5300D23117 /* SimpleLapRow.swift in Sources */,
 				A07667A82BF5E6BF00FFB4C3 /* SettingsView.swift in Sources */,
 				A07667A92BF5E6BF00FFB4C3 /* SetDetailView.swift in Sources */,
 				A01148452DDD175B00B701D7 /* SwimListItemView.swift in Sources */,
+				A09984782E2887AA00D23117 /* SwolfChart.swift in Sources */,
 				A07667B02BF5E6C600FFB4C3 /* Manager.swift in Sources */,
 				A011483A2DDD164A00B701D7 /* WeeklySummaryCard.swift in Sources */,
+				A099847C2E288F1F00D23117 /* LapTimesChart.swift in Sources */,
+				A09984762E28870800D23117 /* LapDetailsSection.swift in Sources */,
 				A01148422DDD16F400B701D7 /* DistanceChartCard.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
