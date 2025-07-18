@@ -1,8 +1,8 @@
-// SwimMate/iOSViews/Components/Display/SimpleLapRow.swift
+// SwimMate/iOSViews/Components/Display/LapRow.swift
 
 import SwiftUI
 
-struct SimpleLapRow: View
+struct LapRow: View
 {
     let lapNumber: Int
     let lap: Lap
@@ -46,22 +46,22 @@ struct SimpleLapRow: View
     let baseDate = Date()
     return VStack(spacing: 0) {
         // Preview with different stroke styles and scores
-        SimpleLapRow(
+        LapRow(
             lapNumber: 1,
             lap: Lap(startDate: baseDate, endDate: baseDate.addingTimeInterval(45.2), metadata: ["HKSwimmingStrokeStyle": 2, "HKSWOLFScore": 28.5])
         )
         
-        SimpleLapRow(
+        LapRow(
             lapNumber: 2,
             lap: Lap(startDate: baseDate.addingTimeInterval(60), endDate: baseDate.addingTimeInterval(102.1), metadata: ["HKSwimmingStrokeStyle": 3, "HKSWOLFScore": 26.8])
         )
         
-        SimpleLapRow(
+        LapRow(
             lapNumber: 3,
             lap: Lap(startDate: baseDate.addingTimeInterval(120), endDate: baseDate.addingTimeInterval(164.7), metadata: ["HKSwimmingStrokeStyle": 4, "HKSWOLFScore": 29.2])
         )
         
-        SimpleLapRow(
+        LapRow(
             lapNumber: 4,
             lap: Lap(startDate: baseDate.addingTimeInterval(180), endDate: baseDate.addingTimeInterval(223.8), metadata: ["HKSwimmingStrokeStyle": 5])
         )

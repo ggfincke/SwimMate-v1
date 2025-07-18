@@ -3,7 +3,7 @@
 import SwiftUI
 
 // metric cards for workout usage
-struct MetricCard: View
+struct WatchMetricCard: View
 {
     let title: String
     let value: String
@@ -92,7 +92,7 @@ struct MetricCard: View
     {
         HStack(spacing: 8)
         {
-            MetricCard(
+            WatchMetricCard(
                 title: "Heart Rate",
                 value: "132",
                 unit: "bpm",
@@ -101,7 +101,7 @@ struct MetricCard: View
                 isCompact: false
             )
             
-            MetricCard(
+            WatchMetricCard(
                 title: "Calories",
                 value: "285",
                 unit: "kcal",
@@ -113,7 +113,7 @@ struct MetricCard: View
         
         HStack(spacing: 8)
         {
-            MetricCard(
+            WatchMetricCard(
                 title: "Laps",
                 value: "15",
                 unit: "laps",
@@ -122,7 +122,7 @@ struct MetricCard: View
                 isCompact: false
             )
             
-            MetricCard(
+            WatchMetricCard(
                 title: "Pace",
                 value: "2:15",
                 unit: "/100m",
@@ -141,7 +141,7 @@ struct MetricCard: View
     {
         HStack(spacing: 6)
         {
-            MetricCard(
+            WatchMetricCard(
                 title: "Heart Rate",
                 value: "132",
                 unit: "bpm",
@@ -150,7 +150,7 @@ struct MetricCard: View
                 isCompact: true
             )
             
-            MetricCard(
+            WatchMetricCard(
                 title: "Calories",
                 value: "285",
                 unit: "kcal",
@@ -162,7 +162,7 @@ struct MetricCard: View
         
         HStack(spacing: 6)
         {
-            MetricCard(
+            WatchMetricCard(
                 title: "Laps",
                 value: "15",
                 unit: "laps",
@@ -171,7 +171,7 @@ struct MetricCard: View
                 isCompact: true
             )
             
-            MetricCard(
+            WatchMetricCard(
                 title: "Pace",
                 value: "2:15",
                 unit: "/100m",

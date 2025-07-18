@@ -1,8 +1,8 @@
-// SwimMate/iOSViews/Components/Cards/SimpleMetricCard.swift
+// SwimMate/iOSViews/Components/Cards/MetricCard.swift
 
 import SwiftUI
 
-struct SimpleMetricCard: View
+struct MetricCard: View
 {
     let emoji: String
     let value: String
@@ -43,28 +43,28 @@ struct SimpleMetricCard: View
         GridItem(.flexible()),
         GridItem(.flexible())
     ], spacing: 12) {
-        SimpleMetricCard(
+        MetricCard(
             emoji: "⏱️",
             value: "2:15",
             label: "Average Pace",
             subtitle: "per 100m"
         )
         
-        SimpleMetricCard(
+        MetricCard(
             emoji: "📏",
             value: "25 m",
             label: "Pool Length",
             subtitle: "configured"
         )
         
-        SimpleMetricCard(
+        MetricCard(
             emoji: "🔄",
             value: "32",
             label: "Total Laps",
             subtitle: "completed"
         )
         
-        SimpleMetricCard(
+        MetricCard(
             emoji: "🎯",
             value: "28.5",
             label: "Avg SWOLF",

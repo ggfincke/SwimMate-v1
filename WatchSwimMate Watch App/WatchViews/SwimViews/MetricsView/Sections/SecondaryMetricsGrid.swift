@@ -21,7 +21,7 @@ struct SecondaryMetricsGrid: View
             // first row (laps & HR)
             HStack(spacing: gridSpacing)
             {
-                MetricCard(
+                WatchMetricCard(
                     title: "Laps",
                     value: "\(manager.laps)",
                     unit: "laps",
@@ -30,7 +30,7 @@ struct SecondaryMetricsGrid: View
                     isCompact: manager.isCompactDevice
                 )
                 
-                MetricCard(
+                WatchMetricCard(
                     title: "Heart Rate",
                     value: "\(Int(manager.heartRate))",
                     unit: "bpm",
@@ -43,7 +43,7 @@ struct SecondaryMetricsGrid: View
             // second row (calories & per 100 pace)
             HStack(spacing: gridSpacing)
             {
-                MetricCard(
+                WatchMetricCard(
                     title: "Calories",
                     value: "\(Int(manager.activeEnergy))",
                     unit: "kcal",
@@ -52,7 +52,7 @@ struct SecondaryMetricsGrid: View
                     isCompact: manager.isCompactDevice
                 )
                 
-                MetricCard(
+                WatchMetricCard(
                     title: "Pace",
                     value: currentPace,
                     unit: "/100\(manager.poolUnit == "meters" ? "m" : "yd")",

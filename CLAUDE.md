@@ -18,6 +18,11 @@ This is an Xcode project (`.xcodeproj`). Use Xcode's built-in build system:
 
 No separate package managers (CocoaPods/SPM packages) are used - this is a pure Xcode project.
 
+**Build Requirements:**
+- iOS 17.4+
+- watchOS 10.4+
+- Xcode with paired Apple Watch for full functionality
+
 ## Architecture Overview
 
 ### Core Data Models
@@ -28,8 +33,16 @@ Located in `SwimMate/Model/`:
 
 ### State Management
 - **Manager.swift**: Main iOS view model with HealthKit integration, user preferences, and workout data
+  - Uses `@Published` properties for SwiftUI binding
+  - Manages user preferences (theme, units, pool settings)
+  - Handles workout data persistence via JSON storage
 - **WatchManager.swift**: Watch-specific state management for real-time workout tracking
+  - Uses `@Observable` macro for SwiftUI state management
+  - Manages workout sessions, timers, and real-time metrics
+  - Handles device-specific UI (compact vs normal Apple Watch sizes)
 - **WatchConnector.swift**: Handles communication between iOS and watchOS apps
+  - Uses `WatchConnectivity` framework for iOS-Watch communication
+  - Sends swim sets from iOS to Watch with structured data format
 
 ### View Architecture
 **iOS Views** (`SwimMate/iOSViews/`):
@@ -75,3 +88,21 @@ Both apps use `@StateObject` and `@EnvironmentObject` for SwiftUI state manageme
 
 ### Health Permissions
 Both apps require HealthKit permissions for workout data. Permission handling is implemented in respective `HealthKitPermissionView` components.
+
+### Component Architecture
+**Watch Components** (`WatchSwimMate Watch App/WatchViews/Components/`):
+- **Responsive Design**: Most components support `isCompact: Bool` parameter for different Apple Watch sizes
+- **Consistent Patterns**: Spring animations, haptic feedback, and scale effects across all interactive elements
+- **Organized Structure**: Components grouped by functionality (Buttons/, Cards/, Display/, Input/, Navigation/, etc.)
+- **Self-Contained**: Components designed to be independent with minimal external dependencies
+
+### Data Persistence
+- **iOS**: Uses JSON-based local storage for user preferences and cached workout data
+- **Watch**: Primarily uses HealthKit for workout data, with temporary state in `WatchManager`
+- **Sync**: HealthKit serves as the central data store, with both apps reading/writing workout data
+
+### Watch-Specific Features
+- **Device Detection**: `WatchManager.isCompactDevice` determines UI layout based on screen size
+- **Goal System**: Support for distance, time, and calorie-based workout goals
+- **Real-time Updates**: Timer-based updates for workout metrics during active sessions
+- **Water Lock Integration**: Proper handling of Apple Watch water lock during swimming

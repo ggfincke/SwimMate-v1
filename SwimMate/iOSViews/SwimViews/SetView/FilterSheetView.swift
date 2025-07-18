@@ -29,15 +29,9 @@ struct FilterSheetView: View {
                     componentTypesSelector
                 }
                 
-                // Workout Structure Section
-                Section("Workout Structure") {
-                    warmupCooldownToggles
+                // Preferences Section
+                Section("Preferences") {
                     favoritesToggle
-                }
-                
-                // Quick Filters Section
-                Section("Quick Filters") {
-                    quickFilterButtons
                 }
             }
             .navigationTitle("Filter Sets")
@@ -47,6 +41,13 @@ struct FilterSheetView: View {
                     Button("Cancel") {
                         dismiss()
                     }
+                }
+                
+                ToolbarItem(placement: .principal) {
+                    Button("Reset") {
+                        tempFilters = Manager.SetFilters.defaultFilters
+                    }
+                    .foregroundColor(.red)
                 }
                 
                 ToolbarItem(placement: .navigationBarTrailing) {
@@ -68,7 +69,7 @@ struct FilterSheetView: View {
         HStack {
             Text("Stroke")
             Spacer()
-            Picker("Stroke", selection: Binding(
+            Picker("", selection: Binding(
                 get: { tempFilters.stroke ?? SwimStroke.freestyle },
                 set: { tempFilters.stroke = $0 == SwimStroke.freestyle ? nil : $0 }
             )) {
@@ -86,7 +87,7 @@ struct FilterSheetView: View {
         HStack {
             Text("Difficulty")
             Spacer()
-            Picker("Difficulty", selection: Binding(
+            Picker("", selection: Binding(
                 get: { tempFilters.difficulty ?? .beginner },
                 set: { tempFilters.difficulty = $0 == .beginner ? nil : $0 }
             )) {
@@ -104,7 +105,7 @@ struct FilterSheetView: View {
         HStack {
             Text("Unit")
             Spacer()
-            Picker("Unit", selection: Binding(
+            Picker("", selection: Binding(
                 get: { tempFilters.unit ?? .meters },
                 set: { tempFilters.unit = $0 == .meters ? nil : $0 }
             )) {
@@ -122,7 +123,7 @@ struct FilterSheetView: View {
         HStack {
             Text("Distance")
             Spacer()
-            Picker("Distance Range", selection: $tempFilters.distanceRange) {
+            Picker("", selection: $tempFilters.distanceRange) {
                 ForEach(Manager.DistanceRange.allCases, id: \.self) { range in
                     Text(range.rawValue).tag(range)
                 }
@@ -136,7 +137,7 @@ struct FilterSheetView: View {
         HStack {
             Text("Duration")
             Spacer()
-            Picker("Duration Range", selection: $tempFilters.durationRange) {
+            Picker("", selection: $tempFilters.durationRange) {
                 ForEach(Manager.DurationRange.allCases, id: \.self) { range in
                     Text(range.rawValue).tag(range)
                 }
@@ -155,7 +156,7 @@ struct FilterSheetView: View {
                 .font(.caption)
                 .foregroundColor(.secondary)
             
-            LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: 2), spacing: 8) {
+            VStack(spacing: 8) {
                 ForEach(SetComponent.ComponentType.allCases, id: \.self) { type in
                     Button(action: {
                         if tempFilters.componentTypes.contains(type) {
@@ -166,50 +167,22 @@ struct FilterSheetView: View {
                     }) {
                         HStack {
                             Image(systemName: tempFilters.componentTypes.contains(type) ? "checkmark.square.fill" : "square")
+                                .font(.system(size: 18))
                                 .foregroundColor(tempFilters.componentTypes.contains(type) ? .blue : .gray)
                             
                             Text(type.rawValue)
-                                .font(.caption)
+                                .font(.body)
                                 .foregroundColor(.primary)
                             
                             Spacer()
                         }
-                        .padding(.horizontal, 8)
-                        .padding(.vertical, 4)
+                        .padding(.horizontal, 16)
+                        .padding(.vertical, 12)
                         .background(tempFilters.componentTypes.contains(type) ? Color.blue.opacity(0.1) : Color(UIColor.systemGray6))
-                        .cornerRadius(6)
+                        .cornerRadius(10)
                     }
                     .buttonStyle(PlainButtonStyle())
                 }
-            }
-        }
-    }
-    
-    // MARK: - Warmup/Cooldown Toggles
-    private var warmupCooldownToggles: some View {
-        VStack(spacing: 12) {
-            HStack {
-                Text("Must have warmup")
-                Spacer()
-                Button(action: {
-                    tempFilters.hasWarmup = tempFilters.hasWarmup == true ? nil : true
-                }) {
-                    Image(systemName: tempFilters.hasWarmup == true ? "checkmark.square.fill" : "square")
-                        .foregroundColor(tempFilters.hasWarmup == true ? .blue : .gray)
-                }
-                .buttonStyle(PlainButtonStyle())
-            }
-            
-            HStack {
-                Text("Must have cooldown")
-                Spacer()
-                Button(action: {
-                    tempFilters.hasCooldown = tempFilters.hasCooldown == true ? nil : true
-                }) {
-                    Image(systemName: tempFilters.hasCooldown == true ? "checkmark.square.fill" : "square")
-                        .foregroundColor(tempFilters.hasCooldown == true ? .blue : .gray)
-                }
-                .buttonStyle(PlainButtonStyle())
             }
         }
     }
@@ -222,95 +195,6 @@ struct FilterSheetView: View {
             Toggle("", isOn: $tempFilters.showFavorites)
                 .labelsHidden()
         }
-    }
-    
-    // MARK: - Quick Filter Buttons
-    private var quickFilterButtons: some View {
-        VStack(spacing: 12) {
-            Text("Quick Presets")
-                .font(.headline)
-            
-            LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: 2), spacing: 8) {
-                quickFilterButton(
-                    title: "Beginner Friendly",
-                    description: "Easy sets with warmup/cooldown",
-                    action: {
-                        tempFilters.difficulty = .beginner
-                        tempFilters.hasWarmup = true
-                        tempFilters.hasCooldown = true
-                        tempFilters.distanceRange = .short
-                    }
-                )
-                
-                quickFilterButton(
-                    title: "Sprint Training",
-                    description: "High intensity, short distance",
-                    action: {
-                        tempFilters.difficulty = .advanced
-                        tempFilters.distanceRange = .short
-                        tempFilters.durationRange = .quick
-                    }
-                )
-                
-                quickFilterButton(
-                    title: "Endurance Builder",
-                    description: "Long distance, moderate pace",
-                    action: {
-                        tempFilters.distanceRange = .long
-                        tempFilters.durationRange = .long
-                        tempFilters.difficulty = .intermediate
-                    }
-                )
-                
-                quickFilterButton(
-                    title: "Technique Focus",
-                    description: "Sets with drills and technique work",
-                    action: {
-                        tempFilters.componentTypes.insert(.drill)
-                        tempFilters.difficulty = .intermediate
-                        tempFilters.distanceRange = .medium
-                    }
-                )
-            }
-            
-            // Reset button
-            Button(action: {
-                tempFilters = Manager.SetFilters.defaultFilters
-            }) {
-                HStack {
-                    Image(systemName: "arrow.counterclockwise")
-                    Text("Reset All Filters")
-                }
-                .frame(maxWidth: .infinity)
-                .padding(.vertical, 8)
-                .background(Color.red.opacity(0.1))
-                .foregroundColor(.red)
-                .cornerRadius(8)
-            }
-            .buttonStyle(PlainButtonStyle())
-        }
-    }
-    
-    // MARK: - Quick Filter Button Helper
-    private func quickFilterButton(title: String, description: String, action: @escaping () -> Void) -> some View {
-        Button(action: action) {
-            VStack(alignment: .leading, spacing: 4) {
-                Text(title)
-                    .font(.caption)
-                    .fontWeight(.semibold)
-                    .foregroundColor(.primary)
-                
-                Text(description)
-                    .font(.caption2)
-                    .foregroundColor(.secondary)
-                    .lineLimit(2)
-            }
-            .frame(maxWidth: .infinity, alignment: .leading)
-            .padding(8)
-            .background(Color(UIColor.systemGray6))
-            .cornerRadius(8)
-        }
-        .buttonStyle(PlainButtonStyle())
     }
 }
 

@@ -15,7 +15,7 @@ Interactive button components for user actions.
 ### 🃏 Cards/
 Card-based display components for presenting information.
 
-- **`MetricCard.swift`** - Displays workout metrics (heart rate, calories, laps, pace) with responsive sizing
+- **`WatchMetricCard.swift`** - Displays workout metrics (heart rate, calories, laps, pace) with responsive sizing
 - **`PerformanceCard.swift`** - Shows performance data with trend indicators and includes `PerformanceMetricsSection`
 
 ### 📊 Display/
@@ -77,7 +77,7 @@ struct MyWorkoutView: View {
     var body: some View {
         VStack {
             // Use components as needed
-            MetricCard(title: "Heart Rate", value: "142", unit: "bpm", color: .red, icon: "heart.fill", isCompact: false)
+            WatchMetricCard(title: "Heart Rate", value: "142", unit: "bpm", color: .red, icon: "heart.fill", isCompact: false)
             
             ActionButton(label: "Start", icon: "play.fill", tint: .green) {
                 // Action
