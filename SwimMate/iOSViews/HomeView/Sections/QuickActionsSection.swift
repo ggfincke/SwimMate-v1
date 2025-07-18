@@ -63,3 +63,7 @@ struct QuickActionsSection: View {
         }
     }
 }
+
+#Preview {
+    QuickActionsSection(selectedTab: .constant(0))
+}

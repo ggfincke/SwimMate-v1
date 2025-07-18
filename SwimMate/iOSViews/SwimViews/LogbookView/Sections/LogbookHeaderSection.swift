@@ -47,3 +47,8 @@ struct LogbookHeaderSection: View {
         .padding(.top, 20)
     }
 }
+
+#Preview {
+    LogbookHeaderSection(searchText: .constant(""), filteredWorkoutsCount: 5)
+        .environmentObject(Manager())
+}

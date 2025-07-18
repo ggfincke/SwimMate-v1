@@ -45,3 +45,8 @@ struct RecentActivitySection: View {
         return manager.swims.sorted(by: { $0.date > $1.date })
     }
 }
+
+#Preview {
+    RecentActivitySection(selectedTab: .constant(0))
+        .environmentObject(Manager())
+}

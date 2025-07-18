@@ -33,3 +33,9 @@ struct RecommendedSetsSection: View {
         }
     }
 }
+
+#Preview {
+    RecommendedSetsSection()
+        .environmentObject(Manager())
+        .environmentObject(WatchConnector())
+}

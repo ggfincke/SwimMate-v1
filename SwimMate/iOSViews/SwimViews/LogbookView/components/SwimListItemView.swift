@@ -126,3 +126,15 @@ struct SwimListItemView: View {
         return uniqueStrokes.joined(separator: ", ")
     }
 }
+
+#Preview {
+    SwimListItemView(swim: Swim(
+        id: UUID(),
+        startDate: Date(),
+        endDate: Date().addingTimeInterval(1800),
+        totalDistance: 1000,
+        totalEnergyBurned: 400,
+        poolLength: 50
+    ))
+    .environmentObject(Manager())
+}

@@ -95,14 +95,9 @@ extension Swim {
 }
 
 
-// Preview
-struct PaceGraphView_Previews: PreviewProvider {
-    static var previews: some View {
-        let manager = Manager()
-        // Setup your manager and provide sample data
-        PaceGraphView()
-            .environmentObject(manager)
-    }
+#Preview {
+    PaceGraphView()
+        .environmentObject(Manager())
 }
 
 

@@ -59,3 +59,8 @@ struct LogbookStatsSection: View {
         return String(format: "%.0f %@", average, manager.preferredUnit.rawValue)
     }
 }
+
+#Preview {
+    LogbookStatsSection(filteredWorkouts: [])
+        .environmentObject(Manager())
+}

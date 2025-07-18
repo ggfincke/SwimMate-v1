@@ -97,3 +97,8 @@ struct HomeHeroSection: View {
         return String(format: "%.0f", total)
     }
 }
+
+#Preview {
+    HomeHeroSection(showingSettings: .constant(false), currentTime: Date())
+        .environmentObject(Manager())
+}

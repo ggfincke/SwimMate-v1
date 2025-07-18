@@ -64,3 +64,8 @@ struct HealthKitPermissionView: View {
         }
     }
 }
+
+#Preview {
+    HealthKitPermissionView()
+        .environmentObject(Manager())
+}

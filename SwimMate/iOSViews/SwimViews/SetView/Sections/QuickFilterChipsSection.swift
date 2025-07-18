@@ -64,3 +64,8 @@ struct QuickFilterChipsSection: View {
         }
     }
 }
+
+#Preview {
+    QuickFilterChipsSection()
+        .environmentObject(Manager())
+}

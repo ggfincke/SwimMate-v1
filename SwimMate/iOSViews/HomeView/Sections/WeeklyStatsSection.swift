@@ -71,3 +71,8 @@ struct WeeklyStatsSection: View {
         else { return .down }
     }
 }
+
+#Preview {
+    WeeklyStatsSection()
+        .environmentObject(Manager())
+}

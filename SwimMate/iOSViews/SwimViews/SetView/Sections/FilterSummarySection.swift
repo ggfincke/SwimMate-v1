@@ -44,3 +44,8 @@ struct FilterSummarySection: View {
         }
     }
 }
+
+#Preview {
+    FilterSummarySection(hasActiveFilters: true)
+        .environmentObject(Manager())
+}

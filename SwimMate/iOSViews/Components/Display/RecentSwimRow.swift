@@ -41,3 +41,16 @@ struct RecentSwimRow: View {
         .padding(.vertical, 4)
     }
 }
+
+#Preview {
+    let start = Date()
+    return RecentSwimRow(swim: Swim(
+        id: UUID(),
+        startDate: start,
+        endDate: start.addingTimeInterval(1800),
+        totalDistance: 1000,
+        totalEnergyBurned: 400,
+        poolLength: 50
+    ))
+    .environmentObject(Manager())
+}

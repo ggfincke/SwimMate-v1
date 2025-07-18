@@ -65,17 +65,8 @@ struct LineGraphView: View
 }
 
 
-// Preview
-//struct LineGraphView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        let manager = Manager()
-//        // Add sample data to the manager for preview purposes
-//        (1...15).forEach { i in
-//            manager.swims.append(Swim(id: UUID(), date: Date().addingTimeInterval(-86400.0 * Double(i)), duration: 3000, totalDistance: Double(1000 + 50 * i), totalEnergyBurned: 400.0, poolLength: 50))
-//        }
-//
-//        LineGraphView()
-//            .environmentObject(manager)
-//    }
-//}
+#Preview {
+    LineGraphView()
+        .environmentObject(Manager())
+}
 

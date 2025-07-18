@@ -40,3 +40,9 @@ struct SetsGridSection: View {
         }
     }
 }
+
+#Preview {
+    SetsGridSection()
+        .environmentObject(Manager())
+        .environmentObject(WatchConnector())
+}

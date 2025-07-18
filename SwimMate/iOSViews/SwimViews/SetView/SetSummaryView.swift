@@ -16,4 +16,13 @@ struct SetSummaryView: View
     }
 }
 
-
+#Preview {
+    SetSummaryView(swimmySet: SwimSet(
+        id: UUID(),
+        title: "Sprint Training",
+        components: [],
+        measureUnit: .meters,
+        difficulty: .intermediate,
+        description: "High intensity sprint workout"
+    ))
+}

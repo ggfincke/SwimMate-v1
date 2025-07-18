@@ -24,3 +24,7 @@ struct SummaryMetricItem: View {
         .frame(maxWidth: .infinity)
     }
 }
+
+#Preview {
+    SummaryMetricItem(emoji: "🔥", value: "5", label: "Workouts")
+}

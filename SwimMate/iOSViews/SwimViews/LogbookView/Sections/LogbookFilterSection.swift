@@ -21,3 +21,7 @@ struct LogbookFilterSection: View {
         .padding(.vertical, 16)
     }
 }
+
+#Preview {
+    LogbookFilterSection(selectedFilter: .constant(.thirtyDays))
+}

@@ -72,3 +72,12 @@ struct LogbookWorkoutListSection: View {
         }
     }
 }
+
+#Preview {
+    LogbookWorkoutListSection(
+        displayedWorkouts: [],
+        selectedFilter: .thirtyDays,
+        searchText: ""
+    )
+    .environmentObject(Manager())
+}

@@ -48,3 +48,8 @@ struct RecentActivityCard: View {
         return Array(manager.swims.sorted(by: { $0.date > $1.date }).prefix(3))
     }
 }
+
+#Preview {
+    RecentActivityCard()
+        .environmentObject(Manager())
+}

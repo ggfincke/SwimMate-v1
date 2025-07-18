@@ -46,3 +46,8 @@ struct WeeklySummaryCard: View {
         return (totalWorkouts, totalMinutes, manager.formatDistance(totalDistance))
     }
 }
+
+#Preview {
+    WeeklySummaryCard()
+        .environmentObject(Manager())
+}

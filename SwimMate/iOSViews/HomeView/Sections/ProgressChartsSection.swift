@@ -16,3 +16,8 @@ struct ProgressChartsSection: View {
         }
     }
 }
+
+#Preview {
+    ProgressChartsSection()
+        .environmentObject(Manager())
+}

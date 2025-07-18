@@ -47,3 +47,11 @@ struct SetPageHeroSection: View {
         .padding(.top, 20)
     }
 }
+
+#Preview {
+    SetPageHeroSection(
+        showingSearch: .constant(false),
+        showingFilter: .constant(false),
+        hasActiveFilters: false
+    )
+}
