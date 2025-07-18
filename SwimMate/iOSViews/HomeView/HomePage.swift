@@ -29,19 +29,23 @@ struct HomePage: View {
                 ScrollView(showsIndicators: false) {
                     LazyVStack(spacing: 24) {
                         // Hero Header
-                        heroHeader
+                        HomeHeroSection(showingSettings: $showingSettings, currentTime: currentTime)
+                            .environmentObject(manager)
                         
                         // Quick Actions
-                        quickActionsSection
+                        QuickActionsSection(selectedTab: $selectedTab)
                         
                         // Stats Overview Cards
-                        statsOverviewSection
+                        WeeklyStatsSection()
+                            .environmentObject(manager)
                         
                         // Recent Activity
-                        recentActivitySection
+                        RecentActivitySection(selectedTab: $selectedTab)
+                            .environmentObject(manager)
                         
                         // Progress Charts
-                        progressChartsSection
+                        ProgressChartsSection()
+                            .environmentObject(manager)
                         
                         Spacer(minLength: 100)
                     }
@@ -60,312 +64,9 @@ struct HomePage: View {
             }
         }
     }
-    
-    // MARK: - Hero Header
-    private var heroHeader: some View {
-        VStack(spacing: 16) {
-            HStack {
-                VStack(alignment: .leading, spacing: 8) {
-                    Text(greetingMessage)
-                        .font(.system(size: 24, weight: .medium))
-                        .foregroundColor(.secondary)
-                    
-                    Text("Ready to swim?")
-                        .font(.system(size: 32, weight: .bold, design: .rounded))
-                        .foregroundColor(.primary)
-                }
-                
-                Spacer()
-                
-                // Profile/Settings Button
-                Button(action: { showingSettings = true }) {
-                    Image(systemName: "person.crop.circle.fill")
-                        .font(.system(size: 32, weight: .medium))
-                        .foregroundColor(.blue)
-                        .background(
-                            Circle()
-                                .fill(Color.white)
-                                .shadow(color: .black.opacity(0.1), radius: 8, x: 0, y: 2)
-                        )
-                }
-            }
-            
-            // Today's stats preview
-            if !todaysSwims.isEmpty {
-                HStack(spacing: 16) {
-                    VStack(spacing: 4) {
-                        Text("Today")
-                            .font(.system(size: 12, weight: .medium))
-                            .foregroundColor(.secondary)
-                        Text("\(todaysSwims.count)")
-                            .font(.system(size: 18, weight: .bold))
-                            .foregroundColor(.blue)
-                        Text("workouts")
-                            .font(.system(size: 10, weight: .medium))
-                            .foregroundColor(.secondary)
-                    }
-                    
-                    Divider()
-                        .frame(height: 40)
-                    
-                    VStack(spacing: 4) {
-                        Text("Distance")
-                            .font(.system(size: 12, weight: .medium))
-                            .foregroundColor(.secondary)
-                        Text(todaysTotalDistance)
-                            .font(.system(size: 18, weight: .bold))
-                            .foregroundColor(.green)
-                        Text(manager.preferredUnit.rawValue)
-                            .font(.system(size: 10, weight: .medium))
-                            .foregroundColor(.secondary)
-                    }
-                    
-                    Spacer()
-                }
-                .padding()
-                .background(Color.white.opacity(0.7))
-                .cornerRadius(16)
-                .shadow(color: .black.opacity(0.05), radius: 8, x: 0, y: 2)
-            }
-        }
-        .padding(.top, 20)
-    }
-    
-    private var greetingMessage: String {
-        let hour = Calendar.current.component(.hour, from: currentTime)
-        switch hour {
-        case 5..<12: return "Good morning"
-        case 12..<17: return "Good afternoon"
-        case 17..<22: return "Good evening"
-        default: return "Good night"
-        }
-    }
-    
-    private var todaysSwims: [Swim] {
-        let today = Calendar.current.startOfDay(for: Date())
-        let tomorrow = Calendar.current.date(byAdding: .day, value: 1, to: today)!
-        return manager.swims.filter { $0.date >= today && $0.date < tomorrow }
-    }
-    
-    private var todaysTotalDistance: String {
-        let total = todaysSwims.compactMap { $0.totalDistance }.reduce(0, +)
-        return String(format: "%.0f", total)
-    }
-    
-    // MARK: - Quick Actions Section
-    private var quickActionsSection: some View {
-        VStack(alignment: .leading, spacing: 16) {
-            Text("Quick Actions")
-                .font(.system(size: 20, weight: .bold, design: .rounded))
-                .foregroundColor(.primary)
-            
-            HStack(spacing: 12) {
-                Button(action: { selectedTab = 1 }) {
-                    VStack(spacing: 12) {
-                        Image(systemName: "list.bullet.circle.fill")
-                            .font(.system(size: 28, weight: .medium))
-                            .foregroundColor(.blue)
-                        
-                        VStack(spacing: 4) {
-                            Text("Browse Sets")
-                                .font(.system(size: 16, weight: .semibold))
-                                .foregroundColor(.primary)
-                            
-                            Text("Find workouts")
-                                .font(.system(size: 12, weight: .medium))
-                                .foregroundColor(.secondary)
-                        }
-                    }
-                    .frame(maxWidth: .infinity)
-                    .padding()
-                    .background(Color(UIColor.systemBackground))
-                    .cornerRadius(16)
-                    .shadow(color: .black.opacity(0.06), radius: 8, x: 0, y: 2)
-                }
-                .buttonStyle(PlainButtonStyle())
-                
-                Button(action: { selectedTab = 2 }) {
-                    VStack(spacing: 12) {
-                        Image(systemName: "clock.circle.fill")
-                            .font(.system(size: 28, weight: .medium))
-                            .foregroundColor(.green)
-                        
-                        VStack(spacing: 4) {
-                            Text("Swim History")
-                                .font(.system(size: 16, weight: .semibold))
-                                .foregroundColor(.primary)
-                            
-                            Text("View logbook")
-                                .font(.system(size: 12, weight: .medium))
-                                .foregroundColor(.secondary)
-                        }
-                    }
-                    .frame(maxWidth: .infinity)
-                    .padding()
-                    .background(Color(UIColor.systemBackground))
-                    .cornerRadius(16)
-                    .shadow(color: .black.opacity(0.06), radius: 8, x: 0, y: 2)
-                }
-                .buttonStyle(PlainButtonStyle())
-            }
-        }
-    }
-    
-    // MARK: - Stats Overview Section
-    private var statsOverviewSection: some View {
-        VStack(alignment: .leading, spacing: 16) {
-            Text("This Week")
-                .font(.system(size: 20, weight: .bold, design: .rounded))
-                .foregroundColor(.primary)
-            
-            HStack(spacing: 12) {
-                HomeStatCard(
-                    title: "Workouts",
-                    value: "\(weeklyStats.workoutCount)",
-                    icon: "figure.pool.swim",
-                    color: .blue,
-                    trend: weeklyWorkoutTrend
-                )
-                
-                HomeStatCard(
-                    title: "Distance",
-                    value: weeklyStats.formattedDistance,
-                    icon: "ruler",
-                    color: .green,
-                    trend: weeklyDistanceTrend
-                )
-                
-                HomeStatCard(
-                    title: "Time",
-                    value: "\(weeklyStats.totalMinutes)m",
-                    icon: "clock",
-                    color: .orange,
-                    trend: weeklyTimeTrend
-                )
-            }
-        }
-    }
-    
-    private var weeklyStats: (workoutCount: Int, totalMinutes: Int, formattedDistance: String) {
-        let lastWeekDate = Calendar.current.date(byAdding: .weekOfYear, value: -1, to: Date())!
-        let weeklySwims = manager.swims.filter { $0.date >= lastWeekDate }
-        let totalWorkouts = weeklySwims.count
-        let totalMinutes = weeklySwims.reduce(0) { $0 + Int($1.duration / 60) }
-        let totalDistance = weeklySwims.compactMap { $0.totalDistance }.reduce(0, +)
-        
-        return (totalWorkouts, totalMinutes, String(format: "%.0f", totalDistance))
-    }
-    
-    private var weeklyWorkoutTrend: StatTrend {
-        // Simple trend calculation - in a real app you'd compare to previous week
-        let count = weeklyStats.workoutCount
-        if count >= 4 { return .up }
-        else if count >= 2 { return .neutral }
-        else { return .down }
-    }
-    
-    private var weeklyDistanceTrend: StatTrend {
-        let distance = weeklyStats.formattedDistance
-        if Double(distance) ?? 0 >= 2000 { return .up }
-        else if Double(distance) ?? 0 >= 1000 { return .neutral }
-        else { return .down }
-    }
-    
-    private var weeklyTimeTrend: StatTrend {
-        let minutes = weeklyStats.totalMinutes
-        if minutes >= 120 { return .up }
-        else if minutes >= 60 { return .neutral }
-        else { return .down }
-    }
-    
-    // MARK: - Recent Activity Section
-    private var recentActivitySection: some View {
-        VStack(alignment: .leading, spacing: 16) {
-            HStack {
-                Text("Recent Swims")
-                    .font(.system(size: 20, weight: .bold, design: .rounded))
-                    .foregroundColor(.primary)
-                
-                Spacer()
-                
-                NavigationLink(destination: LogbookView().environmentObject(manager)) {
-                    Text("View All")
-                        .font(.system(size: 14, weight: .semibold))
-                        .foregroundColor(.blue)
-                        .padding(.horizontal, 12)
-                        .padding(.vertical, 6)
-                        .background(Color.blue.opacity(0.1))
-                        .cornerRadius(12)
-                }
-            }
-            
-            if recentSwims.isEmpty {
-                EmptyRecentActivityView()
-            } else {
-                VStack(spacing: 12) {
-                    ForEach(recentSwims.prefix(3)) { swim in
-                        NavigationLink(destination: WorkoutView(swim: swim)) {
-                            BeautifulSwimRow(swim: swim)
-                        }
-                        .buttonStyle(PlainButtonStyle())
-                    }
-                }
-            }
-        }
-    }
-    
-    private var recentSwims: [Swim] {
-        return manager.swims.sorted(by: { $0.date > $1.date })
-    }
-    
-    // MARK: - Progress Charts Section
-    private var progressChartsSection: some View {
-        VStack(alignment: .leading, spacing: 16) {
-            Text("Progress")
-                .font(.system(size: 20, weight: .bold, design: .rounded))
-                .foregroundColor(.primary)
-            
-            BeautifulDistanceChart()
-                .environmentObject(manager)
-        }
-    }
 }
 
 // MARK: - Supporting Views
-
-struct QuickActionCard: View {
-    let title: String
-    let subtitle: String
-    let icon: String
-    let color: Color
-    let destination: AnyView
-    
-    var body: some View {
-        NavigationLink(destination: destination) {
-            VStack(spacing: 12) {
-                Image(systemName: icon)
-                    .font(.system(size: 28, weight: .medium))
-                    .foregroundColor(color)
-                
-                VStack(spacing: 4) {
-                    Text(title)
-                        .font(.system(size: 16, weight: .semibold))
-                        .foregroundColor(.primary)
-                    
-                    Text(subtitle)
-                        .font(.system(size: 12, weight: .medium))
-                        .foregroundColor(.secondary)
-                }
-            }
-            .frame(maxWidth: .infinity)
-            .padding()
-            .background(Color(UIColor.systemBackground))
-            .cornerRadius(16)
-            .shadow(color: .black.opacity(0.06), radius: 8, x: 0, y: 2)
-        }
-        .buttonStyle(PlainButtonStyle())
-    }
-}
 
 enum StatTrend {
     case up, down, neutral
@@ -429,13 +130,6 @@ struct HomeStatCard: View {
 struct BeautifulSwimRow: View {
     let swim: Swim
     @EnvironmentObject var manager: Manager
-    
-    private var dateFormatter: DateFormatter {
-        let formatter = DateFormatter()
-        formatter.dateStyle = .medium
-        formatter.timeStyle = .short
-        return formatter
-    }
     
     var body: some View {
         HStack(spacing: 16) {

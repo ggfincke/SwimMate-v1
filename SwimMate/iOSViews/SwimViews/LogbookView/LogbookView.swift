@@ -40,141 +40,29 @@ struct LogbookView: View {
                 
                 VStack(spacing: 0) {
                     // Header Section
-                    headerSection
+                    LogbookHeaderSection(searchText: $searchText, filteredWorkoutsCount: filteredWorkouts.count)
+                        .environmentObject(manager)
                     
                     // Filter Section
-                    filterSection
+                    LogbookFilterSection(selectedFilter: $selectedFilter)
                     
                     // Stats Summary
                     if !filteredWorkouts.isEmpty {
-                        statsSummarySection
+                        LogbookStatsSection(filteredWorkouts: filteredWorkouts)
+                            .environmentObject(manager)
                     }
                     
                     // Workout List
-                    workoutListSection
+                    LogbookWorkoutListSection(
+                        displayedWorkouts: displayedWorkouts,
+                        selectedFilter: selectedFilter,
+                        searchText: searchText
+                    )
+                    .environmentObject(manager)
                 }
             }
             .navigationTitle("")
             .navigationBarHidden(true)
-        }
-    }
-    
-    // MARK: - Header Section
-    private var headerSection: some View {
-        VStack(spacing: 16) {
-            HStack {
-                VStack(alignment: .leading, spacing: 4) {
-                    Text("Swim Logbook")
-                        .font(.system(size: 32, weight: .bold, design: .rounded))
-                        .foregroundColor(.primary)
-                    
-                    Text("\(filteredWorkouts.count) swim\(filteredWorkouts.count != 1 ? "s" : "") recorded")
-                        .font(.system(size: 16, weight: .medium))
-                        .foregroundColor(.secondary)
-                }
-                
-                Spacer()
-            }
-            
-            // Search Bar
-            HStack {
-                Image(systemName: "magnifyingglass")
-                    .foregroundColor(.secondary)
-                
-                TextField("Search workouts...", text: $searchText)
-                    .textFieldStyle(PlainTextFieldStyle())
-                
-                if !searchText.isEmpty {
-                    Button(action: { searchText = "" }) {
-                        Image(systemName: "xmark.circle.fill")
-                            .foregroundColor(.secondary)
-                    }
-                }
-            }
-            .padding()
-            .background(Color(UIColor.systemBackground))
-            .cornerRadius(12)
-            .shadow(color: .black.opacity(0.05), radius: 4, x: 0, y: 2)
-        }
-        .padding(.horizontal)
-        .padding(.top, 20)
-    }
-    
-    // MARK: - Filter Section
-    private var filterSection: some View {
-        ScrollView(.horizontal, showsIndicators: false) {
-            HStack(spacing: 12) {
-                ForEach(TimeFilter.allCases) { filter in
-                    TimeFilterChip(
-                        filter: filter,
-                        isSelected: selectedFilter == filter,
-                        action: { selectedFilter = filter }
-                    )
-                }
-            }
-            .padding(.horizontal)
-        }
-        .padding(.vertical, 16)
-    }
-    
-    // MARK: - Stats Summary Section
-    private var statsSummarySection: some View {
-        HStack(spacing: 12) {
-            LogbookStatCard(
-                title: "Total Distance",
-                value: formatTotalDistance(),
-                icon: "ruler",
-                color: .blue
-            )
-            
-            LogbookStatCard(
-                title: "Total Time",
-                value: formatTotalTime(),
-                icon: "clock",
-                color: .green
-            )
-            
-            LogbookStatCard(
-                title: "Avg. Distance",
-                value: formatAverageDistance(),
-                icon: "chart.bar",
-                color: .orange
-            )
-        }
-        .padding(.horizontal)
-        .padding(.bottom, 16)
-    }
-    
-    // MARK: - Workout List Section
-    private var workoutListSection: some View {
-        if displayedWorkouts.isEmpty {
-            if searchText.isEmpty {
-                return AnyView(EmptyLogbookView(selectedFilter: selectedFilter))
-            } else {
-                return AnyView(SearchEmptyView())
-            }
-        } else {
-            return AnyView(
-                ScrollView {
-                    LazyVStack(spacing: 12) {
-                        ForEach(groupedWorkouts, id: \.key) { group in
-                            Section {
-                                ForEach(group.value) { swim in
-                                    NavigationLink(destination: WorkoutView(swim: swim)) {
-                                        LogbookSwimCard(swim: swim)
-                                            .environmentObject(manager)
-                                    }
-                                    .buttonStyle(PlainButtonStyle())
-                                }
-                            } header: {
-                                SectionHeaderView(title: group.key)
-                            }
-                        }
-                        Spacer(minLength: 100)
-                    }
-                    .padding(.horizontal)
-                }
-            )
         }
     }
     
@@ -196,64 +84,6 @@ struct LogbookView: View {
         }
         
         return workouts
-    }
-    
-    private var groupedWorkouts: [(key: String, value: [Swim])] {
-        let grouped = Dictionary(grouping: displayedWorkouts) { swim in
-            formatSectionHeader(for: swim.date)
-        }
-        
-        return grouped.sorted { first, second in
-            // Sort sections by most recent first
-            let formatter = DateFormatter()
-            formatter.dateFormat = "MMMM yyyy"
-            
-            if let firstDate = formatter.date(from: first.key),
-               let secondDate = formatter.date(from: second.key) {
-                return firstDate > secondDate
-            }
-            return first.key > second.key
-        }
-    }
-    
-    private func formatSectionHeader(for date: Date) -> String {
-        let calendar = Calendar.current
-        
-        if calendar.isDateInToday(date) {
-            return "Today"
-        } else if calendar.isDateInYesterday(date) {
-            return "Yesterday"
-        } else if calendar.isDate(date, equalTo: Date(), toGranularity: .weekOfYear) {
-            return "This Week"
-        } else {
-            return date.formatted(.dateTime.month(.wide).year())
-        }
-    }
-    
-    // MARK: - Stat Calculations
-    private func formatTotalDistance() -> String {
-        let total = filteredWorkouts.compactMap { $0.totalDistance }.reduce(0, +)
-        return String(format: "%.0f %@", total, manager.preferredUnit.rawValue)
-    }
-    
-    private func formatTotalTime() -> String {
-        let totalMinutes = filteredWorkouts.reduce(0) { $0 + Int($1.duration / 60) }
-        let hours = totalMinutes / 60
-        let minutes = totalMinutes % 60
-        
-        if hours > 0 {
-            return "\(hours)h \(minutes)m"
-        } else {
-            return "\(minutes)m"
-        }
-    }
-    
-    private func formatAverageDistance() -> String {
-        guard !filteredWorkouts.isEmpty else { return "0 \(manager.preferredUnit.rawValue)" }
-        
-        let total = filteredWorkouts.compactMap { $0.totalDistance }.reduce(0, +)
-        let average = total / Double(filteredWorkouts.count)
-        return String(format: "%.0f %@", average, manager.preferredUnit.rawValue)
     }
     
     // MARK: - Helper Functions
@@ -508,9 +338,7 @@ struct SearchEmptyView: View {
     }
 }
 
-
 #Preview {
     LogbookView()
         .environmentObject(Manager())
 }
-

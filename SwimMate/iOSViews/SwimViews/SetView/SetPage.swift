@@ -9,40 +9,6 @@ struct SetPage: View {
     @State private var showingFilter = false
     @State private var showingSearch = false
     
-    private let columns = Array(repeating: GridItem(.flexible(), spacing: 16), count: 2)
-    
-    // Quick filter presets
-    private let quickFilters: [(String, String, () -> Manager.SetFilters)] = [
-        ("All", "circle.grid.2x2", { Manager.SetFilters.defaultFilters }),
-        ("Beginner", "person.fill", { 
-            var filters = Manager.SetFilters.defaultFilters
-            filters.difficulty = .beginner
-            return filters
-        }),
-        ("Sprint", "bolt.fill", { 
-            var filters = Manager.SetFilters.defaultFilters
-            filters.distanceRange = .short
-            filters.durationRange = .quick
-            return filters
-        }),
-        ("Endurance", "figure.walk", { 
-            var filters = Manager.SetFilters.defaultFilters
-            filters.distanceRange = .long
-            filters.durationRange = .long
-            return filters
-        }),
-        ("Technique", "gear", { 
-            var filters = Manager.SetFilters.defaultFilters
-            filters.componentTypes = [.drill]
-            return filters
-        }),
-        ("Favorites", "heart.fill", { 
-            var filters = Manager.SetFilters.defaultFilters
-            filters.showFavorites = true
-            return filters
-        })
-    ]
-    
     var body: some View {
         NavigationView {
             ZStack {
@@ -57,21 +23,31 @@ struct SetPage: View {
                 ScrollView {
                     LazyVStack(spacing: 24) {
                         // Hero Header
-                        heroHeader
+                        SetPageHeroSection(
+                            showingSearch: $showingSearch,
+                            showingFilter: $showingFilter,
+                            hasActiveFilters: hasActiveFilters
+                        )
                         
                         // Quick Filter Chips
-                        quickFilterChips
+                        QuickFilterChipsSection()
+                            .environmentObject(manager)
                         
                         // Recommended Sets Section
                         if !manager.recommendedSets.isEmpty {
-                            recommendedSetsSection
+                            RecommendedSetsSection()
+                                .environmentObject(manager)
+                                .environmentObject(watchOSManager)
                         }
                         
                         // Current Filter Summary
-                        filterSummaryCard
+                        FilterSummarySection(hasActiveFilters: hasActiveFilters)
+                            .environmentObject(manager)
                         
                         // Main Sets Grid
-                        setsGridSection
+                        SetsGridSection()
+                            .environmentObject(manager)
+                            .environmentObject(watchOSManager)
                         
                     }
                     .padding(.horizontal)
@@ -91,177 +67,9 @@ struct SetPage: View {
         }
     }
     
-    // MARK: - Hero Header
-    private var heroHeader: some View {
-        VStack(spacing: 16) {
-            HStack {
-                VStack(alignment: .leading, spacing: 4) {
-                    Text("Swim Sets")
-                        .font(.system(size: 32, weight: .bold, design: .rounded))
-                        .foregroundColor(.primary)
-                    
-                    Text("Choose your workout")
-                        .font(.system(size: 16, weight: .medium))
-                        .foregroundColor(.secondary)
-                }
-                
-                Spacer()
-                
-                // Search and Filter buttons
-                HStack(spacing: 12) {
-                    Button(action: { showingSearch = true }) {
-                        Image(systemName: "magnifyingglass")
-                            .font(.system(size: 18, weight: .medium))
-                            .foregroundColor(.white)
-                            .frame(width: 44, height: 44)
-                            .background(Color.blue)
-                            .clipShape(Circle())
-                    }
-                    
-                    Button(action: { showingFilter = true }) {
-                        Image(systemName: "slider.horizontal.3")
-                            .font(.system(size: 18, weight: .medium))
-                            .foregroundColor(.white)
-                            .frame(width: 44, height: 44)
-                            .background(hasActiveFilters ? Color.orange : Color.gray)
-                            .clipShape(Circle())
-                    }
-                }
-            }
-        }
-        .padding(.top, 20)
-    }
-    
+    // MARK: - Helper Properties
     private var hasActiveFilters: Bool {
         manager.activeFilters != Manager.SetFilters.defaultFilters
-    }
-    
-    // MARK: - Quick Filter Chips
-    private var quickFilterChips: some View {
-        ScrollView(.horizontal, showsIndicators: false) {
-            HStack(spacing: 12) {
-                ForEach(Array(quickFilters.enumerated()), id: \.offset) { index, filter in
-                    QuickFilterChip(
-                        title: filter.0,
-                        icon: filter.1,
-                        isSelected: isQuickFilterSelected(index),
-                        action: { applyQuickFilter(filter.2()) }
-                    )
-                }
-            }
-            .padding(.horizontal)
-        }
-    }
-    
-    private func isQuickFilterSelected(_ index: Int) -> Bool {
-        let filterToCheck = quickFilters[index].2()
-        return manager.activeFilters == filterToCheck
-    }
-    
-    private func applyQuickFilter(_ filters: Manager.SetFilters) {
-        withAnimation(.easeInOut(duration: 0.3)) {
-            manager.activeFilters = filters
-        }
-    }
-    
-    // MARK: - Recommended Sets Section
-    private var recommendedSetsSection: some View {
-        VStack(alignment: .leading, spacing: 16) {
-            HStack {
-                Text("Recommended for You")
-                    .font(.system(size: 24, weight: .bold, design: .rounded))
-                Spacer()
-            }
-            
-            ScrollView(.horizontal, showsIndicators: false) {
-                HStack(spacing: 16) {
-                    ForEach(manager.recommendedSets) { set in
-                        NavigationLink(destination: SetDetailView(swimSet: set).environmentObject(watchOSManager)) {
-                            RecommendedSetCard(
-                                swimSet: set,
-                                isFavorite: manager.isSetFavorite(setId: set.id),
-                                toggleFavorite: { manager.toggleFavorite(setId: set.id) }
-                            )
-                            .frame(width: 280)
-                        }
-                        .buttonStyle(PlainButtonStyle())
-                    }
-                }
-                .padding(.horizontal)
-            }
-        }
-    }
-    
-    // MARK: - Filter Summary Card
-    @ViewBuilder private var filterSummaryCard: some View {
-        if hasActiveFilters {
-            HStack {
-                VStack(alignment: .leading, spacing: 4) {
-                    Text("Active Filters")
-                        .font(.system(size: 14, weight: .semibold))
-                        .foregroundColor(.secondary)
-                    
-                    Text(manager.filterSummary)
-                        .font(.system(size: 16, weight: .medium))
-                        .foregroundColor(.primary)
-                }
-                
-                Spacer()
-                
-                Button(action: {
-                    withAnimation(.easeInOut(duration: 0.3)) {
-                        manager.clearAllFilters()
-                    }
-                }) {
-                    Text("Clear")
-                        .font(.system(size: 14, weight: .semibold))
-                        .foregroundColor(.red)
-                        .padding(.horizontal, 16)
-                        .padding(.vertical, 8)
-                        .background(Color.red.opacity(0.1))
-                        .cornerRadius(16)
-                }
-            }
-            .padding()
-            .background(Color(UIColor.secondarySystemBackground))
-            .cornerRadius(16)
-            .shadow(color: .black.opacity(0.05), radius: 8, x: 0, y: 2)
-        } else {
-            EmptyView()
-        }
-    }
-    
-    // MARK: - Sets Grid Section
-    private var setsGridSection: some View {
-        VStack(alignment: .leading, spacing: 16) {
-            HStack {
-                Text("All Sets")
-                    .font(.system(size: 24, weight: .bold, design: .rounded))
-                
-                Spacer()
-                
-                Text("\(manager.filteredSets.count) sets")
-                    .font(.system(size: 16, weight: .medium))
-                    .foregroundColor(.secondary)
-            }
-            
-            if manager.filteredSets.isEmpty {
-                EmptyStateView()
-            } else {
-                LazyVGrid(columns: columns, spacing: 16) {
-                    ForEach(manager.filteredSets) { set in
-                        NavigationLink(destination: SetDetailView(swimSet: set).environmentObject(watchOSManager)) {
-                            ModernSetCard(
-                                swimSet: set,
-                                isFavorite: manager.isSetFavorite(setId: set.id),
-                                toggleFavorite: { manager.toggleFavorite(setId: set.id) }
-                            )
-                        }
-                        .buttonStyle(PlainButtonStyle())
-                    }
-                }
-            }
-        }
     }
 
 }
@@ -551,4 +359,3 @@ struct EmptyStateView: View {
         .environmentObject(Manager())
         .environmentObject(WatchConnector())
 }
-
