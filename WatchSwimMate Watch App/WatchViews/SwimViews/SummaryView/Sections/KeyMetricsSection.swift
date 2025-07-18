@@ -42,7 +42,7 @@ struct KeyMetricsSection: View
             ], spacing: gridSpacing)
             {
                 // duration
-                MetricCard(
+                WatchMetricCard(
                     title: "Total Time",
                     value: durationFormatter.string(from: workoutDuration) ?? "40:00",
                     unit: "",
@@ -52,7 +52,7 @@ struct KeyMetricsSection: View
                 )
                 
                 // distance
-                MetricCard(
+                WatchMetricCard(
                     title: "Distance",
                     value: formatDistance(),
                     unit: manager.poolUnit == "meters" ? "m" : "yd",
@@ -62,7 +62,7 @@ struct KeyMetricsSection: View
                 )
                 
                 // energy
-                MetricCard(
+                WatchMetricCard(
                     title: "Calories",
                     value: "\(Int(totalCalories))",
                     unit: "kcal",
@@ -72,7 +72,7 @@ struct KeyMetricsSection: View
                 )
                 
                 // heart rate
-                MetricCard(
+                WatchMetricCard(
                     title: "Avg HR",
                     value: "\(Int(averageHeartRate))",
                     unit: "bpm",

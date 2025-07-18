@@ -12,7 +12,7 @@ struct WeeklyStatsSection: View {
                 .foregroundColor(.primary)
             
             HStack(spacing: 12) {
-                HomeStatCard(
+                StatCard(
                     title: "Workouts",
                     value: "\(weeklyStats.workoutCount)",
                     icon: "figure.pool.swim",
@@ -20,7 +20,7 @@ struct WeeklyStatsSection: View {
                     trend: weeklyWorkoutTrend
                 )
                 
-                HomeStatCard(
+                StatCard(
                     title: "Distance",
                     value: weeklyStats.formattedDistance,
                     icon: "ruler",
@@ -28,7 +28,7 @@ struct WeeklyStatsSection: View {
                     trend: weeklyDistanceTrend
                 )
                 
-                HomeStatCard(
+                StatCard(
                     title: "Time",
                     value: "\(weeklyStats.totalMinutes)m",
                     icon: "clock",

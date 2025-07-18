@@ -11,7 +11,7 @@ struct ProgressChartsSection: View {
                 .font(.system(size: 20, weight: .bold, design: .rounded))
                 .foregroundColor(.primary)
             
-            BeautifulDistanceChart()
+            DistanceChartCard()
                 .environmentObject(manager)
         }
     }

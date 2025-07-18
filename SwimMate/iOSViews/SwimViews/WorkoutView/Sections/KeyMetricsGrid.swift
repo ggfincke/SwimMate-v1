@@ -29,28 +29,28 @@ struct KeyMetricsGrid: View
                 GridItem(.flexible())
             ], spacing: 12)
             {
-                SimpleMetricCard(
+                MetricCard(
                     emoji: "⏱️",
                     value: calculateAveragePace(),
                     label: "Average Pace",
                     subtitle: "per 100m"
                 )
                 
-                SimpleMetricCard(
+                MetricCard(
                     emoji: "📏",
                     value: formatPoolLength(),
                     label: "Pool Length",
                     subtitle: "configured"
                 )
                 
-                SimpleMetricCard(
+                MetricCard(
                     emoji: "🔄",
                     value: "\(swim.laps.count)",
                     label: "Total Laps",
                     subtitle: "completed"
                 )
                 
-                SimpleMetricCard(
+                MetricCard(
                     emoji: "🎯",
                     value: String(format: "%.1f", averageSwolfScore()),
                     label: "Avg SWOLF",

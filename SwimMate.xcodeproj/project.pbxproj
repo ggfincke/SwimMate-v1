@@ -29,117 +29,119 @@
 		A02F8F5C2E296011006CC3E5 /* Lap.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02F8F462E296011006CC3E5 /* Lap.swift */; };
 		A02F8F602E299F39006CC3E5 /* Manager+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02F8F5F2E299F35006CC3E5 /* Manager+Convenience.swift */; };
 		A02F8F642E299FE0006CC3E5 /* Manager+SetFiltering.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02F8F632E299FDD006CC3E5 /* Manager+SetFiltering.swift */; };
-		A048B8A22DE9253F00084546 /* MetricsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A048B8882DE9253F00084546 /* MetricsView.swift */; };
-		A048B8A32DE9253F00084546 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A048B8902DE9253F00084546 /* LoadingView.swift */; };
-		A048B8A42DE9253F00084546 /* GoalBadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A048B8762DE9253F00084546 /* GoalBadgeView.swift */; };
-		A048B8A52DE9253F00084546 /* StepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A048B8632DE9253F00084546 /* StepView.swift */; };
-		A048B8A62DE9253F00084546 /* PerformanceInsightsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = A048B8912DE9253F00084546 /* PerformanceInsightsSection.swift */; };
-		A048B8A72DE9253F00084546 /* PerformanceCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = A048B85A2DE9253F00084546 /* PerformanceCard.swift */; };
-		A048B8A82DE9253F00084546 /* GoalSwimView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A048B87A2DE9253F00084546 /* GoalSwimView.swift */; };
-		A048B8A92DE9253F00084546 /* SummaryHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A048B8932DE9253F00084546 /* SummaryHeaderView.swift */; };
-		A048B8AA2DE9253F00084546 /* CalorieSetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A048B86F2DE9253F00084546 /* CalorieSetupView.swift */; };
-		A048B8AB2DE9253F00084546 /* ElapsedTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A048B85C2DE9253F00084546 /* ElapsedTimeView.swift */; };
-		A048B8AC2DE9253F00084546 /* CompactNavButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A048B8532DE9253F00084546 /* CompactNavButton.swift */; };
-		A048B8AD2DE9253F00084546 /* InsightRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = A048B85D2DE9253F00084546 /* InsightRow.swift */; };
-		A048B8AE2DE9253F00084546 /* SwimmingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A048B8992DE9253F00084546 /* SwimmingView.swift */; };
-		A048B8AF2DE9253F00084546 /* MetricCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = A048B8592DE9253F00084546 /* MetricCard.swift */; };
-		A048B8B02DE9253F00084546 /* ActionButtonsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = A048B8742DE9253F00084546 /* ActionButtonsSection.swift */; };
-		A048B8B12DE9253F00084546 /* GoalProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A048B8832DE9253F00084546 /* GoalProgressView.swift */; };
-		A048B8B22DE9253F00084546 /* WatchRootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A048B89F2DE9253F00084546 /* WatchRootView.swift */; };
-		A048B8B32DE9253F00084546 /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A048B8682DE9253F00084546 /* ProgressBar.swift */; };
-		A048B8B42DE9253F00084546 /* CurrentGoalsDisplaySection.swift in Sources */ = {isa = PBXBuildFile; fileRef = A048B8752DE9253F00084546 /* CurrentGoalsDisplaySection.swift */; };
-		A048B8B52DE9253F00084546 /* PresetButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A048B8562DE9253F00084546 /* PresetButton.swift */; };
-		A048B8B62DE9253F00084546 /* KeyMetricsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = A048B88F2DE9253F00084546 /* KeyMetricsSection.swift */; };
-		A048B8B72DE9253F00084546 /* GoalSpacingConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A048B8792DE9253F00084546 /* GoalSpacingConstants.swift */; };
-		A048B8B82DE9253F00084546 /* GoalProgressList.swift in Sources */ = {isa = PBXBuildFile; fileRef = A048B8812DE9253F00084546 /* GoalProgressList.swift */; };
-		A048B8B92DE9253F00084546 /* GoalSetupButtonsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = A048B8772DE9253F00084546 /* GoalSetupButtonsSection.swift */; };
-		A048B8BA2DE9253F00084546 /* ActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A048B8522DE9253F00084546 /* ActionButton.swift */; };
-		A048B8BB2DE9253F00084546 /* TimeSetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A048B8722DE9253F00084546 /* TimeSetupView.swift */; };
-		A048B8BC2DE9253F00084546 /* GoalProgressHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A048B8802DE9253F00084546 /* GoalProgressHeader.swift */; };
-		A048B8BD2DE9253F00084546 /* SetDisplayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A048B88D2DE9253F00084546 /* SetDisplayView.swift */; };
-		A048B8BE2DE9253F00084546 /* IndoorPoolSetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A048B87D2DE9253F00084546 /* IndoorPoolSetupView.swift */; };
-		A048B8BF2DE9253F00084546 /* CelebrationOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = A048B8652DE9253F00084546 /* CelebrationOverlay.swift */; };
-		A048B8C02DE9253F00084546 /* MainControlButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A048B8552DE9253F00084546 /* MainControlButton.swift */; };
-		A048B8C12DE9253F00084546 /* SummaryFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A048B8922DE9253F00084546 /* SummaryFooter.swift */; };
-		A048B8C22DE9253F00084546 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A048B86D2DE9253F00084546 /* SettingsView.swift */; };
-		A048B8C32DE9253F00084546 /* ImportSetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A048B87C2DE9253F00084546 /* ImportSetView.swift */; };
-		A048B8C42DE9253F00084546 /* SecondaryMetricsGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = A048B8862DE9253F00084546 /* SecondaryMetricsGrid.swift */; };
-		A048B8C52DE9253F00084546 /* GoalProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A048B8672DE9253F00084546 /* GoalProgressBar.swift */; };
-		A048B8C62DE9253F00084546 /* NavigationControls.swift in Sources */ = {isa = PBXBuildFile; fileRef = A048B8622DE9253F00084546 /* NavigationControls.swift */; };
-		A048B8C72DE9253F00084546 /* SetCompletionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A048B88A2DE9253F00084546 /* SetCompletionView.swift */; };
-		A048B8C82DE9253F00084546 /* SwimSetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A048B87E2DE9253F00084546 /* SwimSetupView.swift */; };
-		A048B8C92DE9253F00084546 /* HealthKitPermissionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A048B86C2DE9253F00084546 /* HealthKitPermissionView.swift */; };
-		A048B8CA2DE9253F00084546 /* NavigationButtonsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = A048B89D2DE9253F00084546 /* NavigationButtonsSection.swift */; };
-		A048B8CB2DE9253F00084546 /* IntensityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A048B85E2DE9253F00084546 /* IntensityIndicator.swift */; };
-		A048B8CC2DE9253F00084546 /* NumberPadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A048B8602DE9253F00084546 /* NumberPadView.swift */; };
-		A048B8CD2DE9253F00084546 /* SwimControlsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A048B8972DE9253F00084546 /* SwimControlsView.swift */; };
-		A048B8CE2DE9253F00084546 /* SwimmingSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A048B8952DE9253F00084546 /* SwimmingSummaryView.swift */; };
-		A048B8CF2DE9253F00084546 /* HeaderSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = A048B89B2DE9253F00084546 /* HeaderSection.swift */; };
-		A048B8D02DE9253F00084546 /* HealthKitWarningSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = A048B89C2DE9253F00084546 /* HealthKitWarningSection.swift */; };
-		A048B8D12DE9253F00084546 /* MainButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A048B8542DE9253F00084546 /* MainButton.swift */; };
-		A048B8D22DE9253F00084546 /* PrimaryMetricsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = A048B8852DE9253F00084546 /* PrimaryMetricsSection.swift */; };
-		A048B8D32DE9253F00084546 /* GoalSetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A048B8712DE9253F00084546 /* GoalSetupView.swift */; };
-		A048B8D42DE9253F00084546 /* GoalProgressCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = A048B8582DE9253F00084546 /* GoalProgressCard.swift */; };
-		A048B8D52DE9253F00084546 /* DistanceSetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A048B8702DE9253F00084546 /* DistanceSetupView.swift */; };
-		A048B8D62DE9253F00084546 /* SetHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A048B88B2DE9253F00084546 /* SetHeader.swift */; };
-		A048B8D72DE9253F00084546 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = A048B86A2DE9253F00084546 /* README.md */; };
 		A07667B02BF5E6C600FFB4C3 /* Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07667AD2BF5E6C600FFB4C3 /* Manager.swift */; };
 		A07667B12BF5E6C600FFB4C3 /* WatchConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07667AE2BF5E6C600FFB4C3 /* WatchConnector.swift */; };
 		A08761772DC90A0000BD4402 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = A08761762DC909FC00BD4402 /* README.md */; };
-		A087E6FA2E2AC68F0000306B /* GoalsSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A087E6D62E2AC68F0000306B /* GoalsSettingsView.swift */; };
-		A087E6FB2E2AC68F0000306B /* KeyMetricsGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = A087E6F22E2AC68F0000306B /* KeyMetricsGrid.swift */; };
-		A087E6FC2E2AC68F0000306B /* HomePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A087E6D02E2AC68F0000306B /* HomePage.swift */; };
-		A087E6FD2E2AC68F0000306B /* FilterSummarySection.swift in Sources */ = {isa = PBXBuildFile; fileRef = A087E6E62E2AC68F0000306B /* FilterSummarySection.swift */; };
-		A087E6FE2E2AC68F0000306B /* WeeklyStatsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = A087E6CE2E2AC68F0000306B /* WeeklyStatsSection.swift */; };
-		A087E6FF2E2AC68F0000306B /* SimpleMetricCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = A087E6BB2E2AC68F0000306B /* SimpleMetricCard.swift */; };
-		A087E7002E2AC68F0000306B /* PreferencesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A087E6D92E2AC68F0000306B /* PreferencesView.swift */; };
-		A087E7012E2AC68F0000306B /* SwolfChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = A087E6C22E2AC68F0000306B /* SwolfChart.swift */; };
-		A087E7022E2AC68F0000306B /* RecommendedSetsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = A087E6E82E2AC68F0000306B /* RecommendedSetsSection.swift */; };
-		A087E7032E2AC68F0000306B /* PaceGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A087E6C02E2AC68F0000306B /* PaceGraphView.swift */; };
-		A087E7042E2AC68F0000306B /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A087E6DB2E2AC68F0000306B /* SettingsView.swift */; };
-		A087E7052E2AC68F0000306B /* LapTimesChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = A087E6BE2E2AC68F0000306B /* LapTimesChart.swift */; };
-		A087E7062E2AC68F0000306B /* DistanceChartCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = A087E6B92E2AC68F0000306B /* DistanceChartCard.swift */; };
-		A087E7072E2AC68F0000306B /* LogbookStatsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = A087E6E12E2AC68F0000306B /* LogbookStatsSection.swift */; };
-		A087E7082E2AC68F0000306B /* SimpleLapRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = A087E6C52E2AC68F0000306B /* SimpleLapRow.swift */; };
-		A087E7092E2AC68F0000306B /* SetPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A087E6EE2E2AC68F0000306B /* SetPage.swift */; };
-		A087E70A2E2AC68F0000306B /* LogbookHeaderSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = A087E6E02E2AC68F0000306B /* LogbookHeaderSection.swift */; };
-		A087E70B2E2AC68F0000306B /* ChartsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = A087E6F12E2AC68F0000306B /* ChartsSection.swift */; };
-		A087E70C2E2AC68F0000306B /* ProgressChartsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = A087E6CB2E2AC68F0000306B /* ProgressChartsSection.swift */; };
-		A087E70D2E2AC68F0000306B /* AppSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A087E6D42E2AC68F0000306B /* AppSettingsView.swift */; };
-		A087E70E2E2AC68F0000306B /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A087E6D22E2AC68F0000306B /* RootView.swift */; };
-		A087E70F2E2AC68F0000306B /* SummaryMetricItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A087E6C72E2AC68F0000306B /* SummaryMetricItem.swift */; };
-		A087E7102E2AC68F0000306B /* StatColumn.swift in Sources */ = {isa = PBXBuildFile; fileRef = A087E6C62E2AC68F0000306B /* StatColumn.swift */; };
-		A087E7112E2AC68F0000306B /* HomeHeroSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = A087E6CA2E2AC68F0000306B /* HomeHeroSection.swift */; };
-		A087E7122E2AC68F0000306B /* LogbookWorkoutListSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = A087E6E22E2AC68F0000306B /* LogbookWorkoutListSection.swift */; };
-		A087E7132E2AC68F0000306B /* HealthKitPermissionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A087E6D72E2AC68F0000306B /* HealthKitPermissionView.swift */; };
-		A087E7142E2AC68F0000306B /* SetPageHeroSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = A087E6E92E2AC68F0000306B /* SetPageHeroSection.swift */; };
-		A087E7152E2AC68F0000306B /* LogbookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A087E6E42E2AC68F0000306B /* LogbookView.swift */; };
-		A087E7162E2AC68F0000306B /* SetsGridSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = A087E6EA2E2AC68F0000306B /* SetsGridSection.swift */; };
-		A087E7172E2AC68F0000306B /* QuickFilterChipsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = A087E6E72E2AC68F0000306B /* QuickFilterChipsSection.swift */; };
-		A087E7182E2AC68F0000306B /* FilterSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A087E6EC2E2AC68F0000306B /* FilterSheetView.swift */; };
-		A087E7192E2AC68F0000306B /* LogbookFilterSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = A087E6DF2E2AC68F0000306B /* LogbookFilterSection.swift */; };
-		A087E71A2E2AC68F0000306B /* RecentActivityCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = A087E6BA2E2AC68F0000306B /* RecentActivityCard.swift */; };
-		A087E71B2E2AC68F0000306B /* RecentActivitySection.swift in Sources */ = {isa = PBXBuildFile; fileRef = A087E6CD2E2AC68F0000306B /* RecentActivitySection.swift */; };
-		A087E71C2E2AC68F0000306B /* ProfilePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A087E6DA2E2AC68F0000306B /* ProfilePage.swift */; };
-		A087E71D2E2AC68F0000306B /* SetSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A087E6EF2E2AC68F0000306B /* SetSummaryView.swift */; };
-		A087E71E2E2AC68F0000306B /* DataPrivacySettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A087E6D52E2AC68F0000306B /* DataPrivacySettingsView.swift */; };
-		A087E71F2E2AC68F0000306B /* WorkoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A087E6F62E2AC68F0000306B /* WorkoutView.swift */; };
-		A087E7202E2AC68F0000306B /* LapDetailsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = A087E6F32E2AC68F0000306B /* LapDetailsSection.swift */; };
-		A087E7212E2AC68F0000306B /* RecentSwimRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = A087E6C42E2AC68F0000306B /* RecentSwimRow.swift */; };
-		A087E7222E2AC68F0000306B /* LineGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A087E6BF2E2AC68F0000306B /* LineGraphView.swift */; };
-		A087E7232E2AC68F0000306B /* WorkoutHeaderCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = A087E6F42E2AC68F0000306B /* WorkoutHeaderCard.swift */; };
-		A087E7242E2AC68F0000306B /* NotificationsSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A087E6D82E2AC68F0000306B /* NotificationsSettingsView.swift */; };
-		A087E7252E2AC68F0000306B /* QuickActionsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = A087E6CC2E2AC68F0000306B /* QuickActionsSection.swift */; };
-		A087E7262E2AC68F0000306B /* SetDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A087E6ED2E2AC68F0000306B /* SetDetailView.swift */; };
-		A087E7272E2AC68F0000306B /* SwimListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A087E6DD2E2AC68F0000306B /* SwimListItemView.swift */; };
-		A087E7282E2AC68F0000306B /* WeeklySummaryCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = A087E6BC2E2AC68F0000306B /* WeeklySummaryCard.swift */; };
-		A087E7292E2AC68F0000306B /* StrokeDistributionChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = A087E6C12E2AC68F0000306B /* StrokeDistributionChart.swift */; };
 		A0BFBA232DDD7C3C002B96A8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A0BFBA1F2DDD7C3C002B96A8 /* Assets.xcassets */; };
 		A0BFBA242DDD7C3C002B96A8 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A0BFB9FD2DDD7C3C002B96A8 /* Preview Assets.xcassets */; };
 		A0BFBA392DDD7C3C002B96A8 /* WatchSwimMateApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BFBA212DDD7C3C002B96A8 /* WatchSwimMateApp.swift */; };
 		A0BFBA3A2DDD7C3C002B96A8 /* NavState.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BFB9FF2DDD7C3C002B96A8 /* NavState.swift */; };
 		A0C050642BCC5D7B002450AD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A0C050632BCC5D7B002450AD /* Assets.xcassets */; };
 		A0C050672BCC5D7B002450AD /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A0C050662BCC5D7B002450AD /* Preview Assets.xcassets */; };
+		A0E47C452E2ADB56003DCB3D /* WorkoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E47C412E2ADB56003DCB3D /* WorkoutView.swift */; };
+		A0E47C462E2ADB56003DCB3D /* SetPageHeroSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E47C342E2ADB56003DCB3D /* SetPageHeroSection.swift */; };
+		A0E47C472E2ADB56003DCB3D /* LogbookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E47C2F2E2ADB56003DCB3D /* LogbookView.swift */; };
+		A0E47C482E2ADB56003DCB3D /* SetsGridSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E47C352E2ADB56003DCB3D /* SetsGridSection.swift */; };
+		A0E47C492E2ADB56003DCB3D /* LogbookFilterSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E47C2A2E2ADB56003DCB3D /* LogbookFilterSection.swift */; };
+		A0E47C4A2E2ADB56003DCB3D /* StatCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E47C052E2ADB56003DCB3D /* StatCard.swift */; };
+		A0E47C4B2E2ADB56003DCB3D /* PreferencesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E47C242E2ADB56003DCB3D /* PreferencesView.swift */; };
+		A0E47C4C2E2ADB56003DCB3D /* RecentActivitySection.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E47C182E2ADB56003DCB3D /* RecentActivitySection.swift */; };
+		A0E47C4D2E2ADB56003DCB3D /* FilterSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E47C372E2ADB56003DCB3D /* FilterSheetView.swift */; };
+		A0E47C4E2E2ADB56003DCB3D /* EmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E47C0E2E2ADB56003DCB3D /* EmptyStateView.swift */; };
+		A0E47C4F2E2ADB56003DCB3D /* LapTimesChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E47C082E2ADB56003DCB3D /* LapTimesChart.swift */; };
+		A0E47C502E2ADB56003DCB3D /* DistanceChartCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E47C022E2ADB56003DCB3D /* DistanceChartCard.swift */; };
+		A0E47C512E2ADB56003DCB3D /* QuickActionsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E47C172E2ADB56003DCB3D /* QuickActionsSection.swift */; };
+		A0E47C522E2ADB56003DCB3D /* FilterSummarySection.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E47C312E2ADB56003DCB3D /* FilterSummarySection.swift */; };
+		A0E47C532E2ADB56003DCB3D /* RecommendedSetsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E47C332E2ADB56003DCB3D /* RecommendedSetsSection.swift */; };
+		A0E47C542E2ADB56003DCB3D /* WeeklyStatsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E47C192E2ADB56003DCB3D /* WeeklyStatsSection.swift */; };
+		A0E47C552E2ADB56003DCB3D /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E47C1D2E2ADB56003DCB3D /* RootView.swift */; };
+		A0E47C562E2ADB56003DCB3D /* ProfilePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E47C252E2ADB56003DCB3D /* ProfilePage.swift */; };
+		A0E47C572E2ADB56003DCB3D /* KeyMetricsGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E47C3D2E2ADB56003DCB3D /* KeyMetricsGrid.swift */; };
+		A0E47C582E2ADB56003DCB3D /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E47C262E2ADB56003DCB3D /* SettingsView.swift */; };
+		A0E47C592E2ADB56003DCB3D /* PaceGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E47C0A2E2ADB56003DCB3D /* PaceGraphView.swift */; };
+		A0E47C5A2E2ADB56003DCB3D /* SwolfChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E47C0C2E2ADB56003DCB3D /* SwolfChart.swift */; };
+		A0E47C5B2E2ADB56003DCB3D /* WeeklySummaryCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E47C062E2ADB56003DCB3D /* WeeklySummaryCard.swift */; };
+		A0E47C5C2E2ADB56003DCB3D /* WorkoutHeaderCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E47C3F2E2ADB56003DCB3D /* WorkoutHeaderCard.swift */; };
+		A0E47C5D2E2ADB56003DCB3D /* AppSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E47C1F2E2ADB56003DCB3D /* AppSettingsView.swift */; };
+		A0E47C5E2E2ADB56003DCB3D /* GoalsSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E47C212E2ADB56003DCB3D /* GoalsSettingsView.swift */; };
+		A0E47C5F2E2ADB56003DCB3D /* SetPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E47C392E2ADB56003DCB3D /* SetPage.swift */; };
+		A0E47C602E2ADB56003DCB3D /* QuickFilterChipsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E47C322E2ADB56003DCB3D /* QuickFilterChipsSection.swift */; };
+		A0E47C612E2ADB56003DCB3D /* RecentSwimRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E47C102E2ADB56003DCB3D /* RecentSwimRow.swift */; };
+		A0E47C622E2ADB56003DCB3D /* SetDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E47C382E2ADB56003DCB3D /* SetDetailView.swift */; };
+		A0E47C632E2ADB56003DCB3D /* RecentActivityCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E47C042E2ADB56003DCB3D /* RecentActivityCard.swift */; };
+		A0E47C642E2ADB56003DCB3D /* MetricCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E47C032E2ADB56003DCB3D /* MetricCard.swift */; };
+		A0E47C652E2ADB56003DCB3D /* DataPrivacySettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E47C202E2ADB56003DCB3D /* DataPrivacySettingsView.swift */; };
+		A0E47C662E2ADB56003DCB3D /* NotificationsSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E47C232E2ADB56003DCB3D /* NotificationsSettingsView.swift */; };
+		A0E47C672E2ADB56003DCB3D /* HealthKitPermissionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E47C222E2ADB56003DCB3D /* HealthKitPermissionView.swift */; };
+		A0E47C682E2ADB56003DCB3D /* SetSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E47C3A2E2ADB56003DCB3D /* SetSummaryView.swift */; };
+		A0E47C692E2ADB56003DCB3D /* HomeHeroSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E47C152E2ADB56003DCB3D /* HomeHeroSection.swift */; };
+		A0E47C6A2E2ADB56003DCB3D /* LogbookWorkoutListSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E47C2D2E2ADB56003DCB3D /* LogbookWorkoutListSection.swift */; };
+		A0E47C6B2E2ADB56003DCB3D /* LineGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E47C092E2ADB56003DCB3D /* LineGraphView.swift */; };
+		A0E47C6C2E2ADB56003DCB3D /* LapRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E47C0F2E2ADB56003DCB3D /* LapRow.swift */; };
+		A0E47C6D2E2ADB56003DCB3D /* ProgressChartsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E47C162E2ADB56003DCB3D /* ProgressChartsSection.swift */; };
+		A0E47C6E2E2ADB56003DCB3D /* StatColumn.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E47C112E2ADB56003DCB3D /* StatColumn.swift */; };
+		A0E47C6F2E2ADB56003DCB3D /* ChartsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E47C3C2E2ADB56003DCB3D /* ChartsSection.swift */; };
+		A0E47C702E2ADB56003DCB3D /* SwimListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E47C282E2ADB56003DCB3D /* SwimListItemView.swift */; };
+		A0E47C712E2ADB56003DCB3D /* SummaryMetricItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E47C122E2ADB56003DCB3D /* SummaryMetricItem.swift */; };
+		A0E47C722E2ADB56003DCB3D /* LogbookHeaderSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E47C2B2E2ADB56003DCB3D /* LogbookHeaderSection.swift */; };
+		A0E47C732E2ADB56003DCB3D /* LapDetailsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E47C3E2E2ADB56003DCB3D /* LapDetailsSection.swift */; };
+		A0E47C742E2ADB56003DCB3D /* StrokeDistributionChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E47C0B2E2ADB56003DCB3D /* StrokeDistributionChart.swift */; };
+		A0E47C752E2ADB56003DCB3D /* LogbookStatsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E47C2C2E2ADB56003DCB3D /* LogbookStatsSection.swift */; };
+		A0E47C762E2ADB56003DCB3D /* HomePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E47C1B2E2ADB56003DCB3D /* HomePage.swift */; };
+		A0E47CC72E2ADB63003DCB3D /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = A0E47C8F2E2ADB63003DCB3D /* README.md */; };
+		A0E47CC82E2ADB63003DCB3D /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E47C922E2ADB63003DCB3D /* SettingsView.swift */; };
+		A0E47CC92E2ADB63003DCB3D /* ImportSetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E47CA12E2ADB63003DCB3D /* ImportSetView.swift */; };
+		A0E47CCA2E2ADB63003DCB3D /* StepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E47C882E2ADB63003DCB3D /* StepView.swift */; };
+		A0E47CCB2E2ADB63003DCB3D /* SwimmingSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E47CBA2E2ADB63003DCB3D /* SwimmingSummaryView.swift */; };
+		A0E47CCC2E2ADB63003DCB3D /* NumberPadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E47C852E2ADB63003DCB3D /* NumberPadView.swift */; };
+		A0E47CCD2E2ADB63003DCB3D /* SecondaryMetricsGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E47CAB2E2ADB63003DCB3D /* SecondaryMetricsGrid.swift */; };
+		A0E47CCE2E2ADB63003DCB3D /* GoalProgressList.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E47CA62E2ADB63003DCB3D /* GoalProgressList.swift */; };
+		A0E47CCF2E2ADB63003DCB3D /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E47CB52E2ADB63003DCB3D /* LoadingView.swift */; };
+		A0E47CD02E2ADB63003DCB3D /* SwimSetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E47CA32E2ADB63003DCB3D /* SwimSetupView.swift */; };
+		A0E47CD12E2ADB63003DCB3D /* MainButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E47C792E2ADB63003DCB3D /* MainButton.swift */; };
+		A0E47CD22E2ADB63003DCB3D /* TimeSetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E47C972E2ADB63003DCB3D /* TimeSetupView.swift */; };
+		A0E47CD32E2ADB63003DCB3D /* DistanceSetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E47C952E2ADB63003DCB3D /* DistanceSetupView.swift */; };
+		A0E47CD42E2ADB63003DCB3D /* CalorieSetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E47C942E2ADB63003DCB3D /* CalorieSetupView.swift */; };
+		A0E47CD52E2ADB63003DCB3D /* GoalProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E47CA82E2ADB63003DCB3D /* GoalProgressView.swift */; };
+		A0E47CD62E2ADB63003DCB3D /* ActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E47C772E2ADB63003DCB3D /* ActionButton.swift */; };
+		A0E47CD72E2ADB63003DCB3D /* InsightRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E47C822E2ADB63003DCB3D /* InsightRow.swift */; };
+		A0E47CD82E2ADB63003DCB3D /* NavigationButtonsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E47CC22E2ADB63003DCB3D /* NavigationButtonsSection.swift */; };
+		A0E47CD92E2ADB63003DCB3D /* ElapsedTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E47C812E2ADB63003DCB3D /* ElapsedTimeView.swift */; };
+		A0E47CDA2E2ADB63003DCB3D /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E47C8D2E2ADB63003DCB3D /* ProgressBar.swift */; };
+		A0E47CDB2E2ADB63003DCB3D /* GoalProgressHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E47CA52E2ADB63003DCB3D /* GoalProgressHeader.swift */; };
+		A0E47CDC2E2ADB63003DCB3D /* GoalSetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E47C962E2ADB63003DCB3D /* GoalSetupView.swift */; };
+		A0E47CDD2E2ADB63003DCB3D /* HealthKitPermissionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E47C912E2ADB63003DCB3D /* HealthKitPermissionView.swift */; };
+		A0E47CDE2E2ADB63003DCB3D /* HeaderSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E47CC02E2ADB63003DCB3D /* HeaderSection.swift */; };
+		A0E47CDF2E2ADB63003DCB3D /* GoalSetupButtonsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E47C9C2E2ADB63003DCB3D /* GoalSetupButtonsSection.swift */; };
+		A0E47CE02E2ADB63003DCB3D /* ActionButtonsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E47C992E2ADB63003DCB3D /* ActionButtonsSection.swift */; };
+		A0E47CE12E2ADB63003DCB3D /* SwimControlsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E47CBC2E2ADB63003DCB3D /* SwimControlsView.swift */; };
+		A0E47CE22E2ADB63003DCB3D /* SummaryFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E47CB72E2ADB63003DCB3D /* SummaryFooter.swift */; };
+		A0E47CE32E2ADB63003DCB3D /* WatchRootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E47CC42E2ADB63003DCB3D /* WatchRootView.swift */; };
+		A0E47CE42E2ADB63003DCB3D /* HealthKitWarningSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E47CC12E2ADB63003DCB3D /* HealthKitWarningSection.swift */; };
+		A0E47CE52E2ADB63003DCB3D /* PresetButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E47C7B2E2ADB63003DCB3D /* PresetButton.swift */; };
+		A0E47CE62E2ADB63003DCB3D /* CompactNavButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E47C782E2ADB63003DCB3D /* CompactNavButton.swift */; };
+		A0E47CE72E2ADB63003DCB3D /* SetCompletionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E47CAF2E2ADB63003DCB3D /* SetCompletionView.swift */; };
+		A0E47CE82E2ADB63003DCB3D /* GoalProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E47C8C2E2ADB63003DCB3D /* GoalProgressBar.swift */; };
+		A0E47CE92E2ADB63003DCB3D /* SetDisplayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E47CB22E2ADB63003DCB3D /* SetDisplayView.swift */; };
+		A0E47CEA2E2ADB63003DCB3D /* KeyMetricsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E47CB42E2ADB63003DCB3D /* KeyMetricsSection.swift */; };
+		A0E47CEB2E2ADB63003DCB3D /* SwimmingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E47CBE2E2ADB63003DCB3D /* SwimmingView.swift */; };
+		A0E47CEC2E2ADB63003DCB3D /* MetricsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E47CAD2E2ADB63003DCB3D /* MetricsView.swift */; };
+		A0E47CED2E2ADB63003DCB3D /* GoalSpacingConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E47C9E2E2ADB63003DCB3D /* GoalSpacingConstants.swift */; };
+		A0E47CEE2E2ADB63003DCB3D /* CurrentGoalsDisplaySection.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E47C9A2E2ADB63003DCB3D /* CurrentGoalsDisplaySection.swift */; };
+		A0E47CEF2E2ADB63003DCB3D /* NavigationControls.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E47C872E2ADB63003DCB3D /* NavigationControls.swift */; };
+		A0E47CF02E2ADB63003DCB3D /* SetHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E47CB02E2ADB63003DCB3D /* SetHeader.swift */; };
+		A0E47CF12E2ADB63003DCB3D /* GoalProgressCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E47C7D2E2ADB63003DCB3D /* GoalProgressCard.swift */; };
+		A0E47CF22E2ADB63003DCB3D /* MainControlButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E47C7A2E2ADB63003DCB3D /* MainControlButton.swift */; };
+		A0E47CF32E2ADB63003DCB3D /* PerformanceCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E47C7F2E2ADB63003DCB3D /* PerformanceCard.swift */; };
+		A0E47CF42E2ADB63003DCB3D /* SummaryHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E47CB82E2ADB63003DCB3D /* SummaryHeaderView.swift */; };
+		A0E47CF52E2ADB63003DCB3D /* GoalBadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E47C9B2E2ADB63003DCB3D /* GoalBadgeView.swift */; };
+		A0E47CF62E2ADB63003DCB3D /* PrimaryMetricsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E47CAA2E2ADB63003DCB3D /* PrimaryMetricsSection.swift */; };
+		A0E47CF72E2ADB63003DCB3D /* CelebrationOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E47C8A2E2ADB63003DCB3D /* CelebrationOverlay.swift */; };
+		A0E47CF82E2ADB63003DCB3D /* IntensityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E47C832E2ADB63003DCB3D /* IntensityIndicator.swift */; };
+		A0E47CF92E2ADB63003DCB3D /* PerformanceInsightsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E47CB62E2ADB63003DCB3D /* PerformanceInsightsSection.swift */; };
+		A0E47CFA2E2ADB63003DCB3D /* GoalSwimView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E47C9F2E2ADB63003DCB3D /* GoalSwimView.swift */; };
+		A0E47CFB2E2ADB63003DCB3D /* MetricCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E47C7E2E2ADB63003DCB3D /* MetricCard.swift */; };
+		A0E47CFC2E2ADB63003DCB3D /* IndoorPoolSetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E47CA22E2ADB63003DCB3D /* IndoorPoolSetupView.swift */; };
 		A0F6A70C2DE7E697005B7291 /* GoalType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F6A70B2DE7E697005B7291 /* GoalType.swift */; };
 		A0F6A7252DE7EF8A005B7291 /* WatchManager+Statistics.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F6A7222DE7EF8A005B7291 /* WatchManager+Statistics.swift */; };
 		A0F6A7262DE7EF8A005B7291 /* WatchManager+Timer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F6A7232DE7EF8A005B7291 /* WatchManager+Timer.swift */; };
@@ -195,111 +197,9 @@
 		A02F8F482E296011006CC3E5 /* Swim.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Swim.swift; sourceTree = "<group>"; };
 		A02F8F5F2E299F35006CC3E5 /* Manager+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Manager+Convenience.swift"; sourceTree = "<group>"; };
 		A02F8F632E299FDD006CC3E5 /* Manager+SetFiltering.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Manager+SetFiltering.swift"; sourceTree = "<group>"; };
-		A048B8522DE9253F00084546 /* ActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionButton.swift; sourceTree = "<group>"; };
-		A048B8532DE9253F00084546 /* CompactNavButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompactNavButton.swift; sourceTree = "<group>"; };
-		A048B8542DE9253F00084546 /* MainButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainButton.swift; sourceTree = "<group>"; };
-		A048B8552DE9253F00084546 /* MainControlButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainControlButton.swift; sourceTree = "<group>"; };
-		A048B8562DE9253F00084546 /* PresetButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresetButton.swift; sourceTree = "<group>"; };
-		A048B8582DE9253F00084546 /* GoalProgressCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalProgressCard.swift; sourceTree = "<group>"; };
-		A048B8592DE9253F00084546 /* MetricCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetricCard.swift; sourceTree = "<group>"; };
-		A048B85A2DE9253F00084546 /* PerformanceCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerformanceCard.swift; sourceTree = "<group>"; };
-		A048B85C2DE9253F00084546 /* ElapsedTimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElapsedTimeView.swift; sourceTree = "<group>"; };
-		A048B85D2DE9253F00084546 /* InsightRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsightRow.swift; sourceTree = "<group>"; };
-		A048B85E2DE9253F00084546 /* IntensityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntensityIndicator.swift; sourceTree = "<group>"; };
-		A048B8602DE9253F00084546 /* NumberPadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberPadView.swift; sourceTree = "<group>"; };
-		A048B8622DE9253F00084546 /* NavigationControls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationControls.swift; sourceTree = "<group>"; };
-		A048B8632DE9253F00084546 /* StepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepView.swift; sourceTree = "<group>"; };
-		A048B8652DE9253F00084546 /* CelebrationOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CelebrationOverlay.swift; sourceTree = "<group>"; };
-		A048B8672DE9253F00084546 /* GoalProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalProgressBar.swift; sourceTree = "<group>"; };
-		A048B8682DE9253F00084546 /* ProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
-		A048B86A2DE9253F00084546 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		A048B86C2DE9253F00084546 /* HealthKitPermissionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitPermissionView.swift; sourceTree = "<group>"; };
-		A048B86D2DE9253F00084546 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
-		A048B86F2DE9253F00084546 /* CalorieSetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalorieSetupView.swift; sourceTree = "<group>"; };
-		A048B8702DE9253F00084546 /* DistanceSetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistanceSetupView.swift; sourceTree = "<group>"; };
-		A048B8712DE9253F00084546 /* GoalSetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalSetupView.swift; sourceTree = "<group>"; };
-		A048B8722DE9253F00084546 /* TimeSetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeSetupView.swift; sourceTree = "<group>"; };
-		A048B8742DE9253F00084546 /* ActionButtonsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionButtonsSection.swift; sourceTree = "<group>"; };
-		A048B8752DE9253F00084546 /* CurrentGoalsDisplaySection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentGoalsDisplaySection.swift; sourceTree = "<group>"; };
-		A048B8762DE9253F00084546 /* GoalBadgeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalBadgeView.swift; sourceTree = "<group>"; };
-		A048B8772DE9253F00084546 /* GoalSetupButtonsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalSetupButtonsSection.swift; sourceTree = "<group>"; };
-		A048B8792DE9253F00084546 /* GoalSpacingConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalSpacingConstants.swift; sourceTree = "<group>"; };
-		A048B87A2DE9253F00084546 /* GoalSwimView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalSwimView.swift; sourceTree = "<group>"; };
-		A048B87C2DE9253F00084546 /* ImportSetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportSetView.swift; sourceTree = "<group>"; };
-		A048B87D2DE9253F00084546 /* IndoorPoolSetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndoorPoolSetupView.swift; sourceTree = "<group>"; };
-		A048B87E2DE9253F00084546 /* SwimSetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwimSetupView.swift; sourceTree = "<group>"; };
-		A048B8802DE9253F00084546 /* GoalProgressHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalProgressHeader.swift; sourceTree = "<group>"; };
-		A048B8812DE9253F00084546 /* GoalProgressList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalProgressList.swift; sourceTree = "<group>"; };
-		A048B8832DE9253F00084546 /* GoalProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalProgressView.swift; sourceTree = "<group>"; };
-		A048B8852DE9253F00084546 /* PrimaryMetricsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryMetricsSection.swift; sourceTree = "<group>"; };
-		A048B8862DE9253F00084546 /* SecondaryMetricsGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondaryMetricsGrid.swift; sourceTree = "<group>"; };
-		A048B8882DE9253F00084546 /* MetricsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetricsView.swift; sourceTree = "<group>"; };
-		A048B88A2DE9253F00084546 /* SetCompletionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetCompletionView.swift; sourceTree = "<group>"; };
-		A048B88B2DE9253F00084546 /* SetHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetHeader.swift; sourceTree = "<group>"; };
-		A048B88D2DE9253F00084546 /* SetDisplayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetDisplayView.swift; sourceTree = "<group>"; };
-		A048B88F2DE9253F00084546 /* KeyMetricsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyMetricsSection.swift; sourceTree = "<group>"; };
-		A048B8902DE9253F00084546 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
-		A048B8912DE9253F00084546 /* PerformanceInsightsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerformanceInsightsSection.swift; sourceTree = "<group>"; };
-		A048B8922DE9253F00084546 /* SummaryFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryFooter.swift; sourceTree = "<group>"; };
-		A048B8932DE9253F00084546 /* SummaryHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryHeaderView.swift; sourceTree = "<group>"; };
-		A048B8952DE9253F00084546 /* SwimmingSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwimmingSummaryView.swift; sourceTree = "<group>"; };
-		A048B8972DE9253F00084546 /* SwimControlsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwimControlsView.swift; sourceTree = "<group>"; };
-		A048B8992DE9253F00084546 /* SwimmingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwimmingView.swift; sourceTree = "<group>"; };
-		A048B89B2DE9253F00084546 /* HeaderSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderSection.swift; sourceTree = "<group>"; };
-		A048B89C2DE9253F00084546 /* HealthKitWarningSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitWarningSection.swift; sourceTree = "<group>"; };
-		A048B89D2DE9253F00084546 /* NavigationButtonsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationButtonsSection.swift; sourceTree = "<group>"; };
-		A048B89F2DE9253F00084546 /* WatchRootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchRootView.swift; sourceTree = "<group>"; };
 		A07667AD2BF5E6C600FFB4C3 /* Manager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Manager.swift; sourceTree = "<group>"; };
 		A07667AE2BF5E6C600FFB4C3 /* WatchConnector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchConnector.swift; sourceTree = "<group>"; };
 		A08761762DC909FC00BD4402 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		A087E6B92E2AC68F0000306B /* DistanceChartCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistanceChartCard.swift; sourceTree = "<group>"; };
-		A087E6BA2E2AC68F0000306B /* RecentActivityCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentActivityCard.swift; sourceTree = "<group>"; };
-		A087E6BB2E2AC68F0000306B /* SimpleMetricCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleMetricCard.swift; sourceTree = "<group>"; };
-		A087E6BC2E2AC68F0000306B /* WeeklySummaryCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklySummaryCard.swift; sourceTree = "<group>"; };
-		A087E6BE2E2AC68F0000306B /* LapTimesChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LapTimesChart.swift; sourceTree = "<group>"; };
-		A087E6BF2E2AC68F0000306B /* LineGraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineGraphView.swift; sourceTree = "<group>"; };
-		A087E6C02E2AC68F0000306B /* PaceGraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaceGraphView.swift; sourceTree = "<group>"; };
-		A087E6C12E2AC68F0000306B /* StrokeDistributionChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrokeDistributionChart.swift; sourceTree = "<group>"; };
-		A087E6C22E2AC68F0000306B /* SwolfChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwolfChart.swift; sourceTree = "<group>"; };
-		A087E6C42E2AC68F0000306B /* RecentSwimRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentSwimRow.swift; sourceTree = "<group>"; };
-		A087E6C52E2AC68F0000306B /* SimpleLapRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleLapRow.swift; sourceTree = "<group>"; };
-		A087E6C62E2AC68F0000306B /* StatColumn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatColumn.swift; sourceTree = "<group>"; };
-		A087E6C72E2AC68F0000306B /* SummaryMetricItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryMetricItem.swift; sourceTree = "<group>"; };
-		A087E6CA2E2AC68F0000306B /* HomeHeroSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeHeroSection.swift; sourceTree = "<group>"; };
-		A087E6CB2E2AC68F0000306B /* ProgressChartsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressChartsSection.swift; sourceTree = "<group>"; };
-		A087E6CC2E2AC68F0000306B /* QuickActionsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickActionsSection.swift; sourceTree = "<group>"; };
-		A087E6CD2E2AC68F0000306B /* RecentActivitySection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentActivitySection.swift; sourceTree = "<group>"; };
-		A087E6CE2E2AC68F0000306B /* WeeklyStatsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyStatsSection.swift; sourceTree = "<group>"; };
-		A087E6D02E2AC68F0000306B /* HomePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePage.swift; sourceTree = "<group>"; };
-		A087E6D22E2AC68F0000306B /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
-		A087E6D42E2AC68F0000306B /* AppSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettingsView.swift; sourceTree = "<group>"; };
-		A087E6D52E2AC68F0000306B /* DataPrivacySettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataPrivacySettingsView.swift; sourceTree = "<group>"; };
-		A087E6D62E2AC68F0000306B /* GoalsSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalsSettingsView.swift; sourceTree = "<group>"; };
-		A087E6D72E2AC68F0000306B /* HealthKitPermissionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitPermissionView.swift; sourceTree = "<group>"; };
-		A087E6D82E2AC68F0000306B /* NotificationsSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsSettingsView.swift; sourceTree = "<group>"; };
-		A087E6D92E2AC68F0000306B /* PreferencesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesView.swift; sourceTree = "<group>"; };
-		A087E6DA2E2AC68F0000306B /* ProfilePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePage.swift; sourceTree = "<group>"; };
-		A087E6DB2E2AC68F0000306B /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
-		A087E6DD2E2AC68F0000306B /* SwimListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwimListItemView.swift; sourceTree = "<group>"; };
-		A087E6DF2E2AC68F0000306B /* LogbookFilterSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogbookFilterSection.swift; sourceTree = "<group>"; };
-		A087E6E02E2AC68F0000306B /* LogbookHeaderSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogbookHeaderSection.swift; sourceTree = "<group>"; };
-		A087E6E12E2AC68F0000306B /* LogbookStatsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogbookStatsSection.swift; sourceTree = "<group>"; };
-		A087E6E22E2AC68F0000306B /* LogbookWorkoutListSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogbookWorkoutListSection.swift; sourceTree = "<group>"; };
-		A087E6E42E2AC68F0000306B /* LogbookView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogbookView.swift; sourceTree = "<group>"; };
-		A087E6E62E2AC68F0000306B /* FilterSummarySection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterSummarySection.swift; sourceTree = "<group>"; };
-		A087E6E72E2AC68F0000306B /* QuickFilterChipsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickFilterChipsSection.swift; sourceTree = "<group>"; };
-		A087E6E82E2AC68F0000306B /* RecommendedSetsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendedSetsSection.swift; sourceTree = "<group>"; };
-		A087E6E92E2AC68F0000306B /* SetPageHeroSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetPageHeroSection.swift; sourceTree = "<group>"; };
-		A087E6EA2E2AC68F0000306B /* SetsGridSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetsGridSection.swift; sourceTree = "<group>"; };
-		A087E6EC2E2AC68F0000306B /* FilterSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterSheetView.swift; sourceTree = "<group>"; };
-		A087E6ED2E2AC68F0000306B /* SetDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetDetailView.swift; sourceTree = "<group>"; };
-		A087E6EE2E2AC68F0000306B /* SetPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetPage.swift; sourceTree = "<group>"; };
-		A087E6EF2E2AC68F0000306B /* SetSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetSummaryView.swift; sourceTree = "<group>"; };
-		A087E6F12E2AC68F0000306B /* ChartsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartsSection.swift; sourceTree = "<group>"; };
-		A087E6F22E2AC68F0000306B /* KeyMetricsGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyMetricsGrid.swift; sourceTree = "<group>"; };
-		A087E6F32E2AC68F0000306B /* LapDetailsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LapDetailsSection.swift; sourceTree = "<group>"; };
-		A087E6F42E2AC68F0000306B /* WorkoutHeaderCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutHeaderCard.swift; sourceTree = "<group>"; };
-		A087E6F62E2AC68F0000306B /* WorkoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutView.swift; sourceTree = "<group>"; };
 		A0BFB9FD2DDD7C3C002B96A8 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		A0BFB9FF2DDD7C3C002B96A8 /* NavState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavState.swift; sourceTree = "<group>"; };
 		A0BFBA1F2DDD7C3C002B96A8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -310,6 +210,110 @@
 		A0C050662BCC5D7B002450AD /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		A0C050922BCC5E41002450AD /* SwimMate.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SwimMate.entitlements; sourceTree = "<group>"; };
 		A0C050932BCC65A3002450AD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A0E47C022E2ADB56003DCB3D /* DistanceChartCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistanceChartCard.swift; sourceTree = "<group>"; };
+		A0E47C032E2ADB56003DCB3D /* MetricCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetricCard.swift; sourceTree = "<group>"; };
+		A0E47C042E2ADB56003DCB3D /* RecentActivityCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentActivityCard.swift; sourceTree = "<group>"; };
+		A0E47C052E2ADB56003DCB3D /* StatCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatCard.swift; sourceTree = "<group>"; };
+		A0E47C062E2ADB56003DCB3D /* WeeklySummaryCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklySummaryCard.swift; sourceTree = "<group>"; };
+		A0E47C082E2ADB56003DCB3D /* LapTimesChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LapTimesChart.swift; sourceTree = "<group>"; };
+		A0E47C092E2ADB56003DCB3D /* LineGraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineGraphView.swift; sourceTree = "<group>"; };
+		A0E47C0A2E2ADB56003DCB3D /* PaceGraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaceGraphView.swift; sourceTree = "<group>"; };
+		A0E47C0B2E2ADB56003DCB3D /* StrokeDistributionChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrokeDistributionChart.swift; sourceTree = "<group>"; };
+		A0E47C0C2E2ADB56003DCB3D /* SwolfChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwolfChart.swift; sourceTree = "<group>"; };
+		A0E47C0E2E2ADB56003DCB3D /* EmptyStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyStateView.swift; sourceTree = "<group>"; };
+		A0E47C0F2E2ADB56003DCB3D /* LapRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LapRow.swift; sourceTree = "<group>"; };
+		A0E47C102E2ADB56003DCB3D /* RecentSwimRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentSwimRow.swift; sourceTree = "<group>"; };
+		A0E47C112E2ADB56003DCB3D /* StatColumn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatColumn.swift; sourceTree = "<group>"; };
+		A0E47C122E2ADB56003DCB3D /* SummaryMetricItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryMetricItem.swift; sourceTree = "<group>"; };
+		A0E47C152E2ADB56003DCB3D /* HomeHeroSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeHeroSection.swift; sourceTree = "<group>"; };
+		A0E47C162E2ADB56003DCB3D /* ProgressChartsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressChartsSection.swift; sourceTree = "<group>"; };
+		A0E47C172E2ADB56003DCB3D /* QuickActionsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickActionsSection.swift; sourceTree = "<group>"; };
+		A0E47C182E2ADB56003DCB3D /* RecentActivitySection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentActivitySection.swift; sourceTree = "<group>"; };
+		A0E47C192E2ADB56003DCB3D /* WeeklyStatsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyStatsSection.swift; sourceTree = "<group>"; };
+		A0E47C1B2E2ADB56003DCB3D /* HomePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePage.swift; sourceTree = "<group>"; };
+		A0E47C1D2E2ADB56003DCB3D /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
+		A0E47C1F2E2ADB56003DCB3D /* AppSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettingsView.swift; sourceTree = "<group>"; };
+		A0E47C202E2ADB56003DCB3D /* DataPrivacySettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataPrivacySettingsView.swift; sourceTree = "<group>"; };
+		A0E47C212E2ADB56003DCB3D /* GoalsSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalsSettingsView.swift; sourceTree = "<group>"; };
+		A0E47C222E2ADB56003DCB3D /* HealthKitPermissionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitPermissionView.swift; sourceTree = "<group>"; };
+		A0E47C232E2ADB56003DCB3D /* NotificationsSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsSettingsView.swift; sourceTree = "<group>"; };
+		A0E47C242E2ADB56003DCB3D /* PreferencesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesView.swift; sourceTree = "<group>"; };
+		A0E47C252E2ADB56003DCB3D /* ProfilePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePage.swift; sourceTree = "<group>"; };
+		A0E47C262E2ADB56003DCB3D /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		A0E47C282E2ADB56003DCB3D /* SwimListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwimListItemView.swift; sourceTree = "<group>"; };
+		A0E47C2A2E2ADB56003DCB3D /* LogbookFilterSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogbookFilterSection.swift; sourceTree = "<group>"; };
+		A0E47C2B2E2ADB56003DCB3D /* LogbookHeaderSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogbookHeaderSection.swift; sourceTree = "<group>"; };
+		A0E47C2C2E2ADB56003DCB3D /* LogbookStatsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogbookStatsSection.swift; sourceTree = "<group>"; };
+		A0E47C2D2E2ADB56003DCB3D /* LogbookWorkoutListSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogbookWorkoutListSection.swift; sourceTree = "<group>"; };
+		A0E47C2F2E2ADB56003DCB3D /* LogbookView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogbookView.swift; sourceTree = "<group>"; };
+		A0E47C312E2ADB56003DCB3D /* FilterSummarySection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterSummarySection.swift; sourceTree = "<group>"; };
+		A0E47C322E2ADB56003DCB3D /* QuickFilterChipsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickFilterChipsSection.swift; sourceTree = "<group>"; };
+		A0E47C332E2ADB56003DCB3D /* RecommendedSetsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendedSetsSection.swift; sourceTree = "<group>"; };
+		A0E47C342E2ADB56003DCB3D /* SetPageHeroSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetPageHeroSection.swift; sourceTree = "<group>"; };
+		A0E47C352E2ADB56003DCB3D /* SetsGridSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetsGridSection.swift; sourceTree = "<group>"; };
+		A0E47C372E2ADB56003DCB3D /* FilterSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterSheetView.swift; sourceTree = "<group>"; };
+		A0E47C382E2ADB56003DCB3D /* SetDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetDetailView.swift; sourceTree = "<group>"; };
+		A0E47C392E2ADB56003DCB3D /* SetPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetPage.swift; sourceTree = "<group>"; };
+		A0E47C3A2E2ADB56003DCB3D /* SetSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetSummaryView.swift; sourceTree = "<group>"; };
+		A0E47C3C2E2ADB56003DCB3D /* ChartsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartsSection.swift; sourceTree = "<group>"; };
+		A0E47C3D2E2ADB56003DCB3D /* KeyMetricsGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyMetricsGrid.swift; sourceTree = "<group>"; };
+		A0E47C3E2E2ADB56003DCB3D /* LapDetailsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LapDetailsSection.swift; sourceTree = "<group>"; };
+		A0E47C3F2E2ADB56003DCB3D /* WorkoutHeaderCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutHeaderCard.swift; sourceTree = "<group>"; };
+		A0E47C412E2ADB56003DCB3D /* WorkoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutView.swift; sourceTree = "<group>"; };
+		A0E47C772E2ADB63003DCB3D /* ActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionButton.swift; sourceTree = "<group>"; };
+		A0E47C782E2ADB63003DCB3D /* CompactNavButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompactNavButton.swift; sourceTree = "<group>"; };
+		A0E47C792E2ADB63003DCB3D /* MainButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainButton.swift; sourceTree = "<group>"; };
+		A0E47C7A2E2ADB63003DCB3D /* MainControlButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainControlButton.swift; sourceTree = "<group>"; };
+		A0E47C7B2E2ADB63003DCB3D /* PresetButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresetButton.swift; sourceTree = "<group>"; };
+		A0E47C7D2E2ADB63003DCB3D /* GoalProgressCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalProgressCard.swift; sourceTree = "<group>"; };
+		A0E47C7E2E2ADB63003DCB3D /* MetricCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetricCard.swift; sourceTree = "<group>"; };
+		A0E47C7F2E2ADB63003DCB3D /* PerformanceCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerformanceCard.swift; sourceTree = "<group>"; };
+		A0E47C812E2ADB63003DCB3D /* ElapsedTimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElapsedTimeView.swift; sourceTree = "<group>"; };
+		A0E47C822E2ADB63003DCB3D /* InsightRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsightRow.swift; sourceTree = "<group>"; };
+		A0E47C832E2ADB63003DCB3D /* IntensityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntensityIndicator.swift; sourceTree = "<group>"; };
+		A0E47C852E2ADB63003DCB3D /* NumberPadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberPadView.swift; sourceTree = "<group>"; };
+		A0E47C872E2ADB63003DCB3D /* NavigationControls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationControls.swift; sourceTree = "<group>"; };
+		A0E47C882E2ADB63003DCB3D /* StepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepView.swift; sourceTree = "<group>"; };
+		A0E47C8A2E2ADB63003DCB3D /* CelebrationOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CelebrationOverlay.swift; sourceTree = "<group>"; };
+		A0E47C8C2E2ADB63003DCB3D /* GoalProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalProgressBar.swift; sourceTree = "<group>"; };
+		A0E47C8D2E2ADB63003DCB3D /* ProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
+		A0E47C8F2E2ADB63003DCB3D /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		A0E47C912E2ADB63003DCB3D /* HealthKitPermissionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitPermissionView.swift; sourceTree = "<group>"; };
+		A0E47C922E2ADB63003DCB3D /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		A0E47C942E2ADB63003DCB3D /* CalorieSetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalorieSetupView.swift; sourceTree = "<group>"; };
+		A0E47C952E2ADB63003DCB3D /* DistanceSetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistanceSetupView.swift; sourceTree = "<group>"; };
+		A0E47C962E2ADB63003DCB3D /* GoalSetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalSetupView.swift; sourceTree = "<group>"; };
+		A0E47C972E2ADB63003DCB3D /* TimeSetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeSetupView.swift; sourceTree = "<group>"; };
+		A0E47C992E2ADB63003DCB3D /* ActionButtonsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionButtonsSection.swift; sourceTree = "<group>"; };
+		A0E47C9A2E2ADB63003DCB3D /* CurrentGoalsDisplaySection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentGoalsDisplaySection.swift; sourceTree = "<group>"; };
+		A0E47C9B2E2ADB63003DCB3D /* GoalBadgeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalBadgeView.swift; sourceTree = "<group>"; };
+		A0E47C9C2E2ADB63003DCB3D /* GoalSetupButtonsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalSetupButtonsSection.swift; sourceTree = "<group>"; };
+		A0E47C9E2E2ADB63003DCB3D /* GoalSpacingConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalSpacingConstants.swift; sourceTree = "<group>"; };
+		A0E47C9F2E2ADB63003DCB3D /* GoalSwimView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalSwimView.swift; sourceTree = "<group>"; };
+		A0E47CA12E2ADB63003DCB3D /* ImportSetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportSetView.swift; sourceTree = "<group>"; };
+		A0E47CA22E2ADB63003DCB3D /* IndoorPoolSetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndoorPoolSetupView.swift; sourceTree = "<group>"; };
+		A0E47CA32E2ADB63003DCB3D /* SwimSetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwimSetupView.swift; sourceTree = "<group>"; };
+		A0E47CA52E2ADB63003DCB3D /* GoalProgressHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalProgressHeader.swift; sourceTree = "<group>"; };
+		A0E47CA62E2ADB63003DCB3D /* GoalProgressList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalProgressList.swift; sourceTree = "<group>"; };
+		A0E47CA82E2ADB63003DCB3D /* GoalProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalProgressView.swift; sourceTree = "<group>"; };
+		A0E47CAA2E2ADB63003DCB3D /* PrimaryMetricsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryMetricsSection.swift; sourceTree = "<group>"; };
+		A0E47CAB2E2ADB63003DCB3D /* SecondaryMetricsGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondaryMetricsGrid.swift; sourceTree = "<group>"; };
+		A0E47CAD2E2ADB63003DCB3D /* MetricsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetricsView.swift; sourceTree = "<group>"; };
+		A0E47CAF2E2ADB63003DCB3D /* SetCompletionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetCompletionView.swift; sourceTree = "<group>"; };
+		A0E47CB02E2ADB63003DCB3D /* SetHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetHeader.swift; sourceTree = "<group>"; };
+		A0E47CB22E2ADB63003DCB3D /* SetDisplayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetDisplayView.swift; sourceTree = "<group>"; };
+		A0E47CB42E2ADB63003DCB3D /* KeyMetricsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyMetricsSection.swift; sourceTree = "<group>"; };
+		A0E47CB52E2ADB63003DCB3D /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		A0E47CB62E2ADB63003DCB3D /* PerformanceInsightsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerformanceInsightsSection.swift; sourceTree = "<group>"; };
+		A0E47CB72E2ADB63003DCB3D /* SummaryFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryFooter.swift; sourceTree = "<group>"; };
+		A0E47CB82E2ADB63003DCB3D /* SummaryHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryHeaderView.swift; sourceTree = "<group>"; };
+		A0E47CBA2E2ADB63003DCB3D /* SwimmingSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwimmingSummaryView.swift; sourceTree = "<group>"; };
+		A0E47CBC2E2ADB63003DCB3D /* SwimControlsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwimControlsView.swift; sourceTree = "<group>"; };
+		A0E47CBE2E2ADB63003DCB3D /* SwimmingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwimmingView.swift; sourceTree = "<group>"; };
+		A0E47CC02E2ADB63003DCB3D /* HeaderSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderSection.swift; sourceTree = "<group>"; };
+		A0E47CC12E2ADB63003DCB3D /* HealthKitWarningSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitWarningSection.swift; sourceTree = "<group>"; };
+		A0E47CC22E2ADB63003DCB3D /* NavigationButtonsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationButtonsSection.swift; sourceTree = "<group>"; };
+		A0E47CC42E2ADB63003DCB3D /* WatchRootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchRootView.swift; sourceTree = "<group>"; };
 		A0F0C7D12BDF7C5F00AF6D5B /* SwimMate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwimMate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0F0C7D42BDF7C5F00AF6D5B /* WatchSwimMate Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "WatchSwimMate Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0F6A70B2DE7E697005B7291 /* GoalType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalType.swift; sourceTree = "<group>"; };
@@ -383,267 +387,6 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		A048B8572DE9253F00084546 /* Buttons */ = {
-			isa = PBXGroup;
-			children = (
-				A048B8522DE9253F00084546 /* ActionButton.swift */,
-				A048B8532DE9253F00084546 /* CompactNavButton.swift */,
-				A048B8542DE9253F00084546 /* MainButton.swift */,
-				A048B8552DE9253F00084546 /* MainControlButton.swift */,
-				A048B8562DE9253F00084546 /* PresetButton.swift */,
-			);
-			path = Buttons;
-			sourceTree = "<group>";
-		};
-		A048B85B2DE9253F00084546 /* Cards */ = {
-			isa = PBXGroup;
-			children = (
-				A048B8582DE9253F00084546 /* GoalProgressCard.swift */,
-				A048B8592DE9253F00084546 /* MetricCard.swift */,
-				A048B85A2DE9253F00084546 /* PerformanceCard.swift */,
-			);
-			path = Cards;
-			sourceTree = "<group>";
-		};
-		A048B85F2DE9253F00084546 /* Display */ = {
-			isa = PBXGroup;
-			children = (
-				A048B85C2DE9253F00084546 /* ElapsedTimeView.swift */,
-				A048B85D2DE9253F00084546 /* InsightRow.swift */,
-				A048B85E2DE9253F00084546 /* IntensityIndicator.swift */,
-			);
-			path = Display;
-			sourceTree = "<group>";
-		};
-		A048B8612DE9253F00084546 /* Input */ = {
-			isa = PBXGroup;
-			children = (
-				A048B8602DE9253F00084546 /* NumberPadView.swift */,
-			);
-			path = Input;
-			sourceTree = "<group>";
-		};
-		A048B8642DE9253F00084546 /* Navigation */ = {
-			isa = PBXGroup;
-			children = (
-				A048B8622DE9253F00084546 /* NavigationControls.swift */,
-				A048B8632DE9253F00084546 /* StepView.swift */,
-			);
-			path = Navigation;
-			sourceTree = "<group>";
-		};
-		A048B8662DE9253F00084546 /* Overlays */ = {
-			isa = PBXGroup;
-			children = (
-				A048B8652DE9253F00084546 /* CelebrationOverlay.swift */,
-			);
-			path = Overlays;
-			sourceTree = "<group>";
-		};
-		A048B8692DE9253F00084546 /* Progress */ = {
-			isa = PBXGroup;
-			children = (
-				A048B8672DE9253F00084546 /* GoalProgressBar.swift */,
-				A048B8682DE9253F00084546 /* ProgressBar.swift */,
-			);
-			path = Progress;
-			sourceTree = "<group>";
-		};
-		A048B86B2DE9253F00084546 /* Components */ = {
-			isa = PBXGroup;
-			children = (
-				A048B8572DE9253F00084546 /* Buttons */,
-				A048B85B2DE9253F00084546 /* Cards */,
-				A048B85F2DE9253F00084546 /* Display */,
-				A048B8612DE9253F00084546 /* Input */,
-				A048B8642DE9253F00084546 /* Navigation */,
-				A048B8662DE9253F00084546 /* Overlays */,
-				A048B8692DE9253F00084546 /* Progress */,
-				A048B86A2DE9253F00084546 /* README.md */,
-			);
-			path = Components;
-			sourceTree = "<group>";
-		};
-		A048B86E2DE9253F00084546 /* SettingsView */ = {
-			isa = PBXGroup;
-			children = (
-				A048B86C2DE9253F00084546 /* HealthKitPermissionView.swift */,
-				A048B86D2DE9253F00084546 /* SettingsView.swift */,
-			);
-			path = SettingsView;
-			sourceTree = "<group>";
-		};
-		A048B8732DE9253F00084546 /* SetupViews */ = {
-			isa = PBXGroup;
-			children = (
-				A048B86F2DE9253F00084546 /* CalorieSetupView.swift */,
-				A048B8702DE9253F00084546 /* DistanceSetupView.swift */,
-				A048B8712DE9253F00084546 /* GoalSetupView.swift */,
-				A048B8722DE9253F00084546 /* TimeSetupView.swift */,
-			);
-			path = SetupViews;
-			sourceTree = "<group>";
-		};
-		A048B8782DE9253F00084546 /* Sections */ = {
-			isa = PBXGroup;
-			children = (
-				A048B8732DE9253F00084546 /* SetupViews */,
-				A048B8742DE9253F00084546 /* ActionButtonsSection.swift */,
-				A048B8752DE9253F00084546 /* CurrentGoalsDisplaySection.swift */,
-				A048B8762DE9253F00084546 /* GoalBadgeView.swift */,
-				A048B8772DE9253F00084546 /* GoalSetupButtonsSection.swift */,
-			);
-			path = Sections;
-			sourceTree = "<group>";
-		};
-		A048B87B2DE9253F00084546 /* GoalViews */ = {
-			isa = PBXGroup;
-			children = (
-				A048B8782DE9253F00084546 /* Sections */,
-				A048B8792DE9253F00084546 /* GoalSpacingConstants.swift */,
-				A048B87A2DE9253F00084546 /* GoalSwimView.swift */,
-			);
-			path = GoalViews;
-			sourceTree = "<group>";
-		};
-		A048B87F2DE9253F00084546 /* SwimSetup */ = {
-			isa = PBXGroup;
-			children = (
-				A048B87B2DE9253F00084546 /* GoalViews */,
-				A048B87C2DE9253F00084546 /* ImportSetView.swift */,
-				A048B87D2DE9253F00084546 /* IndoorPoolSetupView.swift */,
-				A048B87E2DE9253F00084546 /* SwimSetupView.swift */,
-			);
-			path = SwimSetup;
-			sourceTree = "<group>";
-		};
-		A048B8822DE9253F00084546 /* Sections */ = {
-			isa = PBXGroup;
-			children = (
-				A048B8802DE9253F00084546 /* GoalProgressHeader.swift */,
-				A048B8812DE9253F00084546 /* GoalProgressList.swift */,
-			);
-			path = Sections;
-			sourceTree = "<group>";
-		};
-		A048B8842DE9253F00084546 /* GoalDisplayView */ = {
-			isa = PBXGroup;
-			children = (
-				A048B8822DE9253F00084546 /* Sections */,
-				A048B8832DE9253F00084546 /* GoalProgressView.swift */,
-			);
-			path = GoalDisplayView;
-			sourceTree = "<group>";
-		};
-		A048B8872DE9253F00084546 /* Sections */ = {
-			isa = PBXGroup;
-			children = (
-				A048B8852DE9253F00084546 /* PrimaryMetricsSection.swift */,
-				A048B8862DE9253F00084546 /* SecondaryMetricsGrid.swift */,
-			);
-			path = Sections;
-			sourceTree = "<group>";
-		};
-		A048B8892DE9253F00084546 /* MetricsView */ = {
-			isa = PBXGroup;
-			children = (
-				A048B8872DE9253F00084546 /* Sections */,
-				A048B8882DE9253F00084546 /* MetricsView.swift */,
-			);
-			path = MetricsView;
-			sourceTree = "<group>";
-		};
-		A048B88C2DE9253F00084546 /* Sections */ = {
-			isa = PBXGroup;
-			children = (
-				A048B88A2DE9253F00084546 /* SetCompletionView.swift */,
-				A048B88B2DE9253F00084546 /* SetHeader.swift */,
-			);
-			path = Sections;
-			sourceTree = "<group>";
-		};
-		A048B88E2DE9253F00084546 /* SetDisplayView */ = {
-			isa = PBXGroup;
-			children = (
-				A048B88C2DE9253F00084546 /* Sections */,
-				A048B88D2DE9253F00084546 /* SetDisplayView.swift */,
-			);
-			path = SetDisplayView;
-			sourceTree = "<group>";
-		};
-		A048B8942DE9253F00084546 /* Sections */ = {
-			isa = PBXGroup;
-			children = (
-				A048B88F2DE9253F00084546 /* KeyMetricsSection.swift */,
-				A048B8902DE9253F00084546 /* LoadingView.swift */,
-				A048B8912DE9253F00084546 /* PerformanceInsightsSection.swift */,
-				A048B8922DE9253F00084546 /* SummaryFooter.swift */,
-				A048B8932DE9253F00084546 /* SummaryHeaderView.swift */,
-			);
-			path = Sections;
-			sourceTree = "<group>";
-		};
-		A048B8962DE9253F00084546 /* SummaryView */ = {
-			isa = PBXGroup;
-			children = (
-				A048B8942DE9253F00084546 /* Sections */,
-				A048B8952DE9253F00084546 /* SwimmingSummaryView.swift */,
-			);
-			path = SummaryView;
-			sourceTree = "<group>";
-		};
-		A048B8982DE9253F00084546 /* SwimControlsview */ = {
-			isa = PBXGroup;
-			children = (
-				A048B8972DE9253F00084546 /* SwimControlsView.swift */,
-			);
-			path = SwimControlsview;
-			sourceTree = "<group>";
-		};
-		A048B89A2DE9253F00084546 /* SwimViews */ = {
-			isa = PBXGroup;
-			children = (
-				A048B8842DE9253F00084546 /* GoalDisplayView */,
-				A048B8892DE9253F00084546 /* MetricsView */,
-				A048B88E2DE9253F00084546 /* SetDisplayView */,
-				A048B8962DE9253F00084546 /* SummaryView */,
-				A048B8982DE9253F00084546 /* SwimControlsview */,
-				A048B8992DE9253F00084546 /* SwimmingView.swift */,
-			);
-			path = SwimViews;
-			sourceTree = "<group>";
-		};
-		A048B89E2DE9253F00084546 /* Sections */ = {
-			isa = PBXGroup;
-			children = (
-				A048B89B2DE9253F00084546 /* HeaderSection.swift */,
-				A048B89C2DE9253F00084546 /* HealthKitWarningSection.swift */,
-				A048B89D2DE9253F00084546 /* NavigationButtonsSection.swift */,
-			);
-			path = Sections;
-			sourceTree = "<group>";
-		};
-		A048B8A02DE9253F00084546 /* WatchRootView */ = {
-			isa = PBXGroup;
-			children = (
-				A048B89E2DE9253F00084546 /* Sections */,
-				A048B89F2DE9253F00084546 /* WatchRootView.swift */,
-			);
-			path = WatchRootView;
-			sourceTree = "<group>";
-		};
-		A048B8A12DE9253F00084546 /* WatchViews */ = {
-			isa = PBXGroup;
-			children = (
-				A048B86B2DE9253F00084546 /* Components */,
-				A048B86E2DE9253F00084546 /* SettingsView */,
-				A048B87F2DE9253F00084546 /* SwimSetup */,
-				A048B89A2DE9253F00084546 /* SwimViews */,
-				A048B8A02DE9253F00084546 /* WatchRootView */,
-			);
-			path = WatchViews;
-			sourceTree = "<group>";
-		};
 		A07667AF2BF5E6C600FFB4C3 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -655,189 +398,6 @@
 			name = ViewModel;
 			path = SwimMate/ViewModel;
 			sourceTree = SOURCE_ROOT;
-		};
-		A087E6BD2E2AC68F0000306B /* Cards */ = {
-			isa = PBXGroup;
-			children = (
-				A087E6B92E2AC68F0000306B /* DistanceChartCard.swift */,
-				A087E6BA2E2AC68F0000306B /* RecentActivityCard.swift */,
-				A087E6BB2E2AC68F0000306B /* SimpleMetricCard.swift */,
-				A087E6BC2E2AC68F0000306B /* WeeklySummaryCard.swift */,
-			);
-			path = Cards;
-			sourceTree = "<group>";
-		};
-		A087E6C32E2AC68F0000306B /* Charts */ = {
-			isa = PBXGroup;
-			children = (
-				A087E6BE2E2AC68F0000306B /* LapTimesChart.swift */,
-				A087E6BF2E2AC68F0000306B /* LineGraphView.swift */,
-				A087E6C02E2AC68F0000306B /* PaceGraphView.swift */,
-				A087E6C12E2AC68F0000306B /* StrokeDistributionChart.swift */,
-				A087E6C22E2AC68F0000306B /* SwolfChart.swift */,
-			);
-			path = Charts;
-			sourceTree = "<group>";
-		};
-		A087E6C82E2AC68F0000306B /* Display */ = {
-			isa = PBXGroup;
-			children = (
-				A087E6C42E2AC68F0000306B /* RecentSwimRow.swift */,
-				A087E6C52E2AC68F0000306B /* SimpleLapRow.swift */,
-				A087E6C62E2AC68F0000306B /* StatColumn.swift */,
-				A087E6C72E2AC68F0000306B /* SummaryMetricItem.swift */,
-			);
-			path = Display;
-			sourceTree = "<group>";
-		};
-		A087E6C92E2AC68F0000306B /* Components */ = {
-			isa = PBXGroup;
-			children = (
-				A087E6BD2E2AC68F0000306B /* Cards */,
-				A087E6C32E2AC68F0000306B /* Charts */,
-				A087E6C82E2AC68F0000306B /* Display */,
-			);
-			path = Components;
-			sourceTree = "<group>";
-		};
-		A087E6CF2E2AC68F0000306B /* Sections */ = {
-			isa = PBXGroup;
-			children = (
-				A087E6CA2E2AC68F0000306B /* HomeHeroSection.swift */,
-				A087E6CB2E2AC68F0000306B /* ProgressChartsSection.swift */,
-				A087E6CC2E2AC68F0000306B /* QuickActionsSection.swift */,
-				A087E6CD2E2AC68F0000306B /* RecentActivitySection.swift */,
-				A087E6CE2E2AC68F0000306B /* WeeklyStatsSection.swift */,
-			);
-			path = Sections;
-			sourceTree = "<group>";
-		};
-		A087E6D12E2AC68F0000306B /* HomeView */ = {
-			isa = PBXGroup;
-			children = (
-				A087E6CF2E2AC68F0000306B /* Sections */,
-				A087E6D02E2AC68F0000306B /* HomePage.swift */,
-			);
-			path = HomeView;
-			sourceTree = "<group>";
-		};
-		A087E6D32E2AC68F0000306B /* RootView */ = {
-			isa = PBXGroup;
-			children = (
-				A087E6D22E2AC68F0000306B /* RootView.swift */,
-			);
-			path = RootView;
-			sourceTree = "<group>";
-		};
-		A087E6DC2E2AC68F0000306B /* SettingsView */ = {
-			isa = PBXGroup;
-			children = (
-				A087E6D42E2AC68F0000306B /* AppSettingsView.swift */,
-				A087E6D52E2AC68F0000306B /* DataPrivacySettingsView.swift */,
-				A087E6D62E2AC68F0000306B /* GoalsSettingsView.swift */,
-				A087E6D72E2AC68F0000306B /* HealthKitPermissionView.swift */,
-				A087E6D82E2AC68F0000306B /* NotificationsSettingsView.swift */,
-				A087E6D92E2AC68F0000306B /* PreferencesView.swift */,
-				A087E6DA2E2AC68F0000306B /* ProfilePage.swift */,
-				A087E6DB2E2AC68F0000306B /* SettingsView.swift */,
-			);
-			path = SettingsView;
-			sourceTree = "<group>";
-		};
-		A087E6DE2E2AC68F0000306B /* components */ = {
-			isa = PBXGroup;
-			children = (
-				A087E6DD2E2AC68F0000306B /* SwimListItemView.swift */,
-			);
-			path = components;
-			sourceTree = "<group>";
-		};
-		A087E6E32E2AC68F0000306B /* Sections */ = {
-			isa = PBXGroup;
-			children = (
-				A087E6DF2E2AC68F0000306B /* LogbookFilterSection.swift */,
-				A087E6E02E2AC68F0000306B /* LogbookHeaderSection.swift */,
-				A087E6E12E2AC68F0000306B /* LogbookStatsSection.swift */,
-				A087E6E22E2AC68F0000306B /* LogbookWorkoutListSection.swift */,
-			);
-			path = Sections;
-			sourceTree = "<group>";
-		};
-		A087E6E52E2AC68F0000306B /* LogbookView */ = {
-			isa = PBXGroup;
-			children = (
-				A087E6DE2E2AC68F0000306B /* components */,
-				A087E6E32E2AC68F0000306B /* Sections */,
-				A087E6E42E2AC68F0000306B /* LogbookView.swift */,
-			);
-			path = LogbookView;
-			sourceTree = "<group>";
-		};
-		A087E6EB2E2AC68F0000306B /* Sections */ = {
-			isa = PBXGroup;
-			children = (
-				A087E6E62E2AC68F0000306B /* FilterSummarySection.swift */,
-				A087E6E72E2AC68F0000306B /* QuickFilterChipsSection.swift */,
-				A087E6E82E2AC68F0000306B /* RecommendedSetsSection.swift */,
-				A087E6E92E2AC68F0000306B /* SetPageHeroSection.swift */,
-				A087E6EA2E2AC68F0000306B /* SetsGridSection.swift */,
-			);
-			path = Sections;
-			sourceTree = "<group>";
-		};
-		A087E6F02E2AC68F0000306B /* SetView */ = {
-			isa = PBXGroup;
-			children = (
-				A087E6EB2E2AC68F0000306B /* Sections */,
-				A087E6EC2E2AC68F0000306B /* FilterSheetView.swift */,
-				A087E6ED2E2AC68F0000306B /* SetDetailView.swift */,
-				A087E6EE2E2AC68F0000306B /* SetPage.swift */,
-				A087E6EF2E2AC68F0000306B /* SetSummaryView.swift */,
-			);
-			path = SetView;
-			sourceTree = "<group>";
-		};
-		A087E6F52E2AC68F0000306B /* Sections */ = {
-			isa = PBXGroup;
-			children = (
-				A087E6F12E2AC68F0000306B /* ChartsSection.swift */,
-				A087E6F22E2AC68F0000306B /* KeyMetricsGrid.swift */,
-				A087E6F32E2AC68F0000306B /* LapDetailsSection.swift */,
-				A087E6F42E2AC68F0000306B /* WorkoutHeaderCard.swift */,
-			);
-			path = Sections;
-			sourceTree = "<group>";
-		};
-		A087E6F72E2AC68F0000306B /* WorkoutView */ = {
-			isa = PBXGroup;
-			children = (
-				A087E6F52E2AC68F0000306B /* Sections */,
-				A087E6F62E2AC68F0000306B /* WorkoutView.swift */,
-			);
-			path = WorkoutView;
-			sourceTree = "<group>";
-		};
-		A087E6F82E2AC68F0000306B /* SwimViews */ = {
-			isa = PBXGroup;
-			children = (
-				A087E6E52E2AC68F0000306B /* LogbookView */,
-				A087E6F02E2AC68F0000306B /* SetView */,
-				A087E6F72E2AC68F0000306B /* WorkoutView */,
-			);
-			path = SwimViews;
-			sourceTree = "<group>";
-		};
-		A087E6F92E2AC68F0000306B /* iOSViews */ = {
-			isa = PBXGroup;
-			children = (
-				A087E6C92E2AC68F0000306B /* Components */,
-				A087E6D12E2AC68F0000306B /* HomeView */,
-				A087E6D32E2AC68F0000306B /* RootView */,
-				A087E6DC2E2AC68F0000306B /* SettingsView */,
-				A087E6F82E2AC68F0000306B /* SwimViews */,
-			);
-			path = iOSViews;
-			sourceTree = "<group>";
 		};
 		A0BFB9FE2DDD7C3C002B96A8 /* Preview Content */ = {
 			isa = PBXGroup;
@@ -875,9 +435,9 @@
 			isa = PBXGroup;
 			children = (
 				A0BFB9FE2DDD7C3C002B96A8 /* Preview Content */,
-				A0BFBA002DDD7C3C002B96A8 /* WatchModel */,
+				A0E47CC62E2ADB63003DCB3D /* WatchViews */,
 				A0BFBA032DDD7C3C002B96A8 /* WatchViewModel */,
-				A048B8A12DE9253F00084546 /* WatchViews */,
+				A0BFBA002DDD7C3C002B96A8 /* WatchModel */,
 				A0BFBA1F2DDD7C3C002B96A8 /* Assets.xcassets */,
 				A0BFBA202DDD7C3C002B96A8 /* WatchSwimMate Watch App.entitlements */,
 				A0BFBA212DDD7C3C002B96A8 /* WatchSwimMateApp.swift */,
@@ -903,7 +463,7 @@
 				A0C050932BCC65A3002450AD /* Info.plist */,
 				A0C050922BCC5E41002450AD /* SwimMate.entitlements */,
 				A0C0505F2BCC5D7A002450AD /* SwimMateApp.swift */,
-				A087E6F92E2AC68F0000306B /* iOSViews */,
+				A0E47C442E2ADB56003DCB3D /* iOSViews */,
 				A07667AF2BF5E6C600FFB4C3 /* ViewModel */,
 				A02F8F4A2E296011006CC3E5 /* Model */,
 				A0C050632BCC5D7B002450AD /* Assets.xcassets */,
@@ -926,6 +486,452 @@
 				A0FB9E312BDF7C1F00F39829 /* WatchConnectivity.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A0E47C072E2ADB56003DCB3D /* Cards */ = {
+			isa = PBXGroup;
+			children = (
+				A0E47C022E2ADB56003DCB3D /* DistanceChartCard.swift */,
+				A0E47C032E2ADB56003DCB3D /* MetricCard.swift */,
+				A0E47C042E2ADB56003DCB3D /* RecentActivityCard.swift */,
+				A0E47C052E2ADB56003DCB3D /* StatCard.swift */,
+				A0E47C062E2ADB56003DCB3D /* WeeklySummaryCard.swift */,
+			);
+			path = Cards;
+			sourceTree = "<group>";
+		};
+		A0E47C0D2E2ADB56003DCB3D /* Charts */ = {
+			isa = PBXGroup;
+			children = (
+				A0E47C082E2ADB56003DCB3D /* LapTimesChart.swift */,
+				A0E47C092E2ADB56003DCB3D /* LineGraphView.swift */,
+				A0E47C0A2E2ADB56003DCB3D /* PaceGraphView.swift */,
+				A0E47C0B2E2ADB56003DCB3D /* StrokeDistributionChart.swift */,
+				A0E47C0C2E2ADB56003DCB3D /* SwolfChart.swift */,
+			);
+			path = Charts;
+			sourceTree = "<group>";
+		};
+		A0E47C132E2ADB56003DCB3D /* Display */ = {
+			isa = PBXGroup;
+			children = (
+				A0E47C0E2E2ADB56003DCB3D /* EmptyStateView.swift */,
+				A0E47C0F2E2ADB56003DCB3D /* LapRow.swift */,
+				A0E47C102E2ADB56003DCB3D /* RecentSwimRow.swift */,
+				A0E47C112E2ADB56003DCB3D /* StatColumn.swift */,
+				A0E47C122E2ADB56003DCB3D /* SummaryMetricItem.swift */,
+			);
+			path = Display;
+			sourceTree = "<group>";
+		};
+		A0E47C142E2ADB56003DCB3D /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				A0E47C072E2ADB56003DCB3D /* Cards */,
+				A0E47C0D2E2ADB56003DCB3D /* Charts */,
+				A0E47C132E2ADB56003DCB3D /* Display */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		A0E47C1A2E2ADB56003DCB3D /* Sections */ = {
+			isa = PBXGroup;
+			children = (
+				A0E47C152E2ADB56003DCB3D /* HomeHeroSection.swift */,
+				A0E47C162E2ADB56003DCB3D /* ProgressChartsSection.swift */,
+				A0E47C172E2ADB56003DCB3D /* QuickActionsSection.swift */,
+				A0E47C182E2ADB56003DCB3D /* RecentActivitySection.swift */,
+				A0E47C192E2ADB56003DCB3D /* WeeklyStatsSection.swift */,
+			);
+			path = Sections;
+			sourceTree = "<group>";
+		};
+		A0E47C1C2E2ADB56003DCB3D /* HomeView */ = {
+			isa = PBXGroup;
+			children = (
+				A0E47C1A2E2ADB56003DCB3D /* Sections */,
+				A0E47C1B2E2ADB56003DCB3D /* HomePage.swift */,
+			);
+			path = HomeView;
+			sourceTree = "<group>";
+		};
+		A0E47C1E2E2ADB56003DCB3D /* RootView */ = {
+			isa = PBXGroup;
+			children = (
+				A0E47C1D2E2ADB56003DCB3D /* RootView.swift */,
+			);
+			path = RootView;
+			sourceTree = "<group>";
+		};
+		A0E47C272E2ADB56003DCB3D /* SettingsView */ = {
+			isa = PBXGroup;
+			children = (
+				A0E47C1F2E2ADB56003DCB3D /* AppSettingsView.swift */,
+				A0E47C202E2ADB56003DCB3D /* DataPrivacySettingsView.swift */,
+				A0E47C212E2ADB56003DCB3D /* GoalsSettingsView.swift */,
+				A0E47C222E2ADB56003DCB3D /* HealthKitPermissionView.swift */,
+				A0E47C232E2ADB56003DCB3D /* NotificationsSettingsView.swift */,
+				A0E47C242E2ADB56003DCB3D /* PreferencesView.swift */,
+				A0E47C252E2ADB56003DCB3D /* ProfilePage.swift */,
+				A0E47C262E2ADB56003DCB3D /* SettingsView.swift */,
+			);
+			path = SettingsView;
+			sourceTree = "<group>";
+		};
+		A0E47C292E2ADB56003DCB3D /* components */ = {
+			isa = PBXGroup;
+			children = (
+				A0E47C282E2ADB56003DCB3D /* SwimListItemView.swift */,
+			);
+			path = components;
+			sourceTree = "<group>";
+		};
+		A0E47C2E2E2ADB56003DCB3D /* Sections */ = {
+			isa = PBXGroup;
+			children = (
+				A0E47C2A2E2ADB56003DCB3D /* LogbookFilterSection.swift */,
+				A0E47C2B2E2ADB56003DCB3D /* LogbookHeaderSection.swift */,
+				A0E47C2C2E2ADB56003DCB3D /* LogbookStatsSection.swift */,
+				A0E47C2D2E2ADB56003DCB3D /* LogbookWorkoutListSection.swift */,
+			);
+			path = Sections;
+			sourceTree = "<group>";
+		};
+		A0E47C302E2ADB56003DCB3D /* LogbookView */ = {
+			isa = PBXGroup;
+			children = (
+				A0E47C292E2ADB56003DCB3D /* components */,
+				A0E47C2E2E2ADB56003DCB3D /* Sections */,
+				A0E47C2F2E2ADB56003DCB3D /* LogbookView.swift */,
+			);
+			path = LogbookView;
+			sourceTree = "<group>";
+		};
+		A0E47C362E2ADB56003DCB3D /* Sections */ = {
+			isa = PBXGroup;
+			children = (
+				A0E47C312E2ADB56003DCB3D /* FilterSummarySection.swift */,
+				A0E47C322E2ADB56003DCB3D /* QuickFilterChipsSection.swift */,
+				A0E47C332E2ADB56003DCB3D /* RecommendedSetsSection.swift */,
+				A0E47C342E2ADB56003DCB3D /* SetPageHeroSection.swift */,
+				A0E47C352E2ADB56003DCB3D /* SetsGridSection.swift */,
+			);
+			path = Sections;
+			sourceTree = "<group>";
+		};
+		A0E47C3B2E2ADB56003DCB3D /* SetView */ = {
+			isa = PBXGroup;
+			children = (
+				A0E47C362E2ADB56003DCB3D /* Sections */,
+				A0E47C372E2ADB56003DCB3D /* FilterSheetView.swift */,
+				A0E47C382E2ADB56003DCB3D /* SetDetailView.swift */,
+				A0E47C392E2ADB56003DCB3D /* SetPage.swift */,
+				A0E47C3A2E2ADB56003DCB3D /* SetSummaryView.swift */,
+			);
+			path = SetView;
+			sourceTree = "<group>";
+		};
+		A0E47C402E2ADB56003DCB3D /* Sections */ = {
+			isa = PBXGroup;
+			children = (
+				A0E47C3C2E2ADB56003DCB3D /* ChartsSection.swift */,
+				A0E47C3D2E2ADB56003DCB3D /* KeyMetricsGrid.swift */,
+				A0E47C3E2E2ADB56003DCB3D /* LapDetailsSection.swift */,
+				A0E47C3F2E2ADB56003DCB3D /* WorkoutHeaderCard.swift */,
+			);
+			path = Sections;
+			sourceTree = "<group>";
+		};
+		A0E47C422E2ADB56003DCB3D /* WorkoutView */ = {
+			isa = PBXGroup;
+			children = (
+				A0E47C402E2ADB56003DCB3D /* Sections */,
+				A0E47C412E2ADB56003DCB3D /* WorkoutView.swift */,
+			);
+			path = WorkoutView;
+			sourceTree = "<group>";
+		};
+		A0E47C432E2ADB56003DCB3D /* SwimViews */ = {
+			isa = PBXGroup;
+			children = (
+				A0E47C302E2ADB56003DCB3D /* LogbookView */,
+				A0E47C3B2E2ADB56003DCB3D /* SetView */,
+				A0E47C422E2ADB56003DCB3D /* WorkoutView */,
+			);
+			path = SwimViews;
+			sourceTree = "<group>";
+		};
+		A0E47C442E2ADB56003DCB3D /* iOSViews */ = {
+			isa = PBXGroup;
+			children = (
+				A0E47C142E2ADB56003DCB3D /* Components */,
+				A0E47C1C2E2ADB56003DCB3D /* HomeView */,
+				A0E47C1E2E2ADB56003DCB3D /* RootView */,
+				A0E47C272E2ADB56003DCB3D /* SettingsView */,
+				A0E47C432E2ADB56003DCB3D /* SwimViews */,
+			);
+			path = iOSViews;
+			sourceTree = "<group>";
+		};
+		A0E47C7C2E2ADB63003DCB3D /* Buttons */ = {
+			isa = PBXGroup;
+			children = (
+				A0E47C772E2ADB63003DCB3D /* ActionButton.swift */,
+				A0E47C782E2ADB63003DCB3D /* CompactNavButton.swift */,
+				A0E47C792E2ADB63003DCB3D /* MainButton.swift */,
+				A0E47C7A2E2ADB63003DCB3D /* MainControlButton.swift */,
+				A0E47C7B2E2ADB63003DCB3D /* PresetButton.swift */,
+			);
+			path = Buttons;
+			sourceTree = "<group>";
+		};
+		A0E47C802E2ADB63003DCB3D /* Cards */ = {
+			isa = PBXGroup;
+			children = (
+				A0E47C7D2E2ADB63003DCB3D /* GoalProgressCard.swift */,
+				A0E47C7E2E2ADB63003DCB3D /* MetricCard.swift */,
+				A0E47C7F2E2ADB63003DCB3D /* PerformanceCard.swift */,
+			);
+			path = Cards;
+			sourceTree = "<group>";
+		};
+		A0E47C842E2ADB63003DCB3D /* Display */ = {
+			isa = PBXGroup;
+			children = (
+				A0E47C812E2ADB63003DCB3D /* ElapsedTimeView.swift */,
+				A0E47C822E2ADB63003DCB3D /* InsightRow.swift */,
+				A0E47C832E2ADB63003DCB3D /* IntensityIndicator.swift */,
+			);
+			path = Display;
+			sourceTree = "<group>";
+		};
+		A0E47C862E2ADB63003DCB3D /* Input */ = {
+			isa = PBXGroup;
+			children = (
+				A0E47C852E2ADB63003DCB3D /* NumberPadView.swift */,
+			);
+			path = Input;
+			sourceTree = "<group>";
+		};
+		A0E47C892E2ADB63003DCB3D /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+				A0E47C872E2ADB63003DCB3D /* NavigationControls.swift */,
+				A0E47C882E2ADB63003DCB3D /* StepView.swift */,
+			);
+			path = Navigation;
+			sourceTree = "<group>";
+		};
+		A0E47C8B2E2ADB63003DCB3D /* Overlays */ = {
+			isa = PBXGroup;
+			children = (
+				A0E47C8A2E2ADB63003DCB3D /* CelebrationOverlay.swift */,
+			);
+			path = Overlays;
+			sourceTree = "<group>";
+		};
+		A0E47C8E2E2ADB63003DCB3D /* Progress */ = {
+			isa = PBXGroup;
+			children = (
+				A0E47C8C2E2ADB63003DCB3D /* GoalProgressBar.swift */,
+				A0E47C8D2E2ADB63003DCB3D /* ProgressBar.swift */,
+			);
+			path = Progress;
+			sourceTree = "<group>";
+		};
+		A0E47C902E2ADB63003DCB3D /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				A0E47C7C2E2ADB63003DCB3D /* Buttons */,
+				A0E47C802E2ADB63003DCB3D /* Cards */,
+				A0E47C842E2ADB63003DCB3D /* Display */,
+				A0E47C862E2ADB63003DCB3D /* Input */,
+				A0E47C892E2ADB63003DCB3D /* Navigation */,
+				A0E47C8B2E2ADB63003DCB3D /* Overlays */,
+				A0E47C8E2E2ADB63003DCB3D /* Progress */,
+				A0E47C8F2E2ADB63003DCB3D /* README.md */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		A0E47C932E2ADB63003DCB3D /* SettingsView */ = {
+			isa = PBXGroup;
+			children = (
+				A0E47C912E2ADB63003DCB3D /* HealthKitPermissionView.swift */,
+				A0E47C922E2ADB63003DCB3D /* SettingsView.swift */,
+			);
+			path = SettingsView;
+			sourceTree = "<group>";
+		};
+		A0E47C982E2ADB63003DCB3D /* SetupViews */ = {
+			isa = PBXGroup;
+			children = (
+				A0E47C942E2ADB63003DCB3D /* CalorieSetupView.swift */,
+				A0E47C952E2ADB63003DCB3D /* DistanceSetupView.swift */,
+				A0E47C962E2ADB63003DCB3D /* GoalSetupView.swift */,
+				A0E47C972E2ADB63003DCB3D /* TimeSetupView.swift */,
+			);
+			path = SetupViews;
+			sourceTree = "<group>";
+		};
+		A0E47C9D2E2ADB63003DCB3D /* Sections */ = {
+			isa = PBXGroup;
+			children = (
+				A0E47C982E2ADB63003DCB3D /* SetupViews */,
+				A0E47C992E2ADB63003DCB3D /* ActionButtonsSection.swift */,
+				A0E47C9A2E2ADB63003DCB3D /* CurrentGoalsDisplaySection.swift */,
+				A0E47C9B2E2ADB63003DCB3D /* GoalBadgeView.swift */,
+				A0E47C9C2E2ADB63003DCB3D /* GoalSetupButtonsSection.swift */,
+			);
+			path = Sections;
+			sourceTree = "<group>";
+		};
+		A0E47CA02E2ADB63003DCB3D /* GoalViews */ = {
+			isa = PBXGroup;
+			children = (
+				A0E47C9D2E2ADB63003DCB3D /* Sections */,
+				A0E47C9E2E2ADB63003DCB3D /* GoalSpacingConstants.swift */,
+				A0E47C9F2E2ADB63003DCB3D /* GoalSwimView.swift */,
+			);
+			path = GoalViews;
+			sourceTree = "<group>";
+		};
+		A0E47CA42E2ADB63003DCB3D /* SwimSetup */ = {
+			isa = PBXGroup;
+			children = (
+				A0E47CA02E2ADB63003DCB3D /* GoalViews */,
+				A0E47CA12E2ADB63003DCB3D /* ImportSetView.swift */,
+				A0E47CA22E2ADB63003DCB3D /* IndoorPoolSetupView.swift */,
+				A0E47CA32E2ADB63003DCB3D /* SwimSetupView.swift */,
+			);
+			path = SwimSetup;
+			sourceTree = "<group>";
+		};
+		A0E47CA72E2ADB63003DCB3D /* Sections */ = {
+			isa = PBXGroup;
+			children = (
+				A0E47CA52E2ADB63003DCB3D /* GoalProgressHeader.swift */,
+				A0E47CA62E2ADB63003DCB3D /* GoalProgressList.swift */,
+			);
+			path = Sections;
+			sourceTree = "<group>";
+		};
+		A0E47CA92E2ADB63003DCB3D /* GoalDisplayView */ = {
+			isa = PBXGroup;
+			children = (
+				A0E47CA72E2ADB63003DCB3D /* Sections */,
+				A0E47CA82E2ADB63003DCB3D /* GoalProgressView.swift */,
+			);
+			path = GoalDisplayView;
+			sourceTree = "<group>";
+		};
+		A0E47CAC2E2ADB63003DCB3D /* Sections */ = {
+			isa = PBXGroup;
+			children = (
+				A0E47CAA2E2ADB63003DCB3D /* PrimaryMetricsSection.swift */,
+				A0E47CAB2E2ADB63003DCB3D /* SecondaryMetricsGrid.swift */,
+			);
+			path = Sections;
+			sourceTree = "<group>";
+		};
+		A0E47CAE2E2ADB63003DCB3D /* MetricsView */ = {
+			isa = PBXGroup;
+			children = (
+				A0E47CAC2E2ADB63003DCB3D /* Sections */,
+				A0E47CAD2E2ADB63003DCB3D /* MetricsView.swift */,
+			);
+			path = MetricsView;
+			sourceTree = "<group>";
+		};
+		A0E47CB12E2ADB63003DCB3D /* Sections */ = {
+			isa = PBXGroup;
+			children = (
+				A0E47CAF2E2ADB63003DCB3D /* SetCompletionView.swift */,
+				A0E47CB02E2ADB63003DCB3D /* SetHeader.swift */,
+			);
+			path = Sections;
+			sourceTree = "<group>";
+		};
+		A0E47CB32E2ADB63003DCB3D /* SetDisplayView */ = {
+			isa = PBXGroup;
+			children = (
+				A0E47CB12E2ADB63003DCB3D /* Sections */,
+				A0E47CB22E2ADB63003DCB3D /* SetDisplayView.swift */,
+			);
+			path = SetDisplayView;
+			sourceTree = "<group>";
+		};
+		A0E47CB92E2ADB63003DCB3D /* Sections */ = {
+			isa = PBXGroup;
+			children = (
+				A0E47CB42E2ADB63003DCB3D /* KeyMetricsSection.swift */,
+				A0E47CB52E2ADB63003DCB3D /* LoadingView.swift */,
+				A0E47CB62E2ADB63003DCB3D /* PerformanceInsightsSection.swift */,
+				A0E47CB72E2ADB63003DCB3D /* SummaryFooter.swift */,
+				A0E47CB82E2ADB63003DCB3D /* SummaryHeaderView.swift */,
+			);
+			path = Sections;
+			sourceTree = "<group>";
+		};
+		A0E47CBB2E2ADB63003DCB3D /* SummaryView */ = {
+			isa = PBXGroup;
+			children = (
+				A0E47CB92E2ADB63003DCB3D /* Sections */,
+				A0E47CBA2E2ADB63003DCB3D /* SwimmingSummaryView.swift */,
+			);
+			path = SummaryView;
+			sourceTree = "<group>";
+		};
+		A0E47CBD2E2ADB63003DCB3D /* SwimControlsview */ = {
+			isa = PBXGroup;
+			children = (
+				A0E47CBC2E2ADB63003DCB3D /* SwimControlsView.swift */,
+			);
+			path = SwimControlsview;
+			sourceTree = "<group>";
+		};
+		A0E47CBF2E2ADB63003DCB3D /* SwimViews */ = {
+			isa = PBXGroup;
+			children = (
+				A0E47CA92E2ADB63003DCB3D /* GoalDisplayView */,
+				A0E47CAE2E2ADB63003DCB3D /* MetricsView */,
+				A0E47CB32E2ADB63003DCB3D /* SetDisplayView */,
+				A0E47CBB2E2ADB63003DCB3D /* SummaryView */,
+				A0E47CBD2E2ADB63003DCB3D /* SwimControlsview */,
+				A0E47CBE2E2ADB63003DCB3D /* SwimmingView.swift */,
+			);
+			path = SwimViews;
+			sourceTree = "<group>";
+		};
+		A0E47CC32E2ADB63003DCB3D /* Sections */ = {
+			isa = PBXGroup;
+			children = (
+				A0E47CC02E2ADB63003DCB3D /* HeaderSection.swift */,
+				A0E47CC12E2ADB63003DCB3D /* HealthKitWarningSection.swift */,
+				A0E47CC22E2ADB63003DCB3D /* NavigationButtonsSection.swift */,
+			);
+			path = Sections;
+			sourceTree = "<group>";
+		};
+		A0E47CC52E2ADB63003DCB3D /* WatchRootView */ = {
+			isa = PBXGroup;
+			children = (
+				A0E47CC32E2ADB63003DCB3D /* Sections */,
+				A0E47CC42E2ADB63003DCB3D /* WatchRootView.swift */,
+			);
+			path = WatchRootView;
+			sourceTree = "<group>";
+		};
+		A0E47CC62E2ADB63003DCB3D /* WatchViews */ = {
+			isa = PBXGroup;
+			children = (
+				A0E47C902E2ADB63003DCB3D /* Components */,
+				A0E47C932E2ADB63003DCB3D /* SettingsView */,
+				A0E47CA42E2ADB63003DCB3D /* SwimSetup */,
+				A0E47CBF2E2ADB63003DCB3D /* SwimViews */,
+				A0E47CC52E2ADB63003DCB3D /* WatchRootView */,
+			);
+			path = WatchViews;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1020,7 +1026,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A048B8D72DE9253F00084546 /* README.md in Resources */,
+				A0E47CC72E2ADB63003DCB3D /* README.md in Resources */,
 				A0BFBA232DDD7C3C002B96A8 /* Assets.xcassets in Resources */,
 				A0BFBA242DDD7C3C002B96A8 /* Preview Assets.xcassets in Resources */,
 			);
@@ -1036,56 +1042,58 @@
 				A07667B12BF5E6C600FFB4C3 /* WatchConnector.swift in Sources */,
 				A023DE452BDF7B2A00242C58 /* SwimMateApp.swift in Sources */,
 				A02F8F542E296011006CC3E5 /* MeasureUnit.swift in Sources */,
-				A087E6FA2E2AC68F0000306B /* GoalsSettingsView.swift in Sources */,
-				A087E6FB2E2AC68F0000306B /* KeyMetricsGrid.swift in Sources */,
-				A087E6FC2E2AC68F0000306B /* HomePage.swift in Sources */,
-				A087E6FD2E2AC68F0000306B /* FilterSummarySection.swift in Sources */,
-				A087E6FE2E2AC68F0000306B /* WeeklyStatsSection.swift in Sources */,
-				A087E6FF2E2AC68F0000306B /* SimpleMetricCard.swift in Sources */,
-				A087E7002E2AC68F0000306B /* PreferencesView.swift in Sources */,
-				A087E7012E2AC68F0000306B /* SwolfChart.swift in Sources */,
-				A087E7022E2AC68F0000306B /* RecommendedSetsSection.swift in Sources */,
-				A087E7032E2AC68F0000306B /* PaceGraphView.swift in Sources */,
-				A087E7042E2AC68F0000306B /* SettingsView.swift in Sources */,
-				A087E7052E2AC68F0000306B /* LapTimesChart.swift in Sources */,
-				A087E7062E2AC68F0000306B /* DistanceChartCard.swift in Sources */,
-				A087E7072E2AC68F0000306B /* LogbookStatsSection.swift in Sources */,
-				A087E7082E2AC68F0000306B /* SimpleLapRow.swift in Sources */,
-				A087E7092E2AC68F0000306B /* SetPage.swift in Sources */,
-				A087E70A2E2AC68F0000306B /* LogbookHeaderSection.swift in Sources */,
-				A087E70B2E2AC68F0000306B /* ChartsSection.swift in Sources */,
-				A087E70C2E2AC68F0000306B /* ProgressChartsSection.swift in Sources */,
-				A087E70D2E2AC68F0000306B /* AppSettingsView.swift in Sources */,
-				A087E70E2E2AC68F0000306B /* RootView.swift in Sources */,
-				A087E70F2E2AC68F0000306B /* SummaryMetricItem.swift in Sources */,
-				A087E7102E2AC68F0000306B /* StatColumn.swift in Sources */,
-				A087E7112E2AC68F0000306B /* HomeHeroSection.swift in Sources */,
-				A087E7122E2AC68F0000306B /* LogbookWorkoutListSection.swift in Sources */,
-				A087E7132E2AC68F0000306B /* HealthKitPermissionView.swift in Sources */,
-				A087E7142E2AC68F0000306B /* SetPageHeroSection.swift in Sources */,
-				A087E7152E2AC68F0000306B /* LogbookView.swift in Sources */,
-				A087E7162E2AC68F0000306B /* SetsGridSection.swift in Sources */,
-				A087E7172E2AC68F0000306B /* QuickFilterChipsSection.swift in Sources */,
-				A087E7182E2AC68F0000306B /* FilterSheetView.swift in Sources */,
-				A087E7192E2AC68F0000306B /* LogbookFilterSection.swift in Sources */,
-				A087E71A2E2AC68F0000306B /* RecentActivityCard.swift in Sources */,
-				A087E71B2E2AC68F0000306B /* RecentActivitySection.swift in Sources */,
-				A087E71C2E2AC68F0000306B /* ProfilePage.swift in Sources */,
-				A087E71D2E2AC68F0000306B /* SetSummaryView.swift in Sources */,
-				A087E71E2E2AC68F0000306B /* DataPrivacySettingsView.swift in Sources */,
-				A087E71F2E2AC68F0000306B /* WorkoutView.swift in Sources */,
-				A087E7202E2AC68F0000306B /* LapDetailsSection.swift in Sources */,
-				A087E7212E2AC68F0000306B /* RecentSwimRow.swift in Sources */,
-				A087E7222E2AC68F0000306B /* LineGraphView.swift in Sources */,
-				A087E7232E2AC68F0000306B /* WorkoutHeaderCard.swift in Sources */,
-				A087E7242E2AC68F0000306B /* NotificationsSettingsView.swift in Sources */,
-				A087E7252E2AC68F0000306B /* QuickActionsSection.swift in Sources */,
-				A087E7262E2AC68F0000306B /* SetDetailView.swift in Sources */,
-				A087E7272E2AC68F0000306B /* SwimListItemView.swift in Sources */,
-				A087E7282E2AC68F0000306B /* WeeklySummaryCard.swift in Sources */,
-				A087E7292E2AC68F0000306B /* StrokeDistributionChart.swift in Sources */,
 				A02F8F552E296011006CC3E5 /* SwimStroke.swift in Sources */,
 				A02F8F562E296011006CC3E5 /* SetComponent.swift in Sources */,
+				A0E47C452E2ADB56003DCB3D /* WorkoutView.swift in Sources */,
+				A0E47C462E2ADB56003DCB3D /* SetPageHeroSection.swift in Sources */,
+				A0E47C472E2ADB56003DCB3D /* LogbookView.swift in Sources */,
+				A0E47C482E2ADB56003DCB3D /* SetsGridSection.swift in Sources */,
+				A0E47C492E2ADB56003DCB3D /* LogbookFilterSection.swift in Sources */,
+				A0E47C4A2E2ADB56003DCB3D /* StatCard.swift in Sources */,
+				A0E47C4B2E2ADB56003DCB3D /* PreferencesView.swift in Sources */,
+				A0E47C4C2E2ADB56003DCB3D /* RecentActivitySection.swift in Sources */,
+				A0E47C4D2E2ADB56003DCB3D /* FilterSheetView.swift in Sources */,
+				A0E47C4E2E2ADB56003DCB3D /* EmptyStateView.swift in Sources */,
+				A0E47C4F2E2ADB56003DCB3D /* LapTimesChart.swift in Sources */,
+				A0E47C502E2ADB56003DCB3D /* DistanceChartCard.swift in Sources */,
+				A0E47C512E2ADB56003DCB3D /* QuickActionsSection.swift in Sources */,
+				A0E47C522E2ADB56003DCB3D /* FilterSummarySection.swift in Sources */,
+				A0E47C532E2ADB56003DCB3D /* RecommendedSetsSection.swift in Sources */,
+				A0E47C542E2ADB56003DCB3D /* WeeklyStatsSection.swift in Sources */,
+				A0E47C552E2ADB56003DCB3D /* RootView.swift in Sources */,
+				A0E47C562E2ADB56003DCB3D /* ProfilePage.swift in Sources */,
+				A0E47C572E2ADB56003DCB3D /* KeyMetricsGrid.swift in Sources */,
+				A0E47C582E2ADB56003DCB3D /* SettingsView.swift in Sources */,
+				A0E47C592E2ADB56003DCB3D /* PaceGraphView.swift in Sources */,
+				A0E47C5A2E2ADB56003DCB3D /* SwolfChart.swift in Sources */,
+				A0E47C5B2E2ADB56003DCB3D /* WeeklySummaryCard.swift in Sources */,
+				A0E47C5C2E2ADB56003DCB3D /* WorkoutHeaderCard.swift in Sources */,
+				A0E47C5D2E2ADB56003DCB3D /* AppSettingsView.swift in Sources */,
+				A0E47C5E2E2ADB56003DCB3D /* GoalsSettingsView.swift in Sources */,
+				A0E47C5F2E2ADB56003DCB3D /* SetPage.swift in Sources */,
+				A0E47C602E2ADB56003DCB3D /* QuickFilterChipsSection.swift in Sources */,
+				A0E47C612E2ADB56003DCB3D /* RecentSwimRow.swift in Sources */,
+				A0E47C622E2ADB56003DCB3D /* SetDetailView.swift in Sources */,
+				A0E47C632E2ADB56003DCB3D /* RecentActivityCard.swift in Sources */,
+				A0E47C642E2ADB56003DCB3D /* MetricCard.swift in Sources */,
+				A0E47C652E2ADB56003DCB3D /* DataPrivacySettingsView.swift in Sources */,
+				A0E47C662E2ADB56003DCB3D /* NotificationsSettingsView.swift in Sources */,
+				A0E47C672E2ADB56003DCB3D /* HealthKitPermissionView.swift in Sources */,
+				A0E47C682E2ADB56003DCB3D /* SetSummaryView.swift in Sources */,
+				A0E47C692E2ADB56003DCB3D /* HomeHeroSection.swift in Sources */,
+				A0E47C6A2E2ADB56003DCB3D /* LogbookWorkoutListSection.swift in Sources */,
+				A0E47C6B2E2ADB56003DCB3D /* LineGraphView.swift in Sources */,
+				A0E47C6C2E2ADB56003DCB3D /* LapRow.swift in Sources */,
+				A0E47C6D2E2ADB56003DCB3D /* ProgressChartsSection.swift in Sources */,
+				A0E47C6E2E2ADB56003DCB3D /* StatColumn.swift in Sources */,
+				A0E47C6F2E2ADB56003DCB3D /* ChartsSection.swift in Sources */,
+				A0E47C702E2ADB56003DCB3D /* SwimListItemView.swift in Sources */,
+				A0E47C712E2ADB56003DCB3D /* SummaryMetricItem.swift in Sources */,
+				A0E47C722E2ADB56003DCB3D /* LogbookHeaderSection.swift in Sources */,
+				A0E47C732E2ADB56003DCB3D /* LapDetailsSection.swift in Sources */,
+				A0E47C742E2ADB56003DCB3D /* StrokeDistributionChart.swift in Sources */,
+				A0E47C752E2ADB56003DCB3D /* LogbookStatsSection.swift in Sources */,
+				A0E47C762E2ADB56003DCB3D /* HomePage.swift in Sources */,
 				A02F8F572E296011006CC3E5 /* LapGroup.swift in Sources */,
 				A02F8F582E296011006CC3E5 /* SwimmingLocationType.swift in Sources */,
 				A02F8F592E296011006CC3E5 /* Swim.swift in Sources */,
@@ -1109,53 +1117,6 @@
 				A0F6A7292DE7EF8A005B7291 /* WatchManager+HealthKit.swift in Sources */,
 				A0F6A72A2DE7EF8A005B7291 /* WatchManager+Delegates.swift in Sources */,
 				A0F6A72B2DE7EF8A005B7291 /* WatchManager+Goals.swift in Sources */,
-				A048B8A22DE9253F00084546 /* MetricsView.swift in Sources */,
-				A048B8A32DE9253F00084546 /* LoadingView.swift in Sources */,
-				A048B8A42DE9253F00084546 /* GoalBadgeView.swift in Sources */,
-				A048B8A52DE9253F00084546 /* StepView.swift in Sources */,
-				A048B8A62DE9253F00084546 /* PerformanceInsightsSection.swift in Sources */,
-				A048B8A72DE9253F00084546 /* PerformanceCard.swift in Sources */,
-				A048B8A82DE9253F00084546 /* GoalSwimView.swift in Sources */,
-				A048B8A92DE9253F00084546 /* SummaryHeaderView.swift in Sources */,
-				A048B8AA2DE9253F00084546 /* CalorieSetupView.swift in Sources */,
-				A048B8AB2DE9253F00084546 /* ElapsedTimeView.swift in Sources */,
-				A048B8AC2DE9253F00084546 /* CompactNavButton.swift in Sources */,
-				A048B8AD2DE9253F00084546 /* InsightRow.swift in Sources */,
-				A048B8AE2DE9253F00084546 /* SwimmingView.swift in Sources */,
-				A048B8AF2DE9253F00084546 /* MetricCard.swift in Sources */,
-				A048B8B02DE9253F00084546 /* ActionButtonsSection.swift in Sources */,
-				A048B8B12DE9253F00084546 /* GoalProgressView.swift in Sources */,
-				A048B8B22DE9253F00084546 /* WatchRootView.swift in Sources */,
-				A048B8B32DE9253F00084546 /* ProgressBar.swift in Sources */,
-				A048B8B42DE9253F00084546 /* CurrentGoalsDisplaySection.swift in Sources */,
-				A048B8B52DE9253F00084546 /* PresetButton.swift in Sources */,
-				A048B8B62DE9253F00084546 /* KeyMetricsSection.swift in Sources */,
-				A048B8B72DE9253F00084546 /* GoalSpacingConstants.swift in Sources */,
-				A048B8B82DE9253F00084546 /* GoalProgressList.swift in Sources */,
-				A048B8B92DE9253F00084546 /* GoalSetupButtonsSection.swift in Sources */,
-				A048B8BA2DE9253F00084546 /* ActionButton.swift in Sources */,
-				A048B8BB2DE9253F00084546 /* TimeSetupView.swift in Sources */,
-				A048B8BC2DE9253F00084546 /* GoalProgressHeader.swift in Sources */,
-				A048B8BD2DE9253F00084546 /* SetDisplayView.swift in Sources */,
-				A048B8BE2DE9253F00084546 /* IndoorPoolSetupView.swift in Sources */,
-				A048B8BF2DE9253F00084546 /* CelebrationOverlay.swift in Sources */,
-				A048B8C02DE9253F00084546 /* MainControlButton.swift in Sources */,
-				A048B8C12DE9253F00084546 /* SummaryFooter.swift in Sources */,
-				A048B8C22DE9253F00084546 /* SettingsView.swift in Sources */,
-				A048B8C32DE9253F00084546 /* ImportSetView.swift in Sources */,
-				A048B8C42DE9253F00084546 /* SecondaryMetricsGrid.swift in Sources */,
-				A048B8C52DE9253F00084546 /* GoalProgressBar.swift in Sources */,
-				A048B8C62DE9253F00084546 /* NavigationControls.swift in Sources */,
-				A048B8C72DE9253F00084546 /* SetCompletionView.swift in Sources */,
-				A048B8C82DE9253F00084546 /* SwimSetupView.swift in Sources */,
-				A048B8C92DE9253F00084546 /* HealthKitPermissionView.swift in Sources */,
-				A048B8CA2DE9253F00084546 /* NavigationButtonsSection.swift in Sources */,
-				A048B8CB2DE9253F00084546 /* IntensityIndicator.swift in Sources */,
-				A048B8CC2DE9253F00084546 /* NumberPadView.swift in Sources */,
-				A048B8CD2DE9253F00084546 /* SwimControlsView.swift in Sources */,
-				A048B8CE2DE9253F00084546 /* SwimmingSummaryView.swift in Sources */,
-				A048B8CF2DE9253F00084546 /* HeaderSection.swift in Sources */,
-				A048B8D02DE9253F00084546 /* HealthKitWarningSection.swift in Sources */,
 				A02F8F4B2E296011006CC3E5 /* MeasureUnit.swift in Sources */,
 				A02F8F4C2E296011006CC3E5 /* SwimStroke.swift in Sources */,
 				A02F8F4D2E296011006CC3E5 /* SetComponent.swift in Sources */,
@@ -1165,12 +1126,59 @@
 				A02F8F512E296011006CC3E5 /* SwimSet.swift in Sources */,
 				A02F8F522E296011006CC3E5 /* SwimSetExamples.swift in Sources */,
 				A02F8F532E296011006CC3E5 /* Lap.swift in Sources */,
-				A048B8D12DE9253F00084546 /* MainButton.swift in Sources */,
-				A048B8D22DE9253F00084546 /* PrimaryMetricsSection.swift in Sources */,
-				A048B8D32DE9253F00084546 /* GoalSetupView.swift in Sources */,
-				A048B8D42DE9253F00084546 /* GoalProgressCard.swift in Sources */,
-				A048B8D52DE9253F00084546 /* DistanceSetupView.swift in Sources */,
-				A048B8D62DE9253F00084546 /* SetHeader.swift in Sources */,
+				A0E47CC82E2ADB63003DCB3D /* SettingsView.swift in Sources */,
+				A0E47CC92E2ADB63003DCB3D /* ImportSetView.swift in Sources */,
+				A0E47CCA2E2ADB63003DCB3D /* StepView.swift in Sources */,
+				A0E47CCB2E2ADB63003DCB3D /* SwimmingSummaryView.swift in Sources */,
+				A0E47CCC2E2ADB63003DCB3D /* NumberPadView.swift in Sources */,
+				A0E47CCD2E2ADB63003DCB3D /* SecondaryMetricsGrid.swift in Sources */,
+				A0E47CCE2E2ADB63003DCB3D /* GoalProgressList.swift in Sources */,
+				A0E47CCF2E2ADB63003DCB3D /* LoadingView.swift in Sources */,
+				A0E47CD02E2ADB63003DCB3D /* SwimSetupView.swift in Sources */,
+				A0E47CD12E2ADB63003DCB3D /* MainButton.swift in Sources */,
+				A0E47CD22E2ADB63003DCB3D /* TimeSetupView.swift in Sources */,
+				A0E47CD32E2ADB63003DCB3D /* DistanceSetupView.swift in Sources */,
+				A0E47CD42E2ADB63003DCB3D /* CalorieSetupView.swift in Sources */,
+				A0E47CD52E2ADB63003DCB3D /* GoalProgressView.swift in Sources */,
+				A0E47CD62E2ADB63003DCB3D /* ActionButton.swift in Sources */,
+				A0E47CD72E2ADB63003DCB3D /* InsightRow.swift in Sources */,
+				A0E47CD82E2ADB63003DCB3D /* NavigationButtonsSection.swift in Sources */,
+				A0E47CD92E2ADB63003DCB3D /* ElapsedTimeView.swift in Sources */,
+				A0E47CDA2E2ADB63003DCB3D /* ProgressBar.swift in Sources */,
+				A0E47CDB2E2ADB63003DCB3D /* GoalProgressHeader.swift in Sources */,
+				A0E47CDC2E2ADB63003DCB3D /* GoalSetupView.swift in Sources */,
+				A0E47CDD2E2ADB63003DCB3D /* HealthKitPermissionView.swift in Sources */,
+				A0E47CDE2E2ADB63003DCB3D /* HeaderSection.swift in Sources */,
+				A0E47CDF2E2ADB63003DCB3D /* GoalSetupButtonsSection.swift in Sources */,
+				A0E47CE02E2ADB63003DCB3D /* ActionButtonsSection.swift in Sources */,
+				A0E47CE12E2ADB63003DCB3D /* SwimControlsView.swift in Sources */,
+				A0E47CE22E2ADB63003DCB3D /* SummaryFooter.swift in Sources */,
+				A0E47CE32E2ADB63003DCB3D /* WatchRootView.swift in Sources */,
+				A0E47CE42E2ADB63003DCB3D /* HealthKitWarningSection.swift in Sources */,
+				A0E47CE52E2ADB63003DCB3D /* PresetButton.swift in Sources */,
+				A0E47CE62E2ADB63003DCB3D /* CompactNavButton.swift in Sources */,
+				A0E47CE72E2ADB63003DCB3D /* SetCompletionView.swift in Sources */,
+				A0E47CE82E2ADB63003DCB3D /* GoalProgressBar.swift in Sources */,
+				A0E47CE92E2ADB63003DCB3D /* SetDisplayView.swift in Sources */,
+				A0E47CEA2E2ADB63003DCB3D /* KeyMetricsSection.swift in Sources */,
+				A0E47CEB2E2ADB63003DCB3D /* SwimmingView.swift in Sources */,
+				A0E47CEC2E2ADB63003DCB3D /* MetricsView.swift in Sources */,
+				A0E47CED2E2ADB63003DCB3D /* GoalSpacingConstants.swift in Sources */,
+				A0E47CEE2E2ADB63003DCB3D /* CurrentGoalsDisplaySection.swift in Sources */,
+				A0E47CEF2E2ADB63003DCB3D /* NavigationControls.swift in Sources */,
+				A0E47CF02E2ADB63003DCB3D /* SetHeader.swift in Sources */,
+				A0E47CF12E2ADB63003DCB3D /* GoalProgressCard.swift in Sources */,
+				A0E47CF22E2ADB63003DCB3D /* MainControlButton.swift in Sources */,
+				A0E47CF32E2ADB63003DCB3D /* PerformanceCard.swift in Sources */,
+				A0E47CF42E2ADB63003DCB3D /* SummaryHeaderView.swift in Sources */,
+				A0E47CF52E2ADB63003DCB3D /* GoalBadgeView.swift in Sources */,
+				A0E47CF62E2ADB63003DCB3D /* PrimaryMetricsSection.swift in Sources */,
+				A0E47CF72E2ADB63003DCB3D /* CelebrationOverlay.swift in Sources */,
+				A0E47CF82E2ADB63003DCB3D /* IntensityIndicator.swift in Sources */,
+				A0E47CF92E2ADB63003DCB3D /* PerformanceInsightsSection.swift in Sources */,
+				A0E47CFA2E2ADB63003DCB3D /* GoalSwimView.swift in Sources */,
+				A0E47CFB2E2ADB63003DCB3D /* MetricCard.swift in Sources */,
+				A0E47CFC2E2ADB63003DCB3D /* IndoorPoolSetupView.swift in Sources */,
 				A0F6A72C2DE7EF8A005B7291 /* toiOSWatchConnector.swift in Sources */,
 				A0F6A70C2DE7E697005B7291 /* GoalType.swift in Sources */,
 				A0BFBA392DDD7C3C002B96A8 /* WatchSwimMateApp.swift in Sources */,

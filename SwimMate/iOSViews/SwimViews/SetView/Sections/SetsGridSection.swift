@@ -22,12 +22,16 @@ struct SetsGridSection: View {
             }
             
             if manager.filteredSets.isEmpty {
-                EmptyStateView()
+                EmptyStateView(
+                    icon: "figure.pool.swim",
+                    title: "No sets found",
+                    subtitle: "Create or import swim sets to get started"
+                )
             } else {
                 LazyVGrid(columns: columns, spacing: 16) {
                     ForEach(manager.filteredSets) { set in
                         NavigationLink(destination: SetDetailView(swimSet: set).environmentObject(watchOSManager)) {
-                            ModernSetCard(
+                            RecommendedSetCard(
                                 swimSet: set,
                                 isFavorite: manager.isSetFavorite(setId: set.id),
                                 toggleFavorite: { manager.toggleFavorite(setId: set.id) }
@@ -46,3 +50,4 @@ struct SetsGridSection: View {
         .environmentObject(Manager())
         .environmentObject(WatchConnector())
 }
+

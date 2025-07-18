@@ -27,12 +27,16 @@ struct RecentActivitySection: View {
             }
             
             if recentSwims.isEmpty {
-                EmptyRecentActivityView()
+                EmptyStateView(
+                    icon: "figure.pool.swim",
+                    title: "No recent swims",
+                    subtitle: "Start your first workout to see your activity here"
+                )
             } else {
                 VStack(spacing: 12) {
                     ForEach(recentSwims.prefix(3)) { swim in
                         NavigationLink(destination: WorkoutView(swim: swim)) {
-                            BeautifulSwimRow(swim: swim)
+                            RecentSwimRow(swim: swim)
                         }
                         .buttonStyle(PlainButtonStyle())
                     }
