@@ -4,6 +4,16 @@
 import Foundation
 import HealthKit
 
+enum AppTheme: String, CaseIterable {
+    case system = "System"
+    case light = "Light"
+    case dark = "Dark"
+    
+    var displayName: String {
+        return self.rawValue
+    }
+}
+
 class Manager: NSObject, ObservableObject
 {
     //MARK: vars / init
@@ -17,6 +27,20 @@ class Manager: NSObject, ObservableObject
     @Published var preferredStroke: SwimStroke = .freestyle
     @Published var preferredUnit: MeasureUnit = .meters
     @Published var swims: [Swim] = []
+    
+    // new settings
+    @Published var enableNotifications: Bool = true
+    @Published var workoutReminderTime: Date = Calendar.current.date(bySettingHour: 9, minute: 0, second: 0, of: Date()) ?? Date()
+    @Published var weeklyGoalDistance: Double = 2000.0
+    @Published var weeklyGoalWorkouts: Int = 3
+    @Published var autoSync: Bool = true
+    @Published var soundEnabled: Bool = true
+    @Published var hapticFeedback: Bool = true
+    @Published var poolLength: Double = 50.0
+    @Published var privacyMode: Bool = false
+    @Published var dataExportEnabled: Bool = true
+    @Published var appTheme: AppTheme = .system
+    @Published var chartDisplayDays: Int = 30
 
     // filter state
     @Published var activeFilters = Manager.SetFilters.defaultFilters
