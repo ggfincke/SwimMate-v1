@@ -5,7 +5,7 @@ import Foundation
 struct ConsecutiveSwim: Hashable, Codable
 {
     let laps: [Lap]
-    let strokeStyle: StrokeStyle?
+    let strokeStyle: SwimStroke?
     let startLapNumber: Int
     
     // MARK: - Constants
@@ -18,7 +18,7 @@ struct ConsecutiveSwim: Hashable, Codable
     init(laps: [Lap], startLapNumber: Int)
     {
         self.laps = laps
-        self.strokeStyle = laps.first?.strokeStyle
+        self.strokeStyle = laps.first?.stroke
         self.startLapNumber = startLapNumber
     }
     
@@ -45,13 +45,13 @@ struct ConsecutiveSwim: Hashable, Codable
     {
         guard laps.count == 4 else { return false }
         
-        let expectedSequence: [StrokeStyle] = [.butterfly, .backstroke, .breaststroke, .freestyle]
-        let actualSequence = laps.compactMap { $0.strokeStyle }
+        let expectedSequence: [SwimStroke] = [.butterfly, .backstroke, .breaststroke, .freestyle]
+        let actualSequence = laps.compactMap { $0.stroke }
         
         return actualSequence == expectedSequence
     }
     
-    var effectiveStrokeStyle: StrokeStyle?
+    var effectiveStrokeStyle: SwimStroke?
     {
         if isIndividualMedley
         {
@@ -94,7 +94,7 @@ struct ConsecutiveSwim: Hashable, Codable
 struct WorkoutSet: Hashable, Codable
 {
     let consecutiveSwims: [ConsecutiveSwim]
-    let strokeStyle: StrokeStyle?
+    let strokeStyle: SwimStroke?
     let setNumber: Int
     
     // MARK: - Initialization

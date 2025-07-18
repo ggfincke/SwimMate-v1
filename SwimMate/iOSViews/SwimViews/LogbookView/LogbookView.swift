@@ -5,54 +5,275 @@ import SwiftUI
 struct LogbookView: View {
     @EnvironmentObject var manager: Manager
     @State private var selectedFilter: TimeFilter = .thirtyDays
+    @State private var searchText = ""
     
     enum TimeFilter: String, CaseIterable, Identifiable {
-        case all = "All"
+        case all = "All Time"
         case thirtyDays = "30 Days"
         case ninetyDays = "90 Days"
         case sixMonths = "6 Months"
         case year = "Year"
         
         var id: String { self.rawValue }
+        
+        var shortName: String {
+            switch self {
+            case .all: return "All"
+            case .thirtyDays: return "30D"
+            case .ninetyDays: return "90D"
+            case .sixMonths: return "6M"
+            case .year: return "1Y"
+            }
+        }
     }
     
     var body: some View {
         NavigationStack {
-            VStack {
-                // Filter picker
-                Picker("Time Filter", selection: $selectedFilter) {
-                    ForEach(TimeFilter.allCases) { filter in
-                        Text(filter.rawValue).tag(filter)
-                    }
-                }
-                .pickerStyle(.segmented)
-                .padding(.horizontal)
+            ZStack {
+                // Beautiful gradient background
+                LinearGradient(
+                    colors: [Color.green.opacity(0.08), Color.blue.opacity(0.03)],
+                    startPoint: .topLeading,
+                    endPoint: .bottomTrailing
+                )
+                .ignoresSafeArea()
                 
-                // Filtered workout list
-                if filteredWorkouts.isEmpty {
-                    ContentUnavailableView(
-                        "No Workouts",
-                        systemImage: "figure.pool.swim",
-                        description: Text("You don't have any recorded swims for this period")
-                    )
-                    .padding(.top, 40)
-                } else {
-                    List {
-                        ForEach(filteredWorkouts) { swim in
-                            NavigationLink(destination: WorkoutView(swim: swim)) {
-                                SwimListItemView(swim: swim)
-                            }
-                        }
+                VStack(spacing: 0) {
+                    // Header Section
+                    headerSection
+                    
+                    // Filter Section
+                    filterSection
+                    
+                    // Stats Summary
+                    if !filteredWorkouts.isEmpty {
+                        statsSummarySection
                     }
-                    .listStyle(.plain)
+                    
+                    // Workout List
+                    workoutListSection
                 }
             }
-            .navigationTitle("Swim Logbook")
+            .navigationTitle("")
+            .navigationBarHidden(true)
         }
     }
     
-    // filtering workouts
-    private var filteredWorkouts: [Swim] {
+    // MARK: - Header Section
+    private var headerSection: some View {
+        VStack(spacing: 16) {
+            HStack {
+                VStack(alignment: .leading, spacing: 4) {
+                    Text("Swim Logbook")
+                        .font(.system(size: 32, weight: .bold, design: .rounded))
+                        .foregroundColor(.primary)
+                    
+                    Text("\(filteredWorkouts.count) swim\(filteredWorkouts.count != 1 ? "s" : "") recorded")
+                        .font(.system(size: 16, weight: .medium))
+                        .foregroundColor(.secondary)
+                }
+                
+                Spacer()
+            }
+            
+            // Search Bar
+            HStack {
+                Image(systemName: "magnifyingglass")
+                    .foregroundColor(.secondary)
+                
+                TextField("Search workouts...", text: $searchText)
+                    .textFieldStyle(PlainTextFieldStyle())
+                
+                if !searchText.isEmpty {
+                    Button(action: { searchText = "" }) {
+                        Image(systemName: "xmark.circle.fill")
+                            .foregroundColor(.secondary)
+                    }
+                }
+            }
+            .padding()
+            .background(Color(UIColor.systemBackground))
+            .cornerRadius(12)
+            .shadow(color: .black.opacity(0.05), radius: 4, x: 0, y: 2)
+        }
+        .padding(.horizontal)
+        .padding(.top, 20)
+    }
+    
+    // MARK: - Filter Section
+    private var filterSection: some View {
+        ScrollView(.horizontal, showsIndicators: false) {
+            HStack(spacing: 12) {
+                ForEach(TimeFilter.allCases) { filter in
+                    TimeFilterChip(
+                        filter: filter,
+                        isSelected: selectedFilter == filter,
+                        action: { selectedFilter = filter }
+                    )
+                }
+            }
+            .padding(.horizontal)
+        }
+        .padding(.vertical, 16)
+    }
+    
+    // MARK: - Stats Summary Section
+    private var statsSummarySection: some View {
+        HStack(spacing: 12) {
+            LogbookStatCard(
+                title: "Total Distance",
+                value: formatTotalDistance(),
+                icon: "ruler",
+                color: .blue
+            )
+            
+            LogbookStatCard(
+                title: "Total Time",
+                value: formatTotalTime(),
+                icon: "clock",
+                color: .green
+            )
+            
+            LogbookStatCard(
+                title: "Avg. Distance",
+                value: formatAverageDistance(),
+                icon: "chart.bar",
+                color: .orange
+            )
+        }
+        .padding(.horizontal)
+        .padding(.bottom, 16)
+    }
+    
+    // MARK: - Workout List Section
+    private var workoutListSection: some View {
+        if displayedWorkouts.isEmpty {
+            if searchText.isEmpty {
+                return AnyView(EmptyLogbookView(selectedFilter: selectedFilter))
+            } else {
+                return AnyView(SearchEmptyView())
+            }
+        } else {
+            return AnyView(
+                ScrollView {
+                    LazyVStack(spacing: 12) {
+                        ForEach(groupedWorkouts, id: \.key) { group in
+                            Section {
+                                ForEach(group.value) { swim in
+                                    NavigationLink(destination: WorkoutView(swim: swim)) {
+                                        LogbookSwimCard(swim: swim)
+                                            .environmentObject(manager)
+                                    }
+                                    .buttonStyle(PlainButtonStyle())
+                                }
+                            } header: {
+                                SectionHeaderView(title: group.key)
+                            }
+                        }
+                        Spacer(minLength: 100)
+                    }
+                    .padding(.horizontal)
+                }
+            )
+        }
+    }
+    
+    // MARK: - Data Processing
+    private var displayedWorkouts: [Swim] {
+        var workouts = filteredWorkouts
+        
+        if !searchText.isEmpty {
+            workouts = workouts.filter { swim in
+                // Search by date, duration, or stroke type
+                let dateString = swim.date.formatted(.dateTime.weekday().month().day())
+                let durationString = formatDuration(swim.duration)
+                let strokesString = getStrokes(from: swim) ?? ""
+                
+                return dateString.localizedCaseInsensitiveContains(searchText) ||
+                       durationString.localizedCaseInsensitiveContains(searchText) ||
+                       strokesString.localizedCaseInsensitiveContains(searchText)
+            }
+        }
+        
+        return workouts
+    }
+    
+    private var groupedWorkouts: [(key: String, value: [Swim])] {
+        let grouped = Dictionary(grouping: displayedWorkouts) { swim in
+            formatSectionHeader(for: swim.date)
+        }
+        
+        return grouped.sorted { first, second in
+            // Sort sections by most recent first
+            let formatter = DateFormatter()
+            formatter.dateFormat = "MMMM yyyy"
+            
+            if let firstDate = formatter.date(from: first.key),
+               let secondDate = formatter.date(from: second.key) {
+                return firstDate > secondDate
+            }
+            return first.key > second.key
+        }
+    }
+    
+    private func formatSectionHeader(for date: Date) -> String {
+        let calendar = Calendar.current
+        
+        if calendar.isDateInToday(date) {
+            return "Today"
+        } else if calendar.isDateInYesterday(date) {
+            return "Yesterday"
+        } else if calendar.isDate(date, equalTo: Date(), toGranularity: .weekOfYear) {
+            return "This Week"
+        } else {
+            return date.formatted(.dateTime.month(.wide).year())
+        }
+    }
+    
+    // MARK: - Stat Calculations
+    private func formatTotalDistance() -> String {
+        let total = filteredWorkouts.compactMap { $0.totalDistance }.reduce(0, +)
+        return String(format: "%.0f %@", total, manager.preferredUnit.rawValue)
+    }
+    
+    private func formatTotalTime() -> String {
+        let totalMinutes = filteredWorkouts.reduce(0) { $0 + Int($1.duration / 60) }
+        let hours = totalMinutes / 60
+        let minutes = totalMinutes % 60
+        
+        if hours > 0 {
+            return "\(hours)h \(minutes)m"
+        } else {
+            return "\(minutes)m"
+        }
+    }
+    
+    private func formatAverageDistance() -> String {
+        guard !filteredWorkouts.isEmpty else { return "0 \(manager.preferredUnit.rawValue)" }
+        
+        let total = filteredWorkouts.compactMap { $0.totalDistance }.reduce(0, +)
+        let average = total / Double(filteredWorkouts.count)
+        return String(format: "%.0f %@", average, manager.preferredUnit.rawValue)
+    }
+    
+    // MARK: - Helper Functions
+    private func formatDuration(_ duration: TimeInterval) -> String {
+        let minutes = Int(duration / 60)
+        return "\(minutes) min"
+    }
+    
+    private func getStrokes(from swim: Swim) -> String? {
+        let uniqueStrokes = Set(swim.laps.compactMap { $0.stroke?.description })
+        if uniqueStrokes.isEmpty {
+            return nil
+        }
+        return uniqueStrokes.joined(separator: ", ")
+    }
+}
+
+// MARK: - Extension for filteredWorkouts
+extension LogbookView {
+    var filteredWorkouts: [Swim] {
         let calendar = Calendar.current
         let currentDate = Date()
         
@@ -80,8 +301,216 @@ struct LogbookView: View {
     }
 }
 
+// MARK: - Supporting Views
+
+struct TimeFilterChip: View {
+    let filter: LogbookView.TimeFilter
+    let isSelected: Bool
+    let action: () -> Void
+    
+    var body: some View {
+        Button(action: action) {
+            Text(filter.shortName)
+                .font(.system(size: 14, weight: .semibold))
+                .foregroundColor(isSelected ? .white : .primary)
+                .padding(.horizontal, 16)
+                .padding(.vertical, 10)
+                .background(isSelected ? Color.green : Color(UIColor.systemGray6))
+                .cornerRadius(20)
+                .shadow(color: .black.opacity(isSelected ? 0.15 : 0.05), radius: isSelected ? 6 : 2, x: 0, y: isSelected ? 3 : 1)
+        }
+        .scaleEffect(isSelected ? 1.05 : 1.0)
+        .animation(.easeInOut(duration: 0.2), value: isSelected)
+    }
+}
+
+struct LogbookStatCard: View {
+    let title: String
+    let value: String
+    let icon: String
+    let color: Color
+    
+    var body: some View {
+        VStack(spacing: 8) {
+            Image(systemName: icon)
+                .font(.system(size: 18, weight: .medium))
+                .foregroundColor(color)
+            
+            Text(value)
+                .font(.system(size: 16, weight: .bold))
+                .foregroundColor(.primary)
+                .lineLimit(1)
+                .minimumScaleFactor(0.8)
+            
+            Text(title)
+                .font(.system(size: 10, weight: .medium))
+                .foregroundColor(.secondary)
+                .multilineTextAlignment(.center)
+        }
+        .frame(maxWidth: .infinity)
+        .padding(.vertical, 12)
+        .padding(.horizontal, 8)
+        .background(Color(UIColor.systemBackground))
+        .cornerRadius(12)
+        .shadow(color: .black.opacity(0.05), radius: 6, x: 0, y: 2)
+    }
+}
+
+struct SectionHeaderView: View {
+    let title: String
+    
+    var body: some View {
+        HStack {
+            Text(title)
+                .font(.system(size: 18, weight: .bold, design: .rounded))
+                .foregroundColor(.primary)
+            
+            Spacer()
+        }
+        .padding(.horizontal)
+        .padding(.vertical, 8)
+    }
+}
+
+struct LogbookSwimCard: View {
+    let swim: Swim
+    @EnvironmentObject var manager: Manager
+    
+    var body: some View {
+        HStack(spacing: 16) {
+            // Date and time circle
+            VStack(spacing: 2) {
+                Text("\(Calendar.current.component(.day, from: swim.date))")
+                    .font(.system(size: 18, weight: .bold))
+                    .foregroundColor(.white)
+                Text(swim.date.formatted(.dateTime.month(.abbreviated)))
+                    .font(.system(size: 10, weight: .medium))
+                    .foregroundColor(.white.opacity(0.8))
+            }
+            .frame(width: 50, height: 50)
+            .background(Color.green)
+            .clipShape(Circle())
+            
+            // Swim details
+            VStack(alignment: .leading, spacing: 8) {
+                HStack {
+                    Text(swim.date.formatted(.dateTime.hour().minute()))
+                        .font(.system(size: 16, weight: .semibold))
+                        .foregroundColor(.primary)
+                    
+                    Spacer()
+                    
+                    if let distance = swim.totalDistance, distance > 0 {
+                        Text(manager.formatDistance(distance))
+                            .font(.system(size: 14, weight: .bold))
+                            .foregroundColor(.green)
+                    }
+                }
+                
+                HStack(spacing: 16) {
+                    HStack(spacing: 4) {
+                        Image(systemName: "clock")
+                            .font(.system(size: 12))
+                            .foregroundColor(.secondary)
+                        
+                        Text(formatDuration(swim.duration))
+                            .font(.system(size: 14, weight: .medium))
+                            .foregroundColor(.secondary)
+                    }
+                    
+                    if let strokes = getStrokes(from: swim) {
+                        HStack(spacing: 4) {
+                            Image(systemName: "figure.pool.swim")
+                                .font(.system(size: 12))
+                                .foregroundColor(.secondary)
+                            
+                            Text(strokes)
+                                .font(.system(size: 12, weight: .medium))
+                                .foregroundColor(.secondary)
+                                .lineLimit(1)
+                        }
+                    }
+                    
+                    Spacer()
+                }
+            }
+            
+            // Chevron
+            Image(systemName: "chevron.right")
+                .font(.system(size: 12, weight: .medium))
+                .foregroundColor(.secondary)
+        }
+        .padding()
+        .background(Color(UIColor.systemBackground))
+        .cornerRadius(16)
+        .shadow(color: .black.opacity(0.04), radius: 6, x: 0, y: 2)
+    }
+    
+    private func formatDuration(_ duration: TimeInterval) -> String {
+        let minutes = Int(duration / 60)
+        return "\(minutes) min"
+    }
+    
+    private func getStrokes(from swim: Swim) -> String? {
+        let uniqueStrokes = Set(swim.laps.compactMap { $0.stroke?.description })
+        if uniqueStrokes.isEmpty {
+            return nil
+        }
+        return uniqueStrokes.joined(separator: ", ")
+    }
+}
+
+struct EmptyLogbookView: View {
+    let selectedFilter: LogbookView.TimeFilter
+    
+    var body: some View {
+        VStack(spacing: 20) {
+            Image(systemName: "figure.pool.swim")
+                .font(.system(size: 60, weight: .light))
+                .foregroundColor(.secondary.opacity(0.6))
+            
+            VStack(spacing: 8) {
+                Text("No swims recorded")
+                    .font(.system(size: 20, weight: .semibold))
+                    .foregroundColor(.primary)
+                
+                Text("No swim workouts found for \(selectedFilter.rawValue.lowercased())")
+                    .font(.system(size: 16, weight: .regular))
+                    .foregroundColor(.secondary)
+                    .multilineTextAlignment(.center)
+            }
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .padding(40)
+    }
+}
+
+struct SearchEmptyView: View {
+    var body: some View {
+        VStack(spacing: 20) {
+            Image(systemName: "magnifyingglass.circle")
+                .font(.system(size: 60, weight: .light))
+                .foregroundColor(.secondary.opacity(0.6))
+            
+            VStack(spacing: 8) {
+                Text("No results found")
+                    .font(.system(size: 20, weight: .semibold))
+                    .foregroundColor(.primary)
+                
+                Text("Try adjusting your search terms")
+                    .font(.system(size: 16, weight: .regular))
+                    .foregroundColor(.secondary)
+                    .multilineTextAlignment(.center)
+            }
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .padding(40)
+    }
+}
+
 
 #Preview {
     LogbookView()
         .environmentObject(Manager())
 }
+

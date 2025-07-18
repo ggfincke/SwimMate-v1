@@ -20,7 +20,7 @@ struct PreferencesView: View
             {
                 Picker("Stroke Preference", selection: $manager.preferredStroke)
                 {
-                    ForEach([StrokeStyle.freestyle, .backstroke, .breaststroke, .butterfly, .mixed], id: \.self)
+                    ForEach([SwimStroke.freestyle, .backstroke, .breaststroke, .butterfly, .mixed], id: \.self)
                     { stroke in
                         Text(stroke.description).tag(stroke)
                     }

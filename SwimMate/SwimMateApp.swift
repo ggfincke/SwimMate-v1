@@ -1,7 +1,5 @@
 // SwimMate/SwimMateApp.swift
 
-// TODO: PREP FOR REACT NATIVE MOVE
-
 import SwiftUI
 import HealthKit
 

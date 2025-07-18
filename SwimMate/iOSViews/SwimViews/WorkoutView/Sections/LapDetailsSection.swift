@@ -97,7 +97,7 @@ struct LapDetailsSection: View
             
             // If rest period is short and same stroke, add to current swim
             if restPeriod <= ConsecutiveSwim.consecutiveThreshold && 
-               currentLap.strokeStyle == previousLap.strokeStyle {
+               currentLap.stroke == previousLap.stroke {
                 currentSwimLaps.append(currentLap)
             } else {
                 // Finish current swim and start new one

@@ -54,7 +54,7 @@ struct SwimSet: Identifiable, Hashable, Codable
     }
     
     /// Primary stroke style (most common across components)
-    var primaryStroke: StrokeStyle?
+    var primaryStroke: SwimStroke?
     {
         let strokes = components.compactMap { $0.strokeStyle }
         guard !strokes.isEmpty else { return nil }

@@ -7,7 +7,7 @@ struct Lap: Codable, Hashable
 {
     // MARK: - Properties
     let duration: TimeInterval
-    let strokeStyle: StrokeStyle?
+    let stroke: SwimStroke?
     let swolfScore: Double?
     let startDate: Date
     let endDate: Date
@@ -16,7 +16,7 @@ struct Lap: Codable, Hashable
     init(duration: TimeInterval, metadata: [String: Any]) 
     {
         self.duration = duration
-        self.strokeStyle = StrokeStyle(rawValue: metadata["HKSwimmingStrokeStyle"] as? Int ?? 0)
+        self.stroke = SwimStroke(rawValue: metadata["HKSwimmingStrokeStyle"] as? Int ?? 0)
         self.swolfScore = metadata["HKSWOLFScore"] as? Double
         // For legacy data without timing info, use current time as default
         self.startDate = Date()
@@ -28,7 +28,7 @@ struct Lap: Codable, Hashable
         self.startDate = startDate
         self.endDate = endDate
         self.duration = endDate.timeIntervalSince(startDate)
-        self.strokeStyle = StrokeStyle(rawValue: metadata["HKSwimmingStrokeStyle"] as? Int ?? 0)
+        self.stroke = SwimStroke(rawValue: metadata["HKSwimmingStrokeStyle"] as? Int ?? 0)
         self.swolfScore = metadata["HKSWOLFScore"] as? Double
     }
     

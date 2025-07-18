@@ -9,7 +9,7 @@ struct SetComponent: Identifiable, Hashable, Codable
     let id: UUID
     let type: ComponentType
     let distance: Int
-    let strokeStyle: StrokeStyle?
+    let strokeStyle: SwimStroke?
     let instructions: String?
     let restPeriod: TimeInterval? // rest after this part of set
     
@@ -33,7 +33,7 @@ struct SetComponent: Identifiable, Hashable, Codable
     init(id: UUID = UUID(),
          type: ComponentType,
          distance: Int,
-         strokeStyle: StrokeStyle? = nil,
+         strokeStyle: SwimStroke? = nil,
          instructions: String? = nil,
          restPeriod: TimeInterval? = nil)
     {

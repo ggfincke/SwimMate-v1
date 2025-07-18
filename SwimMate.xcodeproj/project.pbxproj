@@ -10,7 +10,7 @@
 		A004E51E2BE005DE008D3F11 /* WatchSwimMate Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = A0F0C7D42BDF7C5F00AF6D5B /* WatchSwimMate Watch App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		A023DE452BDF7B2A00242C58 /* SwimMateApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C0505F2BCC5D7A002450AD /* SwimMateApp.swift */; };
 		A02F8F4B2E296011006CC3E5 /* MeasureUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02F8F422E296011006CC3E5 /* MeasureUnit.swift */; };
-		A02F8F4C2E296011006CC3E5 /* StrokeStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02F8F432E296011006CC3E5 /* StrokeStyle.swift */; };
+		A02F8F4C2E296011006CC3E5 /* SwimStroke.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02F8F432E296011006CC3E5 /* SwimStroke.swift */; };
 		A02F8F4D2E296011006CC3E5 /* SetComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02F8F3E2E296011006CC3E5 /* SetComponent.swift */; };
 		A02F8F4E2E296011006CC3E5 /* LapGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02F8F472E296011006CC3E5 /* LapGroup.swift */; };
 		A02F8F4F2E296011006CC3E5 /* SwimmingLocationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02F8F442E296011006CC3E5 /* SwimmingLocationType.swift */; };
@@ -19,7 +19,7 @@
 		A02F8F522E296011006CC3E5 /* SwimSetExamples.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02F8F402E296011006CC3E5 /* SwimSetExamples.swift */; };
 		A02F8F532E296011006CC3E5 /* Lap.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02F8F462E296011006CC3E5 /* Lap.swift */; };
 		A02F8F542E296011006CC3E5 /* MeasureUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02F8F422E296011006CC3E5 /* MeasureUnit.swift */; };
-		A02F8F552E296011006CC3E5 /* StrokeStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02F8F432E296011006CC3E5 /* StrokeStyle.swift */; };
+		A02F8F552E296011006CC3E5 /* SwimStroke.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02F8F432E296011006CC3E5 /* SwimStroke.swift */; };
 		A02F8F562E296011006CC3E5 /* SetComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02F8F3E2E296011006CC3E5 /* SetComponent.swift */; };
 		A02F8F572E296011006CC3E5 /* LapGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02F8F472E296011006CC3E5 /* LapGroup.swift */; };
 		A02F8F582E296011006CC3E5 /* SwimmingLocationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02F8F442E296011006CC3E5 /* SwimmingLocationType.swift */; };
@@ -27,6 +27,9 @@
 		A02F8F5A2E296011006CC3E5 /* SwimSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02F8F3F2E296011006CC3E5 /* SwimSet.swift */; };
 		A02F8F5B2E296011006CC3E5 /* SwimSetExamples.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02F8F402E296011006CC3E5 /* SwimSetExamples.swift */; };
 		A02F8F5C2E296011006CC3E5 /* Lap.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02F8F462E296011006CC3E5 /* Lap.swift */; };
+		A02F8F602E299F39006CC3E5 /* Manager+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02F8F5F2E299F35006CC3E5 /* Manager+Convenience.swift */; };
+		A02F8F622E299F5F006CC3E5 /* FilterSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02F8F612E299F5F006CC3E5 /* FilterSheetView.swift */; };
+		A02F8F642E299FE0006CC3E5 /* Manager+SetFiltering.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02F8F632E299FDD006CC3E5 /* Manager+SetFiltering.swift */; };
 		A048B8A22DE9253F00084546 /* MetricsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A048B8882DE9253F00084546 /* MetricsView.swift */; };
 		A048B8A32DE9253F00084546 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A048B8902DE9253F00084546 /* LoadingView.swift */; };
 		A048B8A42DE9253F00084546 /* GoalBadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A048B8762DE9253F00084546 /* GoalBadgeView.swift */; };
@@ -167,11 +170,14 @@
 		A02F8F3F2E296011006CC3E5 /* SwimSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwimSet.swift; sourceTree = "<group>"; };
 		A02F8F402E296011006CC3E5 /* SwimSetExamples.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwimSetExamples.swift; sourceTree = "<group>"; };
 		A02F8F422E296011006CC3E5 /* MeasureUnit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeasureUnit.swift; sourceTree = "<group>"; };
-		A02F8F432E296011006CC3E5 /* StrokeStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrokeStyle.swift; sourceTree = "<group>"; };
+		A02F8F432E296011006CC3E5 /* SwimStroke.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwimStroke.swift; sourceTree = "<group>"; };
 		A02F8F442E296011006CC3E5 /* SwimmingLocationType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwimmingLocationType.swift; sourceTree = "<group>"; };
 		A02F8F462E296011006CC3E5 /* Lap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lap.swift; sourceTree = "<group>"; };
 		A02F8F472E296011006CC3E5 /* LapGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LapGroup.swift; sourceTree = "<group>"; };
 		A02F8F482E296011006CC3E5 /* Swim.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Swim.swift; sourceTree = "<group>"; };
+		A02F8F5F2E299F35006CC3E5 /* Manager+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Manager+Convenience.swift"; sourceTree = "<group>"; };
+		A02F8F612E299F5F006CC3E5 /* FilterSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterSheetView.swift; sourceTree = "<group>"; };
+		A02F8F632E299FDD006CC3E5 /* Manager+SetFiltering.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Manager+SetFiltering.swift"; sourceTree = "<group>"; };
 		A048B8522DE9253F00084546 /* ActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionButton.swift; sourceTree = "<group>"; };
 		A048B8532DE9253F00084546 /* CompactNavButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompactNavButton.swift; sourceTree = "<group>"; };
 		A048B8542DE9253F00084546 /* MainButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainButton.swift; sourceTree = "<group>"; };
@@ -315,7 +321,7 @@
 			isa = PBXGroup;
 			children = (
 				A02F8F422E296011006CC3E5 /* MeasureUnit.swift */,
-				A02F8F432E296011006CC3E5 /* StrokeStyle.swift */,
+				A02F8F432E296011006CC3E5 /* SwimStroke.swift */,
 				A02F8F442E296011006CC3E5 /* SwimmingLocationType.swift */,
 			);
 			path = Types;
@@ -605,6 +611,8 @@
 		A07667AF2BF5E6C600FFB4C3 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				A02F8F632E299FDD006CC3E5 /* Manager+SetFiltering.swift */,
+				A02F8F5F2E299F35006CC3E5 /* Manager+Convenience.swift */,
 				A07667AD2BF5E6C600FFB4C3 /* Manager.swift */,
 				A07667AE2BF5E6C600FFB4C3 /* WatchConnector.swift */,
 			);
@@ -646,28 +654,12 @@
 			path = Display;
 			sourceTree = "<group>";
 		};
-		A099849B2E2896F900D23117 /* Input */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Input;
-			sourceTree = "<group>";
-		};
-		A099849C2E2896F900D23117 /* Navigation */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Navigation;
-			sourceTree = "<group>";
-		};
 		A099849D2E2896F900D23117 /* Components */ = {
 			isa = PBXGroup;
 			children = (
 				A099848F2E2896F900D23117 /* Cards */,
 				A09984952E2896F900D23117 /* Charts */,
 				A099849A2E2896F900D23117 /* Display */,
-				A099849B2E2896F900D23117 /* Input */,
-				A099849C2E2896F900D23117 /* Navigation */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -719,6 +711,7 @@
 		A09984AE2E2896F900D23117 /* SetView */ = {
 			isa = PBXGroup;
 			children = (
+				A02F8F612E299F5F006CC3E5 /* FilterSheetView.swift */,
 				A09984AB2E2896F900D23117 /* SetDetailView.swift */,
 				A09984AC2E2896F900D23117 /* SetPage.swift */,
 				A09984AD2E2896F900D23117 /* SetSummaryView.swift */,
@@ -977,8 +970,9 @@
 				A09984BB2E2896F900D23117 /* RecentSwimRow.swift in Sources */,
 				A09984BC2E2896F900D23117 /* SettingsView.swift in Sources */,
 				A09984BD2E2896F900D23117 /* StatColumn.swift in Sources */,
+				A02F8F622E299F5F006CC3E5 /* FilterSheetView.swift in Sources */,
 				A02F8F542E296011006CC3E5 /* MeasureUnit.swift in Sources */,
-				A02F8F552E296011006CC3E5 /* StrokeStyle.swift in Sources */,
+				A02F8F552E296011006CC3E5 /* SwimStroke.swift in Sources */,
 				A02F8F562E296011006CC3E5 /* SetComponent.swift in Sources */,
 				A02F8F572E296011006CC3E5 /* LapGroup.swift in Sources */,
 				A02F8F582E296011006CC3E5 /* SwimmingLocationType.swift in Sources */,
@@ -1003,10 +997,12 @@
 				A09984CC2E2896F900D23117 /* SetSummaryView.swift in Sources */,
 				A09984CD2E2896F900D23117 /* RootView.swift in Sources */,
 				A09984CE2E2896F900D23117 /* WeeklySummaryCard.swift in Sources */,
+				A02F8F642E299FE0006CC3E5 /* Manager+SetFiltering.swift in Sources */,
 				A09984CF2E2896F900D23117 /* ChartsSection.swift in Sources */,
 				A09984D02E2896F900D23117 /* SummaryMetricItem.swift in Sources */,
 				A09984D12E2896F900D23117 /* StrokeDistributionChart.swift in Sources */,
 				A09984D22E2896F900D23117 /* PaceGraphView.swift in Sources */,
+				A02F8F602E299F39006CC3E5 /* Manager+Convenience.swift in Sources */,
 				A09984D32E2896F900D23117 /* SetDetailView.swift in Sources */,
 				A09984D42E2896F900D23117 /* SimpleMetricCard.swift in Sources */,
 				A09984D52E2896F900D23117 /* SwimListItemView.swift in Sources */,
@@ -1073,7 +1069,7 @@
 				A048B8CF2DE9253F00084546 /* HeaderSection.swift in Sources */,
 				A048B8D02DE9253F00084546 /* HealthKitWarningSection.swift in Sources */,
 				A02F8F4B2E296011006CC3E5 /* MeasureUnit.swift in Sources */,
-				A02F8F4C2E296011006CC3E5 /* StrokeStyle.swift in Sources */,
+				A02F8F4C2E296011006CC3E5 /* SwimStroke.swift in Sources */,
 				A02F8F4D2E296011006CC3E5 /* SetComponent.swift in Sources */,
 				A02F8F4E2E296011006CC3E5 /* LapGroup.swift in Sources */,
 				A02F8F4F2E296011006CC3E5 /* SwimmingLocationType.swift in Sources */,

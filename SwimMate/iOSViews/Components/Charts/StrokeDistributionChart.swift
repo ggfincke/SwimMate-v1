@@ -11,7 +11,7 @@ struct StrokeDistributionChart: View
     {
         let strokeCounts = Dictionary(grouping: swim.laps)
         { lap in
-            lap.strokeStyle?.description ?? "Unknown"
+            lap.stroke?.description ?? "Unknown"
         }.mapValues { $0.count }
         
         return strokeCounts.map { ($0.key, $0.value) }
@@ -114,3 +114,4 @@ struct StrokeDistributionChart: View
     .background(Color.black)
     .preferredColorScheme(.dark)
 }
+

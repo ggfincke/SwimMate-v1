@@ -18,7 +18,7 @@ struct SimpleLapRow: View
                 .frame(width: 40, alignment: .leading)
             
             // Stroke type
-            Text(lap.strokeStyle?.description ?? "Unknown")
+            Text(lap.stroke?.description ?? "Unknown")
                 .font(.subheadline)
                 .foregroundColor(.white)
                 .frame(maxWidth: .infinity, alignment: .leading)

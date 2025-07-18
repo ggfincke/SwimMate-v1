@@ -1,9 +1,9 @@
-// SwimMate/Model/Types/StrokeStyle.swift
+// SwimMate/Model/Types/SwimStroke.swift
 
 import Foundation
 
-/// Swimming stroke types
-enum StrokeStyle: Int, Codable
+/// Domain model for swimming stroke types (avoid conflict with SwiftUI's StrokeStyle)
+enum SwimStroke: Int, Codable
 {
     case unknown = 0
     case mixed = 1

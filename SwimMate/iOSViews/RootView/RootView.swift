@@ -10,7 +10,7 @@ struct RootView: View {
 
     var body: some View {
         TabView(selection: $selectedTab) {
-            HomePage()
+            HomePage(selectedTab: $selectedTab)
                 .environmentObject(manager)
                 .tabItem {
                     Label("Home", systemImage: "house")
@@ -39,4 +39,7 @@ struct RootView: View {
     RootView()
         .environmentObject(Manager())
         .environmentObject(WatchConnector())
+        .onAppear {
+            _ = HomePage(selectedTab: .constant(0))
+        }
 }

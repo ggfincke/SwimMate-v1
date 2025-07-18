@@ -41,8 +41,8 @@ class iOSWatchConnector: NSObject, WCSessionDelegate
            let description = message["description"] as? String,
            let details = message["details"] as? [String] {
             
-            // Map stroke string to StrokeStyle enum
-            let primaryStroke: StrokeStyle = {
+            // Map stroke string to SwimStroke enum
+            let primaryStroke: SwimStroke = {
                 switch strokeRaw.lowercased() {
                 case "freestyle": return .freestyle
                 case "backstroke": return .backstroke
