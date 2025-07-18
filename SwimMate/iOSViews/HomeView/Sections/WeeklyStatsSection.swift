@@ -14,61 +14,40 @@ struct WeeklyStatsSection: View {
             HStack(spacing: 12) {
                 StatCard(
                     title: "Workouts",
-                    value: "\(weeklyStats.workoutCount)",
+                    value: "\(manager.weeklyStats().workouts)",
                     icon: "figure.pool.swim",
                     color: .blue,
-                    trend: weeklyWorkoutTrend
+                    trend: trendFromString(manager.weeklyWorkoutTrend())
                 )
                 
                 StatCard(
                     title: "Distance",
-                    value: weeklyStats.formattedDistance,
+                    value: String(format: "%.0f", manager.weeklyStats().distance),
                     icon: "ruler",
                     color: .green,
-                    trend: weeklyDistanceTrend
+                    trend: trendFromString(manager.weeklyDistanceTrend())
                 )
                 
                 StatCard(
                     title: "Time",
-                    value: "\(weeklyStats.totalMinutes)m",
+                    value: "\(Int(manager.weeklyStats().time / 60))m",
                     icon: "clock",
                     color: .orange,
-                    trend: weeklyTimeTrend
+                    trend: trendFromString(manager.weeklyTimeTrend())
                 )
             }
         }
     }
     
-    private var weeklyStats: (workoutCount: Int, totalMinutes: Int, formattedDistance: String) {
-        let lastWeekDate = Calendar.current.date(byAdding: .weekOfYear, value: -1, to: Date())!
-        let weeklySwims = manager.swims.filter { $0.date >= lastWeekDate }
-        let totalWorkouts = weeklySwims.count
-        let totalMinutes = weeklySwims.reduce(0) { $0 + Int($1.duration / 60) }
-        let totalDistance = weeklySwims.compactMap { $0.totalDistance }.reduce(0, +)
-        
-        return (totalWorkouts, totalMinutes, String(format: "%.0f", totalDistance))
-    }
-    
-    private var weeklyWorkoutTrend: StatTrend {
-        // Simple trend calculation - in a real app you'd compare to previous week
-        let count = weeklyStats.workoutCount
-        if count >= 4 { return .up }
-        else if count >= 2 { return .neutral }
-        else { return .down }
-    }
-    
-    private var weeklyDistanceTrend: StatTrend {
-        let distance = weeklyStats.formattedDistance
-        if Double(distance) ?? 0 >= 2000 { return .up }
-        else if Double(distance) ?? 0 >= 1000 { return .neutral }
-        else { return .down }
-    }
-    
-    private var weeklyTimeTrend: StatTrend {
-        let minutes = weeklyStats.totalMinutes
-        if minutes >= 120 { return .up }
-        else if minutes >= 60 { return .neutral }
-        else { return .down }
+    private func trendFromString(_ trendString: String) -> StatTrend {
+        switch trendString {
+        case "up":
+            return .up
+        case "down":
+            return .down
+        default:
+            return .neutral
+        }
     }
 }
 

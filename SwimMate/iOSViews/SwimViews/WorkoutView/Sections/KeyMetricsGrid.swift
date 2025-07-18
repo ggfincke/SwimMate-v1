@@ -31,7 +31,7 @@ struct KeyMetricsGrid: View
             {
                 MetricCard(
                     emoji: "⏱️",
-                    value: calculateAveragePace(),
+                    value: manager.calculateAveragePace(for: swim),
                     label: "Average Pace",
                     subtitle: "per 100m"
                 )
@@ -52,7 +52,7 @@ struct KeyMetricsGrid: View
                 
                 MetricCard(
                     emoji: "🎯",
-                    value: String(format: "%.1f", averageSwolfScore()),
+                    value: manager.averageSwolfScore(for: swim),
                     label: "Avg SWOLF",
                     subtitle: "efficiency"
                 )
@@ -60,25 +60,10 @@ struct KeyMetricsGrid: View
         }
     }
     
-    private func calculateAveragePace() -> String
-    {
-        guard let distance = swim.totalDistance, distance > 0 else { return "N/A" }
-        let paceSeconds = swim.duration / (distance / 100)
-        let minutes = Int(paceSeconds) / 60
-        let seconds = Int(paceSeconds) % 60
-        return String(format: "%d:%02d", minutes, seconds)
-    }
-    
     private func formatPoolLength() -> String
     {
         guard let poolLength = swim.poolLength else { return "N/A" }
         return String(format: "%.0f m", poolLength)
-    }
-    
-    private func averageSwolfScore() -> Double
-    {
-        let validScores = swim.laps.compactMap { $0.swolfScore }
-        return validScores.isEmpty ? 0 : validScores.reduce(0, +) / Double(validScores.count)
     }
 }
 

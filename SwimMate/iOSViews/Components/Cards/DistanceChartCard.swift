@@ -50,7 +50,7 @@ struct DistanceChartCard: View
                 .pickerStyle(.menu)
             }
             
-            if filteredData.isEmpty 
+            if manager.chartDataFiltered(by: chartRangeString(selectedRange)).isEmpty 
             {
                 VStack(spacing: 12) 
                 {
@@ -71,7 +71,7 @@ struct DistanceChartCard: View
             } 
             else 
             {
-                Chart(filteredData) 
+                Chart(manager.chartDataFiltered(by: chartRangeString(selectedRange))) 
                 { swim in
                     if let distance = swim.totalDistance 
                     {
@@ -103,7 +103,7 @@ struct DistanceChartCard: View
                         AxisTick()
                         AxisValueLabel() {
                             if let date = value.as(Date.self) {
-                                Text(formatAxisLabel(date))
+                                Text(manager.formatAxisLabel(for: date, range: chartRangeString(selectedRange)))
                                     .font(.caption2)
                                     .foregroundColor(.secondary)
                             }
@@ -117,88 +117,16 @@ struct DistanceChartCard: View
         .cornerRadius(12)
     }
     
-    private var filteredData: [Swim] 
-    {
-        let calendar = Calendar.current
-        let now = Date()
-        
-        let startDate: Date? = {
-            switch selectedRange 
-            {
-                case .last30Days:
-                    return calendar.date(byAdding: .day, value: -30, to: now)
-                case .last6Months:
-                    return calendar.date(byAdding: .month, value: -6, to: now)
-                case .lastYear:
-                    return calendar.date(byAdding: .year, value: -1, to: now)
-                case .allTime:
-                    return nil
-            }
-        }()
-        
-        var swimsToProcess: [Swim]
-        
-        if let startDate = startDate 
-        {
-            swimsToProcess = manager.swims.filter { $0.date >= startDate }
-        } 
-        else 
-        {
-            swimsToProcess = manager.swims
-        }
-        
-        switch selectedRange 
-        {
-            case .last30Days:
-                return aggregateSwimsByWeek(swimsToProcess)
-            case .last6Months, .lastYear:
-                return manager.aggregateDataByMonth(swims: swimsToProcess)
-            case .allTime:
-                return aggregateSwimsByQuarter(swimsToProcess)
-        }
-    }
-    
-    private func aggregateSwimsByWeek(_ swims: [Swim]) -> [Swim] 
-    {
-        let calendar = Calendar.current
-        let grouped = Dictionary(grouping: swims)
-        { swim in
-            calendar.dateInterval(of: .weekOfYear, for: swim.date)?.start ?? swim.date
-        }
-        return grouped.map { (week, swimmers) in
-            let duration = swimmers.reduce(0) { $0 + $1.duration }
-            let totalDistance = swimmers.compactMap { $0.totalDistance }.reduce(0, +)
-            let totalEnergyBurned = swimmers.compactMap { $0.totalEnergyBurned }.reduce(0, +)
-            return makeAggregatedSwim(date: week, duration: duration, totalDistance: totalDistance, totalEnergyBurned: totalEnergyBurned)
-        }.sorted { $0.date < $1.date }
-    }
-    
-    private func aggregateSwimsByQuarter(_ swims: [Swim]) -> [Swim] {
-        let calendar = Calendar.current
-        let grouped = Dictionary(grouping: swims) { swim in
-            let comps = calendar.dateComponents([.year, .month], from: swim.date)
-            let year = comps.year ?? 1970
-            let quarter = ((comps.month ?? 1) - 1) / 3 + 1
-            let quarterMonth = (quarter - 1) * 3 + 1
-            return calendar.date(from: DateComponents(year: year, month: quarterMonth)) ?? swim.date
-        }
-        return grouped.map { (quarter, swimmers) in
-            let duration = swimmers.reduce(0) { $0 + $1.duration }
-            let totalDistance = swimmers.compactMap { $0.totalDistance }.reduce(0, +)
-            let totalEnergyBurned = swimmers.compactMap { $0.totalEnergyBurned }.reduce(0, +)
-            return makeAggregatedSwim(date: quarter, duration: duration, totalDistance: totalDistance, totalEnergyBurned: totalEnergyBurned)
-        }.sorted { $0.date < $1.date }
-    }
-    
-    private func formatAxisLabel(_ date: Date) -> String {
-        switch selectedRange 
-        {
-            case .last30Days:
-                return date.formatted(.dateTime.month().day())
-            case .last6Months, .lastYear:
-                return date.formatted(.dateTime.month())
-            case .allTime:
-                return date.formatted(.dateTime.year())
+    private func chartRangeString(_ range: DataRange) -> String {
+        switch range {
+        case .last30Days:
+            return "Month"
+        case .last6Months:
+            return "Quarter"
+        case .lastYear:
+            return "Year"
+        case .allTime:
+            return "Year"
         }
     }
 }

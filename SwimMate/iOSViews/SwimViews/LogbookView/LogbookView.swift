@@ -40,21 +40,21 @@ struct LogbookView: View {
                 
                 VStack(spacing: 0) {
                     // Header Section
-                    LogbookHeaderSection(searchText: $searchText, filteredWorkoutsCount: filteredWorkouts.count)
+                    LogbookHeaderSection(searchText: $searchText, filteredWorkoutsCount: manager.filteredWorkouts(for: selectedFilter.rawValue).count)
                         .environmentObject(manager)
                     
                     // Filter Section
                     LogbookFilterSection(selectedFilter: $selectedFilter)
                     
                     // Stats Summary
-                    if !filteredWorkouts.isEmpty {
-                        LogbookStatsSection(filteredWorkouts: filteredWorkouts)
+                    if !manager.filteredWorkouts(for: selectedFilter.rawValue).isEmpty {
+                        LogbookStatsSection(filteredWorkouts: manager.filteredWorkouts(for: selectedFilter.rawValue))
                             .environmentObject(manager)
                     }
                     
                     // Workout List
                     LogbookWorkoutListSection(
-                        displayedWorkouts: displayedWorkouts,
+                        displayedWorkouts: manager.displayedWorkouts(from: manager.filteredWorkouts(for: selectedFilter.rawValue), searchText: searchText),
                         selectedFilter: selectedFilter,
                         searchText: searchText
                     )
@@ -63,70 +63,6 @@ struct LogbookView: View {
             }
             .navigationTitle("")
             .navigationBarHidden(true)
-        }
-    }
-    
-    // MARK: - Data Processing
-    private var displayedWorkouts: [Swim] {
-        var workouts = filteredWorkouts
-        
-        if !searchText.isEmpty {
-            workouts = workouts.filter { swim in
-                // Search by date, duration, or stroke type
-                let dateString = swim.date.formatted(.dateTime.weekday().month().day())
-                let durationString = formatDuration(swim.duration)
-                let strokesString = getStrokes(from: swim) ?? ""
-                
-                return dateString.localizedCaseInsensitiveContains(searchText) ||
-                       durationString.localizedCaseInsensitiveContains(searchText) ||
-                       strokesString.localizedCaseInsensitiveContains(searchText)
-            }
-        }
-        
-        return workouts
-    }
-    
-    // MARK: - Helper Functions
-    private func formatDuration(_ duration: TimeInterval) -> String {
-        let minutes = Int(duration / 60)
-        return "\(minutes) min"
-    }
-    
-    private func getStrokes(from swim: Swim) -> String? {
-        let uniqueStrokes = Set(swim.laps.compactMap { $0.stroke?.description })
-        if uniqueStrokes.isEmpty {
-            return nil
-        }
-        return uniqueStrokes.joined(separator: ", ")
-    }
-}
-
-// MARK: - Extension for filteredWorkouts
-extension LogbookView {
-    var filteredWorkouts: [Swim] {
-        let calendar = Calendar.current
-        let currentDate = Date()
-        
-        let dateLimit: Date? = {
-            switch selectedFilter {
-            case .thirtyDays:
-                return calendar.date(byAdding: .day, value: -30, to: currentDate)
-            case .ninetyDays:
-                return calendar.date(byAdding: .day, value: -90, to: currentDate)
-            case .sixMonths:
-                return calendar.date(byAdding: .month, value: -6, to: currentDate)
-            case .year:
-                return calendar.date(byAdding: .year, value: -1, to: currentDate)
-            case .all:
-                return nil
-            }
-        }()
-        
-        if let dateLimit = dateLimit {
-            return manager.swims.filter { $0.date >= dateLimit }
-                .sorted(by: { $0.date > $1.date })
-        } else {
-            return manager.swims.sorted(by: { $0.date > $1.date })
         }
     }
 }

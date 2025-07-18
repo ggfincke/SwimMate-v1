@@ -42,7 +42,7 @@ struct DataPrivacySettingsView: View {
                 HStack {
                     Text("Local Storage")
                     Spacer()
-                    Text(getLocalStorageInfo())
+                    Text(manager.getLocalStorageInfo())
                         .foregroundColor(.secondary)
                 }
                 
@@ -106,7 +106,7 @@ struct DataPrivacySettingsView: View {
         .alert("Delete All Data", isPresented: $showingDeleteAlert) {
             Button("Cancel", role: .cancel) { }
             Button("Delete", role: .destructive) {
-                deleteAllData()
+                manager.deleteAllData()
             }
         } message: {
             Text("This will permanently delete all your workout data. This action cannot be undone.")
@@ -114,32 +114,6 @@ struct DataPrivacySettingsView: View {
         .sheet(isPresented: $showingExportSheet) {
             DataExportSheet()
                 .environmentObject(manager)
-        }
-    }
-    
-    private func getLocalStorageInfo() -> String {
-        let workoutCount = manager.swims.count
-        let estimatedSize = workoutCount * 2 // KB per workout estimate
-        
-        if estimatedSize < 1024 {
-            return "\(estimatedSize) KB"
-        } else {
-            return String(format: "%.1f MB", Double(estimatedSize) / 1024)
-        }
-    }
-    
-    private func deleteAllData() {
-        manager.swims.removeAll()
-        manager.favoriteSetIds.removeAll()
-        manager.totalDistance = 0
-        manager.averageDistance = 0
-        manager.totalCalories = 0
-        manager.averageCalories = 0
-        manager.updateStore()
-        
-        if manager.hapticFeedback {
-            let impactFeedback = UIImpactFeedbackGenerator(style: .heavy)
-            impactFeedback.impactOccurred()
         }
     }
     
