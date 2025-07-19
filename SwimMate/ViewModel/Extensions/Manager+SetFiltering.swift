@@ -1,4 +1,4 @@
-// SwimMate/ViewModel/Manager+SetFiltering.swift
+// SwimMate/ViewModel/Extensions/Manager+SetFiltering.swift
 
 import Foundation
 
