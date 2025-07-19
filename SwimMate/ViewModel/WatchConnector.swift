@@ -6,6 +6,7 @@ import WatchConnectivity
 
 class WatchConnector: NSObject, WCSessionDelegate, ObservableObject
 {
+    
     var session: WCSession
     init(session: WCSession = .default)
     {
@@ -55,10 +56,10 @@ class WatchConnector: NSObject, WCSessionDelegate, ObservableObject
         }
         print("WC Session activated with state: \(activationState)")
     }
-
+    
     func sessionDidBecomeInactive(_ session: WCSession) 
     {
-        // handle session becoming inactive
+        // Required by WCSessionDelegate. Implement if you need to handle this state.
         print("WC Session did become inactive")
     }
 

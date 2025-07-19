@@ -307,6 +307,57 @@ extension Manager
             .map { $0 }
     }
     
+    // MARK: - Quick Filter Methods
+    func isQuickFilterSelected(_ filterName: String) -> Bool
+    {
+        switch filterName
+        {
+        case "Favorites":
+            return activeFilters.showFavorites
+        case "Beginner":
+            return activeFilters.difficulty == .beginner
+        case "Intermediate":
+            return activeFilters.difficulty == .intermediate
+        case "Advanced":
+            return activeFilters.difficulty == .advanced
+        case "Freestyle":
+            return activeFilters.stroke == .freestyle
+        case "Backstroke":
+            return activeFilters.stroke == .backstroke
+        case "Breaststroke":
+            return activeFilters.stroke == .breaststroke
+        case "Butterfly":
+            return activeFilters.stroke == .butterfly
+        default:
+            return false
+        }
+    }
+    
+    func applyQuickFilter(_ filterName: String)
+    {
+        switch filterName
+        {
+        case "Favorites":
+            activeFilters.showFavorites.toggle()
+        case "Beginner":
+            activeFilters.difficulty = activeFilters.difficulty == .beginner ? nil : .beginner
+        case "Intermediate":
+            activeFilters.difficulty = activeFilters.difficulty == .intermediate ? nil : .intermediate
+        case "Advanced":
+            activeFilters.difficulty = activeFilters.difficulty == .advanced ? nil : .advanced
+        case "Freestyle":
+            activeFilters.stroke = activeFilters.stroke == .freestyle ? nil : .freestyle
+        case "Backstroke":
+            activeFilters.stroke = activeFilters.stroke == .backstroke ? nil : .backstroke
+        case "Breaststroke":
+            activeFilters.stroke = activeFilters.stroke == .breaststroke ? nil : .breaststroke
+        case "Butterfly":
+            activeFilters.stroke = activeFilters.stroke == .butterfly ? nil : .butterfly
+        default:
+            break
+        }
+    }
+    
     // MARK: - Statistics
     var filterStatistics: (total: Int, filtered: Int, percentage: Double)
     {
