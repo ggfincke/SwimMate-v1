@@ -2,11 +2,13 @@
 
 import SwiftUI
 
-struct FilterSummarySection: View {
+struct FilterSummarySection: View
+{
     @EnvironmentObject var manager: Manager
     let hasActiveFilters: Bool
     
-    @ViewBuilder var body: some View {
+    @ViewBuilder var body: some View
+    {
         if hasActiveFilters {
             HStack {
                 VStack(alignment: .leading, spacing: 4) {

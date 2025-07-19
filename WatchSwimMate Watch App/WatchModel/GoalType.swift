@@ -2,9 +2,9 @@
 
 import Foundation
 
-enum GoalType 
+enum GoalType
 {
     case distance
     case time
     case calories
-} 
+}

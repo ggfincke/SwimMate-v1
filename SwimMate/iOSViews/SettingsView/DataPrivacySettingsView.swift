@@ -2,12 +2,14 @@
 
 import SwiftUI
 
-struct DataPrivacySettingsView: View {
+struct DataPrivacySettingsView: View
+{
     @EnvironmentObject var manager: Manager
     @State private var showingDeleteAlert = false
     @State private var showingExportSheet = false
     
-    var body: some View {
+    var body: some View
+    {
         Form {
             Section(header: Text("Data Collection")) {
                 VStack(alignment: .leading, spacing: 12) {
@@ -42,7 +44,7 @@ struct DataPrivacySettingsView: View {
                 HStack {
                     Text("Local Storage")
                     Spacer()
-                    Text(getLocalStorageInfo())
+                    Text(manager.getLocalStorageInfo())
                         .foregroundColor(.secondary)
                 }
                 
@@ -106,7 +108,7 @@ struct DataPrivacySettingsView: View {
         .alert("Delete All Data", isPresented: $showingDeleteAlert) {
             Button("Cancel", role: .cancel) { }
             Button("Delete", role: .destructive) {
-                deleteAllData()
+                manager.deleteAllData()
             }
         } message: {
             Text("This will permanently delete all your workout data. This action cannot be undone.")
@@ -117,40 +119,16 @@ struct DataPrivacySettingsView: View {
         }
     }
     
-    private func getLocalStorageInfo() -> String {
-        let workoutCount = manager.swims.count
-        let estimatedSize = workoutCount * 2 // KB per workout estimate
-        
-        if estimatedSize < 1024 {
-            return "\(estimatedSize) KB"
-        } else {
-            return String(format: "%.1f MB", Double(estimatedSize) / 1024)
-        }
-    }
-    
-    private func deleteAllData() {
-        manager.swims.removeAll()
-        manager.favoriteSetIds.removeAll()
-        manager.totalDistance = 0
-        manager.averageDistance = 0
-        manager.totalCalories = 0
-        manager.averageCalories = 0
-        manager.updateStore()
-        
-        if manager.hapticFeedback {
-            let impactFeedback = UIImpactFeedbackGenerator(style: .heavy)
-            impactFeedback.impactOccurred()
-        }
-    }
-    
-    private func openPrivacyPolicy() {
+    private func openPrivacyPolicy()
+    {
         // In a real app, this would open the privacy policy URL
         if let url = URL(string: "https://swimmate.app/privacy") {
             UIApplication.shared.open(url)
         }
     }
     
-    private func openTermsOfService() {
+    private func openTermsOfService()
+    {
         // In a real app, this would open the terms of service URL
         if let url = URL(string: "https://swimmate.app/terms") {
             UIApplication.shared.open(url)
@@ -158,12 +136,14 @@ struct DataPrivacySettingsView: View {
     }
 }
 
-struct DataItemRow: View {
+struct DataItemRow: View
+{
     let icon: String
     let title: String
     let description: String
     
-    var body: some View {
+    var body: some View
+    {
         HStack(spacing: 12) {
             Image(systemName: icon)
                 .foregroundColor(.blue)
@@ -184,11 +164,13 @@ struct DataItemRow: View {
     }
 }
 
-struct DataExportSheet: View {
+struct DataExportSheet: View
+{
     @EnvironmentObject var manager: Manager
     @Environment(\.dismiss) private var dismiss
     
-    var body: some View {
+    var body: some View
+    {
         NavigationView {
             VStack(spacing: 20) {
                 Image(systemName: "square.and.arrow.up")
@@ -247,7 +229,8 @@ struct DataExportSheet: View {
         }
     }
     
-    private func exportData() {
+    private func exportData()
+    {
         // In a real app, this would generate and share a CSV file
         if manager.hapticFeedback {
             let impactFeedback = UIImpactFeedbackGenerator(style: .medium)

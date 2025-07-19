@@ -57,7 +57,8 @@ struct LineGraphView: View
         }
     }
 
-    enum DataRange: String, CaseIterable {
+    enum DataRange: String, CaseIterable
+{
         case lastTen = "Last 10"
         case lastWeek = "Last Week"
         case allTime = "All Time"

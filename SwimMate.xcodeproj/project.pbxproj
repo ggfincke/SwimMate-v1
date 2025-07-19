@@ -27,10 +27,6 @@
 		A02F8F5A2E296011006CC3E5 /* SwimSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02F8F3F2E296011006CC3E5 /* SwimSet.swift */; };
 		A02F8F5B2E296011006CC3E5 /* SwimSetExamples.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02F8F402E296011006CC3E5 /* SwimSetExamples.swift */; };
 		A02F8F5C2E296011006CC3E5 /* Lap.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02F8F462E296011006CC3E5 /* Lap.swift */; };
-		A02F8F602E299F39006CC3E5 /* Manager+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02F8F5F2E299F35006CC3E5 /* Manager+Convenience.swift */; };
-		A02F8F642E299FE0006CC3E5 /* Manager+SetFiltering.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02F8F632E299FDD006CC3E5 /* Manager+SetFiltering.swift */; };
-		A07667B02BF5E6C600FFB4C3 /* Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07667AD2BF5E6C600FFB4C3 /* Manager.swift */; };
-		A07667B12BF5E6C600FFB4C3 /* WatchConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07667AE2BF5E6C600FFB4C3 /* WatchConnector.swift */; };
 		A08761772DC90A0000BD4402 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = A08761762DC909FC00BD4402 /* README.md */; };
 		A0BFBA232DDD7C3C002B96A8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A0BFBA1F2DDD7C3C002B96A8 /* Assets.xcassets */; };
 		A0BFBA242DDD7C3C002B96A8 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A0BFB9FD2DDD7C3C002B96A8 /* Preview Assets.xcassets */; };
@@ -142,6 +138,19 @@
 		A0E47CFA2E2ADB63003DCB3D /* GoalSwimView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E47C9F2E2ADB63003DCB3D /* GoalSwimView.swift */; };
 		A0E47CFB2E2ADB63003DCB3D /* MetricCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E47C7E2E2ADB63003DCB3D /* MetricCard.swift */; };
 		A0E47CFC2E2ADB63003DCB3D /* IndoorPoolSetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E47CA22E2ADB63003DCB3D /* IndoorPoolSetupView.swift */; };
+		A0EE10812E2B599F00C93561 /* Manager+WorkoutAnalysis.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EE107C2E2B599F00C93561 /* Manager+WorkoutAnalysis.swift */; };
+		A0EE10822E2B599F00C93561 /* Manager+SetFiltering.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EE10782E2B599F00C93561 /* Manager+SetFiltering.swift */; };
+		A0EE10832E2B599F00C93561 /* Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EE107E2E2B599F00C93561 /* Manager.swift */; };
+		A0EE10842E2B599F00C93561 /* Calendar+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EE10722E2B599F00C93561 /* Calendar+Extensions.swift */; };
+		A0EE10852E2B599F00C93561 /* Manager+DataAggregation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EE10742E2B599F00C93561 /* Manager+DataAggregation.swift */; };
+		A0EE10862E2B599F00C93561 /* Manager+Statistics.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EE10792E2B599F00C93561 /* Manager+Statistics.swift */; };
+		A0EE10872E2B599F00C93561 /* Manager+StorageManagement.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EE107A2E2B599F00C93561 /* Manager+StorageManagement.swift */; };
+		A0EE10882E2B599F00C93561 /* Manager+DataFiltering.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EE10752E2B599F00C93561 /* Manager+DataFiltering.swift */; };
+		A0EE10892E2B599F00C93561 /* WatchConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EE107F2E2B599F00C93561 /* WatchConnector.swift */; };
+		A0EE108A2E2B599F00C93561 /* Manager+DistanceFormatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EE10762E2B599F00C93561 /* Manager+DistanceFormatting.swift */; };
+		A0EE108B2E2B599F00C93561 /* Manager+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EE10772E2B599F00C93561 /* Manager+Helpers.swift */; };
+		A0EE108C2E2B599F00C93561 /* Manager+ChartData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EE10732E2B599F00C93561 /* Manager+ChartData.swift */; };
+		A0EE108D2E2B599F00C93561 /* Manager+WeeklyStatistics.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EE107B2E2B599F00C93561 /* Manager+WeeklyStatistics.swift */; };
 		A0F6A70C2DE7E697005B7291 /* GoalType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F6A70B2DE7E697005B7291 /* GoalType.swift */; };
 		A0F6A7252DE7EF8A005B7291 /* WatchManager+Statistics.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F6A7222DE7EF8A005B7291 /* WatchManager+Statistics.swift */; };
 		A0F6A7262DE7EF8A005B7291 /* WatchManager+Timer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F6A7232DE7EF8A005B7291 /* WatchManager+Timer.swift */; };
@@ -195,10 +204,6 @@
 		A02F8F462E296011006CC3E5 /* Lap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lap.swift; sourceTree = "<group>"; };
 		A02F8F472E296011006CC3E5 /* LapGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LapGroup.swift; sourceTree = "<group>"; };
 		A02F8F482E296011006CC3E5 /* Swim.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Swim.swift; sourceTree = "<group>"; };
-		A02F8F5F2E299F35006CC3E5 /* Manager+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Manager+Convenience.swift"; sourceTree = "<group>"; };
-		A02F8F632E299FDD006CC3E5 /* Manager+SetFiltering.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Manager+SetFiltering.swift"; sourceTree = "<group>"; };
-		A07667AD2BF5E6C600FFB4C3 /* Manager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Manager.swift; sourceTree = "<group>"; };
-		A07667AE2BF5E6C600FFB4C3 /* WatchConnector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchConnector.swift; sourceTree = "<group>"; };
 		A08761762DC909FC00BD4402 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		A0BFB9FD2DDD7C3C002B96A8 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		A0BFB9FF2DDD7C3C002B96A8 /* NavState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavState.swift; sourceTree = "<group>"; };
@@ -314,6 +319,19 @@
 		A0E47CC12E2ADB63003DCB3D /* HealthKitWarningSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitWarningSection.swift; sourceTree = "<group>"; };
 		A0E47CC22E2ADB63003DCB3D /* NavigationButtonsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationButtonsSection.swift; sourceTree = "<group>"; };
 		A0E47CC42E2ADB63003DCB3D /* WatchRootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchRootView.swift; sourceTree = "<group>"; };
+		A0EE10722E2B599F00C93561 /* Calendar+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Calendar+Extensions.swift"; sourceTree = "<group>"; };
+		A0EE10732E2B599F00C93561 /* Manager+ChartData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Manager+ChartData.swift"; sourceTree = "<group>"; };
+		A0EE10742E2B599F00C93561 /* Manager+DataAggregation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Manager+DataAggregation.swift"; sourceTree = "<group>"; };
+		A0EE10752E2B599F00C93561 /* Manager+DataFiltering.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Manager+DataFiltering.swift"; sourceTree = "<group>"; };
+		A0EE10762E2B599F00C93561 /* Manager+DistanceFormatting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Manager+DistanceFormatting.swift"; sourceTree = "<group>"; };
+		A0EE10772E2B599F00C93561 /* Manager+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Manager+Helpers.swift"; sourceTree = "<group>"; };
+		A0EE10782E2B599F00C93561 /* Manager+SetFiltering.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Manager+SetFiltering.swift"; sourceTree = "<group>"; };
+		A0EE10792E2B599F00C93561 /* Manager+Statistics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Manager+Statistics.swift"; sourceTree = "<group>"; };
+		A0EE107A2E2B599F00C93561 /* Manager+StorageManagement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Manager+StorageManagement.swift"; sourceTree = "<group>"; };
+		A0EE107B2E2B599F00C93561 /* Manager+WeeklyStatistics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Manager+WeeklyStatistics.swift"; sourceTree = "<group>"; };
+		A0EE107C2E2B599F00C93561 /* Manager+WorkoutAnalysis.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Manager+WorkoutAnalysis.swift"; sourceTree = "<group>"; };
+		A0EE107E2E2B599F00C93561 /* Manager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Manager.swift; sourceTree = "<group>"; };
+		A0EE107F2E2B599F00C93561 /* WatchConnector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchConnector.swift; sourceTree = "<group>"; };
 		A0F0C7D12BDF7C5F00AF6D5B /* SwimMate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwimMate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0F0C7D42BDF7C5F00AF6D5B /* WatchSwimMate Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "WatchSwimMate Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0F6A70B2DE7E697005B7291 /* GoalType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalType.swift; sourceTree = "<group>"; };
@@ -387,18 +405,6 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		A07667AF2BF5E6C600FFB4C3 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				A02F8F632E299FDD006CC3E5 /* Manager+SetFiltering.swift */,
-				A02F8F5F2E299F35006CC3E5 /* Manager+Convenience.swift */,
-				A07667AD2BF5E6C600FFB4C3 /* Manager.swift */,
-				A07667AE2BF5E6C600FFB4C3 /* WatchConnector.swift */,
-			);
-			name = ViewModel;
-			path = SwimMate/ViewModel;
-			sourceTree = SOURCE_ROOT;
-		};
 		A0BFB9FE2DDD7C3C002B96A8 /* Preview Content */ = {
 			isa = PBXGroup;
 			children = (
@@ -464,7 +470,7 @@
 				A0C050922BCC5E41002450AD /* SwimMate.entitlements */,
 				A0C0505F2BCC5D7A002450AD /* SwimMateApp.swift */,
 				A0E47C442E2ADB56003DCB3D /* iOSViews */,
-				A07667AF2BF5E6C600FFB4C3 /* ViewModel */,
+				A0EE10802E2B599F00C93561 /* ViewModel */,
 				A02F8F4A2E296011006CC3E5 /* Model */,
 				A0C050632BCC5D7B002450AD /* Assets.xcassets */,
 				A0C050652BCC5D7B002450AD /* Preview Content */,
@@ -934,6 +940,34 @@
 			path = WatchViews;
 			sourceTree = "<group>";
 		};
+		A0EE107D2E2B599F00C93561 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				A0EE10722E2B599F00C93561 /* Calendar+Extensions.swift */,
+				A0EE10732E2B599F00C93561 /* Manager+ChartData.swift */,
+				A0EE10742E2B599F00C93561 /* Manager+DataAggregation.swift */,
+				A0EE10752E2B599F00C93561 /* Manager+DataFiltering.swift */,
+				A0EE10762E2B599F00C93561 /* Manager+DistanceFormatting.swift */,
+				A0EE10772E2B599F00C93561 /* Manager+Helpers.swift */,
+				A0EE10782E2B599F00C93561 /* Manager+SetFiltering.swift */,
+				A0EE10792E2B599F00C93561 /* Manager+Statistics.swift */,
+				A0EE107A2E2B599F00C93561 /* Manager+StorageManagement.swift */,
+				A0EE107B2E2B599F00C93561 /* Manager+WeeklyStatistics.swift */,
+				A0EE107C2E2B599F00C93561 /* Manager+WorkoutAnalysis.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		A0EE10802E2B599F00C93561 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				A0EE107D2E2B599F00C93561 /* Extensions */,
+				A0EE107E2E2B599F00C93561 /* Manager.swift */,
+				A0EE107F2E2B599F00C93561 /* WatchConnector.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1039,7 +1073,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A07667B12BF5E6C600FFB4C3 /* WatchConnector.swift in Sources */,
 				A023DE452BDF7B2A00242C58 /* SwimMateApp.swift in Sources */,
 				A02F8F542E296011006CC3E5 /* MeasureUnit.swift in Sources */,
 				A02F8F552E296011006CC3E5 /* SwimStroke.swift in Sources */,
@@ -1080,6 +1113,19 @@
 				A0E47C662E2ADB56003DCB3D /* NotificationsSettingsView.swift in Sources */,
 				A0E47C672E2ADB56003DCB3D /* HealthKitPermissionView.swift in Sources */,
 				A0E47C682E2ADB56003DCB3D /* SetSummaryView.swift in Sources */,
+				A0EE10812E2B599F00C93561 /* Manager+WorkoutAnalysis.swift in Sources */,
+				A0EE10822E2B599F00C93561 /* Manager+SetFiltering.swift in Sources */,
+				A0EE10832E2B599F00C93561 /* Manager.swift in Sources */,
+				A0EE10842E2B599F00C93561 /* Calendar+Extensions.swift in Sources */,
+				A0EE10852E2B599F00C93561 /* Manager+DataAggregation.swift in Sources */,
+				A0EE10862E2B599F00C93561 /* Manager+Statistics.swift in Sources */,
+				A0EE10872E2B599F00C93561 /* Manager+StorageManagement.swift in Sources */,
+				A0EE10882E2B599F00C93561 /* Manager+DataFiltering.swift in Sources */,
+				A0EE10892E2B599F00C93561 /* WatchConnector.swift in Sources */,
+				A0EE108A2E2B599F00C93561 /* Manager+DistanceFormatting.swift in Sources */,
+				A0EE108B2E2B599F00C93561 /* Manager+Helpers.swift in Sources */,
+				A0EE108C2E2B599F00C93561 /* Manager+ChartData.swift in Sources */,
+				A0EE108D2E2B599F00C93561 /* Manager+WeeklyStatistics.swift in Sources */,
 				A0E47C692E2ADB56003DCB3D /* HomeHeroSection.swift in Sources */,
 				A0E47C6A2E2ADB56003DCB3D /* LogbookWorkoutListSection.swift in Sources */,
 				A0E47C6B2E2ADB56003DCB3D /* LineGraphView.swift in Sources */,
@@ -1100,9 +1146,6 @@
 				A02F8F5A2E296011006CC3E5 /* SwimSet.swift in Sources */,
 				A02F8F5B2E296011006CC3E5 /* SwimSetExamples.swift in Sources */,
 				A02F8F5C2E296011006CC3E5 /* Lap.swift in Sources */,
-				A02F8F642E299FE0006CC3E5 /* Manager+SetFiltering.swift in Sources */,
-				A02F8F602E299F39006CC3E5 /* Manager+Convenience.swift in Sources */,
-				A07667B02BF5E6C600FFB4C3 /* Manager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

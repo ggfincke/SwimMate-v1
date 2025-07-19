@@ -2,17 +2,20 @@
 
 import SwiftUI
 
-struct SetDetailView: View {
+struct SetDetailView: View
+{
     let swimSet: SwimSet
     @EnvironmentObject var watchConnector: WatchConnector
     @State private var showingSendSheet = false
     @State private var sendStatus: SendStatus = .ready
     
-    enum SendStatus {
+    enum SendStatus
+    {
         case ready, sending, sent, failed
     }
     
-    private var difficultyColor: Color {
+    private var difficultyColor: Color
+    {
         switch swimSet.difficulty {
         case .beginner: return .green
         case .intermediate: return .orange
@@ -20,7 +23,8 @@ struct SetDetailView: View {
         }
     }
     
-    var body: some View {
+    var body: some View
+    {
         ZStack {
             // Background gradient
             LinearGradient(
@@ -65,7 +69,8 @@ struct SetDetailView: View {
     }
     
     // MARK: - Hero Section
-    private var heroSection: some View {
+    private var heroSection: some View
+    {
         VStack(alignment: .leading, spacing: 16) {
             HStack {
                 VStack(alignment: .leading, spacing: 8) {
@@ -115,7 +120,8 @@ struct SetDetailView: View {
     }
     
     // MARK: - Stats Section
-    private var statsSection: some View {
+    private var statsSection: some View
+    {
         HStack(spacing: 16) {
             DetailStatCard(
                 title: "Distance",
@@ -143,7 +149,8 @@ struct SetDetailView: View {
         }
     }
     
-    private var estimatedDurationText: String {
+    private var estimatedDurationText: String
+    {
         if let duration = swimSet.estimatedDuration {
             let minutes = Int(duration / 60)
             return "\(minutes) min"
@@ -152,7 +159,8 @@ struct SetDetailView: View {
     }
     
     // MARK: - Description Section
-    private func descriptionSection(_ description: String) -> some View {
+    private func descriptionSection(_ description: String) -> some View
+    {
         VStack(alignment: .leading, spacing: 12) {
             Text("Description")
                 .font(.system(size: 20, weight: .bold, design: .rounded))
@@ -171,7 +179,8 @@ struct SetDetailView: View {
     }
     
     // MARK: - Components Section
-    private var componentsSection: some View {
+    private var componentsSection: some View
+    {
         VStack(alignment: .leading, spacing: 16) {
             Text("Workout Components")
                 .font(.system(size: 20, weight: .bold, design: .rounded))
@@ -186,7 +195,8 @@ struct SetDetailView: View {
     }
     
     // MARK: - Send to Watch Button
-    private var sendToWatchButton: some View {
+    private var sendToWatchButton: some View
+    {
         Button(action: {
             showingSendSheet = true
         }) {
@@ -213,7 +223,8 @@ struct SetDetailView: View {
         .padding(.bottom, 40)
     }
     
-    private var sendButtonText: String {
+    private var sendButtonText: String
+    {
         switch sendStatus {
         case .ready: return "Send to Watch"
         case .sending: return "Sending..."
@@ -222,7 +233,8 @@ struct SetDetailView: View {
         }
     }
     
-    private var sendButtonColor: Color {
+    private var sendButtonColor: Color
+    {
         switch sendStatus {
         case .ready: return .blue
         case .sending: return .blue
@@ -232,7 +244,8 @@ struct SetDetailView: View {
     }
     
     // MARK: - Send Confirmation Sheet
-    private var sendConfirmationSheet: some View {
+    private var sendConfirmationSheet: some View
+    {
         VStack(spacing: 24) {
             // Header
             VStack(spacing: 8) {
@@ -310,7 +323,8 @@ struct SetDetailView: View {
         .presentationDragIndicator(.visible)
     }
     
-    private func sendToWatch() {
+    private func sendToWatch()
+    {
         sendStatus = .sending
         showingSendSheet = false
         
@@ -327,14 +341,16 @@ struct SetDetailView: View {
 }
 
 // MARK: - Detail Stat Card
-struct DetailStatCard: View {
+struct DetailStatCard: View
+{
     let title: String
     let value: String
     let unit: String
     let icon: String
     let color: Color
     
-    var body: some View {
+    var body: some View
+    {
         VStack(spacing: 8) {
             Image(systemName: icon)
                 .font(.system(size: 24, weight: .medium))
@@ -366,11 +382,13 @@ struct DetailStatCard: View {
 }
 
 // MARK: - Component Card
-struct ComponentCard: View {
+struct ComponentCard: View
+{
     let component: SetComponent
     let index: Int
     
-    private var componentColor: Color {
+    private var componentColor: Color
+    {
         switch component.type {
         case .warmup: return .orange
         case .swim: return .blue
@@ -381,7 +399,8 @@ struct ComponentCard: View {
         }
     }
     
-    private var componentIcon: String {
+    private var componentIcon: String
+    {
         switch component.type {
         case .warmup: return "thermometer.sun"
         case .swim: return "figure.pool.swim"
@@ -392,7 +411,8 @@ struct ComponentCard: View {
         }
     }
     
-    var body: some View {
+    var body: some View
+    {
         HStack(spacing: 16) {
             // Step Number
             Text("\(index)")
@@ -448,8 +468,10 @@ struct ComponentCard: View {
 }
 
 // Preview of the SetDetailView
-struct SetDetailView_Previews: PreviewProvider {
-    static var previews: some View {
+struct SetDetailView_Previews: PreviewProvider
+{
+    static var previews: some View
+    {
         let sampleSet = SwimSet(
             title: "Sample",
             components: [

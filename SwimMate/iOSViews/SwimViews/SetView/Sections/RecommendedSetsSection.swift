@@ -2,11 +2,13 @@
 
 import SwiftUI
 
-struct RecommendedSetsSection: View {
+struct RecommendedSetsSection: View
+{
     @EnvironmentObject var manager: Manager
     @EnvironmentObject var watchOSManager: WatchConnector
     
-    var body: some View {
+    var body: some View
+    {
         VStack(alignment: .leading, spacing: 16) {
             HStack {
                 Text("Recommended for You")

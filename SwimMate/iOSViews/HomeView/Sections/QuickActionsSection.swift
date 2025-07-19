@@ -2,10 +2,12 @@
 
 import SwiftUI
 
-struct QuickActionsSection: View {
+struct QuickActionsSection: View
+{
     @Binding var selectedTab: Int
     
-    var body: some View {
+    var body: some View
+    {
         VStack(alignment: .leading, spacing: 16) {
             Text("Quick Actions")
                 .font(.system(size: 20, weight: .bold, design: .rounded))

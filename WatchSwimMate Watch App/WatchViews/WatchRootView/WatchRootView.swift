@@ -19,19 +19,19 @@ struct WatchRootView: View
             VStack(spacing: 16)
             {
                 HeaderSection()
-                
+
                 if manager.authorizationRequested && !manager.healthKitAuthorized
                 {
                     HealthKitWarningSection(showSettings: $showSettings)
                 }
-                
+
                 Divider()
-                    .padding(.horizontal)
-                
+                .padding(.horizontal)
+
                 NavigationButtonsSection(
-                    activeButton: $activeButton,
-                    showSettings: $showSettings,
-                    showHealthKitAlert: $showHealthKitAlert
+                activeButton: $activeButton,
+                showSettings: $showSettings,
+                showHealthKitAlert: $showHealthKitAlert
                 )
             }
             .padding(.bottom, 12)
@@ -40,12 +40,18 @@ struct WatchRootView: View
         {
             SettingsView()
         }
-        .alert("HealthKit Access Required", isPresented: $showHealthKitAlert) {
-            Button("Open Settings") {
+        .alert("HealthKit Access Required", isPresented: $showHealthKitAlert)
+        {
+            Button("Open Settings")
+            {
                 showSettings = true
             }
-            Button("Cancel", role: .cancel) { }
-        } message: {
+            Button("Cancel", role: .cancel)
+            {
+            }
+        }
+        message:
+        {
             Text("SwimMate needs HealthKit access to track your swimming workouts. Please enable access in Settings.")
         }
     }
@@ -56,6 +62,6 @@ struct WatchRootView: View
 #Preview
 {
     WatchRootView()
-        .environment(WatchManager())
-        .environment(iOSWatchConnector())
+    .environment(WatchManager())
+    .environment(iOSWatchConnector())
 }

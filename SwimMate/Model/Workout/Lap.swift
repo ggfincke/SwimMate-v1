@@ -34,7 +34,8 @@ struct Lap: Codable, Hashable
     
     // MARK: - Methods
     /// Calculate rest period to next lap
-    func restPeriodTo(_ nextLap: Lap) -> TimeInterval {
+    func restPeriodTo(_ nextLap: Lap) -> TimeInterval
+    {
         return nextLap.startDate.timeIntervalSince(self.endDate)
     }
 } 

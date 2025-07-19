@@ -2,18 +2,21 @@
 
 import SwiftUI
 
-struct SwimListItemView: View {
+struct SwimListItemView: View
+{
     let swim: Swim
     @EnvironmentObject var manager: Manager
     
-    private var dateFormatter: DateFormatter {
+    private var dateFormatter: DateFormatter
+    {
         let formatter = DateFormatter()
         formatter.dateStyle = .medium
         formatter.timeStyle = .short
         return formatter
     }
     
-    var body: some View {
+    var body: some View
+    {
         HStack(spacing: 16) {
             // Beautiful date circle with gradient
             VStack(spacing: 2) {
@@ -106,7 +109,8 @@ struct SwimListItemView: View {
         )
     }
     
-    private func formatDuration(_ duration: TimeInterval) -> String {
+    private func formatDuration(_ duration: TimeInterval) -> String
+    {
         let minutes = Int(duration / 60)
         let hours = minutes / 60
         let remainingMinutes = minutes % 60
@@ -118,7 +122,8 @@ struct SwimListItemView: View {
         }
     }
     
-    private func getStrokes(from swim: Swim) -> String? {
+    private func getStrokes(from swim: Swim) -> String?
+    {
         let uniqueStrokes = Set(swim.laps.compactMap { $0.stroke?.description })
         if uniqueStrokes.isEmpty {
             return nil

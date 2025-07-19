@@ -2,32 +2,34 @@
 
 import SwiftUI
 
-// health kit warning 
+// health kit warning
 struct HealthKitWarningSection: View
+
 {
+
     @Binding var showSettings: Bool
-    
+
     var body: some View
     {
         HStack(spacing: 8)
         {
             Image(systemName: "exclamationmark.triangle.fill")
-                .foregroundColor(.orange)
-                .font(.system(size: 14))
-            
+            .foregroundColor(.orange)
+            .font(.system(size: 14))
+
             VStack(alignment: .leading, spacing: 2)
             {
                 Text("HealthKit Access Required")
-                    .font(.system(size: 12, weight: .semibold))
-                    .foregroundColor(.primary)
-                
+                .font(.system(size: 12, weight: .semibold))
+                .foregroundColor(.primary)
+
                 Text("Enable in Settings to track workouts")
-                    .font(.system(size: 10))
-                    .foregroundColor(.secondary)
+                .font(.system(size: 10))
+                .foregroundColor(.secondary)
             }
-            
+
             Spacer()
-            
+
             Button("Fix")
             {
                 showSettings = true
@@ -38,9 +40,9 @@ struct HealthKitWarningSection: View
         .padding(.horizontal, 12)
         .padding(.vertical, 8)
         .background(
-            RoundedRectangle(cornerRadius: 8)
-                .fill(Color.orange.opacity(0.1))
-                .stroke(Color.orange.opacity(0.3), lineWidth: 1)
+        RoundedRectangle(cornerRadius: 8)
+        .fill(Color.orange.opacity(0.1))
+        .stroke(Color.orange.opacity(0.3), lineWidth: 1)
         )
         .padding(.horizontal, 12)
     }
@@ -48,4 +50,4 @@ struct HealthKitWarningSection: View
 
 #Preview {
     HealthKitWarningSection(showSettings: .constant(false))
-} 
+}

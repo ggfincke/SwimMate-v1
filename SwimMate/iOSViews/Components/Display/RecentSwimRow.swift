@@ -3,18 +3,21 @@
 import SwiftUI
 
 // recent swim row
-struct RecentSwimRow: View {
+struct RecentSwimRow: View
+{
     let swim: Swim
     @EnvironmentObject var manager: Manager
     
-    private var dateFormatter: DateFormatter {
+    private var dateFormatter: DateFormatter
+    {
         let formatter = DateFormatter()
         formatter.dateStyle = .medium
         formatter.timeStyle = .none
         return formatter
     }
     
-    var body: some View {
+    var body: some View
+    {
         HStack(alignment: .center) {
             VStack(alignment: .leading, spacing: 4) {
                 Text(dateFormatter.string(from: swim.date))

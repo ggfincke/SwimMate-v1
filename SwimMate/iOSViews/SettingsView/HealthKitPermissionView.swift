@@ -4,7 +4,8 @@ import SwiftUI
 import HealthKit
 import HealthKitUI
 
-struct HealthKitPermissionView: View {
+struct HealthKitPermissionView: View
+{
     @EnvironmentObject var manager: Manager
     let allTypes: Set = [
         HKQuantityType.workoutType(),
@@ -18,7 +19,8 @@ struct HealthKitPermissionView: View {
     @State private var trigger = false
     @State private var authenticated = false
 
-    var body: some View {
+    var body: some View
+    {
         VStack 
         {
             if authenticated 

@@ -3,11 +3,13 @@
 import SwiftUI
 import UserNotifications
 
-struct NotificationsSettingsView: View {
+struct NotificationsSettingsView: View
+{
     @EnvironmentObject var manager: Manager
     @State private var notificationPermissionGranted = false
     
-    var body: some View {
+    var body: some View
+    {
         Form {
             Section(header: Text("Workout Reminders")) {
                 Toggle("Enable Notifications", isOn: $manager.enableNotifications)
@@ -84,7 +86,8 @@ struct NotificationsSettingsView: View {
         }
     }
     
-    private func requestNotificationPermission() {
+    private func requestNotificationPermission()
+    {
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { granted, error in
             DispatchQueue.main.async {
                 notificationPermissionGranted = granted
@@ -95,7 +98,8 @@ struct NotificationsSettingsView: View {
         }
     }
     
-    private func checkNotificationPermission() {
+    private func checkNotificationPermission()
+    {
         UNUserNotificationCenter.current().getNotificationSettings { settings in
             DispatchQueue.main.async {
                 notificationPermissionGranted = settings.authorizationStatus == .authorized
@@ -103,7 +107,8 @@ struct NotificationsSettingsView: View {
         }
     }
     
-    private func scheduleWorkoutReminder() {
+    private func scheduleWorkoutReminder()
+    {
         guard manager.enableNotifications && notificationPermissionGranted else { return }
         
         removeAllNotifications()
@@ -127,11 +132,13 @@ struct NotificationsSettingsView: View {
         }
     }
     
-    private func removeAllNotifications() {
+    private func removeAllNotifications()
+    {
         UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: ["workout_reminder"])
     }
     
-    private func openAppSettings() {
+    private func openAppSettings()
+    {
         guard let settingsUrl = URL(string: UIApplication.openSettingsURLString) else { return }
         
         if UIApplication.shared.canOpenURL(settingsUrl) {

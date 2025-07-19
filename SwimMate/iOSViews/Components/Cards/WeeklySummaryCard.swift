@@ -3,10 +3,12 @@
 import SwiftUI
 
 // weekly summary card
-struct WeeklySummaryCard: View {
+struct WeeklySummaryCard: View
+{
     @EnvironmentObject var manager: Manager
     
-    var body: some View {
+    var body: some View
+    {
         VStack(alignment: .leading, spacing: 16) {
             Text("Weekly Summary")
                 .font(.headline)
@@ -36,7 +38,8 @@ struct WeeklySummaryCard: View {
         .cornerRadius(12)
     }
     
-    private var weeklyStats: (workoutCount: Int, totalMinutes: Int, formattedDistance: String) {
+    private var weeklyStats: (workoutCount: Int, totalMinutes: Int, formattedDistance: String)
+    {
         let lastWeekDate = Calendar.current.date(byAdding: .weekOfYear, value: -1, to: Date())!
         let weeklySwims = manager.swims.filter { $0.date >= lastWeekDate }
         let totalWorkouts = weeklySwims.count

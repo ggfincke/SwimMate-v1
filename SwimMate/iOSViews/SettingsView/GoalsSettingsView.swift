@@ -2,10 +2,12 @@
 
 import SwiftUI
 
-struct GoalsSettingsView: View {
+struct GoalsSettingsView: View
+{
     @EnvironmentObject var manager: Manager
     
-    var body: some View {
+    var body: some View
+    {
         Form {
             Section(header: Text("Weekly Goals")) {
                 HStack {
@@ -35,7 +37,7 @@ struct GoalsSettingsView: View {
                 HStack {
                     Text("Current Week Distance")
                     Spacer()
-                    Text(formatDistance(getCurrentWeekDistance()))
+                    Text(manager.formatDistance(manager.getCurrentWeekDistance()))
                         .foregroundColor(.blue)
                         .font(.body.weight(.semibold))
                 }
@@ -43,15 +45,15 @@ struct GoalsSettingsView: View {
                 HStack {
                     Text("Current Week Workouts")
                     Spacer()
-                    Text("\(getCurrentWeekWorkouts())")
+                    Text("\(manager.getCurrentWeekWorkouts())")
                         .foregroundColor(.green)
                         .font(.body.weight(.semibold))
                 }
                 
-                ProgressView(value: goalProgress, total: 1.0)
-                    .progressViewStyle(LinearProgressViewStyle(tint: goalProgress >= 1.0 ? .green : .blue))
+                ProgressView(value: manager.goalProgress(), total: 1.0)
+                    .progressViewStyle(LinearProgressViewStyle(tint: manager.goalProgress() >= 1.0 ? .green : .blue))
                 
-                Text(goalProgressText)
+                Text(manager.goalProgressText())
                     .font(.caption)
                     .foregroundColor(.secondary)
             }
@@ -83,44 +85,6 @@ struct GoalsSettingsView: View {
         }
         .navigationTitle("Goals & Pool")
         .navigationBarTitleDisplayMode(.inline)
-    }
-    
-    private func getCurrentWeekDistance() -> Double {
-        let calendar = Calendar.current
-        let startOfWeek = calendar.dateInterval(of: .weekOfYear, for: Date())?.start ?? Date()
-        let weeklySwims = manager.swims.filter { $0.startDate >= startOfWeek }
-        return weeklySwims.compactMap { $0.totalDistance }.reduce(0, +)
-    }
-    
-    private func getCurrentWeekWorkouts() -> Int {
-        let calendar = Calendar.current
-        let startOfWeek = calendar.dateInterval(of: .weekOfYear, for: Date())?.start ?? Date()
-        return manager.swims.filter { $0.startDate >= startOfWeek }.count
-    }
-    
-    private var goalProgress: Double {
-        let distanceProgress = getCurrentWeekDistance() / manager.weeklyGoalDistance
-        let workoutProgress = Double(getCurrentWeekWorkouts()) / Double(manager.weeklyGoalWorkouts)
-        return min(1.0, max(distanceProgress, workoutProgress))
-    }
-    
-    private var goalProgressText: String {
-        let distanceProgress = getCurrentWeekDistance() / manager.weeklyGoalDistance
-        let workoutProgress = Double(getCurrentWeekWorkouts()) / Double(manager.weeklyGoalWorkouts)
-        
-        if distanceProgress >= 1.0 && workoutProgress >= 1.0 {
-            return "🎉 Weekly goals achieved!"
-        } else if distanceProgress >= 1.0 {
-            return "Distance goal achieved! \(manager.weeklyGoalWorkouts - getCurrentWeekWorkouts()) workouts to go."
-        } else if workoutProgress >= 1.0 {
-            return "Workout goal achieved! \(formatDistance(manager.weeklyGoalDistance - getCurrentWeekDistance())) distance to go."
-        } else {
-            return "Keep swimming! \(Int(goalProgress * 100))% of weekly goals completed."
-        }
-    }
-    
-    private func formatDistance(_ distance: Double) -> String {
-        return String(format: "%.0f %@", distance, manager.preferredUnit.rawValue)
     }
 }
 

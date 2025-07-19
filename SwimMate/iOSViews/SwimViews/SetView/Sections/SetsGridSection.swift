@@ -2,13 +2,15 @@
 
 import SwiftUI
 
-struct SetsGridSection: View {
+struct SetsGridSection: View
+{
     @EnvironmentObject var manager: Manager
     @EnvironmentObject var watchOSManager: WatchConnector
     
     private let columns = Array(repeating: GridItem(.flexible(), spacing: 16), count: 2)
     
-    var body: some View {
+    var body: some View
+    {
         VStack(alignment: .leading, spacing: 16) {
             HStack {
                 Text("All Sets")

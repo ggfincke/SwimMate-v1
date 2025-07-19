@@ -4,40 +4,42 @@ import SwiftUI
 import WatchKit
 
 struct SwimControlsView: View
+
 {
+
     @Environment(WatchManager.self) private var manager
     @State private var showEndConfirmation = false
-    
+
     // responsive sizing
     private var buttonSpacing: CGFloat
     {
         manager.isCompactDevice ? 10 : 16
     }
-    
+
     private var horizontalPadding: CGFloat
     {
         manager.isCompactDevice ? 12 : 20
     }
-    
+
     var body: some View
     {
         VStack(spacing: 0)
         {
             // for proper vertical alignment
             Spacer()
-                .frame(height: manager.isCompactDevice ? 16 : 32)
+            .frame(height: manager.isCompactDevice ? 16 : 32)
             // 2x2 responsive grid
             LazyVGrid(columns: [
-                GridItem(.flexible(), spacing: buttonSpacing),
-                GridItem(.flexible(), spacing: buttonSpacing)
+            GridItem(.flexible(), spacing: buttonSpacing),
+            GridItem(.flexible(), spacing: buttonSpacing)
             ], spacing: buttonSpacing)
             {
                 // pause/resume
                 MainControlButton(
-                    icon: manager.running ? "pause.fill" : "play.fill",
-                    label: manager.running ? "Pause" : "Resume",
-                    color: .yellow,
-                    isCompact: manager.isCompactDevice
+                icon: manager.running ? "pause.fill" : "play.fill",
+                label: manager.running ? "Pause" : "Resume",
+                color: .yellow,
+                isCompact: manager.isCompactDevice
                 )
                 {
                     withHapticFeedback
@@ -45,13 +47,13 @@ struct SwimControlsView: View
                         manager.togglePause()
                     }
                 }
-                
+
                 // end swim
                 MainControlButton(
-                    icon: "stop.fill",
-                    label: "End",
-                    color: .red,
-                    isCompact: manager.isCompactDevice
+                icon: "stop.fill",
+                label: "End",
+                color: .red,
+                isCompact: manager.isCompactDevice
                 )
                 {
                     withHapticFeedback
@@ -59,13 +61,13 @@ struct SwimControlsView: View
                         showEndConfirmation = true
                     }
                 }
-                
+
                 // water lock
                 MainControlButton(
-                    icon: "drop.fill",
-                    label: "Lock",
-                    color: .blue,
-                    isCompact: manager.isCompactDevice
+                icon: "drop.fill",
+                label: "Lock",
+                color: .blue,
+                isCompact: manager.isCompactDevice
                 )
                 {
                     withHapticFeedback
@@ -73,13 +75,13 @@ struct SwimControlsView: View
                         WKInterfaceDevice.current().enableWaterLock()
                     }
                 }
-                
+
                 // lap marker
                 MainControlButton(
-                    icon: "flag.fill",
-                    label: "Lap",
-                    color: .green,
-                    isCompact: manager.isCompactDevice
+                icon: "flag.fill",
+                label: "Lap",
+                color: .green,
+                isCompact: manager.isCompactDevice
                 )
                 {
                     withHapticFeedback
@@ -89,13 +91,13 @@ struct SwimControlsView: View
                 }
             }
             .padding(.horizontal, horizontalPadding)
-            
+
             Spacer()
         }
         .confirmationDialog(
-            "End Swim?",
-            isPresented: $showEndConfirmation,
-            titleVisibility: .visible
+        "End Swim?",
+        isPresented: $showEndConfirmation,
+        titleVisibility: .visible
         )
         {
             Button("End Swim", role: .destructive)
@@ -109,7 +111,7 @@ struct SwimControlsView: View
             Text("This will save your swim and return to the main screen.")
         }
     }
-    
+
     // MARK: - Actions
     private func endSwim()
     {
@@ -119,7 +121,7 @@ struct SwimControlsView: View
             manager.endWorkout()
         }
     }
-    
+
     private func withHapticFeedback<T>(_ type: WKHapticType = .click, action: () -> T) -> T
     {
         WKInterfaceDevice.current().play(type)
@@ -131,5 +133,5 @@ struct SwimControlsView: View
 #Preview
 {
     SwimControlsView()
-        .environment(WatchManager())
+    .environment(WatchManager())
 }

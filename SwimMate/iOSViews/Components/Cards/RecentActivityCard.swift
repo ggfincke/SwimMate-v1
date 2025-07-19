@@ -3,10 +3,12 @@
 import SwiftUI
 
 // recent activity card
-struct RecentActivityCard: View {
+struct RecentActivityCard: View
+{
     @EnvironmentObject var manager: Manager
     
-    var body: some View {
+    var body: some View
+    {
         VStack(alignment: .leading, spacing: 12) {
             HStack {
                 Text("Recent Activity")
@@ -44,7 +46,8 @@ struct RecentActivityCard: View {
         .cornerRadius(12)
     }
     
-    private var recentSwims: [Swim] {
+    private var recentSwims: [Swim]
+    {
         return Array(manager.swims.sorted(by: { $0.date > $1.date }).prefix(3))
     }
 }

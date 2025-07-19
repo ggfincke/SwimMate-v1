@@ -2,24 +2,26 @@
 
 import SwiftUI
 
-struct NavigationButtonsSection: View {
+struct NavigationButtonsSection: View
+{
     @Environment(WatchManager.self) private var manager
     @Binding var activeButton: String?
     @Binding var showSettings: Bool
     @Binding var showHealthKitAlert: Bool
-    
+
     // responsive spacing based on device size
     private var buttonSpacing: CGFloat
     {
         manager.isCompactDevice ? 10 : 14
     }
-    
+
     private var horizontalPadding: CGFloat
     {
         manager.isCompactDevice ? 8 : 12
     }
-    
-    var body: some View {
+
+    var body: some View
+    {
         VStack(spacing: buttonSpacing)
         {
             quickStartButton
@@ -29,18 +31,19 @@ struct NavigationButtonsSection: View {
         }
         .padding(.horizontal, horizontalPadding)
     }
-    
+
     // MARK: - Navigation Buttons
-    
-    private var quickStartButton: some View {
+
+    private var quickStartButton: some View
+    {
         MainButton(
-            label: "Quick Start",
-            icon: "bolt.fill",
-            tint: manager.canStartWorkout ? .green : .gray,
-            buttonId: "quick",
-            isEnabled: manager.canStartWorkout,
-            compact: manager.isCompactDevice,
-            activeButton: $activeButton
+        label: "Quick Start",
+        icon: "bolt.fill",
+        tint: manager.canStartWorkout ? .green : .gray,
+        buttonId: "quick",
+        isEnabled: manager.canStartWorkout,
+        compact: manager.isCompactDevice,
+        activeButton: $activeButton
         )
         {
             if manager.canStartWorkout
@@ -49,12 +52,12 @@ struct NavigationButtonsSection: View {
                 {
                     activeButton = "quick"
                 }
-                
+
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.2)
                 {
                     // reset goals for quick start - no goals for quick workouts
                     manager.clearAllGoals()
-                    
+
                     manager.path.append(NavState.swimSetup)
                     activeButton = nil
                 }
@@ -65,16 +68,17 @@ struct NavigationButtonsSection: View {
             }
         }
     }
-    
-    private var setGoalButton: some View {
+
+    private var setGoalButton: some View
+    {
         MainButton(
-            label: "Set Goal",
-            icon: "target",
-            tint: manager.canStartWorkout ? .blue : .gray,
-            buttonId: "goal",
-            isEnabled: manager.canStartWorkout,
-            compact: manager.isCompactDevice,
-            activeButton: $activeButton
+        label: "Set Goal",
+        icon: "target",
+        tint: manager.canStartWorkout ? .blue : .gray,
+        buttonId: "goal",
+        isEnabled: manager.canStartWorkout,
+        compact: manager.isCompactDevice,
+        activeButton: $activeButton
         )
         {
             if manager.canStartWorkout
@@ -83,7 +87,7 @@ struct NavigationButtonsSection: View {
                 {
                     activeButton = "goal"
                 }
-                
+
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.2)
                 {
                     manager.path.append(NavState.goalSwimSetup)
@@ -96,23 +100,24 @@ struct NavigationButtonsSection: View {
             }
         }
     }
-    
-    private var importSetButton: some View {
+
+    private var importSetButton: some View
+    {
         MainButton(
-            label: "Import Set",
-            icon: "square.and.arrow.down.fill",
-            tint: .orange,
-            buttonId: "import",
-            isEnabled: true,
-            compact: manager.isCompactDevice,
-            activeButton: $activeButton
+        label: "Import Set",
+        icon: "square.and.arrow.down.fill",
+        tint: .orange,
+        buttonId: "import",
+        isEnabled: true,
+        compact: manager.isCompactDevice,
+        activeButton: $activeButton
         )
         {
             withAnimation
             {
                 activeButton = "import"
             }
-            
+
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.2)
             {
                 manager.path.append(NavState.importSetView)
@@ -120,23 +125,24 @@ struct NavigationButtonsSection: View {
             }
         }
     }
-    
-    private var settingsButton: some View {
+
+    private var settingsButton: some View
+    {
         MainButton(
-            label: "Settings",
-            icon: "gear",
-            tint: .gray,
-            buttonId: "settings",
-            isEnabled: true,
-            compact: manager.isCompactDevice,
-            activeButton: $activeButton
+        label: "Settings",
+        icon: "gear",
+        tint: .gray,
+        buttonId: "settings",
+        isEnabled: true,
+        compact: manager.isCompactDevice,
+        activeButton: $activeButton
         )
         {
             withAnimation
             {
                 activeButton = "settings"
             }
-            
+
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.2)
             {
                 showSettings = true
@@ -150,25 +156,25 @@ struct NavigationButtonsSection: View {
 #Preview("Standard Size")
 {
     NavigationButtonsSection(
-        activeButton: .constant(nil),
-        showSettings: .constant(false),
-        showHealthKitAlert: .constant(false)
+    activeButton: .constant(nil),
+    showSettings: .constant(false),
+    showHealthKitAlert: .constant(false)
     )
     .environment({
         let manager = WatchManager()
         return manager
-    }())
-}
+        }())
+    }
 
-#Preview("Compact Size")
-{
-    NavigationButtonsSection(
+    #Preview("Compact Size")
+    {
+        NavigationButtonsSection(
         activeButton: .constant(nil),
         showSettings: .constant(false),
         showHealthKitAlert: .constant(false)
-    )
-    .environment({
-        let manager = WatchManager()
-        return manager
-    }())
-} 
+        )
+        .environment({
+            let manager = WatchManager()
+            return manager
+            }())
+        }

@@ -2,10 +2,12 @@
 
 import SwiftUI
 
-enum StatTrend {
+enum StatTrend
+{
     case up, down, neutral
     
-    var icon: String {
+    var icon: String
+    {
         switch self {
         case .up: return "arrow.up"
         case .down: return "arrow.down"
@@ -13,7 +15,8 @@ enum StatTrend {
         }
     }
     
-    var color: Color {
+    var color: Color
+    {
         switch self {
         case .up: return .green
         case .down: return .red
@@ -22,14 +25,16 @@ enum StatTrend {
     }
 }
 
-struct StatCard: View {
+struct StatCard: View
+{
     let title: String
     let value: String
     let icon: String
     let color: Color
     let trend: StatTrend
     
-    var body: some View {
+    var body: some View
+    {
         VStack(spacing: 8) {
             HStack {
                 Image(systemName: icon)

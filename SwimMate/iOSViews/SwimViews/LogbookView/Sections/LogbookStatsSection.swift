@@ -2,61 +2,37 @@
 
 import SwiftUI
 
-struct LogbookStatsSection: View {
+struct LogbookStatsSection: View
+{
     @EnvironmentObject var manager: Manager
     let filteredWorkouts: [Swim]
     
-    var body: some View {
+    var body: some View
+    {
         HStack(spacing: 12) {
             LogbookStatCard(
                 title: "Total Distance",
-                value: formatTotalDistance(),
+                value: manager.formatTotalDistance(from: filteredWorkouts),
                 icon: "ruler",
                 color: .blue
             )
             
             LogbookStatCard(
                 title: "Total Time",
-                value: formatTotalTime(),
+                value: manager.formatTotalTime(from: filteredWorkouts),
                 icon: "clock",
                 color: .green
             )
             
             LogbookStatCard(
                 title: "Avg. Distance",
-                value: formatAverageDistance(),
+                value: manager.formatAverageDistance(from: filteredWorkouts),
                 icon: "chart.bar",
                 color: .orange
             )
         }
         .padding(.horizontal)
         .padding(.bottom, 16)
-    }
-    
-    // MARK: - Stat Calculations
-    private func formatTotalDistance() -> String {
-        let total = filteredWorkouts.compactMap { $0.totalDistance }.reduce(0, +)
-        return String(format: "%.0f %@", total, manager.preferredUnit.rawValue)
-    }
-    
-    private func formatTotalTime() -> String {
-        let totalMinutes = filteredWorkouts.reduce(0) { $0 + Int($1.duration / 60) }
-        let hours = totalMinutes / 60
-        let minutes = totalMinutes % 60
-        
-        if hours > 0 {
-            return "\(hours)h \(minutes)m"
-        } else {
-            return "\(minutes)m"
-        }
-    }
-    
-    private func formatAverageDistance() -> String {
-        guard !filteredWorkouts.isEmpty else { return "0 \(manager.preferredUnit.rawValue)" }
-        
-        let total = filteredWorkouts.compactMap { $0.totalDistance }.reduce(0, +)
-        let average = total / Double(filteredWorkouts.count)
-        return String(format: "%.0f %@", average, manager.preferredUnit.rawValue)
     }
 }
 

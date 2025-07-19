@@ -88,9 +88,12 @@ struct SwimSet: Identifiable, Hashable, Codable
         let distance = "\(totalDistance)\(measureUnit.abbreviation)"
         let laps = totalLaps(poolLength: poolLength)
         
-        if let stroke = primaryStroke {
+        if let stroke = primaryStroke
+        {
             return "\(distance) • \(laps) laps • \(stroke.description)"
-        } else {
+        }
+        else
+        {
             return "\(distance) • \(laps) laps • Mixed"
         }
     }

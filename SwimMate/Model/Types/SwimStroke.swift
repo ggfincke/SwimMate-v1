@@ -13,8 +13,10 @@ enum SwimStroke: Int, Codable
     case butterfly = 5
     case kickboard = 6
 
-    var description: String {
-        switch self {
+    var description: String
+    {
+        switch self
+        {
         case .unknown: return "Unknown"
         case .mixed: return "Mixed"
         case .freestyle: return "Freestyle"

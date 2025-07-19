@@ -4,7 +4,9 @@ import SwiftUI
 
 // goal progress
 struct GoalProgressView: View
+
 {
+
     @Environment(WatchManager.self) private var manager
 
     var body: some View
@@ -25,20 +27,20 @@ struct GoalProgressView: View
 #Preview("No Goals")
 {
     let manager = WatchManager()
-    
+
     return GoalProgressView()
-        .environment(manager)
+    .environment(manager)
 }
 
-#Preview("Distance Goal Only") 
+#Preview("Distance Goal Only")
 {
     let manager = WatchManager()
     manager.goalDistance = 1000
     manager.distance = 650  // 65% progress
     manager.goalUnit = "meters"
-    
+
     return GoalProgressView()
-        .environment(manager)
+    .environment(manager)
 }
 
 #Preview("Two Goals - Distance & Time")
@@ -49,12 +51,12 @@ struct GoalProgressView: View
     manager.goalTime = 1800  // 30 minutes
     manager.elapsedTime = 1200  // 20 minutes (67% progress)
     manager.goalUnit = "meters"
-    
+
     return GoalProgressView()
-        .environment(manager)
+    .environment(manager)
 }
 
-#Preview("All Three Goals") 
+#Preview("All Three Goals")
 {
     let manager = WatchManager()
     manager.goalDistance = 2000
@@ -64,9 +66,9 @@ struct GoalProgressView: View
     manager.goalCalories = 500
     manager.activeEnergy = 350  // 70% progress
     manager.goalUnit = "meters"
-    
+
     return GoalProgressView()
-        .environment(manager)
+    .environment(manager)
 }
 
 #Preview("Goals Exceeded")
@@ -79,7 +81,7 @@ struct GoalProgressView: View
     manager.goalCalories = 400
     manager.activeEnergy = 450  // 113% progress
     manager.goalUnit = "meters"
-    
+
     return GoalProgressView()
-        .environment(manager)
+    .environment(manager)
 }

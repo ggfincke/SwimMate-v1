@@ -70,13 +70,15 @@ struct PaceGraphView: View
         return manager.swims.filter { $0.date >= dateMonthsAgo }
     }
 
-    enum TimeRange: String, CaseIterable {
+    enum TimeRange: String, CaseIterable
+    {
         case threeMonths = "3 Months"
         case sixMonths = "6 Months"
         case twelveMonths = "12 Months"
     }
     
-    private func paceLabel(_ pace: TimeInterval) -> String {
+    private func paceLabel(_ pace: TimeInterval) -> String
+    {
         let distanceUnit = manager.preferredUnit == .yards ? "yd" : "m"
         let paceLabel = manager.preferredUnit == .yards ? pace * 1.09361 : pace
         return String(format: "Pace (sec/100\(distanceUnit))", paceLabel)
@@ -86,8 +88,10 @@ struct PaceGraphView: View
 
 
 // extending swim class
-extension Swim {
-    func pacePer100(preferredUnit: MeasureUnit) -> Double? {
+extension Swim
+{
+    func pacePer100(preferredUnit: MeasureUnit) -> Double?
+    {
         guard let totalDistance = totalDistance, totalDistance > 0, duration > 0 else { return nil }
         let pace = totalDistance / duration // pace per 100 meters
         return preferredUnit == .yards ? pace * 1.09361 : pace // convert if necessary
