@@ -5,12 +5,14 @@ import HealthKit
 
 // settings
 struct SettingsView: View
+
 {
+
     @Environment(WatchManager.self) private var manager
     @Environment(\.dismiss) private var dismiss
     @State private var showResetConfirmation = false
     @State private var showPermissionSheet = false
-    
+
     var body: some View
     {
         List
@@ -19,7 +21,7 @@ struct SettingsView: View
             Section(header: Text("Health & Privacy"))
             {
                 healthKitStatusRow
-                
+
                 if manager.authorizationRequested
                 {
                     Button("Re-request HealthKit Access")
@@ -36,7 +38,7 @@ struct SettingsView: View
                     }
                     .foregroundColor(.blue)
                 }
-                
+
                 // reset auth state (for testing/debugging)
                 Button("Reset Authorization State")
                 {
@@ -44,23 +46,23 @@ struct SettingsView: View
                 }
                 .foregroundColor(.red)
             }
-            
+
             Section(header: Text("Pool Settings"))
             {
                 // use binding to update manager value
                 Picker("Default Unit", selection: Binding(
-                    get: { manager.poolUnit },
-                    set: { manager.poolUnit = $0 }
+                get: { manager.poolUnit },
+                set: { manager.poolUnit = $0 }
                 ))
                 {
                     Text("Meters").tag("meters")
                     Text("Yards").tag("yards")
                 }
-                
+
                 // use binding to update manager value
                 Picker("Default Length", selection: Binding(
-                    get: { manager.poolLength },
-                    set: { manager.poolLength = $0 }
+                get: { manager.poolLength },
+                set: { manager.poolLength = $0 }
                 ))
                 {
                     Text("25").tag(25.0)
@@ -68,7 +70,7 @@ struct SettingsView: View
                     Text("33.33").tag(33.33)
                 }
             }
-            
+
             Section
             {
                 Button("Done")
@@ -78,105 +80,108 @@ struct SettingsView: View
             }
         }
         .navigationTitle("Settings")
-        .sheet(isPresented: $showPermissionSheet) {
+        .sheet(isPresented: $showPermissionSheet)
+        {
             HealthKitPermissionView()
         }
         .confirmationDialog(
-            "Reset Authorization?",
-            isPresented: $showResetConfirmation,
-            titleVisibility: .visible
-        ) {
-            Button("Reset", role: .destructive) {
+        "Reset Authorization?",
+        isPresented: $showResetConfirmation,
+        titleVisibility: .visible
+        )
+        {
+            Button("Reset", role: .destructive)
+            {
                 manager.resetAuthorizationState()
             }
             Button("Cancel", role: .cancel) { }
-        } message: {
-            Text("This will reset the HealthKit authorization state. You'll need to grant permission again.")
+            } message: {
+                Text("This will reset the HealthKit authorization state. You'll need to grant permission again.")
+            }
         }
-    }
-    
-    // HK status row
-    private var healthKitStatusRow: some View
-    {
-        HStack
+
+        // HK status row
+        private var healthKitStatusRow: some View
         {
-            Image(systemName: healthKitStatusIcon)
+            HStack
+            {
+                Image(systemName: healthKitStatusIcon)
                 .foregroundColor(healthKitStatusColor)
                 .font(.system(size: 16))
-            
-            VStack(alignment: .leading, spacing: 2)
-            {
-                Text("HealthKit Access")
+
+                VStack(alignment: .leading, spacing: 2)
+                {
+                    Text("HealthKit Access")
                     .font(.system(size: 14, weight: .medium))
-                
-                Text(healthKitStatusText)
+
+                    Text(healthKitStatusText)
                     .font(.system(size: 12))
                     .foregroundColor(.secondary)
+                }
+
+                Spacer()
             }
-            
-            Spacer()
+            .padding(.vertical, 2)
         }
-        .padding(.vertical, 2)
-    }
-    
-    // HK status helpers
-    private var healthKitStatusIcon: String
-    {
-        if !HKHealthStore.isHealthDataAvailable()
+
+        // HK status helpers
+        private var healthKitStatusIcon: String
         {
-            return "xmark.circle.fill"
+            if !HKHealthStore.isHealthDataAvailable()
+            {
+                return "xmark.circle.fill"
+            }
+            else if !manager.authorizationRequested
+            {
+                return "questionmark.circle"
+            }
+            else if manager.healthKitAuthorized
+            {
+                return "checkmark.circle.fill"
+            }
+            else
+            {
+                return "exclamationmark.triangle.fill"
+            }
         }
-        else if !manager.authorizationRequested
+
+        private var healthKitStatusColor: Color
         {
-            return "questionmark.circle"
+            if !HKHealthStore.isHealthDataAvailable()
+            {
+                return .gray
+            }
+            else if !manager.authorizationRequested
+            {
+                return .orange
+            }
+            else if manager.healthKitAuthorized
+            {
+                return .green
+            }
+            else
+            {
+                return .red
+            }
         }
-        else if manager.healthKitAuthorized
+
+        private var healthKitStatusText: String
         {
-            return "checkmark.circle.fill"
-        }
-        else
-        {
-            return "exclamationmark.triangle.fill"
-        }
-    }
-    
-    private var healthKitStatusColor: Color
-    {
-        if !HKHealthStore.isHealthDataAvailable()
-        {
-            return .gray
-        }
-        else if !manager.authorizationRequested
-        {
-            return .orange
-        }
-        else if manager.healthKitAuthorized
-        {
-            return .green
-        }
-        else
-        {
-            return .red
-        }
-    }
-    
-    private var healthKitStatusText: String
-    {
-        if !HKHealthStore.isHealthDataAvailable()
-        {
-            return "Not available on this device"
-        }
-        else if !manager.authorizationRequested
-        {
-            return "Not requested"
-        }
-        else if manager.healthKitAuthorized
-        {
-            return "Authorized - Ready to track workouts"
-        }
-        else
-        {
-            return "Access denied - Cannot track workouts"
+            if !HKHealthStore.isHealthDataAvailable()
+            {
+                return "Not available on this device"
+            }
+            else if !manager.authorizationRequested
+            {
+                return "Not requested"
+            }
+            else if manager.healthKitAuthorized
+            {
+                return "Authorized - Ready to track workouts"
+            }
+            else
+            {
+                return "Access denied - Cannot track workouts"
+            }
         }
     }
-}

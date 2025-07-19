@@ -3,10 +3,12 @@
 import Foundation
 
 // MARK: - Convenience Methods for Common Filter Operations
-extension Manager {
+extension Manager
+{
     
     // MARK: - Quick Filter Presets
-    func applyBeginnerPreset() {
+    func applyBeginnerPreset()
+    {
         activeFilters = SetFilters(
             stroke: nil,
             difficulty: .beginner,
@@ -21,7 +23,8 @@ extension Manager {
         )
     }
     
-    func applySprintPreset() {
+    func applySprintPreset()
+    {
         activeFilters = SetFilters(
             stroke: nil,
             difficulty: .advanced,
@@ -36,7 +39,8 @@ extension Manager {
         )
     }
     
-    func applyEndurancePreset() {
+    func applyEndurancePreset()
+    {
         activeFilters = SetFilters(
             stroke: nil,
             difficulty: .intermediate,
@@ -51,7 +55,8 @@ extension Manager {
         )
     }
     
-    func applyTechniquePreset() {
+    func applyTechniquePreset()
+    {
         activeFilters = SetFilters(
             stroke: nil,
             difficulty: .intermediate,
@@ -67,7 +72,8 @@ extension Manager {
     }
     
     // MARK: - User-Specific Recommendations
-    func getPersonalizedSets() -> [SwimSet] {
+    func getPersonalizedSets() -> [SwimSet]
+    {
         // Get user's swimming history to determine level
         let userLevel = determineUserLevel()
         let preferredDistance = determinePreferredDistance()
@@ -75,36 +81,51 @@ extension Manager {
         return getSmartRecommendations(for: userLevel, preferredDistance: preferredDistance)
     }
     
-    private func determineUserLevel() -> SwimSet.Difficulty {
+    private func determineUserLevel() -> SwimSet.Difficulty
+    {
         // Analyze user's past swims to determine their level
         let totalSwims = swims.count
         let averageDistance = swims.isEmpty ? 0 : swims.reduce(into: 0.0) { $0 += $1.totalDistance ?? 0 } / Double(swims.count)
         
-        if totalSwims < 5 || averageDistance < 1000 {
+        if totalSwims < 5 || averageDistance < 1000
+        {
             return .beginner
-        } else if totalSwims < 20 || averageDistance < 2000 {
+        }
+        else if totalSwims < 20 || averageDistance < 2000
+        {
             return .intermediate
-        } else {
+        }
+        else
+        {
             return .advanced
         }
     }
     
-    private func determinePreferredDistance() -> DistanceRange {
+    private func determinePreferredDistance() -> DistanceRange
+    {
         let averageDistance = swims.isEmpty ? 0 : swims.reduce(into: 0.0) { $0 += $1.totalDistance ?? 0 } / Double(swims.count)
         
-        if averageDistance < 1000 {
+        if averageDistance < 1000
+        {
             return .short
-        } else if averageDistance < 2000 {
+        }
+        else if averageDistance < 2000
+        {
             return .medium
-        } else if averageDistance < 3000 {
+        }
+        else if averageDistance < 3000
+        {
             return .long
-        } else {
+        }
+        else
+        {
             return .ultraLong
         }
     }
     
     // MARK: - Set Analytics
-    func getSetAnalytics() -> SetAnalytics {
+    func getSetAnalytics() -> SetAnalytics
+    {
         let allSets = sampleSets
         let filteredSets = self.filteredSets
         
@@ -119,28 +140,36 @@ extension Manager {
         )
     }
     
-    private func getDifficultyBreakdown(_ sets: [SwimSet]) -> [SwimSet.Difficulty: Int] {
+    private func getDifficultyBreakdown(_ sets: [SwimSet]) -> [SwimSet.Difficulty: Int]
+    {
         var breakdown: [SwimSet.Difficulty: Int] = [:]
-        for set in sets {
+        for set in sets
+        {
             breakdown[set.difficulty, default: 0] += 1
         }
         return breakdown
     }
     
-    private func getStrokeBreakdown(_ sets: [SwimSet]) -> [SwimStroke: Int] {
+    private func getStrokeBreakdown(_ sets: [SwimSet]) -> [SwimStroke: Int]
+    {
         var breakdown: [SwimStroke: Int] = [:]
-        for set in sets {
-            if let stroke = set.primaryStroke {
+        for set in sets
+        {
+            if let stroke = set.primaryStroke
+            {
                 breakdown[stroke, default: 0] += 1
             }
         }
         return breakdown
     }
     
-    private func getComponentBreakdown(_ sets: [SwimSet]) -> [SetComponent.ComponentType: Int] {
+    private func getComponentBreakdown(_ sets: [SwimSet]) -> [SetComponent.ComponentType: Int]
+    {
         var breakdown: [SetComponent.ComponentType: Int] = [:]
-        for set in sets {
-            for component in set.components {
+        for set in sets
+        {
+            for component in set.components
+            {
                 breakdown[component.type, default: 0] += 1
             }
         }
@@ -148,34 +177,41 @@ extension Manager {
     }
     
     // MARK: - Batch Operations
-    func addToFavorites(_ setIds: [UUID]) {
+    func addToFavorites(_ setIds: [UUID])
+    {
         favoriteSetIds.formUnion(setIds)
     }
     
-    func removeFromFavorites(_ setIds: [UUID]) {
+    func removeFromFavorites(_ setIds: [UUID])
+    {
         favoriteSetIds.subtract(setIds)
     }
     
-    func clearFavorites() {
+    func clearFavorites()
+    {
         favoriteSetIds.removeAll()
     }
     
     // MARK: - Filter Validation
-    func validateFilters() -> [String] {
+    func validateFilters() -> [String]
+    {
         var warnings: [String] = []
         
         // Check if filters are too restrictive
-        if filteredSets.isEmpty {
+        if filteredSets.isEmpty
+        {
             warnings.append("No sets match your current filters. Consider broadening your criteria.")
         }
         
         // Check if distance range and duration don't align
-        if activeFilters.distanceRange == .ultraLong && activeFilters.durationRange == .quick {
+        if activeFilters.distanceRange == .ultraLong && activeFilters.durationRange == .quick
+        {
             warnings.append("Ultra long distance sets typically can't be completed in under 20 minutes.")
         }
         
         // Check if difficulty and components don't align
-        if activeFilters.difficulty == .beginner && activeFilters.componentTypes.contains(.pull) {
+        if activeFilters.difficulty == .beginner && activeFilters.componentTypes.contains(.pull)
+        {
             warnings.append("Pull sets are typically more suited for intermediate or advanced swimmers.")
         }
         
@@ -184,7 +220,8 @@ extension Manager {
 }
 
 // MARK: - Set Analytics Structure
-struct SetAnalytics {
+struct SetAnalytics
+{
     let totalSets: Int
     let filteredSets: Int
     let averageDistance: Int
@@ -193,7 +230,8 @@ struct SetAnalytics {
     let strokeBreakdown: [SwimStroke: Int]
     let componentBreakdown: [SetComponent.ComponentType: Int]
     
-    var filterEfficiency: Double {
+    var filterEfficiency: Double
+    {
         return totalSets > 0 ? Double(filteredSets) / Double(totalSets) : 0
     }
 }

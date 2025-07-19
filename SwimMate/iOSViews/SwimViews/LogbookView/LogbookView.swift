@@ -2,21 +2,25 @@
 
 import SwiftUI
 
-struct LogbookView: View {
+struct LogbookView: View
+{
     @EnvironmentObject var manager: Manager
     @State private var selectedFilter: TimeFilter = .thirtyDays
     @State private var searchText = ""
     
-    enum TimeFilter: String, CaseIterable, Identifiable {
+    enum TimeFilter: String, CaseIterable, Identifiable
+{
         case all = "All Time"
         case thirtyDays = "30 Days"
         case ninetyDays = "90 Days"
         case sixMonths = "6 Months"
         case year = "Year"
         
-        var id: String { self.rawValue }
+        var id: String
+    { self.rawValue }
         
-        var shortName: String {
+        var shortName: String
+    {
             switch self {
             case .all: return "All"
             case .thirtyDays: return "30D"
@@ -27,7 +31,8 @@ struct LogbookView: View {
         }
     }
     
-    var body: some View {
+    var body: some View
+    {
         NavigationStack {
             ZStack {
                 // Beautiful gradient background
@@ -69,12 +74,14 @@ struct LogbookView: View {
 
 // MARK: - Supporting Views
 
-struct TimeFilterChip: View {
+struct TimeFilterChip: View
+{
     let filter: LogbookView.TimeFilter
     let isSelected: Bool
     let action: () -> Void
     
-    var body: some View {
+    var body: some View
+    {
         Button(action: action) {
             Text(filter.shortName)
                 .font(.system(size: 14, weight: .semibold))
@@ -90,13 +97,15 @@ struct TimeFilterChip: View {
     }
 }
 
-struct LogbookStatCard: View {
+struct LogbookStatCard: View
+{
     let title: String
     let value: String
     let icon: String
     let color: Color
     
-    var body: some View {
+    var body: some View
+    {
         VStack(spacing: 8) {
             Image(systemName: icon)
                 .font(.system(size: 18, weight: .medium))
@@ -122,10 +131,12 @@ struct LogbookStatCard: View {
     }
 }
 
-struct SectionHeaderView: View {
+struct SectionHeaderView: View
+{
     let title: String
     
-    var body: some View {
+    var body: some View
+    {
         HStack {
             Text(title)
                 .font(.system(size: 18, weight: .bold, design: .rounded))
@@ -138,11 +149,13 @@ struct SectionHeaderView: View {
     }
 }
 
-struct LogbookSwimCard: View {
+struct LogbookSwimCard: View
+{
     let swim: Swim
     @EnvironmentObject var manager: Manager
     
-    var body: some View {
+    var body: some View
+    {
         HStack(spacing: 16) {
             // Date and time circle
             VStack(spacing: 2) {
@@ -212,12 +225,14 @@ struct LogbookSwimCard: View {
         .shadow(color: .black.opacity(0.04), radius: 6, x: 0, y: 2)
     }
     
-    private func formatDuration(_ duration: TimeInterval) -> String {
+    private func formatDuration(_ duration: TimeInterval) -> String
+    {
         let minutes = Int(duration / 60)
         return "\(minutes) min"
     }
     
-    private func getStrokes(from swim: Swim) -> String? {
+    private func getStrokes(from swim: Swim) -> String?
+    {
         let uniqueStrokes = Set(swim.laps.compactMap { $0.stroke?.description })
         if uniqueStrokes.isEmpty {
             return nil
@@ -226,10 +241,12 @@ struct LogbookSwimCard: View {
     }
 }
 
-struct EmptyLogbookView: View {
+struct EmptyLogbookView: View
+{
     let selectedFilter: LogbookView.TimeFilter
     
-    var body: some View {
+    var body: some View
+    {
         VStack(spacing: 20) {
             Image(systemName: "figure.pool.swim")
                 .font(.system(size: 60, weight: .light))
@@ -251,8 +268,10 @@ struct EmptyLogbookView: View {
     }
 }
 
-struct SearchEmptyView: View {
-    var body: some View {
+struct SearchEmptyView: View
+{
+    var body: some View
+    {
         VStack(spacing: 20) {
             Image(systemName: "magnifyingglass.circle")
                 .font(.system(size: 60, weight: .light))

@@ -2,7 +2,8 @@
 
 import SwiftUI
 
-struct FilterSheetView: View {
+struct FilterSheetView: View
+{
     @EnvironmentObject var manager: Manager
     @Environment(\.dismiss) private var dismiss
     
@@ -12,7 +13,8 @@ struct FilterSheetView: View {
         _tempFilters = State(initialValue: Manager.SetFilters.defaultFilters)
     }
     
-    var body: some View {
+    var body: some View
+    {
         NavigationView {
             Form {
                 // Basic Filters Section
@@ -65,7 +67,8 @@ struct FilterSheetView: View {
     }
     
     // MARK: - Stroke Picker
-    private var strokePicker: some View {
+    private var strokePicker: some View
+    {
         HStack {
             Text("Stroke")
             Spacer()
@@ -83,7 +86,8 @@ struct FilterSheetView: View {
     }
     
     // MARK: - Difficulty Picker
-    private var difficultyPicker: some View {
+    private var difficultyPicker: some View
+    {
         HStack {
             Text("Difficulty")
             Spacer()
@@ -101,7 +105,8 @@ struct FilterSheetView: View {
     }
     
     // MARK: - Unit Picker
-    private var unitPicker: some View {
+    private var unitPicker: some View
+    {
         HStack {
             Text("Unit")
             Spacer()
@@ -119,7 +124,8 @@ struct FilterSheetView: View {
     }
     
     // MARK: - Distance Range Picker
-    private var distanceRangePicker: some View {
+    private var distanceRangePicker: some View
+    {
         HStack {
             Text("Distance")
             Spacer()
@@ -133,7 +139,8 @@ struct FilterSheetView: View {
     }
     
     // MARK: - Duration Range Picker
-    private var durationRangePicker: some View {
+    private var durationRangePicker: some View
+    {
         HStack {
             Text("Duration")
             Spacer()
@@ -147,7 +154,8 @@ struct FilterSheetView: View {
     }
     
     // MARK: - Component Types Selector
-    private var componentTypesSelector: some View {
+    private var componentTypesSelector: some View
+    {
         VStack(alignment: .leading, spacing: 8) {
             Text("Component Types")
                 .font(.headline)
@@ -188,7 +196,8 @@ struct FilterSheetView: View {
     }
     
     // MARK: - Favorites Toggle
-    private var favoritesToggle: some View {
+    private var favoritesToggle: some View
+    {
         HStack {
             Text("Favorites only")
             Spacer()
@@ -199,14 +208,16 @@ struct FilterSheetView: View {
 }
 
 // MARK: - Search Sheet View
-struct SearchSheetView: View {
+struct SearchSheetView: View
+{
     @EnvironmentObject var manager: Manager
     @Environment(\.dismiss) private var dismiss
     
     @State private var searchText = ""
     @FocusState private var isSearchFocused: Bool
     
-    var body: some View {
+    var body: some View
+    {
         NavigationView {
             VStack {
                 // Search Bar
@@ -289,7 +300,8 @@ struct SearchSheetView: View {
         }
     }
     
-    private func performSearch() {
+    private func performSearch()
+    {
         manager.updateFilter(\.searchText, to: searchText)
     }
 }

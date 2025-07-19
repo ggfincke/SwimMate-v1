@@ -33,7 +33,7 @@ class WatchConnector: NSObject, WCSessionDelegate, ObservableObject
                 "details": details
             ]
             session.sendMessage(swimSetData, replyHandler: nil)
-            { 
+            {
                 error in
                 print("Failed to send swim set: \(error.localizedDescription)")
             }

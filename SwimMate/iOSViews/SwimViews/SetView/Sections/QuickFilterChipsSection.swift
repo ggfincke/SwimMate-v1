@@ -2,7 +2,8 @@
 
 import SwiftUI
 
-struct QuickFilterChipsSection: View {
+struct QuickFilterChipsSection: View
+{
     @EnvironmentObject var manager: Manager
     
     // Quick filter presets
@@ -17,7 +18,8 @@ struct QuickFilterChipsSection: View {
         ("Butterfly", "wing.left.and.wing.right")
     ]
     
-    var body: some View {
+    var body: some View
+    {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack(spacing: 12) {
                 ForEach(quickFilters, id: \.0) { filter in

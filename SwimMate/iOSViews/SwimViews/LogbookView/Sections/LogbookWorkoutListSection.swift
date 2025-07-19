@@ -2,13 +2,15 @@
 
 import SwiftUI
 
-struct LogbookWorkoutListSection: View {
+struct LogbookWorkoutListSection: View
+{
     @EnvironmentObject var manager: Manager
     let displayedWorkouts: [Swim]
     let selectedFilter: LogbookView.TimeFilter
     let searchText: String
     
-    var body: some View {
+    var body: some View
+    {
         if displayedWorkouts.isEmpty {
             if searchText.isEmpty {
                 return AnyView(EmptyLogbookView(selectedFilter: selectedFilter))
@@ -40,7 +42,8 @@ struct LogbookWorkoutListSection: View {
         }
     }
     
-    private var groupedWorkouts: [(key: String, value: [Swim])] {
+    private var groupedWorkouts: [(key: String, value: [Swim])]
+    {
         let grouped = Dictionary(grouping: displayedWorkouts) { swim in
             formatSectionHeader(for: swim.date)
         }
@@ -58,7 +61,8 @@ struct LogbookWorkoutListSection: View {
         }
     }
     
-    private func formatSectionHeader(for date: Date) -> String {
+    private func formatSectionHeader(for date: Date) -> String
+    {
         let calendar = Calendar.current
         
         if calendar.isDateInToday(date) {

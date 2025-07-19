@@ -76,7 +76,8 @@ struct SettingsView: View
         .listStyle(GroupedListStyle())
     }
     
-    private func triggerHapticFeedback() {
+    private func triggerHapticFeedback()
+    {
         if manager.hapticFeedback {
             let impactFeedback = UIImpactFeedbackGenerator(style: .medium)
             impactFeedback.impactOccurred()
@@ -84,31 +85,36 @@ struct SettingsView: View
         // In a real app, this would trigger a data sync
     }
     
-    private func openAppInAppStore() {
+    private func openAppInAppStore()
+    {
         if let url = URL(string: "https://apps.apple.com/app/swimmate") {
             UIApplication.shared.open(url)
         }
     }
     
-    private func sendSupportEmail() {
+    private func sendSupportEmail()
+    {
         if let url = URL(string: "mailto:support@swimmate.app") {
             UIApplication.shared.open(url)
         }
     }
     
-    private func openUserGuide() {
+    private func openUserGuide()
+    {
         if let url = URL(string: "https://swimmate.app/guide") {
             UIApplication.shared.open(url)
         }
     }
 }
 
-struct SettingsRow: View {
+struct SettingsRow: View
+{
     let icon: String
     let title: String
     let color: Color
     
-    var body: some View {
+    var body: some View
+    {
         HStack(spacing: 12) {
             Image(systemName: icon)
                 .foregroundColor(.white)

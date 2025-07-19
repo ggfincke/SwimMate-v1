@@ -110,18 +110,21 @@ struct PreferencesView: View
         .navigationBarTitleDisplayMode(.inline)
     }
     
-    private func strokeEmoji(for stroke: SwimStroke) -> String {
+    private func strokeEmoji(for stroke: SwimStroke) -> String
+    {
         return "🏊‍♂️"
     }
     
-    private func unitEmoji(for unit: MeasureUnit) -> String {
+    private func unitEmoji(for unit: MeasureUnit) -> String
+    {
         switch unit {
         case .meters: return "📏"
         case .yards: return "📐"
         }
     }
     
-    private func savePreferences() {
+    private func savePreferences()
+    {
         manager.updateStore()
         
         if manager.hapticFeedback {
@@ -130,7 +133,8 @@ struct PreferencesView: View
         }
     }
     
-    private func resetToDefaults() {
+    private func resetToDefaults()
+    {
         manager.userName = "User"
         manager.preferredStroke = .freestyle
         manager.preferredUnit = .meters

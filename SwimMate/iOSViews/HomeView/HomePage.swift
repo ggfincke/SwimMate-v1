@@ -3,7 +3,8 @@
 import SwiftUI
 import Charts
 
-struct HomePage: View {
+struct HomePage: View
+{
     @EnvironmentObject var manager: Manager
     @Binding var selectedTab: Int
     @State private var showingSettings = false
@@ -15,7 +16,8 @@ struct HomePage: View {
         self._selectedTab = selectedTab
     }
     
-    var body: some View {
+    var body: some View
+    {
         NavigationStack {
             ZStack {
                 // Beautiful gradient background

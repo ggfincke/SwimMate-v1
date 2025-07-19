@@ -2,10 +2,12 @@
 
 import SwiftUI
 
-struct LogbookFilterSection: View {
+struct LogbookFilterSection: View
+{
     @Binding var selectedFilter: LogbookView.TimeFilter
     
-    var body: some View {
+    var body: some View
+    {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack(spacing: 12) {
                 ForEach(LogbookView.TimeFilter.allCases) { filter in

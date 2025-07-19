@@ -6,10 +6,10 @@ import Foundation
 import HealthKit
 
 // MARK: - HKWorkoutSessionDelegate & HKLiveWorkoutBuilderDelegate
-extension WatchManager: HKWorkoutSessionDelegate, HKLiveWorkoutBuilderDelegate 
+extension WatchManager: HKWorkoutSessionDelegate, HKLiveWorkoutBuilderDelegate
 {
     // MARK: - HKLiveWorkoutBuilderDelegate Methods
-    
+
     // called when workoutbuilder collects events; laps, pause/resume, etc.
     func workoutBuilderDidCollectEvent(_ workoutBuilder: HKLiveWorkoutBuilder)
     {
@@ -17,12 +17,12 @@ extension WatchManager: HKWorkoutSessionDelegate, HKLiveWorkoutBuilderDelegate
     }
 
     // called when new health data is collected during workout
-    func workoutBuilder(_ workoutBuilder: HKLiveWorkoutBuilder, didCollectDataOf collectedTypes: Set<HKSampleType>) 
+    func workoutBuilder(_ workoutBuilder: HKLiveWorkoutBuilder, didCollectDataOf collectedTypes: Set<HKSampleType>)
     {
         // iterate through each collected data type & update published properties
-        for type in collectedTypes 
+        for type in collectedTypes
         {
-            guard let quantityType = type as? HKQuantityType else 
+            guard let quantityType = type as? HKQuantityType else
             {
                 continue
             }
@@ -34,74 +34,76 @@ extension WatchManager: HKWorkoutSessionDelegate, HKLiveWorkoutBuilderDelegate
             updateForStatistics(statistics)
         }
     }
-    
+
     // MARK: - HKWorkoutSessionDelegate Methods
     func workoutSession(_ workoutSession: HKWorkoutSession, didChangeTo toState: HKWorkoutSessionState,
-                        from fromState: HKWorkoutSessionState, date: Date) 
+    from fromState: HKWorkoutSessionState, date: Date)
     {
-        DispatchQueue.main.async 
+        DispatchQueue.main.async
         {
             self.running = toState == .running
         }
-        
+
         // handle timer based on state
-        switch toState 
+        switch toState
         {
-        case .running:
-            if fromState == .paused 
+            case .running:
+            if fromState == .paused
             {
                 startElapsedTimer()
             }
-        case .paused:
+            case .paused:
             stopElapsedTimer()
-        case .ended:
+            case .ended:
             stopElapsedTimer()
             handleWorkoutEnd(date: date)
-        default:
+            default:
             break
         }
     }
-    
+
     // handle workout end processing
-    private func handleWorkoutEnd(date: Date) 
+    private func handleWorkoutEnd(date: Date)
     {
         // show summary immediately
-        DispatchQueue.main.async 
+        DispatchQueue.main.async
         {
             self.showingSummaryView = true
         }
-        
+
         // end collection
-        self.workoutBuilder?.endCollection(withEnd: date) 
-        { (success, error) in
-            if let error = error 
+        self.workoutBuilder?.endCollection(withEnd: date)
+        {
+            (success, error) in
+            if let error = error
             {
                 print("Error ending collection: \(error.localizedDescription)")
-                DispatchQueue.main.async 
+                DispatchQueue.main.async
                 {
                     self.workout = nil
                 }
                 return
             }
-            
+
             // finish workout
-            self.workoutBuilder?.finishWorkout 
-            { (workout, error) in
-                DispatchQueue.main.async 
+            self.workoutBuilder?.finishWorkout
+            {
+                (workout, error) in
+                DispatchQueue.main.async
                 {
-                    if let error = error 
+                    if let error = error
                     {
                         print("Error finishing workout: \(error.localizedDescription)")
                     }
-                    
+
                     self.workout = workout
-                    
-                    if let workout = workout 
+
+                    if let workout = workout
                     {
                         self.updateLapsCount(from: workout)
                         print("Workout finished: \(workout)")
-                    } 
-                    else 
+                    }
+                    else
                     {
                         print("Workout finished but workout object is nil")
                         self.updateLapsFromCurrentDistance()
@@ -112,13 +114,13 @@ extension WatchManager: HKWorkoutSessionDelegate, HKLiveWorkoutBuilderDelegate
     }
 
     /// handle workout session failures
-    func workoutSession(_ workoutSession: HKWorkoutSession, didFailWithError error: Error) 
+    func workoutSession(_ workoutSession: HKWorkoutSession, didFailWithError error: Error)
     {
         print("Workout session failed with error: \(error.localizedDescription)")
         stopElapsedTimer()
-        DispatchQueue.main.async 
+        DispatchQueue.main.async
         {
             self.showingSummaryView = true
         }
     }
-} 
+}

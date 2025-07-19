@@ -2,12 +2,14 @@
 
 import SwiftUI
 
-struct EmptyStateView: View {
+struct EmptyStateView: View
+{
     let icon: String
     let title: String
     let subtitle: String
     
-    var body: some View {
+    var body: some View
+    {
         VStack(spacing: 16) {
             Image(systemName: icon)
                 .font(.system(size: 40, weight: .light))

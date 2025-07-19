@@ -4,7 +4,9 @@ import SwiftUI
 
 // shows elapsed time in a workout
 struct ElapsedTimeView: View
+
 {
+
     var elapsedTime: TimeInterval = 0
     var showSubseconds: Bool = true
     @State private var timeFormatter = ElapsedTimeFormatter()
@@ -12,11 +14,11 @@ struct ElapsedTimeView: View
     var body: some View
     {
         Text(NSNumber(value: elapsedTime), formatter: timeFormatter)
-            .fontWeight(.semibold)
-            .onChange(of: elapsedTime) 
-            {
-                timeFormatter.showSubseconds = elapsedTime < 3600
-            }
+        .fontWeight(.semibold)
+        .onChange(of: elapsedTime)
+        {
+            timeFormatter.showSubseconds = elapsedTime < 3600
+        }
     }
 }
 
@@ -28,54 +30,54 @@ class ElapsedTimeFormatter: Formatter
         formatter.allowedUnits = [.hour, .minute, .second]
         formatter.zeroFormattingBehavior = .pad
         return formatter
-    }()
-    var showSubseconds = true
+        }()
+        var showSubseconds = true
 
-    override func string(for value: Any?) -> String? 
-    {
-        guard let time = value as? TimeInterval else
+        override func string(for value: Any?) -> String?
         {
-            return nil
+            guard let time = value as? TimeInterval else
+            {
+                return nil
+            }
+
+            // update allowedUnits based on elapsed time
+            if time >= 3600
+            {
+                componentsFormatter.allowedUnits = [.hour, .minute, .second]
+                showSubseconds = false
+            }
+            else
+            {
+                componentsFormatter.allowedUnits = [.minute, .second]
+                showSubseconds = true
+            }
+
+            guard let formattedString = componentsFormatter.string(from: time) else
+            {
+                return nil
+            }
+
+            if showSubseconds
+            {
+                let hundredths = Int((time.truncatingRemainder(dividingBy: 1)) * 100)
+                let decimalSeparator = Locale.current.decimalSeparator ?? "."
+                return String(format: "%@%@%0.2d", formattedString, decimalSeparator, hundredths)
+            }
+
+            return formattedString
         }
-
-        // update allowedUnits based on elapsed time
-        if time >= 3600
-        {
-            componentsFormatter.allowedUnits = [.hour, .minute, .second]
-            showSubseconds = false
-        } 
-        else
-        {
-            componentsFormatter.allowedUnits = [.minute, .second]
-            showSubseconds = true
-        }
-
-        guard let formattedString = componentsFormatter.string(from: time) else 
-        {
-            return nil
-        }
-
-        if showSubseconds 
-        {
-            let hundredths = Int((time.truncatingRemainder(dividingBy: 1)) * 100)
-            let decimalSeparator = Locale.current.decimalSeparator ?? "."
-            return String(format: "%@%@%0.2d", formattedString, decimalSeparator, hundredths)
-        }
-
-        return formattedString
     }
-}
 
-// preview
-#Preview
-{
-    VStack(spacing: 16)
+    // preview
+    #Preview
     {
-        ElapsedTimeView(elapsedTime: 125.67, showSubseconds: true)
-        ElapsedTimeView(elapsedTime: 3725.0, showSubseconds: false)
-        ElapsedTimeView(elapsedTime: 45.23, showSubseconds: true)
+        VStack(spacing: 16)
+        {
+            ElapsedTimeView(elapsedTime: 125.67, showSubseconds: true)
+            ElapsedTimeView(elapsedTime: 3725.0, showSubseconds: false)
+            ElapsedTimeView(elapsedTime: 45.23, showSubseconds: true)
+        }
+        .padding()
     }
-    .padding()
-}
 
 

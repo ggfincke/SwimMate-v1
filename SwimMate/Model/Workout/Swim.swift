@@ -13,10 +13,12 @@ class Swim: Identifiable, Codable
     
     // MARK: - Computed Properties
     /// Duration is derived from start and end dates
-    var duration: TimeInterval { endDate.timeIntervalSince(startDate) }
+    var duration: TimeInterval
+    { endDate.timeIntervalSince(startDate) }
     
     /// Date property for compatibility
-    var date: Date { startDate }
+    var date: Date
+    { startDate }
 
     // MARK: - Location & Pool Information
     var locationType: SwimmingLocationType

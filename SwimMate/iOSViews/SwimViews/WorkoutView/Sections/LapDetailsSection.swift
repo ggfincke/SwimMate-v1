@@ -9,7 +9,8 @@ struct LapDetailsSection: View
     let swim: Swim
     @EnvironmentObject var manager: Manager
     
-    private var workoutSets: [WorkoutSet] {
+    private var workoutSets: [WorkoutSet]
+    {
         manager.groupLapsByRestPeriods(swim.laps, poolLength: swim.poolLength ?? 25.0)
     }
     
@@ -84,13 +85,15 @@ struct LapDetailsSection: View
 }
 
 // MARK: - Workout Set Row View
-struct WorkoutSetRow: View {
+struct WorkoutSetRow: View
+{
     let setNumber: Int
     let workoutSet: WorkoutSet
     let poolLength: Double
     @State private var isExpanded = false
     
-    var body: some View {
+    var body: some View
+    {
         VStack(spacing: 0) {
             // Main set row
             HStack {

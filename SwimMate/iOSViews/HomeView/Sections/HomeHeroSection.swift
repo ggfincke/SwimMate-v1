@@ -2,12 +2,14 @@
 
 import SwiftUI
 
-struct HomeHeroSection: View {
+struct HomeHeroSection: View
+{
     @EnvironmentObject var manager: Manager
     @Binding var showingSettings: Bool
     let currentTime: Date
     
-    var body: some View {
+    var body: some View
+    {
         VStack(spacing: 16) {
             HStack {
                 VStack(alignment: .leading, spacing: 8) {
@@ -76,7 +78,8 @@ struct HomeHeroSection: View {
         .padding(.top, 20)
     }
     
-    private var greetingMessage: String {
+    private var greetingMessage: String
+    {
         let hour = Calendar.current.component(.hour, from: currentTime)
         switch hour {
         case 5..<12: return "Good morning"
@@ -86,13 +89,15 @@ struct HomeHeroSection: View {
         }
     }
     
-    private var todaysSwims: [Swim] {
+    private var todaysSwims: [Swim]
+    {
         let today = Calendar.current.startOfDay(for: Date())
         let tomorrow = Calendar.current.date(byAdding: .day, value: 1, to: today)!
         return manager.swims.filter { $0.date >= today && $0.date < tomorrow }
     }
     
-    private var todaysTotalDistance: String {
+    private var todaysTotalDistance: String
+    {
         let total = todaysSwims.compactMap { $0.totalDistance }.reduce(0, +)
         return String(format: "%.0f", total)
     }

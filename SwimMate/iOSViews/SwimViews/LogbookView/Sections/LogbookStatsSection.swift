@@ -2,11 +2,13 @@
 
 import SwiftUI
 
-struct LogbookStatsSection: View {
+struct LogbookStatsSection: View
+{
     @EnvironmentObject var manager: Manager
     let filteredWorkouts: [Swim]
     
-    var body: some View {
+    var body: some View
+    {
         HStack(spacing: 12) {
             LogbookStatCard(
                 title: "Total Distance",

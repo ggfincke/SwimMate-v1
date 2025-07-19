@@ -2,12 +2,14 @@
 
 import SwiftUI
 
-struct SetPageHeroSection: View {
+struct SetPageHeroSection: View
+{
     @Binding var showingSearch: Bool
     @Binding var showingFilter: Bool
     let hasActiveFilters: Bool
     
-    var body: some View {
+    var body: some View
+    {
         VStack(spacing: 16) {
             HStack {
                 VStack(alignment: .leading, spacing: 4) {

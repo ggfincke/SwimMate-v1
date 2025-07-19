@@ -2,11 +2,13 @@
 
 import SwiftUI
 
-struct RecentActivitySection: View {
+struct RecentActivitySection: View
+{
     @EnvironmentObject var manager: Manager
     @Binding var selectedTab: Int
     
-    var body: some View {
+    var body: some View
+    {
         VStack(alignment: .leading, spacing: 16) {
             HStack {
                 Text("Recent Swims")
@@ -45,7 +47,8 @@ struct RecentActivitySection: View {
         }
     }
     
-    private var recentSwims: [Swim] {
+    private var recentSwims: [Swim]
+    {
         return manager.swims.sorted(by: { $0.date > $1.date })
     }
 }

@@ -2,10 +2,12 @@
 
 import SwiftUI
 
-struct GoalsSettingsView: View {
+struct GoalsSettingsView: View
+{
     @EnvironmentObject var manager: Manager
     
-    var body: some View {
+    var body: some View
+    {
         Form {
             Section(header: Text("Weekly Goals")) {
                 HStack {

@@ -2,12 +2,14 @@
 
 import SwiftUI
 
-struct LogbookHeaderSection: View {
+struct LogbookHeaderSection: View
+{
     @EnvironmentObject var manager: Manager
     @Binding var searchText: String
     let filteredWorkoutsCount: Int
     
-    var body: some View {
+    var body: some View
+    {
         VStack(spacing: 16) {
             HStack {
                 VStack(alignment: .leading, spacing: 4) {

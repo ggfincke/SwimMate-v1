@@ -2,14 +2,16 @@
 
 import SwiftUI
 
-struct SetPage: View {
+struct SetPage: View
+{
     @EnvironmentObject var manager: Manager
     @EnvironmentObject var watchOSManager: WatchConnector
     
     @State private var showingFilter = false
     @State private var showingSearch = false
     
-    var body: some View {
+    var body: some View
+    {
         NavigationView {
             ZStack {
                 // Background gradient
@@ -68,7 +70,8 @@ struct SetPage: View {
     }
     
     // MARK: - Helper Properties
-    private var hasActiveFilters: Bool {
+    private var hasActiveFilters: Bool
+    {
         manager.activeFilters != Manager.SetFilters.defaultFilters
     }
 
@@ -77,13 +80,15 @@ struct SetPage: View {
 // MARK: - Helper Views
 
 // MARK: - Quick Filter Chip
-struct QuickFilterChip: View {
+struct QuickFilterChip: View
+{
     let title: String
     let icon: String
     let isSelected: Bool
     let action: () -> Void
     
-    var body: some View {
+    var body: some View
+    {
         Button(action: action) {
             HStack(spacing: 8) {
                 Image(systemName: icon)
@@ -107,12 +112,14 @@ struct QuickFilterChip: View {
 }
 
 // MARK: - Recommended Set Card
-struct RecommendedSetCard: View {
+struct RecommendedSetCard: View
+{
     let swimSet: SwimSet
     let isFavorite: Bool
     let toggleFavorite: () -> Void
     
-    private var difficultyColor: Color {
+    private var difficultyColor: Color
+    {
         switch swimSet.difficulty {
         case .beginner: return .green
         case .intermediate: return .orange
@@ -120,7 +127,8 @@ struct RecommendedSetCard: View {
         }
     }
     
-    var body: some View {
+    var body: some View
+    {
         VStack(alignment: .leading, spacing: 12) {
             // Header
             HStack {

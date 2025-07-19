@@ -2,10 +2,12 @@
 
 import SwiftUI
 
-struct AppSettingsView: View {
+struct AppSettingsView: View
+{
     @EnvironmentObject var manager: Manager
     
-    var body: some View {
+    var body: some View
+    {
         Form {
             Section(header: Text("Appearance")) {
                 Picker("Theme", selection: $manager.appTheme) {
@@ -112,7 +114,8 @@ struct AppSettingsView: View {
         .navigationBarTitleDisplayMode(.inline)
     }
     
-    private func themeIcon(for theme: AppTheme) -> some View {
+    private func themeIcon(for theme: AppTheme) -> some View
+    {
         switch theme {
         case .system:
             return Image(systemName: "circle.lefthalf.filled")
@@ -123,7 +126,8 @@ struct AppSettingsView: View {
         }
     }
     
-    private func calculateStorageUsed() -> String {
+    private func calculateStorageUsed() -> String
+    {
         let swimsData = manager.swims.count * 1024 // Rough estimate
         let totalBytes = swimsData + 50000 // Add app overhead
         
@@ -134,15 +138,18 @@ struct AppSettingsView: View {
         }
     }
     
-    private func getAppVersion() -> String {
+    private func getAppVersion() -> String
+    {
         return Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "1.0.0"
     }
     
-    private func getBuildNumber() -> String {
+    private func getBuildNumber() -> String
+    {
         return Bundle.main.infoDictionary?["CFBundleVersion"] as? String ?? "1"
     }
     
-    private func clearAppCache() {
+    private func clearAppCache()
+    {
         // In a real app, you would clear cached data here
         // For now, we'll just show a simple feedback
         if manager.hapticFeedback {
@@ -151,7 +158,8 @@ struct AppSettingsView: View {
         }
     }
     
-    private func exportWorkoutData() {
+    private func exportWorkoutData()
+    {
         // In a real app, this would export to CSV/JSON
         // For now, we'll just show feedback
         if manager.hapticFeedback {

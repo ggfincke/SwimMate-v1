@@ -5,19 +5,23 @@ import Foundation
 import HealthKit
 import SwiftUI
 
-enum SwimSetDifficulty: String, Codable {
+enum SwimSetDifficulty: String, Codable
+{
     case beginner, intermediate, advanced
 }
 
-enum SwimStroke: String, Codable {
+enum SwimStroke: String, Codable
+{
     case freestyle, backstroke, breaststroke, butterfly, mixed
 }
 
-enum MeasureUnit: String, Codable {
+enum MeasureUnit: String, Codable
+{
     case meters, yards
 }
 
-struct SwimSet: Codable {
+struct SwimSet: Codable
+{
     let title: String
     let components: [SetComponent]
     let measureUnit: MeasureUnit
@@ -25,44 +29,52 @@ struct SwimSet: Codable {
     let description: String
 }
 
-struct SetComponent: Codable {
+struct SetComponent: Codable
+{
     let type: ComponentType
     let distance: Double
     let strokeStyle: SwimStroke
     let instructions: String
 }
 
-enum ComponentType: String, Codable {
+enum ComponentType: String, Codable
+{
     case warmup, swim, kick, cooldown, drill, pull
 }
 
-struct Lap: Codable {
+struct Lap: Codable
+{
     let startDate: Date
     let endDate: Date
     let metadata: [String: AnyCodable]?
     var stroke: SwimStroke? = .freestyle
     var swolfScore: Double? = nil
-    func restPeriodTo(_ other: Lap) -> TimeInterval {
+    func restPeriodTo(_ other: Lap) -> TimeInterval
+    {
         return other.startDate.timeIntervalSince(self.endDate)
     }
 }
 
-struct WorkoutSet: Codable {
+struct WorkoutSet: Codable
+{
     let consecutiveSwims: [ConsecutiveSwim]
     let setNumber: Int
 }
 
-struct ConsecutiveSwim: Codable {
+struct ConsecutiveSwim: Codable
+{
     static let consecutiveThreshold: TimeInterval = 20.0
     static let setThreshold: TimeInterval = 60.0
     let laps: [Lap]
     let startLapNumber: Int
-    var effectiveStrokeStyle: SwimStroke {
+    var effectiveStrokeStyle: SwimStroke
+    {
         laps.first?.stroke ?? .freestyle
     }
 }
 
-struct Swim: Codable {
+struct Swim: Codable
+{
     let id: UUID
     let startDate: Date
     let endDate: Date
@@ -71,22 +83,29 @@ struct Swim: Codable {
     let poolLength: Double? = nil
     var locationType: LocationType = .unknown
     var laps: [Lap]
-    var date: Date { startDate }
-    var duration: TimeInterval { endDate.timeIntervalSince(startDate) }
+    var date: Date
+    { startDate }
+    var duration: TimeInterval
+    { endDate.timeIntervalSince(startDate) }
 }
 
-enum LocationType: String, Codable {
+enum LocationType: String, Codable
+{
     case unknown
 }
 
-struct AnyCodable: Codable {} // Placeholder so that metadata in Lap can compile
+struct AnyCodable: Codable 
+{
+} // Placeholder so that metadata in Lap can compile
 
-enum AppTheme: String, CaseIterable {
+enum AppTheme: String, CaseIterable
+{
     case system = "System"
     case light = "Light"
     case dark = "Dark"
     
-    var displayName: String {
+    var displayName: String
+    {
         return self.rawValue
     }
 }
@@ -418,7 +437,8 @@ class Manager: NSObject, ObservableObject
     }
     
     // gets document directory for the URL
-    func getDocumentsDirectory() -> URL {
+    func getDocumentsDirectory() -> URL
+    {
         FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
     }
 
@@ -497,7 +517,8 @@ extension Manager
 // MARK: - Workout Analysis
 extension Manager 
 {
-    func groupLapsByRestPeriods(_ laps: [Lap], poolLength: Double) -> [WorkoutSet] {
+    func groupLapsByRestPeriods(_ laps: [Lap], poolLength: Double) -> [WorkoutSet]
+    {
         guard !laps.isEmpty else { return [] }
         
         // Step 1: Create consecutive swims based on rest periods
@@ -590,40 +611,49 @@ extension Manager
 // MARK: - Statistics and Calculations
 extension Manager 
 {
-    func formatTotalDistance(from filteredWorkouts: [Swim]) -> String {
+    func formatTotalDistance(from filteredWorkouts: [Swim]) -> String
+    {
         let total = filteredWorkouts.compactMap { $0.totalDistance }.reduce(0, +)
         return formatDistance(total)
     }
     
-    func formatTotalTime(from filteredWorkouts: [Swim]) -> String {
-        let totalSeconds = filteredWorkouts.reduce(0) { total, swim in total + swim.duration }
+    func formatTotalTime(from filteredWorkouts: [Swim]) -> String
+    {
+        let totalSeconds = filteredWorkouts.reduce(0)
+        { total, swim in total + swim.duration }
         let hours = Int(totalSeconds) / 3600
         let minutes = Int(totalSeconds.truncatingRemainder(dividingBy: 3600)) / 60
         return "\(hours)h \(minutes)m"
     }
     
-    func formatAverageDistance(from filteredWorkouts: [Swim]) -> String {
+    func formatAverageDistance(from filteredWorkouts: [Swim]) -> String
+    {
         guard !filteredWorkouts.isEmpty else { return formatDistance(0) }
-        let average = filteredWorkouts.compactMap { $0.totalDistance }.reduce(0, +) / Double(filteredWorkouts.count)
+        let average = filteredWorkouts.compactMap
+        { $0.totalDistance }.reduce(0, +) / Double(filteredWorkouts.count)
         return formatDistance(average)
     }
     
-    func calculateAveragePace(for swim: Swim) -> String {
-        guard let totalDistance = swim.totalDistance, totalDistance > 0 else { return "N/A" }
+    func calculateAveragePace(for swim: Swim) -> String
+    {
+        guard let totalDistance = swim.totalDistance, totalDistance > 0 else
+        { return "N/A" }
         let pace = swim.duration / (totalDistance / 100.0)
         let minutes = Int(pace) / 60
         let seconds = Int(pace) % 60
         return String(format: "%d:%02d/100m", minutes, seconds)
     }
     
-    func averageSwolfScore(for swim: Swim) -> String {
+    func averageSwolfScore(for swim: Swim) -> String
+    {
         let validLaps = swim.laps.filter { $0.swolfScore != nil }
         guard !validLaps.isEmpty else { return "N/A" }
         let average = validLaps.compactMap { $0.swolfScore }.reduce(0, +) / Double(validLaps.count)
         return "\(average)"
     }
     
-    func getCurrentWeekDistance() -> Double {
+    func getCurrentWeekDistance() -> Double
+    {
         let calendar = Calendar.current
         let now = Date()
         guard let weekStart = calendar.dateInterval(of: .weekOfYear, for: now)?.start else { return 0.0 }
@@ -633,7 +663,8 @@ extension Manager
             .reduce(0, +)
     }
     
-    func getCurrentWeekWorkouts() -> Int {
+    func getCurrentWeekWorkouts() -> Int
+    {
         let calendar = Calendar.current
         let now = Date()
         guard let weekStart = calendar.dateInterval(of: .weekOfYear, for: now)?.start else { return 0 }
@@ -641,12 +672,14 @@ extension Manager
         return swims.filter { swim in swim.date >= weekStart }.count
     }
     
-    func goalProgress() -> Double {
+    func goalProgress() -> Double
+    {
         let currentDistance = getCurrentWeekDistance()
         return min(currentDistance / weeklyGoalDistance, 1.0)
     }
     
-    func goalProgressText() -> String {
+    func goalProgressText() -> String
+    {
         let currentDistance = getCurrentWeekDistance()
         let currentWorkouts = getCurrentWeekWorkouts()
         let distanceProgress = (currentDistance / weeklyGoalDistance) * 100
@@ -667,7 +700,8 @@ extension Manager
 // MARK: - Data Filtering and Search
 extension Manager 
 {
-    func filteredWorkouts(searchText: String, dateFilter: String) -> [Swim] {
+    func filteredWorkouts(searchText: String, dateFilter: String) -> [Swim]
+    {
         var filtered = swims
         
         // Apply search filter
@@ -708,7 +742,8 @@ extension Manager
 // MARK: - Weekly Statistics and Trends
 extension Manager 
 {
-    func weeklyStats() -> (workouts: Int, distance: Double, time: TimeInterval) {
+    func weeklyStats() -> (workouts: Int, distance: Double, time: TimeInterval)
+    {
         let calendar = Calendar.current
         let now = Date()
         guard let weekStart = calendar.dateInterval(of: .weekOfYear, for: now)?.start else {
@@ -723,7 +758,8 @@ extension Manager
         return (workouts, distance, time)
     }
     
-    func weeklyWorkoutTrend() -> String {
+    func weeklyWorkoutTrend() -> String
+    {
         let calendar = Calendar.current
         let now = Date()
         
@@ -744,7 +780,8 @@ extension Manager
         }
     }
     
-    func weeklyDistanceTrend() -> String {
+    func weeklyDistanceTrend() -> String
+    {
         let calendar = Calendar.current
         let now = Date()
         
@@ -765,7 +802,8 @@ extension Manager
         }
     }
     
-    func weeklyTimeTrend() -> String {
+    func weeklyTimeTrend() -> String
+    {
         let calendar = Calendar.current
         let now = Date()
         
@@ -790,7 +828,8 @@ extension Manager
 // MARK: - Chart Data Aggregation
 extension Manager 
 {
-    func aggregateSwimsByWeek() -> [Swim] {
+    func aggregateSwimsByWeek() -> [Swim]
+    {
         let calendar = Calendar.current
         let grouped = Dictionary(grouping: swims) { swim in
             calendar.dateInterval(of: .weekOfYear, for: swim.date)?.start ?? swim.date
@@ -814,7 +853,8 @@ extension Manager
         }.sorted(by: { (a, b) in a.date < b.date })
     }
     
-    func aggregateSwimsByQuarter() -> [Swim] {
+    func aggregateSwimsByQuarter() -> [Swim]
+    {
         let calendar = Calendar.current
         let grouped = Dictionary(grouping: swims) { swim in
             let components = calendar.dateComponents([.year, .quarter], from: swim.date)
@@ -839,7 +879,8 @@ extension Manager
         }.sorted(by: { (a, b) in a.date < b.date })
     }
     
-    func formatAxisLabel(for date: Date, range: String) -> String {
+    func formatAxisLabel(for date: Date, range: String) -> String
+    {
         let formatter = DateFormatter()
         
         switch range {
@@ -858,7 +899,8 @@ extension Manager
         return formatter.string(from: date)
     }
     
-    func chartDataFiltered(by range: String) -> [Swim] {
+    func chartDataFiltered(by range: String) -> [Swim]
+    {
         let calendar = Calendar.current
         let now = Date()
         var filtered: [Swim]
@@ -905,7 +947,8 @@ extension Manager
 // MARK: - Storage and Data Management
 extension Manager 
 {
-    func getLocalStorageInfo() -> String {
+    func getLocalStorageInfo() -> String
+    {
         let documentsPath = getDocumentsDirectory()
         
         do {
@@ -929,11 +972,13 @@ extension Manager
         }
     }
     
-    func calculateStorageUsed() -> String {
+    func calculateStorageUsed() -> String
+    {
         return getLocalStorageInfo()
     }
     
-    func deleteAllData() {
+    func deleteAllData()
+    {
         self.swims.removeAll()
         self.totalDistance = 0.0
         self.averageDistance = 0.0
@@ -952,7 +997,8 @@ extension Manager
 // MARK: - Set Filtering
 extension Manager 
 {
-    struct SetFilters {
+    struct SetFilters
+    {
         var searchText: String = ""
         var selectedDifficulty: SwimSetDifficulty? = nil
         var selectedUnit: MeasureUnit? = nil
@@ -962,7 +1008,8 @@ extension Manager
         static let defaultFilters = SetFilters()
     }
     
-    func isQuickFilterSelected(_ filter: String) -> Bool {
+    func isQuickFilterSelected(_ filter: String) -> Bool
+    {
         switch filter {
         case "Favorites":
             return activeFilters.onlyFavorites
@@ -985,7 +1032,8 @@ extension Manager
         }
     }
     
-    func applyQuickFilter(_ filter: String) {
+    func applyQuickFilter(_ filter: String)
+    {
         withAnimation(.spring(response: 0.3, dampingFraction: 0.7)) {
             switch filter {
             case "Favorites":
@@ -1010,7 +1058,8 @@ extension Manager
         }
     }
     
-    func performSearch(with searchText: String) {
+    func performSearch(with searchText: String)
+    {
         activeFilters.searchText = searchText
     }
 }
@@ -1018,12 +1067,14 @@ extension Manager
 // MARK: - Helper Functions for Views
 extension Manager 
 {
-    func formatDuration(_ duration: TimeInterval) -> String {
+    func formatDuration(_ duration: TimeInterval) -> String
+    {
         let minutes = Int(duration / 60)
         return "\(minutes) min"
     }
     
-    func getStrokes(from swim: Swim) -> String? {
+    func getStrokes(from swim: Swim) -> String?
+    {
         let uniqueStrokes = Set(swim.laps.compactMap { $0.stroke?.description })
         if uniqueStrokes.isEmpty {
             return nil
@@ -1031,7 +1082,8 @@ extension Manager
         return uniqueStrokes.joined(separator: ", ")
     }
     
-    func filteredWorkouts(for timeFilter: String) -> [Swim] {
+    func filteredWorkouts(for timeFilter: String) -> [Swim]
+    {
         let calendar = Calendar.current
         let currentDate = Date()
         
@@ -1060,7 +1112,8 @@ extension Manager
         }
     }
     
-    func displayedWorkouts(from filtered: [Swim], searchText: String) -> [Swim] {
+    func displayedWorkouts(from filtered: [Swim], searchText: String) -> [Swim]
+    {
         guard !searchText.isEmpty else { return filtered }
         
         return filtered.filter { swim in

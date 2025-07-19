@@ -53,8 +53,8 @@ struct SetComponent: Identifiable, Hashable, Codable
         if let stroke = strokeStyle
         {
             return "\(distanceText) \(stroke.description) \(type.description)"
-        } 
-        else 
+        }
+        else
         {
             return "\(distanceText) \(type.description)"
         }

@@ -3,7 +3,8 @@
 import SwiftUI
 import Charts
 
-private func makeAggregatedSwim(date: Date, duration: Double, totalDistance: Double?, totalEnergyBurned: Double?) -> Swim {
+private func makeAggregatedSwim(date: Date, duration: Double, totalDistance: Double?, totalEnergyBurned: Double?) -> Swim
+    {
     return Swim(
         id: UUID(),
         startDate: date,
@@ -117,7 +118,8 @@ struct DistanceChartCard: View
         .cornerRadius(12)
     }
     
-    private func chartRangeString(_ range: DataRange) -> String {
+    private func chartRangeString(_ range: DataRange) -> String
+    {
         switch range {
         case .last30Days:
             return "Month"

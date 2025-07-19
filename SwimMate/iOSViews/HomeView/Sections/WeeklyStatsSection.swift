@@ -2,10 +2,12 @@
 
 import SwiftUI
 
-struct WeeklyStatsSection: View {
+struct WeeklyStatsSection: View
+{
     @EnvironmentObject var manager: Manager
     
-    var body: some View {
+    var body: some View
+    {
         VStack(alignment: .leading, spacing: 16) {
             Text("This Week")
                 .font(.system(size: 20, weight: .bold, design: .rounded))
@@ -39,7 +41,8 @@ struct WeeklyStatsSection: View {
         }
     }
     
-    private func trendFromString(_ trendString: String) -> StatTrend {
+    private func trendFromString(_ trendString: String) -> StatTrend
+    {
         switch trendString {
         case "up":
             return .up
