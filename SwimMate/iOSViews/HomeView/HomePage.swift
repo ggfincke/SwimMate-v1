@@ -12,14 +12,17 @@ struct HomePage: View
     
     private let timer = Timer.publish(every: 60, on: .main, in: .common).autoconnect()
     
-    init(selectedTab: Binding<Int>) {
+    init(selectedTab: Binding<Int>) 
+    {
         self._selectedTab = selectedTab
     }
     
     var body: some View
     {
-        NavigationStack {
-            ZStack {
+        NavigationStack 
+        {
+            ZStack 
+            {
                 // Beautiful gradient background
                 LinearGradient(
                     colors: [Color.blue.opacity(0.08), Color.cyan.opacity(0.03)],
@@ -28,8 +31,10 @@ struct HomePage: View
                 )
                 .ignoresSafeArea()
                 
-                ScrollView(showsIndicators: false) {
-                    LazyVStack(spacing: 24) {
+                ScrollView(showsIndicators: false) 
+                {
+                    LazyVStack(spacing: 24) 
+                    {
                         // Hero Header
                         HomeHeroSection(showingSettings: $showingSettings, currentTime: currentTime)
                             .environmentObject(manager)
@@ -56,12 +61,15 @@ struct HomePage: View
             }
             .navigationTitle("")
             .navigationBarHidden(true)
-            .onReceive(timer) { _ in
+            .onReceive(timer) 
+            { _ in
                 currentTime = Date()
             }
         }
-        .sheet(isPresented: $showingSettings) {
-            NavigationStack {
+        .sheet(isPresented: $showingSettings) 
+        {
+            NavigationStack 
+        {
                 SettingsView()
             }
         }
@@ -69,7 +77,8 @@ struct HomePage: View
 }
 
 
-#Preview {
+#Preview 
+{
     HomePage(selectedTab: .constant(0))
         .environmentObject(Manager())
 }

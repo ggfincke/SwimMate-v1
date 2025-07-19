@@ -11,8 +11,10 @@ struct SetsGridSection: View
     
     var body: some View
     {
-        VStack(alignment: .leading, spacing: 16) {
-            HStack {
+        VStack(alignment: .leading, spacing: 16) 
+        {
+            HStack 
+            {
                 Text("All Sets")
                     .font(.system(size: 24, weight: .bold, design: .rounded))
                 
@@ -23,16 +25,22 @@ struct SetsGridSection: View
                     .foregroundColor(.secondary)
             }
             
-            if manager.filteredSets.isEmpty {
+            if manager.filteredSets.isEmpty 
+            {
                 EmptyStateView(
                     icon: "figure.pool.swim",
                     title: "No sets found",
                     subtitle: "Create or import swim sets to get started"
                 )
-            } else {
-                LazyVGrid(columns: columns, spacing: 16) {
-                    ForEach(manager.filteredSets) { set in
-                        NavigationLink(destination: SetDetailView(swimSet: set).environmentObject(watchOSManager)) {
+            } 
+            else 
+            {
+                LazyVGrid(columns: columns, spacing: 16) 
+                {
+                    ForEach(manager.filteredSets) 
+                    { set in
+                        NavigationLink(destination: SetDetailView(swimSet: set).environmentObject(watchOSManager)) 
+                        {
                             RecommendedSetCard(
                                 swimSet: set,
                                 isFavorite: manager.isSetFavorite(setId: set.id),

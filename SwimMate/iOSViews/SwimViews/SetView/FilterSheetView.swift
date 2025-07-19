@@ -9,58 +9,72 @@ struct FilterSheetView: View
     
     @State private var tempFilters: Manager.SetFilters
     
-    init() {
+    init() 
+    {
         _tempFilters = State(initialValue: Manager.SetFilters.defaultFilters)
     }
     
     var body: some View
     {
-        NavigationView {
-            Form {
+        NavigationView 
+        {
+            Form 
+            {
                 // Basic Filters Section
-                Section("Basic Filters") {
+                Section("Basic Filters") 
+                {
                     strokePicker
                     difficultyPicker
                     unitPicker
                 }
                 
                 // Advanced Filters Section
-                Section("Advanced Filters") {
+                Section("Advanced Filters") 
+                {
                     distanceRangePicker
                     durationRangePicker
                     componentTypesSelector
                 }
                 
                 // Preferences Section
-                Section("Preferences") {
+                Section("Preferences") 
+                {
                     favoritesToggle
                 }
             }
             .navigationTitle("Filter Sets")
             .navigationBarTitleDisplayMode(.inline)
-            .toolbar {
-                ToolbarItem(placement: .navigationBarLeading) {
-                    Button("Cancel") {
+            .toolbar 
+            {
+                ToolbarItem(placement: .navigationBarLeading) 
+                {
+                    Button("Cancel") 
+                    {
                         dismiss()
                     }
                 }
                 
-                ToolbarItem(placement: .principal) {
-                    Button("Reset") {
+                ToolbarItem(placement: .principal) 
+                {
+                    Button("Reset") 
+                    {
                         tempFilters = Manager.SetFilters.defaultFilters
                     }
                     .foregroundColor(.red)
                 }
                 
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button("Apply") {
+                ToolbarItem(placement: .navigationBarTrailing) 
+                {
+                    Button("Apply") 
+                    {
                         manager.activeFilters = tempFilters
                         dismiss()
                     }
                     .fontWeight(.semibold)
                 }
             }
-            .onAppear {
+            .onAppear 
+            {
                 tempFilters = manager.activeFilters
             }
         }
@@ -69,15 +83,18 @@ struct FilterSheetView: View
     // MARK: - Stroke Picker
     private var strokePicker: some View
     {
-        HStack {
+        HStack 
+        {
             Text("Stroke")
             Spacer()
             Picker("", selection: Binding(
                 get: { tempFilters.stroke ?? SwimStroke.freestyle },
                 set: { tempFilters.stroke = $0 == SwimStroke.freestyle ? nil : $0 }
-            )) {
+            )) 
+            {
                 Text("Any").tag(SwimStroke.freestyle)
-                ForEach([SwimStroke.freestyle, .backstroke, .breaststroke, .butterfly, .mixed], id: \.self) { stroke in
+                ForEach([SwimStroke.freestyle, .backstroke, .breaststroke, .butterfly, .mixed], id: \.self) 
+                { stroke in
                     Text(stroke.description).tag(stroke)
                 }
             }
@@ -88,15 +105,18 @@ struct FilterSheetView: View
     // MARK: - Difficulty Picker
     private var difficultyPicker: some View
     {
-        HStack {
+        HStack 
+        {
             Text("Difficulty")
             Spacer()
             Picker("", selection: Binding(
                 get: { tempFilters.difficulty ?? .beginner },
                 set: { tempFilters.difficulty = $0 == .beginner ? nil : $0 }
-            )) {
+            )) 
+            {
                 Text("Any").tag(SwimSet.Difficulty.beginner)
-                ForEach(SwimSet.Difficulty.allCases, id: \.self) { difficulty in
+                ForEach(SwimSet.Difficulty.allCases, id: \.self) 
+                { difficulty in
                     Text(difficulty.rawValue).tag(difficulty)
                 }
             }
@@ -107,15 +127,18 @@ struct FilterSheetView: View
     // MARK: - Unit Picker
     private var unitPicker: some View
     {
-        HStack {
+        HStack 
+        {
             Text("Unit")
             Spacer()
             Picker("", selection: Binding(
                 get: { tempFilters.unit ?? .meters },
                 set: { tempFilters.unit = $0 == .meters ? nil : $0 }
-            )) {
+            )) 
+            {
                 Text("Any").tag(MeasureUnit.meters)
-                ForEach(MeasureUnit.allCases, id: \.self) { unit in
+                ForEach(MeasureUnit.allCases, id: \.self) 
+                { unit in
                     Text(unit.rawValue).tag(unit)
                 }
             }
@@ -126,11 +149,14 @@ struct FilterSheetView: View
     // MARK: - Distance Range Picker
     private var distanceRangePicker: some View
     {
-        HStack {
+        HStack 
+        {
             Text("Distance")
             Spacer()
-            Picker("", selection: $tempFilters.distanceRange) {
-                ForEach(Manager.DistanceRange.allCases, id: \.self) { range in
+            Picker("", selection: $tempFilters.distanceRange) 
+            {
+                ForEach(Manager.DistanceRange.allCases, id: \.self) 
+                { range in
                     Text(range.rawValue).tag(range)
                 }
             }
@@ -141,11 +167,14 @@ struct FilterSheetView: View
     // MARK: - Duration Range Picker
     private var durationRangePicker: some View
     {
-        HStack {
+        HStack 
+        {
             Text("Duration")
             Spacer()
-            Picker("", selection: $tempFilters.durationRange) {
-                ForEach(Manager.DurationRange.allCases, id: \.self) { range in
+            Picker("", selection: $tempFilters.durationRange) 
+            {
+                ForEach(Manager.DurationRange.allCases, id: \.self) 
+                { range in
                     Text(range.rawValue).tag(range)
                 }
             }
@@ -156,7 +185,8 @@ struct FilterSheetView: View
     // MARK: - Component Types Selector
     private var componentTypesSelector: some View
     {
-        VStack(alignment: .leading, spacing: 8) {
+        VStack(alignment: .leading, spacing: 8) 
+        {
             Text("Component Types")
                 .font(.headline)
             
@@ -164,16 +194,24 @@ struct FilterSheetView: View
                 .font(.caption)
                 .foregroundColor(.secondary)
             
-            VStack(spacing: 8) {
-                ForEach(SetComponent.ComponentType.allCases, id: \.self) { type in
-                    Button(action: {
-                        if tempFilters.componentTypes.contains(type) {
+            VStack(spacing: 8) 
+            {
+                ForEach(SetComponent.ComponentType.allCases, id: \.self) 
+                { type in
+                    Button(action: 
+                    {
+                        if tempFilters.componentTypes.contains(type) 
+                        {
                             tempFilters.componentTypes.remove(type)
-                        } else {
+                        } 
+                        else 
+                        {
                             tempFilters.componentTypes.insert(type)
                         }
-                    }) {
-                        HStack {
+                    }) 
+                    {
+                        HStack 
+                        {
                             Image(systemName: tempFilters.componentTypes.contains(type) ? "checkmark.square.fill" : "square")
                                 .font(.system(size: 18))
                                 .foregroundColor(tempFilters.componentTypes.contains(type) ? .blue : .gray)
@@ -198,7 +236,8 @@ struct FilterSheetView: View
     // MARK: - Favorites Toggle
     private var favoritesToggle: some View
     {
-        HStack {
+        HStack 
+        {
             Text("Favorites only")
             Spacer()
             Toggle("", isOn: $tempFilters.showFavorites)
@@ -218,24 +257,31 @@ struct SearchSheetView: View
     
     var body: some View
     {
-        NavigationView {
-            VStack {
+        NavigationView 
+        {
+            VStack 
+            {
                 // Search Bar
-                HStack {
+                HStack 
+                {
                     Image(systemName: "magnifyingglass")
                         .foregroundColor(.secondary)
                     
                     TextField("Search sets...", text: $searchText)
                         .focused($isSearchFocused)
                         .submitLabel(.search)
-                        .onSubmit {
+                        .onSubmit 
+                        {
                             performSearch()
                         }
                     
-                    if !searchText.isEmpty {
-                        Button(action: {
+                    if !searchText.isEmpty 
+                    {
+                        Button(action: 
+                        {
                             searchText = ""
-                        }) {
+                        }) 
+                        {
                             Image(systemName: "xmark.circle.fill")
                                 .foregroundColor(.secondary)
                         }
@@ -248,13 +294,16 @@ struct SearchSheetView: View
                 .padding()
                 
                 // Recent searches or suggestions could go here
-                if searchText.isEmpty {
-                    VStack {
+                if searchText.isEmpty 
+                {
+                    VStack 
+                    {
                         Text("Search Tips")
                             .font(.headline)
                             .padding(.top)
                         
-                        VStack(alignment: .leading, spacing: 8) {
+                        VStack(alignment: .leading, spacing: 8) 
+                        {
                             Text("• Search by set name")
                             Text("• Search by stroke type")
                             Text("• Search by description")
@@ -266,7 +315,9 @@ struct SearchSheetView: View
                     }
                     
                     Spacer()
-                } else {
+                } 
+                else 
+                {
                     // Live search results could be shown here
                     Text("Press 'Apply' to search")
                         .font(.caption)
@@ -278,22 +329,28 @@ struct SearchSheetView: View
             }
             .navigationTitle("Search Sets")
             .navigationBarTitleDisplayMode(.inline)
-            .toolbar {
-                ToolbarItem(placement: .navigationBarLeading) {
-                    Button("Cancel") {
+            .toolbar 
+            {
+                ToolbarItem(placement: .navigationBarLeading) 
+                {
+                    Button("Cancel") 
+                    {
                         dismiss()
                     }
                 }
                 
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button("Apply") {
+                ToolbarItem(placement: .navigationBarTrailing) 
+                {
+                    Button("Apply") 
+                    {
                         performSearch()
                         dismiss()
                     }
                     .fontWeight(.semibold)
                 }
             }
-            .onAppear {
+            .onAppear 
+            {
                 searchText = manager.activeFilters.searchText
                 isSearchFocused = true
             }

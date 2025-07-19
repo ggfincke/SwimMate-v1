@@ -21,7 +21,8 @@ struct LogbookView: View
         
         var shortName: String
     {
-            switch self {
+            switch self 
+            {
             case .all: return "All"
             case .thirtyDays: return "30D"
             case .ninetyDays: return "90D"
@@ -33,8 +34,10 @@ struct LogbookView: View
     
     var body: some View
     {
-        NavigationStack {
-            ZStack {
+        NavigationStack 
+        {
+            ZStack 
+            {
                 // Beautiful gradient background
                 LinearGradient(
                     colors: [Color.green.opacity(0.08), Color.blue.opacity(0.03)],
@@ -43,7 +46,8 @@ struct LogbookView: View
                 )
                 .ignoresSafeArea()
                 
-                VStack(spacing: 0) {
+                VStack(spacing: 0) 
+                {
                     // Header Section
                     LogbookHeaderSection(searchText: $searchText, filteredWorkoutsCount: manager.filteredWorkouts(for: selectedFilter.rawValue).count)
                         .environmentObject(manager)
@@ -52,7 +56,8 @@ struct LogbookView: View
                     LogbookFilterSection(selectedFilter: $selectedFilter)
                     
                     // Stats Summary
-                    if !manager.filteredWorkouts(for: selectedFilter.rawValue).isEmpty {
+                    if !manager.filteredWorkouts(for: selectedFilter.rawValue).isEmpty 
+                    {
                         LogbookStatsSection(filteredWorkouts: manager.filteredWorkouts(for: selectedFilter.rawValue))
                             .environmentObject(manager)
                     }

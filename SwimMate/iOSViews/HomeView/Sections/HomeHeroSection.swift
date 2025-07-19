@@ -10,9 +10,12 @@ struct HomeHeroSection: View
     
     var body: some View
     {
-        VStack(spacing: 16) {
-            HStack {
-                VStack(alignment: .leading, spacing: 8) {
+        VStack(spacing: 16) 
+        {
+            HStack 
+            {
+                VStack(alignment: .leading, spacing: 8) 
+                {
                     Text(greetingMessage)
                         .font(.system(size: 24, weight: .medium))
                         .foregroundColor(.secondary)
@@ -25,7 +28,8 @@ struct HomeHeroSection: View
                 Spacer()
                 
                 // Profile/Settings Button
-                Button(action: { showingSettings = true }) {
+                Button(action: { showingSettings = true }) 
+                {
                     Image(systemName: "person.crop.circle.fill")
                         .font(.system(size: 32, weight: .medium))
                         .foregroundColor(.blue)
@@ -38,9 +42,12 @@ struct HomeHeroSection: View
             }
             
             // Today's stats preview
-            if !todaysSwims.isEmpty {
-                HStack(spacing: 16) {
-                    VStack(spacing: 4) {
+            if !todaysSwims.isEmpty 
+            {
+                HStack(spacing: 16) 
+                {
+                    VStack(spacing: 4) 
+                    {
                         Text("Today")
                             .font(.system(size: 12, weight: .medium))
                             .foregroundColor(.secondary)
@@ -55,7 +62,8 @@ struct HomeHeroSection: View
                     Divider()
                         .frame(height: 40)
                     
-                    VStack(spacing: 4) {
+                    VStack(spacing: 4) 
+                    {
                         Text("Distance")
                             .font(.system(size: 12, weight: .medium))
                             .foregroundColor(.secondary)
@@ -81,7 +89,8 @@ struct HomeHeroSection: View
     private var greetingMessage: String
     {
         let hour = Calendar.current.component(.hour, from: currentTime)
-        switch hour {
+        switch hour 
+        {
         case 5..<12: return "Good morning"
         case 12..<17: return "Good afternoon"
         case 17..<22: return "Good evening"
@@ -93,12 +102,14 @@ struct HomeHeroSection: View
     {
         let today = Calendar.current.startOfDay(for: Date())
         let tomorrow = Calendar.current.date(byAdding: .day, value: 1, to: today)!
-        return manager.swims.filter { $0.date >= today && $0.date < tomorrow }
+        return manager.swims.filter 
+        { $0.date >= today && $0.date < tomorrow }
     }
     
     private var todaysTotalDistance: String
     {
-        let total = todaysSwims.compactMap { $0.totalDistance }.reduce(0, +)
+        let total = todaysSwims.compactMap 
+        { $0.totalDistance }.reduce(0, +)
         return String(format: "%.0f", total)
     }
 }

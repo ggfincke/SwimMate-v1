@@ -104,7 +104,8 @@ struct SwimControlsView: View
             {
                 endSwim()
             }
-            Button("Cancel", role: .cancel) { }
+            Button("Cancel", role: .cancel) 
+            { }
         }
         message:
         {

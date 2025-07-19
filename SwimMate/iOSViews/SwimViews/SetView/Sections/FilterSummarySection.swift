@@ -9,9 +9,12 @@ struct FilterSummarySection: View
     
     @ViewBuilder var body: some View
     {
-        if hasActiveFilters {
-            HStack {
-                VStack(alignment: .leading, spacing: 4) {
+        if hasActiveFilters 
+        {
+            HStack 
+            {
+                VStack(alignment: .leading, spacing: 4) 
+                {
                     Text("Active Filters")
                         .font(.system(size: 14, weight: .semibold))
                         .foregroundColor(.secondary)
@@ -23,11 +26,14 @@ struct FilterSummarySection: View
                 
                 Spacer()
                 
-                Button(action: {
-                    withAnimation(.easeInOut(duration: 0.3)) {
+                Button(action: 
+                {
+                    withAnimation(.easeInOut(duration: 0.3)) 
+                    {
                         manager.clearAllFilters()
                     }
-                }) {
+                }) 
+                {
                     Text("Clear")
                         .font(.system(size: 14, weight: .semibold))
                         .foregroundColor(.red)
@@ -41,7 +47,9 @@ struct FilterSummarySection: View
             .background(Color(UIColor.secondarySystemBackground))
             .cornerRadius(16)
             .shadow(color: .black.opacity(0.05), radius: 8, x: 0, y: 2)
-        } else {
+        } 
+        else 
+        {
             EmptyView()
         }
     }

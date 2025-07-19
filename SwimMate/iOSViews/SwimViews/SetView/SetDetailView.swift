@@ -16,7 +16,8 @@ struct SetDetailView: View
     
     private var difficultyColor: Color
     {
-        switch swimSet.difficulty {
+        switch swimSet.difficulty 
+        {
         case .beginner: return .green
         case .intermediate: return .orange
         case .advanced: return .red
@@ -25,7 +26,8 @@ struct SetDetailView: View
     
     var body: some View
     {
-        ZStack {
+        ZStack 
+        {
             // Background gradient
             LinearGradient(
                 colors: [difficultyColor.opacity(0.15), difficultyColor.opacity(0.05)],
@@ -34,8 +36,10 @@ struct SetDetailView: View
             )
             .ignoresSafeArea()
             
-            ScrollView {
-                LazyVStack(spacing: 24) {
+            ScrollView 
+            {
+                LazyVStack(spacing: 24) 
+                {
                     // Hero Section
                     heroSection
                     
@@ -43,7 +47,8 @@ struct SetDetailView: View
                     statsSection
                     
                     // Description Section
-                    if let description = swimSet.description, !description.isEmpty {
+                    if let description = swimSet.description, !description.isEmpty 
+                    {
                         descriptionSection(description)
                     }
                     
@@ -56,14 +61,16 @@ struct SetDetailView: View
             }
             
             // Floating Send Button
-            VStack {
+            VStack 
+            {
                 Spacer()
                 sendToWatchButton
             }
         }
         .navigationTitle("")
         .navigationBarTitleDisplayMode(.inline)
-        .sheet(isPresented: $showingSendSheet) {
+        .sheet(isPresented: $showingSendSheet) 
+        {
             sendConfirmationSheet
         }
     }
@@ -71,9 +78,12 @@ struct SetDetailView: View
     // MARK: - Hero Section
     private var heroSection: some View
     {
-        VStack(alignment: .leading, spacing: 16) {
-            HStack {
-                VStack(alignment: .leading, spacing: 8) {
+        VStack(alignment: .leading, spacing: 16) 
+        {
+            HStack 
+            {
+                VStack(alignment: .leading, spacing: 8) 
+                {
                     Text(swimSet.difficulty.rawValue.capitalized)
                         .font(.system(size: 14, weight: .bold))
                         .foregroundColor(.white)
@@ -91,8 +101,10 @@ struct SetDetailView: View
                 Spacer()
             }
             
-            HStack(spacing: 16) {
-                VStack(alignment: .leading, spacing: 4) {
+            HStack(spacing: 16) 
+            {
+                VStack(alignment: .leading, spacing: 4) 
+                {
                     Text("Primary Stroke")
                         .font(.system(size: 12, weight: .medium))
                         .foregroundColor(.secondary)
@@ -103,7 +115,8 @@ struct SetDetailView: View
                 
                 Spacer()
                 
-                VStack(alignment: .trailing, spacing: 4) {
+                VStack(alignment: .trailing, spacing: 4) 
+                {
                     Text("Components")
                         .font(.system(size: 12, weight: .medium))
                         .foregroundColor(.secondary)
@@ -122,7 +135,8 @@ struct SetDetailView: View
     // MARK: - Stats Section
     private var statsSection: some View
     {
-        HStack(spacing: 16) {
+        HStack(spacing: 16) 
+        {
             DetailStatCard(
                 title: "Distance",
                 value: "\(swimSet.totalDistance)",
@@ -151,7 +165,8 @@ struct SetDetailView: View
     
     private var estimatedDurationText: String
     {
-        if let duration = swimSet.estimatedDuration {
+        if let duration = swimSet.estimatedDuration 
+        {
             let minutes = Int(duration / 60)
             return "\(minutes) min"
         }
@@ -161,7 +176,8 @@ struct SetDetailView: View
     // MARK: - Description Section
     private func descriptionSection(_ description: String) -> some View
     {
-        VStack(alignment: .leading, spacing: 12) {
+        VStack(alignment: .leading, spacing: 12) 
+        {
             Text("Description")
                 .font(.system(size: 20, weight: .bold, design: .rounded))
                 .foregroundColor(.primary)
@@ -181,13 +197,16 @@ struct SetDetailView: View
     // MARK: - Components Section
     private var componentsSection: some View
     {
-        VStack(alignment: .leading, spacing: 16) {
+        VStack(alignment: .leading, spacing: 16) 
+        {
             Text("Workout Components")
                 .font(.system(size: 20, weight: .bold, design: .rounded))
                 .foregroundColor(.primary)
             
-            VStack(spacing: 12) {
-                ForEach(Array(swimSet.components.enumerated()), id: \.element.id) { index, component in
+            VStack(spacing: 12) 
+            {
+                ForEach(Array(swimSet.components.enumerated()), id: \.element.id) 
+                { index, component in
                     ComponentCard(component: component, index: index + 1)
                 }
             }
@@ -197,10 +216,13 @@ struct SetDetailView: View
     // MARK: - Send to Watch Button
     private var sendToWatchButton: some View
     {
-        Button(action: {
+        Button(action: 
+        {
             showingSendSheet = true
-        }) {
-            HStack(spacing: 12) {
+        }) 
+        {
+            HStack(spacing: 12) 
+            {
                 Image(systemName: sendStatus == .sending ? "arrow.clockwise" : "paperplane.fill")
                     .font(.system(size: 18, weight: .medium))
                     .rotationEffect(.degrees(sendStatus == .sending ? 360 : 0))
@@ -225,7 +247,8 @@ struct SetDetailView: View
     
     private var sendButtonText: String
     {
-        switch sendStatus {
+        switch sendStatus 
+        {
         case .ready: return "Send to Watch"
         case .sending: return "Sending..."
         case .sent: return "Sent!"
@@ -235,7 +258,8 @@ struct SetDetailView: View
     
     private var sendButtonColor: Color
     {
-        switch sendStatus {
+        switch sendStatus 
+        {
         case .ready: return .blue
         case .sending: return .blue
         case .sent: return .green
@@ -246,9 +270,11 @@ struct SetDetailView: View
     // MARK: - Send Confirmation Sheet
     private var sendConfirmationSheet: some View
     {
-        VStack(spacing: 24) {
+        VStack(spacing: 24) 
+        {
             // Header
-            VStack(spacing: 8) {
+            VStack(spacing: 8) 
+            {
                 Image(systemName: "applewatch")
                     .font(.system(size: 40, weight: .light))
                     .foregroundColor(.blue)
@@ -265,26 +291,30 @@ struct SetDetailView: View
             .padding(.top, 40)
             
             // Set Preview
-            VStack(alignment: .leading, spacing: 12) {
+            VStack(alignment: .leading, spacing: 12) 
+            {
                 Text(swimSet.title)
                     .font(.system(size: 18, weight: .bold))
                     .foregroundColor(.primary)
                 
-                HStack {
+                HStack 
+                {
                     Text("Distance:")
                     Spacer()
                     Text("\(swimSet.totalDistance) \(swimSet.measureUnit.rawValue)")
                         .fontWeight(.semibold)
                 }
                 
-                HStack {
+                HStack 
+                {
                     Text("Components:")
                     Spacer()
                     Text("\(swimSet.components.count)")
                         .fontWeight(.semibold)
                 }
                 
-                HStack {
+                HStack 
+                {
                     Text("Difficulty:")
                     Spacer()
                     Text(swimSet.difficulty.rawValue.capitalized)
@@ -299,8 +329,10 @@ struct SetDetailView: View
             Spacer()
             
             // Buttons
-            VStack(spacing: 12) {
-                Button(action: sendToWatch) {
+            VStack(spacing: 12) 
+            {
+                Button(action: sendToWatch) 
+                {
                     Text("Send Now")
                         .font(.system(size: 18, weight: .semibold))
                         .foregroundColor(.white)
@@ -310,7 +342,8 @@ struct SetDetailView: View
                         .cornerRadius(16)
                 }
                 
-                Button(action: { showingSendSheet = false }) {
+                Button(action: { showingSendSheet = false }) 
+                {
                     Text("Cancel")
                         .font(.system(size: 16, weight: .medium))
                         .foregroundColor(.secondary)
@@ -330,10 +363,12 @@ struct SetDetailView: View
         
         watchConnector.sendSwimSet(swimSet: swimSet)
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) 
+        {
             sendStatus = .sent
             
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) 
+            {
                 sendStatus = .ready
             }
         }
@@ -351,17 +386,20 @@ struct DetailStatCard: View
     
     var body: some View
     {
-        VStack(spacing: 8) {
+        VStack(spacing: 8) 
+        {
             Image(systemName: icon)
                 .font(.system(size: 24, weight: .medium))
                 .foregroundColor(color)
             
-            VStack(spacing: 2) {
+            VStack(spacing: 2) 
+            {
                 Text(value)
                     .font(.system(size: 18, weight: .bold))
                     .foregroundColor(.primary)
                 
-                if !unit.isEmpty {
+                if !unit.isEmpty 
+                {
                     Text(unit)
                         .font(.system(size: 12, weight: .medium))
                         .foregroundColor(.secondary)
@@ -389,7 +427,8 @@ struct ComponentCard: View
     
     private var componentColor: Color
     {
-        switch component.type {
+        switch component.type 
+        {
         case .warmup: return .orange
         case .swim: return .blue
         case .drill: return .purple
@@ -401,7 +440,8 @@ struct ComponentCard: View
     
     private var componentIcon: String
     {
-        switch component.type {
+        switch component.type 
+        {
         case .warmup: return "thermometer.sun"
         case .swim: return "figure.pool.swim"
         case .drill: return "gear"
@@ -413,7 +453,8 @@ struct ComponentCard: View
     
     var body: some View
     {
-        HStack(spacing: 16) {
+        HStack(spacing: 16) 
+        {
             // Step Number
             Text("\(index)")
                 .font(.system(size: 16, weight: .bold))
@@ -423,8 +464,10 @@ struct ComponentCard: View
                 .clipShape(Circle())
             
             // Component Details
-            VStack(alignment: .leading, spacing: 6) {
-                HStack {
+            VStack(alignment: .leading, spacing: 6) 
+            {
+                HStack 
+                {
                     Image(systemName: componentIcon)
                         .font(.system(size: 14, weight: .medium))
                         .foregroundColor(componentColor)
@@ -440,14 +483,16 @@ struct ComponentCard: View
                         .foregroundColor(.primary)
                 }
                 
-                if let instructions = component.instructions {
+                if let instructions = component.instructions 
+                {
                     Text(instructions)
                         .font(.system(size: 15, weight: .regular))
                         .foregroundColor(.primary)
                         .lineLimit(3)
                 }
                 
-                if let strokeStyle = component.strokeStyle {
+                if let strokeStyle = component.strokeStyle 
+                {
                     Text(strokeStyle.description)
                         .font(.system(size: 12, weight: .medium))
                         .foregroundColor(.secondary)

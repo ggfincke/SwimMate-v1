@@ -12,8 +12,10 @@ struct SetPage: View
     
     var body: some View
     {
-        NavigationView {
-            ZStack {
+        NavigationView 
+        {
+            ZStack 
+            {
                 // Background gradient
                 LinearGradient(
                     colors: [Color.blue.opacity(0.1), Color.cyan.opacity(0.05)],
@@ -22,8 +24,10 @@ struct SetPage: View
                 )
                 .ignoresSafeArea()
                 
-                ScrollView {
-                    LazyVStack(spacing: 24) {
+                ScrollView 
+                {
+                    LazyVStack(spacing: 24) 
+                    {
                         // Hero Header
                         SetPageHeroSection(
                             showingSearch: $showingSearch,
@@ -36,7 +40,8 @@ struct SetPage: View
                             .environmentObject(manager)
                         
                         // Recommended Sets Section
-                        if !manager.recommendedSets.isEmpty {
+                        if !manager.recommendedSets.isEmpty 
+                        {
                             RecommendedSetsSection()
                                 .environmentObject(manager)
                                 .environmentObject(watchOSManager)
@@ -59,11 +64,13 @@ struct SetPage: View
             .navigationTitle("")
             .navigationBarHidden(true)
         }
-        .sheet(isPresented: $showingFilter) {
+        .sheet(isPresented: $showingFilter) 
+        {
             FilterSheetView()
                 .environmentObject(manager)
         }
-        .sheet(isPresented: $showingSearch) {
+        .sheet(isPresented: $showingSearch) 
+        {
             SearchSheetView()
                 .environmentObject(manager)
         }
@@ -89,8 +96,10 @@ struct QuickFilterChip: View
     
     var body: some View
     {
-        Button(action: action) {
-            HStack(spacing: 8) {
+        Button(action: action) 
+        {
+            HStack(spacing: 8) 
+            {
                 Image(systemName: icon)
                     .font(.system(size: 14, weight: .medium))
                 
@@ -120,7 +129,8 @@ struct RecommendedSetCard: View
     
     private var difficultyColor: Color
     {
-        switch swimSet.difficulty {
+        switch swimSet.difficulty 
+        {
         case .beginner: return .green
         case .intermediate: return .orange
         case .advanced: return .red
@@ -129,10 +139,13 @@ struct RecommendedSetCard: View
     
     var body: some View
     {
-        VStack(alignment: .leading, spacing: 12) {
+        VStack(alignment: .leading, spacing: 12) 
+        {
             // Header
-            HStack {
-                VStack(alignment: .leading, spacing: 4) {
+            HStack 
+            {
+                VStack(alignment: .leading, spacing: 4) 
+                {
                     Text(swimSet.title)
                         .font(.system(size: 18, weight: .bold))
                         .foregroundColor(.primary)
@@ -149,7 +162,8 @@ struct RecommendedSetCard: View
                 
                 Spacer()
                 
-                Button(action: toggleFavorite) {
+                Button(action: toggleFavorite) 
+                {
                     Image(systemName: isFavorite ? "heart.fill" : "heart")
                         .font(.system(size: 18, weight: .medium))
                         .foregroundColor(isFavorite ? .red : .gray)
@@ -158,8 +172,10 @@ struct RecommendedSetCard: View
             }
             
             // Stats
-            HStack(spacing: 16) {
-                VStack(alignment: .leading, spacing: 2) {
+            HStack(spacing: 16) 
+            {
+                VStack(alignment: .leading, spacing: 2) 
+                {
                     Text("Distance")
                         .font(.system(size: 12, weight: .medium))
                         .foregroundColor(.secondary)
@@ -168,7 +184,8 @@ struct RecommendedSetCard: View
                         .foregroundColor(.primary)
                 }
                 
-                VStack(alignment: .leading, spacing: 2) {
+                VStack(alignment: .leading, spacing: 2) 
+                {
                     Text("Unit")
                         .font(.system(size: 12, weight: .medium))
                         .foregroundColor(.secondary)
@@ -181,7 +198,8 @@ struct RecommendedSetCard: View
             }
             
             // Description
-            if let description = swimSet.description, !description.isEmpty {
+            if let description = swimSet.description, !description.isEmpty 
+            {
                 Text(description)
                     .font(.system(size: 14, weight: .regular))
                     .foregroundColor(.secondary)
@@ -189,14 +207,16 @@ struct RecommendedSetCard: View
             }
             
             // Components preview
-            HStack {
+            HStack 
+            {
                 Text("\(swimSet.components.count) components")
                     .font(.system(size: 12, weight: .medium))
                     .foregroundColor(.secondary)
                 
                 Spacer()
                 
-                if let primaryStroke = swimSet.primaryStroke {
+                if let primaryStroke = swimSet.primaryStroke 
+                {
                     Text(primaryStroke.description)
                         .font(.system(size: 12, weight: .medium))
                         .foregroundColor(.blue)
