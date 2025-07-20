@@ -6,6 +6,7 @@ struct SetDetailView: View
 {
     let swimSet: SwimSet
     @EnvironmentObject var watchConnector: WatchConnector
+    @EnvironmentObject var manager: Manager
     @State private var showingSendSheet = false
     @State private var sendStatus: SendStatus = .ready
     
@@ -99,6 +100,21 @@ struct SetDetailView: View
                 }
                 
                 Spacer()
+                
+                // Favorite Button
+                Button(action: { manager.toggleFavorite(setId: swimSet.id) }) 
+                {
+                    Image(systemName: manager.isSetFavorite(setId: swimSet.id) ? "heart.fill" : "heart")
+                        .font(.system(size: 24, weight: .medium))
+                        .foregroundColor(manager.isSetFavorite(setId: swimSet.id) ? .red : .gray)
+                        .frame(width: 44, height: 44)
+                        .background(Color(UIColor.systemBackground))
+                        .clipShape(Circle())
+                        .shadow(color: .black.opacity(0.1), radius: 8, x: 0, y: 2)
+                }
+                .buttonStyle(PlainButtonStyle())
+                .scaleEffect(manager.isSetFavorite(setId: swimSet.id) ? 1.1 : 1.0)
+                .animation(.easeInOut(duration: 0.2), value: manager.isSetFavorite(setId: swimSet.id))
             }
             
             HStack(spacing: 16) 
@@ -391,27 +407,34 @@ struct DetailStatCard: View
             Image(systemName: icon)
                 .font(.system(size: 24, weight: .medium))
                 .foregroundColor(color)
+                .frame(height: 24) // Fixed icon height
             
             VStack(spacing: 2) 
             {
                 Text(value)
                     .font(.system(size: 18, weight: .bold))
                     .foregroundColor(.primary)
+                    .lineLimit(1)
                 
                 if !unit.isEmpty 
                 {
                     Text(unit)
                         .font(.system(size: 12, weight: .medium))
                         .foregroundColor(.secondary)
+                        .lineLimit(1)
                 }
             }
+            .frame(height: 44) // Fixed value/unit section height
             
             Text(title)
                 .font(.system(size: 14, weight: .medium))
                 .foregroundColor(.secondary)
                 .multilineTextAlignment(.center)
+                .lineLimit(1)
+                .frame(height: 18) // Fixed title height
         }
         .frame(maxWidth: .infinity)
+        .frame(height: 120) // Fixed card height
         .padding()
         .background(Color(UIColor.systemBackground))
         .cornerRadius(16)

@@ -39,7 +39,7 @@ struct SetsGridSection: View
                 {
                     ForEach(manager.filteredSets) 
                     { set in
-                        NavigationLink(destination: SetDetailView(swimSet: set).environmentObject(watchOSManager)) 
+                        NavigationLink(destination: SetDetailView(swimSet: set).environmentObject(watchOSManager).environmentObject(manager)) 
                         {
                             CompactSetCard(
                                 swimSet: set,
