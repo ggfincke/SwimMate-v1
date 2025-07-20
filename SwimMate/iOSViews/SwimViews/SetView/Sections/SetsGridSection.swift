@@ -41,7 +41,7 @@ struct SetsGridSection: View
                     { set in
                         NavigationLink(destination: SetDetailView(swimSet: set).environmentObject(watchOSManager)) 
                         {
-                            RecommendedSetCard(
+                            CompactSetCard(
                                 swimSet: set,
                                 isFavorite: manager.isSetFavorite(setId: set.id),
                                 toggleFavorite: { manager.toggleFavorite(setId: set.id) }
