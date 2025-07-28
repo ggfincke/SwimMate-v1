@@ -429,7 +429,7 @@ struct SearchSheetView: View
 
     private func performSearch()
     {
-        manager.updateFilter(\.searchText, to: searchText)
+        manager.updateSearchText(searchText)
     }
 }
 

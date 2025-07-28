@@ -283,9 +283,9 @@ extension Manager
 
     // MARK: - Filter Actions
 
-    func updateFilter<T: Equatable>(_ keyPath: WritableKeyPath<SetFilters, T>, to value: T)
+    func updateSearchText(_ text: String)
     {
-        activeFilters[keyPath: keyPath] = value
+        activeFilters.searchText = text
     }
 
     func clearAllFilters()
