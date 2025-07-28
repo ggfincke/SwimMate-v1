@@ -6,7 +6,7 @@ struct SwimListItemView: View
 {
     let swim: Swim
     @EnvironmentObject var manager: Manager
-    
+
     private var dateFormatter: DateFormatter
     {
         let formatter = DateFormatter()
@@ -14,12 +14,14 @@ struct SwimListItemView: View
         formatter.timeStyle = .short
         return formatter
     }
-    
+
     var body: some View
     {
-        HStack(spacing: 16) {
+        HStack(spacing: 16)
+        {
             // Beautiful date circle with gradient
-            VStack(spacing: 2) {
+            VStack(spacing: 2)
+            {
                 Text("\(Calendar.current.component(.day, from: swim.date))")
                     .font(.system(size: 18, weight: .bold))
                     .foregroundColor(.white)
@@ -37,23 +39,27 @@ struct SwimListItemView: View
             )
             .clipShape(Circle())
             .shadow(color: .blue.opacity(0.3), radius: 6, x: 0, y: 3)
-            
+
             // Swim details section
-            VStack(alignment: .leading, spacing: 8) {
+            VStack(alignment: .leading, spacing: 8)
+            {
                 // Header with time and distance
-                HStack {
+                HStack
+                {
                     Text(swim.date.formatted(.dateTime.hour().minute()))
                         .font(.system(size: 16, weight: .semibold))
                         .foregroundColor(.primary)
-                    
+
                     Spacer()
-                    
-                    if let distance = swim.totalDistance, distance > 0 {
-                        HStack(spacing: 4) {
+
+                    if let distance = swim.totalDistance, distance > 0
+                    {
+                        HStack(spacing: 4)
+                        {
                             Image(systemName: "ruler")
                                 .font(.system(size: 12, weight: .medium))
                                 .foregroundColor(.blue)
-                            
+
                             Text(manager.formatDistance(distance))
                                 .font(.system(size: 14, weight: .bold))
                                 .foregroundColor(.blue)
@@ -64,36 +70,40 @@ struct SwimListItemView: View
                         .cornerRadius(8)
                     }
                 }
-                
+
                 // Bottom row with duration and strokes
-                HStack(spacing: 16) {
-                    HStack(spacing: 4) {
+                HStack(spacing: 16)
+                {
+                    HStack(spacing: 4)
+                    {
                         Image(systemName: "clock.fill")
                             .font(.system(size: 12, weight: .medium))
                             .foregroundColor(.orange)
-                        
+
                         Text(formatDuration(swim.duration))
                             .font(.system(size: 14, weight: .medium))
                             .foregroundColor(.secondary)
                     }
-                    
-                    if let strokes = getStrokes(from: swim) {
-                        HStack(spacing: 4) {
+
+                    if let strokes = getStrokes(from: swim)
+                    {
+                        HStack(spacing: 4)
+                        {
                             Image(systemName: "figure.pool.swim")
                                 .font(.system(size: 12, weight: .medium))
                                 .foregroundColor(.green)
-                            
+
                             Text(strokes)
                                 .font(.system(size: 12, weight: .medium))
                                 .foregroundColor(.secondary)
                                 .lineLimit(1)
                         }
                     }
-                    
+
                     Spacer()
                 }
             }
-            
+
             // Chevron indicator
             Image(systemName: "chevron.right")
                 .font(.system(size: 12, weight: .semibold))
@@ -108,31 +118,36 @@ struct SwimListItemView: View
                 .stroke(Color.blue.opacity(0.1), lineWidth: 1)
         )
     }
-    
+
     private func formatDuration(_ duration: TimeInterval) -> String
     {
         let minutes = Int(duration / 60)
         let hours = minutes / 60
         let remainingMinutes = minutes % 60
-        
-        if hours > 0 {
+
+        if hours > 0
+        {
             return "\(hours)h \(remainingMinutes)m"
-        } else {
+        }
+        else
+        {
             return "\(minutes) min"
         }
     }
-    
+
     private func getStrokes(from swim: Swim) -> String?
     {
         let uniqueStrokes = Set(swim.laps.compactMap { $0.stroke?.description })
-        if uniqueStrokes.isEmpty {
+        if uniqueStrokes.isEmpty
+        {
             return nil
         }
         return uniqueStrokes.joined(separator: ", ")
     }
 }
 
-#Preview {
+#Preview
+{
     SwimListItemView(swim: Swim(
         id: UUID(),
         startDate: Date(),

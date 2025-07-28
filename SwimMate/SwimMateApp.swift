@@ -1,7 +1,7 @@
 // SwimMate/SwimMateApp.swift
 
-import SwiftUI
 import HealthKit
+import SwiftUI
 
 @main
 struct SwimMateApp: App
@@ -27,4 +27,3 @@ struct SwimMateApp: App
         }
     }
 }
-    

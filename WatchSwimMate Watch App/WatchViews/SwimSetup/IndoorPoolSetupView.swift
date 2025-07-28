@@ -6,7 +6,6 @@ import SwiftUI
 struct IndoorPoolSetupView: View
 
 {
-
     @Environment(WatchManager.self) private var manager
 
     // swim set optional (if importing)
@@ -28,25 +27,25 @@ struct IndoorPoolSetupView: View
                 HStack(alignment: .lastTextBaseline, spacing: 8)
                 {
                     Text("\(Int(manager.poolLength))")
-                    .font(.system(size: 36, weight: .bold, design: .rounded))
-                    .foregroundColor(.blue)
+                        .font(.system(size: 36, weight: .bold, design: .rounded))
+                        .foregroundColor(.blue)
 
                     Text(manager.poolUnit == "meters" ? "m" : "yd")
-                    .font(.system(size: 18, weight: .medium, design: .rounded))
-                    .foregroundColor(.blue)
-                    .opacity(0.8)
+                        .font(.system(size: 18, weight: .medium, design: .rounded))
+                        .foregroundColor(.blue)
+                        .opacity(0.8)
                 }
                 .focusable(true)
                 .digitalCrownRotation(
-                Binding(
-                get: { manager.poolLength },
-                set: { manager.poolLength = $0 }
-                ),
-                from: 10,
-                through: 100,
-                by: 1,
-                sensitivity: .medium,
-                isContinuous: false
+                    Binding(
+                        get: { manager.poolLength },
+                        set: { manager.poolLength = $0 }
+                    ),
+                    from: 10,
+                    through: 100,
+                    by: 1,
+                    sensitivity: .medium,
+                    isContinuous: false
                 )
                 .onChange(of: manager.poolLength)
                 {
@@ -55,9 +54,9 @@ struct IndoorPoolSetupView: View
                 }
 
                 Text("Use Digital Crown to adjust")
-                .font(.system(size: 11))
-                .foregroundColor(.secondary)
-                .opacity(0.8)
+                    .font(.system(size: 11))
+                    .foregroundColor(.secondary)
+                    .opacity(0.8)
             }
             .padding(.top, 8)
 
@@ -77,15 +76,15 @@ struct IndoorPoolSetupView: View
                     label:
                     {
                         Text("\(Int(length))")
-                        .font(.system(size: 16, weight: .semibold))
-                        .foregroundColor(manager.poolLength == length ? .white : .primary)
-                        .frame(width: 45, height: 35)
-                        .background(
-                        manager.poolLength == length
-                        ? Color.blue
-                        : Color.secondary.opacity(0.15)
-                        )
-                        .cornerRadius(8)
+                            .font(.system(size: 16, weight: .semibold))
+                            .foregroundColor(manager.poolLength == length ? .white : .primary)
+                            .frame(width: 45, height: 35)
+                            .background(
+                                manager.poolLength == length
+                                    ? Color.blue
+                                    : Color.secondary.opacity(0.15)
+                            )
+                            .cornerRadius(8)
                     }
                     .buttonStyle(PlainButtonStyle())
                 }
@@ -94,7 +93,8 @@ struct IndoorPoolSetupView: View
                 Button
                 {
                     // only allow unit changes if goal unit is not locked
-                    guard !manager.goalUnitLocked else
+                    guard !manager.goalUnitLocked
+                    else
                     {
                         WKInterfaceDevice.current().play(.failure)
                         return
@@ -119,12 +119,12 @@ struct IndoorPoolSetupView: View
                 label:
                 {
                     Image(systemName: manager.goalUnitLocked ? "lock.fill" : "arrow.2.circlepath")
-                    .font(.system(size: 16, weight: .semibold))
-                    .foregroundColor(manager.goalUnitLocked ? .red : .blue)
-                    .rotationEffect(.degrees(manager.goalUnitLocked ? 0 : rotationAngle))
-                    .frame(width: 40, height: 35)
-                    .background(Color.secondary.opacity(0.15))
-                    .cornerRadius(8)
+                        .font(.system(size: 16, weight: .semibold))
+                        .foregroundColor(manager.goalUnitLocked ? .red : .blue)
+                        .rotationEffect(.degrees(manager.goalUnitLocked ? 0 : rotationAngle))
+                        .frame(width: 40, height: 35)
+                        .background(Color.secondary.opacity(0.15))
+                        .cornerRadius(8)
                 }
                 .buttonStyle(PlainButtonStyle())
                 .disabled(manager.goalUnitLocked)
@@ -133,10 +133,10 @@ struct IndoorPoolSetupView: View
 
             // start workout button
             ActionButton(
-            label: "Start Workout",
-            icon: "play.fill",
-            tint: .green,
-            compact: true
+                label: "Start Workout",
+                icon: "play.fill",
+                tint: .green,
+                compact: true
             )
             {
                 manager.startWorkout()
@@ -153,12 +153,11 @@ struct IndoorPoolSetupView: View
         }
         .padding(.horizontal, 16)
         .padding(.vertical, 12)
-
     }
 }
 
 #Preview
 {
     IndoorPoolSetupView()
-    .environment(WatchManager())
+        .environment(WatchManager())
 }

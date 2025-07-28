@@ -1,10 +1,10 @@
 // WatchManager.swift
 
 import Foundation
-import SwiftUI
 import HealthKit
-import WatchKit
 import Observation
+import SwiftUI
+import WatchKit
 
 // Main WatchManager
 @Observable
@@ -50,6 +50,7 @@ class WatchManager: NSObject
             updateLapsFromCurrentDistance()
         }
     }
+
     var averageHeartRate: Double = 0
     var heartRate: Double = 0
     var activeEnergy: Double = 0
@@ -71,23 +72,23 @@ class WatchManager: NSObject
 
     // HK types
     let requiredShareTypes: Set<HKSampleType> = [
-    HKObjectType.workoutType(),
-    HKQuantityType.quantityType(forIdentifier: .distanceSwimming)!,
-    HKQuantityType.quantityType(forIdentifier: .activeEnergyBurned)!
+        HKObjectType.workoutType(),
+        HKQuantityType.quantityType(forIdentifier: .distanceSwimming)!,
+        HKQuantityType.quantityType(forIdentifier: .activeEnergyBurned)!,
     ]
 
     let requiredReadTypes: Set<HKObjectType> = [
-    HKObjectType.workoutType(),
-    HKQuantityType.quantityType(forIdentifier: .heartRate)!,
-    HKQuantityType.quantityType(forIdentifier: .distanceSwimming)!,
-    HKQuantityType.quantityType(forIdentifier: .activeEnergyBurned)!
+        HKObjectType.workoutType(),
+        HKQuantityType.quantityType(forIdentifier: .heartRate)!,
+        HKQuantityType.quantityType(forIdentifier: .distanceSwimming)!,
+        HKQuantityType.quantityType(forIdentifier: .activeEnergyBurned)!,
     ]
 
     // types required for basic workout function
     let essentialReadTypes: Set<HKObjectType> = [
-    HKObjectType.workoutType(),
-    HKQuantityType.quantityType(forIdentifier: .distanceSwimming)!,
-    HKQuantityType.quantityType(forIdentifier: .activeEnergyBurned)!
+        HKObjectType.workoutType(),
+        HKQuantityType.quantityType(forIdentifier: .distanceSwimming)!,
+        HKQuantityType.quantityType(forIdentifier: .activeEnergyBurned)!,
     ]
 
     // can start workout - now properly checks authorization
@@ -101,34 +102,37 @@ class WatchManager: NSObject
     {
         didSet
         {
-            guard selected != nil else
+            guard selected != nil
+            else
             {
-                return }
-                startWorkout()
+                return
             }
-        }
-
-        // showing summary view after workout
-        var showingSummaryView = false
-        {
-            didSet
-            {
-                if showingSummaryView == false
-                {
-                    selected = nil
-                }
-            }
-        }
-
-        // MARK: - Initialization
-        override init()
-        {
-            super.init()
-
-            // sync goal unit with pool unit initially
-            goalUnit = poolUnit
-
-            // load persisted auth state & check current status
-            loadAndCheckAuthorizationStatus()
+            startWorkout()
         }
     }
+
+    // showing summary view after workout
+    var showingSummaryView = false
+    {
+        didSet
+        {
+            if showingSummaryView == false
+            {
+                selected = nil
+            }
+        }
+    }
+
+    // MARK: - Initialization
+
+    override init()
+    {
+        super.init()
+
+        // sync goal unit with pool unit initially
+        goalUnit = poolUnit
+
+        // load persisted auth state & check current status
+        loadAndCheckAuthorizationStatus()
+    }
+}

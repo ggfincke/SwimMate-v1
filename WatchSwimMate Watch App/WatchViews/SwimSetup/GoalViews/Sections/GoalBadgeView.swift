@@ -5,7 +5,6 @@ import SwiftUI
 struct GoalBadgeView: View
 
 {
-
     @Environment(WatchManager.self) private var manager
     let type: GoalType
 
@@ -15,28 +14,28 @@ struct GoalBadgeView: View
 
         switch type
         {
-            case .distance:
+        case .distance:
             value = "\(Int(manager.goalDistance))"
-            case .time:
+        case .time:
             value = manager.formatTime(manager.goalTime)
-            case .calories:
+        case .calories:
             value = "\(Int(manager.goalCalories))"
         }
 
         return HStack(spacing: 4)
         {
             Image(systemName: manager.getIcon(for: type))
-            .font(.system(size: 10))
-            .foregroundColor(manager.getColor(for: type))
+                .font(.system(size: 10))
+                .foregroundColor(manager.getColor(for: type))
             Text(value)
-            .font(.system(size: 12, weight: .semibold))
-            .foregroundColor(.primary)
+                .font(.system(size: 12, weight: .semibold))
+                .foregroundColor(.primary)
             let unit = manager.getUnit(for: type)
             if !unit.isEmpty
             {
                 Text(unit)
-                .font(.system(size: 10))
-                .foregroundColor(.secondary)
+                    .font(.system(size: 10))
+                    .foregroundColor(.secondary)
             }
         }
         .padding(.horizontal, 8)
@@ -45,7 +44,6 @@ struct GoalBadgeView: View
         .cornerRadius(12)
     }
 }
-
 
 // compact badge view for small screens
 struct CompactGoalBadgeView: View
@@ -60,19 +58,19 @@ struct CompactGoalBadgeView: View
         return HStack(spacing: 3)
         {
             Image(systemName: manager.getIcon(for: type))
-            .font(.system(size: 8, weight: .semibold))
-            .foregroundColor(manager.getColor(for: type))
-            .frame(width: 12)
+                .font(.system(size: 8, weight: .semibold))
+                .foregroundColor(manager.getColor(for: type))
+                .frame(width: 12)
 
             Text(value)
-            .font(.system(size: 10, weight: .semibold))
-            .foregroundColor(.primary)
+                .font(.system(size: 10, weight: .semibold))
+                .foregroundColor(.primary)
 
             if !unit.isEmpty
             {
                 Text(unit)
-                .font(.system(size: 8, weight: .medium))
-                .foregroundColor(.secondary)
+                    .font(.system(size: 8, weight: .medium))
+                    .foregroundColor(.secondary)
             }
         }
         .padding(.horizontal, 8)
@@ -86,10 +84,10 @@ struct CompactGoalBadgeView: View
     {
         switch type
         {
-            case .distance:
+        case .distance:
             let unit = manager.goalUnit == "meters" ? "m" : "yd"
             return ("\(Int(manager.goalDistance))", unit)
-            case .time:
+        case .time:
             let totalMinutes = Int(manager.goalTime) / 60
             let hours = totalMinutes / 60
             let minutes = totalMinutes % 60
@@ -102,7 +100,7 @@ struct CompactGoalBadgeView: View
             {
                 return ("\(minutes)", "min")
             }
-            case .calories:
+        case .calories:
             return ("\(Int(manager.goalCalories))", "cal")
         }
     }

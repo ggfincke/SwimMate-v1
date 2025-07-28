@@ -5,7 +5,6 @@ import SwiftUI
 struct PerformanceCard: View
 
 {
-
     @Environment(WatchManager.self) private var manager
     let title: String
     let value: String
@@ -21,9 +20,9 @@ struct PerformanceCard: View
         {
             switch self
             {
-                case .up: return "arrow.up.circle.fill"
-                case .down: return "arrow.down.circle.fill"
-                case .stable: return "minus.circle.fill"
+            case .up: return "arrow.up.circle.fill"
+            case .down: return "arrow.down.circle.fill"
+            case .stable: return "minus.circle.fill"
             }
         }
 
@@ -31,9 +30,9 @@ struct PerformanceCard: View
         {
             switch self
             {
-                case .up: return .green
-                case .down: return .red
-                case .stable: return .gray
+            case .up: return .green
+            case .down: return .red
+            case .stable: return .gray
             }
         }
     }
@@ -46,46 +45,44 @@ struct PerformanceCard: View
             HStack
             {
                 Text(title)
-                .font(.system(size: 9, weight: .medium, design: .rounded))
-                .foregroundColor(.secondary)
+                    .font(.system(size: 9, weight: .medium, design: .rounded))
+                    .foregroundColor(.secondary)
 
                 Spacer()
 
                 Image(systemName: trend.icon)
-                .font(.system(size: 8))
-                .foregroundColor(trend.color)
+                    .font(.system(size: 8))
+                    .foregroundColor(trend.color)
             }
 
             // value & subtitle
             HStack(alignment: .lastTextBaseline, spacing: 2)
             {
                 Text(value)
-                .font(.system(size: 14, weight: .bold, design: .rounded))
-                .foregroundColor(color)
-                .monospacedDigit()
+                    .font(.system(size: 14, weight: .bold, design: .rounded))
+                    .foregroundColor(color)
+                    .monospacedDigit()
 
                 Text(subtitle)
-                .font(.system(size: 8, weight: .medium))
-                .foregroundColor(.secondary)
+                    .font(.system(size: 8, weight: .medium))
+                    .foregroundColor(.secondary)
             }
         }
         .frame(maxWidth: .infinity)
         .padding(8)
         .background(
-        RoundedRectangle(cornerRadius: 10)
-        .fill(Color.black.opacity(0.15))
-        .stroke(Color.white.opacity(0.1), lineWidth: 0.5)
+            RoundedRectangle(cornerRadius: 10)
+                .fill(Color.black.opacity(0.15))
+                .stroke(Color.white.opacity(0.1), lineWidth: 0.5)
         )
     }
 }
-
 
 // MARK: - Performance Metrics Section
 
 struct PerformanceMetricsSection: View
 
 {
-
     @Environment(WatchManager.self) private var manager
 
     var body: some View
@@ -96,9 +93,9 @@ struct PerformanceMetricsSection: View
             HStack
             {
                 Text("PERFORMANCE")
-                .font(.system(size: 10, weight: .semibold, design: .rounded))
-                .foregroundColor(.secondary)
-                .tracking(0.5)
+                    .font(.system(size: 10, weight: .semibold, design: .rounded))
+                    .foregroundColor(.secondary)
+                    .tracking(0.5)
 
                 Spacer()
 
@@ -110,19 +107,19 @@ struct PerformanceMetricsSection: View
             HStack(spacing: 8)
             {
                 PerformanceCard(
-                title: "Avg HR",
-                value: "\(Int(manager.averageHeartRate))",
-                subtitle: "bpm",
-                trend: getHeartRateTrend(),
-                color: .red
+                    title: "Avg HR",
+                    value: "\(Int(manager.averageHeartRate))",
+                    subtitle: "bpm",
+                    trend: getHeartRateTrend(),
+                    color: .red
                 )
 
                 PerformanceCard(
-                title: "Stroke Rate",
-                value: estimatedStrokeRate,
-                subtitle: "spm",
-                trend: .stable,
-                color: .cyan
+                    title: "Stroke Rate",
+                    value: estimatedStrokeRate,
+                    subtitle: "spm",
+                    trend: .stable,
+                    color: .cyan
                 )
             }
         }
@@ -147,8 +144,7 @@ struct PerformanceMetricsSection: View
     // TODO: implement (currently a placeholder)
     private var estimatedStrokeRate: String
     {
-        let baseRate = 30 + Int.random(in: -5...5)
+        let baseRate = 30 + Int.random(in: -5 ... 5)
         return "\(baseRate)"
     }
 }
-

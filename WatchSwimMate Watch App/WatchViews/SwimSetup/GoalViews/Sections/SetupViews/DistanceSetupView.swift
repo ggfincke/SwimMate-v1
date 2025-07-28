@@ -5,7 +5,6 @@ import SwiftUI
 struct DistanceSetupView: View
 
 {
-
     @Environment(WatchManager.self) private var manager
     @Environment(\.dismiss) private var dismiss
 
@@ -15,25 +14,25 @@ struct DistanceSetupView: View
     var body: some View
     {
         GoalSetupView(
-        title: "Distance Goal",
-        unit: manager.goalUnit == "meters" ? "m" : "yd",
-        accentColor: .blue,
-        presetValues: distancePresets,
-        minValue: 0,
-        maxValue: WatchManager.maxDistanceGoal,
-        value: Binding(
-        get: { manager.goalDistance },
-        set: { manager.goalDistance = $0 }
-        ),
-        availableUnits: ["meters", "yards"],
-        selectedUnit: Binding(
-        get: { manager.goalUnit },
-        set: { manager.goalUnit = $0 }
-        ),
-        onUnitChange:
-        {
-            newUnit in
-            manager.goalUnit = newUnit
+            title: "Distance Goal",
+            unit: manager.goalUnit == "meters" ? "m" : "yd",
+            accentColor: .blue,
+            presetValues: distancePresets,
+            minValue: 0,
+            maxValue: WatchManager.maxDistanceGoal,
+            value: Binding(
+                get: { manager.goalDistance },
+                set: { manager.goalDistance = $0 }
+            ),
+            availableUnits: ["meters", "yards"],
+            selectedUnit: Binding(
+                get: { manager.goalUnit },
+                set: { manager.goalUnit = $0 }
+            ),
+            onUnitChange:
+            {
+                newUnit in
+                manager.goalUnit = newUnit
             },
             onDismiss:
             {
@@ -41,11 +40,12 @@ struct DistanceSetupView: View
                 manager.goalUnitLocked = true
                 dismiss()
             }
-            )
-        }
+        )
     }
+}
 
-    #Preview {
-        DistanceSetupView()
+#Preview
+{
+    DistanceSetupView()
         .environment(WatchManager())
-    }
+}

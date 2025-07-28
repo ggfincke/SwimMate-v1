@@ -1,12 +1,12 @@
 // SwimMate/iOSViews/Components/Charts/SwolfChart.swift
 
-import SwiftUI
 import Charts
+import SwiftUI
 
 struct SwolfChart: View
 {
     let swim: Swim
-    
+
     var validSwolfData: [(Int, Double)]
     {
         swim.laps.enumerated().compactMap
@@ -18,7 +18,7 @@ struct SwolfChart: View
             return nil
         }
     }
-    
+
     var body: some View
     {
         VStack(alignment: .leading, spacing: 8)
@@ -27,7 +27,7 @@ struct SwolfChart: View
                 .font(.subheadline)
                 .fontWeight(.semibold)
                 .foregroundColor(.white)
-            
+
             if validSwolfData.isEmpty
             {
                 Text("No SWOLF data available")
@@ -69,7 +69,7 @@ struct SwolfChart: View
         Lap(startDate: baseDate.addingTimeInterval(120), endDate: baseDate.addingTimeInterval(164.7), metadata: ["HKSwimmingStrokeStyle": 2, "HKSWOLFScore": 29.2]),
         Lap(startDate: baseDate.addingTimeInterval(180), endDate: baseDate.addingTimeInterval(223.8), metadata: ["HKSwimmingStrokeStyle": 3, "HKSWOLFScore": 31.1]),
         Lap(startDate: baseDate.addingTimeInterval(300), endDate: baseDate.addingTimeInterval(346.3), metadata: ["HKSwimmingStrokeStyle": 2, "HKSWOLFScore": 30.5]),
-        Lap(startDate: baseDate.addingTimeInterval(360), endDate: baseDate.addingTimeInterval(401.9), metadata: ["HKSwimmingStrokeStyle": 2, "HKSWOLFScore": 27.3])
+        Lap(startDate: baseDate.addingTimeInterval(360), endDate: baseDate.addingTimeInterval(401.9), metadata: ["HKSwimmingStrokeStyle": 2, "HKSWOLFScore": 27.3]),
     ]
 
     let sampleSwim = Swim(
@@ -82,7 +82,8 @@ struct SwolfChart: View
         laps: sampleLaps
     )
 
-    return VStack {
+    return VStack
+    {
         SwolfChart(swim: sampleSwim)
             .frame(height: 200)
             .padding()

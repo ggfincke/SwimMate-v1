@@ -6,7 +6,7 @@ struct RootView: View
 {
     @EnvironmentObject var manager: Manager
     @EnvironmentObject var watchOSManager: WatchConnector
-    
+
     @State private var selectedTab = 0
 
     var body: some View
@@ -20,7 +20,7 @@ struct RootView: View
                     Label("Home", systemImage: "house")
                 }
                 .tag(0)
-            
+
             SetPage()
                 .environmentObject(manager)
                 .environmentObject(watchOSManager)
@@ -29,7 +29,7 @@ struct RootView: View
                     Label("Sets", systemImage: "list.bullet")
                 }
                 .tag(1)
-            
+
             LogbookView()
                 .environmentObject(manager)
                 .tabItem

@@ -7,33 +7,33 @@ struct HorizontalSetCard: View
     let swimSet: SwimSet
     let isFavorite: Bool
     let toggleFavorite: () -> Void
-    
+
     private var difficultyColor: Color
     {
-        switch swimSet.difficulty 
+        switch swimSet.difficulty
         {
         case .beginner: return .green
         case .intermediate: return .orange
         case .advanced: return .red
         }
     }
-    
+
     var body: some View
     {
-        HStack(spacing: 16) 
+        HStack(spacing: 16)
         {
             // Left Section: Title, Difficulty, Description
-            VStack(alignment: .leading, spacing: 8) 
+            VStack(alignment: .leading, spacing: 8)
             {
                 // Title and Difficulty Badge
-                VStack(alignment: .leading, spacing: 6) 
+                VStack(alignment: .leading, spacing: 6)
                 {
                     Text(swimSet.title)
                         .font(.system(size: 18, weight: .bold))
                         .foregroundColor(.primary)
                         .lineLimit(2)
                         .multilineTextAlignment(.leading)
-                    
+
                     Text(swimSet.difficulty.rawValue.capitalized)
                         .font(.system(size: 12, weight: .semibold))
                         .foregroundColor(difficultyColor)
@@ -42,9 +42,9 @@ struct HorizontalSetCard: View
                         .background(difficultyColor.opacity(0.15))
                         .cornerRadius(8)
                 }
-                
+
                 // Description
-                if let description = swimSet.description, !description.isEmpty 
+                if let description = swimSet.description, !description.isEmpty
                 {
                     Text(description)
                         .font(.system(size: 14, weight: .regular))
@@ -52,30 +52,30 @@ struct HorizontalSetCard: View
                         .lineLimit(2)
                         .multilineTextAlignment(.leading)
                 }
-                
+
                 Spacer()
             }
             .frame(maxWidth: .infinity, alignment: .leading)
-            
+
             // Right Section: Metrics and Actions
-            VStack(alignment: .trailing, spacing: 8) 
+            VStack(alignment: .trailing, spacing: 8)
             {
                 // Favorite Button
-                Button(action: toggleFavorite) 
+                Button(action: toggleFavorite)
                 {
                     Image(systemName: isFavorite ? "heart.fill" : "heart")
                         .font(.system(size: 18, weight: .medium))
                         .foregroundColor(isFavorite ? .red : .gray)
                 }
                 .buttonStyle(PlainButtonStyle())
-                
+
                 Spacer()
-                
+
                 // Metrics
-                VStack(alignment: .trailing, spacing: 6) 
+                VStack(alignment: .trailing, spacing: 6)
                 {
                     // Distance
-                    VStack(alignment: .trailing, spacing: 2) 
+                    VStack(alignment: .trailing, spacing: 2)
                     {
                         Text("Distance")
                             .font(.system(size: 11, weight: .medium))
@@ -84,9 +84,9 @@ struct HorizontalSetCard: View
                             .font(.system(size: 16, weight: .bold))
                             .foregroundColor(.primary)
                     }
-                    
+
                     // Components
-                    VStack(alignment: .trailing, spacing: 2) 
+                    VStack(alignment: .trailing, spacing: 2)
                     {
                         Text("Components")
                             .font(.system(size: 11, weight: .medium))
@@ -95,16 +95,16 @@ struct HorizontalSetCard: View
                             .font(.system(size: 14, weight: .semibold))
                             .foregroundColor(.primary)
                     }
-                    
+
                     // Primary Stroke
-                    if let primaryStroke = swimSet.primaryStroke 
+                    if let primaryStroke = swimSet.primaryStroke
                     {
-                        VStack(alignment: .trailing, spacing: 2) 
+                        VStack(alignment: .trailing, spacing: 2)
                         {
                             Text("Stroke")
                                 .font(.system(size: 11, weight: .medium))
                                 .foregroundColor(.secondary)
-                            HStack(spacing: 4) 
+                            HStack(spacing: 4)
                             {
                                 Image(systemName: "figure.pool.swim")
                                     .font(.system(size: 12))
@@ -131,39 +131,39 @@ struct HorizontalSetCard: View
     }
 }
 
-#Preview 
+#Preview
 {
     let sampleSet1 = SwimSet(
         title: "Sprint Interval Training Set",
         components: [
             SetComponent(type: .warmup, distance: 200, strokeStyle: .freestyle),
             SetComponent(type: .swim, distance: 400, strokeStyle: .freestyle),
-            SetComponent(type: .cooldown, distance: 100, strokeStyle: .freestyle)
+            SetComponent(type: .cooldown, distance: 100, strokeStyle: .freestyle),
         ],
         difficulty: .intermediate,
         description: "High-intensity sprint intervals to build speed and power in the pool"
     )
-    
+
     let sampleSet2 = SwimSet(
         title: "Endurance Challenge",
         components: [
             SetComponent(type: .warmup, distance: 300, strokeStyle: .freestyle),
             SetComponent(type: .swim, distance: 800, strokeStyle: .freestyle),
             SetComponent(type: .swim, distance: 400, strokeStyle: .backstroke),
-            SetComponent(type: .cooldown, distance: 200, strokeStyle: .freestyle)
+            SetComponent(type: .cooldown, distance: 200, strokeStyle: .freestyle),
         ],
         difficulty: .advanced,
         description: "Long distance set designed to build aerobic capacity and endurance"
     )
-    
-    VStack(spacing: 16) 
+
+    VStack(spacing: 16)
     {
         HorizontalSetCard(
             swimSet: sampleSet1,
             isFavorite: false,
             toggleFavorite: {}
         )
-        
+
         HorizontalSetCard(
             swimSet: sampleSet2,
             isFavorite: true,

@@ -41,17 +41,17 @@ struct GoalSetupView: View
 
     // main initializer with default values for optional parameters
     init(
-    title: String,
-    unit: String,
-    accentColor: Color,
-    presetValues: [Int],
-    minValue: Double,
-    maxValue: Double,
-    value: Binding<Double>,
-    availableUnits: [String]? = nil,
-    selectedUnit: Binding<String> = .constant(""),
-    onUnitChange: ((String) -> Void)? = nil,
-    onDismiss: @escaping () -> Void
+        title: String,
+        unit: String,
+        accentColor: Color,
+        presetValues: [Int],
+        minValue: Double,
+        maxValue: Double,
+        value: Binding<Double>,
+        availableUnits: [String]? = nil,
+        selectedUnit: Binding<String> = .constant(""),
+        onUnitChange: ((String) -> Void)? = nil,
+        onDismiss: @escaping () -> Void
     )
     {
         self.title = title
@@ -60,9 +60,9 @@ struct GoalSetupView: View
         self.presetValues = presetValues
         self.minValue = minValue
         self.maxValue = maxValue
-        self._value = value
+        _value = value
         self.availableUnits = availableUnits
-        self._selectedUnit = selectedUnit
+        _selectedUnit = selectedUnit
         self.onUnitChange = onUnitChange
         self.onDismiss = onDismiss
     }
@@ -75,134 +75,135 @@ struct GoalSetupView: View
             {
                 // title
                 Text(title)
-                .font(.headline)
+                    .font(.headline)
 
                 // current value display (tappable to open number pad)
                 Button(action: {
                     showingNumberPad = true
-                    })
+                })
+                {
+                    VStack(spacing: GoalSpacingConstants.smallContent)
                     {
-                        VStack(spacing: GoalSpacingConstants.smallContent)
+                        HStack(alignment: .lastTextBaseline, spacing: GoalSpacingConstants.smallContent)
                         {
-                            HStack(alignment: .lastTextBaseline, spacing: GoalSpacingConstants.smallContent)
-                            {
-                                Text("\(Int(value))")
+                            Text("\(Int(value))")
                                 .font(.system(size: 30, weight: .bold, design: .rounded))
                                 .foregroundColor(accentColor)
                                 .monospacedDigit()
 
-                                if !displayUnit.isEmpty
-                                {
-                                    Text(displayUnit)
+                            if !displayUnit.isEmpty
+                            {
+                                Text(displayUnit)
                                     .font(.subheadline)
                                     .foregroundColor(.secondary)
-                                }
                             }
+                        }
 
-                            // instruction text
-                            Text("Tap to enter value")
+                        // instruction text
+                        Text("Tap to enter value")
                             .font(.footnote)
                             .foregroundColor(.secondary)
                             .padding(.top, GoalSpacingConstants.topSmall)
-                        }
                     }
-                    .buttonStyle(PlainButtonStyle())
-                    .padding(.vertical, GoalSpacingConstants.standardContent)
-                    .frame(maxWidth: .infinity)
-                    .background(
+                }
+                .buttonStyle(PlainButtonStyle())
+                .padding(.vertical, GoalSpacingConstants.standardContent)
+                .frame(maxWidth: .infinity)
+                .background(
                     RoundedRectangle(cornerRadius: 12)
-                    .fill(accentColor.opacity(0.1))
-                    .stroke(accentColor.opacity(0.3), lineWidth: 1)
-                    )
+                        .fill(accentColor.opacity(0.1))
+                        .stroke(accentColor.opacity(0.3), lineWidth: 1)
+                )
 
-                    // preset buttons
-                    if !presetValues.isEmpty
+                // preset buttons
+                if !presetValues.isEmpty
+                {
+                    VStack(spacing: GoalSpacingConstants.standardContent)
                     {
-                        VStack(spacing: GoalSpacingConstants.standardContent)
-                        {
-                            Text("Quick Select")
+                        Text("Quick Select")
                             .font(.footnote)
                             .foregroundColor(.secondary)
 
-                            // preset buttons in rows
-                            LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: GoalSpacingConstants.gridItem), count: 3), spacing: GoalSpacingConstants.gridItem)
+                        // preset buttons in rows
+                        LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: GoalSpacingConstants.gridItem), count: 3), spacing: GoalSpacingConstants.gridItem)
+                        {
+                            ForEach(presetValues, id: \.self)
                             {
-                                ForEach(presetValues, id: \.self)
-                                {
-                                    presetValue in
-                                    PresetButton(
+                                presetValue in
+                                PresetButton(
                                     value: $value,
                                     presetValue: presetValue,
                                     accentColor: accentColor
-                                    )
-                                }
+                                )
                             }
                         }
-                        .padding(.top, GoalSpacingConstants.topSection)
                     }
+                    .padding(.top, GoalSpacingConstants.topSection)
+                }
 
-                    Spacer()
+                Spacer()
 
-                    // unit selector button (if available units provided)
-                    if let availableUnits = availableUnits, availableUnits.count > 1
-                    {
-                        ActionButton(
+                // unit selector button (if available units provided)
+                if let availableUnits = availableUnits, availableUnits.count > 1
+                {
+                    ActionButton(
                         label: "\(selectedUnit == "meters" ? "Meters" : selectedUnit == "yards" ? "Yards" : selectedUnit.capitalized)",
                         icon: "arrow.2.circlepath",
                         tint: .teal,
                         compact: manager.isCompactDevice
-                        ) {
-                            WKInterfaceDevice.current().play(.click)
-                            let currentIndex = availableUnits.firstIndex(of: selectedUnit) ?? 0
-                            let nextIndex = (currentIndex + 1) % availableUnits.count
-                            selectedUnit = availableUnits[nextIndex]
-                            onUnitChange?(selectedUnit)
-                        }
+                    )
+                    {
+                        WKInterfaceDevice.current().play(.click)
+                        let currentIndex = availableUnits.firstIndex(of: selectedUnit) ?? 0
+                        let nextIndex = (currentIndex + 1) % availableUnits.count
+                        selectedUnit = availableUnits[nextIndex]
+                        onUnitChange?(selectedUnit)
                     }
+                }
 
-                    // set button using ActionButton
-                    ActionButton(
+                // set button using ActionButton
+                ActionButton(
                     label: "Set Goal",
                     icon: "target",
                     tint: accentColor,
                     compact: manager.isCompactDevice
-                    )
-                    {
-                        WKInterfaceDevice.current().play(.success)
-                        onDismiss()
-                    }
-                    .disabled(value <= 0)
-                    .opacity(value <= 0 ? 0.6 : 1.0)
-                    .padding(.bottom, GoalSpacingConstants.bottomAction)
+                )
+                {
+                    WKInterfaceDevice.current().play(.success)
+                    onDismiss()
                 }
-                .padding(.horizontal, GoalSpacingConstants.horizontalMain)
+                .disabled(value <= 0)
+                .opacity(value <= 0 ? 0.6 : 1.0)
+                .padding(.bottom, GoalSpacingConstants.bottomAction)
             }
-            .sheet(isPresented: $showingNumberPad)
-            {
-                NumberPadView(
+            .padding(.horizontal, GoalSpacingConstants.horizontalMain)
+        }
+        .sheet(isPresented: $showingNumberPad)
+        {
+            NumberPadView(
                 value: $value,
                 title: title,
                 unit: displayUnit,
                 maxValue: maxValue,
                 accentColor: accentColor,
                 isCompact: manager.isCompactDevice
-                )
-            }
+            )
         }
     }
+}
 
-    // preview
-    #Preview
-    {
-        GoalSetupView(
+// preview
+#Preview
+{
+    GoalSetupView(
         title: "Distance Goal",
         unit: "meters",
         accentColor: .blue,
         presetValues: [100, 200, 500, 1000, 1500, 2000],
         minValue: 0,
-        maxValue: 1000000,
+        maxValue: 1_000_000,
         value: .constant(500.0),
         onDismiss: {}
-        )
-        .environment(WatchManager())
-    }
+    )
+    .environment(WatchManager())
+}

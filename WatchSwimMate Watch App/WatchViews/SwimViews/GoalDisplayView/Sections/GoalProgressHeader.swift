@@ -5,7 +5,6 @@ import SwiftUI
 struct GoalProgressHeader: View
 
 {
-
     @Environment(WatchManager.self) private var manager
 
     var body: some View
@@ -13,10 +12,10 @@ struct GoalProgressHeader: View
         HStack
         {
             Image(systemName: "target")
-            .font(.system(size: manager.isCompactDevice ? 12 : 16, weight: .semibold))
-            .foregroundColor(.blue)
+                .font(.system(size: manager.isCompactDevice ? 12 : 16, weight: .semibold))
+                .foregroundColor(.blue)
             Text("Goals")
-            .font(.system(size: manager.isCompactDevice ? 12 : 16, weight: .semibold))
+                .font(.system(size: manager.isCompactDevice ? 12 : 16, weight: .semibold))
         }
     }
 }
@@ -24,5 +23,5 @@ struct GoalProgressHeader: View
 #Preview
 {
     GoalProgressHeader()
-    .environment(WatchManager())
+        .environment(WatchManager())
 }

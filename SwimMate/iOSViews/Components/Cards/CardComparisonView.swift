@@ -7,55 +7,55 @@ struct CardComparisonView: View
 {
     @EnvironmentObject var manager: Manager
     @State private var selectedCardType: CardType = .compact
-    
+
     enum CardType: String, CaseIterable
     {
         case original = "Original"
         case compact = "Compact"
         case horizontal = "Horizontal"
     }
-    
+
     var body: some View
     {
-        NavigationView 
+        NavigationView
         {
-            VStack(spacing: 20) 
+            VStack(spacing: 20)
             {
                 // Card Type Picker
-                Picker("Card Type", selection: $selectedCardType) 
+                Picker("Card Type", selection: $selectedCardType)
                 {
-                    ForEach(CardType.allCases, id: \.self) 
+                    ForEach(CardType.allCases, id: \.self)
                     { type in
                         Text(type.rawValue).tag(type)
                     }
                 }
                 .pickerStyle(SegmentedPickerStyle())
                 .padding(.horizontal)
-                
+
                 // Display Area
-                ScrollView 
+                ScrollView
                 {
                     cardContent
                         .padding()
                 }
-                
+
                 Spacer()
             }
             .navigationTitle("Card Comparison")
         }
     }
-    
+
     @ViewBuilder
     private var cardContent: some View
     {
         let sampleSets = createSampleSets()
-        
-        switch selectedCardType 
+
+        switch selectedCardType
         {
         case .original:
-            LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 16), count: 2), spacing: 16) 
+            LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 16), count: 2), spacing: 16)
             {
-                ForEach(sampleSets.prefix(4), id: \.id) 
+                ForEach(sampleSets.prefix(4), id: \.id)
                 { set in
                     RecommendedSetCard(
                         swimSet: set,
@@ -64,11 +64,11 @@ struct CardComparisonView: View
                     )
                 }
             }
-            
+
         case .compact:
-            LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 16), count: 2), spacing: 16) 
+            LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 16), count: 2), spacing: 16)
             {
-                ForEach(sampleSets.prefix(4), id: \.id) 
+                ForEach(sampleSets.prefix(4), id: \.id)
                 { set in
                     CompactSetCard(
                         swimSet: set,
@@ -77,11 +77,11 @@ struct CardComparisonView: View
                     )
                 }
             }
-            
+
         case .horizontal:
-            LazyVStack(spacing: 16) 
+            LazyVStack(spacing: 16)
             {
-                ForEach(sampleSets.prefix(4), id: \.id) 
+                ForEach(sampleSets.prefix(4), id: \.id)
                 { set in
                     HorizontalSetCard(
                         swimSet: set,
@@ -92,7 +92,7 @@ struct CardComparisonView: View
             }
         }
     }
-    
+
     private func createSampleSets() -> [SwimSet]
     {
         [
@@ -101,7 +101,7 @@ struct CardComparisonView: View
                 components: [
                     SetComponent(type: .warmup, distance: 200, strokeStyle: .freestyle),
                     SetComponent(type: .swim, distance: 400, strokeStyle: .freestyle),
-                    SetComponent(type: .cooldown, distance: 100, strokeStyle: .freestyle)
+                    SetComponent(type: .cooldown, distance: 100, strokeStyle: .freestyle),
                 ],
                 difficulty: .intermediate,
                 description: "High-intensity sprint intervals to build speed and power"
@@ -112,7 +112,7 @@ struct CardComparisonView: View
                     SetComponent(type: .warmup, distance: 300, strokeStyle: .freestyle),
                     SetComponent(type: .swim, distance: 800, strokeStyle: .freestyle),
                     SetComponent(type: .swim, distance: 400, strokeStyle: .backstroke),
-                    SetComponent(type: .cooldown, distance: 200, strokeStyle: .freestyle)
+                    SetComponent(type: .cooldown, distance: 200, strokeStyle: .freestyle),
                 ],
                 difficulty: .advanced,
                 description: "Long distance set designed to build aerobic capacity and endurance for competitive swimmers"
@@ -122,7 +122,7 @@ struct CardComparisonView: View
                 components: [
                     SetComponent(type: .warmup, distance: 100, strokeStyle: .freestyle),
                     SetComponent(type: .drill, distance: 200, strokeStyle: .freestyle),
-                    SetComponent(type: .swim, distance: 200, strokeStyle: .freestyle)
+                    SetComponent(type: .swim, distance: 200, strokeStyle: .freestyle),
                 ],
                 difficulty: .beginner,
                 description: "Focus on proper technique and form development"
@@ -134,16 +134,16 @@ struct CardComparisonView: View
                     SetComponent(type: .swim, distance: 100, strokeStyle: .butterfly),
                     SetComponent(type: .swim, distance: 100, strokeStyle: .backstroke),
                     SetComponent(type: .swim, distance: 100, strokeStyle: .breaststroke),
-                    SetComponent(type: .swim, distance: 100, strokeStyle: .freestyle)
+                    SetComponent(type: .swim, distance: 100, strokeStyle: .freestyle),
                 ],
                 difficulty: .intermediate,
                 description: "Practice all four competitive strokes"
-            )
+            ),
         ]
     }
 }
 
-#Preview 
+#Preview
 {
     CardComparisonView()
         .environmentObject(Manager())

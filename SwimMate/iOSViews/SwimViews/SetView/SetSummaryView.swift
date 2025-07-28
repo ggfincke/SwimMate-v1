@@ -4,7 +4,7 @@ import SwiftUI
 
 struct SetSummaryView: View
 {
-    let swimmySet : SwimSet
+    let swimmySet: SwimSet
     var body: some View
     {
         VStack(alignment: .leading)
@@ -16,7 +16,8 @@ struct SetSummaryView: View
     }
 }
 
-#Preview {
+#Preview
+{
     SetSummaryView(swimmySet: SwimSet(
         id: UUID(),
         title: "Sprint Training",

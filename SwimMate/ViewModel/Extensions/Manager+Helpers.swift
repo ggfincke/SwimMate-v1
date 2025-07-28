@@ -2,32 +2,32 @@
 
 import Foundation
 
-extension Manager 
+extension Manager
 {
     func formatDuration(_ duration: TimeInterval) -> String
     {
         let minutes = Int(duration / 60)
         return "\(minutes) min"
     }
-    
+
     func getStrokes(from swim: Swim) -> String?
     {
         let uniqueStrokes = Set(swim.laps.compactMap { $0.stroke?.description })
-        if uniqueStrokes.isEmpty 
+        if uniqueStrokes.isEmpty
         {
             return nil
         }
         return uniqueStrokes.joined(separator: ", ")
     }
-    
+
     func filteredWorkouts(for timeFilter: String) -> [Swim]
     {
         let calendar = Calendar.current
         let currentDate = Date()
-        
-        let dateLimit: Date? = 
+
+        let dateLimit: Date? =
         {
-            switch timeFilter 
+            switch timeFilter
             {
             case "30 Days":
                 return calendar.date(byAdding: .day, value: -30, to: currentDate)
@@ -43,31 +43,31 @@ extension Manager
                 return nil
             }
         }()
-        
-        if let dateLimit = dateLimit 
+
+        if let dateLimit = dateLimit
         {
             return swims.filter { swim in swim.date >= dateLimit }
                 .sorted(by: { a, b in a.date > b.date })
-        } 
-        else 
+        }
+        else
         {
             return swims.sorted(by: { a, b in a.date > b.date })
         }
     }
-    
+
     func displayedWorkouts(from filtered: [Swim], searchText: String) -> [Swim]
     {
         guard !searchText.isEmpty else { return filtered }
-        
-        return filtered.filter 
+
+        return filtered.filter
         { swim in
             let dateString = swim.date.formatted(.dateTime.weekday().month().day())
             let durationString = formatDuration(swim.duration)
             let strokesString = getStrokes(from: swim) ?? ""
-            
+
             return dateString.localizedCaseInsensitiveContains(searchText) ||
-                   durationString.localizedCaseInsensitiveContains(searchText) ||
-                   strokesString.localizedCaseInsensitiveContains(searchText)
+                durationString.localizedCaseInsensitiveContains(searchText) ||
+                strokesString.localizedCaseInsensitiveContains(searchText)
         }
     }
 }

@@ -5,12 +5,15 @@ import SwiftUI
 struct GoalsSettingsView: View
 {
     @EnvironmentObject var manager: Manager
-    
+
     var body: some View
     {
-        Form {
-            Section(header: Text("Weekly Goals")) {
-                HStack {
+        Form
+        {
+            Section(header: Text("Weekly Goals"))
+            {
+                HStack
+                {
                     Text("Distance Goal")
                     Spacer()
                     TextField("Distance", value: $manager.weeklyGoalDistance, format: .number)
@@ -20,8 +23,9 @@ struct GoalsSettingsView: View
                     Text(manager.preferredUnit.rawValue)
                         .foregroundColor(.secondary)
                 }
-                
-                HStack {
+
+                HStack
+                {
                     Text("Workout Goal")
                     Spacer()
                     TextField("Workouts", value: $manager.weeklyGoalWorkouts, format: .number)
@@ -32,34 +36,39 @@ struct GoalsSettingsView: View
                         .foregroundColor(.secondary)
                 }
             }
-            
-            Section(header: Text("Progress")) {
-                HStack {
+
+            Section(header: Text("Progress"))
+            {
+                HStack
+                {
                     Text("Current Week Distance")
                     Spacer()
                     Text(manager.formatDistance(manager.getCurrentWeekDistance()))
                         .foregroundColor(.blue)
                         .font(.body.weight(.semibold))
                 }
-                
-                HStack {
+
+                HStack
+                {
                     Text("Current Week Workouts")
                     Spacer()
                     Text("\(manager.getCurrentWeekWorkouts())")
                         .foregroundColor(.green)
                         .font(.body.weight(.semibold))
                 }
-                
+
                 ProgressView(value: manager.goalProgress(), total: 1.0)
                     .progressViewStyle(LinearProgressViewStyle(tint: manager.goalProgress() >= 1.0 ? .green : .blue))
-                
+
                 Text(manager.goalProgressText())
                     .font(.caption)
                     .foregroundColor(.secondary)
             }
-            
-            Section(header: Text("Pool Settings")) {
-                HStack {
+
+            Section(header: Text("Pool Settings"))
+            {
+                HStack
+                {
                     Text("Pool Length")
                     Spacer()
                     TextField("Length", value: $manager.poolLength, format: .number)
@@ -69,14 +78,16 @@ struct GoalsSettingsView: View
                     Text(manager.preferredUnit.rawValue)
                         .foregroundColor(.secondary)
                 }
-                
+
                 Text("Used for calculating laps and distances")
                     .font(.caption)
                     .foregroundColor(.secondary)
             }
-            
-            Section(header: Text("Save Settings")) {
-                Button("Save Goals") {
+
+            Section(header: Text("Save Settings"))
+            {
+                Button("Save Goals")
+                {
                     manager.updateStore()
                 }
                 .buttonStyle(.borderedProminent)
@@ -88,7 +99,8 @@ struct GoalsSettingsView: View
     }
 }
 
-#Preview {
+#Preview
+{
     GoalsSettingsView()
         .environmentObject(Manager())
 }

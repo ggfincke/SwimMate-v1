@@ -6,33 +6,33 @@ struct FilterSummarySection: View
 {
     @EnvironmentObject var manager: Manager
     let hasActiveFilters: Bool
-    
+
     @ViewBuilder var body: some View
     {
-        if hasActiveFilters 
+        if hasActiveFilters
         {
-            HStack 
+            HStack
             {
-                VStack(alignment: .leading, spacing: 4) 
+                VStack(alignment: .leading, spacing: 4)
                 {
                     Text("Active Filters")
                         .font(.system(size: 14, weight: .semibold))
                         .foregroundColor(.secondary)
-                    
+
                     Text(manager.filterSummary)
                         .font(.system(size: 16, weight: .medium))
                         .foregroundColor(.primary)
                 }
-                
+
                 Spacer()
-                
-                Button(action: 
-                {
-                    withAnimation(.easeInOut(duration: 0.3)) 
+
+                Button(action:
                     {
-                        manager.clearAllFilters()
-                    }
-                }) 
+                        withAnimation(.easeInOut(duration: 0.3))
+                        {
+                            manager.clearAllFilters()
+                        }
+                    })
                 {
                     Text("Clear")
                         .font(.system(size: 14, weight: .semibold))
@@ -47,15 +47,16 @@ struct FilterSummarySection: View
             .background(Color(UIColor.secondarySystemBackground))
             .cornerRadius(16)
             .shadow(color: .black.opacity(0.05), radius: 8, x: 0, y: 2)
-        } 
-        else 
+        }
+        else
         {
             EmptyView()
         }
     }
 }
 
-#Preview {
+#Preview
+{
     FilterSummarySection(hasActiveFilters: true)
         .environmentObject(Manager())
 }

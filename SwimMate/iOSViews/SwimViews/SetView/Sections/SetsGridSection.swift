@@ -6,40 +6,40 @@ struct SetsGridSection: View
 {
     @EnvironmentObject var manager: Manager
     @EnvironmentObject var watchOSManager: WatchConnector
-    
+
     private let columns = Array(repeating: GridItem(.flexible(), spacing: 16), count: 2)
-    
+
     var body: some View
     {
-        VStack(alignment: .leading, spacing: 16) 
+        VStack(alignment: .leading, spacing: 16)
         {
-            HStack 
+            HStack
             {
                 Text("All Sets")
                     .font(.system(size: 24, weight: .bold, design: .rounded))
-                
+
                 Spacer()
-                
+
                 Text("\(manager.filteredSets.count) sets")
                     .font(.system(size: 16, weight: .medium))
                     .foregroundColor(.secondary)
             }
-            
-            if manager.filteredSets.isEmpty 
+
+            if manager.filteredSets.isEmpty
             {
                 EmptyStateView(
                     icon: "figure.pool.swim",
                     title: "No sets found",
                     subtitle: "Create or import swim sets to get started"
                 )
-            } 
-            else 
+            }
+            else
             {
-                LazyVGrid(columns: columns, spacing: 16) 
+                LazyVGrid(columns: columns, spacing: 16)
                 {
-                    ForEach(manager.filteredSets) 
+                    ForEach(manager.filteredSets)
                     { set in
-                        NavigationLink(destination: SetDetailView(swimSet: set).environmentObject(watchOSManager).environmentObject(manager)) 
+                        NavigationLink(destination: SetDetailView(swimSet: set).environmentObject(watchOSManager).environmentObject(manager))
                         {
                             CompactSetCard(
                                 swimSet: set,
@@ -55,9 +55,9 @@ struct SetsGridSection: View
     }
 }
 
-#Preview {
+#Preview
+{
     SetsGridSection()
         .environmentObject(Manager())
         .environmentObject(WatchConnector())
 }
-

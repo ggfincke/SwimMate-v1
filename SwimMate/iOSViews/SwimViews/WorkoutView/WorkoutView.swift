@@ -1,15 +1,15 @@
 // SwimMate/iOSViews/SwimViews/WorkoutView/WorkoutView.swift
 
-import SwiftUI
 import Charts
+import SwiftUI
 
 struct WorkoutView: View
 {
     @EnvironmentObject var manager: Manager
     let swim: Swim
-    
+
     @State private var selectedTab = 0
-    
+
     var body: some View
     {
         ScrollView
@@ -18,16 +18,16 @@ struct WorkoutView: View
             {
                 // Header Card - matches home screen style
                 WorkoutHeaderCard(swim: swim)
-                
+
                 // Key Metrics Grid - matches home screen style
                 KeyMetricsGrid(swim: swim)
-                
+
                 // Charts Section with TabView
                 if !swim.laps.isEmpty
                 {
                     ChartsSection(swim: swim, selectedTab: $selectedTab)
                 }
-                
+
                 // Lap Details - Clean list format
                 LapDetailsSection(swim: swim)
             }
@@ -47,7 +47,7 @@ struct WorkoutView: View
         Lap(startDate: baseDate.addingTimeInterval(60), endDate: baseDate.addingTimeInterval(102.1), metadata: ["HKSwimmingStrokeStyle": 2, "HKSWOLFScore": 26.8]),
         Lap(startDate: baseDate.addingTimeInterval(120), endDate: baseDate.addingTimeInterval(164.7), metadata: ["HKSwimmingStrokeStyle": 2, "HKSWOLFScore": 29.2]),
         Lap(startDate: baseDate.addingTimeInterval(180), endDate: baseDate.addingTimeInterval(223.8), metadata: ["HKSwimmingStrokeStyle": 2, "HKSWOLFScore": 31.1]),
-        Lap(startDate: baseDate.addingTimeInterval(300), endDate: baseDate.addingTimeInterval(346.3), metadata: ["HKSwimmingStrokeStyle": 2, "HKSWOLFScore": 30.5])
+        Lap(startDate: baseDate.addingTimeInterval(300), endDate: baseDate.addingTimeInterval(346.3), metadata: ["HKSwimmingStrokeStyle": 2, "HKSWOLFScore": 30.5]),
     ]
 
     let sampleSwim = Swim(

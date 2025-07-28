@@ -5,21 +5,24 @@ import SwiftUI
 struct PreferencesView: View
 {
     @EnvironmentObject var manager: Manager
-    
-    var body: some View 
+
+    var body: some View
     {
         Form
         {
-            Section(header: Text("Personal Information")) {
-                HStack {
+            Section(header: Text("Personal Information"))
+            {
+                HStack
+                {
                     Text("Name")
                     Spacer()
                     TextField("Enter your name", text: $manager.userName)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                         .frame(maxWidth: 200)
                 }
-                
-                HStack {
+
+                HStack
+                {
                     Text("Profile")
                     Spacer()
                     Image(systemName: "person.crop.circle.fill")
@@ -27,11 +30,15 @@ struct PreferencesView: View
                         .foregroundColor(.blue)
                 }
             }
-            
-            Section(header: Text("Swimming Preferences")) {
-                Picker("Preferred Stroke", selection: $manager.preferredStroke) {
-                    ForEach([SwimStroke.freestyle, .backstroke, .breaststroke, .butterfly, .mixed], id: \.self) { stroke in
-                        HStack {
+
+            Section(header: Text("Swimming Preferences"))
+            {
+                Picker("Preferred Stroke", selection: $manager.preferredStroke)
+                {
+                    ForEach([SwimStroke.freestyle, .backstroke, .breaststroke, .butterfly, .mixed], id: \.self)
+                    { stroke in
+                        HStack
+                        {
                             Text(strokeEmoji(for: stroke))
                             Text(stroke.description)
                         }
@@ -39,23 +46,28 @@ struct PreferencesView: View
                     }
                 }
 
-                Picker("Unit System", selection: $manager.preferredUnit) {
-                    ForEach(MeasureUnit.allCases, id: \.self) { unit in
-                        HStack {
+                Picker("Unit System", selection: $manager.preferredUnit)
+                {
+                    ForEach(MeasureUnit.allCases, id: \.self)
+                    { unit in
+                        HStack
+                        {
                             Text(unitEmoji(for: unit))
                             Text(unit.rawValue.capitalized)
                         }
                         .tag(unit)
                     }
                 }
-                
+
                 Text("Choose your preferred stroke and measurement system")
                     .font(.caption)
                     .foregroundColor(.secondary)
             }
-            
-            Section(header: Text("Current Stats")) {
-                HStack {
+
+            Section(header: Text("Current Stats"))
+            {
+                HStack
+                {
                     Text("Total Distance")
                     Spacer()
                     Text(manager.formatDistance(manager.totalDistance))
@@ -63,8 +75,9 @@ struct PreferencesView: View
                         .font(.body)
                         .fontWeight(.semibold)
                 }
-                
-                HStack {
+
+                HStack
+                {
                     Text("Total Workouts")
                     Spacer()
                     Text("\(manager.swims.count)")
@@ -72,8 +85,9 @@ struct PreferencesView: View
                         .font(.body)
                         .fontWeight(.semibold)
                 }
-                
-                HStack {
+
+                HStack
+                {
                     Text("Average Distance")
                     Spacer()
                     Text(manager.formatDistance(manager.averageDistance))
@@ -81,8 +95,9 @@ struct PreferencesView: View
                         .font(.body)
                         .fontWeight(.semibold)
                 }
-                
-                HStack {
+
+                HStack
+                {
                     Text("Total Calories")
                     Spacer()
                     Text(String(format: "%.0f cal", manager.totalCalories))
@@ -92,14 +107,17 @@ struct PreferencesView: View
                 }
             }
 
-            Section(header: Text("Actions")) {
-                Button("Save Preferences") {
+            Section(header: Text("Actions"))
+            {
+                Button("Save Preferences")
+                {
                     savePreferences()
                 }
                 .buttonStyle(.borderedProminent)
                 .frame(maxWidth: .infinity)
-                
-                Button("Reset to Defaults") {
+
+                Button("Reset to Defaults")
+                {
                     resetToDefaults()
                 }
                 .foregroundColor(.red)
@@ -109,48 +127,49 @@ struct PreferencesView: View
         .navigationTitle("Profile & Preferences")
         .navigationBarTitleDisplayMode(.inline)
     }
-    
-    private func strokeEmoji(for stroke: SwimStroke) -> String
+
+    private func strokeEmoji(for _: SwimStroke) -> String
     {
         return "🏊‍♂️"
     }
-    
+
     private func unitEmoji(for unit: MeasureUnit) -> String
     {
-        switch unit {
+        switch unit
+        {
         case .meters: return "📏"
         case .yards: return "📐"
         }
     }
-    
+
     private func savePreferences()
     {
         manager.updateStore()
-        
-        if manager.hapticFeedback {
+
+        if manager.hapticFeedback
+        {
             let impactFeedback = UIImpactFeedbackGenerator(style: .light)
             impactFeedback.impactOccurred()
         }
     }
-    
+
     private func resetToDefaults()
     {
         manager.userName = "User"
         manager.preferredStroke = .freestyle
         manager.preferredUnit = .meters
         manager.updateStore()
-        
-        if manager.hapticFeedback {
+
+        if manager.hapticFeedback
+        {
             let impactFeedback = UIImpactFeedbackGenerator(style: .medium)
             impactFeedback.impactOccurred()
         }
     }
 }
 
-
-
-#Preview {
+#Preview
+{
     PreferencesView()
         .environmentObject(Manager())
 }
-

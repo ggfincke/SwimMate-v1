@@ -1,8 +1,8 @@
 // SwimMate/iOSViews/SettingsView/HealthKitPermissionView.swift
 
-import SwiftUI
 import HealthKit
 import HealthKitUI
+import SwiftUI
 
 struct HealthKitPermissionView: View
 {
@@ -13,7 +13,7 @@ struct HealthKitPermissionView: View
         HKQuantityType(.heartRate),
         HKQuantityType(.swimmingStrokeCount),
         HKQuantityType(.waterTemperature),
-        HKQuantityType(.underwaterDepth)
+        HKQuantityType(.underwaterDepth),
     ]
 
     @State private var trigger = false
@@ -21,44 +21,45 @@ struct HealthKitPermissionView: View
 
     var body: some View
     {
-        VStack 
+        VStack
         {
-            if authenticated 
+            if authenticated
             {
                 Text("HealthKit Access Granted")
-            } 
+            }
             else
             {
                 Text("Requesting HealthKit Access...")
             }
         }
-        .onAppear 
+        .onAppear
         {
             requestHealthDataAccess()
         }
-        
+
         // update your views or handle state changes as needed
-        .onChange(of: trigger) 
+        .onChange(of: trigger)
         {
             requestHealthDataAccess()
         }
     }
 
-    private func requestHealthDataAccess() 
+    private func requestHealthDataAccess()
     {
         // Ensure Health data is available on the device before requesting access
-        guard HKHealthStore.isHealthDataAvailable() else 
+        guard HKHealthStore.isHealthDataAvailable()
+        else
         {
             print("HealthKit is not available on this device.")
             return
         }
 
-        manager.healthStore.requestAuthorization(toShare: allTypes, read: allTypes) 
+        manager.healthStore.requestAuthorization(toShare: allTypes, read: allTypes)
         { success, error in
             if let error = error
             {
                 print("*** An error occurred while requesting authentication: \(error.localizedDescription) ***")
-            } 
+            }
             else
             {
                 authenticated = success
@@ -67,7 +68,8 @@ struct HealthKitPermissionView: View
     }
 }
 
-#Preview {
+#Preview
+{
     HealthKitPermissionView()
         .environmentObject(Manager())
 }

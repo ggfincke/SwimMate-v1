@@ -5,6 +5,7 @@
 import Foundation
 
 // MARK: - Timer Management
+
 extension WatchManager
 {
     // start elapsed time timer
@@ -29,12 +30,14 @@ extension WatchManager
     // update elapsed time based on workout start date
     private func updateElapsedTime()
     {
-        guard let startDate = workoutStartDate else
+        guard let startDate = workoutStartDate
+        else
         {
-            return }
-            DispatchQueue.main.async
-            {
-                self.elapsedTime = Date().timeIntervalSince(startDate)
-            }
+            return
+        }
+        DispatchQueue.main.async
+        {
+            self.elapsedTime = Date().timeIntervalSince(startDate)
         }
     }
+}

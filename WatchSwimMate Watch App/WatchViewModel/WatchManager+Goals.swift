@@ -7,9 +7,11 @@ import SwiftUI
 import WatchKit
 
 // MARK: - Goal Management
+
 extension WatchManager
 {
     // MARK: - Goal Constants
+
     static let maxDistanceGoal: Double = 9999
     static let maxCalorieGoal: Double = 9999
     static let maxTimeGoalHours: Int = 99
@@ -31,9 +33,9 @@ extension WatchManager
     {
         switch type
         {
-            case .distance: return goalDistance > 0
-            case .time: return goalTime > 0
-            case .calories: return goalCalories > 0
+        case .distance: return goalDistance > 0
+        case .time: return goalTime > 0
+        case .calories: return goalCalories > 0
         }
     }
 
@@ -69,82 +71,88 @@ extension WatchManager
     {
         switch type
         {
-            case .distance:
-            guard goalDistance > 0 else
+        case .distance:
+            guard goalDistance > 0
+            else
             {
-                return 0.0 }
-                return distance / goalDistance
-                case .time:
-                guard goalTime > 0 else
-                {
-                    return 0.0 }
-                    return elapsedTime / goalTime
-                    case .calories:
-                    guard goalCalories > 0 else
-                    {
-                        return 0.0 }
-                        return activeEnergy / goalCalories
-                    }
-                }
-
-                // check if a specific goal has been achieved
-                func isGoalAchieved(_ type: GoalType) -> Bool
-                {
-                    return getGoalProgress(for: type) >= 1.0
-                }
-
-                // get the current value for a goal type
-                func getCurrentValue(for type: GoalType) -> Double
-                {
-                    switch type
-                    {
-                        case .distance: return distance
-                        case .time: return elapsedTime
-                        case .calories: return activeEnergy
-                    }
-                }
-
-                // get the target value for a goal type
-                func getTargetValue(for type: GoalType) -> Double
-                {
-                    switch type
-                    {
-                        case .distance: return goalDistance
-                        case .time: return goalTime
-                        case .calories: return goalCalories
-                    }
-                }
-
-                // get the unit string for a goal type
-                func getUnit(for type: GoalType) -> String
-                {
-                    switch type
-                    {
-                        case .distance: return goalUnit == "meters" ? "m" : "yd"
-                        case .time: return ""
-                        case .calories: return "kcal"
-                    }
-                }
-
-                // get the icon for a goal type
-                func getIcon(for type: GoalType) -> String
-                {
-                    switch type
-                    {
-                        case .distance: return "figure.pool.swim"
-                        case .time: return "clock.fill"
-                        case .calories: return "flame.fill"
-                    }
-                }
-
-                // get the color for a goal type
-                func getColor(for type: GoalType) -> Color
-                {
-                    switch type
-                    {
-                        case .distance: return .blue
-                        case .time: return .purple
-                        case .calories: return .orange
-                    }
-                }
+                return 0.0
             }
+            return distance / goalDistance
+        case .time:
+            guard goalTime > 0
+            else
+            {
+                return 0.0
+            }
+            return elapsedTime / goalTime
+        case .calories:
+            guard goalCalories > 0
+            else
+            {
+                return 0.0
+            }
+            return activeEnergy / goalCalories
+        }
+    }
+
+    // check if a specific goal has been achieved
+    func isGoalAchieved(_ type: GoalType) -> Bool
+    {
+        return getGoalProgress(for: type) >= 1.0
+    }
+
+    // get the current value for a goal type
+    func getCurrentValue(for type: GoalType) -> Double
+    {
+        switch type
+        {
+        case .distance: return distance
+        case .time: return elapsedTime
+        case .calories: return activeEnergy
+        }
+    }
+
+    // get the target value for a goal type
+    func getTargetValue(for type: GoalType) -> Double
+    {
+        switch type
+        {
+        case .distance: return goalDistance
+        case .time: return goalTime
+        case .calories: return goalCalories
+        }
+    }
+
+    // get the unit string for a goal type
+    func getUnit(for type: GoalType) -> String
+    {
+        switch type
+        {
+        case .distance: return goalUnit == "meters" ? "m" : "yd"
+        case .time: return ""
+        case .calories: return "kcal"
+        }
+    }
+
+    // get the icon for a goal type
+    func getIcon(for type: GoalType) -> String
+    {
+        switch type
+        {
+        case .distance: return "figure.pool.swim"
+        case .time: return "clock.fill"
+        case .calories: return "flame.fill"
+        }
+    }
+
+    // get the color for a goal type
+    func getColor(for type: GoalType) -> Color
+    {
+        switch type
+        {
+        case .distance: return .blue
+        case .time: return .purple
+        case .calories: return .orange
+        }
+    }
+}

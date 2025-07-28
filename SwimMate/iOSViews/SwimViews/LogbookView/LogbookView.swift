@@ -7,21 +7,21 @@ struct LogbookView: View
     @EnvironmentObject var manager: Manager
     @State private var selectedFilter: TimeFilter = .thirtyDays
     @State private var searchText = ""
-    
+
     enum TimeFilter: String, CaseIterable, Identifiable
-{
+    {
         case all = "All Time"
         case thirtyDays = "30 Days"
         case ninetyDays = "90 Days"
         case sixMonths = "6 Months"
         case year = "Year"
-        
+
         var id: String
-    { self.rawValue }
-        
+        { rawValue }
+
         var shortName: String
-    {
-            switch self 
+        {
+            switch self
             {
             case .all: return "All"
             case .thirtyDays: return "30D"
@@ -31,12 +31,12 @@ struct LogbookView: View
             }
         }
     }
-    
+
     var body: some View
     {
-        NavigationStack 
+        NavigationStack
         {
-            ZStack 
+            ZStack
             {
                 // Beautiful gradient background
                 LinearGradient(
@@ -45,23 +45,23 @@ struct LogbookView: View
                     endPoint: .bottomTrailing
                 )
                 .ignoresSafeArea()
-                
-                VStack(spacing: 0) 
+
+                VStack(spacing: 0)
                 {
                     // Header Section
                     LogbookHeaderSection(searchText: $searchText, filteredWorkoutsCount: manager.filteredWorkouts(for: selectedFilter.rawValue).count)
                         .environmentObject(manager)
-                    
+
                     // Filter Section
                     LogbookFilterSection(selectedFilter: $selectedFilter)
-                    
+
                     // Stats Summary
-                    if !manager.filteredWorkouts(for: selectedFilter.rawValue).isEmpty 
+                    if !manager.filteredWorkouts(for: selectedFilter.rawValue).isEmpty
                     {
                         LogbookStatsSection(filteredWorkouts: manager.filteredWorkouts(for: selectedFilter.rawValue))
                             .environmentObject(manager)
                     }
-                    
+
                     // Workout List
                     LogbookWorkoutListSection(
                         displayedWorkouts: manager.displayedWorkouts(from: manager.filteredWorkouts(for: selectedFilter.rawValue), searchText: searchText),
@@ -84,10 +84,11 @@ struct TimeFilterChip: View
     let filter: LogbookView.TimeFilter
     let isSelected: Bool
     let action: () -> Void
-    
+
     var body: some View
     {
-        Button(action: action) {
+        Button(action: action)
+        {
             Text(filter.shortName)
                 .font(.system(size: 14, weight: .semibold))
                 .foregroundColor(isSelected ? .white : .primary)
@@ -108,20 +109,21 @@ struct LogbookStatCard: View
     let value: String
     let icon: String
     let color: Color
-    
+
     var body: some View
     {
-        VStack(spacing: 8) {
+        VStack(spacing: 8)
+        {
             Image(systemName: icon)
                 .font(.system(size: 18, weight: .medium))
                 .foregroundColor(color)
-            
+
             Text(value)
                 .font(.system(size: 16, weight: .bold))
                 .foregroundColor(.primary)
                 .lineLimit(1)
                 .minimumScaleFactor(0.8)
-            
+
             Text(title)
                 .font(.system(size: 10, weight: .medium))
                 .foregroundColor(.secondary)
@@ -139,14 +141,15 @@ struct LogbookStatCard: View
 struct SectionHeaderView: View
 {
     let title: String
-    
+
     var body: some View
     {
-        HStack {
+        HStack
+        {
             Text(title)
                 .font(.system(size: 18, weight: .bold, design: .rounded))
                 .foregroundColor(.primary)
-            
+
             Spacer()
         }
         .padding(.horizontal)
@@ -158,12 +161,14 @@ struct LogbookSwimCard: View
 {
     let swim: Swim
     @EnvironmentObject var manager: Manager
-    
+
     var body: some View
     {
-        HStack(spacing: 16) {
+        HStack(spacing: 16)
+        {
             // Date and time circle
-            VStack(spacing: 2) {
+            VStack(spacing: 2)
+            {
                 Text("\(Calendar.current.component(.day, from: swim.date))")
                     .font(.system(size: 18, weight: .bold))
                     .foregroundColor(.white)
@@ -174,51 +179,58 @@ struct LogbookSwimCard: View
             .frame(width: 50, height: 50)
             .background(Color.green)
             .clipShape(Circle())
-            
+
             // Swim details
-            VStack(alignment: .leading, spacing: 8) {
-                HStack {
+            VStack(alignment: .leading, spacing: 8)
+            {
+                HStack
+                {
                     Text(swim.date.formatted(.dateTime.hour().minute()))
                         .font(.system(size: 16, weight: .semibold))
                         .foregroundColor(.primary)
-                    
+
                     Spacer()
-                    
-                    if let distance = swim.totalDistance, distance > 0 {
+
+                    if let distance = swim.totalDistance, distance > 0
+                    {
                         Text(manager.formatDistance(distance))
                             .font(.system(size: 14, weight: .bold))
                             .foregroundColor(.green)
                     }
                 }
-                
-                HStack(spacing: 16) {
-                    HStack(spacing: 4) {
+
+                HStack(spacing: 16)
+                {
+                    HStack(spacing: 4)
+                    {
                         Image(systemName: "clock")
                             .font(.system(size: 12))
                             .foregroundColor(.secondary)
-                        
+
                         Text(formatDuration(swim.duration))
                             .font(.system(size: 14, weight: .medium))
                             .foregroundColor(.secondary)
                     }
-                    
-                    if let strokes = getStrokes(from: swim) {
-                        HStack(spacing: 4) {
+
+                    if let strokes = getStrokes(from: swim)
+                    {
+                        HStack(spacing: 4)
+                        {
                             Image(systemName: "figure.pool.swim")
                                 .font(.system(size: 12))
                                 .foregroundColor(.secondary)
-                            
+
                             Text(strokes)
                                 .font(.system(size: 12, weight: .medium))
                                 .foregroundColor(.secondary)
                                 .lineLimit(1)
                         }
                     }
-                    
+
                     Spacer()
                 }
             }
-            
+
             // Chevron
             Image(systemName: "chevron.right")
                 .font(.system(size: 12, weight: .medium))
@@ -229,17 +241,18 @@ struct LogbookSwimCard: View
         .cornerRadius(16)
         .shadow(color: .black.opacity(0.04), radius: 6, x: 0, y: 2)
     }
-    
+
     private func formatDuration(_ duration: TimeInterval) -> String
     {
         let minutes = Int(duration / 60)
         return "\(minutes) min"
     }
-    
+
     private func getStrokes(from swim: Swim) -> String?
     {
         let uniqueStrokes = Set(swim.laps.compactMap { $0.stroke?.description })
-        if uniqueStrokes.isEmpty {
+        if uniqueStrokes.isEmpty
+        {
             return nil
         }
         return uniqueStrokes.joined(separator: ", ")
@@ -249,19 +262,21 @@ struct LogbookSwimCard: View
 struct EmptyLogbookView: View
 {
     let selectedFilter: LogbookView.TimeFilter
-    
+
     var body: some View
     {
-        VStack(spacing: 20) {
+        VStack(spacing: 20)
+        {
             Image(systemName: "figure.pool.swim")
                 .font(.system(size: 60, weight: .light))
                 .foregroundColor(.secondary.opacity(0.6))
-            
-            VStack(spacing: 8) {
+
+            VStack(spacing: 8)
+            {
                 Text("No swims recorded")
                     .font(.system(size: 20, weight: .semibold))
                     .foregroundColor(.primary)
-                
+
                 Text("No swim workouts found for \(selectedFilter.rawValue.lowercased())")
                     .font(.system(size: 16, weight: .regular))
                     .foregroundColor(.secondary)
@@ -277,16 +292,18 @@ struct SearchEmptyView: View
 {
     var body: some View
     {
-        VStack(spacing: 20) {
+        VStack(spacing: 20)
+        {
             Image(systemName: "magnifyingglass.circle")
                 .font(.system(size: 60, weight: .light))
                 .foregroundColor(.secondary.opacity(0.6))
-            
-            VStack(spacing: 8) {
+
+            VStack(spacing: 8)
+            {
                 Text("No results found")
                     .font(.system(size: 20, weight: .semibold))
                     .foregroundColor(.primary)
-                
+
                 Text("Try adjusting your search terms")
                     .font(.system(size: 16, weight: .regular))
                     .foregroundColor(.secondary)
@@ -298,7 +315,8 @@ struct SearchEmptyView: View
     }
 }
 
-#Preview {
+#Preview
+{
     LogbookView()
         .environmentObject(Manager())
 }

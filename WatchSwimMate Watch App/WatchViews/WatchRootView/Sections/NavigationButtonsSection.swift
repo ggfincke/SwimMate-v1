@@ -37,13 +37,13 @@ struct NavigationButtonsSection: View
     private var quickStartButton: some View
     {
         MainButton(
-        label: "Quick Start",
-        icon: "bolt.fill",
-        tint: manager.canStartWorkout ? .green : .gray,
-        buttonId: "quick",
-        isEnabled: manager.canStartWorkout,
-        compact: manager.isCompactDevice,
-        activeButton: $activeButton
+            label: "Quick Start",
+            icon: "bolt.fill",
+            tint: manager.canStartWorkout ? .green : .gray,
+            buttonId: "quick",
+            isEnabled: manager.canStartWorkout,
+            compact: manager.isCompactDevice,
+            activeButton: $activeButton
         )
         {
             if manager.canStartWorkout
@@ -72,13 +72,13 @@ struct NavigationButtonsSection: View
     private var setGoalButton: some View
     {
         MainButton(
-        label: "Set Goal",
-        icon: "target",
-        tint: manager.canStartWorkout ? .blue : .gray,
-        buttonId: "goal",
-        isEnabled: manager.canStartWorkout,
-        compact: manager.isCompactDevice,
-        activeButton: $activeButton
+            label: "Set Goal",
+            icon: "target",
+            tint: manager.canStartWorkout ? .blue : .gray,
+            buttonId: "goal",
+            isEnabled: manager.canStartWorkout,
+            compact: manager.isCompactDevice,
+            activeButton: $activeButton
         )
         {
             if manager.canStartWorkout
@@ -104,13 +104,13 @@ struct NavigationButtonsSection: View
     private var importSetButton: some View
     {
         MainButton(
-        label: "Import Set",
-        icon: "square.and.arrow.down.fill",
-        tint: .orange,
-        buttonId: "import",
-        isEnabled: true,
-        compact: manager.isCompactDevice,
-        activeButton: $activeButton
+            label: "Import Set",
+            icon: "square.and.arrow.down.fill",
+            tint: .orange,
+            buttonId: "import",
+            isEnabled: true,
+            compact: manager.isCompactDevice,
+            activeButton: $activeButton
         )
         {
             withAnimation
@@ -129,13 +129,13 @@ struct NavigationButtonsSection: View
     private var settingsButton: some View
     {
         MainButton(
-        label: "Settings",
-        icon: "gear",
-        tint: .gray,
-        buttonId: "settings",
-        isEnabled: true,
-        compact: manager.isCompactDevice,
-        activeButton: $activeButton
+            label: "Settings",
+            icon: "gear",
+            tint: .gray,
+            buttonId: "settings",
+            isEnabled: true,
+            compact: manager.isCompactDevice,
+            activeButton: $activeButton
         )
         {
             withAnimation
@@ -156,25 +156,25 @@ struct NavigationButtonsSection: View
 #Preview("Standard Size")
 {
     NavigationButtonsSection(
-    activeButton: .constant(nil),
-    showSettings: .constant(false),
-    showHealthKitAlert: .constant(false)
+        activeButton: .constant(nil),
+        showSettings: .constant(false),
+        showHealthKitAlert: .constant(false)
     )
     .environment({
         let manager = WatchManager()
         return manager
-        }())
-    }
+    }())
+}
 
-    #Preview("Compact Size")
-    {
-        NavigationButtonsSection(
+#Preview("Compact Size")
+{
+    NavigationButtonsSection(
         activeButton: .constant(nil),
         showSettings: .constant(false),
         showHealthKitAlert: .constant(false)
-        )
-        .environment({
-            let manager = WatchManager()
-            return manager
-            }())
-        }
+    )
+    .environment({
+        let manager = WatchManager()
+        return manager
+    }())
+}

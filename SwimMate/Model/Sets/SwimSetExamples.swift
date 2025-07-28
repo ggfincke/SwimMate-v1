@@ -3,9 +3,10 @@
 import Foundation
 
 /// Example swim sets demonstrating the component-based architecture
-struct SwimSetExamples 
+enum SwimSetExamples
 {
     // MARK: - Beginner Sets
+
     static let beginnerFreestyle = SwimSet(
         title: "Beginner Freestyle",
         components: [
@@ -35,14 +36,15 @@ struct SwimSetExamples
                 distance: 100,
                 strokeStyle: .freestyle,
                 instructions: "Easy recovery"
-            )
+            ),
         ],
         difficulty: .beginner,
         estimatedDuration: 25 * 60, // 25 minutes
         description: "Basic freestyle set focusing on technique and endurance"
     )
-    
+
     // MARK: - Intermediate Sets
+
     static let intermediateIM = SwimSet(
         title: "IM Pyramid",
         components: [
@@ -91,14 +93,15 @@ struct SwimSetExamples
                 type: .cooldown,
                 distance: 200,
                 strokeStyle: .freestyle
-            )
+            ),
         ],
         difficulty: .intermediate,
         estimatedDuration: 40 * 60, // 40 minutes
         description: "Individual Medley pyramid set"
     )
-    
+
     // MARK: - Advanced Sets
+
     static let advancedSprint = SwimSet(
         title: "Sprint Training",
         components: [
@@ -154,17 +157,18 @@ struct SwimSetExamples
                 type: .cooldown,
                 distance: 300,
                 strokeStyle: .freestyle
-            )
+            ),
         ],
         difficulty: .advanced,
         estimatedDuration: 35 * 60, // 35 minutes
         description: "High-intensity sprint training set"
     )
-    
+
     // MARK: - All Examples
+
     static let allExamples: [SwimSet] = [
         beginnerFreestyle,
         intermediateIM,
-        advancedSprint
+        advancedSprint,
     ]
-} 
+}

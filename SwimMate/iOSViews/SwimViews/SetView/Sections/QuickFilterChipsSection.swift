@@ -5,7 +5,7 @@ import SwiftUI
 struct QuickFilterChipsSection: View
 {
     @EnvironmentObject var manager: Manager
-    
+
     // Quick filter presets
     private let quickFilters: [(String, String)] = [
         ("Favorites", "heart.fill"),
@@ -15,14 +15,17 @@ struct QuickFilterChipsSection: View
         ("Freestyle", "figure.pool.swim"),
         ("Backstroke", "arrow.up"),
         ("Breaststroke", "arrow.down"),
-        ("Butterfly", "wing.left.and.wing.right")
+        ("Butterfly", "wing.left.and.wing.right"),
     ]
-    
+
     var body: some View
     {
-        ScrollView(.horizontal, showsIndicators: false) {
-            HStack(spacing: 12) {
-                ForEach(quickFilters, id: \.0) { filter in
+        ScrollView(.horizontal, showsIndicators: false)
+        {
+            HStack(spacing: 12)
+            {
+                ForEach(quickFilters, id: \.0)
+                { filter in
                     QuickFilterChip(
                         title: filter.0,
                         icon: filter.1,
@@ -36,7 +39,8 @@ struct QuickFilterChipsSection: View
     }
 }
 
-#Preview {
+#Preview
+{
     QuickFilterChipsSection()
         .environmentObject(Manager())
 }

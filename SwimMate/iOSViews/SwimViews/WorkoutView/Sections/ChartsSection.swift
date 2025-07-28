@@ -1,14 +1,15 @@
 // SwimMate/iOSViews/SwimViews/WorkoutView/Sections/ChartsSection.swift
 
-import SwiftUI
 import Charts
+import SwiftUI
 
 // MARK: - Charts Section with TabView
+
 struct ChartsSection: View
 {
     let swim: Swim
     @Binding var selectedTab: Int
-    
+
     var body: some View
     {
         VStack(alignment: .leading, spacing: 12)
@@ -18,13 +19,13 @@ struct ChartsSection: View
                 Image(systemName: "chart.line.uptrend.xyaxis")
                     .foregroundColor(.blue)
                     .font(.headline)
-                
+
                 Text("Performance Analytics")
                     .font(.headline)
                     .fontWeight(.bold)
                     .foregroundColor(.white)
             }
-            
+
             VStack(spacing: 0)
             {
                 // Chart picker
@@ -36,7 +37,7 @@ struct ChartsSection: View
                 }
                 .pickerStyle(.segmented)
                 .padding(.bottom, 16)
-                
+
                 // Chart content
                 Group
                 {
@@ -71,7 +72,7 @@ struct ChartsSection: View
         Lap(startDate: baseDate.addingTimeInterval(180), endDate: baseDate.addingTimeInterval(223.8), metadata: ["HKSwimmingStrokeStyle": 3, "HKSWOLFScore": 31.1]),
         Lap(startDate: baseDate.addingTimeInterval(300), endDate: baseDate.addingTimeInterval(346.3), metadata: ["HKSwimmingStrokeStyle": 4, "HKSWOLFScore": 30.5]),
         Lap(startDate: baseDate.addingTimeInterval(360), endDate: baseDate.addingTimeInterval(401.9), metadata: ["HKSwimmingStrokeStyle": 2, "HKSWOLFScore": 27.3]),
-        Lap(startDate: baseDate.addingTimeInterval(480), endDate: baseDate.addingTimeInterval(528.1), metadata: ["HKSwimmingStrokeStyle": 5, "HKSWOLFScore": 32.8])
+        Lap(startDate: baseDate.addingTimeInterval(480), endDate: baseDate.addingTimeInterval(528.1), metadata: ["HKSwimmingStrokeStyle": 5, "HKSWOLFScore": 32.8]),
     ]
 
     let sampleSwim = Swim(
@@ -84,7 +85,8 @@ struct ChartsSection: View
         laps: sampleLaps
     )
 
-    return VStack {
+    return VStack
+    {
         ChartsSection(swim: sampleSwim, selectedTab: .constant(0))
             .padding()
     }

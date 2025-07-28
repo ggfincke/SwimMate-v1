@@ -1,7 +1,7 @@
 // WatchSwimMateApp.swift
 
-import SwiftUI
 import HealthKit
+import SwiftUI
 
 @main
 struct WatchSwimMate_Watch_App: App
@@ -17,23 +17,23 @@ struct WatchSwimMate_Watch_App: App
             NavigationStack(path: $watchManager.path)
             {
                 WatchRootView()
-                .navigationDestination(for: NavState.self)
-                {
-                    state in
-                    switch state
+                    .navigationDestination(for: NavState.self)
                     {
+                        state in
+                        switch state
+                        {
                         case .swimSetup:
-                        SwimSetupView()
+                            SwimSetupView()
                         case .goalSwimSetup:
-                        GoalSwimView()
+                            GoalSwimView()
                         case .indoorPoolSetup:
-                        IndoorPoolSetupView()
-                        case .swimmingView(let set):
-                        SwimmingView(set: set)
+                            IndoorPoolSetupView()
+                        case let .swimmingView(set):
+                            SwimmingView(set: set)
                         case .importSetView:
-                        ImportSetView()
+                            ImportSetView()
+                        }
                     }
-                }
             }
             .sheet(isPresented: $watchManager.showingSummaryView)
             {
@@ -80,7 +80,8 @@ struct WatchSwimMate_Watch_App: App
         // 1. HK is available on device
         // 2. we don't have essential permissions
 
-        guard HKHealthStore.isHealthDataAvailable() else
+        guard HKHealthStore.isHealthDataAvailable()
+        else
         {
             print("HealthKit not available on this device")
             return
@@ -106,7 +107,8 @@ struct WatchSwimMate_Watch_App: App
     // check if have partial access (some permissions granted)
     private func hasPartialAccess() -> Bool
     {
-        guard HKHealthStore.isHealthDataAvailable() else
+        guard HKHealthStore.isHealthDataAvailable()
+        else
         {
             return false
         }

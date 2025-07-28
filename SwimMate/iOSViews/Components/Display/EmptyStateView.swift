@@ -7,19 +7,21 @@ struct EmptyStateView: View
     let icon: String
     let title: String
     let subtitle: String
-    
+
     var body: some View
     {
-        VStack(spacing: 16) {
+        VStack(spacing: 16)
+        {
             Image(systemName: icon)
                 .font(.system(size: 40, weight: .light))
                 .foregroundColor(.secondary.opacity(0.6))
-            
-            VStack(spacing: 4) {
+
+            VStack(spacing: 4)
+            {
                 Text(title)
                     .font(.system(size: 16, weight: .semibold))
                     .foregroundColor(.primary)
-                
+
                 Text(subtitle)
                     .font(.system(size: 14, weight: .regular))
                     .foregroundColor(.secondary)
@@ -34,7 +36,8 @@ struct EmptyStateView: View
     }
 }
 
-#Preview {
+#Preview
+{
     EmptyStateView(
         icon: "figure.pool.swim",
         title: "No recent swims",

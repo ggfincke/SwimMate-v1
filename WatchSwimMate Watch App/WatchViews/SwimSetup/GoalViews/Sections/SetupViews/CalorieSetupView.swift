@@ -5,7 +5,6 @@ import SwiftUI
 struct CalorieSetupView: View
 
 {
-
     @Environment(WatchManager.self) private var manager
     @Environment(\.dismiss) private var dismiss
 
@@ -16,20 +15,20 @@ struct CalorieSetupView: View
     var body: some View
     {
         return GoalSetupView(
-        title: "Calorie Goal",
-        unit: "kcal",
-        accentColor: .orange,
-        presetValues: caloriePresets,
-        minValue: 0,
-        maxValue: WatchManager.maxCalorieGoal,
-        value: Binding(
-        get: { manager.goalCalories },
-        set: { manager.goalCalories = $0 }
-        ),
-        onDismiss:
-        {
-            dismiss()
-        }
+            title: "Calorie Goal",
+            unit: "kcal",
+            accentColor: .orange,
+            presetValues: caloriePresets,
+            minValue: 0,
+            maxValue: WatchManager.maxCalorieGoal,
+            value: Binding(
+                get: { manager.goalCalories },
+                set: { manager.goalCalories = $0 }
+            ),
+            onDismiss:
+            {
+                dismiss()
+            }
         )
     }
 }
@@ -37,5 +36,5 @@ struct CalorieSetupView: View
 #Preview
 {
     CalorieSetupView()
-    .environment(WatchManager())
+        .environment(WatchManager())
 }
