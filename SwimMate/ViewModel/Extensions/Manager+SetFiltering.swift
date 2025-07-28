@@ -3,10 +3,11 @@
 import Foundation
 
 // MARK: - Set Filtering Extension
+
 extension Manager
 {
-    
     // MARK: - Filter Options
+
     struct SetFilters: Equatable
     {
         var stroke: SwimStroke?
@@ -19,7 +20,7 @@ extension Manager
         var showFavorites: Bool
         var hasWarmup: Bool?
         var hasCooldown: Bool?
-        
+
         static let defaultFilters = SetFilters(
             stroke: nil,
             difficulty: nil,
@@ -33,7 +34,7 @@ extension Manager
             hasCooldown: nil
         )
     }
-    
+
     enum DistanceRange: String, CaseIterable
     {
         case any = "Any"
@@ -41,20 +42,20 @@ extension Manager
         case medium = "Medium (1000-2000)"
         case long = "Long (2000-3000)"
         case ultraLong = "Ultra Long (> 3000)"
-        
+
         var range: ClosedRange<Int>?
         {
             switch self
             {
             case .any: return nil
-            case .short: return 0...999
-            case .medium: return 1000...2000
-            case .long: return 2000...3000
-            case .ultraLong: return 3001...Int.max
+            case .short: return 0 ... 999
+            case .medium: return 1000 ... 2000
+            case .long: return 2000 ... 3000
+            case .ultraLong: return 3001 ... Int.max
             }
         }
     }
-    
+
     enum DurationRange: String, CaseIterable
     {
         case any = "Any"
@@ -62,28 +63,29 @@ extension Manager
         case moderate = "Moderate (20-40 min)"
         case long = "Long (40-60 min)"
         case extended = "Extended (> 60 min)"
-        
+
         var range: ClosedRange<TimeInterval>?
         {
             switch self
             {
             case .any: return nil
-            case .quick: return 0...1200 // 20 minutes
-            case .moderate: return 1200...2400 // 20-40 minutes
-            case .long: return 2400...3600 // 40-60 minutes
-            case .extended: return 3600...TimeInterval.greatestFiniteMagnitude
+            case .quick: return 0 ... 1200 // 20 minutes
+            case .moderate: return 1200 ... 2400 // 20-40 minutes
+            case .long: return 2400 ... 3600 // 40-60 minutes
+            case .extended: return 3600 ... TimeInterval.greatestFiniteMagnitude
             }
         }
     }
-    
+
     // MARK: - Published Filter State
-    
+
     // MARK: - Computed Properties
+
     var filteredSets: [SwimSet]
     {
         return filterSets(sampleSets, with: activeFilters)
     }
-    
+
     var recommendedSets: [SwimSet]
     {
         let baseFilters = SetFilters(
@@ -98,9 +100,9 @@ extension Manager
             hasWarmup: nil,
             hasCooldown: nil
         )
-        
+
         let recommended = filterSets(sampleSets, with: baseFilters)
-        
+
         // Sort by difficulty preference (beginner first for new users)
         return recommended.sorted
         { set1, set2 in
@@ -110,61 +112,62 @@ extension Manager
             return index1 < index2
         }.prefix(5).map { $0 }
     }
-    
+
     var filterSummary: String
     {
         var components: [String] = []
-        
+
         if let stroke = activeFilters.stroke
         {
             components.append(stroke.description)
         }
-        
+
         if let difficulty = activeFilters.difficulty
         {
             components.append(difficulty.rawValue)
         }
-        
+
         if let unit = activeFilters.unit
         {
             components.append(unit.rawValue)
         }
-        
+
         if activeFilters.distanceRange != .any
         {
             components.append(activeFilters.distanceRange.rawValue)
         }
-        
+
         if activeFilters.durationRange != .any
         {
             components.append(activeFilters.durationRange.rawValue)
         }
-        
+
         if !activeFilters.componentTypes.isEmpty
         {
             let types = activeFilters.componentTypes.map { $0.rawValue }.joined(separator: ", ")
             components.append(types)
         }
-        
+
         if activeFilters.showFavorites
         {
             components.append("Favorites")
         }
-        
+
         if let hasWarmup = activeFilters.hasWarmup
         {
             components.append(hasWarmup ? "Has Warmup" : "No Warmup")
         }
-        
+
         if let hasCooldown = activeFilters.hasCooldown
         {
             components.append(hasCooldown ? "Has Cooldown" : "No Cooldown")
         }
-        
+
         return components.isEmpty ? "All Sets" : components.joined(separator: " • ")
     }
-    
+
     // MARK: - Filtering Logic
+
     private func filterSets(_ sets: [SwimSet], with filters: SetFilters) -> [SwimSet]
     {
         return sets.filter
@@ -174,25 +177,25 @@ extension Manager
             {
                 return false
             }
-            
+
             // Difficulty filter
             if let difficulty = filters.difficulty, set.difficulty != difficulty
             {
                 return false
             }
-            
+
             // Unit filter
             if let unit = filters.unit, set.measureUnit != unit
             {
                 return false
             }
-            
+
             // Distance range filter
             if let range = filters.distanceRange.range, !range.contains(set.totalDistance)
             {
                 return false
             }
-            
+
             // Duration range filter
             if let range = filters.durationRange.range,
                let duration = set.estimatedDuration,
@@ -200,7 +203,7 @@ extension Manager
             {
                 return false
             }
-            
+
             // Component types filter
             if !filters.componentTypes.isEmpty
             {
@@ -210,7 +213,7 @@ extension Manager
                     return false
                 }
             }
-            
+
             // Search text filter
             if !filters.searchText.isEmpty
             {
@@ -218,19 +221,19 @@ extension Manager
                 let titleMatch = set.title.lowercased().contains(searchLower)
                 let descriptionMatch = set.description?.lowercased().contains(searchLower) ?? false
                 let strokeMatch = set.primaryStroke?.description.lowercased().contains(searchLower) ?? false
-                
-                if !titleMatch && !descriptionMatch && !strokeMatch
+
+                if !titleMatch, !descriptionMatch, !strokeMatch
                 {
                     return false
                 }
             }
-            
+
             // Favorites filter
-            if filters.showFavorites && !favoriteSetIds.contains(set.id)
+            if filters.showFavorites, !favoriteSetIds.contains(set.id)
             {
                 return false
             }
-            
+
             // Warmup filter
             if let hasWarmup = filters.hasWarmup
             {
@@ -241,7 +244,7 @@ extension Manager
                     return false
                 }
             }
-            
+
             // Cooldown filter
             if let hasCooldown = filters.hasCooldown
             {
@@ -252,22 +255,23 @@ extension Manager
                     return false
                 }
             }
-            
+
             return true
         }
     }
-    
+
     // MARK: - Filter Actions
+
     func updateFilter<T: Equatable>(_ keyPath: WritableKeyPath<SetFilters, T>, to value: T)
     {
         activeFilters[keyPath: keyPath] = value
     }
-    
+
     func clearAllFilters()
     {
         activeFilters = SetFilters.defaultFilters
     }
-    
+
     func toggleFavorite(setId: UUID)
     {
         if favoriteSetIds.contains(setId)
@@ -279,13 +283,14 @@ extension Manager
             favoriteSetIds.insert(setId)
         }
     }
-    
+
     func isSetFavorite(setId: UUID) -> Bool
     {
         return favoriteSetIds.contains(setId)
     }
-    
+
     // MARK: - Smart Recommendations
+
     func getSmartRecommendations(for userLevel: SwimSet.Difficulty, preferredDistance: DistanceRange) -> [SwimSet]
     {
         let smartFilters = SetFilters(
@@ -300,14 +305,15 @@ extension Manager
             hasWarmup: true,
             hasCooldown: true
         )
-        
+
         return filterSets(sampleSets, with: smartFilters)
             .shuffled()
             .prefix(3)
             .map { $0 }
     }
-    
+
     // MARK: - Quick Filter Methods
+
     func isQuickFilterSelected(_ filterName: String) -> Bool
     {
         switch filterName
@@ -332,7 +338,7 @@ extension Manager
             return false
         }
     }
-    
+
     func applyQuickFilter(_ filterName: String)
     {
         switch filterName
@@ -357,8 +363,9 @@ extension Manager
             break
         }
     }
-    
+
     // MARK: - Statistics
+
     var filterStatistics: (total: Int, filtered: Int, percentage: Double)
     {
         let total = sampleSets.count
@@ -367,4 +374,3 @@ extension Manager
         return (total, filtered, percentage)
     }
 }
-

@@ -6,6 +6,7 @@ import Foundation
 import HealthKit
 
 // MARK: - HealthKit Authorization
+
 extension WatchManager
 {
     // load persisted state (via userdefaults) & check current HK auth status
@@ -21,7 +22,8 @@ extension WatchManager
     // check current HK auth status w/o requesting permission
     func checkCurrentAuthorizationStatus()
     {
-        guard HKHealthStore.isHealthDataAvailable() else
+        guard HKHealthStore.isHealthDataAvailable()
+        else
         {
             DispatchQueue.main.async
             {
@@ -61,7 +63,7 @@ extension WatchManager
             self.healthKitAuthorized = isAuthorized
 
             // if auth but haven't marked as requested, update that
-            if isAuthorized && !self.authorizationRequested
+            if isAuthorized, !self.authorizationRequested
             {
                 self.updateAuthorizationRequestedFlag()
             }
@@ -85,17 +87,18 @@ extension WatchManager
     {
         switch status
         {
-            case .notDetermined: return "Not Determined"
-            case .sharingDenied: return "Denied"
-            case .sharingAuthorized: return "Authorized"
-            @unknown default: return "Unknown"
+        case .notDetermined: return "Not Determined"
+        case .sharingDenied: return "Denied"
+        case .sharingAuthorized: return "Authorized"
+        @unknown default: return "Unknown"
         }
     }
 
     // request HK auth & persist request state
     func requestAuthorization()
     {
-        guard HKHealthStore.isHealthDataAvailable() else
+        guard HKHealthStore.isHealthDataAvailable()
+        else
         {
             print("HealthKit is not available on this device")
             return
@@ -108,7 +111,8 @@ extension WatchManager
         healthStore.requestAuthorization(toShare: requiredShareTypes, read: requiredReadTypes)
         {
             [weak self] success, error in
-            guard let self = self else
+            guard let self = self
+            else
             {
                 return
             }
@@ -163,6 +167,6 @@ extension WatchManager
     func shouldShowPermissionDialog() -> Bool
     {
         return HKHealthStore.isHealthDataAvailable() &&
-        (!authorizationRequested || !healthKitAuthorized)
+            (!authorizationRequested || !healthKitAuthorized)
     }
 }

@@ -5,7 +5,6 @@ import SwiftUI
 struct SwimSetupView: View
 
 {
-
     @Environment(WatchManager.self) private var manager
 
     // responsive sizing based on device
@@ -35,16 +34,16 @@ struct SwimSetupView: View
         {
             // heading
             Text("Select Type")
-            .font(.system(size: headingFontSize, weight: .semibold))
-            .padding(.top, topPadding)
+                .font(.system(size: headingFontSize, weight: .semibold))
+                .padding(.top, topPadding)
 
             // pool swim
             ActionButton(
-            label: "Pool",
-            icon: "figure.pool.swim",
-            tint: .blue,
-            compact: manager.isCompactDevice,
-            showArrow: true
+                label: "Pool",
+                icon: "figure.pool.swim",
+                tint: .blue,
+                compact: manager.isCompactDevice,
+                showArrow: true
             )
             {
                 manager.isPool = true
@@ -53,11 +52,11 @@ struct SwimSetupView: View
 
             // open water swim
             ActionButton(
-            label: "Open Water",
-            icon: "water.waves",
-            tint: .teal,
-            compact: manager.isCompactDevice,
-            showArrow: true
+                label: "Open Water",
+                icon: "water.waves",
+                tint: .teal,
+                compact: manager.isCompactDevice,
+                showArrow: true
             )
             {
                 manager.isPool = false
@@ -75,5 +74,5 @@ struct SwimSetupView: View
 #Preview
 {
     SwimSetupView()
-    .environment(WatchManager())
+        .environment(WatchManager())
 }

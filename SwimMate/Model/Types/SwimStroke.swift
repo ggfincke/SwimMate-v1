@@ -26,4 +26,4 @@ enum SwimStroke: Int, Codable
         case .kickboard: return "Kickboard"
         }
     }
-} 
+}

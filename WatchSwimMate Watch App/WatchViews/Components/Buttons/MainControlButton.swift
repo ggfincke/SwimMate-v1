@@ -56,102 +56,102 @@ struct MainControlButton: View
                     isAnimating = false
                 }
             }
-            })
+        })
+        {
+            VStack(spacing: verticalSpacing)
             {
-                VStack(spacing: verticalSpacing)
+                ZStack
                 {
-                    ZStack
-                    {
-                        Circle()
+                    Circle()
                         .fill(color)
                         .frame(width: circleSize, height: circleSize)
                         .overlay(
-                        Circle()
-                        .stroke(Color.white.opacity(0.3), lineWidth: isCompact ? 0.5 : 1)
+                            Circle()
+                                .stroke(Color.white.opacity(0.3), lineWidth: isCompact ? 0.5 : 1)
                         )
                         .shadow(
-                        color: color.opacity(0.3),
-                        radius: isAnimating ? shadowRadius + 2 : shadowRadius,
-                        x: 0,
-                        y: isCompact ? 1 : 2
+                            color: color.opacity(0.3),
+                            radius: isAnimating ? shadowRadius + 2 : shadowRadius,
+                            x: 0,
+                            y: isCompact ? 1 : 2
                         )
 
-                        Image(systemName: icon)
+                    Image(systemName: icon)
                         .font(.system(size: iconSize, weight: .semibold))
                         .foregroundColor(.white)
-                    }
-                    .scaleEffect(isAnimating ? 0.95 : 1.0)
+                }
+                .scaleEffect(isAnimating ? 0.95 : 1.0)
 
-                    Text(label)
+                Text(label)
                     .font(.system(size: labelSize, weight: .medium, design: .rounded))
                     .foregroundColor(.primary)
                     .lineLimit(1)
                     .minimumScaleFactor(0.8)
-                }
             }
-            .buttonStyle(PlainButtonStyle())
         }
+        .buttonStyle(PlainButtonStyle())
     }
+}
 
-    // preview
-    #Preview
+// preview
+#Preview
+{
+    ScrollView
     {
-        ScrollView
+        VStack(spacing: 20)
         {
-            VStack(spacing: 20)
+            // normal versions
+            HStack(spacing: 16)
             {
-                // normal versions
-                HStack(spacing: 16)
-                {
-                    MainControlButton(
+                MainControlButton(
                     icon: "play.fill",
                     label: "Start",
                     color: .green,
                     isCompact: false
-                    )
-                    {
-                        print("Start tapped")
-                    }
+                )
+                {
+                    print("Start tapped")
+                }
 
-                    MainControlButton(
+                MainControlButton(
                     icon: "pause.fill",
                     label: "Pause",
                     color: .orange,
                     isCompact: false
-                    )
-                    {
-                        print("Pause tapped")
-                    }
+                )
+                {
+                    print("Pause tapped")
                 }
+            }
 
-                // compact versions
-                Text("Compact Version:")
+            // compact versions
+            Text("Compact Version:")
                 .font(.caption)
                 .foregroundColor(.secondary)
 
-                HStack(spacing: 16)
-                {
-                    MainControlButton(
+            HStack(spacing: 16)
+            {
+                MainControlButton(
                     icon: "play.fill",
                     label: "Start",
                     color: .green,
                     isCompact: true
-                    )
-                    {
-                        print("Compact Start tapped")
-                    }
+                )
+                {
+                    print("Compact Start tapped")
+                }
 
-                    MainControlButton(
+                MainControlButton(
                     icon: "pause.fill",
                     label: "Pause",
                     color: .orange,
                     isCompact: true
-                    )
-                    {
-                        print("Compact Pause tapped")
-                    }
+                )
+                {
+                    print("Compact Pause tapped")
                 }
             }
-            .padding()
         }
+        .padding()
     }
+}

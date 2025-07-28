@@ -6,7 +6,6 @@ import SwiftUI
 struct NavigationControls: View
 
 {
-
     // helper funcs
     @Binding var currentIndex: Int
     let totalSteps: Int
@@ -32,9 +31,9 @@ struct NavigationControls: View
         {
             // prev button
             CompactNavButton(
-            icon: "chevron.left",
-            isEnabled: canGoBack,
-            color: .gray
+                icon: "chevron.left",
+                isEnabled: canGoBack,
+                color: .gray
             )
             {
                 if canGoBack
@@ -51,22 +50,22 @@ struct NavigationControls: View
 
             // step indicator
             Text("\(currentIndex + 1) of \(totalSteps)")
-            .font(.system(size: 11, weight: .semibold, design: .rounded))
-            .foregroundColor(.secondary)
-            .padding(.horizontal, 6)
-            .padding(.vertical, 4)
-            .background(
-            Capsule()
-            .fill(Color.secondary.opacity(0.15))
-            )
+                .font(.system(size: 11, weight: .semibold, design: .rounded))
+                .foregroundColor(.secondary)
+                .padding(.horizontal, 6)
+                .padding(.vertical, 4)
+                .background(
+                    Capsule()
+                        .fill(Color.secondary.opacity(0.15))
+                )
 
             Spacer()
 
             // next/complete button
             CompactNavButton(
-            icon: isLastStep ? "checkmark" : "chevron.right",
-            isEnabled: true,
-            color: isLastStep ? .green : .blue
+                icon: isLastStep ? "checkmark" : "chevron.right",
+                isEnabled: true,
+                color: isLastStep ? .green : .blue
             )
             {
                 // if last step, next push ends set
@@ -94,25 +93,26 @@ struct NavigationControls: View
 }
 
 // preview
-#Preview {
+#Preview
+{
     VStack(spacing: 20)
     {
         // start of workout
         NavigationControls(
-        currentIndex: .constant(0),
-        totalSteps: 5
+            currentIndex: .constant(0),
+            totalSteps: 5
         )
 
         // middle of workout
         NavigationControls(
-        currentIndex: .constant(2),
-        totalSteps: 5
+            currentIndex: .constant(2),
+            totalSteps: 5
         )
 
         // last step
         NavigationControls(
-        currentIndex: .constant(4),
-        totalSteps: 5
+            currentIndex: .constant(4),
+            totalSteps: 5
         )
     }
     .padding()

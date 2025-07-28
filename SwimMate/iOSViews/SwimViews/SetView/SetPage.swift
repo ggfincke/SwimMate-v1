@@ -6,14 +6,16 @@ struct SetPage: View
 {
     @EnvironmentObject var manager: Manager
     @EnvironmentObject var watchOSManager: WatchConnector
-    
+
     @State private var showingFilter = false
     @State private var showingSearch = false
-    
+
     var body: some View
     {
-        NavigationView {
-            ZStack {
+        NavigationView
+        {
+            ZStack
+            {
                 // Background gradient
                 LinearGradient(
                     colors: [Color.blue.opacity(0.1), Color.cyan.opacity(0.05)],
@@ -21,36 +23,38 @@ struct SetPage: View
                     endPoint: .bottomLeading
                 )
                 .ignoresSafeArea()
-                
-                ScrollView {
-                    LazyVStack(spacing: 24) {
+
+                ScrollView
+                {
+                    LazyVStack(spacing: 24)
+                    {
                         // Hero Header
                         SetPageHeroSection(
                             showingSearch: $showingSearch,
                             showingFilter: $showingFilter,
                             hasActiveFilters: hasActiveFilters
                         )
-                        
+
                         // Quick Filter Chips
                         QuickFilterChipsSection()
                             .environmentObject(manager)
-                        
+
                         // Recommended Sets Section
-                        if !manager.recommendedSets.isEmpty {
+                        if !manager.recommendedSets.isEmpty
+                        {
                             RecommendedSetsSection()
                                 .environmentObject(manager)
                                 .environmentObject(watchOSManager)
                         }
-                        
+
                         // Current Filter Summary
                         FilterSummarySection(hasActiveFilters: hasActiveFilters)
                             .environmentObject(manager)
-                        
+
                         // Main Sets Grid
                         SetsGridSection()
                             .environmentObject(manager)
                             .environmentObject(watchOSManager)
-                        
                     }
                     .padding(.horizontal)
                     .padding(.bottom, 100)
@@ -59,41 +63,46 @@ struct SetPage: View
             .navigationTitle("")
             .navigationBarHidden(true)
         }
-        .sheet(isPresented: $showingFilter) {
+        .sheet(isPresented: $showingFilter)
+        {
             FilterSheetView()
                 .environmentObject(manager)
         }
-        .sheet(isPresented: $showingSearch) {
+        .sheet(isPresented: $showingSearch)
+        {
             SearchSheetView()
                 .environmentObject(manager)
         }
     }
-    
+
     // MARK: - Helper Properties
+
     private var hasActiveFilters: Bool
     {
         manager.activeFilters != Manager.SetFilters.defaultFilters
     }
-
 }
 
 // MARK: - Helper Views
 
 // MARK: - Quick Filter Chip
+
 struct QuickFilterChip: View
 {
     let title: String
     let icon: String
     let isSelected: Bool
     let action: () -> Void
-    
+
     var body: some View
     {
-        Button(action: action) {
-            HStack(spacing: 8) {
+        Button(action: action)
+        {
+            HStack(spacing: 8)
+            {
                 Image(systemName: icon)
                     .font(.system(size: 14, weight: .medium))
-                
+
                 Text(title)
                     .font(.system(size: 14, weight: .semibold))
             }
@@ -112,32 +121,37 @@ struct QuickFilterChip: View
 }
 
 // MARK: - Recommended Set Card
+
 struct RecommendedSetCard: View
 {
     let swimSet: SwimSet
     let isFavorite: Bool
     let toggleFavorite: () -> Void
-    
+
     private var difficultyColor: Color
     {
-        switch swimSet.difficulty {
+        switch swimSet.difficulty
+        {
         case .beginner: return .green
         case .intermediate: return .orange
         case .advanced: return .red
         }
     }
-    
+
     var body: some View
     {
-        VStack(alignment: .leading, spacing: 12) {
+        VStack(alignment: .leading, spacing: 12)
+        {
             // Header
-            HStack {
-                VStack(alignment: .leading, spacing: 4) {
+            HStack
+            {
+                VStack(alignment: .leading, spacing: 4)
+                {
                     Text(swimSet.title)
                         .font(.system(size: 18, weight: .bold))
                         .foregroundColor(.primary)
                         .lineLimit(2)
-                    
+
                     Text(swimSet.difficulty.rawValue.capitalized)
                         .font(.system(size: 12, weight: .semibold))
                         .foregroundColor(difficultyColor)
@@ -146,20 +160,23 @@ struct RecommendedSetCard: View
                         .background(difficultyColor.opacity(0.15))
                         .cornerRadius(8)
                 }
-                
+
                 Spacer()
-                
-                Button(action: toggleFavorite) {
+
+                Button(action: toggleFavorite)
+                {
                     Image(systemName: isFavorite ? "heart.fill" : "heart")
                         .font(.system(size: 18, weight: .medium))
                         .foregroundColor(isFavorite ? .red : .gray)
                 }
                 .buttonStyle(PlainButtonStyle())
             }
-            
+
             // Stats
-            HStack(spacing: 16) {
-                VStack(alignment: .leading, spacing: 2) {
+            HStack(spacing: 16)
+            {
+                VStack(alignment: .leading, spacing: 2)
+                {
                     Text("Distance")
                         .font(.system(size: 12, weight: .medium))
                         .foregroundColor(.secondary)
@@ -167,8 +184,9 @@ struct RecommendedSetCard: View
                         .font(.system(size: 16, weight: .bold))
                         .foregroundColor(.primary)
                 }
-                
-                VStack(alignment: .leading, spacing: 2) {
+
+                VStack(alignment: .leading, spacing: 2)
+                {
                     Text("Unit")
                         .font(.system(size: 12, weight: .medium))
                         .foregroundColor(.secondary)
@@ -176,27 +194,30 @@ struct RecommendedSetCard: View
                         .font(.system(size: 16, weight: .bold))
                         .foregroundColor(.primary)
                 }
-                
+
                 Spacer()
             }
-            
+
             // Description
-            if let description = swimSet.description, !description.isEmpty {
+            if let description = swimSet.description, !description.isEmpty
+            {
                 Text(description)
                     .font(.system(size: 14, weight: .regular))
                     .foregroundColor(.secondary)
                     .lineLimit(3)
             }
-            
+
             // Components preview
-            HStack {
+            HStack
+            {
                 Text("\(swimSet.components.count) components")
                     .font(.system(size: 12, weight: .medium))
                     .foregroundColor(.secondary)
-                
+
                 Spacer()
-                
-                if let primaryStroke = swimSet.primaryStroke {
+
+                if let primaryStroke = swimSet.primaryStroke
+                {
                     Text(primaryStroke.description)
                         .font(.system(size: 12, weight: .medium))
                         .foregroundColor(.blue)
@@ -216,7 +237,8 @@ struct RecommendedSetCard: View
 
 // MARK: - Preview
 
-#Preview {
+#Preview
+{
     SetPage()
         .environmentObject(Manager())
         .environmentObject(WatchConnector())

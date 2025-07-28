@@ -6,26 +6,29 @@ struct SetDetailView: View
 {
     let swimSet: SwimSet
     @EnvironmentObject var watchConnector: WatchConnector
+    @EnvironmentObject var manager: Manager
     @State private var showingSendSheet = false
     @State private var sendStatus: SendStatus = .ready
-    
+
     enum SendStatus
     {
         case ready, sending, sent, failed
     }
-    
+
     private var difficultyColor: Color
     {
-        switch swimSet.difficulty {
+        switch swimSet.difficulty
+        {
         case .beginner: return .green
         case .intermediate: return .orange
         case .advanced: return .red
         }
     }
-    
+
     var body: some View
     {
-        ZStack {
+        ZStack
+        {
             // Background gradient
             LinearGradient(
                 colors: [difficultyColor.opacity(0.15), difficultyColor.opacity(0.05)],
@@ -33,47 +36,56 @@ struct SetDetailView: View
                 endPoint: .bottomTrailing
             )
             .ignoresSafeArea()
-            
-            ScrollView {
-                LazyVStack(spacing: 24) {
+
+            ScrollView
+            {
+                LazyVStack(spacing: 24)
+                {
                     // Hero Section
                     heroSection
-                    
+
                     // Stats Cards
                     statsSection
-                    
+
                     // Description Section
-                    if let description = swimSet.description, !description.isEmpty {
+                    if let description = swimSet.description, !description.isEmpty
+                    {
                         descriptionSection(description)
                     }
-                    
+
                     // Components Section
                     componentsSection
-                    
+
                     Spacer(minLength: 120)
                 }
                 .padding(.horizontal)
             }
-            
+
             // Floating Send Button
-            VStack {
+            VStack
+            {
                 Spacer()
                 sendToWatchButton
             }
         }
         .navigationTitle("")
         .navigationBarTitleDisplayMode(.inline)
-        .sheet(isPresented: $showingSendSheet) {
+        .sheet(isPresented: $showingSendSheet)
+        {
             sendConfirmationSheet
         }
     }
-    
+
     // MARK: - Hero Section
+
     private var heroSection: some View
     {
-        VStack(alignment: .leading, spacing: 16) {
-            HStack {
-                VStack(alignment: .leading, spacing: 8) {
+        VStack(alignment: .leading, spacing: 16)
+        {
+            HStack
+            {
+                VStack(alignment: .leading, spacing: 8)
+                {
                     Text(swimSet.difficulty.rawValue.capitalized)
                         .font(.system(size: 14, weight: .bold))
                         .foregroundColor(.white)
@@ -81,18 +93,35 @@ struct SetDetailView: View
                         .padding(.vertical, 6)
                         .background(difficultyColor)
                         .cornerRadius(12)
-                    
+
                     Text(swimSet.title)
                         .font(.system(size: 28, weight: .bold, design: .rounded))
                         .foregroundColor(.primary)
                         .lineLimit(3)
                 }
-                
+
                 Spacer()
+
+                // Favorite Button
+                Button(action: { manager.toggleFavorite(setId: swimSet.id) })
+                {
+                    Image(systemName: manager.isSetFavorite(setId: swimSet.id) ? "heart.fill" : "heart")
+                        .font(.system(size: 24, weight: .medium))
+                        .foregroundColor(manager.isSetFavorite(setId: swimSet.id) ? .red : .gray)
+                        .frame(width: 44, height: 44)
+                        .background(Color(UIColor.systemBackground))
+                        .clipShape(Circle())
+                        .shadow(color: .black.opacity(0.1), radius: 8, x: 0, y: 2)
+                }
+                .buttonStyle(PlainButtonStyle())
+                .scaleEffect(manager.isSetFavorite(setId: swimSet.id) ? 1.1 : 1.0)
+                .animation(.easeInOut(duration: 0.2), value: manager.isSetFavorite(setId: swimSet.id))
             }
-            
-            HStack(spacing: 16) {
-                VStack(alignment: .leading, spacing: 4) {
+
+            HStack(spacing: 16)
+            {
+                VStack(alignment: .leading, spacing: 4)
+                {
                     Text("Primary Stroke")
                         .font(.system(size: 12, weight: .medium))
                         .foregroundColor(.secondary)
@@ -100,10 +129,11 @@ struct SetDetailView: View
                         .font(.system(size: 16, weight: .semibold))
                         .foregroundColor(.primary)
                 }
-                
+
                 Spacer()
-                
-                VStack(alignment: .trailing, spacing: 4) {
+
+                VStack(alignment: .trailing, spacing: 4)
+                {
                     Text("Components")
                         .font(.system(size: 12, weight: .medium))
                         .foregroundColor(.secondary)
@@ -118,11 +148,13 @@ struct SetDetailView: View
         .cornerRadius(20)
         .shadow(color: .black.opacity(0.1), radius: 16, x: 0, y: 8)
     }
-    
+
     // MARK: - Stats Section
+
     private var statsSection: some View
     {
-        HStack(spacing: 16) {
+        HStack(spacing: 16)
+        {
             DetailStatCard(
                 title: "Distance",
                 value: "\(swimSet.totalDistance)",
@@ -130,7 +162,7 @@ struct SetDetailView: View
                 icon: "ruler",
                 color: .blue
             )
-            
+
             DetailStatCard(
                 title: "Duration",
                 value: estimatedDurationText,
@@ -138,7 +170,7 @@ struct SetDetailView: View
                 icon: "clock",
                 color: .orange
             )
-            
+
             DetailStatCard(
                 title: "Difficulty",
                 value: swimSet.difficulty.rawValue,
@@ -148,24 +180,27 @@ struct SetDetailView: View
             )
         }
     }
-    
+
     private var estimatedDurationText: String
     {
-        if let duration = swimSet.estimatedDuration {
+        if let duration = swimSet.estimatedDuration
+        {
             let minutes = Int(duration / 60)
             return "\(minutes) min"
         }
         return "~45 min"
     }
-    
+
     // MARK: - Description Section
+
     private func descriptionSection(_ description: String) -> some View
     {
-        VStack(alignment: .leading, spacing: 12) {
+        VStack(alignment: .leading, spacing: 12)
+        {
             Text("Description")
                 .font(.system(size: 20, weight: .bold, design: .rounded))
                 .foregroundColor(.primary)
-            
+
             Text(description)
                 .font(.system(size: 16, weight: .regular))
                 .foregroundColor(.secondary)
@@ -177,35 +212,43 @@ struct SetDetailView: View
         .cornerRadius(16)
         .shadow(color: .black.opacity(0.05), radius: 8, x: 0, y: 2)
     }
-    
+
     // MARK: - Components Section
+
     private var componentsSection: some View
     {
-        VStack(alignment: .leading, spacing: 16) {
+        VStack(alignment: .leading, spacing: 16)
+        {
             Text("Workout Components")
                 .font(.system(size: 20, weight: .bold, design: .rounded))
                 .foregroundColor(.primary)
-            
-            VStack(spacing: 12) {
-                ForEach(Array(swimSet.components.enumerated()), id: \.element.id) { index, component in
+
+            VStack(spacing: 12)
+            {
+                ForEach(Array(swimSet.components.enumerated()), id: \.element.id)
+                { index, component in
                     ComponentCard(component: component, index: index + 1)
                 }
             }
         }
     }
-    
+
     // MARK: - Send to Watch Button
+
     private var sendToWatchButton: some View
     {
-        Button(action: {
-            showingSendSheet = true
-        }) {
-            HStack(spacing: 12) {
+        Button(action:
+            {
+                showingSendSheet = true
+            })
+        {
+            HStack(spacing: 12)
+            {
                 Image(systemName: sendStatus == .sending ? "arrow.clockwise" : "paperplane.fill")
                     .font(.system(size: 18, weight: .medium))
                     .rotationEffect(.degrees(sendStatus == .sending ? 360 : 0))
                     .animation(sendStatus == .sending ? .linear(duration: 1).repeatForever(autoreverses: false) : .none, value: sendStatus)
-                
+
                 Text(sendButtonText)
                     .font(.system(size: 18, weight: .semibold))
             }
@@ -222,69 +265,78 @@ struct SetDetailView: View
         .padding(.horizontal)
         .padding(.bottom, 40)
     }
-    
+
     private var sendButtonText: String
     {
-        switch sendStatus {
+        switch sendStatus
+        {
         case .ready: return "Send to Watch"
         case .sending: return "Sending..."
         case .sent: return "Sent!"
         case .failed: return "Retry Send"
         }
     }
-    
+
     private var sendButtonColor: Color
     {
-        switch sendStatus {
+        switch sendStatus
+        {
         case .ready: return .blue
         case .sending: return .blue
         case .sent: return .green
         case .failed: return .red
         }
     }
-    
+
     // MARK: - Send Confirmation Sheet
+
     private var sendConfirmationSheet: some View
     {
-        VStack(spacing: 24) {
+        VStack(spacing: 24)
+        {
             // Header
-            VStack(spacing: 8) {
+            VStack(spacing: 8)
+            {
                 Image(systemName: "applewatch")
                     .font(.system(size: 40, weight: .light))
                     .foregroundColor(.blue)
-                
+
                 Text("Send to Apple Watch")
                     .font(.system(size: 24, weight: .bold))
                     .foregroundColor(.primary)
-                
+
                 Text("This will send \"\(swimSet.title)\" to your Apple Watch for tracking.")
                     .font(.system(size: 16, weight: .medium))
                     .foregroundColor(.secondary)
                     .multilineTextAlignment(.center)
             }
             .padding(.top, 40)
-            
+
             // Set Preview
-            VStack(alignment: .leading, spacing: 12) {
+            VStack(alignment: .leading, spacing: 12)
+            {
                 Text(swimSet.title)
                     .font(.system(size: 18, weight: .bold))
                     .foregroundColor(.primary)
-                
-                HStack {
+
+                HStack
+                {
                     Text("Distance:")
                     Spacer()
                     Text("\(swimSet.totalDistance) \(swimSet.measureUnit.rawValue)")
                         .fontWeight(.semibold)
                 }
-                
-                HStack {
+
+                HStack
+                {
                     Text("Components:")
                     Spacer()
                     Text("\(swimSet.components.count)")
                         .fontWeight(.semibold)
                 }
-                
-                HStack {
+
+                HStack
+                {
                     Text("Difficulty:")
                     Spacer()
                     Text(swimSet.difficulty.rawValue.capitalized)
@@ -295,12 +347,14 @@ struct SetDetailView: View
             .padding()
             .background(Color(UIColor.systemGray6))
             .cornerRadius(12)
-            
+
             Spacer()
-            
+
             // Buttons
-            VStack(spacing: 12) {
-                Button(action: sendToWatch) {
+            VStack(spacing: 12)
+            {
+                Button(action: sendToWatch)
+                {
                     Text("Send Now")
                         .font(.system(size: 18, weight: .semibold))
                         .foregroundColor(.white)
@@ -309,8 +363,9 @@ struct SetDetailView: View
                         .background(Color.blue)
                         .cornerRadius(16)
                 }
-                
-                Button(action: { showingSendSheet = false }) {
+
+                Button(action: { showingSendSheet = false })
+                {
                     Text("Cancel")
                         .font(.system(size: 16, weight: .medium))
                         .foregroundColor(.secondary)
@@ -322,18 +377,20 @@ struct SetDetailView: View
         .presentationDetents([.medium])
         .presentationDragIndicator(.visible)
     }
-    
+
     private func sendToWatch()
     {
         sendStatus = .sending
         showingSendSheet = false
-        
+
         watchConnector.sendSwimSet(swimSet: swimSet)
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5)
+        {
             sendStatus = .sent
-            
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0)
+            {
                 sendStatus = .ready
             }
         }
@@ -341,6 +398,7 @@ struct SetDetailView: View
 }
 
 // MARK: - Detail Stat Card
+
 struct DetailStatCard: View
 {
     let title: String
@@ -348,32 +406,42 @@ struct DetailStatCard: View
     let unit: String
     let icon: String
     let color: Color
-    
+
     var body: some View
     {
-        VStack(spacing: 8) {
+        VStack(spacing: 8)
+        {
             Image(systemName: icon)
                 .font(.system(size: 24, weight: .medium))
                 .foregroundColor(color)
-            
-            VStack(spacing: 2) {
+                .frame(height: 24) // Fixed icon height
+
+            VStack(spacing: 2)
+            {
                 Text(value)
                     .font(.system(size: 18, weight: .bold))
                     .foregroundColor(.primary)
-                
-                if !unit.isEmpty {
+                    .lineLimit(1)
+
+                if !unit.isEmpty
+                {
                     Text(unit)
                         .font(.system(size: 12, weight: .medium))
                         .foregroundColor(.secondary)
+                        .lineLimit(1)
                 }
             }
-            
+            .frame(height: 44) // Fixed value/unit section height
+
             Text(title)
                 .font(.system(size: 14, weight: .medium))
                 .foregroundColor(.secondary)
                 .multilineTextAlignment(.center)
+                .lineLimit(1)
+                .frame(height: 18) // Fixed title height
         }
         .frame(maxWidth: .infinity)
+        .frame(height: 120) // Fixed card height
         .padding()
         .background(Color(UIColor.systemBackground))
         .cornerRadius(16)
@@ -382,14 +450,16 @@ struct DetailStatCard: View
 }
 
 // MARK: - Component Card
+
 struct ComponentCard: View
 {
     let component: SetComponent
     let index: Int
-    
+
     private var componentColor: Color
     {
-        switch component.type {
+        switch component.type
+        {
         case .warmup: return .orange
         case .swim: return .blue
         case .drill: return .purple
@@ -398,10 +468,11 @@ struct ComponentCard: View
         case .cooldown: return .teal
         }
     }
-    
+
     private var componentIcon: String
     {
-        switch component.type {
+        switch component.type
+        {
         case .warmup: return "thermometer.sun"
         case .swim: return "figure.pool.swim"
         case .drill: return "gear"
@@ -410,10 +481,11 @@ struct ComponentCard: View
         case .cooldown: return "snowflake"
         }
     }
-    
+
     var body: some View
     {
-        HStack(spacing: 16) {
+        HStack(spacing: 16)
+        {
             // Step Number
             Text("\(index)")
                 .font(.system(size: 16, weight: .bold))
@@ -421,39 +493,43 @@ struct ComponentCard: View
                 .frame(width: 32, height: 32)
                 .background(componentColor)
                 .clipShape(Circle())
-            
+
             // Component Details
-            VStack(alignment: .leading, spacing: 6) {
-                HStack {
+            VStack(alignment: .leading, spacing: 6)
+            {
+                HStack
+                {
                     Image(systemName: componentIcon)
                         .font(.system(size: 14, weight: .medium))
                         .foregroundColor(componentColor)
-                    
+
                     Text(component.type.rawValue.capitalized)
                         .font(.system(size: 14, weight: .semibold))
                         .foregroundColor(componentColor)
-                    
+
                     Spacer()
-                    
+
                     Text("\(component.distance)m")
                         .font(.system(size: 14, weight: .bold))
                         .foregroundColor(.primary)
                 }
-                
-                if let instructions = component.instructions {
+
+                if let instructions = component.instructions
+                {
                     Text(instructions)
                         .font(.system(size: 15, weight: .regular))
                         .foregroundColor(.primary)
                         .lineLimit(3)
                 }
-                
-                if let strokeStyle = component.strokeStyle {
+
+                if let strokeStyle = component.strokeStyle
+                {
                     Text(strokeStyle.description)
                         .font(.system(size: 12, weight: .medium))
                         .foregroundColor(.secondary)
                 }
             }
-            
+
             Spacer()
         }
         .padding()
@@ -478,7 +554,7 @@ struct SetDetailView_Previews: PreviewProvider
                 SetComponent(type: .warmup, distance: 800, strokeStyle: .mixed, instructions: "800 warmup mix"),
                 SetComponent(type: .swim, distance: 1000, strokeStyle: .freestyle, instructions: "10x100 on 1:30, descend 1-5, 6-10"),
                 SetComponent(type: .kick, distance: 500, strokeStyle: .kickboard, instructions: "10x50 kick on 1:00"),
-                SetComponent(type: .cooldown, distance: 500, strokeStyle: .mixed, instructions: "500 cool down easy")
+                SetComponent(type: .cooldown, distance: 500, strokeStyle: .mixed, instructions: "500 cool down easy"),
             ],
             measureUnit: .meters,
             difficulty: .intermediate,
@@ -488,9 +564,8 @@ struct SetDetailView_Previews: PreviewProvider
     }
 }
 
-
-//#Preview
-//{
+// #Preview
+// {
 //    let sSet = SwimSet(
 //        title: "Quick Set",
 //        components: [
@@ -502,5 +577,4 @@ struct SetDetailView_Previews: PreviewProvider
 //    )
 //
 //    SetDetailView(swimSet: sSet)
-//}
-
+// }

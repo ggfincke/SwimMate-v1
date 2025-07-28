@@ -7,25 +7,29 @@ struct HomeHeroSection: View
     @EnvironmentObject var manager: Manager
     @Binding var showingSettings: Bool
     let currentTime: Date
-    
+
     var body: some View
     {
-        VStack(spacing: 16) {
-            HStack {
-                VStack(alignment: .leading, spacing: 8) {
+        VStack(spacing: 16)
+        {
+            HStack
+            {
+                VStack(alignment: .leading, spacing: 8)
+                {
                     Text(greetingMessage)
                         .font(.system(size: 24, weight: .medium))
                         .foregroundColor(.secondary)
-                    
+
                     Text("Ready to swim?")
                         .font(.system(size: 32, weight: .bold, design: .rounded))
                         .foregroundColor(.primary)
                 }
-                
+
                 Spacer()
-                
+
                 // Profile/Settings Button
-                Button(action: { showingSettings = true }) {
+                Button(action: { showingSettings = true })
+                {
                     Image(systemName: "person.crop.circle.fill")
                         .font(.system(size: 32, weight: .medium))
                         .foregroundColor(.blue)
@@ -36,11 +40,14 @@ struct HomeHeroSection: View
                         )
                 }
             }
-            
+
             // Today's stats preview
-            if !todaysSwims.isEmpty {
-                HStack(spacing: 16) {
-                    VStack(spacing: 4) {
+            if !todaysSwims.isEmpty
+            {
+                HStack(spacing: 16)
+                {
+                    VStack(spacing: 4)
+                    {
                         Text("Today")
                             .font(.system(size: 12, weight: .medium))
                             .foregroundColor(.secondary)
@@ -51,11 +58,12 @@ struct HomeHeroSection: View
                             .font(.system(size: 10, weight: .medium))
                             .foregroundColor(.secondary)
                     }
-                    
+
                     Divider()
                         .frame(height: 40)
-                    
-                    VStack(spacing: 4) {
+
+                    VStack(spacing: 4)
+                    {
                         Text("Distance")
                             .font(.system(size: 12, weight: .medium))
                             .foregroundColor(.secondary)
@@ -66,7 +74,7 @@ struct HomeHeroSection: View
                             .font(.system(size: 10, weight: .medium))
                             .foregroundColor(.secondary)
                     }
-                    
+
                     Spacer()
                 }
                 .padding()
@@ -77,33 +85,37 @@ struct HomeHeroSection: View
         }
         .padding(.top, 20)
     }
-    
+
     private var greetingMessage: String
     {
         let hour = Calendar.current.component(.hour, from: currentTime)
-        switch hour {
-        case 5..<12: return "Good morning"
-        case 12..<17: return "Good afternoon"
-        case 17..<22: return "Good evening"
+        switch hour
+        {
+        case 5 ..< 12: return "Good morning"
+        case 12 ..< 17: return "Good afternoon"
+        case 17 ..< 22: return "Good evening"
         default: return "Good night"
         }
     }
-    
+
     private var todaysSwims: [Swim]
     {
         let today = Calendar.current.startOfDay(for: Date())
         let tomorrow = Calendar.current.date(byAdding: .day, value: 1, to: today)!
-        return manager.swims.filter { $0.date >= today && $0.date < tomorrow }
+        return manager.swims.filter
+        { $0.date >= today && $0.date < tomorrow }
     }
-    
+
     private var todaysTotalDistance: String
     {
-        let total = todaysSwims.compactMap { $0.totalDistance }.reduce(0, +)
+        let total = todaysSwims.compactMap
+        { $0.totalDistance }.reduce(0, +)
         return String(format: "%.0f", total)
     }
 }
 
-#Preview {
+#Preview
+{
     HomeHeroSection(showingSettings: .constant(false), currentTime: Date())
         .environmentObject(Manager())
 }

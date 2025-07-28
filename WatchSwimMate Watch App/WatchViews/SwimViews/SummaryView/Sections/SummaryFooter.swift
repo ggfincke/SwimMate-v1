@@ -6,7 +6,6 @@ import SwiftUI
 struct SummaryFooter: View
 
 {
-
     @Environment(WatchManager.self) private var manager
 
     var body: some View
@@ -15,9 +14,9 @@ struct SummaryFooter: View
         {
             // using ActionButton component
             ActionButton(
-            label: "Done",
-            icon: "checkmark.circle.fill",
-            tint: .green
+                label: "Done",
+                icon: "checkmark.circle.fill",
+                tint: .green
             )
             {
                 WKInterfaceDevice.current().play(.click)
@@ -29,8 +28,8 @@ struct SummaryFooter: View
 
             // secondary info
             Text("Workout saved to Health app")
-            .font(.system(size: 10, weight: .medium))
-            .foregroundColor(.secondary)
+                .font(.system(size: 10, weight: .medium))
+                .foregroundColor(.secondary)
         }
     }
 }

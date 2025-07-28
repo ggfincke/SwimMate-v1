@@ -11,20 +11,21 @@ struct GoalSwimView: View
 
     var body: some View
     {
-        ScrollView {
+        ScrollView
+        {
             VStack(spacing: manager.isCompactDevice ? 8 : 10)
             {
                 Text("Set Your Goal")
-                .font(.system(size: manager.isCompactDevice ? 16 : 18, weight: .semibold))
+                    .font(.system(size: manager.isCompactDevice ? 16 : 18, weight: .semibold))
 
                 // Current goals display
                 CurrentGoalsDisplaySection()
 
                 // Goal setup buttons
                 GoalSetupButtonsSection(
-                showDistanceSetupSheet: $showDistanceSetupSheet,
-                showTimeSetupSheet: $showTimeSetupSheet,
-                showCalorieSetupSheet: $showCalorieSetupSheet
+                    showDistanceSetupSheet: $showDistanceSetupSheet,
+                    showTimeSetupSheet: $showTimeSetupSheet,
+                    showCalorieSetupSheet: $showCalorieSetupSheet
                 )
 
                 // Action buttons
@@ -53,5 +54,5 @@ struct GoalSwimView: View
 #Preview
 {
     GoalSwimView()
-    .environment(WatchManager())
+        .environment(WatchManager())
 }

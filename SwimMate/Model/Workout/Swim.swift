@@ -4,34 +4,40 @@ import Foundation
 import HealthKit
 
 /// Core swim workout data model
-class Swim: Identifiable, Codable 
+class Swim: Identifiable, Codable
 {
     // MARK: - Core Properties
+
     let id: UUID
     let startDate: Date
     let endDate: Date
-    
+
     // MARK: - Computed Properties
+
     /// Duration is derived from start and end dates
     var duration: TimeInterval
     { endDate.timeIntervalSince(startDate) }
-    
+
     /// Date property for compatibility
     var date: Date
     { startDate }
 
     // MARK: - Location & Pool Information
+
     var locationType: SwimmingLocationType
     var poolLength: Double?
 
     // MARK: - Health & Performance Metrics
+
     let totalDistance: Double?
     let totalEnergyBurned: Double?
 
     // MARK: - Lap Details
+
     var laps: [Lap]
 
     // MARK: - Initialization
+
     init(id: UUID,
          startDate: Date,
          endDate: Date,
@@ -52,6 +58,7 @@ class Swim: Identifiable, Codable
     }
 
     // MARK: - Codable
+
     enum CodingKeys: String, CodingKey
     {
         case id, startDate, endDate, totalDistance, totalEnergyBurned, poolLength, locationType, laps
@@ -60,7 +67,7 @@ class Swim: Identifiable, Codable
     required init(from decoder: Decoder) throws
     {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        
+
         id = try container.decode(UUID.self, forKey: .id)
         startDate = try container.decode(Date.self, forKey: .startDate)
         endDate = try container.decode(Date.self, forKey: .endDate)
@@ -74,7 +81,7 @@ class Swim: Identifiable, Codable
     func encode(to encoder: Encoder) throws
     {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        
+
         try container.encode(id, forKey: .id)
         try container.encode(startDate, forKey: .startDate)
         try container.encode(endDate, forKey: .endDate)
@@ -84,4 +91,4 @@ class Swim: Identifiable, Codable
         try container.encodeIfPresent(poolLength, forKey: .poolLength)
         try container.encode(laps, forKey: .laps)
     }
-} 
+}

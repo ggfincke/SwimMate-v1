@@ -7,23 +7,23 @@ enum MeasureUnit: String, CaseIterable, Codable
 {
     case meters = "Meters"
     case yards = "Yards"
-    
-    var abbreviation: String 
+
+    var abbreviation: String
     {
-        switch self 
+        switch self
         {
-            case .meters: return "m"
-            case .yards: return "y"
+        case .meters: return "m"
+        case .yards: return "y"
         }
     }
-    
+
     /// Convert to meters for calculations
-    func toMeters(_ distance: Double) -> Double 
+    func toMeters(_ distance: Double) -> Double
     {
-        switch self 
+        switch self
         {
-            case .meters: return distance
-            case .yards: return distance * 0.9144
+        case .meters: return distance
+        case .yards: return distance * 0.9144
         }
     }
-} 
+}

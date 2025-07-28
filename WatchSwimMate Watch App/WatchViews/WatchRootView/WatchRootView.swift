@@ -1,7 +1,7 @@
 // WatchRootView.swift
 
-import SwiftUI
 import HealthKit
+import SwiftUI
 
 // root view for watch app
 struct WatchRootView: View
@@ -26,12 +26,12 @@ struct WatchRootView: View
                 }
 
                 Divider()
-                .padding(.horizontal)
+                    .padding(.horizontal)
 
                 NavigationButtonsSection(
-                activeButton: $activeButton,
-                showSettings: $showSettings,
-                showHealthKitAlert: $showHealthKitAlert
+                    activeButton: $activeButton,
+                    showSettings: $showSettings,
+                    showHealthKitAlert: $showHealthKitAlert
                 )
             }
             .padding(.bottom, 12)
@@ -47,8 +47,7 @@ struct WatchRootView: View
                 showSettings = true
             }
             Button("Cancel", role: .cancel)
-            {
-            }
+            {}
         }
         message:
         {
@@ -62,6 +61,6 @@ struct WatchRootView: View
 #Preview
 {
     WatchRootView()
-    .environment(WatchManager())
-    .environment(iOSWatchConnector())
+        .environment(WatchManager())
+        .environment(iOSWatchConnector())
 }

@@ -6,6 +6,7 @@ import Foundation
 struct Lap: Codable, Hashable
 {
     // MARK: - Properties
+
     let duration: TimeInterval
     let stroke: SwimStroke?
     let swolfScore: Double?
@@ -13,29 +14,31 @@ struct Lap: Codable, Hashable
     let endDate: Date
 
     // MARK: - Initialization
-    init(duration: TimeInterval, metadata: [String: Any]) 
+
+    init(duration: TimeInterval, metadata: [String: Any])
     {
         self.duration = duration
-        self.stroke = SwimStroke(rawValue: metadata["HKSwimmingStrokeStyle"] as? Int ?? 0)
-        self.swolfScore = metadata["HKSWOLFScore"] as? Double
+        stroke = SwimStroke(rawValue: metadata["HKSwimmingStrokeStyle"] as? Int ?? 0)
+        swolfScore = metadata["HKSWOLFScore"] as? Double
         // For legacy data without timing info, use current time as default
-        self.startDate = Date()
-        self.endDate = Date().addingTimeInterval(duration)
+        startDate = Date()
+        endDate = Date().addingTimeInterval(duration)
     }
-    
-    init(startDate: Date, endDate: Date, metadata: [String: Any]) 
+
+    init(startDate: Date, endDate: Date, metadata: [String: Any])
     {
         self.startDate = startDate
         self.endDate = endDate
-        self.duration = endDate.timeIntervalSince(startDate)
-        self.stroke = SwimStroke(rawValue: metadata["HKSwimmingStrokeStyle"] as? Int ?? 0)
-        self.swolfScore = metadata["HKSWOLFScore"] as? Double
+        duration = endDate.timeIntervalSince(startDate)
+        stroke = SwimStroke(rawValue: metadata["HKSwimmingStrokeStyle"] as? Int ?? 0)
+        swolfScore = metadata["HKSWOLFScore"] as? Double
     }
-    
+
     // MARK: - Methods
+
     /// Calculate rest period to next lap
     func restPeriodTo(_ nextLap: Lap) -> TimeInterval
     {
-        return nextLap.startDate.timeIntervalSince(self.endDate)
+        return nextLap.startDate.timeIntervalSince(endDate)
     }
-} 
+}

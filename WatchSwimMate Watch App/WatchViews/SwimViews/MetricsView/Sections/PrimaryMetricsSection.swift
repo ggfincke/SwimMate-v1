@@ -6,7 +6,6 @@ import SwiftUI
 struct PrimaryMetricsSection: View
 
 {
-
     @Environment(WatchManager.self) private var manager
 
     // responsive font sizes
@@ -36,8 +35,8 @@ struct PrimaryMetricsSection: View
         {
             // current time
             ElapsedTimeView(
-            elapsedTime: manager.elapsedTime,
-            showSubseconds: manager.elapsedTime < 3600
+                elapsedTime: manager.elapsedTime,
+                showSubseconds: manager.elapsedTime < 3600
             )
             .font(.system(size: timeFontSize, weight: .bold, design: .rounded))
             .foregroundStyle(.yellow)
@@ -47,13 +46,13 @@ struct PrimaryMetricsSection: View
             HStack(alignment: .lastTextBaseline, spacing: 2)
             {
                 Text("\(Int(manager.distance.rounded()))")
-                .font(.system(size: distanceFontSize, weight: .bold, design: .rounded))
-                .foregroundColor(.blue)
-                .monospacedDigit()
+                    .font(.system(size: distanceFontSize, weight: .bold, design: .rounded))
+                    .foregroundColor(.blue)
+                    .monospacedDigit()
 
                 Text(manager.poolUnit == "meters" ? "m" : "yd")
-                .font(.system(size: distanceUnitSize, weight: .semibold, design: .rounded))
-                .foregroundColor(.blue.opacity(0.8))
+                    .font(.system(size: distanceUnitSize, weight: .semibold, design: .rounded))
+                    .foregroundColor(.blue.opacity(0.8))
             }
         }
         .padding(.vertical, verticalSpacing)
@@ -65,21 +64,21 @@ struct PrimaryMetricsSection: View
 #Preview("Standard Size")
 {
     PrimaryMetricsSection()
-    .environment({
-        let manager = WatchManager()
-        manager.distance = 750
-        manager.elapsedTime = 1234.56
-        return manager
-        }())
-    }
-
-    #Preview("Compact Size")
-    {
-        PrimaryMetricsSection()
         .environment({
             let manager = WatchManager()
             manager.distance = 750
             manager.elapsedTime = 1234.56
             return manager
-            }())
-        }
+        }())
+}
+
+#Preview("Compact Size")
+{
+    PrimaryMetricsSection()
+        .environment({
+            let manager = WatchManager()
+            manager.distance = 750
+            manager.elapsedTime = 1234.56
+            return manager
+        }())
+}

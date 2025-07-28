@@ -6,14 +6,16 @@ import Foundation
 struct SetComponent: Identifiable, Hashable, Codable
 {
     // MARK: - Properties
+
     let id: UUID
     let type: ComponentType
     let distance: Int
     let strokeStyle: SwimStroke?
     let instructions: String?
     let restPeriod: TimeInterval? // rest after this part of set
-    
+
     // MARK: - Component Types
+
     enum ComponentType: String, CaseIterable, Codable
     {
         case swim = "Swim"
@@ -22,14 +24,15 @@ struct SetComponent: Identifiable, Hashable, Codable
         case pull = "Pull"
         case warmup = "Warmup"
         case cooldown = "Cooldown"
-        
-        var description: String 
+
+        var description: String
         {
             return rawValue
         }
     }
-    
+
     // MARK: - Initialization
+
     init(id: UUID = UUID(),
          type: ComponentType,
          distance: Int,
@@ -44,12 +47,13 @@ struct SetComponent: Identifiable, Hashable, Codable
         self.instructions = instructions
         self.restPeriod = restPeriod
     }
-    
+
     // MARK: - Methods
-    func displayTitle(poolLength: Double, measureUnit: MeasureUnit) -> String
+
+    func displayTitle(poolLength _: Double, measureUnit: MeasureUnit) -> String
     {
         let distanceText = "\(distance)\(measureUnit.abbreviation)"
-        
+
         if let stroke = strokeStyle
         {
             return "\(distanceText) \(stroke.description) \(type.description)"
@@ -59,11 +63,11 @@ struct SetComponent: Identifiable, Hashable, Codable
             return "\(distanceText) \(type.description)"
         }
     }
-    
+
     /// Calculate number of laps for this component
     func lapCount(poolLength: Double, measureUnit: MeasureUnit) -> Int
     {
         let distanceInMeters = measureUnit == .meters ? Double(distance) : Double(distance) * 0.9144 // yards to meters
         return Int(ceil(distanceInMeters / poolLength))
     }
-} 
+}

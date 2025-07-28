@@ -5,33 +5,33 @@ import Foundation
 import HealthKit
 import SwiftUI
 
-
 enum AppTheme: String, CaseIterable
 {
     case system = "System"
     case light = "Light"
     case dark = "Dark"
-    
+
     var displayName: String
     {
-        return self.rawValue
+        return rawValue
     }
 }
 
 class Manager: NSObject, ObservableObject
 {
-    //MARK: vars / init
+    // MARK: vars / init
+
     // healthkit vars
     var permission: Bool
     let healthStore: HKHealthStore
     var currentWorkoutSession: HKWorkoutSession?
-    
+
     // user preferences
     @Published var userName: String = "User"
     @Published var preferredStroke: SwimStroke = .freestyle
     @Published var preferredUnit: MeasureUnit = .meters
     @Published var swims: [Swim] = []
-    
+
     // new settings
     @Published var enableNotifications: Bool = true
     @Published var workoutReminderTime: Date = Calendar.current.date(bySettingHour: 9, minute: 0, second: 0, of: Date()) ?? Date()
@@ -51,7 +51,7 @@ class Manager: NSObject, ObservableObject
     @Published var favoriteSetIds: Set<UUID> = []
 
     // store
-    @Published var store: Store = Store(userName: "Default User", preferredStroke: .freestyle, preferredUnit: .meters, swims: [])
+    @Published var store: Store = .init(userName: "Default User", preferredStroke: .freestyle, preferredUnit: .meters, swims: [])
 
     // user totals (calculated values)
     @Published var totalDistance: Double = 0.0
@@ -59,126 +59,124 @@ class Manager: NSObject, ObservableObject
     @Published var totalCalories: Double = 0.0
     @Published var averageCalories: Double = 0.0
 
-    
-    //TODO: replace with database integration at some point
+    // TODO: replace with database integration at some point
     // very long list of sample sets
     let sampleSets: [SwimSet] = [
         SwimSet(title: "Endurance Challenge", components: [
             SetComponent(type: .warmup, distance: 800, strokeStyle: .mixed, instructions: "800 warmup mix"),
             SetComponent(type: .swim, distance: 1000, strokeStyle: .freestyle, instructions: "10x100 on 1:30, descend 1-5, 6-10"),
             SetComponent(type: .kick, distance: 500, strokeStyle: .kickboard, instructions: "10x50 kick on 1:00"),
-            SetComponent(type: .cooldown, distance: 500, strokeStyle: .mixed, instructions: "500 cool down easy")
+            SetComponent(type: .cooldown, distance: 500, strokeStyle: .mixed, instructions: "500 cool down easy"),
         ], measureUnit: .meters, difficulty: SwimSet.Difficulty.intermediate, description: "A challenging endurance set to boost stamina."),
         SwimSet(title: "Technique Tuner", components: [
             SetComponent(type: .swim, distance: 200, strokeStyle: .breaststroke, instructions: "200 swim, 200 pull, 200 kick"),
             SetComponent(type: .drill, distance: 500, strokeStyle: .breaststroke, instructions: "10x50 on 50s, odds drill, evens swim"),
             SetComponent(type: .pull, distance: 400, strokeStyle: .breaststroke, instructions: "4x100 pull with paddles on 1:40"),
-            SetComponent(type: .cooldown, distance: 200, strokeStyle: .mixed, instructions: "200 easy")
+            SetComponent(type: .cooldown, distance: 200, strokeStyle: .mixed, instructions: "200 easy"),
         ], measureUnit: .yards, difficulty: SwimSet.Difficulty.advanced, description: "Focus on technique and power."),
         SwimSet(title: "Backstroke Blast", components: [
             SetComponent(type: .swim, distance: 400, strokeStyle: .backstroke, instructions: "4x100 backstroke on 2:00"),
             SetComponent(type: .swim, distance: 400, strokeStyle: .backstroke, instructions: "8x50 back fast on 1:00"),
             SetComponent(type: .swim, distance: 100, strokeStyle: .backstroke, instructions: "4x25 sprint on 30s"),
-            SetComponent(type: .cooldown, distance: 300, strokeStyle: .mixed, instructions: "300 easy")
+            SetComponent(type: .cooldown, distance: 300, strokeStyle: .mixed, instructions: "300 easy"),
         ], measureUnit: .meters, difficulty: SwimSet.Difficulty.beginner, description: "Speed work for improving backstroke performance."),
         SwimSet(title: "Butterfly Sprint Series", components: [
             SetComponent(type: .warmup, distance: 400, strokeStyle: .mixed, instructions: "400 warmup mixed"),
             SetComponent(type: .swim, distance: 400, strokeStyle: .butterfly, instructions: "8x50 butterfly on 50s"),
             SetComponent(type: .swim, distance: 100, strokeStyle: .butterfly, instructions: "4x25 fly sprints on 30s"),
-            SetComponent(type: .cooldown, distance: 200, strokeStyle: .mixed, instructions: "200 cool down")
+            SetComponent(type: .cooldown, distance: 200, strokeStyle: .mixed, instructions: "200 cool down"),
         ], measureUnit: .yards, difficulty: SwimSet.Difficulty.intermediate, description: "High-intensity butterfly sprints."),
         SwimSet(title: "IM Pro Series", components: [
             SetComponent(type: .swim, distance: 400, strokeStyle: .mixed, instructions: "400 IM as 100 of each"),
             SetComponent(type: .swim, distance: 400, strokeStyle: .mixed, instructions: "4x100 IM on 1:50"),
             SetComponent(type: .kick, distance: 200, strokeStyle: .kickboard, instructions: "200 IM kick"),
             SetComponent(type: .swim, distance: 400, strokeStyle: .mixed, instructions: "8x50 IM order sprint each"),
-            SetComponent(type: .cooldown, distance: 200, strokeStyle: .mixed, instructions: "200 easy")
+            SetComponent(type: .cooldown, distance: 200, strokeStyle: .mixed, instructions: "200 easy"),
         ], measureUnit: .meters, difficulty: SwimSet.Difficulty.advanced, description: "Comprehensive IM workout for all strokes."),
         SwimSet(title: "Marathon Freestyle", components: [
             SetComponent(type: .swim, distance: 1000, strokeStyle: .freestyle, instructions: "1000 straight swim"),
             SetComponent(type: .swim, distance: 1000, strokeStyle: .freestyle, instructions: "5x200 on 2:45"),
             SetComponent(type: .swim, distance: 1000, strokeStyle: .freestyle, instructions: "10x100 on 1:15"),
-            SetComponent(type: .cooldown, distance: 500, strokeStyle: .mixed, instructions: "500 cooldown")
+            SetComponent(type: .cooldown, distance: 500, strokeStyle: .mixed, instructions: "500 cooldown"),
         ], measureUnit: .yards, difficulty: SwimSet.Difficulty.advanced, description: "Long-distance freestyle set for endurance."),
         SwimSet(title: "Beginner Breaststroke Basics", components: [
             SetComponent(type: .warmup, distance: 200, strokeStyle: .mixed, instructions: "200 easy warmup"),
             SetComponent(type: .drill, distance: 400, strokeStyle: .breaststroke, instructions: "8x50 drill on 1:10"),
             SetComponent(type: .swim, distance: 400, strokeStyle: .breaststroke, instructions: "4x100 swim on 2:00"),
-            SetComponent(type: .cooldown, distance: 200, strokeStyle: .mixed, instructions: "200 easy cooldown")
+            SetComponent(type: .cooldown, distance: 200, strokeStyle: .mixed, instructions: "200 easy cooldown"),
         ], measureUnit: .meters, difficulty: SwimSet.Difficulty.beginner, description: "Easy-going set for breaststroke beginners."),
         SwimSet(title: "Speedy Freestyle Flicks", components: [
             SetComponent(type: .warmup, distance: 50, strokeStyle: .freestyle, instructions: "50 warmup"),
             SetComponent(type: .swim, distance: 250, strokeStyle: .freestyle, instructions: "10x25 sprint on 20 seconds"),
-            SetComponent(type: .cooldown, distance: 50, strokeStyle: .mixed, instructions: "50 cooldown")
+            SetComponent(type: .cooldown, distance: 50, strokeStyle: .mixed, instructions: "50 cooldown"),
         ], measureUnit: .yards, difficulty: SwimSet.Difficulty.intermediate, description: "Short distance, high-intensity freestyle sprints."),
         SwimSet(title: "Medley Mastery", components: [
             SetComponent(type: .swim, distance: 400, strokeStyle: .mixed, instructions: "400 IM"),
             SetComponent(type: .swim, distance: 800, strokeStyle: .mixed, instructions: "8x100 IM on 1:40"),
             SetComponent(type: .kick, distance: 400, strokeStyle: .kickboard, instructions: "8x50 IM kick on 1:00"),
-            SetComponent(type: .cooldown, distance: 400, strokeStyle: .freestyle, instructions: "400 freestyle cool down")
+            SetComponent(type: .cooldown, distance: 400, strokeStyle: .freestyle, instructions: "400 freestyle cool down"),
         ], measureUnit: .meters, difficulty: SwimSet.Difficulty.advanced, description: "Advanced set for mastering the individual medley."),
         SwimSet(title: "Freestyle Fundamentals", components: [
             SetComponent(type: .warmup, distance: 200, strokeStyle: .mixed, instructions: "200 easy warmup"),
             SetComponent(type: .drill, distance: 200, strokeStyle: .freestyle, instructions: "8x25 freestyle technique focus"),
-            SetComponent(type: .cooldown, distance: 100, strokeStyle: .mixed, instructions: "100 cool down")
+            SetComponent(type: .cooldown, distance: 100, strokeStyle: .mixed, instructions: "100 cool down"),
         ], measureUnit: .meters, difficulty: SwimSet.Difficulty.beginner, description: "Basic freestyle techniques and endurance."),
         SwimSet(title: "Backstroke Basics", components: [
             SetComponent(type: .warmup, distance: 200, strokeStyle: .mixed, instructions: "200 easy warmup"),
             SetComponent(type: .drill, distance: 150, strokeStyle: .backstroke, instructions: "6x25 backstroke drills"),
-            SetComponent(type: .cooldown, distance: 100, strokeStyle: .mixed, instructions: "100 cool down")
+            SetComponent(type: .cooldown, distance: 100, strokeStyle: .mixed, instructions: "100 cool down"),
         ], measureUnit: .yards, difficulty: SwimSet.Difficulty.beginner, description: "Fundamentals of backstroke, focusing on form."),
         SwimSet(title: "Intermediate Butterfly", components: [
             SetComponent(type: .warmup, distance: 200, strokeStyle: .mixed, instructions: "200 mixed warmup"),
             SetComponent(type: .swim, distance: 500, strokeStyle: .butterfly, instructions: "5x100 butterfly on 2:00"),
-            SetComponent(type: .cooldown, distance: 200, strokeStyle: .mixed, instructions: "200 easy cool down")
+            SetComponent(type: .cooldown, distance: 200, strokeStyle: .mixed, instructions: "200 easy cool down"),
         ], measureUnit: .yards, difficulty: SwimSet.Difficulty.intermediate, description: "Building strength and technique in butterfly."),
         SwimSet(title: "Stroke Variety Pack", components: [
             SetComponent(type: .warmup, distance: 100, strokeStyle: .mixed, instructions: "100 IM warmup"),
             SetComponent(type: .swim, distance: 200, strokeStyle: .mixed, instructions: "4x50 each stroke focus"),
-            SetComponent(type: .cooldown, distance: 100, strokeStyle: .mixed, instructions: "100 easy cooldown")
+            SetComponent(type: .cooldown, distance: 100, strokeStyle: .mixed, instructions: "100 easy cooldown"),
         ], measureUnit: .yards, difficulty: SwimSet.Difficulty.beginner, description: "Introduction to all strokes, focusing on transitions."),
         SwimSet(title: "Breaststroke Endurance", components: [
             SetComponent(type: .warmup, distance: 500, strokeStyle: .mixed, instructions: "500 warmup"),
             SetComponent(type: .swim, distance: 1000, strokeStyle: .breaststroke, instructions: "10x100 on 1:50"),
-            SetComponent(type: .cooldown, distance: 500, strokeStyle: .mixed, instructions: "500 cool down")
-        ], measureUnit: .meters, difficulty: SwimSet.Difficulty.advanced, description: "Long distance, endurance training for breaststroke.")
+            SetComponent(type: .cooldown, distance: 500, strokeStyle: .mixed, instructions: "500 cool down"),
+        ], measureUnit: .meters, difficulty: SwimSet.Difficulty.advanced, description: "Long distance, endurance training for breaststroke."),
     ]
 
     // init
     override init()
     {
-
-        self.healthStore = HKHealthStore()
-        self.permission = true
+        healthStore = HKHealthStore()
+        permission = true
         super.init()
         loadFromJSONOrDefault()
-
     }
 
     // MARK: Loading from HealthStore
+
     // determines whether to load from JSON or if needed to use healthstore imports
-    func loadFromJSONOrDefault() 
+    func loadFromJSONOrDefault()
     {
         let fileManager = FileManager.default
         let url = getDocumentsDirectory().appendingPathComponent("store.json")
-        
+
         // check if the JSON file exists
         if fileManager.fileExists(atPath: url.path)
         {
-            loadFromJSON()  // attempt to load from JSON
-            
+            loadFromJSON() // attempt to load from JSON
+
             // check if the swims are empty after attempting to load
-            if self.swims.isEmpty
+            if swims.isEmpty
             {
                 print("No swims data found in JSON, loading from HealthKit.")
                 loadAllSwimmingWorkouts()
-            } 
+            }
             else
             {
                 print("Loaded swims from JSON successfully.")
                 calcFields()
             }
-        } 
+        }
         else
         {
             // if JSON file doesn't exist, proceed with loading from HealthKit
@@ -186,18 +184,19 @@ class Manager: NSObject, ObservableObject
             loadAllSwimmingWorkouts()
         }
     }
-    
+
     // load from healthStore
     func loadAllSwimmingWorkouts()
     {
-        self.swims.removeAll()
-        
+        swims.removeAll()
+
         // creating query
         let workoutPredicate = HKQuery.predicateForWorkouts(with: .swimming)
         let sortDescriptor = NSSortDescriptor(key: HKSampleSortIdentifierEndDate, ascending: false)
         let query = HKSampleQuery(sampleType: HKObjectType.workoutType(), predicate: workoutPredicate, limit: HKObjectQueryNoLimit, sortDescriptors: [sortDescriptor])
-        { [weak self] (query, samples, error) in
-            guard let self = self, let workouts = samples as? [HKWorkout], error == nil else
+        { [weak self] _, samples, error in
+            guard let self = self, let workouts = samples as? [HKWorkout], error == nil
+            else
             {
                 print("Failed to fetch workouts: \(error?.localizedDescription ?? "Unknown error")")
                 return
@@ -206,7 +205,7 @@ class Manager: NSObject, ObservableObject
             // perform updates on main thread - for all workouts
             DispatchQueue.main.async
             {
-                for workout in workouts 
+                for workout in workouts
                 {
                     // making the swim struct
                     let id = UUID()
@@ -222,7 +221,7 @@ class Manager: NSObject, ObservableObject
                     {
                         for event in events where event.type == .lap
                         {
-                            if let metadata = event.metadata 
+                            if let metadata = event.metadata
                             {
                                 let startDate = event.dateInterval.start
                                 let endDate = event.dateInterval.end
@@ -246,11 +245,10 @@ class Manager: NSObject, ObservableObject
                 self.calcFields()
                 self.updateStore()
             }
-
         }
         healthStore.execute(query)
     }
-    
+
     // calcs user totals
     func calcFields()
     {
@@ -258,19 +256,19 @@ class Manager: NSObject, ObservableObject
         var tCals = 0.0
         var count = 0
 
-        for swim in self.swims
+        for swim in swims
         {
             tDis += swim.totalDistance ?? 0
             tCals += swim.totalEnergyBurned ?? 0
             count += 1
         }
-        
+
         totalDistance = tDis
         averageDistance = count > 0 ? tDis / Double(count) : 0
         totalCalories = tCals
         averageCalories = count > 0 ? tCals / Double(count) : 0
     }
-    
+
     // updateStore for JSON
     func updateStore()
     {
@@ -280,14 +278,14 @@ class Manager: NSObject, ObservableObject
         store.userName = userName
         saveToJSON()
     }
-    
+
     // MARK: Persistence funcs
-    
+
     // save
     func saveToJSON()
     {
         let url = getDocumentsDirectory().appendingPathComponent("store.json")
-        do 
+        do
         {
             let encoder = JSONEncoder()
             let data = try encoder.encode(store)
@@ -297,31 +295,31 @@ class Manager: NSObject, ObservableObject
                 do
                 {
                     try data.write(to: url, options: [.atomicWrite, .completeFileProtection])
-                    DispatchQueue.main.async 
+                    DispatchQueue.main.async
                     {
                         print("Saved to \(url)")
                     }
-                } 
+                }
                 catch
                 {
-                    DispatchQueue.main.async 
+                    DispatchQueue.main.async
                     {
                         print("Failed to save: \(error)")
                     }
                 }
             }
-        } 
+        }
         catch
         {
             print("Failed to save: \(error)")
         }
     }
-    
+
     // load
     func loadFromJSON()
     {
         let url = getDocumentsDirectory().appendingPathComponent("store.json")
-        do 
+        do
         {
             let data = try Data(contentsOf: url)
             let decoder = JSONDecoder()
@@ -335,22 +333,20 @@ class Manager: NSObject, ObservableObject
     }
 
     // update local vals
-    private func updateLocalStoreValues() 
+    private func updateLocalStoreValues()
     {
-        self.swims = store.swims
-        self.userName = store.userName
-        self.preferredStroke = store.preferredStroke
-        self.preferredUnit = store.preferredUnit
+        swims = store.swims
+        userName = store.userName
+        preferredStroke = store.preferredStroke
+        preferredUnit = store.preferredUnit
         calcFields()
     }
-    
+
     // gets document directory for the URL
     func getDocumentsDirectory() -> URL
     {
         FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
     }
-
-    
 }
 
 // struct to store for persistence
@@ -361,6 +357,3 @@ struct Store: Codable
     var preferredUnit: MeasureUnit
     var swims: [Swim]
 }
-
-
-

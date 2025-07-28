@@ -1,56 +1,60 @@
 import Foundation
 
 // MARK: - ConsecutiveSwim
+
 /// Consecutive Swim: a group of laps performed with minimal rest (e.g., 4x25m = 100m swim)
 struct ConsecutiveSwim: Hashable, Codable
 {
     let laps: [Lap]
     let strokeStyle: SwimStroke?
     let startLapNumber: Int
-    
+
     // MARK: - Constants
+
     /// Rest threshold in seconds - laps with rest <= this are considered consecutive
     static let consecutiveThreshold: TimeInterval = 5.0
     /// Set threshold in seconds - swims with rest > this are considered separate sets
     static let setThreshold: TimeInterval = 60.0
-    
+
     // MARK: - Initialization
+
     init(laps: [Lap], startLapNumber: Int)
     {
         self.laps = laps
-        self.strokeStyle = laps.first?.stroke
+        strokeStyle = laps.first?.stroke
         self.startLapNumber = startLapNumber
     }
-    
+
     // MARK: - Computed Properties
+
     var totalTime: TimeInterval
     {
         laps.reduce(0) { $0 + $1.duration }
     }
-    
+
     var averageTime: TimeInterval
     {
         guard !laps.isEmpty else { return 0 }
         return totalTime / Double(laps.count)
     }
-    
+
     var averageSwolf: Double?
     {
         let scores = laps.compactMap { $0.swolfScore }
         guard !scores.isEmpty else { return nil }
         return scores.reduce(0, +) / Double(scores.count)
     }
-    
+
     var isIndividualMedley: Bool
     {
         guard laps.count == 4 else { return false }
-        
+
         let expectedSequence: [SwimStroke] = [.butterfly, .backstroke, .breaststroke, .freestyle]
         let actualSequence = laps.compactMap { $0.stroke }
-        
+
         return actualSequence == expectedSequence
     }
-    
+
     var effectiveStrokeStyle: SwimStroke?
     {
         if isIndividualMedley
@@ -59,12 +63,13 @@ struct ConsecutiveSwim: Hashable, Codable
         }
         return strokeStyle
     }
-    
+
     // MARK: - Methods
+
     func displayTitle(poolLength: Double) -> String
     {
         let count = laps.count
-        
+
         // Handle Individual Medley
         if isIndividualMedley
         {
@@ -72,9 +77,9 @@ struct ConsecutiveSwim: Hashable, Codable
             let distanceInt = Int(totalDistance)
             return "\(distanceInt)m IM"
         }
-        
+
         let strokeName = strokeStyle?.description ?? "Unknown"
-        
+
         if count == 1
         {
             return strokeName
@@ -90,27 +95,30 @@ struct ConsecutiveSwim: Hashable, Codable
 }
 
 // MARK: - WorkoutSet
+
 /// WorkoutSet: a group of similar ConsecutiveSwims (e.g., 4x100m freestyle set)
 struct WorkoutSet: Hashable, Codable
 {
     let consecutiveSwims: [ConsecutiveSwim]
     let strokeStyle: SwimStroke?
     let setNumber: Int
-    
+
     // MARK: - Initialization
+
     init(consecutiveSwims: [ConsecutiveSwim], setNumber: Int)
     {
         self.consecutiveSwims = consecutiveSwims
-        self.strokeStyle = consecutiveSwims.first?.effectiveStrokeStyle
+        strokeStyle = consecutiveSwims.first?.effectiveStrokeStyle
         self.setNumber = setNumber
     }
-    
+
     // MARK: - Computed Properties
+
     var totalTime: TimeInterval
     {
         consecutiveSwims.reduce(0) { $0 + $1.totalTime }
     }
-    
+
     var averageTime: TimeInterval
     {
         guard !consecutiveSwims.isEmpty else { return 0 }
@@ -123,13 +131,14 @@ struct WorkoutSet: Hashable, Codable
         guard !allSwolfs.isEmpty else { return nil }
         return allSwolfs.reduce(0, +) / Double(allSwolfs.count)
     }
-    
+
     // MARK: - Methods
+
     func displayTitle(poolLength: Double) -> String
     {
         let count = consecutiveSwims.count
         let strokeName = strokeStyle?.description ?? "Unknown"
-        
+
         if count == 1
         {
             return consecutiveSwims.first?.displayTitle(poolLength: poolLength) ?? strokeName

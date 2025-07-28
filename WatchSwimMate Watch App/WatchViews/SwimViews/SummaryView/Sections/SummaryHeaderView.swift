@@ -6,7 +6,6 @@ import SwiftUI
 struct SummaryHeaderView: View
 
 {
-
     @Environment(WatchManager.self) private var manager
 
     var body: some View
@@ -17,31 +16,31 @@ struct SummaryHeaderView: View
             ZStack
             {
                 Circle()
-                .fill(
-                LinearGradient(
-                colors: [.blue.opacity(0.2), .green.opacity(0.2)],
-                startPoint: .topLeading,
-                endPoint: .bottomTrailing
-                )
-                )
-                .frame(width: 60, height: 60)
+                    .fill(
+                        LinearGradient(
+                            colors: [.blue.opacity(0.2), .green.opacity(0.2)],
+                            startPoint: .topLeading,
+                            endPoint: .bottomTrailing
+                        )
+                    )
+                    .frame(width: 60, height: 60)
 
                 Image(systemName: "checkmark.circle.fill")
-                .font(.system(size: 30))
-                .foregroundColor(.green)
+                    .font(.system(size: 30))
+                    .foregroundColor(.green)
             }
 
             // congratulations message
             VStack(spacing: 4)
             {
                 Text("Workout Complete!")
-                .font(.system(size: 18, weight: .bold, design: .rounded))
-                .foregroundColor(.primary)
+                    .font(.system(size: 18, weight: .bold, design: .rounded))
+                    .foregroundColor(.primary)
 
                 Text(getCompletionMessage())
-                .font(.system(size: 12, weight: .medium))
-                .foregroundColor(.secondary)
-                .multilineTextAlignment(.center)
+                    .font(.system(size: 12, weight: .medium))
+                    .foregroundColor(.secondary)
+                    .multilineTextAlignment(.center)
             }
         }
     }

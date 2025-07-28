@@ -1,7 +1,7 @@
 // HealthKitPermissionView.swift
 
-import SwiftUI
 import HealthKit
+import SwiftUI
 
 // health kit permissions for watch app
 struct HealthKitPermissionView: View
@@ -12,25 +12,26 @@ struct HealthKitPermissionView: View
 
     var body: some View
     {
-        ScrollView {
+        ScrollView
+        {
             VStack(spacing: 20)
             {
                 // header
                 VStack(spacing: 12)
                 {
                     Image(systemName: "heart.text.square.fill")
-                    .font(.system(size: 40))
-                    .foregroundColor(.red)
+                        .font(.system(size: 40))
+                        .foregroundColor(.red)
 
                     Text("HealthKit Access")
-                    .font(.headline)
-                    .multilineTextAlignment(.center)
+                        .font(.headline)
+                        .multilineTextAlignment(.center)
 
                     Text("SwimMate needs access to HealthKit to track your swimming workouts and save them to the Health app.")
-                    .font(.system(size: 14))
-                    .foregroundColor(.secondary)
-                    .multilineTextAlignment(.center)
-                    .fixedSize(horizontal: false, vertical: true)
+                        .font(.system(size: 14))
+                        .foregroundColor(.secondary)
+                        .multilineTextAlignment(.center)
+                        .fixedSize(horizontal: false, vertical: true)
                 }
                 .padding(.top, 16)
 
@@ -38,27 +39,27 @@ struct HealthKitPermissionView: View
                 VStack(spacing: 12)
                 {
                     Text("We'll request access to:")
-                    .font(.system(size: 12, weight: .medium))
-                    .foregroundColor(.secondary)
+                        .font(.system(size: 12, weight: .medium))
+                        .foregroundColor(.secondary)
 
                     VStack(spacing: 8)
                     {
                         permissionRow(
-                        icon: "figure.pool.swim",
-                        title: "Swimming Workouts",
-                        description: "Track and save swim sessions"
+                            icon: "figure.pool.swim",
+                            title: "Swimming Workouts",
+                            description: "Track and save swim sessions"
                         )
 
                         permissionRow(
-                        icon: "heart.fill",
-                        title: "Heart Rate",
-                        description: "Monitor workout intensity"
+                            icon: "heart.fill",
+                            title: "Heart Rate",
+                            description: "Monitor workout intensity"
                         )
 
                         permissionRow(
-                        icon: "flame.fill",
-                        title: "Active Calories",
-                        description: "Track energy burned"
+                            icon: "flame.fill",
+                            title: "Active Calories",
+                            description: "Track energy burned"
                         )
                     }
                 }
@@ -71,10 +72,10 @@ struct HealthKitPermissionView: View
                     HStack
                     {
                         ProgressView()
-                        .scaleEffect(0.8)
+                            .scaleEffect(0.8)
                         Text("Requesting...")
-                        .font(.system(size: 14))
-                        .foregroundColor(.secondary)
+                            .font(.system(size: 14))
+                            .foregroundColor(.secondary)
                     }
                     .padding(.vertical, 16)
                 }
@@ -85,12 +86,12 @@ struct HealthKitPermissionView: View
                         Button(action: requestPermission)
                         {
                             Text("Allow HealthKit Access")
-                            .font(.system(size: 20, weight: .medium))
-                            .foregroundColor(.white)
-                            .frame(maxWidth: .infinity)
-                            .padding(.vertical, 14)
-                            .background(Color.red)
-                            .cornerRadius(12)
+                                .font(.system(size: 20, weight: .medium))
+                                .foregroundColor(.white)
+                                .frame(maxWidth: .infinity)
+                                .padding(.vertical, 14)
+                                .background(Color.red)
+                                .cornerRadius(12)
                         }
                         .buttonStyle(PlainButtonStyle())
 
@@ -125,18 +126,18 @@ struct HealthKitPermissionView: View
         HStack(spacing: 10)
         {
             Image(systemName: icon)
-            .font(.system(size: 16))
-            .foregroundColor(.blue)
-            .frame(width: 20)
+                .font(.system(size: 16))
+                .foregroundColor(.blue)
+                .frame(width: 20)
 
             VStack(alignment: .leading, spacing: 2)
             {
                 Text(title)
-                .font(.system(size: 13, weight: .medium))
+                    .font(.system(size: 13, weight: .medium))
 
                 Text(description)
-                .font(.system(size: 11))
-                .foregroundColor(.secondary)
+                    .font(.system(size: 11))
+                    .foregroundColor(.secondary)
             }
 
             Spacer()
@@ -164,5 +165,5 @@ struct HealthKitPermissionView: View
 #Preview
 {
     HealthKitPermissionView()
-    .environment(WatchManager())
+        .environment(WatchManager())
 }

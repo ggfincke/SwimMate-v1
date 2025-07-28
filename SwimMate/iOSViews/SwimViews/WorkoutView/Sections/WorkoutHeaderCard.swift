@@ -3,10 +3,11 @@
 import SwiftUI
 
 // MARK: - Header Card (matches home screen style)
+
 struct WorkoutHeaderCard: View
 {
     let swim: Swim
-    
+
     var body: some View
     {
         VStack(spacing: 16)
@@ -18,12 +19,12 @@ struct WorkoutHeaderCard: View
                     .font(.title2)
                     .fontWeight(.bold)
                     .foregroundColor(.white)
-                
+
                 Text(swim.date, style: .time)
                     .font(.subheadline)
                     .foregroundColor(.secondary)
             }
-            
+
             // Primary Stats Row
             HStack(spacing: 30)
             {
@@ -32,13 +33,13 @@ struct WorkoutHeaderCard: View
                     value: formatDuration(swim.duration),
                     label: "Duration"
                 )
-                
+
                 StatColumn(
                     emoji: "🌊",
                     value: formatDistance(swim.totalDistance),
                     label: "Distance"
                 )
-                
+
                 StatColumn(
                     emoji: "🔥",
                     value: "\(Int(swim.totalEnergyBurned ?? 0))",
@@ -50,14 +51,14 @@ struct WorkoutHeaderCard: View
         .background(Color.secondary.opacity(0.1))
         .cornerRadius(12)
     }
-    
+
     private func formatDuration(_ duration: TimeInterval) -> String
     {
         let minutes = Int(duration) / 60
         let seconds = Int(duration) % 60
         return String(format: "%d:%02d", minutes, seconds)
     }
-    
+
     private func formatDistance(_ distance: Double?) -> String
     {
         guard let distance = distance else { return "N/A" }
@@ -71,7 +72,7 @@ struct WorkoutHeaderCard: View
     let sampleLaps = [
         Lap(startDate: baseDate, endDate: baseDate.addingTimeInterval(45.2), metadata: ["HKSwimmingStrokeStyle": 2, "HKSWOLFScore": 28.5]),
         Lap(startDate: baseDate.addingTimeInterval(60), endDate: baseDate.addingTimeInterval(102.1), metadata: ["HKSwimmingStrokeStyle": 2, "HKSWOLFScore": 26.8]),
-        Lap(startDate: baseDate.addingTimeInterval(120), endDate: baseDate.addingTimeInterval(164.7), metadata: ["HKSwimmingStrokeStyle": 2, "HKSWOLFScore": 29.2])
+        Lap(startDate: baseDate.addingTimeInterval(120), endDate: baseDate.addingTimeInterval(164.7), metadata: ["HKSwimmingStrokeStyle": 2, "HKSWOLFScore": 29.2]),
     ]
 
     let sampleSwim = Swim(
@@ -84,7 +85,8 @@ struct WorkoutHeaderCard: View
         laps: sampleLaps
     )
 
-    return VStack {
+    return VStack
+    {
         WorkoutHeaderCard(swim: sampleSwim)
             .padding()
     }

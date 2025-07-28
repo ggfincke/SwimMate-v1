@@ -1,16 +1,14 @@
 // SwimMate/iOSViews/SettingsView/ProfilePage.swift
 
 import SwiftUI
-import SwiftUI
 
-
-struct ProfilePage: View 
+struct ProfilePage: View
 {
     @EnvironmentObject var manager: Manager
 
-    var body: some View 
+    var body: some View
     {
-        NavigationStack 
+        NavigationStack
         {
             ScrollView
             {
@@ -22,23 +20,22 @@ struct ProfilePage: View
                 }
                 .padding()
             }
-
         }
     }
 
-    var profileHeader: some View 
+    var profileHeader: some View
     {
-        VStack(alignment: .leading, spacing: 10) 
+        VStack(alignment: .leading, spacing: 10)
         {
             HStack
             {
                 Text("Profile")
                     .font(.largeTitle)
                     .bold()
-                
+
                 Spacer()
 
-                NavigationLink(destination: SettingsView()) 
+                NavigationLink(destination: SettingsView())
                 {
                     Image(systemName: "gearshape")
                         .imageScale(.large)
@@ -54,14 +51,14 @@ struct ProfilePage: View
         .padding(.top, 10)
     }
 
-    var statisticsSection: some View 
+    var statisticsSection: some View
     {
         VStack(alignment: .center, spacing: 10)
         {
             Text("Swimming Stats")
                 .font(.headline)
                 .padding(.bottom, 5)
-            
+
             statisticRow(label: "Average Distance:", value: manager.formatDistance(manager.averageDistance))
             statisticRow(label: "Average Calories Burned:", value: "\(Int(manager.averageCalories)) kcal")
             statisticRow(label: "Total Distance:", value: manager.formatDistance(manager.totalDistance))
@@ -74,7 +71,7 @@ struct ProfilePage: View
         .padding(.horizontal)
     }
 
-    var graphSection: some View 
+    var graphSection: some View
     {
         VStack(alignment: .center, spacing: 10)
         {
@@ -88,7 +85,7 @@ struct ProfilePage: View
         .padding(.horizontal)
     }
 
-    func statisticRow(label: String, value: String) -> some View 
+    func statisticRow(label: String, value: String) -> some View
     {
         HStack
         {
@@ -99,7 +96,9 @@ struct ProfilePage: View
         }
     }
 }
-#Preview {
+
+#Preview
+{
     ProfilePage()
         .environmentObject(Manager())
 }

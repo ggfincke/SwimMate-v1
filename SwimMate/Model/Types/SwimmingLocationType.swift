@@ -6,4 +6,4 @@ public enum SwimmingLocationType: String, Codable
     case pool
     case openWater
     case unknown
-} 
+}

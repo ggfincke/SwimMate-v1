@@ -5,12 +5,15 @@ import SwiftUI
 struct LogbookFilterSection: View
 {
     @Binding var selectedFilter: LogbookView.TimeFilter
-    
+
     var body: some View
     {
-        ScrollView(.horizontal, showsIndicators: false) {
-            HStack(spacing: 12) {
-                ForEach(LogbookView.TimeFilter.allCases) { filter in
+        ScrollView(.horizontal, showsIndicators: false)
+        {
+            HStack(spacing: 12)
+            {
+                ForEach(LogbookView.TimeFilter.allCases)
+                { filter in
                     TimeFilterChip(
                         filter: filter,
                         isSelected: selectedFilter == filter,
@@ -24,6 +27,7 @@ struct LogbookFilterSection: View
     }
 }
 
-#Preview {
+#Preview
+{
     LogbookFilterSection(selectedFilter: .constant(.thirtyDays))
 }

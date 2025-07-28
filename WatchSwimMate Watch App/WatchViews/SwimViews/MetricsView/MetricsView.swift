@@ -6,7 +6,6 @@ import SwiftUI
 struct MetricsView: View
 
 {
-
     @Environment(WatchManager.self) private var manager
     @State private var isVisible = false
 
@@ -55,20 +54,6 @@ struct MetricsView: View
 #Preview("Standard Size")
 {
     MetricsView()
-    .environment({
-        let manager = WatchManager()
-        manager.distance = 750
-        manager.elapsedTime = 1234.56
-        manager.heartRate = 142
-        manager.activeEnergy = 285
-        manager.laps = 15
-        return manager
-        }())
-    }
-
-    #Preview("Compact Size")
-    {
-        MetricsView()
         .environment({
             let manager = WatchManager()
             manager.distance = 750
@@ -77,5 +62,19 @@ struct MetricsView: View
             manager.activeEnergy = 285
             manager.laps = 15
             return manager
-            }())
-        }
+        }())
+}
+
+#Preview("Compact Size")
+{
+    MetricsView()
+        .environment({
+            let manager = WatchManager()
+            manager.distance = 750
+            manager.elapsedTime = 1234.56
+            manager.heartRate = 142
+            manager.activeEnergy = 285
+            manager.laps = 15
+            return manager
+        }())
+}

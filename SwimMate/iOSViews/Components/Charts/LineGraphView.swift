@@ -1,16 +1,16 @@
 // SwimMate/iOSViews/Components/Charts/LineGraphView.swift
 
-import SwiftUI
 import Charts
+import SwiftUI
 
-struct LineGraphView: View 
+struct LineGraphView: View
 {
     @EnvironmentObject var manager: Manager // Assumes Manager holds an array of Swim instances
-    @State private var selectedRange: DataRange = .lastTen  // Default selection
+    @State private var selectedRange: DataRange = .lastTen // Default selection
 
-    var filteredData: [Swim] 
+    var filteredData: [Swim]
     {
-        switch selectedRange 
+        switch selectedRange
         {
         case .lastTen:
             return Array(manager.swims.sorted(by: { $0.date > $1.date }).prefix(10)).filter { $0.totalDistance ?? 0 >= 100 }
@@ -22,7 +22,6 @@ struct LineGraphView: View
         }
     }
 
-
     var body: some View
     {
         VStack
@@ -32,7 +31,7 @@ struct LineGraphView: View
                 .padding(.bottom, 5)
             Picker("Select Range", selection: $selectedRange)
             {
-                ForEach(DataRange.allCases, id: \.self) 
+                ForEach(DataRange.allCases, id: \.self)
                 { range in
                     Text(range.rawValue)
                 }
@@ -40,15 +39,18 @@ struct LineGraphView: View
             .pickerStyle(.segmented)
             .padding()
 
-            Chart(filteredData) { swim in
+            Chart(filteredData)
+            { swim in
                 LineMark(
                     x: .value("Date", swim.date),
                     y: .value("Distance (meters)", swim.totalDistance ?? 0)
                 )
                 .interpolationMethod(.catmullRom) // Smooths the line
             }
-            .chartXAxis {
-                AxisMarks(values: .stride(by: .day)) {
+            .chartXAxis
+            {
+                AxisMarks(values: .stride(by: .day))
+                {
                     AxisGridLine()
                     AxisTick()
                     AxisValueLabel(format: .dateTime.day().month().year(), centered: true)
@@ -58,16 +60,15 @@ struct LineGraphView: View
     }
 
     enum DataRange: String, CaseIterable
-{
+    {
         case lastTen = "Last 10"
         case lastWeek = "Last Week"
         case allTime = "All Time"
     }
 }
 
-
-#Preview {
+#Preview
+{
     LineGraphView()
         .environmentObject(Manager())
 }
-

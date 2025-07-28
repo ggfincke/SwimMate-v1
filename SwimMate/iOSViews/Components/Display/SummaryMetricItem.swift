@@ -8,17 +8,18 @@ struct SummaryMetricItem: View
     var emoji: String
     var value: String
     var label: String
-    
+
     var body: some View
     {
-        VStack {
+        VStack
+        {
             Text(emoji)
                 .font(.system(size: 28))
-            
+
             Text(value)
                 .font(.headline)
                 .padding(.top, 2)
-            
+
             Text(label)
                 .font(.caption)
                 .foregroundColor(.secondary)
@@ -27,6 +28,7 @@ struct SummaryMetricItem: View
     }
 }
 
-#Preview {
+#Preview
+{
     SummaryMetricItem(emoji: "🔥", value: "5", label: "Workouts")
 }

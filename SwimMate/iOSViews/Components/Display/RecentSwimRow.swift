@@ -7,7 +7,7 @@ struct RecentSwimRow: View
 {
     let swim: Swim
     @EnvironmentObject var manager: Manager
-    
+
     private var dateFormatter: DateFormatter
     {
         let formatter = DateFormatter()
@@ -15,28 +15,31 @@ struct RecentSwimRow: View
         formatter.timeStyle = .none
         return formatter
     }
-    
+
     var body: some View
     {
-        HStack(alignment: .center) {
-            VStack(alignment: .leading, spacing: 4) {
+        HStack(alignment: .center)
+        {
+            VStack(alignment: .leading, spacing: 4)
+            {
                 Text(dateFormatter.string(from: swim.date))
                     .font(.subheadline)
                     .foregroundColor(.primary)
-                
-                if let distance = swim.totalDistance {
+
+                if let distance = swim.totalDistance
+                {
                     Text(manager.formatDistance(distance))
                         .font(.caption)
                         .foregroundColor(.secondary)
                 }
             }
-            
+
             Spacer()
-            
+
             Text("\(Int(swim.duration / 60)) min")
                 .font(.subheadline)
                 .foregroundColor(.secondary)
-            
+
             Image(systemName: "chevron.right")
                 .font(.caption)
                 .foregroundColor(.secondary)
@@ -45,7 +48,8 @@ struct RecentSwimRow: View
     }
 }
 
-#Preview {
+#Preview
+{
     let start = Date()
     return RecentSwimRow(swim: Swim(
         id: UUID(),

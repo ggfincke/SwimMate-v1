@@ -1,13 +1,12 @@
 // SettingsView.swift
 
-import SwiftUI
 import HealthKit
+import SwiftUI
 
 // settings
 struct SettingsView: View
 
 {
-
     @Environment(WatchManager.self) private var manager
     @Environment(\.dismiss) private var dismiss
     @State private var showResetConfirmation = false
@@ -51,8 +50,8 @@ struct SettingsView: View
             {
                 // use binding to update manager value
                 Picker("Default Unit", selection: Binding(
-                get: { manager.poolUnit },
-                set: { manager.poolUnit = $0 }
+                    get: { manager.poolUnit },
+                    set: { manager.poolUnit = $0 }
                 ))
                 {
                     Text("Meters").tag("meters")
@@ -61,8 +60,8 @@ struct SettingsView: View
 
                 // use binding to update manager value
                 Picker("Default Length", selection: Binding(
-                get: { manager.poolLength },
-                set: { manager.poolLength = $0 }
+                    get: { manager.poolLength },
+                    set: { manager.poolLength = $0 }
                 ))
                 {
                     Text("25").tag(25.0)
@@ -85,103 +84,103 @@ struct SettingsView: View
             HealthKitPermissionView()
         }
         .confirmationDialog(
-        "Reset Authorization?",
-        isPresented: $showResetConfirmation,
-        titleVisibility: .visible
+            "Reset Authorization?",
+            isPresented: $showResetConfirmation,
+            titleVisibility: .visible
         )
         {
             Button("Reset", role: .destructive)
             {
                 manager.resetAuthorizationState()
             }
-            Button("Cancel", role: .cancel) { }
-            } message: {
-                Text("This will reset the HealthKit authorization state. You'll need to grant permission again.")
-            }
+            Button("Cancel", role: .cancel) {}
+        } message: {
+            Text("This will reset the HealthKit authorization state. You'll need to grant permission again.")
         }
+    }
 
-        // HK status row
-        private var healthKitStatusRow: some View
+    // HK status row
+    private var healthKitStatusRow: some View
+    {
+        HStack
         {
-            HStack
-            {
-                Image(systemName: healthKitStatusIcon)
+            Image(systemName: healthKitStatusIcon)
                 .foregroundColor(healthKitStatusColor)
                 .font(.system(size: 16))
 
-                VStack(alignment: .leading, spacing: 2)
-                {
-                    Text("HealthKit Access")
+            VStack(alignment: .leading, spacing: 2)
+            {
+                Text("HealthKit Access")
                     .font(.system(size: 14, weight: .medium))
 
-                    Text(healthKitStatusText)
+                Text(healthKitStatusText)
                     .font(.system(size: 12))
                     .foregroundColor(.secondary)
-                }
-
-                Spacer()
             }
-            .padding(.vertical, 2)
+
+            Spacer()
         }
+        .padding(.vertical, 2)
+    }
 
-        // HK status helpers
-        private var healthKitStatusIcon: String
+    // HK status helpers
+    private var healthKitStatusIcon: String
+    {
+        if !HKHealthStore.isHealthDataAvailable()
         {
-            if !HKHealthStore.isHealthDataAvailable()
-            {
-                return "xmark.circle.fill"
-            }
-            else if !manager.authorizationRequested
-            {
-                return "questionmark.circle"
-            }
-            else if manager.healthKitAuthorized
-            {
-                return "checkmark.circle.fill"
-            }
-            else
-            {
-                return "exclamationmark.triangle.fill"
-            }
+            return "xmark.circle.fill"
         }
-
-        private var healthKitStatusColor: Color
+        else if !manager.authorizationRequested
         {
-            if !HKHealthStore.isHealthDataAvailable()
-            {
-                return .gray
-            }
-            else if !manager.authorizationRequested
-            {
-                return .orange
-            }
-            else if manager.healthKitAuthorized
-            {
-                return .green
-            }
-            else
-            {
-                return .red
-            }
+            return "questionmark.circle"
         }
-
-        private var healthKitStatusText: String
+        else if manager.healthKitAuthorized
         {
-            if !HKHealthStore.isHealthDataAvailable()
-            {
-                return "Not available on this device"
-            }
-            else if !manager.authorizationRequested
-            {
-                return "Not requested"
-            }
-            else if manager.healthKitAuthorized
-            {
-                return "Authorized - Ready to track workouts"
-            }
-            else
-            {
-                return "Access denied - Cannot track workouts"
-            }
+            return "checkmark.circle.fill"
+        }
+        else
+        {
+            return "exclamationmark.triangle.fill"
         }
     }
+
+    private var healthKitStatusColor: Color
+    {
+        if !HKHealthStore.isHealthDataAvailable()
+        {
+            return .gray
+        }
+        else if !manager.authorizationRequested
+        {
+            return .orange
+        }
+        else if manager.healthKitAuthorized
+        {
+            return .green
+        }
+        else
+        {
+            return .red
+        }
+    }
+
+    private var healthKitStatusText: String
+    {
+        if !HKHealthStore.isHealthDataAvailable()
+        {
+            return "Not available on this device"
+        }
+        else if !manager.authorizationRequested
+        {
+            return "Not requested"
+        }
+        else if manager.healthKitAuthorized
+        {
+            return "Authorized - Ready to track workouts"
+        }
+        else
+        {
+            return "Access denied - Cannot track workouts"
+        }
+    }
+}

@@ -5,21 +5,23 @@ import SwiftUI
 struct ProgressChartsSection: View
 {
     @EnvironmentObject var manager: Manager
-    
+
     var body: some View
     {
-        VStack(alignment: .leading, spacing: 16) {
+        VStack(alignment: .leading, spacing: 16)
+        {
             Text("Progress")
                 .font(.system(size: 20, weight: .bold, design: .rounded))
                 .foregroundColor(.primary)
-            
+
             DistanceChartCard()
                 .environmentObject(manager)
         }
     }
 }
 
-#Preview {
+#Preview
+{
     ProgressChartsSection()
         .environmentObject(Manager())
 }

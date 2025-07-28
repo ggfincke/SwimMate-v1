@@ -1,23 +1,23 @@
 // SwimMate/iOSViews/Components/Charts/StrokeDistributionChart.swift
 
-import SwiftUI
 import Charts
+import SwiftUI
 
 struct StrokeDistributionChart: View
 {
     let swim: Swim
-    
+
     var strokeData: [(String, Int)]
     {
         let strokeCounts = Dictionary(grouping: swim.laps)
         { lap in
             lap.stroke?.description ?? "Unknown"
         }.mapValues { $0.count }
-        
+
         return strokeCounts.map { ($0.key, $0.value) }
             .sorted { $0.1 > $1.1 }
     }
-    
+
     var body: some View
     {
         VStack(alignment: .leading, spacing: 8)
@@ -26,7 +26,7 @@ struct StrokeDistributionChart: View
                 .font(.subheadline)
                 .fontWeight(.semibold)
                 .foregroundColor(.white)
-            
+
             HStack
             {
                 // Simple chart
@@ -40,23 +40,24 @@ struct StrokeDistributionChart: View
                     .foregroundStyle(by: .value("Stroke", stroke))
                 }
                 .frame(width: 120, height: 120)
-                
+
                 // Legend
                 VStack(alignment: .leading, spacing: 4)
                 {
-                    ForEach(strokeData.prefix(4), id: \.0) { stroke, count in
+                    ForEach(strokeData.prefix(4), id: \.0)
+                    { stroke, count in
                         HStack
                         {
                             Circle()
                                 .fill(strokeColor(for: stroke))
                                 .frame(width: 8, height: 8)
-                            
+
                             Text(stroke)
                                 .font(.caption)
                                 .foregroundColor(.white)
-                            
+
                             Spacer()
-                            
+
                             Text("\(count)")
                                 .font(.caption)
                                 .foregroundColor(.secondary)
@@ -67,7 +68,7 @@ struct StrokeDistributionChart: View
             }
         }
     }
-    
+
     private func strokeColor(for stroke: String) -> Color
     {
         switch stroke
@@ -93,7 +94,7 @@ struct StrokeDistributionChart: View
         Lap(startDate: baseDate.addingTimeInterval(300), endDate: baseDate.addingTimeInterval(346.3), metadata: ["HKSwimmingStrokeStyle": 4, "HKSWOLFScore": 30.5]),
         Lap(startDate: baseDate.addingTimeInterval(360), endDate: baseDate.addingTimeInterval(401.9), metadata: ["HKSwimmingStrokeStyle": 2, "HKSWOLFScore": 27.3]),
         Lap(startDate: baseDate.addingTimeInterval(480), endDate: baseDate.addingTimeInterval(528.1), metadata: ["HKSwimmingStrokeStyle": 5, "HKSWOLFScore": 32.8]),
-        Lap(startDate: baseDate.addingTimeInterval(540), endDate: baseDate.addingTimeInterval(584.2), metadata: ["HKSwimmingStrokeStyle": 3, "HKSWOLFScore": 28.9])
+        Lap(startDate: baseDate.addingTimeInterval(540), endDate: baseDate.addingTimeInterval(584.2), metadata: ["HKSwimmingStrokeStyle": 3, "HKSWOLFScore": 28.9]),
     ]
 
     let sampleSwim = Swim(
@@ -106,7 +107,8 @@ struct StrokeDistributionChart: View
         laps: sampleLaps
     )
 
-    return VStack {
+    return VStack
+    {
         StrokeDistributionChart(swim: sampleSwim)
             .frame(height: 200)
             .padding()
@@ -114,4 +116,3 @@ struct StrokeDistributionChart: View
     .background(Color.black)
     .preferredColorScheme(.dark)
 }
-

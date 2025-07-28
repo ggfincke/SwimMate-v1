@@ -5,7 +5,6 @@ import SwiftUI
 struct GoalProgressList: View
 
 {
-
     @Environment(WatchManager.self) private var manager
 
     var body: some View
@@ -30,18 +29,19 @@ struct GoalProgressList: View
     }
 
     // MARK: - Goal Progress Card Builder
+
     private func goalProgressCard(for type: GoalType) -> some View
     {
         GoalProgressCard(
-        type: type,
-        progress: manager.getCurrentValue(for: type),
-        total: manager.getTargetValue(for: type),
-        unit: manager.getUnit(for: type),
-        color: manager.getColor(for: type),
-        icon: manager.getIcon(for: type),
-        isTimeFormat: type == .time,
-        formatTime: manager.formatTime,
-        isCompact: manager.isCompactDevice
+            type: type,
+            progress: manager.getCurrentValue(for: type),
+            total: manager.getTargetValue(for: type),
+            unit: manager.getUnit(for: type),
+            color: manager.getColor(for: type),
+            icon: manager.getIcon(for: type),
+            isTimeFormat: type == .time,
+            formatTime: manager.formatTime,
+            isCompact: manager.isCompactDevice
         )
     }
 }
@@ -54,7 +54,7 @@ struct GoalProgressList: View
     manager.goalUnit = "meters"
 
     return GoalProgressList()
-    .environment(manager)
+        .environment(manager)
 }
 
 #Preview("Multiple Goals")
@@ -69,5 +69,5 @@ struct GoalProgressList: View
     manager.goalUnit = "meters"
 
     return GoalProgressList()
-    .environment(manager)
+        .environment(manager)
 }

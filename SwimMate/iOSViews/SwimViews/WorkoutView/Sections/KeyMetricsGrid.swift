@@ -3,11 +3,12 @@
 import SwiftUI
 
 // MARK: - Key Metrics Grid (matches home screen style)
+
 struct KeyMetricsGrid: View
 {
     @EnvironmentObject var manager: Manager
     let swim: Swim
-    
+
     var body: some View
     {
         VStack(alignment: .leading, spacing: 12)
@@ -17,16 +18,16 @@ struct KeyMetricsGrid: View
                 Image(systemName: "chart.bar.fill")
                     .foregroundColor(.blue)
                     .font(.headline)
-                
+
                 Text("Key Metrics")
                     .font(.headline)
                     .fontWeight(.bold)
                     .foregroundColor(.white)
             }
-            
+
             LazyVGrid(columns: [
                 GridItem(.flexible()),
-                GridItem(.flexible())
+                GridItem(.flexible()),
             ], spacing: 12)
             {
                 MetricCard(
@@ -35,21 +36,21 @@ struct KeyMetricsGrid: View
                     label: "Average Pace",
                     subtitle: "per 100m"
                 )
-                
+
                 MetricCard(
                     emoji: "📏",
                     value: formatPoolLength(),
                     label: "Pool Length",
                     subtitle: "configured"
                 )
-                
+
                 MetricCard(
                     emoji: "🔄",
                     value: "\(swim.laps.count)",
                     label: "Total Laps",
                     subtitle: "completed"
                 )
-                
+
                 MetricCard(
                     emoji: "🎯",
                     value: manager.averageSwolfScore(for: swim),
@@ -59,7 +60,7 @@ struct KeyMetricsGrid: View
             }
         }
     }
-    
+
     private func formatPoolLength() -> String
     {
         guard let poolLength = swim.poolLength else { return "N/A" }
@@ -75,7 +76,7 @@ struct KeyMetricsGrid: View
         Lap(startDate: baseDate.addingTimeInterval(60), endDate: baseDate.addingTimeInterval(102.1), metadata: ["HKSwimmingStrokeStyle": 2, "HKSWOLFScore": 26.8]),
         Lap(startDate: baseDate.addingTimeInterval(120), endDate: baseDate.addingTimeInterval(164.7), metadata: ["HKSwimmingStrokeStyle": 2, "HKSWOLFScore": 29.2]),
         Lap(startDate: baseDate.addingTimeInterval(180), endDate: baseDate.addingTimeInterval(223.8), metadata: ["HKSwimmingStrokeStyle": 3, "HKSWOLFScore": 31.1]),
-        Lap(startDate: baseDate.addingTimeInterval(300), endDate: baseDate.addingTimeInterval(346.3), metadata: ["HKSwimmingStrokeStyle": 2, "HKSWOLFScore": 30.5])
+        Lap(startDate: baseDate.addingTimeInterval(300), endDate: baseDate.addingTimeInterval(346.3), metadata: ["HKSwimmingStrokeStyle": 2, "HKSWOLFScore": 30.5]),
     ]
 
     let sampleSwim = Swim(
@@ -88,7 +89,8 @@ struct KeyMetricsGrid: View
         laps: sampleLaps
     )
 
-    return VStack {
+    return VStack
+    {
         KeyMetricsGrid(swim: sampleSwim)
             .environmentObject(Manager())
             .padding()

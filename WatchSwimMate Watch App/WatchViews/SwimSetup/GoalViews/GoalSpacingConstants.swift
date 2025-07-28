@@ -3,9 +3,10 @@
 import Foundation
 
 // Shared spacing constants for consistent UI across SwimMate goal views
-struct GoalSpacingConstants
+enum GoalSpacingConstants
 {
     // MARK: - VStack Spacing
+
     // Main container VStack spacing (default: 8)
     static let mainContainer: CGFloat = 8
 
@@ -19,6 +20,7 @@ struct GoalSpacingConstants
     static let standardContent: CGFloat = 8
 
     // MARK: - Padding Values
+
     // Horizontal padding for main container
     static let horizontalMain: CGFloat = 8
 
@@ -38,6 +40,7 @@ struct GoalSpacingConstants
     static let bottomLarge: CGFloat = 16
 
     // MARK: - Grid and Layout Spacing
+
     // Spacing between grid items
     static let gridItem: CGFloat = 8
 

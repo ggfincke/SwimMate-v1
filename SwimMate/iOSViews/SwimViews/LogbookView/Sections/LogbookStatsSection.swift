@@ -6,24 +6,25 @@ struct LogbookStatsSection: View
 {
     @EnvironmentObject var manager: Manager
     let filteredWorkouts: [Swim]
-    
+
     var body: some View
     {
-        HStack(spacing: 12) {
+        HStack(spacing: 12)
+        {
             LogbookStatCard(
                 title: "Total Distance",
                 value: manager.formatTotalDistance(from: filteredWorkouts),
                 icon: "ruler",
                 color: .blue
             )
-            
+
             LogbookStatCard(
                 title: "Total Time",
                 value: manager.formatTotalTime(from: filteredWorkouts),
                 icon: "clock",
                 color: .green
             )
-            
+
             LogbookStatCard(
                 title: "Avg. Distance",
                 value: manager.formatAverageDistance(from: filteredWorkouts),
@@ -36,7 +37,8 @@ struct LogbookStatsSection: View
     }
 }
 
-#Preview {
+#Preview
+{
     LogbookStatsSection(filteredWorkouts: [])
         .environmentObject(Manager())
 }

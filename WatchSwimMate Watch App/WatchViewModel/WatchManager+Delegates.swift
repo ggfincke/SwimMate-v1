@@ -6,12 +6,13 @@ import Foundation
 import HealthKit
 
 // MARK: - HKWorkoutSessionDelegate & HKLiveWorkoutBuilderDelegate
+
 extension WatchManager: HKWorkoutSessionDelegate, HKLiveWorkoutBuilderDelegate
 {
     // MARK: - HKLiveWorkoutBuilderDelegate Methods
 
     // called when workoutbuilder collects events; laps, pause/resume, etc.
-    func workoutBuilderDidCollectEvent(_ workoutBuilder: HKLiveWorkoutBuilder)
+    func workoutBuilderDidCollectEvent(_: HKLiveWorkoutBuilder)
     {
         print("Workout builder collected event")
     }
@@ -22,7 +23,8 @@ extension WatchManager: HKWorkoutSessionDelegate, HKLiveWorkoutBuilderDelegate
         // iterate through each collected data type & update published properties
         for type in collectedTypes
         {
-            guard let quantityType = type as? HKQuantityType else
+            guard let quantityType = type as? HKQuantityType
+            else
             {
                 continue
             }
@@ -36,8 +38,9 @@ extension WatchManager: HKWorkoutSessionDelegate, HKLiveWorkoutBuilderDelegate
     }
 
     // MARK: - HKWorkoutSessionDelegate Methods
-    func workoutSession(_ workoutSession: HKWorkoutSession, didChangeTo toState: HKWorkoutSessionState,
-    from fromState: HKWorkoutSessionState, date: Date)
+
+    func workoutSession(_: HKWorkoutSession, didChangeTo toState: HKWorkoutSessionState,
+                        from fromState: HKWorkoutSessionState, date: Date)
     {
         DispatchQueue.main.async
         {
@@ -47,17 +50,17 @@ extension WatchManager: HKWorkoutSessionDelegate, HKLiveWorkoutBuilderDelegate
         // handle timer based on state
         switch toState
         {
-            case .running:
+        case .running:
             if fromState == .paused
             {
                 startElapsedTimer()
             }
-            case .paused:
+        case .paused:
             stopElapsedTimer()
-            case .ended:
+        case .ended:
             stopElapsedTimer()
             handleWorkoutEnd(date: date)
-            default:
+        default:
             break
         }
     }
@@ -72,9 +75,9 @@ extension WatchManager: HKWorkoutSessionDelegate, HKLiveWorkoutBuilderDelegate
         }
 
         // end collection
-        self.workoutBuilder?.endCollection(withEnd: date)
+        workoutBuilder?.endCollection(withEnd: date)
         {
-            (success, error) in
+            _, error in
             if let error = error
             {
                 print("Error ending collection: \(error.localizedDescription)")
@@ -88,7 +91,7 @@ extension WatchManager: HKWorkoutSessionDelegate, HKLiveWorkoutBuilderDelegate
             // finish workout
             self.workoutBuilder?.finishWorkout
             {
-                (workout, error) in
+                workout, error in
                 DispatchQueue.main.async
                 {
                     if let error = error
@@ -114,7 +117,7 @@ extension WatchManager: HKWorkoutSessionDelegate, HKLiveWorkoutBuilderDelegate
     }
 
     /// handle workout session failures
-    func workoutSession(_ workoutSession: HKWorkoutSession, didFailWithError error: Error)
+    func workoutSession(_: HKWorkoutSession, didFailWithError error: Error)
     {
         print("Workout session failed with error: \(error.localizedDescription)")
         stopElapsedTimer()

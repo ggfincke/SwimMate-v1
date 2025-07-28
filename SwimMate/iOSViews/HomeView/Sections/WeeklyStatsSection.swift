@@ -5,15 +5,17 @@ import SwiftUI
 struct WeeklyStatsSection: View
 {
     @EnvironmentObject var manager: Manager
-    
+
     var body: some View
     {
-        VStack(alignment: .leading, spacing: 16) {
+        VStack(alignment: .leading, spacing: 16)
+        {
             Text("This Week")
                 .font(.system(size: 20, weight: .bold, design: .rounded))
                 .foregroundColor(.primary)
-            
-            HStack(spacing: 12) {
+
+            HStack(spacing: 12)
+            {
                 StatCard(
                     title: "Workouts",
                     value: "\(manager.weeklyStats().workouts)",
@@ -21,7 +23,7 @@ struct WeeklyStatsSection: View
                     color: .blue,
                     trend: trendFromString(manager.weeklyWorkoutTrend())
                 )
-                
+
                 StatCard(
                     title: "Distance",
                     value: String(format: "%.0f", manager.weeklyStats().distance),
@@ -29,7 +31,7 @@ struct WeeklyStatsSection: View
                     color: .green,
                     trend: trendFromString(manager.weeklyDistanceTrend())
                 )
-                
+
                 StatCard(
                     title: "Time",
                     value: "\(Int(manager.weeklyStats().time / 60))m",
@@ -40,10 +42,11 @@ struct WeeklyStatsSection: View
             }
         }
     }
-    
+
     private func trendFromString(_ trendString: String) -> StatTrend
     {
-        switch trendString {
+        switch trendString
+        {
         case "up":
             return .up
         case "down":
@@ -54,7 +57,8 @@ struct WeeklyStatsSection: View
     }
 }
 
-#Preview {
+#Preview
+{
     WeeklyStatsSection()
         .environmentObject(Manager())
 }
