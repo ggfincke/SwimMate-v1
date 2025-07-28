@@ -84,23 +84,82 @@ struct FilterSheetView: View
 
     private var strokePicker: some View
     {
-        HStack
+        VStack(alignment: .leading, spacing: 8)
         {
-            Text("Stroke")
-            Spacer()
-            Picker("", selection: Binding(
-                get: { tempFilters.stroke ?? SwimStroke.freestyle },
-                set: { tempFilters.stroke = $0 == SwimStroke.freestyle ? nil : $0 }
-            ))
+            HStack
             {
-                Text("Any").tag(SwimStroke.freestyle)
-                ForEach([SwimStroke.freestyle, .backstroke, .breaststroke, .butterfly, .mixed], id: \.self)
+                Text("Strokes")
+                    .font(.headline)
+                Spacer()
+                Toggle("IM", isOn: $tempFilters.isIMFilter)
+                    .onChange(of: tempFilters.isIMFilter) { _, newValue in
+                        if newValue
+                        {
+                            tempFilters.strokes.removeAll()
+                        }
+                    }
+            }
+
+            Text("Select individual strokes or use IM filter:")
+                .font(.caption)
+                .foregroundColor(.secondary)
+
+            VStack(spacing: 8)
+            {
+                ForEach([SwimStroke.freestyle, .backstroke, .breaststroke, .butterfly], id: \.self)
                 { stroke in
-                    Text(stroke.description).tag(stroke)
+                    Button(action:
+                        {
+                            if tempFilters.strokes.contains(stroke)
+                            {
+                                tempFilters.strokes.remove(stroke)
+                            }
+                            else
+                            {
+                                tempFilters.strokes.insert(stroke)
+                                tempFilters.isIMFilter = false
+                            }
+                            
+                            // Auto-select IM if all 4 strokes are selected
+                            let allStrokes: Set<SwimStroke> = [.freestyle, .backstroke, .breaststroke, .butterfly]
+                            if tempFilters.strokes == allStrokes
+                            {
+                                tempFilters.strokes.removeAll()
+                                tempFilters.isIMFilter = true
+                            }
+                        })
+                    {
+                        HStack
+                        {
+                            Image(systemName: tempFilters.strokes.contains(stroke) ? "checkmark.square.fill" : "square")
+                                .font(.system(size: 18))
+                                .foregroundColor(tempFilters.strokes.contains(stroke) ? .blue : .gray)
+
+                            Text(stroke.description)
+                                .font(.body)
+                                .foregroundColor(.primary)
+
+                            Spacer()
+                        }
+                        .padding(.horizontal, 16)
+                        .padding(.vertical, 12)
+                        .background(tempFilters.strokes.contains(stroke) ? Color.blue.opacity(0.1) : Color(UIColor.systemGray6))
+                        .cornerRadius(10)
+                    }
+                    .buttonStyle(PlainButtonStyle())
+                    .disabled(tempFilters.isIMFilter)
                 }
             }
-            .pickerStyle(MenuPickerStyle())
         }
+    }
+
+    // MARK: - Difficulty Selection Binding
+
+    private var difficultySelection: Binding<SwimSet.Difficulty?> {
+        Binding<SwimSet.Difficulty?>(
+            get: { tempFilters.difficulty },
+            set: { tempFilters.difficulty = $0 }
+        )
     }
 
     // MARK: - Difficulty Picker
@@ -111,19 +170,25 @@ struct FilterSheetView: View
         {
             Text("Difficulty")
             Spacer()
-            Picker("", selection: Binding(
-                get: { tempFilters.difficulty ?? .beginner },
-                set: { tempFilters.difficulty = $0 == .beginner ? nil : $0 }
-            ))
+            Picker("", selection: difficultySelection)
             {
-                Text("Any").tag(SwimSet.Difficulty.beginner)
+                Text("Any").tag(nil as SwimSet.Difficulty?)
                 ForEach(SwimSet.Difficulty.allCases, id: \.self)
                 { difficulty in
-                    Text(difficulty.rawValue).tag(difficulty)
+                    Text(difficulty.rawValue).tag(difficulty as SwimSet.Difficulty?)
                 }
             }
             .pickerStyle(MenuPickerStyle())
         }
+    }
+
+    // MARK: - Unit Selection Binding
+
+    private var unitSelection: Binding<MeasureUnit?> {
+        Binding<MeasureUnit?>(
+            get: { tempFilters.unit },
+            set: { tempFilters.unit = $0 }
+        )
     }
 
     // MARK: - Unit Picker
@@ -134,15 +199,12 @@ struct FilterSheetView: View
         {
             Text("Unit")
             Spacer()
-            Picker("", selection: Binding(
-                get: { tempFilters.unit ?? .meters },
-                set: { tempFilters.unit = $0 == .meters ? nil : $0 }
-            ))
+            Picker("", selection: unitSelection)
             {
-                Text("Any").tag(MeasureUnit.meters)
+                Text("Any").tag(nil as MeasureUnit?)
                 ForEach(MeasureUnit.allCases, id: \.self)
                 { unit in
-                    Text(unit.rawValue).tag(unit)
+                    Text(unit.rawValue).tag(unit as MeasureUnit?)
                 }
             }
             .pickerStyle(MenuPickerStyle())
@@ -376,3 +438,4 @@ struct SearchSheetView: View
     FilterSheetView()
         .environmentObject(Manager())
 }
+

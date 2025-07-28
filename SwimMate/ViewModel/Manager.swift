@@ -28,7 +28,7 @@ class Manager: NSObject, ObservableObject
 
     // user preferences
     @Published var userName: String = "User"
-    @Published var preferredStroke: SwimStroke = .freestyle
+    @Published var preferredStroke: SwimStroke? = .freestyle
     @Published var preferredUnit: MeasureUnit = .meters
     @Published var swims: [Swim] = []
 
@@ -353,7 +353,7 @@ class Manager: NSObject, ObservableObject
 struct Store: Codable
 {
     var userName: String
-    var preferredStroke: SwimStroke
+    var preferredStroke: SwimStroke?
     var preferredUnit: MeasureUnit
     var swims: [Swim]
 }

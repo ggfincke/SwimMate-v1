@@ -100,7 +100,162 @@ enum SwimSetExamples
         description: "Individual Medley pyramid set"
     )
 
+    static let beginnerIM = SwimSet(
+        title: "Beginner IM Introduction",
+        components: [
+            SetComponent(
+                type: .warmup,
+                distance: 200,
+                strokeStyle: .freestyle,
+                instructions: "Easy warm-up",
+                restPeriod: 30
+            ),
+            SetComponent(
+                type: .drill,
+                distance: 100,
+                strokeStyle: .butterfly,
+                instructions: "2x50 butterfly arms only",
+                restPeriod: 45
+            ),
+            SetComponent(
+                type: .drill,
+                distance: 100,
+                strokeStyle: .backstroke,
+                instructions: "2x50 backstroke technique",
+                restPeriod: 30
+            ),
+            SetComponent(
+                type: .drill,
+                distance: 100,
+                strokeStyle: .breaststroke,
+                instructions: "2x50 breaststroke pulls",
+                restPeriod: 45
+            ),
+            SetComponent(
+                type: .swim,
+                distance: 100,
+                strokeStyle: .mixed,
+                instructions: "4x25 IM order (fly, back, breast, free)",
+                restPeriod: 60
+            ),
+            SetComponent(
+                type: .cooldown,
+                distance: 100,
+                strokeStyle: .freestyle,
+                instructions: "Easy recovery"
+            ),
+        ],
+        difficulty: .beginner,
+        estimatedDuration: 30 * 60,
+        description: "Introduction to Individual Medley strokes and order"
+    )
+
+    static let intermediateIMDistance = SwimSet(
+        title: "IM Distance Builder",
+        components: [
+            SetComponent(
+                type: .warmup,
+                distance: 400,
+                strokeStyle: .freestyle,
+                instructions: "Build every 100m",
+                restPeriod: 30
+            ),
+            SetComponent(
+                type: .swim,
+                distance: 200,
+                strokeStyle: .mixed,
+                instructions: "2x100 IM, focus on transitions",
+                restPeriod: 90
+            ),
+            SetComponent(
+                type: .swim,
+                distance: 300,
+                strokeStyle: .mixed,
+                instructions: "3x100 IM, steady pace",
+                restPeriod: 75
+            ),
+            SetComponent(
+                type: .kick,
+                distance: 200,
+                strokeStyle: .mixed,
+                instructions: "4x50 IM kick order",
+                restPeriod: 45
+            ),
+            SetComponent(
+                type: .swim,
+                distance: 400,
+                strokeStyle: .mixed,
+                instructions: "1x400 IM, race pace",
+                restPeriod: 120
+            ),
+            SetComponent(
+                type: .cooldown,
+                distance: 200,
+                strokeStyle: .freestyle
+            ),
+        ],
+        difficulty: .intermediate,
+        estimatedDuration: 45 * 60,
+        description: "Building endurance for longer IM distances"
+    )
+
     // MARK: - Advanced Sets
+
+    static let advancedIMSet = SwimSet(
+        title: "Advanced IM Training",
+        components: [
+            SetComponent(
+                type: .warmup,
+                distance: 600,
+                strokeStyle: .freestyle,
+                instructions: "Build every 200m",
+                restPeriod: 30
+            ),
+            SetComponent(
+                type: .drill,
+                distance: 200,
+                strokeStyle: .mixed,
+                instructions: "IM stroke technique - 50 each stroke",
+                restPeriod: 30
+            ),
+            SetComponent(
+                type: .swim,
+                distance: 400,
+                strokeStyle: .mixed,
+                instructions: "4x100 IM descend 1-4",
+                restPeriod: 90
+            ),
+            SetComponent(
+                type: .swim,
+                distance: 200,
+                strokeStyle: .mixed,
+                instructions: "8x25 IM order fast",
+                restPeriod: 30
+            ),
+            SetComponent(
+                type: .swim,
+                distance: 400,
+                strokeStyle: .mixed,
+                instructions: "1x400 IM time trial",
+                restPeriod: 180
+            ),
+            SetComponent(
+                type: .swim,
+                distance: 200,
+                strokeStyle: .mixed,
+                instructions: "2x100 IM broken at 50",
+                restPeriod: 60
+            ),
+            SetComponent(
+                type: .cooldown,
+                distance: 300,
+                strokeStyle: .freestyle
+            ),
+        ],
+        difficulty: .advanced,
+        estimatedDuration: 50 * 60,
+        description: "High-intensity IM training with technique focus"
+    )
 
     static let advancedSprint = SwimSet(
         title: "Sprint Training",
@@ -168,7 +323,10 @@ enum SwimSetExamples
 
     static let allExamples: [SwimSet] = [
         beginnerFreestyle,
+        beginnerIM,
         intermediateIM,
+        intermediateIMDistance,
+        advancedIMSet,
         advancedSprint,
     ]
 }

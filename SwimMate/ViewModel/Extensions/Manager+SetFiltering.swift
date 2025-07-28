@@ -10,7 +10,7 @@ extension Manager
 
     struct SetFilters: Equatable
     {
-        var stroke: SwimStroke?
+        var strokes: Set<SwimStroke>
         var difficulty: SwimSet.Difficulty?
         var unit: MeasureUnit?
         var componentTypes: Set<SetComponent.ComponentType>
@@ -20,9 +20,10 @@ extension Manager
         var showFavorites: Bool
         var hasWarmup: Bool?
         var hasCooldown: Bool?
+        var isIMFilter: Bool
 
         static let defaultFilters = SetFilters(
-            stroke: nil,
+            strokes: [],
             difficulty: nil,
             unit: nil,
             componentTypes: [],
@@ -31,7 +32,8 @@ extension Manager
             searchText: "",
             showFavorites: false,
             hasWarmup: nil,
-            hasCooldown: nil
+            hasCooldown: nil,
+            isIMFilter: false
         )
     }
 
@@ -89,7 +91,7 @@ extension Manager
     var recommendedSets: [SwimSet]
     {
         let baseFilters = SetFilters(
-            stroke: preferredStroke,
+            strokes: preferredStroke.map { [$0] } ?? [],
             difficulty: nil,
             unit: preferredUnit,
             componentTypes: [],
@@ -98,7 +100,8 @@ extension Manager
             searchText: "",
             showFavorites: false,
             hasWarmup: nil,
-            hasCooldown: nil
+            hasCooldown: nil,
+            isIMFilter: false
         )
 
         let recommended = filterSets(sampleSets, with: baseFilters)
@@ -117,9 +120,10 @@ extension Manager
     {
         var components: [String] = []
 
-        if let stroke = activeFilters.stroke
+        if !activeFilters.strokes.isEmpty
         {
-            components.append(stroke.description)
+            let strokes = activeFilters.strokes.map { $0.description }.sorted().joined(separator: " + ")
+            components.append(strokes)
         }
 
         if let difficulty = activeFilters.difficulty
@@ -152,6 +156,11 @@ extension Manager
         {
             components.append("Favorites")
         }
+        
+        if activeFilters.isIMFilter
+        {
+            components.append("IM")
+        }
 
         if let hasWarmup = activeFilters.hasWarmup
         {
@@ -172,10 +181,22 @@ extension Manager
     {
         return sets.filter
         { set in
-            // Stroke filter
-            if let stroke = filters.stroke, set.primaryStroke != stroke
+            // IM filter
+            if filters.isIMFilter
             {
-                return false
+                if !set.isIMSet
+                {
+                    return false
+                }
+            }
+            
+            // Stroke filter
+            if !filters.strokes.isEmpty
+            {
+                if filters.strokes.isDisjoint(with: set.strokeTags)
+                {
+                    return false
+                }
             }
 
             // Difficulty filter
@@ -294,7 +315,7 @@ extension Manager
     func getSmartRecommendations(for userLevel: SwimSet.Difficulty, preferredDistance: DistanceRange) -> [SwimSet]
     {
         let smartFilters = SetFilters(
-            stroke: preferredStroke,
+            strokes: preferredStroke.map { [$0] } ?? [],
             difficulty: userLevel,
             unit: preferredUnit,
             componentTypes: [],
@@ -303,7 +324,8 @@ extension Manager
             searchText: "",
             showFavorites: false,
             hasWarmup: true,
-            hasCooldown: true
+            hasCooldown: true,
+            isIMFilter: false
         )
 
         return filterSets(sampleSets, with: smartFilters)
@@ -327,13 +349,15 @@ extension Manager
         case "Advanced":
             return activeFilters.difficulty == .advanced
         case "Freestyle":
-            return activeFilters.stroke == .freestyle
+            return activeFilters.strokes.contains(.freestyle)
         case "Backstroke":
-            return activeFilters.stroke == .backstroke
+            return activeFilters.strokes.contains(.backstroke)
         case "Breaststroke":
-            return activeFilters.stroke == .breaststroke
+            return activeFilters.strokes.contains(.breaststroke)
         case "Butterfly":
-            return activeFilters.stroke == .butterfly
+            return activeFilters.strokes.contains(.butterfly)
+        case "IM":
+            return activeFilters.isIMFilter
         default:
             return false
         }
@@ -352,15 +376,47 @@ extension Manager
         case "Advanced":
             activeFilters.difficulty = activeFilters.difficulty == .advanced ? nil : .advanced
         case "Freestyle":
-            activeFilters.stroke = activeFilters.stroke == .freestyle ? nil : .freestyle
+            toggleStroke(.freestyle)
         case "Backstroke":
-            activeFilters.stroke = activeFilters.stroke == .backstroke ? nil : .backstroke
+            toggleStroke(.backstroke)
         case "Breaststroke":
-            activeFilters.stroke = activeFilters.stroke == .breaststroke ? nil : .breaststroke
+            toggleStroke(.breaststroke)
         case "Butterfly":
-            activeFilters.stroke = activeFilters.stroke == .butterfly ? nil : .butterfly
+            toggleStroke(.butterfly)
+        case "IM":
+            activeFilters.isIMFilter.toggle()
+            if activeFilters.isIMFilter
+            {
+                activeFilters.strokes.removeAll()
+            }
         default:
             break
+        }
+    }
+    
+    private func toggleStroke(_ stroke: SwimStroke)
+    {
+        // If IM is active, turn it off when selecting individual strokes
+        if activeFilters.isIMFilter
+        {
+            activeFilters.isIMFilter = false
+        }
+        
+        if activeFilters.strokes.contains(stroke)
+        {
+            activeFilters.strokes.remove(stroke)
+        }
+        else
+        {
+            activeFilters.strokes.insert(stroke)
+        }
+        
+        // Auto-select IM if all 4 strokes are selected
+        let allStrokes: Set<SwimStroke> = [.freestyle, .backstroke, .breaststroke, .butterfly]
+        if activeFilters.strokes == allStrokes
+        {
+            activeFilters.strokes.removeAll()
+            activeFilters.isIMFilter = true
         }
     }
 
@@ -374,3 +430,4 @@ extension Manager
         return (total, filtered, percentage)
     }
 }
+

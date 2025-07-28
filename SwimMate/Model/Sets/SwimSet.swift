@@ -1,4 +1,3 @@
-
 // SwimMate/Model/Sets/SwimSet.swift
 
 import Foundation
@@ -68,6 +67,76 @@ struct SwimSet: Identifiable, Hashable, Codable
             .mapValues { $0.count }
 
         return strokeCounts.max(by: { $0.value < $1.value })?.key
+    }
+    
+    /// Stroke tags for filtering - based on set focus, not individual components
+    var strokeTags: Set<SwimStroke>
+    {
+        // Get strokes from main swim components (ignore warmup/cooldown mixed strokes)
+        let mainComponents = components.filter { component in
+            component.type == .swim || component.type == .drill || component.type == .kick || component.type == .pull
+        }
+        
+        let mainStrokes = mainComponents.compactMap { $0.strokeStyle }
+            .filter { $0 != .mixed && $0 != .kickboard } // Filter out non-specific strokes
+        
+        guard !mainStrokes.isEmpty else { return [] }
+        
+        // Calculate stroke distribution by distance
+        let strokeDistances = Dictionary(grouping: mainComponents) { $0.strokeStyle }
+            .compactMapValues { components in
+                components.first?.strokeStyle == .mixed || components.first?.strokeStyle == .kickboard ? nil : 
+                components.reduce(0) { $0 + $1.distance }
+            }
+        
+        let totalMainDistance = strokeDistances.values.reduce(0, +)
+        guard totalMainDistance > 0 else { return [] }
+        
+        var tags: Set<SwimStroke> = []
+        
+        // Add strokes that make up at least 20% of the main work
+        for (strokeOpt, distance) in strokeDistances {
+            guard let stroke = strokeOpt else { continue }
+            let percentage = Double(distance) / Double(totalMainDistance)
+            if percentage >= 0.2 // 20% threshold
+            {
+                tags.insert(stroke)
+            }
+        }
+        
+        // Special case: If set has all 4 strokes represented, tag as IM
+        let allStrokes: Set<SwimStroke> = [.freestyle, .backstroke, .breaststroke, .butterfly]
+        if tags.count >= 3 && allStrokes.isSubset(of: Set(mainStrokes))
+        {
+            // This is an IM set - clear individual stroke tags
+            tags = []
+            // We'll handle IM identification separately in filtering
+        }
+        
+        return tags
+    }
+    
+    /// Whether this set is an Individual Medley focused set
+    var isIMSet: Bool
+    {
+        // Check if title contains IM keywords
+        let imKeywords = ["im", "individual medley", "medley"]
+        let titleLower = title.lowercased()
+        
+        if imKeywords.contains(where: { titleLower.contains($0) })
+        {
+            return true
+        }
+        
+        // Check if main components include all 4 strokes
+        let mainComponents = components.filter { component in
+            component.type == .swim || component.type == .drill
+        }
+        
+        let mainStrokes = Set(mainComponents.compactMap { $0.strokeStyle })
+        let allStrokes: Set<SwimStroke> = [.freestyle, .backstroke, .breaststroke, .butterfly]
+        
+        return allStrokes.isSubset(of: mainStrokes)
     }
 
     /// Total estimated rest time

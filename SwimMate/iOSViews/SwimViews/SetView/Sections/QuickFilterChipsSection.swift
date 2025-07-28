@@ -16,6 +16,7 @@ struct QuickFilterChipsSection: View
         ("Backstroke", "figure.pool.swim"),
         ("Breaststroke", "figure.pool.swim"),
         ("Butterfly", "figure.pool.swim"),
+        ("IM", "figure.pool.swim"),
     ]
 
     var body: some View
