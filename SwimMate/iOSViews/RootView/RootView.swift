@@ -21,14 +21,17 @@ struct RootView: View
                 }
                 .tag(0)
 
-            SetPage()
-                .environmentObject(manager)
-                .environmentObject(watchOSManager)
-                .tabItem
-                {
-                    Label("Sets", systemImage: "list.bullet")
-                }
-                .tag(1)
+            NavigationStack
+            {
+                SetPage()
+                    .environmentObject(manager)
+                    .environmentObject(watchOSManager)
+            }
+            .tabItem
+            {
+                Label("Sets", systemImage: "list.bullet")
+            }
+            .tag(1)
 
             LogbookView()
                 .environmentObject(manager)

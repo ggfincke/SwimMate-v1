@@ -13,9 +13,9 @@ struct QuickFilterChipsSection: View
         ("Intermediate", "figure.walk"),
         ("Advanced", "figure.run"),
         ("Freestyle", "figure.pool.swim"),
-        ("Backstroke", "arrow.up"),
-        ("Breaststroke", "arrow.down"),
-        ("Butterfly", "wing.left.and.wing.right"),
+        ("Backstroke", "figure.pool.swim"),
+        ("Breaststroke", "figure.pool.swim"),
+        ("Butterfly", "figure.pool.swim"),
     ]
 
     var body: some View

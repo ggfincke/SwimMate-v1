@@ -12,9 +12,7 @@ struct SetPage: View
 
     var body: some View
     {
-        NavigationView
-        {
-            ZStack
+        ZStack
             {
                 // Background gradient
                 LinearGradient(
@@ -59,10 +57,9 @@ struct SetPage: View
                     .padding(.horizontal)
                     .padding(.bottom, 100)
                 }
-            }
-            .navigationTitle("")
-            .navigationBarHidden(true)
         }
+        .navigationTitle("")
+        .navigationBarHidden(true)
         .sheet(isPresented: $showingFilter)
         {
             FilterSheetView()

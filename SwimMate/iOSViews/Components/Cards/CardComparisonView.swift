@@ -2,7 +2,7 @@
 
 import SwiftUI
 
-/// View for comparing different card layouts side by side
+// View for comparing different card layouts side by side
 struct CardComparisonView: View
 {
     @EnvironmentObject var manager: Manager

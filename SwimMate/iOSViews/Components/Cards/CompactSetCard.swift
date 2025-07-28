@@ -22,7 +22,7 @@ struct CompactSetCard: View
     {
         VStack(alignment: .leading, spacing: 8)
         {
-            // Title Section - Fixed Height
+            // Title Section
             VStack(alignment: .leading, spacing: 0)
             {
                 Text(swimSet.title)
@@ -32,7 +32,7 @@ struct CompactSetCard: View
                     .multilineTextAlignment(.leading)
                     .frame(maxWidth: .infinity, alignment: .leading)
             }
-            .frame(height: 40, alignment: .top) // Fixed height for 2 lines
+            .frame(height: 40, alignment: .top)
 
             // Difficulty Badge + Distance
             HStack(spacing: 8)
@@ -87,7 +87,7 @@ struct CompactSetCard: View
         }
         .padding(12)
         .frame(maxWidth: .infinity, alignment: .leading)
-        .frame(height: 110) // Fixed card height
+        .frame(height: 110) 
         .background(Color(UIColor.systemBackground))
         .cornerRadius(12)
         .shadow(color: .black.opacity(0.08), radius: 8, x: 0, y: 2)
