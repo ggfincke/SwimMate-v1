@@ -1,4 +1,4 @@
-// SwimMate/iOSViews/SwimViews/SetView/Sections/FilterSummarySection.swift
+// SwimMate/iOSViews/SwimViews/SetView/PageSections/FilterSummarySection.swift
 
 import SwiftUI
 

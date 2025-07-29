@@ -1,4 +1,4 @@
-// SwimMate/iOSViews/SwimViews/SetView/Sections/SetsGridSection.swift
+// SwimMate/iOSViews/SwimViews/SetView/PageSections/SetsGridSection.swift
 
 import SwiftUI
 

@@ -1,4 +1,4 @@
-// SwimMate/iOSViews/SwimViews/SetView/Sections/QuickFilterChipsSection.swift
+// SwimMate/iOSViews/SwimViews/SetView/PageSections/QuickFilterChipsSection.swift
 
 import SwiftUI
 

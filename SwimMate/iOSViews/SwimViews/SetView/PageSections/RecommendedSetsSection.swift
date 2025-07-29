@@ -1,4 +1,4 @@
-// SwimMate/iOSViews/SwimViews/SetView/Sections/RecommendedSetsSection.swift
+// SwimMate/iOSViews/SwimViews/SetView/PageSections/RecommendedSetsSection.swift
 
 import SwiftUI
 

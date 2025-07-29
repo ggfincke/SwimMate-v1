@@ -1,4 +1,4 @@
-// SwimMate/iOSViews/SwimViews/SetView/Sections/SetPageHeroSection.swift
+// SwimMate/iOSViews/SwimViews/SetView/PageSections/SetPageHeroSection.swift
 
 import SwiftUI
 
