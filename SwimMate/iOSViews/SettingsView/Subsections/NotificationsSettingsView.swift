@@ -1,4 +1,4 @@
-// SwimMate/iOSViews/SettingsView/NotificationsSettingsView.swift
+// SwimMate/iOSViews/SettingsView/Subsections/NotificationsSettingsView.swift
 
 import SwiftUI
 import UserNotifications

@@ -1,4 +1,4 @@
-// SwimMate/iOSViews/SettingsView/GoalsSettingsView.swift
+// SwimMate/iOSViews/SettingsView/Subsections/GoalsSettingsView.swift
 
 import SwiftUI
 

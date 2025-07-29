@@ -1,4 +1,4 @@
-// SwimMate/iOSViews/SettingsView/HealthKitPermissionView.swift
+// SwimMate/iOSViews/SettingsView/Subsections/HealthKitPermissionView.swift
 
 import HealthKit
 import HealthKitUI

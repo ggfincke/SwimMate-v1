@@ -16,10 +16,10 @@ struct WorkoutView: View
         {
             VStack(spacing: 20)
             {
-                // Header Card - matches home screen style
+                // Header Card
                 WorkoutHeaderCard(swim: swim)
 
-                // Key Metrics Grid - matches home screen style
+                // Key Metrics Grid 
                 KeyMetricsGrid(swim: swim)
 
                 // Charts Section with TabView
