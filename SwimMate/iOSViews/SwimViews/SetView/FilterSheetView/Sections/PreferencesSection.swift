@@ -5,7 +5,7 @@ import SwiftUI
 struct PreferencesSection: View
 {
     @Binding var tempFilters: Manager.SetFilters
-    
+
     var body: some View
     {
         Section("Preferences")
@@ -18,7 +18,7 @@ struct PreferencesSection: View
 struct FavoritesToggle: View
 {
     @Binding var tempFilters: Manager.SetFilters
-    
+
     var body: some View
     {
         HStack
@@ -33,9 +33,8 @@ struct FavoritesToggle: View
 
 #Preview
 {
-    @State var sampleFilters = Manager.SetFilters.defaultFilters
-    
-    return Form
+    @Previewable @State var sampleFilters = Manager.SetFilters.defaultFilters
+    Form
     {
         PreferencesSection(tempFilters: $sampleFilters)
     }

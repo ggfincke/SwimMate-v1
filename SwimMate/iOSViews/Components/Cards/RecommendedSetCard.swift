@@ -127,7 +127,7 @@ struct RecommendedSetCard: View
                     distance: 400,
                     strokeStyle: .freestyle,
                     instructions: "Easy warm-up"
-                )
+                ),
             ],
             measureUnit: .meters,
             difficulty: .intermediate,
@@ -139,4 +139,3 @@ struct RecommendedSetCard: View
     .frame(width: 280)
     .padding()
 }
-

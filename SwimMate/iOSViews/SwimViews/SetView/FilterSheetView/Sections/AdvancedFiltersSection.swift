@@ -5,7 +5,7 @@ import SwiftUI
 struct AdvancedFiltersSection: View
 {
     @Binding var tempFilters: Manager.SetFilters
-    
+
     var body: some View
     {
         Section("Advanced Filters")
@@ -20,7 +20,7 @@ struct AdvancedFiltersSection: View
 struct DistanceRangePicker: View
 {
     @Binding var tempFilters: Manager.SetFilters
-    
+
     var body: some View
     {
         HStack
@@ -42,7 +42,7 @@ struct DistanceRangePicker: View
 struct DurationRangePicker: View
 {
     @Binding var tempFilters: Manager.SetFilters
-    
+
     var body: some View
     {
         HStack
@@ -64,7 +64,7 @@ struct DurationRangePicker: View
 struct ComponentTypesSelector: View
 {
     @Binding var tempFilters: Manager.SetFilters
-    
+
     var body: some View
     {
         VStack(alignment: .leading, spacing: 8)
@@ -118,9 +118,8 @@ struct ComponentTypesSelector: View
 
 #Preview
 {
-    @State var sampleFilters = Manager.SetFilters.defaultFilters
-    
-    return Form
+    @Previewable @State var sampleFilters = Manager.SetFilters.defaultFilters
+    Form
     {
         AdvancedFiltersSection(tempFilters: $sampleFilters)
     }

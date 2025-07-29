@@ -5,7 +5,7 @@ import SwiftUI
 struct BasicFiltersSection: View
 {
     @Binding var tempFilters: Manager.SetFilters
-    
+
     var body: some View
     {
         Section("Basic Filters")
@@ -20,7 +20,7 @@ struct BasicFiltersSection: View
 struct StrokePicker: View
 {
     @Binding var tempFilters: Manager.SetFilters
-    
+
     var body: some View
     {
         VStack(alignment: .leading, spacing: 8)
@@ -97,7 +97,7 @@ struct StrokePicker: View
 struct DifficultyPicker: View
 {
     @Binding var tempFilters: Manager.SetFilters
-    
+
     private var difficultySelection: Binding<SwimSet.Difficulty?>
     {
         Binding<SwimSet.Difficulty?>(
@@ -105,7 +105,7 @@ struct DifficultyPicker: View
             set: { tempFilters.difficulty = $0 }
         )
     }
-    
+
     var body: some View
     {
         HStack
@@ -128,7 +128,7 @@ struct DifficultyPicker: View
 struct UnitPicker: View
 {
     @Binding var tempFilters: Manager.SetFilters
-    
+
     private var unitSelection: Binding<MeasureUnit?>
     {
         Binding<MeasureUnit?>(
@@ -136,7 +136,7 @@ struct UnitPicker: View
             set: { tempFilters.unit = $0 }
         )
     }
-    
+
     var body: some View
     {
         HStack
@@ -158,9 +158,8 @@ struct UnitPicker: View
 
 #Preview
 {
-    @State var sampleFilters = Manager.SetFilters.defaultFilters
-    
-    return Form
+    @Previewable @State var sampleFilters = Manager.SetFilters.defaultFilters
+    Form
     {
         BasicFiltersSection(tempFilters: $sampleFilters)
     }

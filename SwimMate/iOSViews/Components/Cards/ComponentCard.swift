@@ -107,7 +107,7 @@ struct ComponentCard: View
             ),
             index: 1
         )
-        
+
         ComponentCard(
             component: SetComponent(
                 type: .swim,
@@ -117,7 +117,7 @@ struct ComponentCard: View
             ),
             index: 2
         )
-        
+
         ComponentCard(
             component: SetComponent(
                 type: .cooldown,

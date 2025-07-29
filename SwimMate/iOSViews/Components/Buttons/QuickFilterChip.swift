@@ -45,7 +45,7 @@ struct QuickFilterChip: View
             isSelected: true,
             action: {}
         )
-        
+
         QuickFilterChip(
             title: "Freestyle",
             icon: "figure.pool.swim",

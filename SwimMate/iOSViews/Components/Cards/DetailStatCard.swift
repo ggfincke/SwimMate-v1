@@ -66,7 +66,7 @@ struct DetailStatCard: View
             icon: "ruler",
             color: .blue
         )
-        
+
         DetailStatCard(
             title: "Duration",
             value: "45",
@@ -74,7 +74,7 @@ struct DetailStatCard: View
             icon: "clock",
             color: .orange
         )
-        
+
         DetailStatCard(
             title: "Difficulty",
             value: "Advanced",

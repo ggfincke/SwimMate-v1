@@ -76,7 +76,7 @@ struct SetDetailView: View
         difficulty: .intermediate,
         description: "A challenging set designed to improve endurance and pace."
     )
-    
+
     SetDetailView(swimSet: sampleSet)
         .environmentObject(Manager())
         .environmentObject(WatchConnector())

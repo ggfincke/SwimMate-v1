@@ -5,7 +5,7 @@ import SwiftUI
 struct StatsSection: View
 {
     let swimSet: SwimSet
-    
+
     private var difficultyColor: Color
     {
         switch swimSet.difficulty
@@ -15,7 +15,7 @@ struct StatsSection: View
         case .advanced: return .red
         }
     }
-    
+
     private var estimatedDurationText: String
     {
         if let duration = swimSet.estimatedDuration
@@ -63,14 +63,14 @@ struct StatsSection: View
         title: "Endurance Builder",
         components: [
             SetComponent(type: .warmup, distance: 800, strokeStyle: .mixed, instructions: "800 warmup mix"),
-            SetComponent(type: .swim, distance: 1000, strokeStyle: .freestyle, instructions: "10x100 on 1:30")
+            SetComponent(type: .swim, distance: 1000, strokeStyle: .freestyle, instructions: "10x100 on 1:30"),
         ],
         measureUnit: .meters,
         difficulty: .intermediate,
         estimatedDuration: 2700,
         description: "A challenging set designed to improve endurance."
     )
-    
+
     StatsSection(swimSet: sampleSet)
         .padding()
 }

@@ -81,7 +81,6 @@ struct SetPage: View
     }
 }
 
-
 // MARK: - Preview
 
 #Preview

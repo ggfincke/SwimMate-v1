@@ -13,7 +13,7 @@ struct SendToWatchSection: View
     {
         case ready, sending, sent, failed
     }
-    
+
     private var difficultyColor: Color
     {
         switch swimSet.difficulty
@@ -203,13 +203,13 @@ struct SendToWatchSection: View
         title: "Endurance Builder",
         components: [
             SetComponent(type: .warmup, distance: 800, strokeStyle: .mixed, instructions: "800 warmup mix"),
-            SetComponent(type: .swim, distance: 1000, strokeStyle: .freestyle, instructions: "10x100 on 1:30")
+            SetComponent(type: .swim, distance: 1000, strokeStyle: .freestyle, instructions: "10x100 on 1:30"),
         ],
         measureUnit: .meters,
         difficulty: .intermediate,
         description: "A challenging set designed to improve endurance."
     )
-    
+
     SendToWatchSection(swimSet: sampleSet)
         .environmentObject(WatchConnector())
 }
