@@ -87,7 +87,7 @@ extension Manager
     {
         return filterSets(sampleSets, with: activeFilters)
     }
-    
+
     var isSearchActive: Bool
     {
         return !activeFilters.searchText.isEmpty
@@ -161,7 +161,7 @@ extension Manager
         {
             components.append("Favorites")
         }
-        
+
         if activeFilters.isIMFilter
         {
             components.append("IM")
@@ -194,7 +194,7 @@ extension Manager
                     return false
                 }
             }
-            
+
             // Stroke filter
             if !filters.strokes.isEmpty
             {
@@ -299,7 +299,7 @@ extension Manager
     {
         activeFilters = SetFilters.defaultFilters
     }
-    
+
     func clearSearch()
     {
         var updatedFilters = activeFilters
@@ -380,7 +380,7 @@ extension Manager
     func applyQuickFilter(_ filterName: String)
     {
         var updatedFilters = activeFilters
-        
+
         switch filterName
         {
         case "Favorites":
@@ -412,20 +412,20 @@ extension Manager
         default:
             return
         }
-        
+
         activeFilters = updatedFilters
     }
-    
+
     private func toggleStroke(_ stroke: SwimStroke)
     {
         var updatedFilters = activeFilters
-        
+
         // If IM is active, turn it off when selecting individual strokes
         if updatedFilters.isIMFilter
         {
             updatedFilters.isIMFilter = false
         }
-        
+
         if updatedFilters.strokes.contains(stroke)
         {
             updatedFilters.strokes.remove(stroke)
@@ -434,7 +434,7 @@ extension Manager
         {
             updatedFilters.strokes.insert(stroke)
         }
-        
+
         // Auto-select IM if all 4 strokes are selected
         let allStrokes: Set<SwimStroke> = [.freestyle, .backstroke, .breaststroke, .butterfly]
         if updatedFilters.strokes == allStrokes
@@ -442,7 +442,7 @@ extension Manager
             updatedFilters.strokes.removeAll()
             updatedFilters.isIMFilter = true
         }
-        
+
         activeFilters = updatedFilters
     }
 
@@ -456,4 +456,3 @@ extension Manager
         return (total, filtered, percentage)
     }
 }
-

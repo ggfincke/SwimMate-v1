@@ -87,7 +87,7 @@ struct CompactSetCard: View
         }
         .padding(12)
         .frame(maxWidth: .infinity, alignment: .leading)
-        .frame(height: 110) 
+        .frame(height: 110)
         .background(Color(UIColor.systemBackground))
         .cornerRadius(12)
         .shadow(color: .black.opacity(0.08), radius: 8, x: 0, y: 2)

@@ -19,13 +19,13 @@ struct FilterSummarySection: View
                     Image(systemName: "magnifyingglass")
                         .font(.system(size: 14, weight: .medium))
                         .foregroundColor(.blue)
-                    
+
                     VStack(alignment: .leading, spacing: 2)
                     {
                         Text("Searching for:")
                             .font(.system(size: 12, weight: .medium))
                             .foregroundColor(.secondary)
-                        
+
                         Text("\"\(manager.activeFilters.searchText)\"")
                             .font(.system(size: 16, weight: .semibold))
                             .foregroundColor(.primary)

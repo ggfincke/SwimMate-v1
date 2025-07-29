@@ -92,7 +92,8 @@ struct FilterSheetView: View
                     .font(.headline)
                 Spacer()
                 Toggle("IM", isOn: $tempFilters.isIMFilter)
-                    .onChange(of: tempFilters.isIMFilter) { _, newValue in
+                    .onChange(of: tempFilters.isIMFilter)
+                    { _, newValue in
                         if newValue
                         {
                             tempFilters.strokes.removeAll()
@@ -119,7 +120,7 @@ struct FilterSheetView: View
                                 tempFilters.strokes.insert(stroke)
                                 tempFilters.isIMFilter = false
                             }
-                            
+
                             // Auto-select IM if all 4 strokes are selected
                             let allStrokes: Set<SwimStroke> = [.freestyle, .backstroke, .breaststroke, .butterfly]
                             if tempFilters.strokes == allStrokes
@@ -155,7 +156,8 @@ struct FilterSheetView: View
 
     // MARK: - Difficulty Selection Binding
 
-    private var difficultySelection: Binding<SwimSet.Difficulty?> {
+    private var difficultySelection: Binding<SwimSet.Difficulty?>
+    {
         Binding<SwimSet.Difficulty?>(
             get: { tempFilters.difficulty },
             set: { tempFilters.difficulty = $0 }
@@ -184,7 +186,8 @@ struct FilterSheetView: View
 
     // MARK: - Unit Selection Binding
 
-    private var unitSelection: Binding<MeasureUnit?> {
+    private var unitSelection: Binding<MeasureUnit?>
+    {
         Binding<MeasureUnit?>(
             get: { tempFilters.unit },
             set: { tempFilters.unit = $0 }
@@ -438,4 +441,3 @@ struct SearchSheetView: View
     FilterSheetView()
         .environmentObject(Manager())
 }
-

@@ -49,6 +49,7 @@ struct SetComponent: Identifiable, Hashable, Codable
     }
 
     // MARK: - Methods
+
     func displayTitle(poolLength _: Double, measureUnit: MeasureUnit) -> String
     {
         let distanceText = "\(distance)\(measureUnit.abbreviation)"

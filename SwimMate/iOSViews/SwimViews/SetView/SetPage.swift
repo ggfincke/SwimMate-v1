@@ -13,50 +13,50 @@ struct SetPage: View
     var body: some View
     {
         ZStack
+        {
+            // Background gradient
+            LinearGradient(
+                colors: [Color.blue.opacity(0.1), Color.cyan.opacity(0.05)],
+                startPoint: .topTrailing,
+                endPoint: .bottomLeading
+            )
+            .ignoresSafeArea()
+
+            ScrollView
             {
-                // Background gradient
-                LinearGradient(
-                    colors: [Color.blue.opacity(0.1), Color.cyan.opacity(0.05)],
-                    startPoint: .topTrailing,
-                    endPoint: .bottomLeading
-                )
-                .ignoresSafeArea()
-
-                ScrollView
+                LazyVStack(spacing: 24)
                 {
-                    LazyVStack(spacing: 24)
+                    // Hero Header
+                    SetPageHeroSection(
+                        showingSearch: $showingSearch,
+                        showingFilter: $showingFilter,
+                        hasActiveFilters: hasActiveFilters
+                    )
+
+                    // Quick Filter Chips
+                    QuickFilterChipsSection()
+                        .environmentObject(manager)
+
+                    // Recommended Sets Section (hidden during search)
+                    if !manager.recommendedSets.isEmpty && !manager.isSearchActive
                     {
-                        // Hero Header
-                        SetPageHeroSection(
-                            showingSearch: $showingSearch,
-                            showingFilter: $showingFilter,
-                            hasActiveFilters: hasActiveFilters
-                        )
-
-                        // Quick Filter Chips
-                        QuickFilterChipsSection()
-                            .environmentObject(manager)
-
-                        // Recommended Sets Section (hidden during search)
-                        if !manager.recommendedSets.isEmpty && !manager.isSearchActive
-                        {
-                            RecommendedSetsSection()
-                                .environmentObject(manager)
-                                .environmentObject(watchOSManager)
-                        }
-
-                        // Current Filter Summary
-                        FilterSummarySection(hasActiveFilters: hasActiveFilters)
-                            .environmentObject(manager)
-
-                        // Main Sets Grid
-                        SetsGridSection()
+                        RecommendedSetsSection()
                             .environmentObject(manager)
                             .environmentObject(watchOSManager)
                     }
-                    .padding(.horizontal)
-                    .padding(.bottom, 100)
+
+                    // Current Filter Summary
+                    FilterSummarySection(hasActiveFilters: hasActiveFilters)
+                        .environmentObject(manager)
+
+                    // Main Sets Grid
+                    SetsGridSection()
+                        .environmentObject(manager)
+                        .environmentObject(watchOSManager)
                 }
+                .padding(.horizontal)
+                .padding(.bottom, 100)
+            }
         }
         .navigationTitle("")
         .navigationBarHidden(true)
