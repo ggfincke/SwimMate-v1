@@ -15,7 +15,7 @@ struct SetsGridSection: View
         {
             HStack
             {
-                Text("All Sets")
+                Text(manager.isSearchActive ? "Search Results" : "All Sets")
                     .font(.system(size: 24, weight: .bold, design: .rounded))
 
                 Spacer()
@@ -28,9 +28,9 @@ struct SetsGridSection: View
             if manager.filteredSets.isEmpty
             {
                 EmptyStateView(
-                    icon: "figure.pool.swim",
-                    title: "No sets found",
-                    subtitle: "Create or import swim sets to get started"
+                    icon: manager.isSearchActive ? "magnifyingglass" : "figure.pool.swim",
+                    title: manager.isSearchActive ? "No results found" : "No sets found",
+                    subtitle: manager.isSearchActive ? "Try adjusting your search term or clear the search" : "Create or import swim sets to get started"
                 )
             }
             else

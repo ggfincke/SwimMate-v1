@@ -40,7 +40,8 @@ enum SwimSetExamples
         ],
         difficulty: .beginner,
         estimatedDuration: 25 * 60, // 25 minutes
-        description: "Basic freestyle set focusing on technique and endurance"
+        description: "Basic freestyle set focusing on technique and endurance",
+        primaryStroke: [.freestyle]
     )
 
     // MARK: - Intermediate Sets
@@ -97,7 +98,8 @@ enum SwimSetExamples
         ],
         difficulty: .intermediate,
         estimatedDuration: 40 * 60, // 40 minutes
-        description: "Individual Medley pyramid set"
+        description: "Individual Medley pyramid set",
+        primaryStroke: [.butterfly, .backstroke, .breaststroke, .freestyle]
     )
 
     static let beginnerIM = SwimSet(
@@ -147,7 +149,8 @@ enum SwimSetExamples
         ],
         difficulty: .beginner,
         estimatedDuration: 30 * 60,
-        description: "Introduction to Individual Medley strokes and order"
+        description: "Introduction to Individual Medley strokes and order",
+        primaryStroke: [.butterfly, .backstroke, .breaststroke, .freestyle]
     )
 
     static let intermediateIMDistance = SwimSet(
@@ -196,7 +199,8 @@ enum SwimSetExamples
         ],
         difficulty: .intermediate,
         estimatedDuration: 45 * 60,
-        description: "Building endurance for longer IM distances"
+        description: "Building endurance for longer IM distances",
+        primaryStroke: [.butterfly, .backstroke, .breaststroke, .freestyle]
     )
 
     // MARK: - Advanced Sets
@@ -254,7 +258,8 @@ enum SwimSetExamples
         ],
         difficulty: .advanced,
         estimatedDuration: 50 * 60,
-        description: "High-intensity IM training with technique focus"
+        description: "High-intensity IM training with technique focus",
+        primaryStroke: [.butterfly, .backstroke, .breaststroke, .freestyle]
     )
 
     static let advancedSprint = SwimSet(
@@ -316,7 +321,8 @@ enum SwimSetExamples
         ],
         difficulty: .advanced,
         estimatedDuration: 35 * 60, // 35 minutes
-        description: "High-intensity sprint training set"
+        description: "High-intensity sprint training set",
+        primaryStroke: [.freestyle]
     )
 
     // MARK: - All Examples

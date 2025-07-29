@@ -87,6 +87,11 @@ extension Manager
     {
         return filterSets(sampleSets, with: activeFilters)
     }
+    
+    var isSearchActive: Bool
+    {
+        return !activeFilters.searchText.isEmpty
+    }
 
     var recommendedSets: [SwimSet]
     {
@@ -241,7 +246,7 @@ extension Manager
                 let searchLower = filters.searchText.lowercased()
                 let titleMatch = set.title.lowercased().contains(searchLower)
                 let descriptionMatch = set.description?.lowercased().contains(searchLower) ?? false
-                let strokeMatch = set.primaryStroke?.description.lowercased().contains(searchLower) ?? false
+                let strokeMatch = set.strokeDisplayLabelDetailed.lowercased().contains(searchLower)
 
                 if !titleMatch, !descriptionMatch, !strokeMatch
                 {
@@ -285,12 +290,21 @@ extension Manager
 
     func updateSearchText(_ text: String)
     {
-        activeFilters.searchText = text
+        var updatedFilters = activeFilters
+        updatedFilters.searchText = text
+        activeFilters = updatedFilters
     }
 
     func clearAllFilters()
     {
         activeFilters = SetFilters.defaultFilters
+    }
+    
+    func clearSearch()
+    {
+        var updatedFilters = activeFilters
+        updatedFilters.searchText = ""
+        activeFilters = updatedFilters
     }
 
     func toggleFavorite(setId: UUID)
@@ -365,59 +379,71 @@ extension Manager
 
     func applyQuickFilter(_ filterName: String)
     {
+        var updatedFilters = activeFilters
+        
         switch filterName
         {
         case "Favorites":
-            activeFilters.showFavorites.toggle()
+            updatedFilters.showFavorites.toggle()
         case "Beginner":
-            activeFilters.difficulty = activeFilters.difficulty == .beginner ? nil : .beginner
+            updatedFilters.difficulty = updatedFilters.difficulty == .beginner ? nil : .beginner
         case "Intermediate":
-            activeFilters.difficulty = activeFilters.difficulty == .intermediate ? nil : .intermediate
+            updatedFilters.difficulty = updatedFilters.difficulty == .intermediate ? nil : .intermediate
         case "Advanced":
-            activeFilters.difficulty = activeFilters.difficulty == .advanced ? nil : .advanced
+            updatedFilters.difficulty = updatedFilters.difficulty == .advanced ? nil : .advanced
         case "Freestyle":
             toggleStroke(.freestyle)
+            return // toggleStroke handles the update
         case "Backstroke":
             toggleStroke(.backstroke)
+            return // toggleStroke handles the update
         case "Breaststroke":
             toggleStroke(.breaststroke)
+            return // toggleStroke handles the update
         case "Butterfly":
             toggleStroke(.butterfly)
+            return // toggleStroke handles the update
         case "IM":
-            activeFilters.isIMFilter.toggle()
-            if activeFilters.isIMFilter
+            updatedFilters.isIMFilter.toggle()
+            if updatedFilters.isIMFilter
             {
-                activeFilters.strokes.removeAll()
+                updatedFilters.strokes.removeAll()
             }
         default:
-            break
+            return
         }
+        
+        activeFilters = updatedFilters
     }
     
     private func toggleStroke(_ stroke: SwimStroke)
     {
+        var updatedFilters = activeFilters
+        
         // If IM is active, turn it off when selecting individual strokes
-        if activeFilters.isIMFilter
+        if updatedFilters.isIMFilter
         {
-            activeFilters.isIMFilter = false
+            updatedFilters.isIMFilter = false
         }
         
-        if activeFilters.strokes.contains(stroke)
+        if updatedFilters.strokes.contains(stroke)
         {
-            activeFilters.strokes.remove(stroke)
+            updatedFilters.strokes.remove(stroke)
         }
         else
         {
-            activeFilters.strokes.insert(stroke)
+            updatedFilters.strokes.insert(stroke)
         }
         
         // Auto-select IM if all 4 strokes are selected
         let allStrokes: Set<SwimStroke> = [.freestyle, .backstroke, .breaststroke, .butterfly]
-        if activeFilters.strokes == allStrokes
+        if updatedFilters.strokes == allStrokes
         {
-            activeFilters.strokes.removeAll()
-            activeFilters.isIMFilter = true
+            updatedFilters.strokes.removeAll()
+            updatedFilters.isIMFilter = true
         }
+        
+        activeFilters = updatedFilters
     }
 
     // MARK: - Statistics

@@ -68,7 +68,7 @@ struct CompactSetCard: View
                         .foregroundColor(.primary)
                 }
                 Spacer()
-                if let primaryStroke = swimSet.primaryStroke
+                if !swimSet.primaryStroke.isEmpty
                 {
                     Image(systemName: "figure.pool.swim")
                         .font(.system(size: 10, weight: .medium))
@@ -95,7 +95,8 @@ struct CompactSetCard: View
         components: [SetComponent(type: .swim, distance: 500, strokeStyle: .freestyle, instructions: "10x50 sprint")],
         measureUnit: .meters,
         difficulty: .intermediate,
-        description: "Sprint set"
+        description: "Sprint set",
+        primaryStroke: [.freestyle]
     )
     return CompactSetCard(swimSet: set, isFavorite: false, toggleFavorite: {})
 }

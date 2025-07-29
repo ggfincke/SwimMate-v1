@@ -138,7 +138,7 @@ struct ImportSetView: View
 
                     Spacer()
 
-                    Text(swimSet.primaryStroke?.description ?? "Mixed")
+                    Text(swimSet.strokeDisplayLabel)
                         .font(.system(size: 14, weight: .medium))
                         .foregroundColor(.secondary)
                 }

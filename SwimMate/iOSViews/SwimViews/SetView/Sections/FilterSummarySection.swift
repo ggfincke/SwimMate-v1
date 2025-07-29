@@ -9,7 +9,64 @@ struct FilterSummarySection: View
 
     @ViewBuilder var body: some View
     {
-        if hasActiveFilters
+        // Show search indicator if search is active
+        if manager.isSearchActive
+        {
+            HStack
+            {
+                HStack(spacing: 8)
+                {
+                    Image(systemName: "magnifyingglass")
+                        .font(.system(size: 14, weight: .medium))
+                        .foregroundColor(.blue)
+                    
+                    VStack(alignment: .leading, spacing: 2)
+                    {
+                        Text("Searching for:")
+                            .font(.system(size: 12, weight: .medium))
+                            .foregroundColor(.secondary)
+                        
+                        Text("\"\(manager.activeFilters.searchText)\"")
+                            .font(.system(size: 16, weight: .semibold))
+                            .foregroundColor(.primary)
+                    }
+                }
+
+                Spacer()
+
+                Button(action:
+                    {
+                        withAnimation(.easeInOut(duration: 0.3))
+                        {
+                            manager.clearSearch()
+                        }
+                    })
+                {
+                    HStack(spacing: 4)
+                    {
+                        Image(systemName: "xmark")
+                            .font(.system(size: 12, weight: .semibold))
+                        Text("Clear")
+                            .font(.system(size: 14, weight: .semibold))
+                    }
+                    .foregroundColor(.red)
+                    .padding(.horizontal, 12)
+                    .padding(.vertical, 6)
+                    .background(Color.red.opacity(0.1))
+                    .cornerRadius(16)
+                }
+            }
+            .padding()
+            .background(Color.blue.opacity(0.05))
+            .cornerRadius(16)
+            .overlay(
+                RoundedRectangle(cornerRadius: 16)
+                    .stroke(Color.blue.opacity(0.2), lineWidth: 1)
+            )
+            .shadow(color: .black.opacity(0.05), radius: 8, x: 0, y: 2)
+        }
+        // Show regular filters if not searching but other filters are active
+        else if hasActiveFilters
         {
             HStack
             {

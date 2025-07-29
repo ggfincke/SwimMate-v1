@@ -70,7 +70,7 @@ struct CompactSetCard: View
 
                 Spacer()
 
-                if let primaryStroke = swimSet.primaryStroke
+                if !swimSet.primaryStroke.isEmpty
                 {
                     HStack(spacing: 2)
                     {
@@ -78,7 +78,7 @@ struct CompactSetCard: View
                             .font(.system(size: 10))
                             .foregroundColor(.blue)
 
-                        Text(primaryStroke.abbreviation)
+                        Text(abbreviateStrokeLabel(swimSet.strokeDisplayLabel))
                             .font(.system(size: 11, weight: .medium))
                             .foregroundColor(.blue)
                     }
@@ -98,20 +98,18 @@ struct CompactSetCard: View
     }
 }
 
-// Extension to add abbreviation property to SwimStroke
-private extension SwimStroke
+// Helper function to abbreviate stroke display labels
+private func abbreviateStrokeLabel(_ label: String) -> String
 {
-    var abbreviation: String
+    switch label
     {
-        switch self
-        {
-        case .freestyle: return "Free"
-        case .backstroke: return "Back"
-        case .breaststroke: return "Breast"
-        case .butterfly: return "Fly"
-        case .mixed: return "Mixed"
-        default: return "Other"
-        }
+    case "Freestyle": return "Free"
+    case "Backstroke": return "Back"
+    case "Breaststroke": return "Breast"
+    case "Butterfly": return "Fly"
+    case "Mixed": return "Mixed"
+    case "IM": return "IM"
+    default: return label
     }
 }
 
@@ -125,7 +123,8 @@ private extension SwimStroke
             SetComponent(type: .cooldown, distance: 100, strokeStyle: .freestyle),
         ],
         difficulty: .intermediate,
-        description: "High-intensity sprint intervals to build speed and power"
+        description: "High-intensity sprint intervals to build speed and power",
+        primaryStroke: [.freestyle]
     )
 
     HStack(spacing: 16)

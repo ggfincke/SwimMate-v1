@@ -22,7 +22,7 @@ struct SetHeader: View
                 .frame(maxWidth: .infinity, alignment: .leading)
 
             // details
-            Text("\(swimSet.totalDistance) \(swimSet.measureUnit.rawValue.lowercased()) • \(swimSet.primaryStroke?.description ?? "Mixed")")
+            Text("\(swimSet.totalDistance) \(swimSet.measureUnit.rawValue.lowercased()) • \(swimSet.strokeDisplayLabel)")
                 .font(.system(size: 10, weight: .medium))
                 .foregroundColor(.secondary)
                 .frame(maxWidth: .infinity, alignment: .leading)
@@ -32,3 +32,4 @@ struct SetHeader: View
         }
     }
 }
+

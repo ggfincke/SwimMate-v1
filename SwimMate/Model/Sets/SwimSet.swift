@@ -14,6 +14,7 @@ struct SwimSet: Identifiable, Hashable, Codable
     let difficulty: Difficulty
     let estimatedDuration: TimeInterval? // estimated completion time
     let description: String?
+    let primaryStroke: [SwimStroke]
 
     // MARK: - Difficulty Levels
 
@@ -37,7 +38,8 @@ struct SwimSet: Identifiable, Hashable, Codable
          measureUnit: MeasureUnit = .meters,
          difficulty: Difficulty = .intermediate,
          estimatedDuration: TimeInterval? = nil,
-         description: String? = nil)
+         description: String? = nil,
+         primaryStroke: [SwimStroke] = [])
     {
         self.id = id
         self.title = title
@@ -46,6 +48,7 @@ struct SwimSet: Identifiable, Hashable, Codable
         self.difficulty = difficulty
         self.estimatedDuration = estimatedDuration
         self.description = description
+        self.primaryStroke = primaryStroke
     }
 
     // MARK: - Computed Properties
@@ -56,17 +59,39 @@ struct SwimSet: Identifiable, Hashable, Codable
         components.reduce(0) { $0 + $1.distance }
     }
 
-    /// Primary stroke style (most common across components)
-    var primaryStroke: SwimStroke?
+    /// Display label for compact set cards
+    var strokeDisplayLabel: String
     {
-        let strokes = components.compactMap { $0.strokeStyle }
-        guard !strokes.isEmpty else { return nil }
-
-        // Find most frequent stroke
-        let strokeCounts = Dictionary(grouping: strokes, by: { $0 })
-            .mapValues { $0.count }
-
-        return strokeCounts.max(by: { $0.value < $1.value })?.key
+        switch primaryStroke.count
+        {
+        case 0:
+            return "Unknown"
+        case 1:
+            return primaryStroke.first!.description
+        case 2, 3:
+            return "Mixed"
+        case 4:
+            return "IM"
+        default:
+            return "Unknown"
+        }
+    }
+    
+    /// Display label for set views (shows all strokes unless IM)
+    var strokeDisplayLabelDetailed: String
+    {
+        if primaryStroke.isEmpty
+        {
+            return "Unknown"
+        }
+        else if primaryStroke.count == 4
+        {
+            return "IM"
+        }
+        else
+        {
+            return primaryStroke.map { $0.description }.joined(separator: ", ")
+        }
     }
     
     /// Stroke tags for filtering - based on set focus, not individual components
@@ -162,13 +187,6 @@ struct SwimSet: Identifiable, Hashable, Codable
         let distance = "\(totalDistance)\(measureUnit.abbreviation)"
         let laps = totalLaps(poolLength: poolLength)
 
-        if let stroke = primaryStroke
-        {
-            return "\(distance) • \(laps) laps • \(stroke.description)"
-        }
-        else
-        {
-            return "\(distance) • \(laps) laps • Mixed"
-        }
+        return "\(distance) • \(laps) laps • \(strokeDisplayLabel)"
     }
 }

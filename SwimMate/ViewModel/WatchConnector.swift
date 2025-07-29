@@ -25,7 +25,7 @@ class WatchConnector: NSObject, WCSessionDelegate, ObservableObject
 
             let swimSetData: [String: Any] = [
                 "title": swimSet.title,
-                "stroke": swimSet.primaryStroke?.description ?? "Mixed",
+                "stroke": swimSet.strokeDisplayLabel,
                 "totalDistance": swimSet.totalDistance,
                 "measureUnit": swimSet.measureUnit.rawValue,
                 "difficulty": swimSet.difficulty.rawValue,

@@ -37,8 +37,8 @@ struct SetPage: View
                         QuickFilterChipsSection()
                             .environmentObject(manager)
 
-                        // Recommended Sets Section
-                        if !manager.recommendedSets.isEmpty
+                        // Recommended Sets Section (hidden during search)
+                        if !manager.recommendedSets.isEmpty && !manager.isSearchActive
                         {
                             RecommendedSetsSection()
                                 .environmentObject(manager)
@@ -213,9 +213,9 @@ struct RecommendedSetCard: View
 
                 Spacer()
 
-                if let primaryStroke = swimSet.primaryStroke
+                if !swimSet.primaryStroke.isEmpty
                 {
-                    Text(primaryStroke.description)
+                    Text(swimSet.strokeDisplayLabel)
                         .font(.system(size: 12, weight: .medium))
                         .foregroundColor(.blue)
                 }

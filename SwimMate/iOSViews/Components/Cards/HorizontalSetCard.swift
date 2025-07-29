@@ -97,7 +97,7 @@ struct HorizontalSetCard: View
                     }
 
                     // Primary Stroke
-                    if let primaryStroke = swimSet.primaryStroke
+                    if !swimSet.primaryStroke.isEmpty
                     {
                         VStack(alignment: .trailing, spacing: 2)
                         {
@@ -109,7 +109,7 @@ struct HorizontalSetCard: View
                                 Image(systemName: "figure.pool.swim")
                                     .font(.system(size: 12))
                                     .foregroundColor(.blue)
-                                Text(primaryStroke.description)
+                                Text(swimSet.strokeDisplayLabelDetailed)
                                     .font(.system(size: 12, weight: .semibold))
                                     .foregroundColor(.blue)
                             }
@@ -141,7 +141,8 @@ struct HorizontalSetCard: View
             SetComponent(type: .cooldown, distance: 100, strokeStyle: .freestyle),
         ],
         difficulty: .intermediate,
-        description: "High-intensity sprint intervals to build speed and power in the pool"
+        description: "High-intensity sprint intervals to build speed and power in the pool",
+        primaryStroke: [.freestyle]
     )
 
     let sampleSet2 = SwimSet(
@@ -153,7 +154,8 @@ struct HorizontalSetCard: View
             SetComponent(type: .cooldown, distance: 200, strokeStyle: .freestyle),
         ],
         difficulty: .advanced,
-        description: "Long distance set designed to build aerobic capacity and endurance"
+        description: "Long distance set designed to build aerobic capacity and endurance",
+        primaryStroke: [.freestyle, .backstroke]
     )
 
     VStack(spacing: 16)

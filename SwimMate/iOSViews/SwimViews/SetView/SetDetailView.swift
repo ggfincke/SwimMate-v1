@@ -125,7 +125,7 @@ struct SetDetailView: View
                     Text("Primary Stroke")
                         .font(.system(size: 12, weight: .medium))
                         .foregroundColor(.secondary)
-                    Text(swimSet.primaryStroke?.description ?? "Mixed")
+                    Text(swimSet.strokeDisplayLabelDetailed)
                         .font(.system(size: 16, weight: .semibold))
                         .foregroundColor(.primary)
                 }
