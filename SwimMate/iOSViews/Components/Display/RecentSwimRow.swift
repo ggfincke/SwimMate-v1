@@ -28,7 +28,7 @@ struct RecentSwimRow: View
 
                 if let distance = swim.totalDistance
                 {
-                    Text(manager.formatDistance(distance))
+                    Text(manager.formatDistance(distance, unit: swim.poolUnit))
                         .font(.caption)
                         .foregroundColor(.secondary)
                 }

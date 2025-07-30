@@ -4,16 +4,22 @@ import Foundation
 
 extension Manager
 {
-    func formatDistance(_ meters: Double) -> String
+    func formatDistance(_ distance: Double) -> String
     {
-        if preferredUnit == MeasureUnit.yards
+        return formatDistance(distance, unit: preferredUnit)
+    }
+
+    func formatDistance(_ distance: Double, unit: MeasureUnit?) -> String
+    {
+        let displayUnit = unit ?? preferredUnit
+
+        if displayUnit == MeasureUnit.yards
         {
-            let yards = meters * 1.09361
-            return String(format: "%.1f yd", yards)
+            return String(format: "%.1f yd", distance)
         }
         else
         {
-            return String(format: "%.1f m", meters)
+            return String(format: "%.1f m", distance)
         }
     }
 }

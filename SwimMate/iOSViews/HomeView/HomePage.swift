@@ -23,7 +23,7 @@ struct HomePage: View
         {
             ZStack
             {
-                // Beautiful gradient background
+                // Gradient background
                 LinearGradient(
                     colors: [Color.blue.opacity(0.08), Color.cyan.opacity(0.03)],
                     startPoint: .topLeading,

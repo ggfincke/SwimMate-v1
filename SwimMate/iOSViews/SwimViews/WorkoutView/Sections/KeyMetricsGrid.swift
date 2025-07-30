@@ -64,7 +64,8 @@ struct KeyMetricsGrid: View
     private func formatPoolLength() -> String
     {
         guard let poolLength = swim.poolLength else { return "N/A" }
-        return String(format: "%.0f m", poolLength)
+        let unit = swim.poolUnit ?? .meters
+        return String(format: "%.0f %@", poolLength, unit.abbreviation)
     }
 }
 

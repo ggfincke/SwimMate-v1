@@ -193,7 +193,7 @@ struct LogbookSwimCard: View
 
                     if let distance = swim.totalDistance, distance > 0
                     {
-                        Text(manager.formatDistance(distance))
+                        Text(manager.formatDistance(distance, unit: swim.poolUnit))
                             .font(.system(size: 14, weight: .bold))
                             .foregroundColor(.green)
                     }

@@ -7,6 +7,7 @@ import SwiftUI
 struct WorkoutHeaderCard: View
 {
     let swim: Swim
+    @EnvironmentObject var manager: Manager
 
     var body: some View
     {
@@ -62,7 +63,7 @@ struct WorkoutHeaderCard: View
     private func formatDistance(_ distance: Double?) -> String
     {
         guard let distance = distance else { return "N/A" }
-        return String(format: "%.0f m", distance)
+        return manager.formatDistance(distance, unit: swim.poolUnit)
     }
 }
 
@@ -91,5 +92,6 @@ struct WorkoutHeaderCard: View
             .padding()
     }
     .background(Color.black)
+    .environmentObject(Manager())
     .preferredColorScheme(.dark)
 }

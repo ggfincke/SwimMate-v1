@@ -26,6 +26,7 @@ class Swim: Identifiable, Codable
 
     var locationType: SwimmingLocationType
     var poolLength: Double?
+    var poolUnit: MeasureUnit?
 
     // MARK: - Health & Performance Metrics
 
@@ -45,6 +46,7 @@ class Swim: Identifiable, Codable
          totalEnergyBurned: Double?,
          poolLength: Double?,
          locationType: SwimmingLocationType = .unknown,
+         poolUnit: MeasureUnit? = nil,
          laps: [Lap] = [])
     {
         self.id = id
@@ -54,6 +56,7 @@ class Swim: Identifiable, Codable
         self.totalEnergyBurned = totalEnergyBurned
         self.poolLength = poolLength
         self.locationType = locationType
+        self.poolUnit = poolUnit
         self.laps = laps
     }
 
@@ -61,7 +64,7 @@ class Swim: Identifiable, Codable
 
     enum CodingKeys: String, CodingKey
     {
-        case id, startDate, endDate, totalDistance, totalEnergyBurned, poolLength, locationType, laps
+        case id, startDate, endDate, totalDistance, totalEnergyBurned, poolLength, locationType, poolUnit, laps
     }
 
     required init(from decoder: Decoder) throws
@@ -75,6 +78,7 @@ class Swim: Identifiable, Codable
         totalEnergyBurned = try container.decodeIfPresent(Double.self, forKey: .totalEnergyBurned)
         poolLength = try container.decodeIfPresent(Double.self, forKey: .poolLength)
         locationType = try container.decodeIfPresent(SwimmingLocationType.self, forKey: .locationType) ?? .unknown
+        poolUnit = try container.decodeIfPresent(MeasureUnit.self, forKey: .poolUnit)
         laps = try container.decodeIfPresent([Lap].self, forKey: .laps) ?? []
     }
 
@@ -89,6 +93,7 @@ class Swim: Identifiable, Codable
         try container.encodeIfPresent(totalDistance, forKey: .totalDistance)
         try container.encodeIfPresent(totalEnergyBurned, forKey: .totalEnergyBurned)
         try container.encodeIfPresent(poolLength, forKey: .poolLength)
+        try container.encodeIfPresent(poolUnit, forKey: .poolUnit)
         try container.encode(laps, forKey: .laps)
     }
 }

@@ -1,5 +1,6 @@
 // KeyMetricsSection.swift
 
+import HealthKit
 import SwiftUI
 
 // Key Metrics Section
@@ -94,7 +95,13 @@ struct KeyMetricsSection: View
 
     private var totalDistance: Double
     {
-        return manager.workout?.totalDistance?.doubleValue(for: .meter()) ?? manager.distance
+        if let workout = manager.workout, let totalDist = workout.totalDistance
+        {
+            // Get the unit for this workout based on pool unit
+            let distanceUnit: HKUnit = manager.poolUnit == "yards" ? .yard() : .meter()
+            return totalDist.doubleValue(for: distanceUnit)
+        }
+        return manager.distance
     }
 
     private var totalCalories: Double
@@ -110,16 +117,7 @@ struct KeyMetricsSection: View
     private func formatDistance() -> String
     {
         let distance = totalDistance
-
-        if manager.poolUnit == "yards"
-        {
-            let yards = distance * 1.09361
-            return "\(Int(yards))"
-        }
-        else
-        {
-            return "\(Int(distance))"
-        }
+        return "\(Int(distance))"
     }
 }
 

@@ -60,7 +60,7 @@ struct SwimListItemView: View
                                 .font(.system(size: 12, weight: .medium))
                                 .foregroundColor(.blue)
 
-                            Text(manager.formatDistance(distance))
+                            Text(manager.formatDistance(distance, unit: swim.poolUnit))
                                 .font(.system(size: 14, weight: .bold))
                                 .foregroundColor(.blue)
                         }

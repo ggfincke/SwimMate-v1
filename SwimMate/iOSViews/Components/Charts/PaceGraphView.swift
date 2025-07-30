@@ -98,8 +98,26 @@ extension Swim
     func pacePer100(preferredUnit: MeasureUnit) -> Double?
     {
         guard let totalDistance = totalDistance, totalDistance > 0, duration > 0 else { return nil }
-        let pace = totalDistance / duration // pace per 100 meters
-        return preferredUnit == .yards ? pace * 1.09361 : pace // convert if necessary
+
+        // Calculate pace per second for the distance unit that the swim was recorded in
+        let pacePerSecond = totalDistance / duration
+
+        // Convert pace to per-100 unit
+        let pacePer100 = pacePerSecond * 100
+
+        // If the swim was recorded in a different unit than the preferred display unit, convert
+        if poolUnit == .yards, preferredUnit == .meters
+        {
+            return pacePer100 / 1.09361 // convert yards pace to meters pace
+        }
+        else if poolUnit == .meters, preferredUnit == .yards
+        {
+            return pacePer100 * 1.09361 // convert meters pace to yards pace
+        }
+        else
+        {
+            return pacePer100 // no conversion needed
+        }
     }
 }
 

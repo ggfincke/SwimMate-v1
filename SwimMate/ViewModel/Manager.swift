@@ -3,6 +3,7 @@
 // the iOS manager/view model
 import Foundation
 import HealthKit
+import os
 import SwiftUI
 
 enum AppTheme: String, CaseIterable
@@ -185,88 +186,165 @@ class Manager: NSObject, ObservableObject
         }
     }
 
-    // load from healthStore
     func loadAllSwimmingWorkouts()
     {
         swims.removeAll()
 
-        // creating query
-        let workoutPredicate = HKQuery.predicateForWorkouts(with: .swimming)
+        let predicate = HKQuery.predicateForWorkouts(with: .swimming)
         let sortDescriptor = NSSortDescriptor(key: HKSampleSortIdentifierEndDate, ascending: false)
-        let query = HKSampleQuery(sampleType: HKObjectType.workoutType(), predicate: workoutPredicate, limit: HKObjectQueryNoLimit, sortDescriptors: [sortDescriptor])
+        let workoutType = HKObjectType.workoutType()
+
+        let query = HKSampleQuery(
+            sampleType: workoutType,
+            predicate: predicate,
+            limit: HKObjectQueryNoLimit,
+            sortDescriptors: [sortDescriptor]
+        )
         { [weak self] _, samples, error in
-            guard let self = self, let workouts = samples as? [HKWorkout], error == nil
-            else
-            {
-                print("Failed to fetch workouts: \(error?.localizedDescription ?? "Unknown error")")
-                return
+            guard let self = self else { return }
+
+            if let error
+            { // 1️⃣ handle the error first
+                os_log("HealthKit error: %@", type: .error, error.localizedDescription)
             }
 
-            // perform updates on main thread - for all workouts
+            guard let workouts = samples as? [HKWorkout], !workouts.isEmpty else { return }
+
+            // 2️⃣ heavy work off‑main
+            let parsed: [Swim] = workouts.compactMap
+            { workout in
+                self.buildSwim(from: workout)
+            }
+
+            // 3️⃣ UI / model mutation on the main queue
             DispatchQueue.main.async
             {
-                for workout in workouts
-                {
-                    // making the swim struct
-                    let id = UUID()
-                    let date = workout.startDate
-                    let duration = workout.duration
-                    let totalDistance: Double = workout.totalDistance?.doubleValue(for: .meter()) ?? 0
-                    let totalEnergyBurned: Double = workout.totalEnergyBurned?.doubleValue(for: .kilocalorie()) ?? 0
-                    var poolLength: Double?
-                    var laps = [Lap]()
-
-                    // getting laps in the workout
-                    if let events = workout.workoutEvents
-                    {
-                        for event in events where event.type == .lap
-                        {
-                            if let metadata = event.metadata
-                            {
-                                let startDate = event.dateInterval.start
-                                let endDate = event.dateInterval.end
-                                let lap = Lap(startDate: startDate, endDate: endDate, metadata: metadata)
-                                laps.append(lap)
-                            }
-                        }
-                    }
-
-                    // getting pool length
-                    if let metadata = workout.metadata, let metaLap = metadata[HKMetadataKeyLapLength] as? HKQuantity
-                    {
-                        poolLength = metaLap.doubleValue(for: HKUnit.meter())
-                    }
-
-                    // append swim
-                    let swim = Swim(id: id, startDate: date, endDate: date.addingTimeInterval(duration), totalDistance: totalDistance, totalEnergyBurned: totalEnergyBurned, poolLength: poolLength, laps: laps)
-                    self.swims.append(swim)
-                }
-                // once done with loops, calc fields and update storage
+                self.swims = parsed
                 self.calcFields()
                 self.updateStore()
             }
         }
+
         healthStore.execute(query)
+    }
+
+    /// Converts `HKWorkout` → your `Swim` model.
+    /// Runs on a background queue, so *don't* touch UIKit here.
+    private func buildSwim(from workout: HKWorkout) -> Swim
+    {
+        // Figure out pool length & unit **first**
+        let (poolLength, poolUnit) = poolInfo(from: workout.metadata)
+
+        // Choose the unit we'll use for distance
+        let distanceUnit: HKUnit =
+        {
+            switch poolUnit
+            {
+            case .yards: return .yard()
+            case .meters, .none: fallthrough
+            default: return .meter()
+            }
+        }()
+
+        // Pull the value in that unit
+        let totalDistance = workout.totalDistance?
+            .doubleValue(for: distanceUnit) ?? 0
+
+        let totalEnergy = workout.totalEnergyBurned?.doubleValue(for: .kilocalorie()) ?? 0
+
+        // Location
+        let locationType: SwimmingLocationType =
+        {
+            guard
+                let raw = workout.metadata?[HKMetadataKeySwimmingLocationType] as? NSNumber,
+                let hk = HKWorkoutSwimmingLocationType(rawValue: raw.intValue)
+            else { return .unknown }
+
+            switch hk
+            {
+            case .pool: return .pool
+            case .openWater: return .openWater
+            default: return .unknown
+            }
+        }()
+
+        // Lap events
+        let laps: [Lap] = workout.workoutEvents?
+            .filter { $0.type == .lap }
+            .map { Lap(startDate: $0.dateInterval.start,
+                       endDate: $0.dateInterval.end,
+                       metadata: $0.metadata ?? [:]) } ?? []
+
+        return Swim(
+            id: workout.uuid, // stable
+            startDate: workout.startDate,
+            endDate: workout.endDate, // use HK's value
+            totalDistance: totalDistance,
+            totalEnergyBurned: totalEnergy,
+            poolLength: poolLength,
+            locationType: locationType,
+            poolUnit: poolUnit,
+            laps: laps
+        )
+    }
+
+    /// Returns lap length + unit, or (nil, nil) if unknown.
+    private func poolInfo(from metadata: [String: Any]?) -> (Double?, MeasureUnit?)
+    {
+        guard let q = metadata?[HKMetadataKeyLapLength] as? HKQuantity
+        else
+        {
+            return (nil, nil)
+        }
+
+        let yd = q.doubleValue(for: .yard())
+        let m = q.doubleValue(for: .meter())
+
+        func isNearInt(_ x: Double, tol: Double = 0.05) -> Bool
+        {
+            abs(x.rounded() - x) < tol
+        }
+
+        let looksYards = isNearInt(yd) // 24 yd, 25 yd, 50 yd …
+        let looksMetres = isNearInt(m) || abs(m - 33.33) < 0.05 // 25 m, 50 m, 33.33 m
+
+        switch (looksYards, looksMetres)
+        {
+        case (true, false): return (yd, .yards)
+        case (false, true): return (m, .meters)
+        case (true, true): // 25 yd vs 25 m clash → prefer metres
+            return (m, .meters)
+        default: return (m, .meters) // safest fall‑back
+        }
     }
 
     // calcs user totals
     func calcFields()
     {
-        var tDis = 0.0
-        var tCals = 0.0
-        var count = 0
+        let unit = preferredUnit // user setting in Settings screen
+
+        var tDist = 0.0
+        var tCal = 0.0
 
         for swim in swims
         {
-            tDis += swim.totalDistance ?? 0
-            tCals += swim.totalEnergyBurned ?? 0
-            count += 1
+            let distanceHKUnit: HKUnit = (swim.poolUnit == .yards) ? .yard() : .meter()
+            let baseValue = swim.totalDistance ?? 0
+
+            // Convert everything into the preferred unit before adding
+            let converted = Measurement(value: baseValue,
+                                        unit: distanceHKUnit == .yard() ? UnitLength.yards
+                                            : UnitLength.meters)
+                .converted(to: unit == .yards ? UnitLength.yards : UnitLength.meters)
+            tDist += converted.value
+
+            tCal += swim.totalEnergyBurned ?? 0
         }
 
-        totalDistance = tDis
-        averageDistance = count > 0 ? tDis / Double(count) : 0
-        totalCalories = tCals
-        averageCalories = count > 0 ? tCals / Double(count) : 0
+        totalDistance = tDist
+        averageDistance = swims.isEmpty ? 0 : tDist / Double(swims.count)
+        totalCalories = tCal
+        averageCalories = swims.isEmpty ? 0 : tCal / Double(swims.count)
     }
 
     // updateStore for JSON

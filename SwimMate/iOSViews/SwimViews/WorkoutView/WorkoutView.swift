@@ -19,7 +19,7 @@ struct WorkoutView: View
                 // Header Card
                 WorkoutHeaderCard(swim: swim)
 
-                // Key Metrics Grid 
+                // Key Metrics Grid
                 KeyMetricsGrid(swim: swim)
 
                 // Charts Section with TabView

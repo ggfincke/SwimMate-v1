@@ -157,7 +157,6 @@ struct DataPrivacySettingsView: View
     }
 }
 
-
 #Preview
 {
     DataPrivacySettingsView()
